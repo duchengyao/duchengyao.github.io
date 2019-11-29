@@ -1,0 +1,1644 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+    
+      
+    
+    
+      
+    
+  <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+  <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-flash.min.css" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="wC13vXoXqQbguAs_aa6p76lce_y4EPAH_i0u2jP9DoM" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.1" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=6.4.1">
+
+
+  <link rel="mask-icon" href="/favicon.ico?v=6.4.1" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.4.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="0x00对文本进行OCR前，必须分析和定义文档的逻辑结构。 例如文本块、段落、行的位置；是否有应该重建的表格；是否有“图像”“条形码等”。 文档布局分析 (Document Layout Analysis) 是识别和分类文本文档的扫描图像中的感兴趣区域（RoI, Regions of Interest) 的过程。阅读系统需要从非文本区域分割文本区域，并按正确的阅读顺序排列。将文本正文，插图，数学">
+<meta name="keywords" content="OCR,docstrum">
+<meta property="og:type" content="article">
+<meta property="og:title" content="文档布局分析 &amp; 扭曲文档图像恢复 --- Document Layout Analysis &amp; Document Image Dewarping">
+<meta property="og:url" content="http:&#x2F;&#x2F;s1nh.org&#x2F;post&#x2F;document-layout-analysis&#x2F;index.html">
+<meta property="og:site_name" content="S1NH">
+<meta property="og:description" content="0x00对文本进行OCR前，必须分析和定义文档的逻辑结构。 例如文本块、段落、行的位置；是否有应该重建的表格；是否有“图像”“条形码等”。 文档布局分析 (Document Layout Analysis) 是识别和分类文本文档的扫描图像中的感兴趣区域（RoI, Regions of Interest) 的过程。阅读系统需要从非文本区域分割文本区域，并按正确的阅读顺序排列。将文本正文，插图，数学">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;Blog_fr-editable-copy-result.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;Blog_docstrum_00.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;Blog_docstrum_1.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;Blog_docstrum_2.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;Blog_docstrum_3.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;Blog_docstrum_6.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;Blog_docstrum_4.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;Blog_docstrum_5.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;Blog_docstrum_7.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;Blog_docstrum_8.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;Blog_docstrum_9.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;Blog_docstrum_10.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;Blog_docstrum_11.png">
+<meta property="og:updated_time" content="2019-11-29T17:12:18.556Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;Blog_fr-editable-copy-result.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://s1nh.org/post/document-layout-analysis/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>文档布局分析 & 扭曲文档图像恢复 --- Document Layout Analysis & Document Image Dewarping | S1NH</title>
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-31350656-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-31350656-2');
+</script>
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?4c66a84272e0f7943a305accf6dbdf41";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">S1NH</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">世界在旅程的尽头终结</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" target="_blank" rel="noopener" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/document-layout-analysis/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="S1NH">
+      <meta itemprop="description" content="no other developers required.">
+      <meta itemprop="image" content="http://qiniu.s1nh.org/Blog_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="S1NH">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">文档布局分析 & 扭曲文档图像恢复 --- Document Layout Analysis & Document Image Dewarping
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-09-20 02:01:58" itemprop="dateCreated datePublished" datetime="2018-09-20T02:01:58+08:00">2018-09-20</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-11-30 01:12:18" itemprop="dateModified" datetime="2019-11-30T01:12:18+08:00">2019-11-30</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E5%9B%BE%E5%BD%A2%E5%9B%BE%E5%83%8F/" itemprop="url" rel="index"><span itemprop="name">图形图像</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/post/document-layout-analysis/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/post/document-layout-analysis/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <!--
+> 不知道各位有没有碰到过这种同事，经常一遇到问题就找你帮忙。等你坑赤坑赤花了几个小时在这个问题上，甚至已经帮他解决了问题的时候，他悠悠的来一句问题已经搞定了不麻烦你了；
+> 还有另一种同事，你跟他结对编程，他只做自己擅长的部分，剩下擦屁股的工作都丢给你，出去宣扬这个部分都是他做的好累呀，出了问题背锅的总是你；
+> 偏偏最近我就跟这种人合作，真是头疼。消消气，还是有容乃大为好。
+-->
+<h2 id="0x00"><a href="#0x00" class="headerlink" title="0x00"></a>0x00</h2><p>对文本进行OCR前，必须分析和定义文档的逻辑结构。 例如文本块、段落、行的位置；是否有应该重建的表格；是否有“图像”“条形码等”。</p>
+<p>文档布局分析 (Document Layout Analysis) 是识别和分类文本文档的扫描图像中的感兴趣区域（RoI, Regions of Interest) 的过程。阅读系统需要从非文本区域分割文本区域，并按正确的阅读顺序排列。将文本正文，插图，数学符号和嵌入文档中的表格等不同区域（或块）的检测和标记称为<strong>几何布局分析</strong>。但文本区域在文档中扮演不同的逻辑角色（标题，标题，脚注等），这种语义标记是<strong>逻辑布局分析</strong>的范围。</p>
+<p>文档布局分析是几何和逻辑标签的结合。它通常在将文档图像发送到OCR引擎之前执行，但也可用于检测大型存档中同一文档的重复副本，或者通过其结构或图示内容索引文档。</p>
+<p><img src="http://qiniu.s1nh.org/Blog_fr-editable-copy-result.png" alt="" title="Document Layout Analysis"></p>
+<a id="more"></a>
+
+<h2 id="0x01-最早的算法实现-docstrum"><a href="#0x01-最早的算法实现-docstrum" class="headerlink" title="0x01 最早的算法实现 docstrum"></a>0x01 最早的算法实现 docstrum</h2><p>1993年，<strong>O’ Gorman</strong> 在<strong>TPAMI</strong>中发表了自下而上的文档布局分析算法<code>docstrum</code>，首先将文档解析为黑白连接区域，然后将这些区域分组为单词，然后分为文本行，最后分组为文本块。</p>
+<p>简单翻译了一下它的算法（<a href="https://en.wikipedia.org/wiki/Document_layout_analysis" target="_blank" rel="noopener">english version</a>）：</p>
+<blockquote>
+<p>算法开始的字母代表着原始论文中每小节的标题序号。原始论文中，每个小节的标题如下：</p>
+</blockquote>
+<ul>
+<li>B. Preprocessing</li>
+<li>C. Nearest-Neighbor Clustering and Docstrum Plot</li>
+<li>D. Spacing and Initial Orientation Estimation</li>
+<li>E. Determination of Text Lines and Accurate Orientation Measurement</li>
+<li>F. Structural Block Determination</li>
+<li>G. Filtering</li>
+<li>H. Global and Local Lay-out Analysis</li>
+</ul>
+<ol>
+<li><code>B</code> 预处理图像以去除<strong>高斯噪声</strong>和<strong>椒盐噪声</strong>。<em>（某些噪声消除滤波器可能会将逗号和句号视为噪声，因此必须小心谨慎）</em></li>
+<li><code>B</code> 将图像<strong>二值化</strong></li>
+<li><code>B</code> 将图像分割为黑色像素的<strong>连通分量（下文称 Symbol）</strong>。对于每个Symbol，计算边框和质心（bounding box, centroid）。</li>
+<li><code>C</code> 对于每个Symbol，确定其k近邻，且k&gt;=4。<em>（ O’Gorman在他的论文中建议将k = 5作为鲁棒性和速度之间的良好折衷。使用至少k = 4的原因是对于文档中的符号，两个或三个最接近的符号是在相同文本行上紧邻的那些符号。第四最近的符号通常在正上方或下方的一条线上，并且在下面的最近邻居计算中包括这些符号是很重要的。）</em></li>
+<li><code>C</code> 每个Symbol的近邻对与两者质心的向量相关。如果为每对最近邻Symbol绘制这些向量，则可以得到文档的<strong>docstrum</strong>（下图）。通过来自水平的角度θ和两个最近邻居符号之间的距离D，创建<strong>最近邻角</strong>和<strong>最近邻距离直方图</strong>。</li>
+<li><code>D</code> 使用最近邻角度直方图，可以计算文档的歪斜。如果歪斜较小，则继续下一步。如果不是，旋转图像以消除歪斜并返回<em>步骤3</em>。</li>
+<li><code>D</code> 最近邻距离直方图具有若干峰值，并且这些峰值通常表示<strong>字符间间距</strong>，<strong>字间间距</strong>和<strong>行间间隔</strong>（between-character, between-word, between-line）。</li>
+<li><code>D</code> 标记每个Symbol较远的邻居，该距离在<strong>between-character</strong>或<strong>between-word</strong>的某个容差内。对于标记的每个最近邻居符号，绘制连接其质心的线段。</li>
+<li><code>E</code> 通过线段连接到其邻居的符号形成<strong>文本行</strong>。对于文本行中的所有质心，可以使用线性回归计算表示文本行的<strong>实际线段</strong>。（使用<strong>线性回归</strong>，是因为文本行中Symbol的所有质心都不太可能是共线的。）</li>
+<li><code>F</code> 对于每对文本行，可以计算它们对应的线段之间的最小距离。如果该距离在步骤7中计算的行间间隔的某个容差内，则将两个文本行分组到相同的<strong>文本块</strong>中。</li>
+<li>最后，可以为每个文本块计算<strong>边界框</strong>，并完成文档布局分析。<br><img src="http://qiniu.s1nh.org/Blog_docstrum_00.png" alt="docstrum"></li>
+</ol>
+<h2 id="0x02-实验"><a href="#0x02-实验" class="headerlink" title="0x02 实验"></a>0x02 实验</h2><h3 id="1-两个开源代码"><a href="#1-两个开源代码" class="headerlink" title="1. 两个开源代码"></a>1. 两个开源代码</h3><p><a href="https://github.com/chadoliver/cosc428-structor" target="_blank" rel="noopener">https://github.com/chadoliver/cosc428-structor</a> 复现了docstrum<br><a href="https://github.com/chulwoopack/docstrum" target="_blank" rel="noopener">https://github.com/chulwoopack/docstrum</a> 对前一个开源代码进行了优化</p>
+<h3 id="2-复现"><a href="#2-复现" class="headerlink" title="2. 复现"></a>2. 复现</h3><blockquote>
+<p>上面两段开源代码比较古老且有点乱，基于最新的opencv应该可以很快的复现docstrum</p>
+</blockquote>
+<p><img src="http://qiniu.s1nh.org/Blog_docstrum_1.png" alt="image.png"></p>
+<h2 id="0x03-进展"><a href="#0x03-进展" class="headerlink" title="0x03 进展"></a>0x03 进展</h2><blockquote>
+<p>没来得及看的一些文章</p>
+</blockquote>
+<ul>
+<li><p><code>60多页</code> Cattoni, Roldano, et al. “Geometric layout analysis techniques for document image understanding: a review.” ITC-irst Technical Report 9703.09 (1998).</p>
+</li>
+<li><p><a href="https://www.researchgate.net/profile/Faisal_Shafait/publication/226110361_Coupled_snakelets_for_curled_text-line_segmentation_from_warped_document_images/links/542358fe0cf26120b7a6c334.pdf" target="_blank" rel="noopener">[IJDAR 2013]</a> Bukhari, S. S., Shafait, F., &amp; Breuel, T. M.  Coupled snakelets for curled text-line segmentation from warped document images</p>
+<img src="http://qiniu.s1nh.org/Blog_docstrum_2.png" width="600">
+</li>
+<li><p><a href="https://www.researchgate.net/profile/Thomas_Breuel/publication/5431819_Performance_Evaluation_and_Benchmarking_of_Six-Page_Segmentation_Algorithms/links/551dd6dd0cf213ef063eb1ee.pdf" target="_blank" rel="noopener">[TPAMI 2008]</a> Shafait, F., Keysers, D., &amp; Breuel, T. Performance evaluation and benchmarking of six-page segmentation algorithms </p>
+<img src="http://qiniu.s1nh.org/Blog_docstrum_3.png" width="600">
+</li>
+<li><p><a href="https://pdfs.semanticscholar.org/aa39/21e3a2eda4dd91c89f601ca9ae502f1e65e3.pdf" target="_blank" rel="noopener">ICIAR 2014</a> Kassis, M., Kurar, B., Cohen, R., El-Sana, J., &amp; Kedem, K. Using Scale-Space Anisotropic Smoothing for Text Line Extraction in Historical Documents.</p>
+<img src="http://qiniu.s1nh.org/Blog_docstrum_6.png" width="700">
+</li>
+<li><p><a href="http://www.iapr-tc11.org/archive/das2012/attachments/FullPaperProceedings/4661a394.pdf" target="_blank" rel="noopener">DAS 2012</a> Afzal, M. Z., Kramer, M., Bukhari, S. S., Shafait, F., &amp; Breuel, T. M.  Improvements to uncalibrated feature-based stereo matching for document images by using text-line segmentation</p>
+<img src="http://qiniu.s1nh.org/Blog_docstrum_4.png" width="500">
+</li>
+<li><p><a href="http://www.dfki.de/~bukhari/data/papers/29-Bukhari-Generic-Textline-Extraction-ICDAR13.pdf" target="_blank" rel="noopener">ICDAR 2013</a>Bukhari, S. S., Shafait, F., &amp; Breuel, T. M. (2013, August). Towards generic text-line extraction.</p>
+<img src="http://qiniu.s1nh.org/Blog_docstrum_5.png" width="400">
+
+</li>
+</ul>
+<h2 id="0x04-Document-Dewarping"><a href="#0x04-Document-Dewarping" class="headerlink" title="0x04 Document Dewarping"></a>0x04 Document Dewarping</h2><ul>
+<li>数据集[<a href="http://staffhome.ecm.uwa.edu.au/~00082689/downloads.html" target="_blank" rel="noopener">CBDAR 2007 dataset</a>]</li>
+<li>[<a href="http://www.imlab.jp/cbdar2007/proceedings/papers/P1.pdf" target="_blank" rel="noopener">CBDAR 2007</a>] Fu, Bin, et al. “A model-based book dewarping method using text line detection.”<br>CTM 方法，有一个非官方实现[github] [blog]</li>
+<li>[<a href="http://159.226.21.68/bitstream/173211/3713/1/TPAMI2012.pdf" target="_blank" rel="noopener">TPAMI 2012</a>] Meng et al. 2011, Metric rectification of curved document images</li>
+<li>[PR 2015] Kim et al. 2015, Document dewarping via text-line based optimization<br>有个同学了复现上面两个算法[<a href="https://github.com/phulin/rebook" target="_blank" rel="noopener">github</a>，我暂时跑不通</li>
+<li>[<a href="https://ieeexplore.ieee.org/document/8270077/authors#authors" target="_blank" rel="noopener">ICDAR 2017</a>] Robust Document Image Dewarping Method Using Text-Lines and Line Segments<br>应该是最新的，作者提供了[二进制文件]，没有源码，据说比2015年Kim的算法好很多</li>
+<li>[<a href="https://www3.cs.stonybrook.edu/~cvl/content/papers/2018/Ma_CVPR18.pdf" target="_blank" rel="noopener">CVPR 2018</a>] DocUNet. A state-of-the-art work from face++ probably, but no source code.</li>
+<li>Leptonica，很好的库，注释比代码都多。它的dewarping代码貌似是基于textlines的</li>
+</ul>
+<p>Python 中使用 tesseract-ocr leptonica [<a href="https://github.com/ybur-yug/python_ocr_tutorial" target="_blank" rel="noopener">github</a>] [<a href="https://realpython.com/setting-up-a-simple-ocr-server/" target="_blank" rel="noopener">blog</a>]</p>
+<h2 id="0xFF-开源框架"><a href="#0xFF-开源框架" class="headerlink" title="0xFF 开源框架"></a>0xFF 开源框架</h2><ul>
+<li><a href="https://github.com/scantailor/scantailor" target="_blank" rel="noopener">scantailor</a> <code>比较古老</code> 可以将拍照的书页自动转换为无卷曲的扫描书页</li>
+</ul>
+<img src="http://qiniu.s1nh.org/Blog_docstrum_7.png" width="600">
+
+<img src="http://qiniu.s1nh.org/Blog_docstrum_8.png" width="500">
+
+<ul>
+<li><a href="http://www.leptonica.com/line-removal.html" target="_blank" rel="noopener">leptonica</a>  一个古老又顽强的库<code>被Tesseract、OpenCV、jbig2enc依赖</code>，官方有很多例子演示它好玩的算法</li>
+</ul>
+<img src="http://qiniu.s1nh.org/Blog_docstrum_9.png" width="700">
+
+<img src="http://qiniu.s1nh.org/Blog_docstrum_10.png" width="600">
+
+<img src="http://qiniu.s1nh.org/Blog_docstrum_11.png" width="600">
+
+<ul>
+<li><p>OCRopus – A free document layout analysis and OCR system, implemented in C++ and Python and for FreeBSD, Linux, and Mac OS X. This software supports a plug-in architecture which allows the user to select from a variety of different document layout analysis and OCR algorithms.</p>
+</li>
+<li><p>OCRFeeder – An OCR suite for Linux, written in python, which also supports document layout analysis. This software is actively being developed, and is free and open-source.</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>S1NH</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://s1nh.org/post/document-layout-analysis/" title="文档布局分析 & 扭曲文档图像恢复 --- Document Layout Analysis & Document Image Dewarping">http://s1nh.org/post/document-layout-analysis/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/OCR/" rel="tag"># OCR</a>
+          
+            <a href="/tags/docstrum/" rel="tag"># docstrum</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/xb/" rel="next" title="竟然拍了照片">
+                <i class="fa fa-chevron-left"></i> 竟然拍了照片
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/2018-summary/" rel="prev" title="2018 年终总结">
+                2018 年终总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://qiniu.s1nh.org/Blog_avatar.jpg"
+                alt="S1NH" />
+            
+              <p class="site-author-name" itemprop="name">S1NH</p>
+              <p class="site-description motion-element" itemprop="description">no other developers required.</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/%20%7C%7C%20archive">
+                
+                    <span class="site-state-item-count">74</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">72</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="http://weibo.com/santuxuezhang" target="_blank" title="程序员吐槽师"><i class="fa fa-fw fa-globe"></i>程序员吐槽师</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.gitbook.com/book/xcode-jianghu/xcode-jianghu/details" target="_blank" title="《Xcode 江湖录》"><i class="fa fa-fw fa-globe"></i>《Xcode 江湖录》</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.1-xing.com" target="_blank" title="益行人"><i class="fa fa-fw fa-globe"></i>益行人</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://i.xiami.com/jingluo" target="_blank" title="鲸落乐队"><i class="fa fa-fw fa-globe"></i>鲸落乐队</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+              </a>
+            </div>
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://t.tips/" title="一只猿" target="_blank">一只猿</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://s1nh.com/" title="本站 github 镜像" target="_blank">本站 github 镜像</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://s1nh.org/" title="本站国内镜像" target="_blank">本站国内镜像</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x00"><span class="nav-number">1.</span> <span class="nav-text">0x00</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01-最早的算法实现-docstrum"><span class="nav-number">2.</span> <span class="nav-text">0x01 最早的算法实现 docstrum</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02-实验"><span class="nav-number">3.</span> <span class="nav-text">0x02 实验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-两个开源代码"><span class="nav-number">3.1.</span> <span class="nav-text">1. 两个开源代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-复现"><span class="nav-number">3.2.</span> <span class="nav-text">2. 复现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x03-进展"><span class="nav-number">4.</span> <span class="nav-text">0x03 进展</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x04-Document-Dewarping"><span class="nav-number">5.</span> <span class="nav-text">0x04 Document Dewarping</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0xFF-开源框架"><span class="nav-number">6.</span> <span class="nav-text">0xFF 开源框架</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">S1NH</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Gemini</a></div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="总访客量">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="site-pv" title="总访问量">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: 'XOzH1c25Dogu8cYTuRxfnTFo-gzGzoHsz',
+        appKey: 'RxlSioLPtr2tPejVVqIcrEq2',
+        placeholder: 'Just go go',
+        avatar:'monsterid',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: false
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

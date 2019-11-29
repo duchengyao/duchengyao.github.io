@@ -1,0 +1,1680 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+    
+      
+    
+    
+      
+    
+  <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+  <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-flash.min.css" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="wC13vXoXqQbguAs_aa6p76lce_y4EPAH_i0u2jP9DoM" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.1" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=6.4.1">
+
+
+  <link rel="mask-icon" href="/favicon.ico?v=6.4.1" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.4.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="学到卷积神经网络，搜索到的资料一般都是这样的">
+<meta name="keywords" content="卷积,神经网络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="什么是卷积神经网络">
+<meta property="og:url" content="http:&#x2F;&#x2F;s1nh.org&#x2F;post&#x2F;convolutional-neural-network-introduction&#x2F;index.html">
+<meta property="og:site_name" content="S1NH">
+<meta property="og:description" content="学到卷积神经网络，搜索到的资料一般都是这样的">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;Blog_Convolution_a1.png-QNthin">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;Blog_Convolution_a2.jpg-QNthin">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;Blog_Convolution_a3.png-QNthin">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;CNN_perceptron_1.png-QNthin">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;CNN_perceptron_2.png-QNthin">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;CNN_perceptron_3.jpg-QNthin">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;CNN_conv_0.gif">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;CNN_conv_1.png-QNthin">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;CNN_conv_2.jpg-QNthin">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;CNN_conv_3.jpg-QNthin">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;Blog_Tensorflow_MNIST_3.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;CNN_inception_1.jpg-QNthin">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;CNN_inception_2.jpg-QNthin">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;CNN_resnet_1.png-QNthin">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;CNN_densenet_1.png-QNthin">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;CNN_conclu_2.png-QNthin">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;CNN_conclu_1.png-QNthin">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;Blog_Convolution_b1.png-QNthin">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;Blog_Convolution_b2.png-QNthin">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;Blog_Convolution_b3.png-QNthin">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;Blog_Convolution_b4.png-QNthin">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;Blog_Convolution_b5.png-QNthin">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;Blog_Convolution_b6.jpg-QNthin">
+<meta property="og:updated_time" content="2018-03-31T16:25:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;Blog_Convolution_a1.png-QNthin">
+
+
+
+
+
+
+  <link rel="canonical" href="http://s1nh.org/post/convolutional-neural-network-introduction/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>什么是卷积神经网络 | S1NH</title>
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-31350656-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-31350656-2');
+</script>
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?4c66a84272e0f7943a305accf6dbdf41";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">S1NH</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">世界在旅程的尽头终结</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" target="_blank" rel="noopener" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/convolutional-neural-network-introduction/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="S1NH">
+      <meta itemprop="description" content="no other developers required.">
+      <meta itemprop="image" content="http://qiniu.s1nh.org/Blog_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="S1NH">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">什么是卷积神经网络
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-08-03 07:06:35" itemprop="dateCreated datePublished" datetime="2016-08-03T07:06:35+08:00">2016-08-03</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-04-01 00:25:02" itemprop="dateModified" datetime="2018-04-01T00:25:02+08:00">2018-04-01</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" itemprop="url" rel="index"><span itemprop="name">人工智能</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/post/convolutional-neural-network-introduction/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/post/convolutional-neural-network-introduction/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>学到卷积神经网络，搜索到的资料一般都是这样的</p>
+<p><img src="http://qiniu.s1nh.org/Blog_Convolution_a1.png-QNthin" alt="神经网络"></p>
+<a id="more"></a>
+
+<p>或是这样的</p>
+<p><img src="http://qiniu.s1nh.org/Blog_Convolution_a2.jpg-QNthin" alt="神经网络"></p>
+<p>这尼玛什么鬼，故弄玄虚忽悠投资人的吧。。再搜一下什么BP神经网络，深度神经网络，所有的教材都像下图一样，一大堆圈圈，无数跟线连起来，显得那么装逼，可菜鸟们就是看不懂到底是啥。</p>
+<p><img src="http://qiniu.s1nh.org/Blog_Convolution_a3.png-QNthin" alt="神经网络"></p>
+<!-- 有关其它神经网络的介绍请异步另一篇文章： -->
+
+
+<h2 id="0x00-瞎扯淡-什么是卷积"><a href="#0x00-瞎扯淡-什么是卷积" class="headerlink" title="0x00 瞎扯淡 - 什么是卷积"></a>0x00 瞎扯淡 - 什么是卷积</h2><p>我第一次接触到卷积是本科2年级，为了做图像识别，准备把这些基础知识恶补一下。可是翻开教材，满书的“傅里叶变换”“线性时不变系统”…… 果断的就放弃了。。</p>
+<ul>
+<li>难懂之因：<em>为了数学美，拆卸了脚手架。教科书书常用“定义—定理”的体系，先给出数学定义，然后给出若干性质，从公式到公式，逐步推导。有的教科书采用用信号“反褶、平移、相乘、积分”给出几何解释，属于用数学解释数学，提问者不满足这种解释。这不是当年发明卷积的大师们的“需求–猜想—发现—证明—应用”的路径，大师们建设好“卷积”大厦后，为了数学美，拆卸了脚手架，现在人们看到的是炼成的钢铁，看不出钢铁是怎样炼成的。造成了部分非数学专业学生的一个难点。——<a href="http://blog.sciencenet.cn/home.php?mod=space&uid=287179&do=blog&id=425373" target="_blank" rel="noopener">唐常杰</a></em></li>
+</ul>
+<p>其实卷及根本就没那么麻烦，编书的老师简直就在卖弄自己的数学功底。看看下面的解释，卷积这个高达上的名词瞬间就变得通俗易懂了。</p>
+<h4 id="1-给卷积一个通俗的解释——关于卷积的一个血腥的讲解"><a href="#1-给卷积一个通俗的解释——关于卷积的一个血腥的讲解" class="headerlink" title="1. 给卷积一个通俗的解释——关于卷积的一个血腥的讲解"></a>1. 给卷积一个通俗的解释——关于卷积的一个血腥的讲解</h4><p><code>因为关于卷积的内容太血腥，于是我把它移到了附录里面。按几下空格或者PageDown即可观看</code></p>
+<h2 id="0x01-什么是神经网络"><a href="#0x01-什么是神经网络" class="headerlink" title="0x01 什么是神经网络"></a>0x01 什么是神经网络</h2><p>神经网络形象的可以表示成本文开始的那张图，一堆圈圈分成一层一层的被一些线连接起来。那么每一部分是什么意思呢，让我们从神经元开始讲起。</p>
+<h3 id="1-神经元（感知机）"><a href="#1-神经元（感知机）" class="headerlink" title="1. 神经元（感知机）"></a>1. 神经元（感知机）</h3><p>学过高中生物的都知道，神经元分为<code>树突（dendrite）</code>、<code>轴突（axon）</code>和<code>胞体</code>。其中，树突具有接受刺激并将冲动传入细胞体的功能，细胞体对输入的刺激进行计算，最后由轴突的分枝把神经冲动传给其他神经元或效应器。上个世纪六十年代（1958年）<code>感知机</code>模型被提出，如下图所示。感知机的左边是的树突，可以接受传入信号（x1,x2,x3）；右边是轴突，负责输出信号。那么如何处理输入信号呢，为了简化模型，我们先认为<code>如果输入的都是1,那么输出1,否则输出0</code>。</p>
+<p><img src="http://qiniu.s1nh.org/CNN_perceptron_1.png-QNthin" alt=""></p>
+<p>简化的感知机模型未免也太弱智了，必须所有的传入神经同时刺激胞体才能使此神经元有响应（激活）。于是科学家们把弱智的神经元胞体改造了一下，成为下面这样子（图片来自网络，所以下图的y对应于上图的output）</p>
+<p><img src="http://qiniu.s1nh.org/CNN_perceptron_2.png-QNthin" alt=""></p>
+<p>这就有点高级了，首先，每个传入信号$x_i$都被标注了权重$w_i$，还增加了偏置<code>b</code>（bias)。其中c是组合函数（通常情况是求和），a为激活函数（这个有点复杂，有兴趣的自行google）。<strong>别被上面的图搞糊涂，其实神经元（感知机）就是一个数学公式：$y=(x_1 * w_1+x_2 * w_2+…+x_n * w_n+b)*a$ 即首先对所有的输入数据乘以对应的权重并求和，最后与激活函数相乘。</strong></p>
+<p>也许你会发现_卧槽这么简单，小学乘法呀，那有什么卵用_。感知机能（且一定能）将线性可分的数据集分开，想不明白的可以看<a href="https://zhuanlan.zhihu.com/p/27224109" target="_blank" rel="noopener">这篇文章</a>的第一节<code>感知机能做什么？</code>。除了区分线性可分数据集以外，缺失没什么卵用了，连异或（XOR）问题都解决不了。</p>
+<h3 id="2-我们把神经元连接起来（多层感知机）"><a href="#2-我们把神经元连接起来（多层感知机）" class="headerlink" title="2. 我们把神经元连接起来（多层感知机）"></a>2. 我们把神经元连接起来（多层感知机）</h3><p>自从发现感知机对除了线性可分的数据外没什么卵用以后，感知机的研究进入了寒冬，直到有个大神把几个感知机链接起来成下面的样子：</p>
+<p><img src="http://qiniu.s1nh.org/CNN_perceptron_3.jpg-QNthin" alt=""></p>
+<p>对于异或（XOR）问题，只要像上图一样，把三个神经元连接成两层，第一层神经元分别激活<code>x+y&gt;0</code> <code>x+y&lt;2</code>，第二层的神经元像刚开始的弱智神经元一样，如果第一层神经元的输出都为1，那么输出为1即可。</p>
+<p><strong>这么简单的思路，为什么还会进入那么久的寒冬？</strong>其实不是上个世纪的人智商太低，而是因为这种多层网络无法训练。也就是说，以当时的技术无法确定神经元中w的值，所以对于输入信号多层感知机就不知道怎么激活了。直到BP算法的出现（BP算法请自行google）。<em>其实1968年BP算法就被作者认识到了，并在1974年写在了毕业论文中，只是因为寒蝉效应没人理他。直到1986年这种方法才流行开来。</em></p>
+<p>可以证明，<a href="http://neuralnetworksanddeeplearning.com/chap4.html" target="_blank" rel="noopener">多层神经元可以表达所有连续函数</a>。因此，理论上讲，只要网络足够大，层数足够多，神经网络是可以拟合各种问题的！（当然网络太大就过拟合了- -）</p>
+<h2 id="0x02-卷积神经网络历史"><a href="#0x02-卷积神经网络历史" class="headerlink" title="0x02 卷积神经网络历史"></a>0x02 卷积神经网络历史</h2><p>假设我们要对100×100像素的图片进行分类，如果用上面的多层感知机来做（现在叫全连接层），那么输入数据就是10000个，如果再来几十层网络，每层几千个节点，那么估计也只有朝鲜的计算机才能算出来了吧&gt;_&lt;</p>
+<h3 id="1-图像的卷积"><a href="#1-图像的卷积" class="headerlink" title="1. 图像的卷积"></a>1. 图像的卷积</h3><p>之前接触过图像算法的同鞋们对卷积一定很熟悉，什么<code>Laplacian</code>，<code>soble</code>算子之类的讲的就是卷积核。图像卷积的计算方法其实就是<strong>滑动窗口和加权平均</strong>（如下图所示）。对于原始图片，用一个固定的卷积核在图片上滑动，每滑动一个像素就计算对应位置的加权和并记录下来。</p>
+<p><img src="http://qiniu.s1nh.org/CNN_conv_0.gif" alt=""></p>
+<p><img src="http://qiniu.s1nh.org/CNN_conv_1.png-QNthin" alt=""></p>
+<p>图像经过不同的卷积核后产生的新图像是不同的，比如下图的原始图片分别用了低通和高通卷积核后的结果。</p>
+<p><img src="http://qiniu.s1nh.org/CNN_conv_2.jpg-QNthin" alt=""></p>
+<p>再比如下图（原始图片分别用之前说的Laplacian，soble卷积核卷一下）：</p>
+<p><img src="http://qiniu.s1nh.org/CNN_conv_3.jpg-QNthin" alt=""></p>
+<p>经过观察以后，不难明白卷积对于图像的意义是<strong>提取图像不同频段的特征</strong></p>
+<h3 id="2-LeNet"><a href="#2-LeNet" class="headerlink" title="2. LeNet"></a>2. LeNet</h3><p>上一章讲了1986年BP算法开始流行，证明了多层网络可以训练以后，Yann LeCun大牛像我一样意识到不能用全连接层进行图片分类后就开始了卷及神经网络的研究，并解决了应用在书信邮编中的手写数字的分类问题。其实只用模板匹配（只有10个神经元的单层感知机）的方法也能进行识别，但是效果只能达到92%（多层感知机为98%）。模板匹配的方法跟卷积一模一样，只是卷积核的大小等于输入图片的大小，我训练的模板如下图，代码见之前的博文：</p>
+<p><img src="http://qiniu.s1nh.org/Blog_Tensorflow_MNIST_3.png" alt=""></p>
+<p>LeNet的基本原理就是对输入图像一层一层的卷积，最后接一个softmax把结果分为10类。<a href="http://yann.lecun.com/exdb/publis/pdf/lecun-01a.pdf" target="_blank" rel="noopener">论文</a>实在是太长了，有兴趣的同鞋可以看看。</p>
+<h3 id="3-AlexNet"><a href="#3-AlexNet" class="headerlink" title="3. AlexNet"></a>3. AlexNet</h3><p>上个世纪的计算机硬件实在太差了，卷积网络又是个耗资源的方法，所以没被广泛应用。（同等资源下<code>传统特征+SVM</code>也可以取得相当的效果，看过上个世纪<code>Andrew Ng</code>机器学习课的应该都知道，神经网络的讲解几乎是一带而过，重点都是SVM、AdaBoost、随机森林、GBDT、LR、FTRL这些概念）</p>
+<p>到了2012年，Alex借助GPGPU技术，使用了两个NVIDIA GPU进行并行训练（话说作者确实牛逼，用GPU就算了，还来了个多GPU并行），使得top5错误率一下子降低到了17.0%</p>
+<p>除了<code>多GPU</code>+更深的<code>网络层数</code>，AlexNet还体现了<code>LRN</code> <code>Dropout</code> <code>ReLU</code>等现在流行的方法（再次膜拜）。</p>
+<h3 id="4-VGG"><a href="#4-VGG" class="headerlink" title="4. VGG"></a>4. VGG</h3><p><strong>没有什么问题是多层卷积网络解决不了的，如果有，那就再加10层</strong>。于是<code>Karen Simonyan</code>就把AlexNet的网络由8层加深到19层，取名叫VGG，夺得了当年比赛的第二名。（其实也有新技术啦，比如把卷积核变小- -）</p>
+<h3 id="5-GoogLeNet"><a href="#5-GoogLeNet" class="headerlink" title="5. GoogLeNet"></a>5. GoogLeNet</h3><p><code>当年VGG运气不好，碰到了GoogLeNet，否则就是比赛第一名了。</code></p>
+<p>为什么GoogLeNet排名第一呢，是的，因为比VGG还要深十几层。但是，巨量参数容易产生过拟合也会增加计算量，说白了就是网络<code>无法训练</code>。因此GoogLeNet提出了一个叫做Inception的子结构，如下图：</p>
+<p><img src="http://qiniu.s1nh.org/CNN_inception_1.jpg-QNthin" alt=""></p>
+<p>Inception将一个图像分别用不同大小的卷积核卷一下，然后连接起来，据说让参数量降低了好几倍。其中Inception其实有好多好多版本，有兴趣的同鞋可以自定Google。完整的GoogLeNet如下图。</p>
+<p><img src="http://qiniu.s1nh.org/CNN_inception_2.jpg-QNthin" alt=""></p>
+<h3 id="6-ResNet"><a href="#6-ResNet" class="headerlink" title="6. ResNet"></a>6. ResNet</h3><p>GoogLeNet在某种程度上可以看作把网络加宽了，而ResNet不一样，依然坚信着<strong>没有最深只有更深</strong>。何凯明一口气把网络加深到了一百多层，然后在当年的ImageNet比赛中拿了第一。</p>
+<p>然而其实并没有这么简单（据说朝鲜早就在研究1000层的神经网络了，也没见他们得奖）。大神设计了一个叫做残差的模块（如下图），一层网络不仅仅连接着下一层，还通过飞线跨过几层走到了后边。</p>
+<p><img src="http://qiniu.s1nh.org/CNN_resnet_1.png-QNthin" alt=""></p>
+<h3 id="7-DenseNet"><a href="#7-DenseNet" class="headerlink" title="7. DenseNet"></a>7. DenseNet</h3><p>ResNet 虽然效果了不得，但速度确实有点慢。ResNet的思想是把一层的输出跨几层传递到后面，DenseNet的思路更简单粗暴，把所有的层都连接起来了（在连接处的区别为ResNet是求和，DenseNet是concat）,实验效果超好。</p>
+<p><img src="http://qiniu.s1nh.org/CNN_densenet_1.png-QNthin" alt=""></p>
+<h3 id="8-总结"><a href="#8-总结" class="headerlink" title="8. 总结"></a>8. 总结</h3><p><img src="http://qiniu.s1nh.org/CNN_conclu_2.png-QNthin" alt=""></p>
+<p>做目标检测（YOLO）的官网有个<a href="https://pjreddie.com/darknet/imagenet/#alexnet" target="_blank" rel="noopener">统计</a>，我贴出来供参考：</p>
+<p><img src="http://qiniu.s1nh.org/CNN_conclu_1.png-QNthin" alt=""></p>
+<ul>
+<li><p><code>AlexNet</code>: The model that started a revolution! The original model was crazy with the split GPU thing so this is the model from some follow-up work.</p>
+</li>
+<li><p><code>Darknet Reference Model</code>: This model is designed to be small but powerful. It attains the same top-1 and top-5 performance as AlexNet but with 1/10th the parameters. It uses mostly convolutional layers without the large fully connected layers at the end. It is about twice as fast as AlexNet on CPU making it more suitable for some vision applications.</p>
+</li>
+<li><p><code>VGG-16</code>: The Visual Geometry Group at Oxford developed the VGG-16 model for the ILSVRC-2014 competition. It is highly accurate and widely used for classification and detection. I adapted this version from the Caffe pre-trained model. It was trained for an additional 6 epochs to adjust to Darknet-specific image preprocessing (instead of mean subtraction Darknet adjusts images to fall between -1 and 1).</p>
+</li>
+<li><p><code>Extraction</code>: I developed this model as an offshoot of the GoogleNet model. It doesn’t use the “inception” modules, only 1x1 and 3x3 convolutional layers.</p>
+</li>
+<li><p><code>Darknet19</code>: I modified the Extraction network to be faster and more accurate. This network was sort of a merging of ideas from the Darknet Reference network and Extraction as well as numerous publications like Network In Network, Inception, and Batch Normalization.</p>
+</li>
+<li><p><code>Darknet19 448x448</code>: I trained Darknet19 for 10 more epochs with a larger input image size, 448x448. This model performs significantly better but is slower since the whole image is larger.</p>
+</li>
+<li><p><code>Resnet 50</code>: For some reason people love these networks even though they are so sloooooow. Whatever.</p>
+</li>
+<li><p><code>Resnet 152</code>: For some reason people love these networks even though they are so sloooooow. Whatever.</p>
+</li>
+<li><p><code>Densenet 201</code>: I love DenseNets! They are just so deep and so crazy and work so well. Like Resnet, still slow since they are sooooo many layers but at least they work really well!</p>
+</li>
+</ul>
+<h2 id="0xFF-附录-瞎扯淡-什么是卷积"><a href="#0xFF-附录-瞎扯淡-什么是卷积" class="headerlink" title="0xFF 附录 瞎扯淡 - 什么是卷积"></a>0xFF 附录 瞎扯淡 - 什么是卷积</h2><p><code>接着第0章的卷积继续说</code></p>
+<h4 id="1-给卷积一个通俗的解释——关于卷积的一个血腥的讲解-1"><a href="#1-给卷积一个通俗的解释——关于卷积的一个血腥的讲解-1" class="headerlink" title="1. 给卷积一个通俗的解释——关于卷积的一个血腥的讲解"></a>1. 给卷积一个通俗的解释——关于卷积的一个血腥的讲解</h4><p>比如说你的老板命令你干活，你却到楼下打台球去了，后来被老板发现，他非常气愤，扇了你一巴掌（注意，这就是输入信号，脉冲），于是你的脸上会渐渐地（贱贱地）鼓起来一个包，你的脸就是一个系统，而鼓起来的包就是你的脸对巴掌的响应，好，这样就和信号系统建立起来意义对应的联系。下面还需要一些假设来保证论证的严谨：假定你的脸是线性时不变系统，也就是说，无论什么时候老板打你一巴掌，打在你脸的同一位置（这似乎要求你的脸足够光滑，如果你说你长了很多青春痘，甚至整个脸皮处处连续处处不可导，那难度太大了，我就无话可说了哈哈），你的脸上总是会在相同的时间间隔内鼓起来一个相同高度的包来，并且假定以鼓起来的包的大小作为系统输出。好了，那么，下面可以进入核心内容——卷积了！</p>
+<p>如果你每天都到地下去打台球，那么老板每天都要扇你一巴掌，不过当老板打你一巴掌后，你5分钟就消肿了，所以时间长了，你甚至就适应这种生活了……如果有一天，老板忍无可忍，以0.5秒的间隔开始不间断的扇你的过程，这样问题就来了，第一次扇你鼓起来的包还没消肿，第二个巴掌就来了，你脸上的包就可能鼓起来两倍高，老板不断扇你，脉冲不断作用在你脸上，效果不断叠加了，这样这些效果就可以求和了，结果就是你脸上的包的高度随时间变化的一个函数了（注意理解）；如果老板再狠一点，频率越来越高，以至于你都辨别不清时间间隔了，那么，求和就变成积分了。可以这样理解，在这个过程中的某一固定的时刻，你的脸上的包的鼓起程度和什么有关呢？和之前每次打你都有关！但是各次的贡献是不一样的，越早打的巴掌，贡献越小，所以这就是说，某一时刻的输出是之前很多次输入乘以各自的衰减系数之后的叠加而形成某一点的输出，然后再把不同时刻的输出点放在一起，形成一个函数，这就是卷积，卷积之后的函数就是你脸上的包的大小随时间变化的函数。本来你的包几分钟就可以消肿，可是如果连续打，几个小时也消不了肿了，这难道不是一种平滑过程么？反映到剑桥大学的公式上，f(a)就是第a个巴掌，g(x-a)就是第a个巴掌在x时刻的作用程度，乘起来再叠加就ok了，大家说是不是这个道理呢？我想这个例子已经非常形象了，你对卷积有了更加具体深刻的了解了吗？</p>
+<p>看到这里，我们简直不能更明白，什么是卷积了</p>
+<ul>
+<li>时不变系统：就是系统的参数不随时间而变化，即不管输入信号作用的时间先后，输出信号响应的形状均相同。就是说不管老板什么时候打你，肿胀发展的程度是一样的</li>
+<li>线性时不变系统：在时不变系统中满足叠加原理。即老板在t时刻打你N巴掌，那么肿胀的程度成N倍增加。</li>
+</ul>
+<h4 id="2-物理意义"><a href="#2-物理意义" class="headerlink" title="2. 物理意义"></a>2. 物理意义</h4><p>我们先画几个简单的函数图像，理解“卷积”的<strong>物理意义</strong>，暂时不管它为什么要对称，为什么要反转。</p>
+<p>已知f(t)为老板在t时刻打了你f(t)巴掌。如下图，老板分别在第0秒时打了2巴掌，第1秒打了1巴掌，第2秒打了3巴掌；g(t)为打完巴掌后的t时刻肿胀的程度，下图刚打完时肿胀程度为2，等了1秒后变大为3，2秒后变成1，3秒后完全消肿。</p>
+<p><img src="http://qiniu.s1nh.org/Blog_Convolution_b1.png-QNthin" alt="" title="左图是f(t)＝[2, 1, 3]，右图是g(t)=[2, 3, 1]"></p>
+<p>下面三个图$h_0(t)$，$h_1(t)$，$h_2(t)$，分别是f(0),f(1),f(2)单独作用时的h(x)值，也就是分别为第0秒打了f(0)=2巴掌，第1秒打f(1)=1巴掌，第2秒打了f(2)=3巴掌的肿胀曲线。</p>
+<p>计算方法为：$h_0(t) = f(0) * g(t) = 2 * [2, 3, 1] = [4, 6, 2]$</p>
+<p><img src="http://qiniu.s1nh.org/Blog_Convolution_b2.png-QNthin" alt="" title="$h0(t)$"></p>
+<p>$h_1(t) = f(1) * g(t) = 1 * [2, 3, 1] $ 然后向右平移1个单位</p>
+<p><img src="http://qiniu.s1nh.org/Blog_Convolution_b3.png-QNthin" alt="" title="$h_1(t)$"></p>
+<p>$h_2(t) = f(2) * g(t) = = 3 * [2, 3, 1] = [6, 9, 3]$ 然后向右平移2个单位</p>
+<p><img src="http://qiniu.s1nh.org/Blog_Convolution_b4.png-QNthin" alt="" title="$h2(t)$"></p>
+<p>很明显，要求t时间的作用程度h(t)，就是把上面三个函数加起来$h(t)=h_0(t)+h_1(t)+h_2(t)$ </p>
+<p><img src="http://qiniu.s1nh.org/Blog_Convolution_b5.png-QNthin" alt="" title="$h(t)$"></p>
+<ul>
+<li>说白了，卷积就是<strong>平移、叠加</strong>。（从这里，可以看到卷积的重要的物理意义是：一个函数（如：单位响应）在另一个函数（如：输入信号）上的<strong>加权叠加</strong>。）</li>
+</ul>
+<p>由上图可知，你在第三秒的时候肿胀程度为10. (记住这个结果，后面要放大招了）</p>
+<h4 id="3-更有意思的来了"><a href="#3-更有意思的来了" class="headerlink" title="3. 更有意思的来了"></a>3. 更有意思的来了</h4><p>我们接下来做一个简单的初中数学题。求$(3x^2+x+2)*(x^2+3x+2)$ 中$x^3$的系数。</p>
+<p><strong>普通方法</strong></p>
+<p>常规做法是先把它合并同类项：</p>
+<p>$(3x^2+x+2)*(x^2+3x+2)$<br>$=(3x^4+9x^3+6x^2)+(x^3+3x^2+2x)+(2x^2+6x+4)$<br>$=3x^4+10x^3+11x^2+8x+4$</p>
+<p>进行完计算后，我们一眼就可以看出$x^3$的系数是10. （这种算法，我们一共进行了<strong>9次乘法运算和4次加法运算</strong>）</p>
+<p><strong>文艺方法</strong></p>
+<p>还是刚才那个题目，进行如下计算：</p>
+<ol>
+<li>我们把第一个多项式反过来，使其一个降幂排列，一个升幂排列。公式变成了$(2+x+3x^2)*(x^2+3x+2)$</li>
+<li>平移：把第二个多项式每次向右平移一项</li>
+<li>相乘：竖直对齐的项分别相乘</li>
+<li>求和：相乘的结果相加</li>
+</ol>
+<p><img src="http://qiniu.s1nh.org/Blog_Convolution_b6.jpg-QNthin" alt=""></p>
+<p><strong>反褶，平移，相乘，求和</strong>，这就是卷积的计算过程。（我们在求$x^3$的系数时，只需要进行<strong>1次平移运算，2次乘法，1次加法运算</strong>）</p>
+<h4 id="4-结论"><a href="#4-结论" class="headerlink" title="4. 结论"></a>4. 结论</h4><p>不知道有没有人注意到，我们刚才计算的<strong>方法1</strong>其实就是前面用那一大堆图描述的方法，注意看公式X的指数就是图像的横坐标，系数为纵坐标的值。（上题x^3的系数为10，第3秒时肿胀程度也恰好为10。）</p>
+<p>运用在连续函数中，只需把最后一步的求和改成求积分即可。</p>
+<p>参考：</p>
+<ul>
+<li>[知乎]:(<a href="https://www.zhihu.com/question/22298352/)`如果你还看不懂，可以自己去知乎慢慢看^_^`" target="_blank" rel="noopener">https://www.zhihu.com/question/22298352/)`如果你还看不懂，可以自己去知乎慢慢看^_^`</a></li>
+<li><a href="http://blog.sciencenet.cn/home.php?mod=space&uid=287179&do=blog&id=425373" target="_blank" rel="noopener">辐射、服碘、补盐、空袭和卷积—–教学难点讨论之一</a></li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>S1NH</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://s1nh.org/post/convolutional-neural-network-introduction/" title="什么是卷积神经网络">http://s1nh.org/post/convolutional-neural-network-introduction/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E5%8D%B7%E7%A7%AF/" rel="tag"># 卷积</a>
+          
+            <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" rel="tag"># 神经网络</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/matplotlib-animation/" rel="next" title="「草稿」使用 mplot3d 绘制动态 3D 图">
+                <i class="fa fa-chevron-left"></i> 「草稿」使用 mplot3d 绘制动态 3D 图
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/to-be-a-PM/" rel="prev" title="假装自己是个产品经理">
+                假装自己是个产品经理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://qiniu.s1nh.org/Blog_avatar.jpg"
+                alt="S1NH" />
+            
+              <p class="site-author-name" itemprop="name">S1NH</p>
+              <p class="site-description motion-element" itemprop="description">no other developers required.</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/%20%7C%7C%20archive">
+                
+                    <span class="site-state-item-count">74</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">72</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="http://weibo.com/santuxuezhang" target="_blank" title="程序员吐槽师"><i class="fa fa-fw fa-globe"></i>程序员吐槽师</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.gitbook.com/book/xcode-jianghu/xcode-jianghu/details" target="_blank" title="《Xcode 江湖录》"><i class="fa fa-fw fa-globe"></i>《Xcode 江湖录》</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.1-xing.com" target="_blank" title="益行人"><i class="fa fa-fw fa-globe"></i>益行人</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://i.xiami.com/jingluo" target="_blank" title="鲸落乐队"><i class="fa fa-fw fa-globe"></i>鲸落乐队</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+              </a>
+            </div>
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://t.tips/" title="一只猿" target="_blank">一只猿</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://s1nh.com/" title="本站 github 镜像" target="_blank">本站 github 镜像</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://s1nh.org/" title="本站国内镜像" target="_blank">本站国内镜像</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x00-瞎扯淡-什么是卷积"><span class="nav-number">1.</span> <span class="nav-text">0x00 瞎扯淡 - 什么是卷积</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-给卷积一个通俗的解释——关于卷积的一个血腥的讲解"><span class="nav-number">1.0.1.</span> <span class="nav-text">1. 给卷积一个通俗的解释——关于卷积的一个血腥的讲解</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01-什么是神经网络"><span class="nav-number">2.</span> <span class="nav-text">0x01 什么是神经网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-神经元（感知机）"><span class="nav-number">2.1.</span> <span class="nav-text">1. 神经元（感知机）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-我们把神经元连接起来（多层感知机）"><span class="nav-number">2.2.</span> <span class="nav-text">2. 我们把神经元连接起来（多层感知机）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02-卷积神经网络历史"><span class="nav-number">3.</span> <span class="nav-text">0x02 卷积神经网络历史</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-图像的卷积"><span class="nav-number">3.1.</span> <span class="nav-text">1. 图像的卷积</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-LeNet"><span class="nav-number">3.2.</span> <span class="nav-text">2. LeNet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-AlexNet"><span class="nav-number">3.3.</span> <span class="nav-text">3. AlexNet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-VGG"><span class="nav-number">3.4.</span> <span class="nav-text">4. VGG</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-GoogLeNet"><span class="nav-number">3.5.</span> <span class="nav-text">5. GoogLeNet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-ResNet"><span class="nav-number">3.6.</span> <span class="nav-text">6. ResNet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-DenseNet"><span class="nav-number">3.7.</span> <span class="nav-text">7. DenseNet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-总结"><span class="nav-number">3.8.</span> <span class="nav-text">8. 总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0xFF-附录-瞎扯淡-什么是卷积"><span class="nav-number">4.</span> <span class="nav-text">0xFF 附录 瞎扯淡 - 什么是卷积</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-给卷积一个通俗的解释——关于卷积的一个血腥的讲解-1"><span class="nav-number">4.0.1.</span> <span class="nav-text">1. 给卷积一个通俗的解释——关于卷积的一个血腥的讲解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-物理意义"><span class="nav-number">4.0.2.</span> <span class="nav-text">2. 物理意义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-更有意思的来了"><span class="nav-number">4.0.3.</span> <span class="nav-text">3. 更有意思的来了</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-结论"><span class="nav-number">4.0.4.</span> <span class="nav-text">4. 结论</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">S1NH</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Gemini</a></div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="总访客量">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="site-pv" title="总访问量">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: 'XOzH1c25Dogu8cYTuRxfnTFo-gzGzoHsz',
+        appKey: 'RxlSioLPtr2tPejVVqIcrEq2',
+        placeholder: 'Just go go',
+        avatar:'monsterid',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: false
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

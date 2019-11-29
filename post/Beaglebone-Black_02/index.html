@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+    
+      
+    
+    
+      
+    
+  <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+  <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-flash.min.css" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="wC13vXoXqQbguAs_aa6p76lce_y4EPAH_i0u2jP9DoM" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.1" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=6.4.1">
+
+
+  <link rel="mask-icon" href="/favicon.ico?v=6.4.1" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.4.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="听说最近推出了5美元的树莓派，一度被黄牛抢光然后卖到了50美元。">
+<meta name="keywords" content="Beaglebone Black,Kali Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Beaglebone Black 折腾笔记（二） 搭建环境">
+<meta property="og:url" content="http:&#x2F;&#x2F;s1nh.org&#x2F;post&#x2F;Beaglebone-Black_02&#x2F;index.html">
+<meta property="og:site_name" content="S1NH">
+<meta property="og:description" content="听说最近推出了5美元的树莓派，一度被黄牛抢光然后卖到了50美元。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-01-15T03:50:26.000Z">
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+  <link rel="canonical" href="http://s1nh.org/post/Beaglebone-Black_02/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Beaglebone Black 折腾笔记（二） 搭建环境 | S1NH</title>
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-31350656-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-31350656-2');
+</script>
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?4c66a84272e0f7943a305accf6dbdf41";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">S1NH</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">世界在旅程的尽头终结</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" target="_blank" rel="noopener" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/Beaglebone-Black_02/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="S1NH">
+      <meta itemprop="description" content="no other developers required.">
+      <meta itemprop="image" content="http://qiniu.s1nh.org/Blog_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="S1NH">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Beaglebone Black 折腾笔记（二） 搭建环境
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2015-12-07 15:54:28" itemprop="dateCreated datePublished" datetime="2015-12-07T15:54:28+08:00">2015-12-07</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-01-15 11:50:26" itemprop="dateModified" datetime="2018-01-15T11:50:26+08:00">2018-01-15</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E7%A1%AC%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">硬件</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/post/Beaglebone-Black_02/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/post/Beaglebone-Black_02/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>听说最近推出了5美元的树莓派，一度被黄牛抢光然后卖到了50美元。</p>
+<a id="more"></a>
+
+<p>之前在逛Kali社区的时候发现的Beaglebone Black (BBB)，第一次了解这种嵌入式开发板，简直像看到了新大陆，爱不释手。买了开发板可以做<a href="http://buzzorange.com/techorange/2015/12/07/rasberry-pi-10-things/" target="_blank" rel="noopener">一些很好玩的东西</a>和<a href="http://makezine.com/2013/06/05/33-rpi-beowulf-cluster/" target="_blank" rel="noopener">很牛逼的项目</a>等各种有意思的事情。</p>
+<p>5美元的树莓派估计明年在国内才能买到，对于现在来说，BBB应该是一个很不错的解决方案：<a href="http://www.geekfan.net/5246/" target="_blank" rel="noopener">嵌入式平台选择：树莓派 or BeagleBone Black（BBB）</a></p>
+<h2 id="安装BBB"><a href="#安装BBB" class="headerlink" title="安装BBB"></a>安装BBB</h2><h3 id="准备好各个版本的Linux-for-BBB"><a href="#准备好各个版本的Linux-for-BBB" class="headerlink" title="准备好各个版本的Linux for BBB"></a>准备好各个版本的Linux for BBB</h3><ul>
+<li><a href="http://beagleboard.org/latest-images" target="_blank" rel="noopener">BeagleBoard.org Latest Firmware Images</a>：BBB官方页面的下载链接，我在这下载了<em>bone-debian-8.2-tester-2gb-armhf-2015-11-12-2gb.img.xz</em>，刷到Flash以后，发现没有LXDE桌面环境。</li>
+<li><a href="http://elinux.org/Beagleboard:BeagleBoneBlack_Debian" target="_blank" rel="noopener">Beagleboard:BeagleBoneBlack Debian</a>：Embedded Linux。在Debian Releases里可以下载到各种版本的Image。</li>
+<li><a href="https://www.offensive-security.com/kali-linux-vmware-arm-image-download/" target="_blank" rel="noopener">Kali Linux Downloads – Custom Images</a>：Kali Linux，可是官网的2.0.1版好像有个USB的Bug，在下文中有提出。</li>
+<li><a href="https://www.kali.org/kali-linux-features/" target="_blank" rel="noopener">Kali Linux Features</a>|<a href="https://www.offensive-security.com/kali-linux/generating-kali-raspberry-pi-images/" target="_blank" rel="noopener">Generating Kali Raspberry Pi Images</a>|<a href="https://github.com/offensive-security/kali-arm-build-scripts" target="_blank" rel="noopener">Kali Linux ARM build scripts</a>：Kali Linux，这三个网站好像是教你怎么自己编译镜像的</li>
+</ul>
+<p>要注意的是，BBB 现在推出了有4G eMMC 的 Rev C，所以下载之前一定要看好<code>版本号(Rev)</code>；还有要注意的是要主意<code>microSD/Standalone</code>和<code>lxde/console</code>。</p>
+<p>注意，有些网站在天朝被墙了，请参照之前的文章用<a href="/tags/Lantern/">Lantern</a>翻墙。</p>
+<h3 id="安装Image到microSD卡"><a href="#安装Image到microSD卡" class="headerlink" title="安装Image到microSD卡"></a>安装Image到microSD卡</h3><p>分别在插入/拔出SD卡的时候输入命令<code>ls /dev</code>，查看SD卡的磁盘名称，我的是<code>disk2</code>。</p>
+<pre><code>//警告！如果不知道dd命令是干嘛的，或者不知道我上面说的`disk2`是怎么来的
+//在你baidu清楚之前，不要执行下面那行代码。
+
+dd if=BBB-eMMC-flasher-debian-7.9-lxde-armhf-2015-11-03-2gb.img of=/dev/rdisk2 bs=1m</code></pre><ul>
+<li>如果提示<code>dd: bs: illegal numeric value</code>，把<code>bs=1m</code>改为<code>bs=1M</code>。</li>
+<li>如果提示<code>Resource busy</code>，记得Unmount SD卡</li>
+</ul>
+<h3 id="将Image写入eMMC"><a href="#将Image写入eMMC" class="headerlink" title="将Image写入eMMC"></a>将Image写入eMMC</h3><p>镜像写入SD卡后，修改<code>/boot/uEnv.txt</code>，把下面第二行前面的”#”去掉。</p>
+<pre><code>##enable BBB: eMMC Flasher:
+#cmdline=init=/opt/scripts/tools/eMMC/init-eMMC-flasher-v3.sh</code></pre><p>重新启动，就会看到BBB的四个LED灯像流水一样闪烁。刷完以后BBB会自动关机。等它刷新完eMMC以后，记得拔出microSD卡，否则下次开机后会重新刷一遍- -</p>
+<h3 id="安装LXDE"><a href="#安装LXDE" class="headerlink" title="安装LXDE"></a>安装LXDE</h3><p>在官网下载了Debian8.2的Image，安装完毕后发现没有桌面环境。输入以下命令手动安装<a href="http://wiki.lxde.org/zh/Debian" target="_blank" rel="noopener">LXDE桌面环境</a>：</p>
+<pre><code>aptitude install --without-recommends lxde  //安装简化版的LXDE
+apt-get install xorg xserver-xorg           //如果不安装这个，没有startx命令                    </code></pre><p>安装完毕后，执行<code>startx</code>运行桌面环境。启动后的桌面环境会报错<code>no session for pid ****</code>，不知道是什么原因耶。</p>
+<p>因为板载eMMC只有2G，最后我放弃了这种方式，选择了直接使用4G-SD卡的Image。</p>
+<h2 id="串口调试"><a href="#串口调试" class="headerlink" title="串口调试"></a>串口调试</h2><p>在嵌入式开发和单片机开发，串口是必不可少是外设设备。当你的BBB出问题无法启动时，你可以通过串口对它进行调试。</p>
+<p>今天研究的是如何在Linux 下使用串口调试。Windows 的之前已经尝试过，要在<a href="http://www.ftdichip.com/Drivers/VCP.htm" target="_blank" rel="noopener">ftdichip</a>下载驱动，然后安装一个串口调试软件即可。</p>
+<p>###准备串口驱动</p>
+<p><a href="http://blog.csdn.net/david_xtd/article/details/24541627" target="_blank" rel="noopener">Linux环境下使用 USB转串口驱动</a></p>
+<p>Kali Linux 已经自带了串口驱动，执行<code>dmesg | grep tty</code>看到了满屏幕的<code>ttyUSB0</code></p>
+<pre><code>root@kali:~# dmesg | grep tty
+[    0.000000] console [tty0] enabled
+[  196.623578] usb 1-2.1: FTDI USB Serial Device converter now attached to ttyUSB0
+[  260.219668] ftdi_sio ttyUSB0: FTDI USB Serial Device converter now disconnected from ttyUSB0
+[  261.507543] usb 1-2.1: FTDI USB Serial Device converter now attached to ttyUSB0
+[  515.250387] ftdi_sio ttyUSB0: failed to get modem status: -71
+[  517.252789] ftdi_sio ttyUSB0: error from flowcontrol urb
+[  526.263896] ftdi_sio ttyUSB0: ftdi_set_termios FAILED to set databits/stopbits/parity
+[  527.264684] ftdi_sio ttyUSB0: ftdi_set_termios urb failed to set baudrate
+[  529.267373] ftdi_sio ttyUSB0: urb failed to clear flow control
+[  533.273013] ftdi_sio ttyUSB0: failed to get modem status: -71
+[  535.275199] ftdi_sio ttyUSB0: error from flowcontrol urb
+[  559.407134] ftdi_sio ttyUSB0: FTDI USB Serial Device converter now disconnected from ttyUSB0
+[  747.635485] usb 1-2.1: FTDI USB Serial Device converter now attached to ttyUSB0
+[  871.627615] ftdi_sio ttyUSB0: FTDI USB Serial Device converter now disconnected from ttyUSB0
+[  886.630016] usb 1-2.1: FTDI USB Serial Device converter now attached to ttyUSB0
+[  947.461802] ftdi_sio ttyUSB0: FTDI USB Serial Device converter now disconnected from ttyUSB0
+[  962.820144] usb 1-2.1: FTDI USB Serial Device converter now attached to ttyUSB0
+[ 3345.864141] ftdi_sio ttyUSB0: error from flowcontrol urb
+[ 3345.864523] ftdi_sio ttyUSB0: FTDI USB Serial Device converter now disconnected from ttyUSB0
+[ 3387.249864] usb 1-2.1: FTDI USB Serial Device converter now attached to ttyUSB0
+[ 6856.149365] ftdi_sio ttyUSB0: usb_serial_generic_read_bulk_callback - urb stopped: -32
+[ 8138.331832] ftdi_sio ttyUSB0: FTDI USB Serial Device converter now disconnected from ttyUSB0
+[ 8144.025392] usb 1-2.1: FTDI USB Serial Device converter now attached to ttyUSB0</code></pre><p>###准备Minicom</p>
+<p><a href="https://help.ubuntu.com/community/Minicom" target="_blank" rel="noopener">Minicom</a></p>
+<ul>
+<li><p>Kali Linux 已经给装好了Minicom，执行一下<code>minicom -s</code>，按照下面命令配置好串口<code>A -    Serial Device      : /dev/ttyUSB0</code></p>
+</li>
+<li><p><a href="http://blog.csdn.net/bird67/article/details/2127235" target="_blank" rel="noopener">linux超级终端minicom的使用方法</a>，这篇文章还说要“将 Hardware Flow Control 设 为 NO”，“修改Modem and dialing, 将Init string, Reset string, Hang-up string设置为空” </p>
+</li>
+<li><p>设置完成后选择Save setup as dfl将当前设置保存为默认设置</p>
+</li>
+</ul>
+<h2 id="已知问题"><a href="#已知问题" class="headerlink" title="已知问题"></a>已知问题</h2><h3 id="移动鼠标时会卡死"><a href="#移动鼠标时会卡死" class="headerlink" title="移动鼠标时会卡死"></a>移动鼠标时会卡死</h3><p>很开心的进入GUI界面以后，移动鼠标准备点击输入密码，然后BBB居然卡死了。卡死以后，敲击鼠标、键盘没有反应，LED 灯也不闪了。又试了几次，只要不移动鼠标，通过键盘输入<code>root/toor</code>正常进入Desktop；不论在什么状态下，只要一碰鼠标，等三秒钟电脑就卡死了。</p>
+<h4 id="第一次尝试解决"><a href="#第一次尝试解决" class="headerlink" title="第一次尝试解决"></a>第一次尝试解决</h4><p>Google了一下，还真有人碰到了这个问题：<a href="https://bugs.kali.org/view.php?id=2510#bugnotes" target="_blank" rel="noopener">0002510: Beaglebone mouse crash</a>；继续Google，看到了这个：<br><a href="http://g4fre.blogspot.com/2014/01/beaglebone-black-ubuntu-1310-with.html" target="_blank" rel="noopener">BeagleBone Black Ubuntu 13.10 with desktop… another UBUNTU FAILURE!!</a>，上面balabala一大堆没怎么看懂，后面有一个人给了解决方案：<em>According to armhf we must rebuild the modules dependency list. run depmod -a -v “3.8.13-bone30” as root. <a href="http://www.armhf.com/index.php/boards/beaglebone-black/" target="_blank" rel="noopener">http://www.armhf.com/index.php/boards/beaglebone-black/</a></em> </p>
+<pre><code>root@kali:~# uname -a       //查看版本号                                                    
+Linux kali 3.8.13-bone53 #1 SMP Thu Aug 13 23:27:51 CDT 2015 armv7l GNU/Linux   
+root@kali:~# depmod -a -v &quot;3.8.13-bone53&quot;</code></pre><p>运行以后重启电脑，发现并没有什么卵用，继续卡死。</p>
+<h4 id="第二次尝试"><a href="#第二次尝试" class="headerlink" title="第二次尝试"></a>第二次尝试</h4><p>然后又翻到了这篇：<a href="http://stackoverflow.com/questions/27065598/beaglebone-black-freezes" target="_blank" rel="noopener">stackoverflow: BeagleBone Black freezes</a>，回复说是TI的这个芯片里面的中断控制器设计问题，会导致“babble”中断响应；<a href="http://e2e.ti.com/support/arm/sitara_arm/f/791/t/308549" target="_blank" rel="noopener">AM335X USB babble interrupt when DP and DM are both high in full-speed mode</a>当一个full-speed USB 的 DP 和 DM 信号都在高电平时就会产生这种中断响应。</p>
+<p>看到这，貌似无解了，可是我在用<strong>官方的Debian， 并运行lxde GUI的时候，并不会卡死</strong>。</p>
+<p><em>我在用串口调试的时候发现，虽然对USB进行插拔的时候会出现“babble”中断，可是这并不是导致系统锁死的原因。因为我在用官方镜像的时候也会出现“babble”中断，可是并没有任何卡死。</em></p>
+<h4 id="第三次：更新内核"><a href="#第三次：更新内核" class="headerlink" title="第三次：更新内核"></a>第三次：更新内核</h4><p>又看到了一篇文章，这个问题只出现在3.8.13版本的kernel中。可是Kali Linux 只提供这个版本的Kernel，明天我试一下安装官方4.0版本的Kernel</p>
+<p><a href="https://bugs.kali.org/view.php?id=2610&history=1#history" target="_blank" rel="noopener">0002610: Cannot change wireless MAC with Ralink 3070 and Beaglebone Black 3.8.13 kernel</a>这里好像有介绍。</p>
+<p><em>更新内核失败了:(</em></p>
+<h4 id="最后的解决方案"><a href="#最后的解决方案" class="headerlink" title="最后的解决方案"></a>最后的解决方案</h4><p>很丢脸的解决方案：我安装了1.0.9的Image，然后dist-upgrade升级到sana。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>S1NH</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://s1nh.org/post/Beaglebone-Black_02/" title="Beaglebone Black 折腾笔记（二） 搭建环境">http://s1nh.org/post/Beaglebone-Black_02/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Beaglebone-Black/" rel="tag"># Beaglebone Black</a>
+          
+            <a href="/tags/Kali-Linux/" rel="tag"># Kali Linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/Beaglebone-Black_01/" rel="next" title="Beaglebone Black 折腾笔记（一） 折腾些没用的">
+                <i class="fa fa-chevron-left"></i> Beaglebone Black 折腾笔记（一） 折腾些没用的
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/Open-source_hardware/" rel="prev" title="三土最近迷上了开源硬件">
+                三土最近迷上了开源硬件 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://qiniu.s1nh.org/Blog_avatar.jpg"
+                alt="S1NH" />
+            
+              <p class="site-author-name" itemprop="name">S1NH</p>
+              <p class="site-description motion-element" itemprop="description">no other developers required.</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/%20%7C%7C%20archive">
+                
+                    <span class="site-state-item-count">74</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">72</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="http://weibo.com/santuxuezhang" target="_blank" title="程序员吐槽师"><i class="fa fa-fw fa-globe"></i>程序员吐槽师</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.gitbook.com/book/xcode-jianghu/xcode-jianghu/details" target="_blank" title="《Xcode 江湖录》"><i class="fa fa-fw fa-globe"></i>《Xcode 江湖录》</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.1-xing.com" target="_blank" title="益行人"><i class="fa fa-fw fa-globe"></i>益行人</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://i.xiami.com/jingluo" target="_blank" title="鲸落乐队"><i class="fa fa-fw fa-globe"></i>鲸落乐队</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+              </a>
+            </div>
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://t.tips/" title="一只猿" target="_blank">一只猿</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://s1nh.com/" title="本站 github 镜像" target="_blank">本站 github 镜像</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://s1nh.org/" title="本站国内镜像" target="_blank">本站国内镜像</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装BBB"><span class="nav-number">1.</span> <span class="nav-text">安装BBB</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#准备好各个版本的Linux-for-BBB"><span class="nav-number">1.1.</span> <span class="nav-text">准备好各个版本的Linux for BBB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Image到microSD卡"><span class="nav-number">1.2.</span> <span class="nav-text">安装Image到microSD卡</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将Image写入eMMC"><span class="nav-number">1.3.</span> <span class="nav-text">将Image写入eMMC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装LXDE"><span class="nav-number">1.4.</span> <span class="nav-text">安装LXDE</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#串口调试"><span class="nav-number">2.</span> <span class="nav-text">串口调试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#已知问题"><span class="nav-number">3.</span> <span class="nav-text">已知问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#移动鼠标时会卡死"><span class="nav-number">3.1.</span> <span class="nav-text">移动鼠标时会卡死</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一次尝试解决"><span class="nav-number">3.1.1.</span> <span class="nav-text">第一次尝试解决</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二次尝试"><span class="nav-number">3.1.2.</span> <span class="nav-text">第二次尝试</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第三次：更新内核"><span class="nav-number">3.1.3.</span> <span class="nav-text">第三次：更新内核</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最后的解决方案"><span class="nav-number">3.1.4.</span> <span class="nav-text">最后的解决方案</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">S1NH</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Gemini</a></div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="总访客量">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="site-pv" title="总访问量">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: 'XOzH1c25Dogu8cYTuRxfnTFo-gzGzoHsz',
+        appKey: 'RxlSioLPtr2tPejVVqIcrEq2',
+        placeholder: 'Just go go',
+        avatar:'monsterid',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: false
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
