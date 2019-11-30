@@ -7,15 +7,15 @@
     <title>CCF 人工智能 / 机器人会议截稿日期 -- AI Conference Deadlines</title>
     <meta name="description" content="CV / NLP / ML / Robotics / AI 会议截止日期的倒计时。Countdowns to top CV/NLP/ML/Robotics/AI conference deadlines">
     <meta name="author" content="S1NH (forked from Abhishek Das)">
-    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/static/css/deadlines.css?t=1575053684" media="screen,projection">
-    <link rel="shortcut icon" href="/static/img/favicon.png">
-    <script type="text/javascript" src="/static/js/jquery.min.js"></script>
-    <script type="text/javascript" src="/static/js/jquery.countdown.min.js"></script>
-    <script src="/static/js/moment.min.js"></script>
-    <script src="/static/js/moment-timezone-with-data.min.js"></script>
-    <script src="/static/js/store.min.js"></script>
-    <script src="/static/js/ouical.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/aa/static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/aa/static/css/deadlines.css?t=1575112216" media="screen,projection">
+    <link rel="shortcut icon" href="/aa/static/img/favicon.png">
+    <script type="text/javascript" src="/aa/static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/aa/static/js/jquery.countdown.min.js"></script>
+    <script src="/aa/static/js/moment.min.js"></script>
+    <script src="/aa/static/js/moment-timezone-with-data.min.js"></script>
+    <script src="/aa/static/js/store.min.js"></script>
+    <script src="/aa/static/js/ouical.min.js"></script>
 
   </head>
   <body>
@@ -74,7 +74,6 @@
         var url = new URL(window.location);
         var conf = url.searchParams.get('id');
         console.log(conf);
-
         // Borrowed from https://github.com/moment/moment-timezone/issues/167
         // Adds support for time zones 'UTC-12'..'UTC+12'
         function addUtcTimeZones() {
@@ -96,7 +95,6 @@
         catch(err) {
           $('.local-timezone-hide').hide();
         }
-
         
             if (conf == "lrec20") {
               $('#conf-title-href').text("LREC 2020");
@@ -111,13 +109,11 @@
                 // adjust date according to deadline timezone
                 var timezone = "Europe/Paris" ;
                 var confDate = moment.tz("2019-12-02 23:59:59", timezone);
-
                 // render countdown timer
                 $('#conf-timer').countdown(confDate.toDate(), function(event) {
                   $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
                 });
                 $('.deadline-time').html(confDate.toString());
-
                 // convert deadline to local timezone
                 try {
                   var localConfDate = moment.tz(confDate, local_timezone);
@@ -142,13 +138,11 @@
                 // adjust date according to deadline timezone
                 var timezone = "UTC-12" ;
                 var confDate = moment.tz("2019-12-09 23:59:59", timezone);
-
                 // render countdown timer
                 $('#conf-timer').countdown(confDate.toDate(), function(event) {
                   $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
                 });
                 $('.deadline-time').html(confDate.toString());
-
                 // convert deadline to local timezone
                 try {
                   var localConfDate = moment.tz(confDate, local_timezone);
@@ -173,13 +167,11 @@
                 // adjust date according to deadline timezone
                 var timezone = "Europe/London" ;
                 var confDate = moment.tz("2020-01-11 23:59:59", timezone);
-
                 // render countdown timer
                 $('#conf-timer').countdown(confDate.toDate(), function(event) {
                   $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
                 });
                 $('.deadline-time').html(confDate.toString());
-
                 // convert deadline to local timezone
                 try {
                   var localConfDate = moment.tz(confDate, local_timezone);
@@ -204,13 +196,11 @@
                 // adjust date according to deadline timezone
                 var timezone = "UTC-12" ;
                 var confDate = moment.tz("2020-01-21 23:59:59", timezone);
-
                 // render countdown timer
                 $('#conf-timer').countdown(confDate.toDate(), function(event) {
                   $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
                 });
                 $('.deadline-time').html(confDate.toString());
-
                 // convert deadline to local timezone
                 try {
                   var localConfDate = moment.tz(confDate, local_timezone);
@@ -235,13 +225,11 @@
                 // adjust date according to deadline timezone
                 var timezone = "America/Los_Angeles" ;
                 var confDate = moment.tz("2020-01-22 22:00:00", timezone);
-
                 // render countdown timer
                 $('#conf-timer').countdown(confDate.toDate(), function(event) {
                   $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
                 });
                 $('.deadline-time').html(confDate.toString());
-
                 // convert deadline to local timezone
                 try {
                   var localConfDate = moment.tz(confDate, local_timezone);
@@ -266,13 +254,11 @@
                 // adjust date according to deadline timezone
                 var timezone = "UTC-12" ;
                 var confDate = moment.tz("2020-01-30 23:59:59", timezone);
-
                 // render countdown timer
                 $('#conf-timer').countdown(confDate.toDate(), function(event) {
                   $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
                 });
                 $('.deadline-time').html(confDate.toString());
-
                 // convert deadline to local timezone
                 try {
                   var localConfDate = moment.tz(confDate, local_timezone);
@@ -297,13 +283,11 @@
                 // adjust date according to deadline timezone
                 var timezone = "America/Los_Angeles" ;
                 var confDate = moment.tz("2020-01-31 16:00:00", timezone);
-
                 // render countdown timer
                 $('#conf-timer').countdown(confDate.toDate(), function(event) {
                   $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
                 });
                 $('.deadline-time').html(confDate.toString());
-
                 // convert deadline to local timezone
                 try {
                   var localConfDate = moment.tz(confDate, local_timezone);
@@ -328,13 +312,11 @@
                 // adjust date according to deadline timezone
                 var timezone = "America/Los_Angeles" ;
                 var confDate = moment.tz("2020-02-07 03:59:00", timezone);
-
                 // render countdown timer
                 $('#conf-timer').countdown(confDate.toDate(), function(event) {
                   $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
                 });
                 $('.deadline-time').html(confDate.toString());
-
                 // convert deadline to local timezone
                 try {
                   var localConfDate = moment.tz(confDate, local_timezone);
@@ -359,13 +341,11 @@
                 // adjust date according to deadline timezone
                 var timezone = "UTC-11" ;
                 var confDate = moment.tz("2020-02-13 23:59:59", timezone);
-
                 // render countdown timer
                 $('#conf-timer').countdown(confDate.toDate(), function(event) {
                   $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
                 });
                 $('.deadline-time').html(confDate.toString());
-
                 // convert deadline to local timezone
                 try {
                   var localConfDate = moment.tz(confDate, local_timezone);
@@ -390,13 +370,11 @@
                 // adjust date according to deadline timezone
                 var timezone = "America/Los_Angeles" ;
                 var confDate = moment.tz("2020-03-01 23:59:59", timezone);
-
                 // render countdown timer
                 $('#conf-timer').countdown(confDate.toDate(), function(event) {
                   $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
                 });
                 $('.deadline-time').html(confDate.toString());
-
                 // convert deadline to local timezone
                 try {
                   var localConfDate = moment.tz(confDate, local_timezone);
@@ -421,13 +399,11 @@
                 // adjust date according to deadline timezone
                 var timezone = "Europe/London" ;
                 var confDate = moment.tz("2020-03-05 07:00:00", timezone);
-
                 // render countdown timer
                 $('#conf-timer').countdown(confDate.toDate(), function(event) {
                   $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
                 });
                 $('.deadline-time').html(confDate.toString());
-
                 // convert deadline to local timezone
                 try {
                   var localConfDate = moment.tz(confDate, local_timezone);
@@ -452,13 +428,11 @@
                 // adjust date according to deadline timezone
                 var timezone = "UTC-12" ;
                 var confDate = moment.tz("2020-03-29 23:59:59", timezone);
-
                 // render countdown timer
                 $('#conf-timer').countdown(confDate.toDate(), function(event) {
                   $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
                 });
                 $('.deadline-time').html(confDate.toString());
-
                 // convert deadline to local timezone
                 try {
                   var localConfDate = moment.tz(confDate, local_timezone);
@@ -483,13 +457,11 @@
                 // adjust date according to deadline timezone
                 var timezone = "UTC+1" ;
                 var confDate = moment.tz("2020-04-08 23:59:59", timezone);
-
                 // render countdown timer
                 $('#conf-timer').countdown(confDate.toDate(), function(event) {
                   $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
                 });
                 $('.deadline-time').html(confDate.toString());
-
                 // convert deadline to local timezone
                 try {
                   var localConfDate = moment.tz(confDate, local_timezone);
@@ -514,13 +486,11 @@
                 // adjust date according to deadline timezone
                 var timezone = "UTC" ;
                 var confDate = moment.tz("2018-10-01 23:59:59", timezone);
-
                 // render countdown timer
                 $('#conf-timer').countdown(confDate.toDate(), function(event) {
                   $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
                 });
                 $('.deadline-time').html(confDate.toString());
-
                 // convert deadline to local timezone
                 try {
                   var localConfDate = moment.tz(confDate, local_timezone);
@@ -545,13 +515,11 @@
                 // adjust date according to deadline timezone
                 var timezone = "UTC-12" ;
                 var confDate = moment.tz("2018-12-10 23:59:59", timezone);
-
                 // render countdown timer
                 $('#conf-timer').countdown(confDate.toDate(), function(event) {
                   $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
                 });
                 $('.deadline-time').html(confDate.toString());
-
                 // convert deadline to local timezone
                 try {
                   var localConfDate = moment.tz(confDate, local_timezone);
@@ -576,13 +544,11 @@
                 // adjust date according to deadline timezone
                 var timezone = "UTC-10" ;
                 var confDate = moment.tz("2019-01-30 23:59:59", timezone);
-
                 // render countdown timer
                 $('#conf-timer').countdown(confDate.toDate(), function(event) {
                   $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
                 });
                 $('.deadline-time').html(confDate.toString());
-
                 // convert deadline to local timezone
                 try {
                   var localConfDate = moment.tz(confDate, local_timezone);
@@ -607,13 +573,11 @@
                 // adjust date according to deadline timezone
                 var timezone = "America/New_York" ;
                 var confDate = moment.tz("2019-02-01 23:00:00", timezone);
-
                 // render countdown timer
                 $('#conf-timer').countdown(confDate.toDate(), function(event) {
                   $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
                 });
                 $('.deadline-time').html(confDate.toString());
-
                 // convert deadline to local timezone
                 try {
                   var localConfDate = moment.tz(confDate, local_timezone);
@@ -638,13 +602,11 @@
                 // adjust date according to deadline timezone
                 var timezone = "UTC-11" ;
                 var confDate = moment.tz("2019-03-08 23:59:59", timezone);
-
                 // render countdown timer
                 $('#conf-timer').countdown(confDate.toDate(), function(event) {
                   $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
                 });
                 $('.deadline-time').html(confDate.toString());
-
                 // convert deadline to local timezone
                 try {
                   var localConfDate = moment.tz(confDate, local_timezone);
@@ -669,13 +631,11 @@
                 // adjust date according to deadline timezone
                 var timezone = "America/Los_Angeles" ;
                 var confDate = moment.tz("2019-03-22 23:59:00", timezone);
-
                 // render countdown timer
                 $('#conf-timer').countdown(confDate.toDate(), function(event) {
                   $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
                 });
                 $('.deadline-time').html(confDate.toString());
-
                 // convert deadline to local timezone
                 try {
                   var localConfDate = moment.tz(confDate, local_timezone);
@@ -700,13 +660,11 @@
                 // adjust date according to deadline timezone
                 var timezone = "UTC-12" ;
                 var confDate = moment.tz("2019-03-29 23:59:59", timezone);
-
                 // render countdown timer
                 $('#conf-timer').countdown(confDate.toDate(), function(event) {
                   $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
                 });
                 $('.deadline-time').html(confDate.toString());
-
                 // convert deadline to local timezone
                 try {
                   var localConfDate = moment.tz(confDate, local_timezone);
@@ -731,13 +689,11 @@
                 // adjust date according to deadline timezone
                 var timezone = "US/Pacific" ;
                 var confDate = moment.tz("2019-04-02 23:59:59", timezone);
-
                 // render countdown timer
                 $('#conf-timer').countdown(confDate.toDate(), function(event) {
                   $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
                 });
                 $('.deadline-time').html(confDate.toString());
-
                 // convert deadline to local timezone
                 try {
                   var localConfDate = moment.tz(confDate, local_timezone);
@@ -762,13 +718,11 @@
                 // adjust date according to deadline timezone
                 var timezone = "UTC-12" ;
                 var confDate = moment.tz("2019-04-05 23:59:59", timezone);
-
                 // render countdown timer
                 $('#conf-timer').countdown(confDate.toDate(), function(event) {
                   $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
                 });
                 $('.deadline-time').html(confDate.toString());
-
                 // convert deadline to local timezone
                 try {
                   var localConfDate = moment.tz(confDate, local_timezone);
@@ -793,13 +747,11 @@
                 // adjust date according to deadline timezone
                 var timezone = "UTC-12" ;
                 var confDate = moment.tz("2019-04-05 23:59:59", timezone);
-
                 // render countdown timer
                 $('#conf-timer').countdown(confDate.toDate(), function(event) {
                   $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
                 });
                 $('.deadline-time').html(confDate.toString());
-
                 // convert deadline to local timezone
                 try {
                   var localConfDate = moment.tz(confDate, local_timezone);
@@ -824,13 +776,11 @@
                 // adjust date according to deadline timezone
                 var timezone = "UTC-12" ;
                 var confDate = moment.tz("2019-04-08 23:59:59", timezone);
-
                 // render countdown timer
                 $('#conf-timer').countdown(confDate.toDate(), function(event) {
                   $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
                 });
                 $('.deadline-time').html(confDate.toString());
-
                 // convert deadline to local timezone
                 try {
                   var localConfDate = moment.tz(confDate, local_timezone);
@@ -855,13 +805,11 @@
                 // adjust date according to deadline timezone
                 var timezone = "America/Los_Angeles" ;
                 var confDate = moment.tz("2019-04-29 23:59:00", timezone);
-
                 // render countdown timer
                 $('#conf-timer').countdown(confDate.toDate(), function(event) {
                   $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
                 });
                 $('.deadline-time').html(confDate.toString());
-
                 // convert deadline to local timezone
                 try {
                   var localConfDate = moment.tz(confDate, local_timezone);
@@ -886,13 +834,11 @@
                 // adjust date according to deadline timezone
                 var timezone = "UTC-7" ;
                 var confDate = moment.tz("2019-05-21 23:59:59", timezone);
-
                 // render countdown timer
                 $('#conf-timer').countdown(confDate.toDate(), function(event) {
                   $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
                 });
                 $('.deadline-time').html(confDate.toString());
-
                 // convert deadline to local timezone
                 try {
                   var localConfDate = moment.tz(confDate, local_timezone);
@@ -917,13 +863,11 @@
                 // adjust date according to deadline timezone
                 var timezone = "America/Los_Angeles" ;
                 var confDate = moment.tz("2019-05-23 13:00:00", timezone);
-
                 // render countdown timer
                 $('#conf-timer').countdown(confDate.toDate(), function(event) {
                   $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
                 });
                 $('.deadline-time').html(confDate.toString());
-
                 // convert deadline to local timezone
                 try {
                   var localConfDate = moment.tz(confDate, local_timezone);
@@ -948,13 +892,11 @@
                 // adjust date according to deadline timezone
                 var timezone = "UTC-12" ;
                 var confDate = moment.tz("2019-05-31 23:59:59", timezone);
-
                 // render countdown timer
                 $('#conf-timer').countdown(confDate.toDate(), function(event) {
                   $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
                 });
                 $('.deadline-time').html(confDate.toString());
-
                 // convert deadline to local timezone
                 try {
                   var localConfDate = moment.tz(confDate, local_timezone);
@@ -979,13 +921,11 @@
                 // adjust date according to deadline timezone
                 var timezone = "UTC-7" ;
                 var confDate = moment.tz("2019-06-05 23:59:59", timezone);
-
                 // render countdown timer
                 $('#conf-timer').countdown(confDate.toDate(), function(event) {
                   $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
                 });
                 $('.deadline-time').html(confDate.toString());
-
                 // convert deadline to local timezone
                 try {
                   var localConfDate = moment.tz(confDate, local_timezone);
@@ -1010,13 +950,11 @@
                 // adjust date according to deadline timezone
                 var timezone = "America/New_York" ;
                 var confDate = moment.tz("2019-06-10 23:59:59", timezone);
-
                 // render countdown timer
                 $('#conf-timer').countdown(confDate.toDate(), function(event) {
                   $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
                 });
                 $('.deadline-time').html(confDate.toString());
-
                 // convert deadline to local timezone
                 try {
                   var localConfDate = moment.tz(confDate, local_timezone);
@@ -1041,13 +979,11 @@
                 // adjust date according to deadline timezone
                 var timezone = "UTC-7" ;
                 var confDate = moment.tz("2019-07-07 23:59:59", timezone);
-
                 // render countdown timer
                 $('#conf-timer').countdown(confDate.toDate(), function(event) {
                   $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
                 });
                 $('.deadline-time').html(confDate.toString());
-
                 // convert deadline to local timezone
                 try {
                   var localConfDate = moment.tz(confDate, local_timezone);
@@ -1072,13 +1008,11 @@
                 // adjust date according to deadline timezone
                 var timezone = "UTC-11" ;
                 var confDate = moment.tz("2019-08-16 23:59:59", timezone);
-
                 // render countdown timer
                 $('#conf-timer').countdown(confDate.toDate(), function(event) {
                   $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
                 });
                 $('.deadline-time').html(confDate.toString());
-
                 // convert deadline to local timezone
                 try {
                   var localConfDate = moment.tz(confDate, local_timezone);
@@ -1103,13 +1037,11 @@
                 // adjust date according to deadline timezone
                 var timezone = "UTC-10" ;
                 var confDate = moment.tz("2019-09-05 23:59:59", timezone);
-
                 // render countdown timer
                 $('#conf-timer').countdown(confDate.toDate(), function(event) {
                   $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
                 });
                 $('.deadline-time').html(confDate.toString());
-
                 // convert deadline to local timezone
                 try {
                   var localConfDate = moment.tz(confDate, local_timezone);
@@ -1134,13 +1066,11 @@
                 // adjust date according to deadline timezone
                 var timezone = "America/Los_Angeles" ;
                 var confDate = moment.tz("2019-09-15 23:59:59", timezone);
-
                 // render countdown timer
                 $('#conf-timer').countdown(confDate.toDate(), function(event) {
                   $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
                 });
                 $('.deadline-time').html(confDate.toString());
-
                 // convert deadline to local timezone
                 try {
                   var localConfDate = moment.tz(confDate, local_timezone);
@@ -1165,13 +1095,11 @@
                 // adjust date according to deadline timezone
                 var timezone = "America/New_York" ;
                 var confDate = moment.tz("2019-09-20 16:59:59", timezone);
-
                 // render countdown timer
                 $('#conf-timer').countdown(confDate.toDate(), function(event) {
                   $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
                 });
                 $('.deadline-time').html(confDate.toString());
-
                 // convert deadline to local timezone
                 try {
                   var localConfDate = moment.tz(confDate, local_timezone);
@@ -1196,13 +1124,11 @@
                 // adjust date according to deadline timezone
                 var timezone = "Africa/Nairobi" ;
                 var confDate = moment.tz("2019-09-25 17:59:59", timezone);
-
                 // render countdown timer
                 $('#conf-timer').countdown(confDate.toDate(), function(event) {
                   $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
                 });
                 $('.deadline-time').html(confDate.toString());
-
                 // convert deadline to local timezone
                 try {
                   var localConfDate = moment.tz(confDate, local_timezone);
@@ -1227,13 +1153,11 @@
                 // adjust date according to deadline timezone
                 var timezone = "America/Los_Angeles" ;
                 var confDate = moment.tz("2019-10-01 23:59:59", timezone);
-
                 // render countdown timer
                 $('#conf-timer').countdown(confDate.toDate(), function(event) {
                   $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
                 });
                 $('.deadline-time').html(confDate.toString());
-
                 // convert deadline to local timezone
                 try {
                   var localConfDate = moment.tz(confDate, local_timezone);
@@ -1258,13 +1182,11 @@
                 // adjust date according to deadline timezone
                 var timezone = "America/Los_Angeles" ;
                 var confDate = moment.tz("2019-10-08 23:59:59", timezone);
-
                 // render countdown timer
                 $('#conf-timer').countdown(confDate.toDate(), function(event) {
                   $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
                 });
                 $('.deadline-time').html(confDate.toString());
-
                 // convert deadline to local timezone
                 try {
                   var localConfDate = moment.tz(confDate, local_timezone);
@@ -1289,13 +1211,11 @@
                 // adjust date according to deadline timezone
                 var timezone = "America/Los_Angeles" ;
                 var confDate = moment.tz("2019-10-11 23:59:59", timezone);
-
                 // render countdown timer
                 $('#conf-timer').countdown(confDate.toDate(), function(event) {
                   $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
                 });
                 $('.deadline-time').html(confDate.toString());
-
                 // convert deadline to local timezone
                 try {
                   var localConfDate = moment.tz(confDate, local_timezone);
@@ -1320,13 +1240,11 @@
                 // adjust date according to deadline timezone
                 var timezone = "UTC" ;
                 var confDate = moment.tz("2019-10-21 23:59:59", timezone);
-
                 // render countdown timer
                 $('#conf-timer').countdown(confDate.toDate(), function(event) {
                   $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
                 });
                 $('.deadline-time').html(confDate.toString());
-
                 // convert deadline to local timezone
                 try {
                   var localConfDate = moment.tz(confDate, local_timezone);
@@ -1351,13 +1269,11 @@
                 // adjust date according to deadline timezone
                 var timezone = "America/Los_Angeles" ;
                 var confDate = moment.tz("2019-11-15 23:59:59", timezone);
-
                 // render countdown timer
                 $('#conf-timer').countdown(confDate.toDate(), function(event) {
                   $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
                 });
                 $('.deadline-time').html(confDate.toString());
-
                 // convert deadline to local timezone
                 try {
                   var localConfDate = moment.tz(confDate, local_timezone);
@@ -1382,13 +1298,11 @@
                 // adjust date according to deadline timezone
                 var timezone = "UTC-12" ;
                 var confDate = moment.tz("2019-11-15 23:59:59", timezone);
-
                 // render countdown timer
                 $('#conf-timer').countdown(confDate.toDate(), function(event) {
                   $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
                 });
                 $('.deadline-time').html(confDate.toString());
-
                 // convert deadline to local timezone
                 try {
                   var localConfDate = moment.tz(confDate, local_timezone);
@@ -1413,13 +1327,11 @@
                 // adjust date according to deadline timezone
                 var timezone = "UTC-12" ;
                 var confDate = moment.tz("2019-11-19 23:59:59", timezone);
-
                 // render countdown timer
                 $('#conf-timer').countdown(confDate.toDate(), function(event) {
                   $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
                 });
                 $('.deadline-time').html(confDate.toString());
-
                 // convert deadline to local timezone
                 try {
                   var localConfDate = moment.tz(confDate, local_timezone);
@@ -1444,13 +1356,11 @@
                 // adjust date according to deadline timezone
                 var timezone = "UTC-12" ;
                 var confDate = moment.tz("2019-11-20 23:59:59", timezone);
-
                 // render countdown timer
                 $('#conf-timer').countdown(confDate.toDate(), function(event) {
                   $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
                 });
                 $('.deadline-time').html(confDate.toString());
-
                 // convert deadline to local timezone
                 try {
                   var localConfDate = moment.tz(confDate, local_timezone);
