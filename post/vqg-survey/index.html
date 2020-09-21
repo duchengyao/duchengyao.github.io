@@ -22,19 +22,19 @@
     var CONFIG = {"hostname":"s1nh.org","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="A Survey of Visual Question GenerationAuthor: Duchengyao    Give an image, the task is to generate natural Question based on the image.  Another list of VQA https:&#x2F;&#x2F;github.com&#x2F;jokieleung&#x2F;awesome-visua">
+  <meta name="description" content="Give an image, the task is to generate natural Question based on the image.  Another list of VQA https:&#x2F;&#x2F;github.com&#x2F;jokieleung&#x2F;awesome-visual-question-answering A survey of Image Caption in Chinese">
 <meta name="keywords" content="深度学习,VQG">
 <meta property="og:type" content="article">
 <meta property="og:title" content="A Survey of Visual Question Generation">
 <meta property="og:url" content="http:&#x2F;&#x2F;s1nh.org&#x2F;post&#x2F;vqg-survey&#x2F;index.html">
 <meta property="og:site_name" content="S1NH">
-<meta property="og:description" content="A Survey of Visual Question GenerationAuthor: Duchengyao    Give an image, the task is to generate natural Question based on the image.  Another list of VQA https:&#x2F;&#x2F;github.com&#x2F;jokieleung&#x2F;awesome-visua">
+<meta property="og:description" content="Give an image, the task is to generate natural Question based on the image.  Another list of VQA https:&#x2F;&#x2F;github.com&#x2F;jokieleung&#x2F;awesome-visual-question-answering A survey of Image Caption in Chinese">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;vqg-intro.svg">
 <meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;vqg-traditional.svg">
 <meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;vqg-pipeline-full.svg">
 <meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;vqg-iq-inference-full.svg">
-<meta property="og:updated_time" content="2020-09-21T11:45:22.761Z">
+<meta property="og:updated_time" content="2020-09-21T11:54:49.033Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;vqg-intro.svg">
 
@@ -229,7 +229,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-09-21 19:35:09 / 修改时间：19:45:22" itemprop="dateCreated datePublished" datetime="2020-09-21T19:35:09+08:00">2020-09-21</time>
+              <time title="创建时间：2020-09-21 19:35:09 / 修改时间：19:54:49" itemprop="dateCreated datePublished" datetime="2020-09-21T19:35:09+08:00">2020-09-21</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -273,8 +273,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="A-Survey-of-Visual-Question-Generation"><a href="#A-Survey-of-Visual-Question-Generation" class="headerlink" title="A Survey of Visual Question Generation"></a><strong>A Survey of Visual Question Generation</strong></h1><p><code>Author: Duchengyao</code></p>
-<img src="http://qiniu.s1nh.org/vqg-intro.svg" width = 70% div align=center />
+        <img src="http://qiniu.s1nh.org/vqg-intro.svg" width = 70% div align=center />
 
 
 <p>Give an image, the task is to generate natural Question based on the image.</p>
@@ -283,6 +282,8 @@
 <li>A survey of Image Caption in Chinese <a href="https://zhuanlan.zhihu.com/p/27771046" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/27771046</a></li>
 <li>Survey of the State of the Art in Natural Language Generation: Core tasks, applications and evaluation [<a href="https://www.researchgate.net/profile/Albert_Gatt/publication/315696017_Survey_of_the_State_of_the_Art_in_Natural_Language_Generation_Core_tasks_applications_and_evaluation/links/58e4909caca272d62977a6b8/Survey-of-the-State-of-the-Art-in-Natural-Language-Generation-Core-tasks-applications-and-evaluation.pdf" target="_blank" rel="noopener">Link</a></li>
 </ul>
+<a id="more"></a>
+
 <h2 id="0x01-Datasets"><a href="#0x01-Datasets" class="headerlink" title="0x01. Datasets"></a>0x01. Datasets</h2><h4 id="I-VQA"><a href="#I-VQA" class="headerlink" title="I. VQA"></a>I. <a href="http://visualqa.org" target="_blank" rel="noopener">VQA</a></h4><blockquote>
 <p>Antol, Stanislaw, et al. “<strong>Vqa: Visual question answering.</strong>“ <em>Proceedings of the IEEE international conference on computer vision.</em> 2015.</p>
 <p>Zhang, Peng, et al. “<strong>Yin and yang: Balancing and answering binary visual questions.</strong>“ <em>Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition.</em> 2016.</p>
@@ -513,7 +514,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#A-Survey-of-Visual-Question-Generation"><span class="nav-number">1.</span> <span class="nav-text">A Survey of Visual Question Generation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01-Datasets"><span class="nav-number">1.1.</span> <span class="nav-text">0x01. Datasets</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#I-VQA"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">I. VQA</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#II-VQG-COCO-Bing-Flicker"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">II.VQG-COCO/Bing/Flicker</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#III-TextVQA"><span class="nav-number">1.1.0.3.</span> <span class="nav-text">III. TextVQA</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IV-Visual-Genome"><span class="nav-number">1.1.0.4.</span> <span class="nav-text">IV. Visual Genome</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#V-VizWiz"><span class="nav-number">1.1.0.5.</span> <span class="nav-text">V. VizWiz</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#VI-Visual-Dialog"><span class="nav-number">1.1.0.6.</span> <span class="nav-text">VI. Visual Dialog</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02-Researchers"><span class="nav-number">1.2.</span> <span class="nav-text">0x02. Researchers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x03-Architecture"><span class="nav-number">1.3.</span> <span class="nav-text">0x03. Architecture</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0-Rule-based-❌"><span class="nav-number">1.3.1.</span> <span class="nav-text">0. Rule-based ❌</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-GRNN"><span class="nav-number">1.3.2.</span> <span class="nav-text">1. GRNN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-IQ"><span class="nav-number">1.3.3.</span> <span class="nav-text">2. IQ</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x04-Experiments"><span class="nav-number">1.4.</span> <span class="nav-text">0x04 Experiments</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0xFD-Metrics"><span class="nav-number">1.5.</span> <span class="nav-text">0xFD Metrics</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Word-overlap-metrics"><span class="nav-number">1.5.1.</span> <span class="nav-text">1. Word-overlap metrics</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-BLEU"><span class="nav-number">1.5.1.1.</span> <span class="nav-text">1.1. BLEU</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-ROUGE"><span class="nav-number">1.5.1.2.</span> <span class="nav-text">1.2. ROUGE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-METOR"><span class="nav-number">1.5.1.3.</span> <span class="nav-text">1.3. METOR</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Embedding-based-metrics"><span class="nav-number">1.5.2.</span> <span class="nav-text">2. Embedding-based metrics</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0xFD"><span class="nav-number">1.6.</span> <span class="nav-text">0xFD</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0xFE-Open-Source-Project"><span class="nav-number">1.6.1.</span> <span class="nav-text">0xFE. Open Source Project</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0xFF-Papers-sorted-by-date"><span class="nav-number">1.6.2.</span> <span class="nav-text">0xFF. Papers (sorted by date)</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01-Datasets"><span class="nav-number">1.</span> <span class="nav-text">0x01. Datasets</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#I-VQA"><span class="nav-number">1.0.1.</span> <span class="nav-text">I. VQA</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#II-VQG-COCO-Bing-Flicker"><span class="nav-number">1.0.2.</span> <span class="nav-text">II.VQG-COCO/Bing/Flicker</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#III-TextVQA"><span class="nav-number">1.0.3.</span> <span class="nav-text">III. TextVQA</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IV-Visual-Genome"><span class="nav-number">1.0.4.</span> <span class="nav-text">IV. Visual Genome</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#V-VizWiz"><span class="nav-number">1.0.5.</span> <span class="nav-text">V. VizWiz</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#VI-Visual-Dialog"><span class="nav-number">1.0.6.</span> <span class="nav-text">VI. Visual Dialog</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02-Researchers"><span class="nav-number">2.</span> <span class="nav-text">0x02. Researchers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x03-Architecture"><span class="nav-number">3.</span> <span class="nav-text">0x03. Architecture</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0-Rule-based-❌"><span class="nav-number">3.1.</span> <span class="nav-text">0. Rule-based ❌</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-GRNN"><span class="nav-number">3.2.</span> <span class="nav-text">1. GRNN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-IQ"><span class="nav-number">3.3.</span> <span class="nav-text">2. IQ</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x04-Experiments"><span class="nav-number">4.</span> <span class="nav-text">0x04 Experiments</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0xFD-Metrics"><span class="nav-number">5.</span> <span class="nav-text">0xFD Metrics</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Word-overlap-metrics"><span class="nav-number">5.1.</span> <span class="nav-text">1. Word-overlap metrics</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-BLEU"><span class="nav-number">5.1.1.</span> <span class="nav-text">1.1. BLEU</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-ROUGE"><span class="nav-number">5.1.2.</span> <span class="nav-text">1.2. ROUGE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-METOR"><span class="nav-number">5.1.3.</span> <span class="nav-text">1.3. METOR</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Embedding-based-metrics"><span class="nav-number">5.2.</span> <span class="nav-text">2. Embedding-based metrics</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0xFD"><span class="nav-number">6.</span> <span class="nav-text">0xFD</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0xFE-Open-Source-Project"><span class="nav-number">6.1.</span> <span class="nav-text">0xFE. Open Source Project</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0xFF-Papers-sorted-by-date"><span class="nav-number">6.2.</span> <span class="nav-text">0xFF. Papers (sorted by date)</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -529,19 +530,19 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">78</span>
+          <span class="site-state-item-count">77</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">78</span>
+        <span class="site-state-item-count">76</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

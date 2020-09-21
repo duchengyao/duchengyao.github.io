@@ -318,7 +318,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-09-21 19:35:09 / 修改时间：19:45:22" itemprop="dateCreated datePublished" datetime="2020-09-21T19:35:09+08:00">2020-09-21</time>
+              <time title="创建时间：2020-09-21 19:35:09 / 修改时间：19:54:49" itemprop="dateCreated datePublished" datetime="2020-09-21T19:35:09+08:00">2020-09-21</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -355,8 +355,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="A-Survey-of-Visual-Question-Generation"><a href="#A-Survey-of-Visual-Question-Generation" class="headerlink" title="A Survey of Visual Question Generation"></a><strong>A Survey of Visual Question Generation</strong></h1><p><code>Author: Duchengyao</code></p>
-<img src="http://qiniu.s1nh.org/vqg-intro.svg" width = 70% div align=center />
+          <img src="http://qiniu.s1nh.org/vqg-intro.svg" width = 70% div align=center />
 
 
 <p>Give an image, the task is to generate natural Question based on the image.</p>
@@ -365,151 +364,14 @@
 <li>A survey of Image Caption in Chinese <a href="https://zhuanlan.zhihu.com/p/27771046" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/27771046</a></li>
 <li>Survey of the State of the Art in Natural Language Generation: Core tasks, applications and evaluation [<a href="https://www.researchgate.net/profile/Albert_Gatt/publication/315696017_Survey_of_the_State_of_the_Art_in_Natural_Language_Generation_Core_tasks_applications_and_evaluation/links/58e4909caca272d62977a6b8/Survey-of-the-State-of-the-Art-in-Natural-Language-Generation-Core-tasks-applications-and-evaluation.pdf" target="_blank" rel="noopener">Link</a></li>
 </ul>
-<h2 id="0x01-Datasets"><a href="#0x01-Datasets" class="headerlink" title="0x01. Datasets"></a>0x01. Datasets</h2><h4 id="I-VQA"><a href="#I-VQA" class="headerlink" title="I. VQA"></a>I. <a href="http://visualqa.org" target="_blank" rel="noopener">VQA</a></h4><blockquote>
-<p>Antol, Stanislaw, et al. “<strong>Vqa: Visual question answering.</strong>“ <em>Proceedings of the IEEE international conference on computer vision.</em> 2015.</p>
-<p>Zhang, Peng, et al. “<strong>Yin and yang: Balancing and answering binary visual questions.</strong>“ <em>Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition.</em> 2016.</p>
-<p>Goyal, Yash, et al. “<strong>Making the V in VQA matter: Elevating the role of image understanding in Visual Question Answering.</strong>“ <em>Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition.</em> 2017.</p>
-</blockquote>
-<p>VQA is a new dataset containing open-ended questions about images. These questions require an understanding of vision, language and commonsense knowledge to answer.</p>
-<ul>
-<li>265,016 images (COCO and abstract scenes)</li>
-<li>At least 3 questions (5.4 questions on average) per image</li>
-<li>10 ground truth answers per question</li>
-<li>3 plausible (but likely incorrect) answers per question</li>
-<li>Automatic evaluation metric</li>
-</ul>
-<h4 id="II-VQG-COCO-Bing-Flicker"><a href="#II-VQG-COCO-Bing-Flicker" class="headerlink" title="II.VQG-COCO/Bing/Flicker"></a>II.<a href="https://www.microsoft.com/en-us/download/details.aspx?id=53670" target="_blank" rel="noopener">VQG-COCO/Bing/Flicker</a></h4><blockquote>
-<p>Mostafazadeh, Nasrin, et al. “<strong>Generating Natural Questions About an Image.</strong>“ <em>Proceedings of the 54th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers).</em> 2016.</p>
-</blockquote>
-<p>This dataset is described in <a href="http://aclanthology.info/papers/generating-natural-questions-about-an-image" target="_blank" rel="noopener">http://aclanthology.info/papers/generating-natural-questions-about-an-image</a>. The dataset is comprised of 9 csv’s, organized first by the source of the image, Bing, MSCOCO, or Flickr, then by type of dataset, train, dev and test. Within each file, we organize by image_id, the link to the image, and the up to 5 natural questions authored by crowdworkers on Amazon Mechnical Turk in response to the image. Please be sure to maintain these files separately in order to report system accuracy and progress on dev and test sets. For the Bing images, the dataset includes up to 5 captions for each image link; captions for the COCO and Flickr images are available elsewhere. In addition, each of the test set files includes the human rating of the question necessary to compute the deltaBleu score (see <a href="http://aclanthology.info/papers/deltableu-a-discriminative-metric-for-generation-tasks-with-intrinsically-diverse-targets" target="_blank" rel="noopener">http://aclanthology.info/papers/deltableu-a-discriminative-metric-for-generation-tasks-with-intrinsically-diverse-targets</a>).</p>
-<h4 id="III-TextVQA"><a href="#III-TextVQA" class="headerlink" title="III. TextVQA"></a>III. <a href="https://textvqa.org/dataset" target="_blank" rel="noopener">TextVQA</a></h4><h4 id="IV-Visual-Genome"><a href="#IV-Visual-Genome" class="headerlink" title="IV. Visual Genome"></a>IV. <a href="http://visualgenome.org/api/v0/api_home.html" target="_blank" rel="noopener">Visual Genome</a></h4><h4 id="V-VizWiz"><a href="#V-VizWiz" class="headerlink" title="V. VizWiz"></a>V. <a href="https://vizwiz.org/" target="_blank" rel="noopener">VizWiz</a></h4><h4 id="VI-Visual-Dialog"><a href="#VI-Visual-Dialog" class="headerlink" title="VI. Visual Dialog"></a>VI. <a href="https://visualdialog.org/" target="_blank" rel="noopener">Visual Dialog</a></h4><h2 id="0x02-Researchers"><a href="#0x02-Researchers" class="headerlink" title="0x02. Researchers"></a>0x02. Researchers</h2><ul>
-<li><p>Indian Institute of Technology, <a href="https://badripatro.github.io/index.html" target="_blank" rel="noopener">Badri N. Patro</a> &amp; <a href="https://vinaypn.github.io/" target="_blank" rel="noopener">Vinay P. Namboodiri</a> <em>这哥们近期发了6篇有关VQG/VQA的文章，其中三篇被录用，两篇已经开源（不过star很少）</em></p>
-</li>
-<li><p>Microsoft, <strong>Nan Duan</strong>, <strong>Duyu Tang</strong>, <strong>Tong Wang</strong>(Maluuba)</p>
-</li>
-<li><p>Google DeepMind, Oriol Vinyals</p>
-</li>
-<li><p>Nasrin Mostafazadeh</p>
-</li>
-<li><p>Alexander Toshev</p>
-</li>
-</ul>
-<h2 id="0x03-Architecture"><a href="#0x03-Architecture" class="headerlink" title="0x03. Architecture"></a>0x03. Architecture</h2><h3 id="0-Rule-based-❌"><a href="#0-Rule-based-❌" class="headerlink" title="0. Rule-based ❌"></a>0. Rule-based ❌</h3><h3 id="1-GRNN"><a href="#1-GRNN" class="headerlink" title="1. GRNN"></a>1. GRNN</h3><p><code>2016 Microsoft</code></p>
-<img src="http://qiniu.s1nh.org/vqg-traditional.svg" width = 70% div align=center />
-
-
-
-
-<h3 id="2-IQ"><a href="#2-IQ" class="headerlink" title="2. IQ"></a>2. IQ</h3><p><strong>with VAE</strong>/<strong>maximizes mutual information</strong>/<strong>doesn’t need to know the expected answer</strong></p>
-<img src="http://qiniu.s1nh.org/vqg-pipeline-full.svg" width = 90% div align=center  />
-
-
-<p><strong>pipeline</strong></p>
-<img src="http://qiniu.s1nh.org/vqg-iq-inference-full.svg" width = 90% div align=center />
-
-
-<h2 id="0x04-Experiments"><a href="#0x04-Experiments" class="headerlink" title="0x04 Experiments"></a>0x04 Experiments</h2><p>pass</p>
-<h2 id="0xFD-Metrics"><a href="#0xFD-Metrics" class="headerlink" title="0xFD Metrics"></a>0xFD Metrics</h2><ul>
-<li><p><code>word-overlap metrics</code>  BLEU, METEOR, ROUGE etc.</p>
-</li>
-<li><p><code>embedding-based metrics</code>  Skip-Thought, Embedding average, Vector extrema, Greedy matching etc.</p>
-</li>
-</ul>
-<h3 id="1-Word-overlap-metrics"><a href="#1-Word-overlap-metrics" class="headerlink" title="1. Word-overlap metrics"></a>1. Word-overlap metrics</h3><h4 id="1-1-BLEU"><a href="#1-1-BLEU" class="headerlink" title="1.1. BLEU"></a>1.1. BLEU</h4><p><code>Widely used in the machine translation literature.</code></p>
-<p><strong>Feature</strong></p>
-<ul>
-<li>Focus on precision, don’t care about recall.</li>
-<li>Regardless of word order.</li>
-</ul>
-<p><strong>Math</strong></p>
-<p>First compute brevity penalty BP shows below:</p>
-<p>$$BP=\begin{cases}<br>1, &amp;if \ c &gt; r\<br>e^{\ (\ 1 - r / c\ )}, &amp;if \ c&lt;r<br>\end{cases}$$</p>
-<p>Where c is the total length of the candidate translation corpus, and r is the effective reference corpus length.</p>
-<p>Next, compute the geometric average of the modified <strong>n-gram precisions</strong>, $p_n$, using n-grams up to length N and positive weights $w_n$ summing to one.</p>
-<p>Then, BELU is shown below:</p>
-<p>$$BLEU = BP \cdot exp\left(\sum_{n=1}^N w_n \log p_n\right)$$</p>
-<p>Where $exp\left(\sum_{n=1}^N w_n \log p_n\right)$ represents the weighted sum of the logarithms of the accuracy of different n-grams</p>
-<p>And the ranking behavior is more immediately apparent in the log domain.</p>
-<p>$$log \ BLEU = min(1-\frac{r}{c},0) + \sum_{n=1}^N w_n \log p_n$$</p>
-<p><strong>Ref.</strong><br>[<a href="https://www.aclweb.org/anthology/P02-1040.pdf" target="_blank" rel="noopener">1</a>] [<a href="https://machinelearningmastery.com/calculate-bleu-score-for-text-python/" target="_blank" rel="noopener">2</a>]</p>
-<h4 id="1-2-ROUGE"><a href="#1-2-ROUGE" class="headerlink" title="1.2. ROUGE"></a>1.2. ROUGE</h4><p><code>Is almost same as BLEU, but caculate recall instead of precision.</code></p>
-<h4 id="1-3-METOR"><a href="#1-3-METOR" class="headerlink" title="1.3. METOR"></a>1.3. METOR</h4><p><code>Not only based on exact matches but also stem, synonym, and paraphrase matches.</code></p>
-<h3 id="2-Embedding-based-metrics"><a href="#2-Embedding-based-metrics" class="headerlink" title="2. Embedding-based metrics"></a>2. Embedding-based metrics</h3><ul>
-<li>Skip-Thought</li>
-<li>Embedding average</li>
-<li>Vector extrema</li>
-<li>Greedy matching</li>
-</ul>
-<h2 id="0xFD"><a href="#0xFD" class="headerlink" title="0xFD"></a>0xFD</h2><ul>
-<li><a href="https://ijdykeman.github.io/ml/2016/12/21/cvae.html" target="_blank" rel="noopener">Conditional Variational Autoencoders</a> (<a href="https://www.cnblogs.com/wangxiaocvpr/p/6231019.html" target="_blank" rel="noopener">in chinese</a>)</li>
-</ul>
-<h3 id="0xFE-Open-Source-Project"><a href="#0xFE-Open-Source-Project" class="headerlink" title="0xFE. Open Source Project"></a>0xFE. Open Source Project</h3><p><strong>VQA:</strong></p>
-<ul>
-<li><a href="https://github.com/facebookresearch/pythia" target="_blank" rel="noopener">Pythia</a> (<a href="https://colab.research.google.com/drive/1Z9fsh10rFtgWe4uy8nvU4mQmqdokdIRR" target="_blank" rel="noopener">Demo</a>)</li>
-<li><a href="https://delta-lab-iitk.github.io/U-CAM/" target="_blank" rel="noopener">U-CAM</a></li>
-</ul>
-<p><strong>VQG: (sorted by stars)</strong></p>
-<ul>
-<li><a href="https://github.com/yikang-li/iQAN" target="_blank" rel="noopener">iQAN (CVPR 2018)</a></li>
-<li><a href="https://github.com/chingyaoc/VQG-tensorflow" target="_blank" rel="noopener">VQG 1 (ACL 2016, unofficial)</a></li>
-<li><a href="https://github.com/naver/aqm-plus" target="_blank" rel="noopener">AQM+ (ICLR 2019)</a></li>
-<li><a href="https://github.com/ranjaykrishna/iq" target="_blank" rel="noopener">IQ (CVPR 2019)</a></li>
-<li><a href="https://github.com/badripatro/Visual_Question_Generation" target="_blank" rel="noopener">MDNVQG (EMNLP 2018)</a></li>
-<li><a href="https://github.com/chennaveh/VQG" target="_blank" rel="noopener">VQG 2 (ACL 2016, unofficial)</a></li>
-<li><a href="https://github.com/gitlost-murali/Natural-Questions-Generation-from-Images" target="_blank" rel="noopener">VQG 3 (ACL 2016, unofficial)</a></li>
-<li><a href="https://github.com/danishnxt/NLP-Project-VisualQuesGen" target="_blank" rel="noopener">VQG 4 (ACL 2016, unofficial)</a></li>
-</ul>
-<h3 id="0xFF-Papers-sorted-by-date"><a href="#0xFF-Papers-sorted-by-date" class="headerlink" title="0xFF. Papers (sorted by date)"></a>0xFF. Papers (sorted by date)</h3><ul>
-<li><p>Gao, J., Galley, M., &amp; Li, L. (2019). <strong>Neural approaches to conversational ai.</strong> Foundations and Trends® in Information Retrieval, 13(2-3), 127-298.[<a href="http://research.baidu.com/Public/ueditor/upload/file/20181029/1540796086725537.pdf" target="_blank" rel="noopener">Poster</a>] [<a href="https://arxiv.org/pdf/1809.08267.pdf" target="_blank" rel="noopener">Paper</a>]</p>
-</li>
-<li><p><strong>Patro, B. N.</strong>, Kurmi, V., Kumar, S., &amp; Namboodiri, V. (2020). <strong>Deep Bayesian Network for Visual Question Generation.</strong> In The IEEE Winter Conference on Applications of Computer Vision (pp. 1566-1576).</p>
-</li>
-<li><p><strong>Patro, B. N.</strong>, Patel, S., &amp; Namboodiri, V. P. (2019). <strong>Granular Multimodal Attention Networks for Visual Dialog.</strong> arXiv preprint arXiv:1910.05728.[<a href="http://xxx.itp.ac.cn/pdf/1910.05728.pdf" target="_blank" rel="noopener">Paper</a>]</p>
-</li>
-<li><p><strong>Patro, B. N.</strong>, Lunayach, M., Patel, S., &amp; Namboodiri, V. P. (2019). <strong>U-cam: Visual explanation using uncertainty based class activation maps.</strong> In Proceedings of the IEEE International Conference on Computer Vision (pp. 7444-7453). [<a href="http://openaccess.thecvf.com/content_ICCV_2019/papers/Patro_U-CAM_Visual_Explanation_Using_Uncertainty_Based_Class_Activation_Maps_ICCV_2019_paper.pdf" target="_blank" rel="noopener">Paper</a>] [<a href="https://delta-lab-iitk.github.io/U-CAM/" target="_blank" rel="noopener">Proj</a>] [<a href="https://github.com/DelTA-Lab-IITK/U-CAM" target="_blank" rel="noopener">code</a>]</p>
-</li>
-<li><p><strong>Patro, B. N.</strong>, &amp; Namboodiri, V. P. (2019). <strong>Deep Exemplar Networks for VQA and VQG.</strong> arXiv preprint arXiv:1912.09551.</p>
-</li>
-<li><p><strong>Patro, B. N.</strong>, &amp; Namboodiri, V. P. (2019). <strong>Probabilistic framework for solving Visual Dialog.</strong> arXiv preprint arXiv:1909.04800.[<a href="https://arxiv.org/pdf/1909.04800.pdf" target="_blank" rel="noopener">Paper</a>]</p>
-</li>
-<li><p>Lee, S. W., Gao, T., Yang, S., Yoo, J., &amp; Ha, J. W. (2019). <strong>Large-Scale Answerer in Questioner’s Mind for Visual Dialog Question Generation.</strong> ICLR 2019.[<a href="https://arxiv.org/pdf/1902.08355" target="_blank" rel="noopener">Paper</a>] [<a href="https://github.com/naver/aqm-plus" target="_blank" rel="noopener">code</a>]</p>
-</li>
-<li><p>Jedoui, K., Krishna, R., Bernstein, M., &amp; Fei-Fei, L. (2019). <strong>Deep Bayesian Active Learning for Multiple Correct Outputs.</strong> arXiv preprint arXiv:1912.01119.</p>
-</li>
-<li><p>Krishna, R., Bernstein, M., &amp; Fei-Fei, L. (2019). <strong>Information maximizing visual question generation.</strong> In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (pp. 2008-2018).[<a href="http://openaccess.thecvf.com/content_CVPR_2019/papers/Krishna_Information_Maximizing_Visual_Question_Generation_CVPR_2019_paper.pdf" target="_blank" rel="noopener">Paper</a>] [<a href="https://cs.stanford.edu/people/ranjaykrishna/iq/index.html" target="_blank" rel="noopener">Proj</a>] [<a href="https://github.com/ranjaykrishna/iq" target="_blank" rel="noopener">Code</a>]</p>
-</li>
-<li><p>Fan, Z., Wei, Z., Wang, S., Liu, Y., &amp; Huang, X. J. (2018, August). A reinforcement learning framework for natural question generation using bi-discriminators. In Proceedings of the 27th International Conference on Computational Linguistics (pp. 1763-1774).[<a href="https://www.aclweb.org/anthology/C18-1150.pdf" target="_blank" rel="noopener">Paper</a>]</p>
-</li>
-<li><p><strong>Patro, B. N.</strong>, Kumar, S., Kurmi, V. K., &amp; Namboodiri, V. P. (2018). <strong>Multimodal differential network for visual question generation.</strong> In Proceedings of the 2018 Conference on Empirical Methods in Natural Language Processing (pp. 4002-4012). [<a href="http://aclweb.org/anthology/D18-1434" target="_blank" rel="noopener">Paper</a>]. [<a href="https://badripatro.github.io/MDN-VQG/" target="_blank" rel="noopener">Project Link</a>] [<a href="https://github.com/badripatro/Visual_Question_Generation" target="_blank" rel="noopener">code</a>]</p>
-</li>
-<li><p>[49] Li, Y., <strong>Duan, N.</strong>, Zhou, B., Chu, X., Ouyang, W., Wang, X., &amp; Zhou, M. (2018). <strong>Visual question generation as dual task of visual question answering.</strong> In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (pp. 6116-6124). [<a href="https://arxiv.org/abs/1709.07192" target="_blank" rel="noopener">Paper</a>] [<a href="https://github.com/yikang-li/iQAN" target="_blank" rel="noopener">code</a>]</p>
-</li>
-<li><p>[362] Das, A., Kottur, S., Gupta, K., Singh, A., Yadav, D., Moura, J. M., … &amp; Batra, D. (2017). <strong>Visual dialog.</strong> In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (pp. 326-335).</p>
-</li>
-<li><p>Zhang, J., Wu, Q., Shen, C., Zhang, J., Lu, J., &amp; Hengel, A. V. D. (2017). <strong>Asking the difficult questions: Goal-oriented visual question generation via intermediate rewards.</strong> arXiv preprint arXiv:1711.07614. [<a href="https://arxiv.org/abs/1711.07614" target="_blank" rel="noopener">Paper</a>]</p>
-</li>
-<li><p>[41] <strong>Wang, T.</strong>, Yuan, X., &amp; Trischler, A. (2017). <strong>A joint model for question answering and question generation.</strong> arXiv preprint arXiv:1706.01450.</p>
-</li>
-<li><p>[59] Tang, D., <strong>Duan, N.</strong>, Qin, T., Yan, Z., &amp; Zhou, M. (2017). Question answering and question generation as dual tasks. arXiv preprint arXiv:1706.02027.</p>
-</li>
-<li><p>[65] Jain, U., Zhang, Z., &amp; Schwing, A. G. (2017). <strong>Creativity: Generating diverse questions using variational autoencoders.</strong> In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (pp. 6485-6494). [<a href="https://arxiv.org/abs/1704.03493" target="_blank" rel="noopener">Paper</a>].</p>
-</li>
-<li><p>[67] <strong>Mostafazadeh, N.</strong>, Brockett, C., Dolan, B., Galley, M., Gao, J., Spithourakis, G. P., &amp; Vanderwende, L. (2017). <strong>Image-grounded conversations: Multimodal context for natural question and response generation.</strong> IJCNLP (pp. 462–472). [<a href="https://arxiv.org/abs/1701.08251" target="_blank" rel="noopener">Paper</a>].</p>
-</li>
-<li><p>[62] <strong>Duan, N.</strong>, Tang, D., Chen, P., &amp; Zhou, M. (2017, September). Question generation for question answering. In Proceedings of the 2017 Conference on Empirical Methods in Natural Language Processing (pp. 866-874).</p>
-</li>
-<li><p>[24] Zhang, S., Qu, L., You, S., Yang, Z., &amp; Zhang, J. (2016). <strong>Automatic Generation of Grounded Visual Questions.</strong> [<a href="https://arxiv.org/abs/1612.06530" target="_blank" rel="noopener">Paper</a>]</p>
-</li>
-<li><p>[131] Mostafazadeh, N., Misra, I., Devlin, J., Mitchell, M., He, X., &amp; Vanderwende, L. (2016). <strong>Generating natural questions about an image.</strong> In ACL, the Association for Computational Linguistics (pp. 1802-1813).[<a href="https://arxiv.org/abs/1603.06059" target="_blank" rel="noopener">Paper</a>] [<a href="https://github.com/gitlost-murali/Natural-Questions-Generation-from-Images" target="_blank" rel="noopener">code1</a>] [<a href="https://github.com/chennaveh/VQG" target="_blank" rel="noopener">code2</a>] [<a href="https://github.com/chingyaoc/VQG-tensorflow" target="_blank" rel="noopener">code3</a>] [<a href="https://github.com/danishnxt/NLP-Project-VisualQuesGen" target="_blank" rel="noopener">code4</a>]</p>
-</li>
-<li><p>Yang, Y., Li, Y., Fermuller, C., &amp; Aloimonos, Y. (2015). <strong>Neural Self Talk: Image Understanding via Continuous Questioning and Answering.</strong>[<a href="https://arxiv.org/abs/1512.03460" target="_blank" rel="noopener">Paper</a>].</p>
-</li>
-<li><p>Carl Saldanha, Visual Question Generation</p>
-</li>
-<li><p>[3410] Vinyals, O., Toshev, A., Bengio, S., &amp; Erhan, D. (2015). <strong>Show and tell: A neural image caption generator.</strong> In Proceedings of the IEEE conference on computer vision and pattern recognition (pp. 3156-3164).[<a href="https://arxiv.org/pdf/1411.4555.pdf" target="_blank" rel="noopener">Paper</a>] [<a href="https://github.com/KranthiGV/Pretrained-Show-and-Tell-model" target="_blank" rel="noopener">code1</a>] [<a href="https://github.com/nikhilmaram/Show_and_Tell" target="_blank" rel="noopener">code2</a>] [<a href="https://github.com/jazzsaxmafia/show_and_tell.tensorflow" target="_blank" rel="noopener">code3</a>]</p>
-</li>
-</ul>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/post/vqg-survey/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -553,7 +415,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-09-21 19:30:35 / 修改时间：19:32:02" itemprop="dateCreated datePublished" datetime="2020-09-21T19:30:35+08:00">2020-09-21</time>
+              <time title="创建时间：2020-09-21 19:30:35 / 修改时间：19:56:08" itemprop="dateCreated datePublished" datetime="2020-09-21T19:30:35+08:00">2020-09-21</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -592,25 +454,14 @@
       
           <h2 id="0x01-Tensorflow-2-0"><a href="#0x01-Tensorflow-2-0" class="headerlink" title="0x01 Tensorflow 2.0"></a>0x01 Tensorflow 2.0</h2><h3 id="1-1-Convert"><a href="#1-1-Convert" class="headerlink" title="1.1. Convert"></a>1.1. Convert</h3><p><strong>keras hdf5 –&gt; .pb</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"># V2 behaviour is disabled by default in Jetpack 4.4.DP.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">import tensorflow.compat.v2 as tf</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">from tensorflow.keras.models import load_model</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">model &#x3D; load_model(&#39;.&#x2F;model&#x2F;fer2013_mini_XCEPTION.102-0.66.hdf5&#39;)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">model.save(&#39;.&#x2F;model&#x2F;tf_savedmodel&#39;, save_format&#x3D;&#39;tf&#39;)</span></pre></td></tr></table></figure>
-
-<p><strong>.pb–&gt;trt.pb</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">params &#x3D; trt.DEFAULT_TRT_CONVERSION_PARAMS</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">params._replace(precision_mode&#x3D;trt.TrtPrecisionMode.INT8)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">converter &#x3D; trt.TrtGraphConverterV2(input_saved_model_dir&#x3D;&#39;.&#x2F;model&#x2F;tf_savedmodel&#39;, conversion_params&#x3D;params)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">converter.convert()</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">converter.save(&#39;.&#x2F;model&#x2F;trt_int8&#39;)</span></pre></td></tr></table></figure>
-
-<h3 id="1-2-Inference"><a href="#1-2-Inference" class="headerlink" title="1.2. Inference"></a>1.2. Inference</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">if use_trt:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    saved_model_loaded &#x3D; tf.saved_model.load(&#39;.&#x2F;model&#x2F;trt_int8&#39;, tags&#x3D;[trt.tag_constants.SERVING])</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    graph_func &#x3D; saved_model_loaded.signatures[trt.signature_constants.DEFAULT_SERVING_SIGNATURE_DEF_KEY]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    self.emotion_classifier &#x3D; frozen_func</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">else:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    self.emotion_classifier &#x3D; tf.keras.models.load_model(&#39;xxx.hdf5&#39;, compile&#x3D;False)</span></pre></td></tr></table></figure>
-
-
-<h3 id="1-3-v2-Behaviour"><a href="#1-3-v2-Behaviour" class="headerlink" title="1.3. v2 Behaviour"></a>1.3. v2 Behaviour</h3><p>It looks like the current Tensorflow for JP 4.4 was compiled with <code>--config=v1</code> flag, as V2 behaviour seems to be disabled in default.<br>The workaround is:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">import tensorflow.compat.v2 as tf</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">import tensorflow.compat.v2.keras as keras</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">tf.enable_v2_behavior()</span></pre></td></tr></table></figure>
-
-<h2 id="0x02-Others-Pytorch-MxNet-Caffe"><a href="#0x02-Others-Pytorch-MxNet-Caffe" class="headerlink" title="0x02 Others ( Pytorch / MxNet / Caffe )"></a>0x02 Others ( Pytorch / MxNet / Caffe )</h2><h3 id="2-1-Convert-model-to-ONNX"><a href="#2-1-Convert-model-to-ONNX" class="headerlink" title="2.1. Convert model to ONNX"></a>2.1. Convert model to ONNX</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">pass</span></pre></td></tr></table></figure>
-
-<h3 id="2-2-Build-TensorRT-Engine-from-ONNX-Model"><a href="#2-2-Build-TensorRT-Engine-from-ONNX-Model" class="headerlink" title="2.2. Build TensorRT Engine from ONNX Model"></a>2.2. Build TensorRT Engine from ONNX Model</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">def build_engine_onnx(model_file):</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    with trt.Builder(TRT_LOGGER) as builder,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">        builder.create_network(1 &lt;&lt; int(trt.NetworkDefinitionCreationFlag.EXPLICIT_BATCH)) as network,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">            trt.OnnxParser(network, TRT_LOGGER) as parser:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">                builder.max_workspace_size &#x3D; common.GiB(1)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">                builder.max_batch_size &#x3D; batch_size</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">                # Load the Onnx model and parse it in order to populate the TensorRT network.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">                with open(model_file, &#39;rb&#39;) as model:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">                    parser.parse(model.read())</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">                return builder.build_cuda_engine(network)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">engine &#x3D; build_engine_onnx(&#39;resnet100.onnx&#39;)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">engine_file_path &#x3D; &#39;.&#x2F;arcface_trt.engine&#39;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">with open(engine_file_path, &quot;wb&quot;) as f:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">    f.write(engine.serialize())</span></pre></td></tr></table></figure>
-
-<h3 id="2-3-Inference-from-TRT-Engine"><a href="#2-3-Inference-from-TRT-Engine" class="headerlink" title="2.3. Inference from TRT Engine"></a>2.3. Inference from TRT Engine</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">def build(engine_file):</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    with open(engine_file, &#39;rb&#39;) as f, trt.Runtime(TRT_LOGGER) as runtime:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">        engine &#x3D; runtime.deserialize_cuda_engine(f.read())</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    inputs, outputs, bindings, stream &#x3D; allocate_buffers(engine)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    context &#x3D; engine.create_execution_context()</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">def run(objects_frame):</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    allocate_place &#x3D; np.prod(objects_frame.shape)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">    inputs[0].host[:allocate_place] &#x3D; objects_frame.flatten(order&#x3D;&#39;C&#39;).astype(np.float32)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">    trt_outputs &#x3D; do_inference(</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">        self.context, bindings&#x3D;self.bindings,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">        inputs&#x3D;inputs, outputs&#x3D;outputs, stream&#x3D;stream)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">    return trt_outputs</span></pre></td></tr></table></figure>
-
-
-<h3 id="2-4-pycuda"><a href="#2-4-pycuda" class="headerlink" title="2.4. pycuda"></a>2.4. pycuda</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">try:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    # Sometimes python2 does not understand FileNotFoundError</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    FileNotFoundError</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">except NameError:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    FileNotFoundError &#x3D; IOError</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">def GiB(val):</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    return val * 1 &lt;&lt; 30   # 1 &lt;&lt; 10 &lt;&lt; 10 &lt;&lt; 10, 1024*1024*1024</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"># Simple helper data class that&#39;s a little nicer to use than a 2-tuple.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">class HostDeviceMem(object):</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">    def __init__(self, host_mem, device_mem):</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">        self.host &#x3D; host_mem</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">        self.device &#x3D; device_mem</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">    def __str__(self):</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">        return &quot;Host:\n&quot; + str(self.host) + &quot;\nDevice:\n&quot; + str(self.device)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">    def __repr__(self):</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">        return self.__str__()</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line"># Allocates all buffers required for an engine, i.e. host&#x2F;device inputs&#x2F;outputs.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">def allocate_buffers(engine):</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">    inputs &#x3D; []</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">    outputs &#x3D; []</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line">    bindings &#x3D; []</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">    stream &#x3D; cuda.Stream()</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line">    for binding in engine:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line">        size &#x3D; trt.volume(engine.get_binding_shape(binding)) * engine.max_batch_size</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line">        dtype &#x3D; trt.nptype(engine.get_binding_dtype(binding))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line">        # Allocate host and device buffers</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">32</span></pre></td><td class="code"><pre><span class="line">        host_mem &#x3D; cuda.pagelocked_empty(size, dtype)      # pagelocked memory (Direct Memory Access，DMA)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">33</span></pre></td><td class="code"><pre><span class="line">        device_mem &#x3D; cuda.mem_alloc(host_mem.nbytes)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">34</span></pre></td><td class="code"><pre><span class="line">        # Append the device buffer to device bindings.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">35</span></pre></td><td class="code"><pre><span class="line">        bindings.append(int(device_mem))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">36</span></pre></td><td class="code"><pre><span class="line">        # Append to the appropriate list.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">37</span></pre></td><td class="code"><pre><span class="line">        if engine.binding_is_input(binding):</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">38</span></pre></td><td class="code"><pre><span class="line">            inputs.append(HostDeviceMem(host_mem, device_mem))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">39</span></pre></td><td class="code"><pre><span class="line">        else:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">40</span></pre></td><td class="code"><pre><span class="line">            outputs.append(HostDeviceMem(host_mem, device_mem))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">41</span></pre></td><td class="code"><pre><span class="line">    return inputs, outputs, bindings, stream</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">42</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">43</span></pre></td><td class="code"><pre><span class="line"># This function is generalized for multiple inputs&#x2F;outputs.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">44</span></pre></td><td class="code"><pre><span class="line"># inputs and outputs are expected to be lists of HostDeviceMem objects.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">45</span></pre></td><td class="code"><pre><span class="line">def do_inference(context, bindings, inputs, outputs, stream, batch_size&#x3D;1):</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">46</span></pre></td><td class="code"><pre><span class="line">    # Transfer input data to the GPU.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">47</span></pre></td><td class="code"><pre><span class="line">    [cuda.memcpy_htod_async(inp.device, inp.host, stream) for inp in inputs]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">48</span></pre></td><td class="code"><pre><span class="line">    # Run inference.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">49</span></pre></td><td class="code"><pre><span class="line">    context.execute_async(batch_size&#x3D;batch_size, bindings&#x3D;bindings, stream_handle&#x3D;stream.handle)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">50</span></pre></td><td class="code"><pre><span class="line">    # Transfer predictions back from the GPU.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">51</span></pre></td><td class="code"><pre><span class="line">    [cuda.memcpy_dtoh_async(out.host, out.device, stream) for out in outputs]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">52</span></pre></td><td class="code"><pre><span class="line">    # Synchronize the stream</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">53</span></pre></td><td class="code"><pre><span class="line">    stream.synchronize()</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">54</span></pre></td><td class="code"><pre><span class="line">    # Return only the host outputs.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">55</span></pre></td><td class="code"><pre><span class="line">    return [out.host for out in outputs]</span></pre></td></tr></table></figure>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/post/inference-using-tensorrt-backend/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -710,114 +561,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/multi-modal-and-edge-compute/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/gesture-recognition/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="S1NH">
-      <meta itemprop="description" content="no other developers required.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="S1NH">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/post/gesture-recognition/" class="post-title-link" itemprop="url">gesture-recognition</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-07-13 13:53:32" itemprop="dateCreated datePublished" datetime="2020-07-13T13:53:32+08:00">2020-07-13</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/" itemprop="url" rel="index"><span itemprop="name">信息安全</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E5%9B%BE%E5%BD%A2%E5%9B%BE%E5%83%8F/" itemprop="url" rel="index"><span itemprop="name">图形图像</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E5%9B%BE%E5%BD%A2%E5%9B%BE%E5%83%8F/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/" itemprop="url" rel="index"><span itemprop="name">科学计算</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E5%9B%BE%E5%BD%A2%E5%9B%BE%E5%83%8F/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/%E7%A1%AC%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">硬件</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E5%9B%BE%E5%BD%A2%E5%9B%BE%E5%83%8F/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/%E7%A1%AC%E4%BB%B6/%E9%9F%B3%E4%B9%90/" itemprop="url" rel="index"><span itemprop="name">音乐</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/post/gesture-recognition/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/gesture-recognition/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>1</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/post/gesture-recognition/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -3273,6 +3016,108 @@
   
   
 
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/Tensorflow-MNIST/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="S1NH">
+      <meta itemprop="description" content="no other developers required.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="S1NH">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/post/Tensorflow-MNIST/" class="post-title-link" itemprop="url">Softmax, MLP, CNN 三种方法识别手写数字MNIST——《TensorFlow 实战》读书笔记</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-04-01 19:06:56" itemprop="dateCreated datePublished" datetime="2017-04-01T19:06:56+08:00">2017-04-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2018-01-15 11:50:26" itemprop="dateModified" datetime="2018-01-15T11:50:26+08:00">2018-01-15</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" itemprop="url" rel="index"><span itemprop="name">人工智能</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/post/Tensorflow-MNIST/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/post/Tensorflow-MNIST/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><code>不要代码写多了就变得那么没有人情味了</code></p>
+<h2 id="0x00-Intro"><a href="#0x00-Intro" class="headerlink" title="0x00 Intro"></a>0x00 Intro</h2><h3 id="1-读入MNIST数据库"><a href="#1-读入MNIST数据库" class="headerlink" title="1. 读入MNIST数据库"></a>1. 读入MNIST数据库</h3><p>执行<code>mnist = input_data.read_data_sets(&quot;MNIST_data/&quot;, one_hot=True)</code>后，会检查<code>MNIST_data/</code>文件夹下有没有数据库文件，如果没有会自动下载。这一步如果执行比较慢，可以用迅雷手动下载下面四个文件，保存到MNIST_data目录（不需要解压）</p>
+<ul>
+<li><a href="http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz" target="_blank" rel="noopener">train-images-idx3-ubyte.gz</a>:  training set images (9912422 bytes)</li>
+<li><a href="http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz" target="_blank" rel="noopener">train-labels-idx1-ubyte.gz</a>:  training set labels (28881 bytes)</li>
+<li><a href="http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz" target="_blank" rel="noopener">t10k-images-idx3-ubyte.gz</a>:   test set images (1648877 bytes)</li>
+<li><a href="http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz" target="_blank" rel="noopener">t10k-labels-idx1-ubyte.gz</a>:   test set labels (4542 bytes) </li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/post/Tensorflow-MNIST/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
   </div>
 
   
@@ -3345,19 +3190,19 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">78</span>
+          <span class="site-state-item-count">77</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">78</span>
+        <span class="site-state-item-count">76</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
