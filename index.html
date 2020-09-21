@@ -318,7 +318,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-09-21 19:13:28 / 修改时间：19:18:29" itemprop="dateCreated datePublished" datetime="2020-09-21T19:13:28+08:00">2020-09-21</time>
+              <time title="创建时间：2020-09-21 19:13:28 / 修改时间：19:28:41" itemprop="dateCreated datePublished" datetime="2020-09-21T19:13:28+08:00">2020-09-21</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -363,7 +363,7 @@
 <h2 id="0x01-多模态自然交互"><a href="#0x01-多模态自然交互" class="headerlink" title="0x01 多模态自然交互"></a>0x01 多模态自然交互</h2><blockquote>
 <p>5G加速智联网时代的到来，多模态数据成为主流<br>电阻屏=&gt;电容屏：流量从PC时代走向移动时代<br>多模态自然交互：移动时代走向智联网时代</p>
 </blockquote>
-<p>![](<a href="http://qiniu.s1nh.org/multi_modal_20200918205030958_203510884.png-QNthin" target="_blank" rel="noopener">http://qiniu.s1nh.org/multi_modal_20200918205030958_203510884.png-QNthin</a> =756x)</p>
+<p><img src="http://qiniu.s1nh.org/multi_modal_20200918205030958_203510884.png-QNthin" alt=""></p>
 <ul>
 <li><code>1976</code> 发现麦格克效应</li>
 <li><code>2015</code> 200 citation–&gt;3000+ citation. 有代表的论文 VQA: Visual Question Answering (ICCV 2015)</li>
@@ -371,69 +371,14 @@
 <li><code>2017</code> VoxCeleb 发布（多模态自然人识别数据集）</li>
 <li><code>2018</code> 视觉语音降噪，虚拟人合成技术</li>
 </ul>
-<h3 id="1-1-语音语义一体化"><a href="#1-1-语音语义一体化" class="headerlink" title="1.1. 语音语义一体化"></a>1.1. 语音语义一体化</h3><p><strong>传统语音语意理解方法</strong> 语音和文本模态分离建模：语音到文本，文本到语义，形成两个模态的串联信道。<br>![](<a href="http://qiniu.s1nh.org/multi_modal_20200918212935425_1706085101.png-QNthin" target="_blank" rel="noopener">http://qiniu.s1nh.org/multi_modal_20200918212935425_1706085101.png-QNthin</a> =756x)</p>
-<p><strong>在语音模态上理解语义</strong> 利用文字领域知识理解语音需要一个更好的中间编码形式<br>![](<a href="http://qiniu.s1nh.org/multi_modal_20200918213321395_970637763.png-QNthin" target="_blank" rel="noopener">http://qiniu.s1nh.org/multi_modal_20200918213321395_970637763.png-QNthin</a> =756x)</p>
-<p><strong>语音语义一体化：基于音素的跨模态实体链接</strong> 单个模型减少传统链路上串行模块的总信息损耗，减少传统ASR+NER中30%的实体识别错误。<br>![](<a href="http://qiniu.s1nh.org/multi_modal_20200918213606932_1223100129.png-QNthin" target="_blank" rel="noopener">http://qiniu.s1nh.org/multi_modal_20200918213606932_1223100129.png-QNthin</a> =756x)</p>
-<h3 id="1-2-多模态唤醒"><a href="#1-2-多模态唤醒" class="headerlink" title="1.2. 多模态唤醒"></a>1.2. 多模态唤醒</h3><p>不同的唤醒方式进行融合保证对话的流畅性</p>
-<ul>
-<li>语音：唤醒词（低功耗芯片）</li>
-<li>视觉：视线+注意力+唇动</li>
-<li>上下文理解：连贯的上下文（刚才的歌再放一遍）</li>
-</ul>
-<h3 id="1-3-多模态对话"><a href="#1-3-多模态对话" class="headerlink" title="1.3. 多模态对话"></a>1.3. 多模态对话</h3><p><strong>时装零售数据集</strong><br>![](<a href="http://qiniu.s1nh.org/multi_modal_20200918235329496_52750634.png-QNthin" target="_blank" rel="noopener">http://qiniu.s1nh.org/multi_modal_20200918235329496_52750634.png-QNthin</a> =756x)</p>
-<blockquote>
-<p>Nie, Liqiang , et al. “Multimodal Dialog System: Generating Responses via Adaptive Decoders.” the 27th ACM International Conference ACM, 2019.</p>
-</blockquote>
-<p>挑战一：需理解多模态顺序上下文，以捕获用户意图并生成相关正确响应；<br>挑战二：需考虑额外信息（如商品属性）以推荐最相关图片；<br>挑战三：需构建统一的模型以编码各种形式的领域知识。</p>
-<p><strong>模型框架</strong><br>![](<a href="http://qiniu.s1nh.org/multi_modal_20200918222814979_1387878526.png-QNthin" target="_blank" rel="noopener">http://qiniu.s1nh.org/multi_modal_20200918222814979_1387878526.png-QNthin</a> =756x)</p>
-<p><strong>上下文理解</strong></p>
-<ol>
-<li>双层RNN</li>
-<li>Low-level 做 embedding，输入high-level RNN.<br>![](<a href="http://qiniu.s1nh.org/multi_modal_20200918225448352_1119779237.png-QNthin" target="_blank" rel="noopener">http://qiniu.s1nh.org/multi_modal_20200918225448352_1119779237.png-QNthin</a> =756x)</li>
-</ol>
-<p><strong>对话式图片推荐</strong></p>
-<ol>
-<li>Prodoct Encoder考虑局部对齐关系</li>
-<li>计算 Context Vector (query) 与Product Embedding 的 similarity.</li>
-<li>Max-Margin Loss.</li>
-</ol>
-<p>![](<a href="http://qiniu.s1nh.org/multi_modal_20200918225617889_1730437598.png-QNthin" target="_blank" rel="noopener">http://qiniu.s1nh.org/multi_modal_20200918225617889_1730437598.png-QNthin</a> =756x)</p>
-<p><strong>多形式知识建模</strong> </p>
-<ol>
-<li><p>decoder: hiddin state(query) 从 kowledge base 中 retrieve<br>![](<a href="http://qiniu.s1nh.org/multi_modal_20200918225754256_93678265.png-QNthin" target="_blank" rel="noopener">http://qiniu.s1nh.org/multi_modal_20200918225754256_93678265.png-QNthin</a> =756x)</p>
-</li>
-<li><p>Embeed network，mapping function</p>
-</li>
-</ol>
-<p>![](<a href="http://qiniu.s1nh.org/multi_modal_20200918231235665_345086604.png-QNthin" target="_blank" rel="noopener">http://qiniu.s1nh.org/multi_modal_20200918231235665_345086604.png-QNthin</a> =756x)</p>
-<p>![](<a href="http://qiniu.s1nh.org/multi_modal_20200918233814332_1289799814.png-QNthin" target="_blank" rel="noopener">http://qiniu.s1nh.org/multi_modal_20200918233814332_1289799814.png-QNthin</a> =756x)</p>
-<h2 id="0x02-边缘计算"><a href="#0x02-边缘计算" class="headerlink" title="0x02 边缘计算"></a>0x02 边缘计算</h2><h3 id="2-1-什么是边缘计算"><a href="#2-1-什么是边缘计算" class="headerlink" title="2.1. 什么是边缘计算"></a>2.1. 什么是边缘计算</h3><p>在聊边缘计算之前，我们先聊聊这个星球上最魔性的生物之一——章鱼。</p>
-<p>![](<a href="http://qiniu.s1nh.org/multi_modal_20200919000910575_1816643074.png-QNthin" target="_blank" rel="noopener">http://qiniu.s1nh.org/multi_modal_20200919000910575_1816643074.png-QNthin</a> =456x)<br>![](<a href="http://qiniu.s1nh.org/multi_modal_20200919001103926_1545135319.png-QNthin" target="_blank" rel="noopener">http://qiniu.s1nh.org/multi_modal_20200919001103926_1545135319.png-QNthin</a> =456x)</p>
-<p>![](<a href="http://qiniu.s1nh.org/multi_modal_edge.webp-QNthin" target="_blank" rel="noopener">http://qiniu.s1nh.org/multi_modal_edge.webp-QNthin</a> =456x)</p>
-<p>![](<a href="http://qiniu.s1nh.org/multi_modal_20200919001137491_1717046909.png-QNthin" target="_blank" rel="noopener">http://qiniu.s1nh.org/multi_modal_20200919001137491_1717046909.png-QNthin</a> =456x)</p>
-<ol>
-<li>边缘计算可以实时或更快的进行数据处理和分析，让数据处理更靠近源，而不是外部数据中心或者云，可以缩短延迟时间。</li>
-<li>在成本预算上可以大大减轻经费预算。企业在本地设备上的数据管理解决方案所花费的成本大大低于云和数据中心网络。</li>
-<li>减少网络流量。随着物联网设备数量的增加，数据生成继续以创纪录的速度增长。结果，网络带宽变得更加有限，压倒了云，导致更大的数据瓶颈。</li>
-<li>提高应用程序效率。通过降低延迟级别，应用程序可以更高效、更快速地运行。</li>
-<li>个性化：通过边缘计算，可以持续学习，根据个人的需求调整模型，带来个性化互动体验。</li>
-<li>隐私性：网络边缘数据涉及个人隐私，传统的云计算模式需要将这些隐私数据上传至云计算中心，这将增加泄露用户隐私数据的风险。在边缘计算中，身份认证协议的研究应借鉴现有方案的优势之处，同时结合边缘计算中分布式、移动性等特点，加强统一认证、跨域认证和切换认证技术的研究，以保障用户在不同信任域和异构网络环境下的数据和隐私安全。</li>
-</ol>
-<h3 id="2-2-物联网里面的边缘计算"><a href="#2-2-物联网里面的边缘计算" class="headerlink" title="2.2. 物联网里面的边缘计算"></a>2.2. 物联网里面的边缘计算</h3><p>目前国内高技术领域的投入主要集中在围绕5G和AI两大块的落地上，而物联网则是目前网络技术打造的重点，也是各个行业实现效率提升、数字化转型的重要手段。投入这么多钱搞5G网络，从产业的思路是希望催生新的产业生态和商业模式。这里需要各个细分的行业，借助于自己的经验，根据场景的分类通过边缘计算可以提升物联网的智能化，找到物联网在各个垂直行业落地生根的钥匙。</p>
-<h3 id="2-3-边缘计算的AI芯片"><a href="#2-3-边缘计算的AI芯片" class="headerlink" title="2.3. 边缘计算的AI芯片"></a>2.3. 边缘计算的AI芯片</h3><p>作为边缘计算的核心基础，边缘AI芯片有着重要地位，边缘AI芯片厂商作为产业链上游参与方投入大量资源进行技术研发，从供给方面为边缘智能的实现打下坚实牢固基础。边缘计算芯片主要分为一下三类：</p>
-<ol>
-<li>嵌入式GPU：NVIDIA jetson.</li>
-<li>通用深度学习加速器（NPU）：Intel Movidius、RK3399Pro、Qualcomm®Kryo™300、海思、麒麟 980、google Coral、地平线、寒武纪、比特大陆.</li>
-<li>专用芯片：语音唤醒芯片、命令词识别芯片、降噪芯片.</li>
-</ol>
-<p>开发难度，通用型，功耗</p>
-<h3 id="2-4-边缘计算的-AI-框架（推理框架）"><a href="#2-4-边缘计算的-AI-框架（推理框架）" class="headerlink" title="2.4. 边缘计算的 AI 框架（推理框架）"></a>2.4. 边缘计算的 AI 框架（推理框架）</h3><ul>
-<li>Tensorflow Lite</li>
-<li>PaddlePaddle</li>
-<li>Core ML（Apple）</li>
-<li>Tensor RT （Nvidia）</li>
-</ul>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/post/multi-modal-and-edge-compute/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
