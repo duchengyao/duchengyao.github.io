@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <link rel="manifest" href="/images/site.webmanifest">
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"s1nh.org","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="这三个算法是好几年前就好奇但一直没搞懂的神奇算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RSA，KMP，AVL树，红黑树和LLRB-tree">
+<meta property="og:url" content="http:&#x2F;&#x2F;s1nh.org&#x2F;post&#x2F;RSA-KMP-RB-TREE&#x2F;index.html">
+<meta property="og:site_name" content="S1NH">
+<meta property="og:description" content="这三个算法是好几年前就好奇但一直没搞懂的神奇算法">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;algorithm-23-234.png-QNthin">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;algorithm-avl-1.jpg-QNthin">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;algorithm-rat.png-QNthin">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;algorithm-4-node.png-QNthin">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;algorithm-3-node.png-QNthin">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;algorithm-23-rb.png-QNthin">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;algorithm-23-234.png-QNthin">
+<meta property="og:updated_time" content="2018-03-05T14:05:41.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;algorithm-23-234.png-QNthin">
+
+<link rel="canonical" href="http://s1nh.org/post/RSA-KMP-RB-TREE/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>RSA，KMP，AVL树，红黑树和LLRB-tree | S1NH</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?4c66a84272e0f7943a305accf6dbdf41";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">S1NH</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">世界在旅程的尽头终结</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="search-pop-overlay">
+  <div class="popup search-popup">
+      <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+  </div>
+</div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/RSA-KMP-RB-TREE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="S1NH">
+      <meta itemprop="description" content="no other developers required.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="S1NH">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          RSA，KMP，AVL树，红黑树和LLRB-tree
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-03-03 01:15:23" itemprop="dateCreated datePublished" datetime="2018-03-03T01:15:23+08:00">2018-03-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2018-03-05 22:05:41" itemprop="dateModified" datetime="2018-03-05T22:05:41+08:00">2018-03-05</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/post/RSA-KMP-RB-TREE/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/post/RSA-KMP-RB-TREE/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>这三个算法是好几年前就好奇但一直没搞懂的神奇算法</p>
+</blockquote>
+<p><img src="http://qiniu.s1nh.org/algorithm-23-234.png-QNthin" alt=""></p>
+<a id="more"></a>
+
+
+<h2 id="0x01-RSA"><a href="#0x01-RSA" class="headerlink" title="0x01 RSA"></a>0x01 RSA</h2><blockquote>
+<p>RSA是1977年由罗纳德·李维斯特（Ron Rivest）、阿迪·萨莫尔（Adi Shamir）和伦纳德·阿德曼（Leonard Adleman）一起提出的。当时他们三人都在麻省理工学院工作。RSA就是他们三人姓氏开头字母拼在一起组成的。<br>但实际上，在1973年，在英国政府通讯总部工作的数学家克利福德·柯克斯（Clifford Cocks）在一个内部文件中提出了一个相同的算法，但他的发现被列入机密，一直到1997年才被发表。<br>RSA目前是应用最广泛的加密技术之一</p>
+</blockquote>
+<p>RSA的生成步骤如下：</p>
+<ol>
+<li>随意选择两个大质数<code>p</code> <code>q</code>，并计算$N=p*q$</li>
+<li>$r=(p-1)(q-1)$ 这是根据欧拉函数$r = φ(N) = φ(p)\cdotφ(q) = (p-1)\cdot(q-1)$获得的</li>
+<li>选择一个小于r并与r互质的整数e（通常取<strong>65537</strong>），求得e关于r的模反元素d（$ed = 1(mod r)$，模反元素存在，当且仅当e与r互质）</li>
+<li>销毁p和q</li>
+<li>(N , e)是公钥，(N, d)为私钥</li>
+</ol>
+<p>假设明文内容<code>m</code>，密文内容<code>c</code></p>
+<ul>
+<li>加密过程： $m^e = c ,(\mod n ,)$</li>
+<li>解密过程： $c^d = m ,(\mod n ,)$</li>
+</ul>
+<h2 id="0x02-KMP算法"><a href="#0x02-KMP算法" class="headerlink" title="0x02 KMP算法"></a>0x02 KMP算法</h2><p>KMP是字符串匹配的算法，由普通的O(MN)缩减到了O(M+N)。KMP 算法的意思是找到目标字符串（模式串）中已经匹配过的前缀，并略去其匹配过程。<br>先看知乎大神的解释</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">from https:&#x2F;&#x2F;www.zhihu.com&#x2F;question&#x2F;34623343&#x2F;answer&#x2F;59516921</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">我我是我是傻我不是傻逼我是傻逼我是大傻逼</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">找出句中的“我是傻逼”</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">普通的字符串匹配比较傻逼：</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">我我是我是傻我不是傻逼我是傻逼我是大傻逼</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">我</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">对上了</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">我我是我是傻我不是傻逼我是傻逼我是大傻逼</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">我是</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">对不上了，往后移一个，我们再来</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">我我是我是傻我不是傻逼我是傻逼我是大傻逼</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">__我</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">对上了</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">我我是我是傻我不是傻逼我是傻逼我是大傻逼</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">__我是</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">对上了</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">我我是我是傻我不是傻逼我是傻逼我是大傻逼</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">__我是傻</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">对不上了，往后移一下，我们再来</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">等等，你傻啊，你往后移一个明显不可能对的上嘛，为毛不一下移两个呢？</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">好好好，我移两个移两个</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">我我是我是傻我不是傻逼我是傻逼我是大傻逼</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">_____我对上了</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">我我是我是傻我不是傻逼我是傻逼我是大傻逼</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">_____我是对上了</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line">我我是我是傻我不是傻逼我是傻逼我是大傻逼</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">_____我是傻对上了</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line">我我是我是傻我不是傻逼我是傻逼我是大傻逼</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line">_____我是傻逼对不上了。。。</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line">这次还往后移一个吗？还是……移两个？</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line">啊？你傻啊，你看不出来能一次往后移三个啊！！！</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">32</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">33</span></pre></td><td class="code"><pre><span class="line">嗯？怎么看出来的呢？</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">34</span></pre></td><td class="code"><pre><span class="line">这个嘛，当然是和我是傻逼这四个字有关系啦。匹配的越多，失配后后移的越多。</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">35</span></pre></td><td class="code"><pre><span class="line">那后移多少呢？</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">36</span></pre></td><td class="code"><pre><span class="line">那就是next数组啦。。。</span></pre></td></tr></table></figure>
+
+<h2 id="0x03-AVL树与红黑树"><a href="#0x03-AVL树与红黑树" class="headerlink" title="0x03 AVL树与红黑树"></a>0x03 AVL树与红黑树</h2><p>对于普通的排序二叉树，如果运气不好（比如插入的数据本来就是有序的），那么树就会变成链表（只有左儿子或右儿子）。于是科学家们就发明了完全平衡的AVL树和允许一丢丢不平衡的红黑树。</p>
+<ul>
+<li>AVL树：最早的平衡二叉树之一，应用比较少。Windows对进程地址空间的管理用到了AVL树。</li>
+<li>红黑树：广泛应用在C++的STL中，比如map和set都是红黑树实现的</li>
+<li>B/B+树：磁盘文件组织，数据库的索引</li>
+<li>Trie树：统计排序大量字符串（自动机）</li>
+</ul>
+<h4 id="1-AVL树（平衡二叉树）"><a href="#1-AVL树（平衡二叉树）" class="headerlink" title="1. AVL树（平衡二叉树）"></a>1. AVL树（平衡二叉树）</h4><p><code>AVL树的左子树和右子树的深度之差(平衡因子)的绝对值不超过1，且它的左子树和右子树都是一颗平衡二叉树。</code></p>
+<p>为了防止排序二叉树的不平衡，AVL树中添加了平衡因子，当树不平衡时对树进行旋转。（<a href="http://blog.csdn.net/javazejian/article/details/53892797" target="_blank" rel="noopener">这篇文章</a>写得很清楚）</p>
+<p>其中，对右子树中插入右孩子导致不平衡需要<code>左旋</code>，对右子树中插入左孩子导致不平衡需要<code>右旋+左旋</code>。当<code>删除</code>左孩子的时候，其实相当与插入了右孩子。具体实现方法如图：</p>
+<p><img src="http://qiniu.s1nh.org/algorithm-avl-1.jpg-QNthin" alt=""></p>
+<h4 id="2-红黑树"><a href="#2-红黑树" class="headerlink" title="2. 红黑树"></a>2. 红黑树</h4><p><code>下图出自&quot;程序员小灰&quot;公众号</code></p>
+<p><img src="http://qiniu.s1nh.org/algorithm-rat.png-QNthin" alt="" title="我这几天一直属于这种状态&gt;_&lt;"></p>
+<p>红黑树的规则如下：</p>
+<ol>
+<li>每个节点不是红色就是黑色的；</li>
+<li>根节点总是黑色的；</li>
+<li>如果节点是红色的，则它的子节点必须是黑色的（反之不一定）；</li>
+<li>从根节点到叶节点或空子节点的每条路径，必须包含相同数目的黑色节点（即相同的黑色高度）。   </li>
+</ol>
+<p>红黑树的规则太复杂了，然而我们从<a href="http://blog.csdn.net/chen_zhang_yu/article/details/52415077" target="_blank" rel="noopener">这篇文章</a>中读懂红黑树的起源<code>2-3-4树</code>，问题就迎刃而解啦。</p>
+<p>我们定义</p>
+<ul>
+<li>2节点：瘦节点</li>
+<li>3节点：胖节点</li>
+<li>4节点：胖胖节点</li>
+</ul>
+<p>因此，往瘦节点插入元素后会变成胖节点（2个值的节点）；往胖节点再插入元素时，胖节点会变成胖胖节点，接着胖胖节点分解成3个瘦节点。</p>
+<p>理解2-3-4树以后再来看红黑树。以2-3-4树的理论，红节点与父节点构成了胖（胖）节点，他们彼此是等价的。因此就不难理解，旋转操作只是为了下一步计算方便，而并没有改变这等价关系。如下图。<br><img src="http://qiniu.s1nh.org/algorithm-4-node.png-QNthin" alt=""><br><img src="http://qiniu.s1nh.org/algorithm-3-node.png-QNthin" alt=""><br><img src="http://qiniu.s1nh.org/algorithm-23-rb.png-QNthin" alt=""></p>
+<p>对于红黑树，插入操作分为4种情况</p>
+<ol>
+<li>当前节点N是树中的根节点—&gt;将节点直接染成黑色</li>
+<li>当前节点的父亲P是黑色—&gt;直接添加</li>
+<li><code>算法导论 情况1</code>叔叔是红色（相当与出现了5节点）—&gt;父亲，叔叔，爷爷全部变色</li>
+<li><code>算法导论 情况2,3</code>叔叔是黑色（出现了胖胖节点，变成其标准形状）—&gt;将N变为左孩子（左旋），并对整颗树进行右旋。形成胖胖节点的标准形状</li>
+</ol>
+<p><a href="https://www.cnblogs.com/hilow/p/3949188.html" target="_blank" rel="noopener">这篇文章</a>详细的介绍了红黑树的各种操作。</p>
+<p>应该注意到，2-3-4树是不允许有5节点的。因此，翻开算法导论，<code>情况1：叔节点是红色的</code>就可以看作，发现了不可能存在的5节点，就立马变色。因为胖胖树最终是要拆成3个瘦树的，所以对连续红色节点的树进行旋转，形成胖胖的标准形状。</p>
+<h4 id="3-左倾红黑树"><a href="#3-左倾红黑树" class="headerlink" title="3. 左倾红黑树"></a>3. 左倾红黑树</h4><p><a href="https://www.jianshu.com/p/37c845a5add6" target="_blank" rel="noopener">这篇文章（插入部分有错误，详情见我给他的评论）</a>里介绍了<code>左倾红黑树</code>。不同于算法导论中介绍的版本，左倾红黑树是由2-3树的变种，又因为作者给了很牛逼的递归表达，因此实现起来更简单。</p>
+<ol>
+<li>插入红节点，如果如果右倾，左旋为左倾</li>
+<li>如果出现连续的红节点，右旋转换成胖胖节点</li>
+<li>出现了胖胖节点，立刻分解成3个瘦节点（变色）</li>
+</ol>
+<p>下面是作者给出的RB-tree和LLRB-tree的代码差别：</p>
+<p><img src="http://qiniu.s1nh.org/algorithm-23-234.png-QNthin" alt=""></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/post/lcs/" rel="prev" title="最长公共子序列（LCS）到git diff">
+      <i class="fa fa-chevron-left"></i> 最长公共子序列（LCS）到git diff
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/post/littlebug/" rel="next" title="linux kernel bug 导致无法载入 nvidia 驱动">
+      linux kernel bug 导致无法载入 nvidia 驱动 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01-RSA"><span class="nav-number">1.</span> <span class="nav-text">0x01 RSA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02-KMP算法"><span class="nav-number">2.</span> <span class="nav-text">0x02 KMP算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x03-AVL树与红黑树"><span class="nav-number">3.</span> <span class="nav-text">0x03 AVL树与红黑树</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-AVL树（平衡二叉树）"><span class="nav-number">3.0.1.</span> <span class="nav-text">1. AVL树（平衡二叉树）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-红黑树"><span class="nav-number">3.0.2.</span> <span class="nav-text">2. 红黑树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-左倾红黑树"><span class="nav-number">3.0.3.</span> <span class="nav-text">3. 左倾红黑树</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="S1NH"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">S1NH</p>
+  <div class="site-description" itemprop="description">no other developers required.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">79</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">77</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/santuxuezhang" title="程序员吐槽师 → http:&#x2F;&#x2F;weibo.com&#x2F;santuxuezhang" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>程序员吐槽师</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.gitbook.com/book/xcode-jianghu/xcode-jianghu/details" title="Xcode江湖录 → https:&#x2F;&#x2F;www.gitbook.com&#x2F;book&#x2F;xcode-jianghu&#x2F;xcode-jianghu&#x2F;details" rel="noopener" target="_blank"><i class="fa fa-fw fa-book"></i>Xcode江湖录</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://t.tips/" title="http:&#x2F;&#x2F;t.tips&#x2F;" rel="noopener" target="_blank">一只猿</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://s1nh.com/" title="http:&#x2F;&#x2F;s1nh.com&#x2F;" rel="noopener" target="_blank">本站 github 镜像</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/http:/s1nh.org/" title="http:&#x2F;&#x2F;s1nh.org&#x2F;">本站国内镜像</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2015 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">S1NH</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.7.2
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'XOzH1c25Dogu8cYTuRxfnTFo-gzGzoHsz',
+      appKey     : 'RxlSioLPtr2tPejVVqIcrEq2',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

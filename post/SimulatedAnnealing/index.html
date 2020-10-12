@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <link rel="manifest" href="/images/site.webmanifest">
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"s1nh.org","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="本文为整理的介绍爬山算法、模拟退火算法的资料。部分来源网络。  爬山算法(Hill Climbing)介绍模拟退火前，先介绍爬山算法。爬山算法是一种简单的贪心搜索算法，该算法每次从当前解的临近解空间中选择一个最优解作为当前解，直到达到一个局部最优解。">
+<meta name="keywords" content="爬山算法,模拟退火算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="模拟退火算法">
+<meta property="og:url" content="http:&#x2F;&#x2F;s1nh.org&#x2F;post&#x2F;SimulatedAnnealing&#x2F;index.html">
+<meta property="og:site_name" content="S1NH">
+<meta property="og:description" content="本文为整理的介绍爬山算法、模拟退火算法的资料。部分来源网络。  爬山算法(Hill Climbing)介绍模拟退火前，先介绍爬山算法。爬山算法是一种简单的贪心搜索算法，该算法每次从当前解的临近解空间中选择一个最优解作为当前解，直到达到一个局部最优解。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;Blog_HillClimbing_1.png-QNthin">
+<meta property="og:updated_time" content="2018-01-15T03:54:17.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;Blog_HillClimbing_1.png-QNthin">
+
+<link rel="canonical" href="http://s1nh.org/post/SimulatedAnnealing/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>模拟退火算法 | S1NH</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?4c66a84272e0f7943a305accf6dbdf41";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">S1NH</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">世界在旅程的尽头终结</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="search-pop-overlay">
+  <div class="popup search-popup">
+      <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+  </div>
+</div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/SimulatedAnnealing/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="S1NH">
+      <meta itemprop="description" content="no other developers required.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="S1NH">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          模拟退火算法
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2015-11-27 22:53:14" itemprop="dateCreated datePublished" datetime="2015-11-27T22:53:14+08:00">2015-11-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2018-01-15 11:54:17" itemprop="dateModified" datetime="2018-01-15T11:54:17+08:00">2018-01-15</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/post/SimulatedAnnealing/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/post/SimulatedAnnealing/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>本文为整理的介绍爬山算法、模拟退火算法的资料。部分来源网络。</p>
+</blockquote>
+<h2 id="爬山算法-Hill-Climbing"><a href="#爬山算法-Hill-Climbing" class="headerlink" title="爬山算法(Hill Climbing)"></a>爬山算法(Hill Climbing)</h2><p>介绍模拟退火前，先介绍爬山算法。爬山算法是一种简单的贪心搜索算法，该算法每次从当前解的临近解空间中选择一个最优解作为当前解，直到达到一个局部最优解。</p>
+<p><img src="http://qiniu.s1nh.org/Blog_HillClimbing_1.png-QNthin" alt=""></p>
+<a id="more"></a>
+
+<p>爬山算法实现很简单，其主要缺点是会陷入局部最优解，而不一定能搜索到全局最优解。如图1所示：假设C点为当前解，爬山算法搜索到A点这个局部最优解就会停止搜索，因为在A点无论向那个方向小幅度移动都不能得到更优的解。</p>
+<h2 id="模拟退火-SA-Simulated-Annealing-思想"><a href="#模拟退火-SA-Simulated-Annealing-思想" class="headerlink" title="模拟退火(SA,Simulated Annealing)思想"></a>模拟退火(SA,Simulated Annealing)思想</h2><p>爬山法是完完全全的贪心法，每次都鼠目寸光的选择一个当前最优解，因此只能搜索到局部的最优值。模拟退火其实也是一种贪心算法，但是它的搜索过程引入了随机因素。模拟退火算法以一定的概率来接受一个比当前解要差的解，因此有可能会跳出这个局部的最优解，达到全局的最优解。以图1为例，模拟退火算法在搜索到局部最优解A后，会以一定的概率接受到E的移动。也许经过几次这样的不是局部最优的移动后会到达D点，于是就跳出了局部最大值A。</p>
+<pre><code>模拟退火算法描述：
+
+若J(Y(i+1))&gt;=J(Y(i)) (即移动后得到更优解)，则总是接受该移动
+
+若J(Y(i+1))&lt;J(Y(i)) (即移动后的解比当前解要差) ，则以一定的概率接受移动，而且这个概率随着时间推移逐渐降低（逐渐降低才能趋向稳定）</code></pre><p>这里的“一定的概率”的计算参考了金属冶炼的退火过程，这也是模拟退火算法名称的由来。</p>
+<p>根据热力学的原理，在温度为T时，出现能量差为dE的降温的概率为P(dE)，表示为：</p>
+<p><code>P(dE)=exp(dE/(kT))</code></p>
+<p>其中k是一个常数，exp表示自然指数，且dE&lt;0。这条公式说白了就是：温度越高，出现一次能量差为dE的降温的概率就越大；温度越低，则出现降温的概率就越小。又由于dE总是小于0（否则就不叫退火了），因此<code>dE/kT&lt;0</code>，所以P(dE)的函数取值范围是(0,1)。</p>
+<p>随着温度T的降低，P(dE)会逐渐降低。</p>
+<p>我们将一次向较差解的移动看做一次温度跳变过程，我们以概率P(dE)来接受这样的移动。</p>
+<pre><code>关于爬山算法与模拟退火，有一个有趣的比喻：
+
+爬山算法：兔子朝着比现在高的地方跳去。它找到了不远处的最高山峰。但是这座山不一定是珠穆朗玛峰。这就是爬山算法，它不能保证局部最优值就是全局最优值。
+
+模拟退火：兔子喝醉了。它随机地跳了很长时间。这期间，它可能走向高处，也可能踏入平地。但是，它渐渐清醒了并朝最高方向跳去。这就是模拟退火。</code></pre><h2 id="模拟退火算法伪代码"><a href="#模拟退火算法伪代码" class="headerlink" title="模拟退火算法伪代码"></a>模拟退火算法伪代码</h2><pre><code>/*
+* J(y)：在状态y时的评价函数值
+* Y(i)：表示当前状态
+* Y(i+1)：表示新的状态
+* r： 用于控制降温的快慢
+* T： 系统的温度，系统初始应该要处于一个高温的状态
+* T_min ：温度的下限，若温度T达到T_min，则停止搜索
+*/
+while( T &gt; T_min )
+{
+　　dE = J( Y(i+1) ) - J( Y(i) ) ; 
+
+　　if ( dE &gt;=0 ) //表达移动后得到更优解，则总是接受移动
+Y(i+1) = Y(i) ; //接受从Y(i)到Y(i+1)的移动
+　　else
+　　{
+// 函数exp( dE/T )的取值范围是(0,1) ，dE/T越大，则exp( dE/T )也
+if ( exp( dE/T ) &gt; random( 0 , 1 ) )
+Y(i+1) = Y(i) ; //接受从Y(i)到Y(i+1)的移动
+　　}
+　　T = r * T ; //降温退火 ，0&lt;r&lt;1 。r越大，降温越慢；r越小，降温越快
+　　/*
+　　* 若r过大，则搜索到全局最优解的可能会较高，但搜索的过程也就较长。若r过小，则搜索的过程会很快，但最终可能会达到一个局部最优值
+　　*/
+　　i ++ ;
+}</code></pre><h2 id="使用模拟退火算法解决旅行商问题"><a href="#使用模拟退火算法解决旅行商问题" class="headerlink" title="使用模拟退火算法解决旅行商问题"></a>使用模拟退火算法解决旅行商问题</h2><p>旅行商问题(TSP, Traveling Salesman Problem)：有N个城市，要求从其中某个问题出发，唯一遍历所有城市，再回到出发的城市，求最短的路线。</p>
+<p>旅行商问题属于所谓的NP完全问题，精确的解决TSP只能通过穷举所有的路径组合，其时间复杂度是O(N!)。</p>
+<p>使用模拟退火算法可以比较快的求出TSP的一条近似最优路径。（使用遗传算法也是可以的，我将在下一篇文章中介绍）模拟退火解决TSP的思路：</p>
+<pre><code>1. 产生一条新的遍历路径P(i+1)，计算路径P(i+1)的长度L(P(i+1))
+
+2. 若L(P(i+1))&lt;L(P(i))，则接受P(i+1)为新的路径，否则以模拟退火的那个概率接受P(i+1)，然后降温
+
+3. 重复步骤1，2直到满足退出条件</code></pre><p>产生新的遍历路径的方法有很多，下面列举其中3种：</p>
+<pre><code>1. 随机选择2个节点，交换路径中的这2个节点的顺序。
+
+2. 随机选择2个节点，将路径中这2个节点间的节点顺序逆转。
+
+3. 随机选择3个节点m，n，k，然后将节点m与n间的节点移位到节点k后面。</code></pre><p>代码</p>
+<pre><code>package com.test1;
+
+import java.lang.reflect.Array;
+import java.util.*;
+
+public class SimulatedAnnealing {
+
+    public static void main(String[] args) {
+        SA sa=new SA();
+        int[][] test=sa.getData();
+        int[][] test2=sa.getMatrix(6);
+        sa.sa(test2, 2);
+    }
+}
+class SA{
+    //随机获取一个矩阵数据表示个城市之间的距离
+    public int[][] getMatrix(int cityNum){
+        Random random=new Random();
+        int[][] matrix=new int[cityNum][cityNum];
+        for(int i=0;i&lt;cityNum;i++){
+            matrix[i][i]=999;
+        }
+        for(int i=0;i&lt;cityNum;i++){
+            for(int j=i+1;j&lt;cityNum;j++){
+                matrix[i][j]=random.nextInt(100);
+                matrix[j][i]=matrix[i][j];
+            } 
+        }
+        return matrix;
+    }
+    //随时选择两个城市交换位置，生成新的路径
+    public List getNewPath(List path){
+        Random random=new Random();
+        int size=path.size();
+        if(size&lt;2){
+            System.out.println(&quot;城市数目太少，无法生成新的路径&quot;);
+            return path;
+        }
+        int position1;
+        int position2;
+        do{
+            position1=random.nextInt(size-1);
+            position2=random.nextInt(size-1);
+        }while(position1==0 || position2==0 || position1==position2);
+
+        Integer temp=(Integer)path.get(position1);he xo
+        path.set(position1,(Integer)path.get(position2));
+        path.set(position2,temp);
+
+        return path;
+    }
+    //计算接受的概率
+    public double acceptanceProbability(int length,int newLength,double temperature){
+        if(newLength &lt; length){
+            return 1.1;
+        }
+        return Math.exp((length-newLength)/temperature);
+    }
+    //模拟退火过程，得到最优方案
+    public List sa(int[][] matrix,int start){
+        //record the number of cycles
+        int num=1;
+        //初始化温度
+        double temperature=1000;
+        //冷却概率
+        double coolingRate=0.997;
+        //初始化解决方案
+        //List firstPath=greedy(matrix,1);
+        List firstPath=getFirstPath(matrix.length,start);
+        List bestPath=firstPath;
+        System.out.print(&quot;第0次： path:&quot;);
+        printPath(bestPath);
+        System.out.print(&quot; length:&quot;+getLength(matrix, bestPath)+&quot;\n&quot;);
+        //循环直至系统冷却
+        while(temperature&gt;1){
+            //get current path&apos;s length
+            int length=getLength(matrix, bestPath);
+            //create a new path
+            List newPath=getNewPath(bestPath);
+            //get newPath&apos;s length
+            int newLength=getLength(matrix, newPath);
+            //decition
+            double acceptanceProbability=acceptanceProbability(length, newLength, temperature);
+            if(acceptanceProbability&gt;Math.random()){
+                //acceptance
+                bestPath=newPath;
+                System.out.print(&quot;第&quot;+num+&quot;次： path:&quot;);
+                printPath(bestPath);
+                System.out.print(&quot; length:&quot;+getLength(matrix, bestPath)+&quot;\n&quot;);
+                num++;
+            }else{
+                //give up the new path
+            }
+            //cooling 
+            temperature*=coolingRate;
+        }
+        return bestPath;
+    }
+    //使用贪心算法获得一个初始的遍历序列
+    public List greedy(int[][] matrix,int start){
+        int line=matrix.length;
+        if(start&gt;(line-1)){
+            System.out.println(&quot;输入数据有误！&quot;);
+            return null;
+        }
+        List&lt;Integer&gt; already=new ArrayList&lt;Integer&gt;();
+        int point_now=start;
+        already.add(start);
+        for(int i=0;i&lt;(line-1);i++){
+            int min=999;
+            int next_point=0;
+            for(int j=0;j&lt;line;j++){
+                if(!already.contains(j) &amp;&amp; j!=point_now &amp;&amp; matrix[point_now][j]&lt;min){
+                    min=matrix[point_now][j];
+                    next_point=j;
+                }
+            }
+            already.add(next_point);
+            point_now=next_point;
+        }
+        already.add(start);
+        return already;
+    }
+    //init the first path
+    public List getFirstPath(int cityNum,int start){
+        List path=new ArrayList();
+        path.add(start);
+        for(int i=1;i&lt;cityNum;i++){
+            if(i!=start)
+                path.add(i);
+        }
+        path.add(start);
+        return path;
+    }
+    //计算一个路径的总长度
+    public int getLength(int[][] matrix,List path){
+        int path_length=0;
+        for(int i=0;i&lt;path.size()-1;i++){
+            path_length+=matrix[(Integer)path.get(i+1)][(Integer)path.get(i)];
+        }
+        return path_length;
+    }
+    //得到一个测试数据
+    public static int[][] getData(){
+        int[][] data=new int[5][5];
+        data[0]=new int[]{999,48,49,90,42};
+        data[1]=new int[]{48,999,24,22,49};
+        data[2]=new int[]{49,24,999,65,65};
+        data[3]=new int[]{90,22,65,999,92};
+        data[4]=new int[]{42,49,65,92,999};
+        return data;
+    }
+    //print a path
+    public void printPath(List path){
+        for(int i=0;i&lt;path.size();i++){
+            System.out.print(path.get(i)+&quot; &quot;);
+        }
+    }
+}</code></pre><h2 id="算法评价"><a href="#算法评价" class="headerlink" title="算法评价"></a>算法评价</h2><p>模拟退火算法是一种随机算法，并不一定能找到全局的最优解，可以比较快的找到问题的近似最优解。如果参数设置得当，模拟退火算法搜索效率比穷举法要高。</p>
+<hr>
+<p>参考文献：</p>
+<ol>
+<li><p><a href="http://www.cnblogs.com/heaad/archive/2010/12/20/1911614.html" target="_blank" rel="noopener">大白话解析模拟退火算法</a></p>
+</li>
+<li><p><a href="http://www.cnblogs.com/heaad/archive/2010/12/23/1914725.html" target="_blank" rel="noopener">http://www.cnblogs.com/heaad/archive/2010/12/23/1914725.html</a></p>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%88%AC%E5%B1%B1%E7%AE%97%E6%B3%95/" rel="tag"># 爬山算法</a>
+              <a href="/tags/%E6%A8%A1%E6%8B%9F%E9%80%80%E7%81%AB%E7%AE%97%E6%B3%95/" rel="tag"># 模拟退火算法</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/post/SettingUpNewMac/" rel="prev" title="Mac OS X 安装后的简单设置">
+      <i class="fa fa-chevron-left"></i> Mac OS X 安装后的简单设置
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/post/Beaglebone-Black_01/" rel="next" title="Beaglebone Black 折腾笔记（一） 折腾些没用的">
+      Beaglebone Black 折腾笔记（一） 折腾些没用的 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#爬山算法-Hill-Climbing"><span class="nav-number">1.</span> <span class="nav-text">爬山算法(Hill Climbing)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模拟退火-SA-Simulated-Annealing-思想"><span class="nav-number">2.</span> <span class="nav-text">模拟退火(SA,Simulated Annealing)思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模拟退火算法伪代码"><span class="nav-number">3.</span> <span class="nav-text">模拟退火算法伪代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用模拟退火算法解决旅行商问题"><span class="nav-number">4.</span> <span class="nav-text">使用模拟退火算法解决旅行商问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法评价"><span class="nav-number">5.</span> <span class="nav-text">算法评价</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="S1NH"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">S1NH</p>
+  <div class="site-description" itemprop="description">no other developers required.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">79</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">77</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/santuxuezhang" title="程序员吐槽师 → http:&#x2F;&#x2F;weibo.com&#x2F;santuxuezhang" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>程序员吐槽师</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.gitbook.com/book/xcode-jianghu/xcode-jianghu/details" title="Xcode江湖录 → https:&#x2F;&#x2F;www.gitbook.com&#x2F;book&#x2F;xcode-jianghu&#x2F;xcode-jianghu&#x2F;details" rel="noopener" target="_blank"><i class="fa fa-fw fa-book"></i>Xcode江湖录</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://t.tips/" title="http:&#x2F;&#x2F;t.tips&#x2F;" rel="noopener" target="_blank">一只猿</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://s1nh.com/" title="http:&#x2F;&#x2F;s1nh.com&#x2F;" rel="noopener" target="_blank">本站 github 镜像</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/http:/s1nh.org/" title="http:&#x2F;&#x2F;s1nh.org&#x2F;">本站国内镜像</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2015 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">S1NH</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.7.2
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'XOzH1c25Dogu8cYTuRxfnTFo-gzGzoHsz',
+      appKey     : 'RxlSioLPtr2tPejVVqIcrEq2',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

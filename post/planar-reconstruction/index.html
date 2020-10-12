@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <link rel="manifest" href="/images/site.webmanifest">
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"s1nh.org","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="input image piece-wise planar segmentation reconstructed depthmap texture-mapped 3D model">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Planar Reconstruction - 深度学习之平面重建">
+<meta property="og:url" content="http:&#x2F;&#x2F;s1nh.org&#x2F;post&#x2F;planar-reconstruction&#x2F;index.html">
+<meta property="og:site_name" content="S1NH">
+<meta property="og:description" content="input image piece-wise planar segmentation reconstructed depthmap texture-mapped 3D model">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;PlaneNet-head-1.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;PlaneNet-head-2.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;PlaneNet-head-3.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;PlaneNet-head-4.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;ScanNet.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;SYNTHIA.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;Cityscapes.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;NYU-dataset.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;PlaneRecover-fig2.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;PlaneNet-pipeline.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;PlaneRecover-fig3.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;PlaneRCNN-fig2.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;PlaneRCNN-fig3.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;PlanarReconstruction-pipeline.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;PlanarReconstruction-fig3.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;DiscuiminativeLoss.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;PlaneNet-fig4.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;PlaneNet-tab1.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;PlaneRecover-tab1.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;PlaneRecover-tab2.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;PlaneRCNN-fig4.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;PlanarReconstruction-fig4.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;PlanarReconstruction-tab1.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;PlanarReconstruction-tab2.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;PlanarReconstruction-tab3.png">
+<meta property="og:updated_time" content="2020-03-16T17:27:37.206Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;PlaneNet-head-1.png">
+
+<link rel="canonical" href="http://s1nh.org/post/planar-reconstruction/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>Planar Reconstruction - 深度学习之平面重建 | S1NH</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?4c66a84272e0f7943a305accf6dbdf41";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">S1NH</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">世界在旅程的尽头终结</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="search-pop-overlay">
+  <div class="popup search-popup">
+      <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+  </div>
+</div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/planar-reconstruction/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="S1NH">
+      <meta itemprop="description" content="no other developers required.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="S1NH">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Planar Reconstruction - 深度学习之平面重建
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-11-30 01:03:52" itemprop="dateCreated datePublished" datetime="2019-11-30T01:03:52+08:00">2019-11-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-17 01:27:37" itemprop="dateModified" datetime="2020-03-17T01:27:37+08:00">2020-03-17</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">深度学习</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/post/planar-reconstruction/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/post/planar-reconstruction/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <table>
+<thead>
+<tr>
+<th style="text-align:center"><img src="http://qiniu.s1nh.org/PlaneNet-head-1.png" alt=""></th>
+<th style="text-align:center"><img src="http://qiniu.s1nh.org/PlaneNet-head-2.png" alt=""></th>
+<th style="text-align:center"><img src="http://qiniu.s1nh.org/PlaneNet-head-3.png" alt=""></th>
+<th style="text-align:center"><img src="http://qiniu.s1nh.org/PlaneNet-head-4.png" alt=""></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">input image</td>
+<td style="text-align:center">piece-wise planar segmentation</td>
+<td style="text-align:center">reconstructed depthmap</td>
+<td style="text-align:center">texture-mapped 3D model</td>
+</tr>
+</tbody>
+</table>
+
+<a id="more"></a>
+
+<h2 id="0x00-Datasets"><a href="#0x00-Datasets" class="headerlink" title="0x00 Datasets"></a>0x00 Datasets</h2><ul>
+<li>ScanNet [1,3,4]</li>
+<li>SYNTHIA [2,3]</li>
+<li>Cityscapes [2]</li>
+<li>NYU Depth Dataset [1,3,4]</li>
+<li>Labeling method</li>
+</ul>
+<p><strong>ScanNet:</strong> Richly-annotated 3D Reconstructions of Indoor Scenes. <em>annotated with 3D camera poses, surface reconstructions, and instance-level semantic segmentations.</em></p>
+<p><img src="http://qiniu.s1nh.org/ScanNet.png" alt=""></p>
+<p><strong>SYNTHIA:</strong> The SYNTHetic collection of Imagery and Annotations. <em>8 RGB cameras forming a binocular 360º camera, 8 depth sensors</em><br><img src="http://qiniu.s1nh.org/SYNTHIA.png" alt=""></p>
+<p><strong>Cityscapes:</strong> Benchmark suite and evaluation server for pixel-level and instance-level semantic labeling.<br><em>video frames / stereo / GPS / vehicle odometry</em></p>
+<p><img src="http://qiniu.s1nh.org/Cityscapes.png" alt=""></p>
+<p><strong>NYU Depth Dataset:</strong> is recorded by both the <strong>RGB</strong> and <strong>Depth</strong> cameras from the Microsoft Kinect.</p>
+<ul>
+<li>Dense multi-class labels with <strong>instance</strong> number (cup1, cup2, cup3, etc). </li>
+<li>Raw: The raw <strong>rgb</strong>, <strong>depth</strong> and <strong>accelerometer</strong> data as provided by the Kinect.</li>
+<li><strong>Toolbox</strong>: Useful functions for manipulating the data and labels.</li>
+</ul>
+<p><img src="http://qiniu.s1nh.org/NYU-dataset.jpg" alt=""></p>
+<h3 id="Obtaining-ground-truth-plane-annotations"><a href="#Obtaining-ground-truth-plane-annotations" class="headerlink" title="Obtaining ground truth plane annotations :"></a>Obtaining ground truth plane annotations :</h3><p>Difficulty in detect planes from the 3D point cloud by using <strong>J-Linkage</strong> method.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><img src="http://qiniu.s1nh.org/PlaneRecover-fig2.png" alt=""></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>(c-d):</strong> Plane fitting results generated by J-Linkage with δ = 0.5 and δ = 2, respectively.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Labeling-method"><a href="#Labeling-method" class="headerlink" title="Labeling method:"></a>Labeling method:</h3><table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>ScanNet:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1. Fit plans to a consolidated mesh (merge planes if (normal diff &lt; 20° &amp;&amp; distance &lt; 5cm)</td>
+</tr>
+<tr>
+<td style="text-align:left">2. Project plans back to individual frames</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>SYNTHIA:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1. Manually <strong>draw a quadrilateral region</strong></td>
+</tr>
+<tr>
+<td style="text-align:left">2. Obtain the <strong>plane parameters</strong> and <strong>variance</strong> of the distance distribution</td>
+</tr>
+<tr>
+<td style="text-align:left">3. <strong>Find all pixels</strong> that belong to the plane by using the plane parameters and the variance estimate</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Cityscapes:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1. “planar” = {ground, road, sidewalk,parking, rail track, building, wall, fence, guard rail, bridge, and terrain}</td>
+</tr>
+<tr>
+<td style="text-align:left">2. Manually label the boundary of each plane using polygons</td>
+</tr>
+</tbody>
+</table>
+<h2 id="0x01-PlaneNet"><a href="#0x01-PlaneNet" class="headerlink" title="0x01 PlaneNet"></a>0x01 PlaneNet</h2><p><strong>[<a href="https://github.com/art-programmer/PlaneNet" target="_blank" rel="noopener">CVPR 2018</a>]</strong> Liu, Chen, et al. <strong>Washington University in St. Louis, Adobe.</strong> </p>
+<p><em>The first deep neural architecture for piece-wise planar depthmap reconstruction from a RGB image.</em></p>
+<h3 id="Pipeline"><a href="#Pipeline" class="headerlink" title="Pipeline"></a>Pipeline</h3><p><img src="http://qiniu.s1nh.org/PlaneNet-pipeline.png" alt=""></p>
+<p><strong>DRN:</strong> Dilated Residual Networks (2096 channels)</p>
+<p><strong>CRF:</strong> Conditional Random Field Algorithm</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Step</th>
+<th style="text-align:left">Loss</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Plane parameter:</strong></td>
+<td style="text-align:left">$$L^P=\sum_{i=1}^{K^*}min_{j\in[1,K]}\Vert P_i^*-P_j \Vert_2^2 \;\;\; (K = 10)$$</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Plane segmentation:</strong> softmax cross entropy</td>
+<td style="text-align:left">$$L^M=\sum_{i=1}^{K+1}\sum_{p \in I}(1(M^{*(p)}=i)log(1-M_i^{(p)}))$$</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Non-planar depth:</strong> ground-truth &lt;==&gt; predicted depthmap</td>
+<td style="text-align:left">$$L^D=\sum_{i=1}^{K+1}\sum_{p\in I}(M_i^{(p)}(D_i^{(p)}-D^{*(p)})^2)$$</td>
+</tr>
+<tr>
+<td style="text-align:left">-</td>
+<td style="text-align:left">$M^{(p)}\text{: probability of p belonging to the } i^{th} \text{ plane ;}\\ D^{(p)} \text{: depth value at pixel }p \text{ ;}\\ \text{*: GT .}$</td>
+</tr>
+</tbody>
+</table>
+<h2 id="0x02-Plane-Recover"><a href="#0x02-Plane-Recover" class="headerlink" title="0x02 Plane Recover"></a>0x02 Plane Recover</h2><p><strong>[<a href="https://github.com/fuy34/planerecover" target="_blank" rel="noopener">ECCV 18</a>]</strong> Fengting Yang and Zihan Zhou <strong>Pennsylvania State University.</strong> </p>
+<p><em>Recovering 3D Planes from a Single Image. Propose a novel plane structure-induced loss</em></p>
+<p><img src="http://qiniu.s1nh.org/PlaneRecover-fig3.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Step</th>
+<th style="text-align:left">Loss</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Plane loss</strong></td>
+<td style="text-align:left">$$L_{reg}(S_{i})=\sum_{q}^{}-z(q)\cdot log(p_{plane}(q))-(1-z(q))\cdot log(1-p_{plane}(q))$$</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Loss</strong></td>
+<td style="text-align:left">$$L=\sum_{i=1}^{n}\sum_{j=1}^m\left(\sum_{q}S_{i}^{j}(q)\cdot \vert(n_{i}^{j})^{T}Q-1\vert\right)+\alpha \sum_{i=1}^{n}L_{reg}(S_{i})$$</td>
+</tr>
+</tbody>
+</table>
+<h2 id="0x03-PlaneRCNN"><a href="#0x03-PlaneRCNN" class="headerlink" title="0x03 PlaneRCNN"></a>0x03 PlaneRCNN</h2><p>[CVPR2019] Liu, Chen, et al. <strong>NVIDIA, Washington University in St. Louis, SenseTime, Simon Fraser University</strong></p>
+<p><img src="http://qiniu.s1nh.org/PlaneRCNN-fig2.png" alt=""></p>
+<p><img src="http://qiniu.s1nh.org/PlaneRCNN-fig3.png" alt=""></p>
+<h2 id="0x04-PlanarReconstruction"><a href="#0x04-PlanarReconstruction" class="headerlink" title="0x04 PlanarReconstruction"></a>0x04 PlanarReconstruction</h2><p>[<a href="https://github.com/svip-lab/PlanarReconstruction" target="_blank" rel="noopener">CVPR 2019</a>] Yu, Zehao, et al. <strong>ShanghaiTech University, The Pennsylvania State University</strong></p>
+<p><em>Single-Image Piece-wise Planar 3D Reconstruction via Associative Embedding</em></p>
+<p><img src="http://qiniu.s1nh.org/PlanarReconstruction-pipeline.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Step</th>
+<th style="text-align:left">Loss</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Segmentation:</strong> balanced cross entropy</td>
+<td style="text-align:left">$$L_{S}=-(1-w)\sum_{i\in\mathcal{F}}^{}\log p_{i}-w\sum_{i\in\mathcal{B}}^{}\log(1-p_{i})$$</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Embedding:</strong> discuiminative loss</td>
+<td style="text-align:left">$$L_{E}=L_{pull}+L_{push}$$</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Per-pixel plane:</strong> L1 loss</td>
+<td style="text-align:left">$$ L_{PP}=\frac{1}{N}\sum_{i=1}^{N}\vert n_{i}-n^{*}_{i}\ \vert $$</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Instance Parameter:</strong></td>
+<td style="text-align:left">$$L_{IP}=\frac{1}{N\tilde{C}}\sum_{j=1}^{\tilde{C}}\sum_{i=1}^{N}S_{ij}\cdot\vert n_{j}^{T}Q_{i}-1\vert $$</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Loss</strong></td>
+<td style="text-align:left">$$L=L_{S}+L_{E}+L_{PP}+L_{IP}+…$$</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Embedding:</strong><br>associative emvedding <em>(End-to-End Learning for Joint Detection and Grouping)</em> ;</p>
+<p><img src="http://qiniu.s1nh.org/PlanarReconstruction-fig3.png" alt=""></p>
+<!--https://www.jianshu.com/p/40324b53a528-->
+<h3 id="Discriminative-loss-function"><a href="#Discriminative-loss-function" class="headerlink" title="Discriminative loss function"></a>Discriminative loss function</h3><ul>
+<li><strong>An image can contain an arbitrary number of instances</strong> </li>
+<li><strong>The labeling is permutation-invariant</strong>: it does not matter which specific label an instance gets, as long as it is different from all otherinstance labels.</li>
+</ul>
+<p><img src="http://qiniu.s1nh.org/DiscuiminativeLoss.png" alt=""></p>
+<p>$$L_{E}=L_{pull}+L_{push}$$</p>
+<p>$$where$$</p>
+<p>$$L_{pull}=\frac{1}{C}\sum_{c=1}^{C}\frac{1}{N_{c}}\sum_{i=1}^{N_{c}}\max\left(\lVert\mu_{c}-x_{i}\rVert-\delta_{\textrm{v}},0\right)$$ </p>
+<p>$$<br>L_{push}=\frac{1}{C(C-1)}\mathop{\sum_{c_{A}=1}^{C}\sum_{c_{B}=1}^{C}}_{c_{A}\neq c_{B}}\max\left(\delta_{\textrm{d}}-\lVert\mu_{c_{A}}-\mu_{c_{B}}\rVert,0\right)<br>$$</p>
+<p><em>Here, $C$ is the number of clusters $C$ (planes) in the ground truth, $N_c$ is the number of elements in cluster $c$, $x_i$ is the pixel embedding, $μ_c$ is the mean embedding of the cluster $c$, and $δ_v$ and $δ_d$ are the margin for “pull” and “push” losses, respectively.</em></p>
+<p><strong>Instance Parameter Loss:</strong></p>
+<table>
+<thead>
+<tr>
+<th>$$L_{IP}=\frac{1}{N\tilde{C}}\sum_{j=1}^{\tilde{C}}\sum_{i=1}^{N}S_{ij}\cdot\vert n_{j}^{T}Q_{i}-1\vert$$</th>
+<th>$S\text{: instance segmentation map}\\n_{j}\text{: predicted plane param}\\Q_i\text{: the 3D point at pixel } i $</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><em><center>$n\doteq\tilde{n}/d$ , where $\tilde{n}\in\mathcal{S}^{2}$ and $d$ denote the surface normal and plane distance to the origin</center></em></p>
+<h2 id="0xFF-Results"><a href="#0xFF-Results" class="headerlink" title="0xFF Results"></a>0xFF Results</h2><h3 id="PlaneNet"><a href="#PlaneNet" class="headerlink" title="PlaneNet"></a>PlaneNet</h3><p><img src="http://qiniu.s1nh.org/PlaneNet-fig4.png" alt=""></p>
+<p><img src="http://qiniu.s1nh.org/PlaneNet-tab1.png" alt=""></p>
+<h3 id="PlaneRecover"><a href="#PlaneRecover" class="headerlink" title="PlaneRecover"></a>PlaneRecover</h3><p><img src="http://qiniu.s1nh.org/PlaneRecover-tab1.png" alt=""></p>
+<p><img src="http://qiniu.s1nh.org/PlaneRecover-tab2.png" alt=""></p>
+<h3 id="PlaneRCNN"><a href="#PlaneRCNN" class="headerlink" title="PlaneRCNN"></a>PlaneRCNN</h3><p><img src="http://qiniu.s1nh.org/PlaneRCNN-fig4.png" alt=""></p>
+<h3 id="PlanarReconstruction"><a href="#PlanarReconstruction" class="headerlink" title="PlanarReconstruction"></a>PlanarReconstruction</h3><p><img src="http://qiniu.s1nh.org/PlanarReconstruction-fig4.png" alt=""></p>
+<p><img src="http://qiniu.s1nh.org/PlanarReconstruction-tab1.png" alt=""></p>
+<p><img src="http://qiniu.s1nh.org/PlanarReconstruction-tab2.png" alt=""></p>
+<p><img src="http://qiniu.s1nh.org/PlanarReconstruction-tab3.png" alt=""></p>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/post/project-velodyne/" rel="prev" title="多线激光 Velodyne 与相机的配准及投影">
+      <i class="fa fa-chevron-left"></i> 多线激光 Velodyne 与相机的配准及投影
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/post/multi-modal-and-edge-compute/" rel="next" title="多模态人工智能与边缘计算技术">
+      多模态人工智能与边缘计算技术 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x00-Datasets"><span class="nav-number">1.</span> <span class="nav-text">0x00 Datasets</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Obtaining-ground-truth-plane-annotations"><span class="nav-number">1.1.</span> <span class="nav-text">Obtaining ground truth plane annotations :</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Labeling-method"><span class="nav-number">1.2.</span> <span class="nav-text">Labeling method:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01-PlaneNet"><span class="nav-number">2.</span> <span class="nav-text">0x01 PlaneNet</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Pipeline"><span class="nav-number">2.1.</span> <span class="nav-text">Pipeline</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02-Plane-Recover"><span class="nav-number">3.</span> <span class="nav-text">0x02 Plane Recover</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x03-PlaneRCNN"><span class="nav-number">4.</span> <span class="nav-text">0x03 PlaneRCNN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x04-PlanarReconstruction"><span class="nav-number">5.</span> <span class="nav-text">0x04 PlanarReconstruction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Discriminative-loss-function"><span class="nav-number">5.1.</span> <span class="nav-text">Discriminative loss function</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0xFF-Results"><span class="nav-number">6.</span> <span class="nav-text">0xFF Results</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PlaneNet"><span class="nav-number">6.1.</span> <span class="nav-text">PlaneNet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PlaneRecover"><span class="nav-number">6.2.</span> <span class="nav-text">PlaneRecover</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PlaneRCNN"><span class="nav-number">6.3.</span> <span class="nav-text">PlaneRCNN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PlanarReconstruction"><span class="nav-number">6.4.</span> <span class="nav-text">PlanarReconstruction</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="S1NH"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">S1NH</p>
+  <div class="site-description" itemprop="description">no other developers required.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">79</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">77</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/santuxuezhang" title="程序员吐槽师 → http:&#x2F;&#x2F;weibo.com&#x2F;santuxuezhang" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>程序员吐槽师</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.gitbook.com/book/xcode-jianghu/xcode-jianghu/details" title="Xcode江湖录 → https:&#x2F;&#x2F;www.gitbook.com&#x2F;book&#x2F;xcode-jianghu&#x2F;xcode-jianghu&#x2F;details" rel="noopener" target="_blank"><i class="fa fa-fw fa-book"></i>Xcode江湖录</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://t.tips/" title="http:&#x2F;&#x2F;t.tips&#x2F;" rel="noopener" target="_blank">一只猿</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://s1nh.com/" title="http:&#x2F;&#x2F;s1nh.com&#x2F;" rel="noopener" target="_blank">本站 github 镜像</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/http:/s1nh.org/" title="http:&#x2F;&#x2F;s1nh.org&#x2F;">本站国内镜像</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2015 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">S1NH</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.7.2
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'XOzH1c25Dogu8cYTuRxfnTFo-gzGzoHsz',
+      appKey     : 'RxlSioLPtr2tPejVVqIcrEq2',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

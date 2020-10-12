@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <link rel="manifest" href="/images/site.webmanifest">
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"s1nh.org","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Give an image, the task is to generate natural Question based on the image.  Another list of VQA https:&#x2F;&#x2F;github.com&#x2F;jokieleung&#x2F;awesome-visual-question-answering A survey of Image Caption in Chinese">
+<meta name="keywords" content="深度学习,VQG">
+<meta property="og:type" content="article">
+<meta property="og:title" content="A Survey of Visual Question Generation">
+<meta property="og:url" content="http:&#x2F;&#x2F;s1nh.org&#x2F;post&#x2F;vqg-survey&#x2F;index.html">
+<meta property="og:site_name" content="S1NH">
+<meta property="og:description" content="Give an image, the task is to generate natural Question based on the image.  Another list of VQA https:&#x2F;&#x2F;github.com&#x2F;jokieleung&#x2F;awesome-visual-question-answering A survey of Image Caption in Chinese">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;vqg-intro.svg">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;vqg-traditional.svg">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;vqg-pipeline-full.svg">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;vqg-iq-inference-full.svg">
+<meta property="og:updated_time" content="2020-09-21T11:54:49.033Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;vqg-intro.svg">
+
+<link rel="canonical" href="http://s1nh.org/post/vqg-survey/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>A Survey of Visual Question Generation | S1NH</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?4c66a84272e0f7943a305accf6dbdf41";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">S1NH</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">世界在旅程的尽头终结</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="search-pop-overlay">
+  <div class="popup search-popup">
+      <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+  </div>
+</div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/vqg-survey/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="S1NH">
+      <meta itemprop="description" content="no other developers required.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="S1NH">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          A Survey of Visual Question Generation
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-09-21 19:35:09 / 修改时间：19:54:49" itemprop="dateCreated datePublished" datetime="2020-09-21T19:35:09+08:00">2020-09-21</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/post/vqg-survey/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/post/vqg-survey/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <img src="http://qiniu.s1nh.org/vqg-intro.svg" width = 70% div align=center />
+
+
+<p>Give an image, the task is to generate natural Question based on the image.</p>
+<ul>
+<li>Another list of VQA <a href="https://github.com/jokieleung/awesome-visual-question-answering" target="_blank" rel="noopener">https://github.com/jokieleung/awesome-visual-question-answering</a></li>
+<li>A survey of Image Caption in Chinese <a href="https://zhuanlan.zhihu.com/p/27771046" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/27771046</a></li>
+<li>Survey of the State of the Art in Natural Language Generation: Core tasks, applications and evaluation [<a href="https://www.researchgate.net/profile/Albert_Gatt/publication/315696017_Survey_of_the_State_of_the_Art_in_Natural_Language_Generation_Core_tasks_applications_and_evaluation/links/58e4909caca272d62977a6b8/Survey-of-the-State-of-the-Art-in-Natural-Language-Generation-Core-tasks-applications-and-evaluation.pdf" target="_blank" rel="noopener">Link</a></li>
+</ul>
+<a id="more"></a>
+
+<h2 id="0x01-Datasets"><a href="#0x01-Datasets" class="headerlink" title="0x01. Datasets"></a>0x01. Datasets</h2><h4 id="I-VQA"><a href="#I-VQA" class="headerlink" title="I. VQA"></a>I. <a href="http://visualqa.org" target="_blank" rel="noopener">VQA</a></h4><blockquote>
+<p>Antol, Stanislaw, et al. “<strong>Vqa: Visual question answering.</strong>“ <em>Proceedings of the IEEE international conference on computer vision.</em> 2015.</p>
+<p>Zhang, Peng, et al. “<strong>Yin and yang: Balancing and answering binary visual questions.</strong>“ <em>Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition.</em> 2016.</p>
+<p>Goyal, Yash, et al. “<strong>Making the V in VQA matter: Elevating the role of image understanding in Visual Question Answering.</strong>“ <em>Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition.</em> 2017.</p>
+</blockquote>
+<p>VQA is a new dataset containing open-ended questions about images. These questions require an understanding of vision, language and commonsense knowledge to answer.</p>
+<ul>
+<li>265,016 images (COCO and abstract scenes)</li>
+<li>At least 3 questions (5.4 questions on average) per image</li>
+<li>10 ground truth answers per question</li>
+<li>3 plausible (but likely incorrect) answers per question</li>
+<li>Automatic evaluation metric</li>
+</ul>
+<h4 id="II-VQG-COCO-Bing-Flicker"><a href="#II-VQG-COCO-Bing-Flicker" class="headerlink" title="II.VQG-COCO/Bing/Flicker"></a>II.<a href="https://www.microsoft.com/en-us/download/details.aspx?id=53670" target="_blank" rel="noopener">VQG-COCO/Bing/Flicker</a></h4><blockquote>
+<p>Mostafazadeh, Nasrin, et al. “<strong>Generating Natural Questions About an Image.</strong>“ <em>Proceedings of the 54th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers).</em> 2016.</p>
+</blockquote>
+<p>This dataset is described in <a href="http://aclanthology.info/papers/generating-natural-questions-about-an-image" target="_blank" rel="noopener">http://aclanthology.info/papers/generating-natural-questions-about-an-image</a>. The dataset is comprised of 9 csv’s, organized first by the source of the image, Bing, MSCOCO, or Flickr, then by type of dataset, train, dev and test. Within each file, we organize by image_id, the link to the image, and the up to 5 natural questions authored by crowdworkers on Amazon Mechnical Turk in response to the image. Please be sure to maintain these files separately in order to report system accuracy and progress on dev and test sets. For the Bing images, the dataset includes up to 5 captions for each image link; captions for the COCO and Flickr images are available elsewhere. In addition, each of the test set files includes the human rating of the question necessary to compute the deltaBleu score (see <a href="http://aclanthology.info/papers/deltableu-a-discriminative-metric-for-generation-tasks-with-intrinsically-diverse-targets" target="_blank" rel="noopener">http://aclanthology.info/papers/deltableu-a-discriminative-metric-for-generation-tasks-with-intrinsically-diverse-targets</a>).</p>
+<h4 id="III-TextVQA"><a href="#III-TextVQA" class="headerlink" title="III. TextVQA"></a>III. <a href="https://textvqa.org/dataset" target="_blank" rel="noopener">TextVQA</a></h4><h4 id="IV-Visual-Genome"><a href="#IV-Visual-Genome" class="headerlink" title="IV. Visual Genome"></a>IV. <a href="http://visualgenome.org/api/v0/api_home.html" target="_blank" rel="noopener">Visual Genome</a></h4><h4 id="V-VizWiz"><a href="#V-VizWiz" class="headerlink" title="V. VizWiz"></a>V. <a href="https://vizwiz.org/" target="_blank" rel="noopener">VizWiz</a></h4><h4 id="VI-Visual-Dialog"><a href="#VI-Visual-Dialog" class="headerlink" title="VI. Visual Dialog"></a>VI. <a href="https://visualdialog.org/" target="_blank" rel="noopener">Visual Dialog</a></h4><h2 id="0x02-Researchers"><a href="#0x02-Researchers" class="headerlink" title="0x02. Researchers"></a>0x02. Researchers</h2><ul>
+<li><p>Indian Institute of Technology, <a href="https://badripatro.github.io/index.html" target="_blank" rel="noopener">Badri N. Patro</a> &amp; <a href="https://vinaypn.github.io/" target="_blank" rel="noopener">Vinay P. Namboodiri</a> <em>这哥们近期发了6篇有关VQG/VQA的文章，其中三篇被录用，两篇已经开源（不过star很少）</em></p>
+</li>
+<li><p>Microsoft, <strong>Nan Duan</strong>, <strong>Duyu Tang</strong>, <strong>Tong Wang</strong>(Maluuba)</p>
+</li>
+<li><p>Google DeepMind, Oriol Vinyals</p>
+</li>
+<li><p>Nasrin Mostafazadeh</p>
+</li>
+<li><p>Alexander Toshev</p>
+</li>
+</ul>
+<h2 id="0x03-Architecture"><a href="#0x03-Architecture" class="headerlink" title="0x03. Architecture"></a>0x03. Architecture</h2><h3 id="0-Rule-based-❌"><a href="#0-Rule-based-❌" class="headerlink" title="0. Rule-based ❌"></a>0. Rule-based ❌</h3><h3 id="1-GRNN"><a href="#1-GRNN" class="headerlink" title="1. GRNN"></a>1. GRNN</h3><p><code>2016 Microsoft</code></p>
+<img src="http://qiniu.s1nh.org/vqg-traditional.svg" width = 70% div align=center />
+
+
+
+
+<h3 id="2-IQ"><a href="#2-IQ" class="headerlink" title="2. IQ"></a>2. IQ</h3><p><strong>with VAE</strong>/<strong>maximizes mutual information</strong>/<strong>doesn’t need to know the expected answer</strong></p>
+<img src="http://qiniu.s1nh.org/vqg-pipeline-full.svg" width = 90% div align=center  />
+
+
+<p><strong>pipeline</strong></p>
+<img src="http://qiniu.s1nh.org/vqg-iq-inference-full.svg" width = 90% div align=center />
+
+
+<h2 id="0x04-Experiments"><a href="#0x04-Experiments" class="headerlink" title="0x04 Experiments"></a>0x04 Experiments</h2><p>pass</p>
+<h2 id="0xFD-Metrics"><a href="#0xFD-Metrics" class="headerlink" title="0xFD Metrics"></a>0xFD Metrics</h2><ul>
+<li><p><code>word-overlap metrics</code>  BLEU, METEOR, ROUGE etc.</p>
+</li>
+<li><p><code>embedding-based metrics</code>  Skip-Thought, Embedding average, Vector extrema, Greedy matching etc.</p>
+</li>
+</ul>
+<h3 id="1-Word-overlap-metrics"><a href="#1-Word-overlap-metrics" class="headerlink" title="1. Word-overlap metrics"></a>1. Word-overlap metrics</h3><h4 id="1-1-BLEU"><a href="#1-1-BLEU" class="headerlink" title="1.1. BLEU"></a>1.1. BLEU</h4><p><code>Widely used in the machine translation literature.</code></p>
+<p><strong>Feature</strong></p>
+<ul>
+<li>Focus on precision, don’t care about recall.</li>
+<li>Regardless of word order.</li>
+</ul>
+<p><strong>Math</strong></p>
+<p>First compute brevity penalty BP shows below:</p>
+<p>$$BP=\begin{cases}<br>1, &amp;if \ c &gt; r\<br>e^{\ (\ 1 - r / c\ )}, &amp;if \ c&lt;r<br>\end{cases}$$</p>
+<p>Where c is the total length of the candidate translation corpus, and r is the effective reference corpus length.</p>
+<p>Next, compute the geometric average of the modified <strong>n-gram precisions</strong>, $p_n$, using n-grams up to length N and positive weights $w_n$ summing to one.</p>
+<p>Then, BELU is shown below:</p>
+<p>$$BLEU = BP \cdot exp\left(\sum_{n=1}^N w_n \log p_n\right)$$</p>
+<p>Where $exp\left(\sum_{n=1}^N w_n \log p_n\right)$ represents the weighted sum of the logarithms of the accuracy of different n-grams</p>
+<p>And the ranking behavior is more immediately apparent in the log domain.</p>
+<p>$$log \ BLEU = min(1-\frac{r}{c},0) + \sum_{n=1}^N w_n \log p_n$$</p>
+<p><strong>Ref.</strong><br>[<a href="https://www.aclweb.org/anthology/P02-1040.pdf" target="_blank" rel="noopener">1</a>] [<a href="https://machinelearningmastery.com/calculate-bleu-score-for-text-python/" target="_blank" rel="noopener">2</a>]</p>
+<h4 id="1-2-ROUGE"><a href="#1-2-ROUGE" class="headerlink" title="1.2. ROUGE"></a>1.2. ROUGE</h4><p><code>Is almost same as BLEU, but caculate recall instead of precision.</code></p>
+<h4 id="1-3-METOR"><a href="#1-3-METOR" class="headerlink" title="1.3. METOR"></a>1.3. METOR</h4><p><code>Not only based on exact matches but also stem, synonym, and paraphrase matches.</code></p>
+<h3 id="2-Embedding-based-metrics"><a href="#2-Embedding-based-metrics" class="headerlink" title="2. Embedding-based metrics"></a>2. Embedding-based metrics</h3><ul>
+<li>Skip-Thought</li>
+<li>Embedding average</li>
+<li>Vector extrema</li>
+<li>Greedy matching</li>
+</ul>
+<h2 id="0xFD"><a href="#0xFD" class="headerlink" title="0xFD"></a>0xFD</h2><ul>
+<li><a href="https://ijdykeman.github.io/ml/2016/12/21/cvae.html" target="_blank" rel="noopener">Conditional Variational Autoencoders</a> (<a href="https://www.cnblogs.com/wangxiaocvpr/p/6231019.html" target="_blank" rel="noopener">in chinese</a>)</li>
+</ul>
+<h3 id="0xFE-Open-Source-Project"><a href="#0xFE-Open-Source-Project" class="headerlink" title="0xFE. Open Source Project"></a>0xFE. Open Source Project</h3><p><strong>VQA:</strong></p>
+<ul>
+<li><a href="https://github.com/facebookresearch/pythia" target="_blank" rel="noopener">Pythia</a> (<a href="https://colab.research.google.com/drive/1Z9fsh10rFtgWe4uy8nvU4mQmqdokdIRR" target="_blank" rel="noopener">Demo</a>)</li>
+<li><a href="https://delta-lab-iitk.github.io/U-CAM/" target="_blank" rel="noopener">U-CAM</a></li>
+</ul>
+<p><strong>VQG: (sorted by stars)</strong></p>
+<ul>
+<li><a href="https://github.com/yikang-li/iQAN" target="_blank" rel="noopener">iQAN (CVPR 2018)</a></li>
+<li><a href="https://github.com/chingyaoc/VQG-tensorflow" target="_blank" rel="noopener">VQG 1 (ACL 2016, unofficial)</a></li>
+<li><a href="https://github.com/naver/aqm-plus" target="_blank" rel="noopener">AQM+ (ICLR 2019)</a></li>
+<li><a href="https://github.com/ranjaykrishna/iq" target="_blank" rel="noopener">IQ (CVPR 2019)</a></li>
+<li><a href="https://github.com/badripatro/Visual_Question_Generation" target="_blank" rel="noopener">MDNVQG (EMNLP 2018)</a></li>
+<li><a href="https://github.com/chennaveh/VQG" target="_blank" rel="noopener">VQG 2 (ACL 2016, unofficial)</a></li>
+<li><a href="https://github.com/gitlost-murali/Natural-Questions-Generation-from-Images" target="_blank" rel="noopener">VQG 3 (ACL 2016, unofficial)</a></li>
+<li><a href="https://github.com/danishnxt/NLP-Project-VisualQuesGen" target="_blank" rel="noopener">VQG 4 (ACL 2016, unofficial)</a></li>
+</ul>
+<h3 id="0xFF-Papers-sorted-by-date"><a href="#0xFF-Papers-sorted-by-date" class="headerlink" title="0xFF. Papers (sorted by date)"></a>0xFF. Papers (sorted by date)</h3><ul>
+<li><p>Gao, J., Galley, M., &amp; Li, L. (2019). <strong>Neural approaches to conversational ai.</strong> Foundations and Trends® in Information Retrieval, 13(2-3), 127-298.[<a href="http://research.baidu.com/Public/ueditor/upload/file/20181029/1540796086725537.pdf" target="_blank" rel="noopener">Poster</a>] [<a href="https://arxiv.org/pdf/1809.08267.pdf" target="_blank" rel="noopener">Paper</a>]</p>
+</li>
+<li><p><strong>Patro, B. N.</strong>, Kurmi, V., Kumar, S., &amp; Namboodiri, V. (2020). <strong>Deep Bayesian Network for Visual Question Generation.</strong> In The IEEE Winter Conference on Applications of Computer Vision (pp. 1566-1576).</p>
+</li>
+<li><p><strong>Patro, B. N.</strong>, Patel, S., &amp; Namboodiri, V. P. (2019). <strong>Granular Multimodal Attention Networks for Visual Dialog.</strong> arXiv preprint arXiv:1910.05728.[<a href="http://xxx.itp.ac.cn/pdf/1910.05728.pdf" target="_blank" rel="noopener">Paper</a>]</p>
+</li>
+<li><p><strong>Patro, B. N.</strong>, Lunayach, M., Patel, S., &amp; Namboodiri, V. P. (2019). <strong>U-cam: Visual explanation using uncertainty based class activation maps.</strong> In Proceedings of the IEEE International Conference on Computer Vision (pp. 7444-7453). [<a href="http://openaccess.thecvf.com/content_ICCV_2019/papers/Patro_U-CAM_Visual_Explanation_Using_Uncertainty_Based_Class_Activation_Maps_ICCV_2019_paper.pdf" target="_blank" rel="noopener">Paper</a>] [<a href="https://delta-lab-iitk.github.io/U-CAM/" target="_blank" rel="noopener">Proj</a>] [<a href="https://github.com/DelTA-Lab-IITK/U-CAM" target="_blank" rel="noopener">code</a>]</p>
+</li>
+<li><p><strong>Patro, B. N.</strong>, &amp; Namboodiri, V. P. (2019). <strong>Deep Exemplar Networks for VQA and VQG.</strong> arXiv preprint arXiv:1912.09551.</p>
+</li>
+<li><p><strong>Patro, B. N.</strong>, &amp; Namboodiri, V. P. (2019). <strong>Probabilistic framework for solving Visual Dialog.</strong> arXiv preprint arXiv:1909.04800.[<a href="https://arxiv.org/pdf/1909.04800.pdf" target="_blank" rel="noopener">Paper</a>]</p>
+</li>
+<li><p>Lee, S. W., Gao, T., Yang, S., Yoo, J., &amp; Ha, J. W. (2019). <strong>Large-Scale Answerer in Questioner’s Mind for Visual Dialog Question Generation.</strong> ICLR 2019.[<a href="https://arxiv.org/pdf/1902.08355" target="_blank" rel="noopener">Paper</a>] [<a href="https://github.com/naver/aqm-plus" target="_blank" rel="noopener">code</a>]</p>
+</li>
+<li><p>Jedoui, K., Krishna, R., Bernstein, M., &amp; Fei-Fei, L. (2019). <strong>Deep Bayesian Active Learning for Multiple Correct Outputs.</strong> arXiv preprint arXiv:1912.01119.</p>
+</li>
+<li><p>Krishna, R., Bernstein, M., &amp; Fei-Fei, L. (2019). <strong>Information maximizing visual question generation.</strong> In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (pp. 2008-2018).[<a href="http://openaccess.thecvf.com/content_CVPR_2019/papers/Krishna_Information_Maximizing_Visual_Question_Generation_CVPR_2019_paper.pdf" target="_blank" rel="noopener">Paper</a>] [<a href="https://cs.stanford.edu/people/ranjaykrishna/iq/index.html" target="_blank" rel="noopener">Proj</a>] [<a href="https://github.com/ranjaykrishna/iq" target="_blank" rel="noopener">Code</a>]</p>
+</li>
+<li><p>Fan, Z., Wei, Z., Wang, S., Liu, Y., &amp; Huang, X. J. (2018, August). A reinforcement learning framework for natural question generation using bi-discriminators. In Proceedings of the 27th International Conference on Computational Linguistics (pp. 1763-1774).[<a href="https://www.aclweb.org/anthology/C18-1150.pdf" target="_blank" rel="noopener">Paper</a>]</p>
+</li>
+<li><p><strong>Patro, B. N.</strong>, Kumar, S., Kurmi, V. K., &amp; Namboodiri, V. P. (2018). <strong>Multimodal differential network for visual question generation.</strong> In Proceedings of the 2018 Conference on Empirical Methods in Natural Language Processing (pp. 4002-4012). [<a href="http://aclweb.org/anthology/D18-1434" target="_blank" rel="noopener">Paper</a>]. [<a href="https://badripatro.github.io/MDN-VQG/" target="_blank" rel="noopener">Project Link</a>] [<a href="https://github.com/badripatro/Visual_Question_Generation" target="_blank" rel="noopener">code</a>]</p>
+</li>
+<li><p>[49] Li, Y., <strong>Duan, N.</strong>, Zhou, B., Chu, X., Ouyang, W., Wang, X., &amp; Zhou, M. (2018). <strong>Visual question generation as dual task of visual question answering.</strong> In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (pp. 6116-6124). [<a href="https://arxiv.org/abs/1709.07192" target="_blank" rel="noopener">Paper</a>] [<a href="https://github.com/yikang-li/iQAN" target="_blank" rel="noopener">code</a>]</p>
+</li>
+<li><p>[362] Das, A., Kottur, S., Gupta, K., Singh, A., Yadav, D., Moura, J. M., … &amp; Batra, D. (2017). <strong>Visual dialog.</strong> In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (pp. 326-335).</p>
+</li>
+<li><p>Zhang, J., Wu, Q., Shen, C., Zhang, J., Lu, J., &amp; Hengel, A. V. D. (2017). <strong>Asking the difficult questions: Goal-oriented visual question generation via intermediate rewards.</strong> arXiv preprint arXiv:1711.07614. [<a href="https://arxiv.org/abs/1711.07614" target="_blank" rel="noopener">Paper</a>]</p>
+</li>
+<li><p>[41] <strong>Wang, T.</strong>, Yuan, X., &amp; Trischler, A. (2017). <strong>A joint model for question answering and question generation.</strong> arXiv preprint arXiv:1706.01450.</p>
+</li>
+<li><p>[59] Tang, D., <strong>Duan, N.</strong>, Qin, T., Yan, Z., &amp; Zhou, M. (2017). Question answering and question generation as dual tasks. arXiv preprint arXiv:1706.02027.</p>
+</li>
+<li><p>[65] Jain, U., Zhang, Z., &amp; Schwing, A. G. (2017). <strong>Creativity: Generating diverse questions using variational autoencoders.</strong> In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (pp. 6485-6494). [<a href="https://arxiv.org/abs/1704.03493" target="_blank" rel="noopener">Paper</a>].</p>
+</li>
+<li><p>[67] <strong>Mostafazadeh, N.</strong>, Brockett, C., Dolan, B., Galley, M., Gao, J., Spithourakis, G. P., &amp; Vanderwende, L. (2017). <strong>Image-grounded conversations: Multimodal context for natural question and response generation.</strong> IJCNLP (pp. 462–472). [<a href="https://arxiv.org/abs/1701.08251" target="_blank" rel="noopener">Paper</a>].</p>
+</li>
+<li><p>[62] <strong>Duan, N.</strong>, Tang, D., Chen, P., &amp; Zhou, M. (2017, September). Question generation for question answering. In Proceedings of the 2017 Conference on Empirical Methods in Natural Language Processing (pp. 866-874).</p>
+</li>
+<li><p>[24] Zhang, S., Qu, L., You, S., Yang, Z., &amp; Zhang, J. (2016). <strong>Automatic Generation of Grounded Visual Questions.</strong> [<a href="https://arxiv.org/abs/1612.06530" target="_blank" rel="noopener">Paper</a>]</p>
+</li>
+<li><p>[131] Mostafazadeh, N., Misra, I., Devlin, J., Mitchell, M., He, X., &amp; Vanderwende, L. (2016). <strong>Generating natural questions about an image.</strong> In ACL, the Association for Computational Linguistics (pp. 1802-1813).[<a href="https://arxiv.org/abs/1603.06059" target="_blank" rel="noopener">Paper</a>] [<a href="https://github.com/gitlost-murali/Natural-Questions-Generation-from-Images" target="_blank" rel="noopener">code1</a>] [<a href="https://github.com/chennaveh/VQG" target="_blank" rel="noopener">code2</a>] [<a href="https://github.com/chingyaoc/VQG-tensorflow" target="_blank" rel="noopener">code3</a>] [<a href="https://github.com/danishnxt/NLP-Project-VisualQuesGen" target="_blank" rel="noopener">code4</a>]</p>
+</li>
+<li><p>Yang, Y., Li, Y., Fermuller, C., &amp; Aloimonos, Y. (2015). <strong>Neural Self Talk: Image Understanding via Continuous Questioning and Answering.</strong>[<a href="https://arxiv.org/abs/1512.03460" target="_blank" rel="noopener">Paper</a>].</p>
+</li>
+<li><p>Carl Saldanha, Visual Question Generation</p>
+</li>
+<li><p>[3410] Vinyals, O., Toshev, A., Bengio, S., &amp; Erhan, D. (2015). <strong>Show and tell: A neural image caption generator.</strong> In Proceedings of the IEEE conference on computer vision and pattern recognition (pp. 3156-3164).[<a href="https://arxiv.org/pdf/1411.4555.pdf" target="_blank" rel="noopener">Paper</a>] [<a href="https://github.com/KranthiGV/Pretrained-Show-and-Tell-model" target="_blank" rel="noopener">code1</a>] [<a href="https://github.com/nikhilmaram/Show_and_Tell" target="_blank" rel="noopener">code2</a>] [<a href="https://github.com/jazzsaxmafia/show_and_tell.tensorflow" target="_blank" rel="noopener">code3</a>]</p>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag"># 深度学习</a>
+              <a href="/tags/VQG/" rel="tag"># VQG</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/post/inference-using-tensorrt-backend/" rel="prev" title="Inference using TensorRT Backend.">
+      <i class="fa fa-chevron-left"></i> Inference using TensorRT Backend.
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/post/jetson-nano-reduce-memory-usage/" rel="next" title="「Jetson Nano」 Reduce Memory Usage">
+      「Jetson Nano」 Reduce Memory Usage <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01-Datasets"><span class="nav-number">1.</span> <span class="nav-text">0x01. Datasets</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#I-VQA"><span class="nav-number">1.0.1.</span> <span class="nav-text">I. VQA</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#II-VQG-COCO-Bing-Flicker"><span class="nav-number">1.0.2.</span> <span class="nav-text">II.VQG-COCO/Bing/Flicker</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#III-TextVQA"><span class="nav-number">1.0.3.</span> <span class="nav-text">III. TextVQA</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IV-Visual-Genome"><span class="nav-number">1.0.4.</span> <span class="nav-text">IV. Visual Genome</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#V-VizWiz"><span class="nav-number">1.0.5.</span> <span class="nav-text">V. VizWiz</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#VI-Visual-Dialog"><span class="nav-number">1.0.6.</span> <span class="nav-text">VI. Visual Dialog</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02-Researchers"><span class="nav-number">2.</span> <span class="nav-text">0x02. Researchers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x03-Architecture"><span class="nav-number">3.</span> <span class="nav-text">0x03. Architecture</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0-Rule-based-❌"><span class="nav-number">3.1.</span> <span class="nav-text">0. Rule-based ❌</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-GRNN"><span class="nav-number">3.2.</span> <span class="nav-text">1. GRNN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-IQ"><span class="nav-number">3.3.</span> <span class="nav-text">2. IQ</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x04-Experiments"><span class="nav-number">4.</span> <span class="nav-text">0x04 Experiments</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0xFD-Metrics"><span class="nav-number">5.</span> <span class="nav-text">0xFD Metrics</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Word-overlap-metrics"><span class="nav-number">5.1.</span> <span class="nav-text">1. Word-overlap metrics</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-BLEU"><span class="nav-number">5.1.1.</span> <span class="nav-text">1.1. BLEU</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-ROUGE"><span class="nav-number">5.1.2.</span> <span class="nav-text">1.2. ROUGE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-METOR"><span class="nav-number">5.1.3.</span> <span class="nav-text">1.3. METOR</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Embedding-based-metrics"><span class="nav-number">5.2.</span> <span class="nav-text">2. Embedding-based metrics</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0xFD"><span class="nav-number">6.</span> <span class="nav-text">0xFD</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0xFE-Open-Source-Project"><span class="nav-number">6.1.</span> <span class="nav-text">0xFE. Open Source Project</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0xFF-Papers-sorted-by-date"><span class="nav-number">6.2.</span> <span class="nav-text">0xFF. Papers (sorted by date)</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="S1NH"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">S1NH</p>
+  <div class="site-description" itemprop="description">no other developers required.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">79</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">77</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/santuxuezhang" title="程序员吐槽师 → http:&#x2F;&#x2F;weibo.com&#x2F;santuxuezhang" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>程序员吐槽师</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.gitbook.com/book/xcode-jianghu/xcode-jianghu/details" title="Xcode江湖录 → https:&#x2F;&#x2F;www.gitbook.com&#x2F;book&#x2F;xcode-jianghu&#x2F;xcode-jianghu&#x2F;details" rel="noopener" target="_blank"><i class="fa fa-fw fa-book"></i>Xcode江湖录</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://t.tips/" title="http:&#x2F;&#x2F;t.tips&#x2F;" rel="noopener" target="_blank">一只猿</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://s1nh.com/" title="http:&#x2F;&#x2F;s1nh.com&#x2F;" rel="noopener" target="_blank">本站 github 镜像</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/http:/s1nh.org/" title="http:&#x2F;&#x2F;s1nh.org&#x2F;">本站国内镜像</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2015 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">S1NH</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.7.2
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'XOzH1c25Dogu8cYTuRxfnTFo-gzGzoHsz',
+      appKey     : 'RxlSioLPtr2tPejVVqIcrEq2',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

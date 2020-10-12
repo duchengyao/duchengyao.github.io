@@ -307,7 +307,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/post/first-impressions/" class="post-title-link" itemprop="url">第一印象（First Impressions）：人物性格特征预测</a>
+            <a href="/post/first-impressions/" class="post-title-link" itemprop="url">第一印象（First Impressions）人物性格特征预测</a>
         </h1>
 
         <div class="post-meta">
@@ -318,7 +318,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-10-12 12:21:18 / 修改时间：15:22:10" itemprop="dateCreated datePublished" datetime="2020-10-12T12:21:18+08:00">2020-10-12</time>
+              <time title="创建时间：2020-10-12 12:21:18 / 修改时间：15:23:43" itemprop="dateCreated datePublished" datetime="2020-10-12T12:21:18+08:00">2020-10-12</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -448,6 +448,100 @@
 <td>0.874761</td>
 </tr>
 </tbody></table>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/jetson-nano-reduce-memory-usage/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="S1NH">
+      <meta itemprop="description" content="no other developers required.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="S1NH">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/post/jetson-nano-reduce-memory-usage/" class="post-title-link" itemprop="url">「Jetson Nano」 Reduce Memory Usage</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-10-12 12:17:16 / 修改时间：15:26:57" itemprop="dateCreated datePublished" datetime="2020-10-12T12:17:16+08:00">2020-10-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/post/jetson-nano-reduce-memory-usage/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/post/jetson-nano-reduce-memory-usage/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>Nano 的4G内存太小了（最近还出来一个2G版nano &gt;_&lt;），模型跑不动的患者可以通过以下几个步骤减少内存消耗。</p>
+</blockquote>
+<p><strong>1. 关闭用户图形界面</strong><br>sudo systemctl set-default multi-user.target<br>sudo reboot</p>
+<p>开启用户图形界面<br>sudo systemctl set-default graphical.target<br>sudo reboot</p>
+<p><strong>2. 切换图形界面</strong><br>默认图形界面为Unity，Ubuntu 18 系统自带Gnome3，可切换到 lxde 以节约内存。</p>
+<ul>
+<li>GNOME3 :1047M</li>
+<li>Unity: 517M</li>
+<li>xfce: 247M</li>
+<li>lxde: 214M</li>
+</ul>
+<p><strong>3. 关闭 dockerd 节约 49M</strong></p>
 
       
     </div>
@@ -3086,110 +3180,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/jetson-tx-2-all-you-know/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="S1NH">
-      <meta itemprop="description" content="no other developers required.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="S1NH">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/post/jetson-tx-2-all-you-know/" class="post-title-link" itemprop="url">Jetson TX-2 入门 -- 全部你应该知道的</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2017-06-16 13:30:10" itemprop="dateCreated datePublished" datetime="2017-06-16T13:30:10+08:00">2017-06-16</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2017-08-28 17:37:24" itemprop="dateModified" datetime="2017-08-28T17:37:24+08:00">2017-08-28</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%A1%AC%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">硬件</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/post/jetson-tx-2-all-you-know/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/jetson-tx-2-all-you-know/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>首先庆祝一下我用TX-1做实验写的《<a href="http://crad.ict.ac.cn/CN/Y2017/V54/I6/1316" target="_blank" rel="noopener">GPU加速与L-ORB特征提取的全景视频实时拼接</a>》发表啦^_^<br>导师表示很开心，又给我买了两台TX-2</p>
-</blockquote>
-<p><code>TX-2比TX-1除了性能的升级，其它部分没有太大变化，接下来要写的小技巧对于TX-1/2都适用。使用期间发现的问题都会持续更新到这篇博客，目前发现的问题有：</code></p>
-<ul>
-<li>OpenCV4Tegra 不支持 -lopencv_nonfree</li>
-<li>OpenCV4Tegra 在TX-2中不支持 GPU 模块</li>
-<li>如何开启被屏蔽的2块CPU并设置为最大频率</li>
-<li>开启Nvidia TX-1/2 的VNC</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/post/jetson-tx-2-all-you-know/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -3262,7 +3252,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">78</span>
+          <span class="site-state-item-count">79</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -3274,7 +3264,7 @@
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">76</span>
+        <span class="site-state-item-count">77</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <link rel="manifest" href="/images/site.webmanifest">
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"s1nh.org","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="来北京一个月，一直蜗居在一个小屋里，没有钱花+前途迷茫的感觉真是浑身难受。我现在的任务是接手之前几个客座生的项目，用Turtlebot做一个送咖啡机器人。第一周的时间用来搭建一个完整的demo">
+<meta name="keywords" content="Turtlebot,ROS,Cartographer">
+<meta property="og:type" content="article">
+<meta property="og:title" content="新工作：制作一个送咖啡机器人——第一周">
+<meta property="og:url" content="http:&#x2F;&#x2F;s1nh.org&#x2F;post&#x2F;making-a-coffeebot-1&#x2F;index.html">
+<meta property="og:site_name" content="S1NH">
+<meta property="og:description" content="来北京一个月，一直蜗居在一个小屋里，没有钱花+前途迷茫的感觉真是浑身难受。我现在的任务是接手之前几个客座生的项目，用Turtlebot做一个送咖啡机器人。第一周的时间用来搭建一个完整的demo">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;Blog_cartographer_main.gif">
+<meta property="og:updated_time" content="2018-05-12T08:19:48.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;Blog_cartographer_main.gif">
+
+<link rel="canonical" href="http://s1nh.org/post/making-a-coffeebot-1/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>新工作：制作一个送咖啡机器人——第一周 | S1NH</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?4c66a84272e0f7943a305accf6dbdf41";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">S1NH</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">世界在旅程的尽头终结</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="search-pop-overlay">
+  <div class="popup search-popup">
+      <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+  </div>
+</div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/making-a-coffeebot-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="S1NH">
+      <meta itemprop="description" content="no other developers required.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="S1NH">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          新工作：制作一个送咖啡机器人——第一周
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-08-28 17:15:13" itemprop="dateCreated datePublished" datetime="2017-08-28T17:15:13+08:00">2017-08-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2018-05-12 16:19:48" itemprop="dateModified" datetime="2018-05-12T16:19:48+08:00">2018-05-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SLAM/" itemprop="url" rel="index"><span itemprop="name">SLAM</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/post/making-a-coffeebot-1/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/post/making-a-coffeebot-1/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>来北京一个月，一直蜗居在一个小屋里，没有钱花+前途迷茫的感觉真是浑身难受。<br>我现在的任务是接手之前几个客座生的项目，用Turtlebot做一个送咖啡机器人。第一周的时间用来搭建一个完整的demo</p>
+</blockquote>
+<p><img src="http://qiniu.s1nh.org/Blog_cartographer_main.gif" alt="" title="别紧张，这个是 Cartographer 官方的Gif图"></p>
+<a id="more"></a>
+
+<h2 id="0x01-ROS系统"><a href="#0x01-ROS系统" class="headerlink" title="0x01  ROS系统"></a>0x01  ROS系统</h2><p>不用买什么书，建议直接在官方的翻译很烂的<a href="http://wiki.ros.org/cn/ROS/Tutorials" target="_blank" rel="noopener">Tutorials</a>中学习。需要掌握的基本知识有：</p>
+<ul>
+<li><strong>安装ROS</strong></li>
+<li><strong>配置环境</strong></li>
+<li><strong>文件系统工具</strong> <code>rospack</code> <code>roscd</code> `</li>
+<li><strong>catkin管理工具包</strong> （因为我经常使用 <code>catkin_make_isolate</code> 所以我在 ~/.bash_alias 中添加了一行<code>alias make_robot=&#39;cd ~/project/catkin_ws ; catkin_make_isolated --install --use-ninja ; cd -&#39;</code>）</li>
+<li><strong>节点(node)</strong> <code>roscore</code> <code>rosnode list/info/ping</code> <code>rosrun</code></li>
+<li><strong><a href="http://wiki.ros.org/cn/ROS/Tutorials/UnderstandingTopics" target="_blank" rel="noopener">话题(Topic)</a></strong> 键盘/代码控制小乌龟到处跑， <code>rqt_graph</code> <code>rqt_plot</code> <code>rostopic echo</code> <code>rostopic list -v</code> <code>rostopic type</code> <code>rosmsg show</code> <code>rostopic pub [topic] [msg_type] [args]</code></li>
+<li><strong>服务/参数</strong> <code>rosservice list/type/call</code> <code>rossrv</code> <code>rosparam list/get/set/dump/load</code></li>
+<li><strong>调试/运行</strong> <code>rqt_console</code> <code>rqt_logger_level</code> <code>roslaunch</code></li>
+</ul>
+<h2 id="0x02-SLAM-Cartographer-ROS-for-TurtleBots"><a href="#0x02-SLAM-Cartographer-ROS-for-TurtleBots" class="headerlink" title="0x02 SLAM: Cartographer ROS for TurtleBots"></a>0x02 SLAM: Cartographer ROS for TurtleBots</h2><p>我按照<a href="https://google-cartographer-ros-for-turtlebots.readthedocs.io/en/latest/" target="_blank" rel="noopener">官方教程</a>没有出错，可能因为我这边原生ipv6翻墙。如果在<code>catkin_make_isolated</code>这一步出问题了，可以看<a href="http://blog.csdn.net/ywj447/article/details/52922487" target="_blank" rel="noopener">这篇</a>。</p>
+<p>装完以后记得运行一下<a href="https://google-cartographer-ros-for-turtlebots.readthedocs.io/en/latest/#running-the-demo" target="_blank" rel="noopener">官方教程</a>的demo。</p>
+<p>前面说的<code>Cartographer ROS for TurtleBots</code>的文档只有安装和使用demo的教程，完整的文档在<a href="https://google-cartographer-ros.readthedocs.io/en/latest/index.html" target="_blank" rel="noopener">Cartographer ROS</a>里。<strong>Google问题之前先看完文档</strong></p>
+<h3 id="——Cartographer-中出现的问题——"><a href="#——Cartographer-中出现的问题——" class="headerlink" title="——Cartographer 中出现的问题——"></a>——Cartographer 中出现的问题——</h3><p><strong>(1) 清理旧的编译文件</strong></p>
+<p>在我的笔记本上测试没问题后，安装到机器人的过程中却出了一个BUG。<br><code>error: ‘cartographer_ros_msgs::SubmapQuery::Request’ has no member named ‘submap_index’</code><br>在 github 中有一篇<a href="https://github.com/googlecartographer/cartographer/issues/211" target="_blank" rel="noopener">Issue</a>提到了这个问题， 原因是师兄留给我的电脑中有老版本的cartographer_ros没有定义<code>submap_index</code>，在我重新安装的时候除了冲突。<br>解决方案是在 catkin_make_isolated 之前 clean 一下目录（我不会clean所以把除了src之外的目录都删掉了-_-）</p>
+<p><strong>(2) 在ubuntu 16.04下，执行到 <code>rosdep install</code> 的时候报错</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ rosdep install --from-paths src --ignore-src --rosdistro&#x3D;$&#123;ROS_DISTRO&#125; -y</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">ERROR: the following packages&#x2F;stacks could not have their rosdep keys resolved</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">to system dependencies:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">ceres-solver: No definition of [eigen] for OS version []</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">cartographer: No definition of [eigen] for OS version []</span></pre></td></tr></table></figure>
+
+<p>我把这行命令后面加上 <code>--os=ubuntu:xenial</code> 问题解决</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ rosdep install --from-paths src --ignore-src --rosdistro&#x3D;$&#123;ROS_DISTRO&#125; -y --os&#x3D;ubuntu:xenial</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">#All required rosdeps installed successfully</span></pre></td></tr></table></figure>
+
+<p>我提交了<a href="https://github.com/googlecartographer/cartographer_ros/issues/485" target="_blank" rel="noopener">一个issue</a>，因为是rosdep的原因，被关闭了。</p>
+<h2 id="0x03-Lidar-rplidar"><a href="#0x03-Lidar-rplidar" class="headerlink" title="0x03 Lidar: rplidar"></a>0x03 Lidar: rplidar</h2><p>直接按照<a href="https://github.com/robopeak/rplidar_ros" target="_blank" rel="noopener">官方教程</a>装好，测试可用</p>
+<p>Robot <code>roslaunch rplidar_ros rplidar_robot.launch</code><br>notebook <code>roslaunch cartographer_ros demo_lidar.launch</code></p>
+<h2 id="0x04-底盘-Turltlebot-kobuki"><a href="#0x04-底盘-Turltlebot-kobuki" class="headerlink" title="0x04 底盘 Turltlebot-kobuki"></a>0x04 底盘 Turltlebot-kobuki</h2><p>基本的安装、使用方法这都有《<a href="http://www.ncnynl.com/category/ros-kobuki/" target="_blank" rel="noopener">Kobuki入门教程</a>》</p>
+<p><code>roslaunch kobuki_keyop safe_keyop.launch</code></p>
+<h2 id="0x05-kobuki-rplidar-Cartographer-实时构建地图"><a href="#0x05-kobuki-rplidar-Cartographer-实时构建地图" class="headerlink" title="0x05 kobuki + rplidar + Cartographer 实时构建地图"></a>0x05 kobuki + rplidar + Cartographer 实时构建地图</h2><p>前面三个工具包调试成功以后，我们就可以用键盘控制kobuki移动，用rplidar采集数据通过Cartographer 实时构建地图啦。</p>
+<p>《<a href="http://www.ncnynl.com/archives/201702/1371.html" target="_blank" rel="noopener">ROS与SLAM入门教程-cartographer在Turltlebot的应用3-构建地图</a>》可以参考（里面好像有点小错误）。需要注意的是，新增加的<code>turtlebot_lidar.launch</code>和<code>turtlebot_lidar_2d.launch</code>是根据原有的<code>turtlebot.launch</code>和<code>turtlebot_urg_lidar_2d.launch</code>修改而来的，同学们可以用<code>diff</code>命令查看他们的区别。</p>
+<h2 id="0x06-Cartographer-Turltlebot-rplidar-move-base-实时建图-自动导航"><a href="#0x06-Cartographer-Turltlebot-rplidar-move-base-实时建图-自动导航" class="headerlink" title="0x06 Cartographer-Turltlebot + rplidar + move_base 实时建图 + 自动导航"></a>0x06 Cartographer-Turltlebot + rplidar + move_base 实时建图 + 自动导航</h2><p>之前师兄用的 Cartographer-ROS，搞得比较麻烦，Cartographer-Turltlebot 都封装好了，会更方便一些。直接运行这个launch文件就可以在 <code>rviz</code> 里面用<code>2d nav goal</code>导航了。其中，因为雷达不是安装在机器人的正中间，所以<code>rplidar_robot.launch</code>是在原来的<code>rplidar.launch</code>的基础上添加了一个tf；<code>yocs_velocity_smoother</code>是个平滑器（如果一个节点发布速度命令不能保证其平滑度，在节点和cmd_vel_mux之间增加这个平滑器）；<code>move_base</code>的那些参数是师兄遗留下来的，我还没看&gt;_&lt;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&lt;launch&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">&lt;!-- rplidar --&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">  &lt;include file&#x3D;&quot;$(find rplidar_ros)&#x2F;launch&#x2F;rplidar_robot.launch&quot;&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">  &lt;&#x2F;include&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">&lt;!-- !rplidar --&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">&lt;!-- yocs_velocity_smoother --&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">  &lt;include file&#x3D;&quot;$(find yocs_velocity_smoother)&#x2F;launch&#x2F;velocity_smoother.launch&quot;&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">    &lt;arg name&#x3D;&quot;config_file&quot;           value&#x3D;&quot;yocs_velocity_smoother_param.yaml&quot;&#x2F;&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">    &lt;arg name&#x3D;&quot;nodelet_manager_name&quot;  value&#x3D;&quot;mobile_base_nodelet_manager&quot;&#x2F;&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">    &lt;arg name&#x3D;&quot;raw_cmd_vel_topic&quot;     value&#x3D;&quot;cmd_vel&quot;&#x2F;&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">    &lt;arg name&#x3D;&quot;smooth_cmd_vel_topic&quot;  value&#x3D;&quot;cmd_vel_mux&#x2F;input&#x2F;navi&quot;&#x2F;&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">  &lt;&#x2F;include&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">&lt;!-- !yocs_velocity_smoother --&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">  &lt;node pkg&#x3D;&quot;move_base&quot; type&#x3D;&quot;move_base&quot; respawn&#x3D;&quot;false&quot; name&#x3D;&quot;move_base&quot; output&#x3D;&quot;screen&quot;&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">    &lt;rosparam file&#x3D;&quot;$(find ltrobot2dnav)&#x2F;costmap_common_params.yaml&quot; command&#x3D;&quot;load&quot; ns&#x3D;&quot;global_costmap&quot; &#x2F;&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">    &lt;rosparam file&#x3D;&quot;$(find ltrobot2dnav)&#x2F;costmap_common_params.yaml&quot; command&#x3D;&quot;load&quot; ns&#x3D;&quot;local_costmap&quot; &#x2F;&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">    &lt;rosparam file&#x3D;&quot;$(find ltrobot2dnav)&#x2F;local_costmap_params.yaml&quot; command&#x3D;&quot;load&quot; &#x2F;&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line">    &lt;rosparam file&#x3D;&quot;$(find ltrobot2dnav)&#x2F;global_costmap_params.yaml&quot; command&#x3D;&quot;load&quot; &#x2F;&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">    &lt;rosparam file&#x3D;&quot;$(find ltrobot2dnav)&#x2F;base_local_planner_params.yaml&quot; command&#x3D;&quot;load&quot; &#x2F;&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line">    &lt;param name&#x3D;&quot;controller_frequency&quot;  type&#x3D;&quot;double&quot;   value&#x3D;&quot;3.0&quot;&#x2F;&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line">  &lt;&#x2F;node&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line">&lt;!-- cartographer turtlebot_lidar_2d.launch --&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">32</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">33</span></pre></td><td class="code"><pre><span class="line">  &lt;include file&#x3D;&quot;$(find cartographer_turtlebot)&#x2F;launch&#x2F;turtlebot_lidar.launch&quot;&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">34</span></pre></td><td class="code"><pre><span class="line">    &lt;arg name&#x3D;&quot;configuration_basename&quot; value&#x3D;&quot;turtlebot_urg_lidar_2d.lua&quot; &#x2F;&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">35</span></pre></td><td class="code"><pre><span class="line">  &lt;&#x2F;include&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">36</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">37</span></pre></td><td class="code"><pre><span class="line">&lt;!-- !cartographer --&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">38</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">39</span></pre></td><td class="code"><pre><span class="line">&lt;&#x2F;launch&gt;</span></pre></td></tr></table></figure>
+
+
+
+<h2 id="0x07-其它"><a href="#0x07-其它" class="headerlink" title="0x07 其它"></a>0x07 其它</h2><p>整个机器人基本能正常使用了，没有加优化效果感觉也还不错。机器人在接近障碍的时候可能会原地转一圈（可能是不知道自己用的是雷达而不是双目摄像头吧&gt;_&lt;）。</p>
+<blockquote>
+<p>英语好的可以看这个很牛逼的教程《<a href="http://learn.turtlebot.com/" target="_blank" rel="noopener">做一个送咖啡机器人</a>》</p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Turtlebot/" rel="tag"># Turtlebot</a>
+              <a href="/tags/ROS/" rel="tag"># ROS</a>
+              <a href="/tags/Cartographer/" rel="tag"># Cartographer</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/post/cv-sjtu/" rel="prev" title="计算机视觉技术调查报告">
+      <i class="fa fa-chevron-left"></i> 计算机视觉技术调查报告
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/post/fender-57-62-strat-pickup-first-reissue/" rel="next" title="首版复刻的Fender '57 & '62 Strat 拾音器">
+      首版复刻的Fender '57 & '62 Strat 拾音器 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01-ROS系统"><span class="nav-number">1.</span> <span class="nav-text">0x01  ROS系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02-SLAM-Cartographer-ROS-for-TurtleBots"><span class="nav-number">2.</span> <span class="nav-text">0x02 SLAM: Cartographer ROS for TurtleBots</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#——Cartographer-中出现的问题——"><span class="nav-number">2.1.</span> <span class="nav-text">——Cartographer 中出现的问题——</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x03-Lidar-rplidar"><span class="nav-number">3.</span> <span class="nav-text">0x03 Lidar: rplidar</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x04-底盘-Turltlebot-kobuki"><span class="nav-number">4.</span> <span class="nav-text">0x04 底盘 Turltlebot-kobuki</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x05-kobuki-rplidar-Cartographer-实时构建地图"><span class="nav-number">5.</span> <span class="nav-text">0x05 kobuki + rplidar + Cartographer 实时构建地图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x06-Cartographer-Turltlebot-rplidar-move-base-实时建图-自动导航"><span class="nav-number">6.</span> <span class="nav-text">0x06 Cartographer-Turltlebot + rplidar + move_base 实时建图 + 自动导航</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x07-其它"><span class="nav-number">7.</span> <span class="nav-text">0x07 其它</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="S1NH"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">S1NH</p>
+  <div class="site-description" itemprop="description">no other developers required.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">79</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">77</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/santuxuezhang" title="程序员吐槽师 → http:&#x2F;&#x2F;weibo.com&#x2F;santuxuezhang" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>程序员吐槽师</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.gitbook.com/book/xcode-jianghu/xcode-jianghu/details" title="Xcode江湖录 → https:&#x2F;&#x2F;www.gitbook.com&#x2F;book&#x2F;xcode-jianghu&#x2F;xcode-jianghu&#x2F;details" rel="noopener" target="_blank"><i class="fa fa-fw fa-book"></i>Xcode江湖录</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://t.tips/" title="http:&#x2F;&#x2F;t.tips&#x2F;" rel="noopener" target="_blank">一只猿</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://s1nh.com/" title="http:&#x2F;&#x2F;s1nh.com&#x2F;" rel="noopener" target="_blank">本站 github 镜像</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/http:/s1nh.org/" title="http:&#x2F;&#x2F;s1nh.org&#x2F;">本站国内镜像</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2015 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">S1NH</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.7.2
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'XOzH1c25Dogu8cYTuRxfnTFo-gzGzoHsz',
+      appKey     : 'RxlSioLPtr2tPejVVqIcrEq2',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

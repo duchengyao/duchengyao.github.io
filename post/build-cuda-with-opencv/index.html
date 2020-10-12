@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <link rel="manifest" href="/images/site.webmanifest">
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"s1nh.org","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="编译OpenCV with CUDA编译方法官方文档写的特别清楚。此外，如果要使用python接口，编译完成后需要把opencv&#x2F;site-packages目录下的cv2.so链接（或复制）到python&#x2F;site-packages中，我执行的命令为sudo ln -s  &#x2F;usr&#x2F;local&#x2F;opencv3&#x2F;lib&#x2F;python2.7&#x2F;dist-packages&#x2F;cv2.so &#x2F;usr&#x2F;lib&#x2F;">
+<meta name="keywords" content="python,cuda,opencv">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OpenCV 编译安装笔记">
+<meta property="og:url" content="http:&#x2F;&#x2F;s1nh.org&#x2F;post&#x2F;build-cuda-with-opencv&#x2F;index.html">
+<meta property="og:site_name" content="S1NH">
+<meta property="og:description" content="编译OpenCV with CUDA编译方法官方文档写的特别清楚。此外，如果要使用python接口，编译完成后需要把opencv&#x2F;site-packages目录下的cv2.so链接（或复制）到python&#x2F;site-packages中，我执行的命令为sudo ln -s  &#x2F;usr&#x2F;local&#x2F;opencv3&#x2F;lib&#x2F;python2.7&#x2F;dist-packages&#x2F;cv2.so &#x2F;usr&#x2F;lib&#x2F;">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;Blog_zeal-main.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;Blog_build-cuda-with-opencv-cmake.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;Blog_build-cuda-with-opencv-cv3-environment.png">
+<meta property="og:updated_time" content="2018-01-15T04:00:43.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;Blog_zeal-main.png">
+
+<link rel="canonical" href="http://s1nh.org/post/build-cuda-with-opencv/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>OpenCV 编译安装笔记 | S1NH</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?4c66a84272e0f7943a305accf6dbdf41";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">S1NH</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">世界在旅程的尽头终结</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="search-pop-overlay">
+  <div class="popup search-popup">
+      <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+  </div>
+</div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/build-cuda-with-opencv/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="S1NH">
+      <meta itemprop="description" content="no other developers required.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="S1NH">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          OpenCV 编译安装笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2016-09-11 01:58:26" itemprop="dateCreated datePublished" datetime="2016-09-11T01:58:26+08:00">2016-09-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2018-01-15 12:00:43" itemprop="dateModified" datetime="2018-01-15T12:00:43+08:00">2018-01-15</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9B%BE%E5%BD%A2%E5%9B%BE%E5%83%8F/" itemprop="url" rel="index"><span itemprop="name">图形图像</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/post/build-cuda-with-opencv/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/post/build-cuda-with-opencv/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="编译OpenCV-with-CUDA"><a href="#编译OpenCV-with-CUDA" class="headerlink" title="编译OpenCV with CUDA"></a>编译OpenCV with CUDA</h2><p>编译方法<a href="http://docs.opencv.org/3.1.0/d7/d9f/tutorial_linux_install.html" target="_blank" rel="noopener">官方文档</a>写的特别清楚。此外，如果要使用python接口，编译完成后需要把<code>opencv/site-packages</code>目录下的<code>cv2.so</code>链接（或复制）到<code>python/site-packages</code>中，我执行的命令为<code>sudo ln -s  /usr/local/opencv3/lib/python2.7/dist-packages/cv2.so /usr/lib/python2.7/dist-packages/cv2.so</code>（如果不清楚可以参照<a href="http://www.jianshu.com/p/67293b547261" target="_blank" rel="noopener">[翻译]Python 2.7 和 Python 3+ 的OpenCV 3.0 安装教程</a>）</p>
+<p>查看Api和Guides推荐使用Zeal/Dash，就不用那么麻烦跑去官网搜索了：</p>
+<p><img src="http://qiniu.s1nh.org/Blog_zeal-main.png" alt=""></p>
+<a id="more"></a>
+
+<p>编译时如果要支持cuda，需要增加几个编译参数，可以参照<a href="http://stackoverflow.com/questions/28010399/build-opencv-with-cuda-support" target="_blank" rel="noopener">Build OpenCV with CUDA support</a>。如果您不会用cmake，不知到应该加填什么参数。我建议用图形化的cmake-gui来设置参数。</p>
+<p>其中要注意的是 CUDA_GENERATION 的设置。如果选择您GPU内核的型号（<code>Pascal</code>、<code>Maxwell</code>等），那么就不需要设置<code>CUDA_ARC_BIN</code>和<code>CUDA_ARC_PTX</code>参数，可是这种条件下会导致一些错误。推荐的方法是设置 <code>CUDA_GENERATION = Auto</code> 然后到<a href="https://developer.nvidia.com/cuda-gpus" target="_blank" rel="noopener">CUDA GPUs</a>查看您显卡的<code>Compute Capability</code>，填到<code>CUDA_ARC_BIN</code>，<code>CUDA_ARC_PTX</code>中。</p>
+<p><img src="http://qiniu.s1nh.org/Blog_build-cuda-with-opencv-cmake.png" alt="" title="cmake-gui"></p>
+<h2 id="Bugs"><a href="#Bugs" class="headerlink" title="Bugs:"></a>Bugs:</h2><h3 id="Ubuntu-16-OpenCV-3-Cuda-8-0-编译Bug"><a href="#Ubuntu-16-OpenCV-3-Cuda-8-0-编译Bug" class="headerlink" title="Ubuntu 16 + OpenCV 3 + Cuda 8.0 编译Bug"></a>Ubuntu 16 + OpenCV 3 + Cuda 8.0 编译Bug</h3><p>编译时会出现如下已知错误<code>error: no default constructor exists for class &quot;thrust::detail::execute_with_allocator&lt;cv::cuda::device::ThrustAllocator, thrust::system::cuda::detail::execute_on_stream_base&gt;&quot;</code>。解决方案为：</p>
+<ol>
+<li>下载<code>https://github.com/thrust/thrust</code>的<code>cuda-next-release</code>分支</li>
+<li>把<code>CUDA\v8.0\include\thrust\</code> 重命名为 <code>thrust_old</code></li>
+<li>建立软链接``CUDA\v8.0\include\thrust` 到 <code>...cuda-next-release\thrust</code></li>
+</ol>
+<blockquote>
+<p>参考:<br>　　1.<a href="http://answers.opencv.org/question/95991/opencv-30-build-error-cuda-80/?answer=96837" target="_blank" rel="noopener">OpenCV 3.0 Build Error Cuda 8.0</a><br>　　2.<a href="https://github.com/opencv/opencv/issues/6632" target="_blank" rel="noopener">Opencv 3.1. CUDA 8 compatibility issues</a><br>　　3.<a href="https://github.com/thrust/thrust/issues/800" target="_blank" rel="noopener">thrust 1.8.3 exclusive_scan with custom temporary allocation, no default constructor error</a></p>
+</blockquote>
+<h3 id="缺少-ImfChromaticities-h"><a href="#缺少-ImfChromaticities-h" class="headerlink" title="缺少 ImfChromaticities.h"></a>缺少 ImfChromaticities.h</h3><p>过了一个星期重新编译的时候发现了一个错误</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">In file included from &#x2F;home&#x2F;duchengyao&#x2F;project&#x2F;opencv&#x2F;modules&#x2F;imgcodecs&#x2F;src&#x2F;grfmts.hpp:53:0,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">                 from &#x2F;home&#x2F;duchengyao&#x2F;project&#x2F;opencv&#x2F;modules&#x2F;imgcodecs&#x2F;src&#x2F;loadsave.cpp:47:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">***&#x2F;opencv&#x2F;modules&#x2F;imgcodecs&#x2F;src&#x2F;grfmt_exr.hpp:52:31: fatal error: ImfChromaticities.h: No such file or directory</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">compilation terminated.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">modules&#x2F;imgcodecs&#x2F;CMakeFiles&#x2F;opencv_imgcodecs.dir&#x2F;build.make:62: recipe for target &#39;modules&#x2F;imgcodecs&#x2F;CMakeFiles&#x2F;opencv_imgcodecs.dir&#x2F;src&#x2F;loadsave.cpp.o&#39; failed</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">make[2]: *** [modules&#x2F;imgcodecs&#x2F;CMakeFiles&#x2F;opencv_imgcodecs.dir&#x2F;src&#x2F;loadsave.cpp.o] Error 1</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">CMakeFiles&#x2F;Makefile2:4114: recipe for target &#39;modules&#x2F;imgcodecs&#x2F;CMakeFiles&#x2F;opencv_imgcodecs.dir&#x2F;all&#39; failed</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">make[1]: *** [modules&#x2F;imgcodecs&#x2F;CMakeFiles&#x2F;opencv_imgcodecs.dir&#x2F;all] Error 2</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">make[1]: *** Waiting for unfinished jobs....</span></pre></td></tr></table></figure>
+
+<p>解决方案：安装<code>libopenexr-dev</code></p>
+<h2 id="OpenCV-2与3共存"><a href="#OpenCV-2与3共存" class="headerlink" title="OpenCV 2与3共存"></a>OpenCV 2与3共存</h2><p>参见<a href="http://blog.csdn.net/Swearos/article/details/51307304" target="_blank" rel="noopener">ubuntu 16.04 编译opencv3.1，opencv多版本切换</a></p>
+<p>上一个教程讲的很清楚，可是作者是在shell中运行OpenCV程序的。如果您正在使用Eclipse调试，那么无法用export来设置环境变量。需要在Eclipse中添加CDT的环境变量，步骤如下：<em>（参照《<a href="http://blog.csdn.net/m624197265/article/details/42672025" target="_blank" rel="noopener">Eclipse CDT环境下编写、调试、运行C++程序详谈</a>》的后半部分）</em></p>
+<ol>
+<li><strong>右键点击工程</strong>–&gt;<strong>Run As</strong>–&gt;<strong>Run Configurations</strong>–&gt;<strong>Environment</strong></li>
+<li>添加<code>PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/opencv3/lib/pkgconfig</code></li>
+<li>添加<code>LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/opencv3/lib</code></li>
+</ol>
+<p><img src="http://qiniu.s1nh.org/Blog_build-cuda-with-opencv-cv3-environment.png" alt="" title="在eclipse中设置OpenCV3的环境变量"></p>
+<p>用Eclipse开发还需要记得添加<code>include</code>和<code>lib</code>目录，参照<a href="http://docs.opencv.org/3.1.0/d7/d16/tutorial_linux_eclipse.html" target="_blank" rel="noopener">Using OpenCV with Eclipse (plugin CDT)</a></p>
+<h2 id="OpenCV-3-Demo"><a href="#OpenCV-3-Demo" class="headerlink" title="OpenCV 3 Demo"></a>OpenCV 3 Demo</h2><p><code>OpenCV 3</code>的<code>CUDA</code>模块跟<code>OpenCV2</code>的完全不一样，升级OpenCV3以后，你会发现<a href="http://opencv.org/platforms/cuda.html" target="_blank" rel="noopener">官方的Hello World for CUDA</a>都跑不起来，因为 OpenCV 3 连GPU类都没了。详细请参见<a href="http://docs.opencv.org/3.1.0/" target="_blank" rel="noopener">doc.OpenCV3</a>, <a href="http://docs.opencv.org/2.4.13/" target="_blank" rel="noopener">doc.OpenCV2</a></p>
+<p>Cuda OpenCV 3 的 Demo 如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;代码修改自 [OpenCV 3 CUDA小测试](http:&#x2F;&#x2F;blog.csdn.net&#x2F;zimizile&#x2F;article&#x2F;details&#x2F;47168107)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">#include&quot;opencv2&#x2F;opencv.hpp&quot;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">#include&quot;opencv2&#x2F;cudaimgproc.hpp&quot;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">#include&lt;time.h&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">using namespace std;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">using namespace cv;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">int main()</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">    clock_t t1 &#x3D; clock();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">    int num_devices &#x3D; cv::cuda::getCudaEnabledDeviceCount();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">    if (num_devices &lt;&#x3D; 0)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">        cerr &lt;&lt; &quot;There is no device.&quot; &lt;&lt; endl;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">        return -1;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">    int enable_device_id &#x3D; -1;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">    for (int i &#x3D; 0; i &lt; num_devices; i++)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line">        cv::cuda::DeviceInfo dev_info(i);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">        if (dev_info.isCompatible())&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line">            enable_device_id &#x3D; i;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line">        &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">32</span></pre></td><td class="code"><pre><span class="line">    if (enable_device_id &lt; 0)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">33</span></pre></td><td class="code"><pre><span class="line">        cerr &lt;&lt; &quot;GPU module isn&#39;t built for GPU&quot; &lt;&lt; endl;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">34</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">35</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">36</span></pre></td><td class="code"><pre><span class="line">    cv::cuda::setDevice(enable_device_id);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">37</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">38</span></pre></td><td class="code"><pre><span class="line">    Mat src_image &#x3D; imread(&quot;&#x2F;home&#x2F;duchengyao&#x2F;cuda-workspace&#x2F;cat.jpg&quot;);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">39</span></pre></td><td class="code"><pre><span class="line">    Mat dst_image;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">40</span></pre></td><td class="code"><pre><span class="line">    cuda::GpuMat d_src_img(src_image); &#x2F;&#x2F;upload src image to gpu</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">41</span></pre></td><td class="code"><pre><span class="line">    cuda::GpuMat d_dst_img;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">42</span></pre></td><td class="code"><pre><span class="line">    cuda::cvtColor(d_src_img, d_dst_img, CV_BGR2GRAY);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">43</span></pre></td><td class="code"><pre><span class="line">    d_dst_img.download(dst_image);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">44</span></pre></td><td class="code"><pre><span class="line">    imshow(&quot;test&quot;, dst_image);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">45</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">46</span></pre></td><td class="code"><pre><span class="line">    clock_t t2 &#x3D; clock();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">47</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">48</span></pre></td><td class="code"><pre><span class="line">    std::cout &lt;&lt; &quot;time: &quot; &lt;&lt; (t2 - t1) &#x2F; 1000 &lt;&lt; &quot;s&quot; &lt;&lt; endl;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">49</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">50</span></pre></td><td class="code"><pre><span class="line">    waitKey();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">51</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">52</span></pre></td><td class="code"><pre><span class="line">    return 0;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">53</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+
+
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/python/" rel="tag"># python</a>
+              <a href="/tags/cuda/" rel="tag"># cuda</a>
+              <a href="/tags/opencv/" rel="tag"># opencv</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/post/chrome-not-support-npapi-in-linux/" rel="prev" title="Chrome Linux 不支持npapi">
+      <i class="fa fa-chevron-left"></i> Chrome Linux 不支持npapi
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/post/note-2016-06-12/" rel="next" title="2016-06-12 OpenCV学习笔记">
+      2016-06-12 OpenCV学习笔记 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#编译OpenCV-with-CUDA"><span class="nav-number">1.</span> <span class="nav-text">编译OpenCV with CUDA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bugs"><span class="nav-number">2.</span> <span class="nav-text">Bugs:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Ubuntu-16-OpenCV-3-Cuda-8-0-编译Bug"><span class="nav-number">2.1.</span> <span class="nav-text">Ubuntu 16 + OpenCV 3 + Cuda 8.0 编译Bug</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺少-ImfChromaticities-h"><span class="nav-number">2.2.</span> <span class="nav-text">缺少 ImfChromaticities.h</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OpenCV-2与3共存"><span class="nav-number">3.</span> <span class="nav-text">OpenCV 2与3共存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OpenCV-3-Demo"><span class="nav-number">4.</span> <span class="nav-text">OpenCV 3 Demo</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="S1NH"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">S1NH</p>
+  <div class="site-description" itemprop="description">no other developers required.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">79</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">77</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/santuxuezhang" title="程序员吐槽师 → http:&#x2F;&#x2F;weibo.com&#x2F;santuxuezhang" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>程序员吐槽师</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.gitbook.com/book/xcode-jianghu/xcode-jianghu/details" title="Xcode江湖录 → https:&#x2F;&#x2F;www.gitbook.com&#x2F;book&#x2F;xcode-jianghu&#x2F;xcode-jianghu&#x2F;details" rel="noopener" target="_blank"><i class="fa fa-fw fa-book"></i>Xcode江湖录</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://t.tips/" title="http:&#x2F;&#x2F;t.tips&#x2F;" rel="noopener" target="_blank">一只猿</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://s1nh.com/" title="http:&#x2F;&#x2F;s1nh.com&#x2F;" rel="noopener" target="_blank">本站 github 镜像</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/http:/s1nh.org/" title="http:&#x2F;&#x2F;s1nh.org&#x2F;">本站国内镜像</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2015 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">S1NH</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.7.2
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'XOzH1c25Dogu8cYTuRxfnTFo-gzGzoHsz',
+      appKey     : 'RxlSioLPtr2tPejVVqIcrEq2',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
