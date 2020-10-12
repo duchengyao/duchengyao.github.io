@@ -293,6 +293,180 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/first-impressions/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="S1NH">
+      <meta itemprop="description" content="no other developers required.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="S1NH">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/post/first-impressions/" class="post-title-link" itemprop="url">第一印象（First Impressions）：人物性格特征预测</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-10-12 12:21:18 / 修改时间：15:22:10" itemprop="dateCreated datePublished" datetime="2020-10-12T12:21:18+08:00">2020-10-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/post/first-impressions/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/post/first-impressions/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="0x01-Dataset"><a href="#0x01-Dataset" class="headerlink" title="0x01 Dataset"></a>0x01 Dataset</h2><blockquote>
+<p>V1 (ECCV ‘16, ICPR ‘16) <a href="http://chalearnlap.cvc.uab.es/dataset/20/description/" target="_blank" rel="noopener">http://chalearnlap.cvc.uab.es/dataset/20/description/</a><br>V2 (CVPR’17) <a href="http://chalearnlap.cvc.uab.es/dataset/24/description/" target="_blank" rel="noopener">http://chalearnlap.cvc.uab.es/dataset/24/description/</a></p>
+</blockquote>
+<p>First Impressions 数据集包含10,000个剪辑（平均持续时间15s），这些剪辑是从3,000个不同的YouTube高清晰度（HD）视频中提取出来的，这些视频分别是面对和用英语对着摄像机说话的人。这些视频按3：1：1的比例分为训练/验证/测试集。视频中的人包括不同的性别，年龄，国籍和种族。</p>
+<p>视频有人格特征标签（personality traits variables），使用Amazon Mechanical Turk（AMT）生成，采用了可靠的程序来保证标签的可靠性。认为的人格特质来自五因素模型（也称为“Big Five”），这是人格研究中的主导范式。它从五个方面对人格进行建模：性格外向（Extroversion），乐于助人（Agreeableness），尽职尽责（Conscientiousness），神经质（Neuroticism）和开放经验（Openness to experience）。因此，每个剪辑都有针对这五个特征的地面真相标签，并以[0，1]范围内的值表示。有关数据集的更多详细信息，请参见<a href="https://docs.google.com/viewer?a=v&pid=sites&srcid=Y2hhbGVhcm4ub3JnfGdlc3R1cmVjaGFsbGVuZ2V8Z3g6MWQ5NDEyZjQ4ODMyMGJmNw" target="_blank" rel="noopener">此处</a>。</p>
+<p>此前基于 MTurk 注释和“小片段音/视频”对人格特质的进行预测的研究可以参考：</p>
+<p>J.-I. Biel, O. Aran, and D. Gatica-Perez, You Are Known by How You Vlog: Personality Impressions and Nonverbal Behavior in YouTube in Proc. AAAI Int. Conf. on Weblogs and Social Media (ICWSM), Barcelona, Jul. 2011</p>
+<p>J.-I. Biel and D. Gatica-Perez, The YouTube Lens: Crowdsourced Personality Impressions and Audiovisual Analysis of Vlogs, IEEE Trans. on Multimedia, Vol. 15, No. 1, pp. 41-55, Jan. 2013</p>
+<p>以及在ACM Multimedia 2014上的相关事件：</p>
+<ul>
+<li><a href="https://sites.google.com/site/wcprst/home/wcpr14" target="_blank" rel="noopener">https://sites.google.com/site/wcprst/home/wcpr14</a></li>
+<li><a href="https://www.idiap.ch/dataset/youtube-personality" target="_blank" rel="noopener">https://www.idiap.ch/dataset/youtube-personality</a></li>
+</ul>
+<p>此外，我们还提供一个扩展数据集。具体来说，我们用新的语言数据（transcriptions）补充数据集，以补充现有的感官数据（videos）以及新的求职面试变量（interview annotations），后者补充现有的人格特质变量（trait annotations）。</p>
+<p><strong>转录（Transcriptions）</strong> 视频片段中的所有单词均由专业转录服务机构转录。总共录制了435984个单词（183861个非停用词），相当于每个视频平均43个单词（18个非停用词）。在这些单词中，有14535个是唯一的（14386个非停用词）。</p>
+<p><strong>面试标注（Interview annotations）</strong> 除了标记明显的人格特征之外，AMT工作者还为每个视频标记了一个变量，该变量指示是否应邀请该人参加工作面试（“工作面试变量”）。此变量还用[0，1]范围内的值表示。</p>
+<p><strong>数据格式（Groundtruth file format）</strong></p>
+<p>注释和转录存储在pickled dictionaries中。每个阶段应该有一个文件用于注释(annotations)，一个文件用于转录(transcriptions)。</p>
+<p>每个视频都有一个转录（如果视频中没有要转录的内容，则其对应的转录将是一个空字符串）。每个转录都是一个unicode对象。转录文件是一个字典。也就是说，其键是视频的名称，其值是相应的转录。例如：</p>
+<p>transcription [‘a_video_name’]将给出名为“ a_video_name”的视频的转录。</p>
+<p>每个视频还具有六个注释（五个特征和一个采访）。每个注释都是介于零和一之间的值。注释文件是词典的字典。也就是说，外部字典的键是注释的名称，其值是字典。内部词典的键是视频的名称，其值是与外部词典的键相对应的实际注释。例如：</p>
+<p>annotation[‘interview’] [‘a_video_name’] 会给出名为 “ a_video_name” 的视频的采访注释的值。<br>annotation[‘openness’] [‘another_video_name’] 会给出名为 “ another_video_name” 的视频的开放性注解的值。</p>
+<p>可以在<a href="http://158.109.8.102/FirstImpressionsV2/prediction.zip" target="_blank" rel="noopener">此处</a>找到测试阶段的样本预测文件（定量）。</p>
+<p>您可以在<a href="http://158.109.8.102/FirstImpressionsV2/submission_bundle.zip" target="_blank" rel="noopener">此处</a>找到第二阶段的样本预测文件（定性）。</p>
+<p><strong>密钥</strong></p>
+<p>Encryption key for validation groundtruth and test set (without groundtruth) is “zeAzLQN7DnSIexQukc9W”.<br>Encryption key for files test80_01.zip to test80_25.zip is “.chalearnLAPFirstImpressionsSECONDRoundICPRWorkshop2016.”.</p>
+<p><strong>New!</strong></p>
+<p>我们正在为第一印象数据集提供可用的性别和种族注释。这些标签由Heysem Kaya和Albert Ali Salah提供。 </p>
+<p>请引用以下论文以引用此类注释：</p>
+<p><a href="https://arxiv.org/abs/1802.00745" target="_blank" rel="noopener">Hugo Jair Escalante, Heysem Kaya, Albert Ali Salah, Sergio Escalera, Yagmur Gucluturk, Umut Guclu, Xavier Baro, Isabelle Guyon, Julio Jacques Junior, Meysam Madadi, Stephane Ayache, Evelyne Viegas, Furkan Gurpinar, Achmadnoer Sukma Wicaksana, Cynthia C. S. Liem, Marcel A. J. van Gerven, Rob van Lier Explaining First Impressions: Modeling, Recognizing, and Explaining Apparent Personality from Videos. ArXiv, 1802.00745, 2018</a></p>
+<p>标签如下：</p>
+<ul>
+<li>种族：亚洲人= 1，高加索人= 2，非裔美国人= 3</li>
+<li>性别：男= 1，女= 2</li>
+</ul>
+<h2 id="0x02-Results-with-Codes"><a href="#0x02-Results-with-Codes" class="headerlink" title="0x02 Results with Codes"></a>0x02 Results with Codes</h2><table>
+<thead>
+<tr>
+<th>User</th>
+<th>interview</th>
+<th>agreeableness</th>
+<th>conscientiousness</th>
+<th>extraversion</th>
+<th>neuroticism</th>
+<th>openness</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="https://github.com/frkngrpnr/jcs" target="_blank" rel="noopener">heysky</a></td>
+<td>0.920916</td>
+<td>0.913731</td>
+<td>0.919769</td>
+<td>0.921289</td>
+<td>0.914613</td>
+<td>0.917014</td>
+</tr>
+<tr>
+<td>baseline</td>
+<td>0.916202</td>
+<td>0.91123</td>
+<td>0.915228</td>
+<td>0.91122</td>
+<td>0.910378</td>
+<td>0.911123</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Bekhouche/FirstImpressionsV2" target="_blank" rel="noopener">bekhouche</a></td>
+<td>0.915746</td>
+<td>0.910312</td>
+<td>0.913775</td>
+<td>0.91551</td>
+<td>0.908297</td>
+<td>0.910078</td>
+</tr>
+<tr>
+<td><a href="https://github.com/ROC-HCI/chalearn_coopetition_2017" target="_blank" rel="noopener">go2chayan</a></td>
+<td>0.901859</td>
+<td>0.903216</td>
+<td>0.894914</td>
+<td>0.90266</td>
+<td>0.901147</td>
+<td>0.904709</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Benlamoudi/FDMB" target="_blank" rel="noopener">azzasama</a></td>
+<td>0.872129</td>
+<td>0.891004</td>
+<td>0.865975</td>
+<td>0.878842</td>
+<td>0.863237</td>
+<td>0.874761</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/vqg-survey/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -3016,108 +3190,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/Tensorflow-MNIST/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="S1NH">
-      <meta itemprop="description" content="no other developers required.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="S1NH">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/post/Tensorflow-MNIST/" class="post-title-link" itemprop="url">Softmax, MLP, CNN 三种方法识别手写数字MNIST——《TensorFlow 实战》读书笔记</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2017-04-01 19:06:56" itemprop="dateCreated datePublished" datetime="2017-04-01T19:06:56+08:00">2017-04-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2018-01-15 11:50:26" itemprop="dateModified" datetime="2018-01-15T11:50:26+08:00">2018-01-15</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" itemprop="url" rel="index"><span itemprop="name">人工智能</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/post/Tensorflow-MNIST/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/Tensorflow-MNIST/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><code>不要代码写多了就变得那么没有人情味了</code></p>
-<h2 id="0x00-Intro"><a href="#0x00-Intro" class="headerlink" title="0x00 Intro"></a>0x00 Intro</h2><h3 id="1-读入MNIST数据库"><a href="#1-读入MNIST数据库" class="headerlink" title="1. 读入MNIST数据库"></a>1. 读入MNIST数据库</h3><p>执行<code>mnist = input_data.read_data_sets(&quot;MNIST_data/&quot;, one_hot=True)</code>后，会检查<code>MNIST_data/</code>文件夹下有没有数据库文件，如果没有会自动下载。这一步如果执行比较慢，可以用迅雷手动下载下面四个文件，保存到MNIST_data目录（不需要解压）</p>
-<ul>
-<li><a href="http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz" target="_blank" rel="noopener">train-images-idx3-ubyte.gz</a>:  training set images (9912422 bytes)</li>
-<li><a href="http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz" target="_blank" rel="noopener">train-labels-idx1-ubyte.gz</a>:  training set labels (28881 bytes)</li>
-<li><a href="http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz" target="_blank" rel="noopener">t10k-images-idx3-ubyte.gz</a>:   test set images (1648877 bytes)</li>
-<li><a href="http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz" target="_blank" rel="noopener">t10k-labels-idx1-ubyte.gz</a>:   test set labels (4542 bytes) </li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/post/Tensorflow-MNIST/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -3190,7 +3262,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">77</span>
+          <span class="site-state-item-count">78</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
