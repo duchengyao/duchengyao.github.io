@@ -22,17 +22,18 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","version":"8.3.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+    var CONFIG = {"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","version":"8.3.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
-<meta name="description" content="[![](http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;Blog_the Constitution of a Basic Intrusion System.png-QNthin “点击图片下载PPT，点击“阅读全文”查看文字版草稿” )](http:&#x2F;&#x2F;7xlieb.com1.z0.glb.clouddn.com&#x2F;Blog_the Constitution of a Basic Intrusion">
+<meta name="description" content="可靠性导论的汇报PPT，介绍了我自己搭建的入侵检测平台，其中包含：  Man-in-the-Middle Attack (MITM, 中间人攻击) Lan Tap WiFi Hacking NFC Hacking Software Defined Radio">
 <meta property="og:type" content="article">
-<meta property="og:title" content="the Constitution of a Basic Intrusion System">
+<meta property="og:title" content="几个简单的入侵检测方法">
 <meta property="og:url" content="http://s1nh.org/post/the-Constitution-of-a-Basic-Intrusion-System/index.html">
 <meta property="og:site_name" content="S1NH">
-<meta property="og:description" content="[![](http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;Blog_the Constitution of a Basic Intrusion System.png-QNthin “点击图片下载PPT，点击“阅读全文”查看文字版草稿” )](http:&#x2F;&#x2F;7xlieb.com1.z0.glb.clouddn.com&#x2F;Blog_the Constitution of a Basic Intrusion">
+<meta property="og:description" content="可靠性导论的汇报PPT，介绍了我自己搭建的入侵检测平台，其中包含：  Man-in-the-Middle Attack (MITM, 中间人攻击) Lan Tap WiFi Hacking NFC Hacking Software Defined Radio">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://qiniu.s1nh.org/Blog_the_Constitution_of_a_Basic_Intrusion_System.png-QNthin">
 <meta property="og:image" content="http://qiniu.s1nh.org/Blog_Year-end-summary_01.gif">
-<meta property="og:image" content="http://qiniu.s1nh.org/Blog_Year-end-summary_02.svg-QNthin">
+<meta property="og:image" content="http://qiniu.s1nh.org/Blog_Year-end-summary_02.svg">
 <meta property="og:image" content="http://qiniu.s1nh.org/Blog_Year-end-summary_03.png-QNthin">
 <meta property="og:image" content="http://qiniu.s1nh.org/Blog_Year-end-summary_04.png-QNthin">
 <meta property="og:image" content="http://qiniu.s1nh.org/Blog_Year-end-summary_05.png-QNthin">
@@ -64,11 +65,11 @@
 <meta property="og:image" content="http://qiniu.s1nh.org/Blog_Year-end-summary_31.jpg-QNthin">
 <meta property="og:image" content="http://qiniu.s1nh.org/Blog_Year-end-summary_32.jpg-QNthin">
 <meta property="article:published_time" content="2016-02-06T14:45:07.000Z">
-<meta property="article:modified_time" content="2018-01-15T04:00:43.000Z">
+<meta property="article:modified_time" content="2021-04-30T08:39:21.257Z">
 <meta property="article:author" content="S1NH">
 <meta property="article:tag" content="信息安全">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://qiniu.s1nh.org/Blog_Year-end-summary_01.gif">
+<meta name="twitter:image" content="http://qiniu.s1nh.org/Blog_the_Constitution_of_a_Basic_Intrusion_System.png-QNthin">
 
 
 <link rel="canonical" href="http://s1nh.org/post/the-Constitution-of-a-Basic-Intrusion-System/">
@@ -83,7 +84,7 @@
     lang   : 'zh-CN'
   };
 </script>
-<title>the Constitution of a Basic Intrusion System | S1NH</title>
+<title>几个简单的入侵检测方法 | S1NH</title>
   
 
   <script>
@@ -246,7 +247,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">78</span>
+          <span class="site-state-item-count">75</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -326,7 +327,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          the Constitution of a Basic Intrusion System
+          几个简单的入侵检测方法
         </h1>
 
         <div class="post-meta-container">
@@ -344,7 +345,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2018-01-15 12:00:43" itemprop="dateModified" datetime="2018-01-15T12:00:43+08:00">2018-01-15</time>
+        <time title="修改时间：2021-04-30 16:39:21" itemprop="dateModified" datetime="2021-04-30T16:39:21+08:00">2021-04-30</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -357,7 +358,7 @@
     </span>
 
   
-    <span id="/post/the-Constitution-of-a-Basic-Intrusion-System/" class="post-meta-item leancloud_visitors" data-flag-title="the Constitution of a Basic Intrusion System" title="阅读次数">
+    <span id="/post/the-Constitution-of-a-Basic-Intrusion-System/" class="post-meta-item leancloud_visitors" data-flag-title="几个简单的入侵检测方法" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -380,7 +381,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>[![](<a target="_blank" rel="noopener" href="http://qiniu.s1nh.org/Blog_the">http://qiniu.s1nh.org/Blog_the</a> Constitution of a Basic Intrusion System.png-QNthin “点击图片下载PPT，点击“阅读全文”查看文字版草稿” )](<a target="_blank" rel="noopener" href="http://7xlieb.com1.z0.glb.clouddn.com/Blog_the">http://7xlieb.com1.z0.glb.clouddn.com/Blog_the</a> Constitution of a Basic Intrusion System.pdf)</p>
+        <p><a target="_blank" rel="noopener" href="http://qiniu.s1nh.org/Blog_the_Constitution_of_a_Basic_Intrusion_System.pdf"><img src="http://qiniu.s1nh.org/Blog_the_Constitution_of_a_Basic_Intrusion_System.png-QNthin" title="点击图片下载PPT，点击“阅读全文”查看文字版草稿"></a></p>
 <p>可靠性导论的汇报PPT，介绍了我自己搭建的入侵检测平台，其中包含：</p>
 <ul>
 <li>Man-in-the-Middle Attack (MITM, 中间人攻击)</li>
@@ -399,7 +400,7 @@
 <li>ARP Spoofing (ARP 欺骗)</li>
 </ul>
 <p>Attacker sends spoofed ARP messages onto a local area network, causing any traffic meant for that IP address to be sent to the attacker instead.（APT Defence Equipment，Firewall）</p>
-<p><img src="http://qiniu.s1nh.org/Blog_Year-end-summary_02.svg-QNthin" alt="ARP_Spoofing"></p>
+<p><img src="http://qiniu.s1nh.org/Blog_Year-end-summary_02.svg" alt="ARP_Spoofing"></p>
 <h3 id="Lan-Tap"><a href="#Lan-Tap" class="headerlink" title="Lan Tap"></a>Lan Tap</h3><p>a small, simple device for monitoring Ethernet communications</p>
 <p><img src="http://qiniu.s1nh.org/Blog_Year-end-summary_03.png-QNthin"></p>
 <p>RJ45 connector，T568B Pair</p>

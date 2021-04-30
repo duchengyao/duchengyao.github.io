@@ -22,17 +22,17 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","version":"8.3.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+    var CONFIG = {"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","version":"8.3.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
-<meta name="description" content="本资源来自网络，侵权请按ALT+F4">
+<meta name="description" content="本资源来自网络，侵权请按ALT+F4 0x01 深度学习基础框架1.人脸检测、跟踪、识别、三维建模的开源框架、算法、论文(1) 人脸检测在人脸检测方面常用的用两个，一个是 Tinyface 能检测到比较小的人脸。可以先玩通demo另外一篇更为常用，如果你们对固定场景，比如视频对话，检测效果不错。而且他们能标注人脸关键点。文章：Joint Face Detection and Alignment u">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算机视觉技术调查报告">
 <meta property="og:url" content="http://s1nh.org/post/cv-sjtu/index.html">
 <meta property="og:site_name" content="S1NH">
-<meta property="og:description" content="本资源来自网络，侵权请按ALT+F4">
+<meta property="og:description" content="本资源来自网络，侵权请按ALT+F4 0x01 深度学习基础框架1.人脸检测、跟踪、识别、三维建模的开源框架、算法、论文(1) 人脸检测在人脸检测方面常用的用两个，一个是 Tinyface 能检测到比较小的人脸。可以先玩通demo另外一篇更为常用，如果你们对固定场景，比如视频对话，检测效果不错。而且他们能标注人脸关键点。文章：Joint Face Detection and Alignment u">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2017-07-14T05:05:06.000Z">
-<meta property="article:modified_time" content="2018-01-15T03:50:26.000Z">
+<meta property="article:modified_time" content="2021-04-30T08:27:39.857Z">
 <meta property="article:author" content="S1NH">
 <meta name="twitter:card" content="summary">
 
@@ -212,7 +212,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">78</span>
+          <span class="site-state-item-count">75</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -310,7 +310,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2018-01-15 11:50:26" itemprop="dateModified" datetime="2018-01-15T11:50:26+08:00">2018-01-15</time>
+        <time title="修改时间：2021-04-30 16:27:39" itemprop="dateModified" datetime="2021-04-30T16:27:39+08:00">2021-04-30</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -347,10 +347,10 @@
     
     <div class="post-body" itemprop="articleBody">
         <p><code>本资源来自网络，侵权请按ALT+F4</code></p>
-<span id="more"></span>
-
 <h2 id="0x01-深度学习基础框架"><a href="#0x01-深度学习基础框架" class="headerlink" title="0x01 深度学习基础框架"></a>0x01 深度学习基础框架</h2><h3 id="1-人脸检测、跟踪、识别、三维建模的开源框架、算法、论文"><a href="#1-人脸检测、跟踪、识别、三维建模的开源框架、算法、论文" class="headerlink" title="1.人脸检测、跟踪、识别、三维建模的开源框架、算法、论文"></a>1.人脸检测、跟踪、识别、三维建模的开源框架、算法、论文</h3><h4 id="1-人脸检测"><a href="#1-人脸检测" class="headerlink" title="(1) 人脸检测"></a>(1) 人脸检测</h4><p>在人脸检测方面常用的用两个，一个是 <a target="_blank" rel="noopener" href="https://www.cs.cmu.edu/~peiyunh/tiny/">Tinyface</a> 能检测到比较小的人脸。可以先玩通<a target="_blank" rel="noopener" href="https://github.com/peiyunh/tiny">demo</a><br>另外一篇更为常用，如果你们对固定场景，比如视频对话，检测效果不错。而且他们能标注人脸关键点。<br>文章：Joint Face Detection and Alignment using Multi-task Cascaded Convolutional Networksb(<a target="_blank" rel="noopener" href="http://vis-www.cs.umass.edu/fddb/results.html">(Code)</a>) 很多最近的创业公司用这个，但是如果场景特殊需要 re-train 一下 </p>
 <h4 id="2-人脸跟踪"><a href="#2-人脸跟踪" class="headerlink" title="(2) 人脸跟踪"></a>(2) 人脸跟踪</h4><p>因为这个已经不是学术前沿问题，所以 CVPR、ICCV 上没有文章研究这一块<br>人脸跟踪这一块 openCV 有一个比较好的教程 <a target="_blank" rel="noopener" href="http://opencv-java-tutorials.readthedocs.io/en/latest/06-face-detection-and-tracking.html">http://opencv-java-tutorials.readthedocs.io/en/latest/06-face-detection-and-tracking.html</a><br>但是，工程上通用的做法还是，逐帧用最好的 face detector(比如 tiny face)检测后，用 optical flow 串起来。因为现在 face detection 已经很快了，没必要用 tracking 来加速，能做到很快。具体怎么弄我们可以当面讨论。<br>我的学生找了一下开源库（仅作参考，不建议用），但是不是正规的文章 <a target="_blank" rel="noopener" href="https://github.com/kylemcdonald/ofxFaceTracker">https://github.com/kylemcdonald/ofxFaceTracker</a> </p>
+<span id="more"></span>
+
 <h4 id="3-人脸识别"><a href="#3-人脸识别" class="headerlink" title="(3) 人脸识别"></a>(3) 人脸识别</h4><p>主要人脸识别的文章都在 LFW 上， <a target="_blank" rel="noopener" href="http://vis-www.cs.umass.edu/lfw/results.html">http://vis-www.cs.umass.edu/lfw/results.html</a> 我们主要可以看 Table 6 Mean classification accuracy û and standard error of the mean SE。<br>不过这些靠前的方法很多没有代码。目前创业公司普遍用[1]。这个我指导过别人使用，[2]的口碑也不错但不是最新的。以建议你们用[1]加大数据 train 就行了。以后，有更好开源代码出来，我再更新。 </p>
 <p>[1] A Discriminative Feature Learning Approach for Deep Face Recognition[C] Yandong Wen, Kaipeng Zhang, Zhifeng Li, Yu Qia. ECCV 2016. (<a target="_blank" rel="noopener" href="https://github.com/ydwen/caffe-face">(Code)</a>)<br>[2] OpenFace: A general-purpose face recognition library with mobile applications Amos, Brandon and Bartosz Ludwiczuk and Satyanarayanan, Mahadev， CMU-CS-16-118, CMU School of Computer Science，2016 (<a target="_blank" rel="noopener" href="https://cmusatyalab.github.io/openface/">(Code)</a>)</p>
 <h4 id="4-人脸三维建模"><a href="#4-人脸三维建模" class="headerlink" title="(4) 人脸三维建模"></a>(4) 人脸三维建模</h4><p>这一块属于比较前沿的方面，所以基本没公开数据库，也没公开代码</p>
