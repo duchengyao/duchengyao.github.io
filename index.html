@@ -4,48 +4,51 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.0.0">
+<meta name="generator" content="Hexo 5.4.0">
+
+
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
   <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
   <link rel="manifest" href="/images/site.webmanifest">
-  <meta name="msapplication-config" content="/images/browserconfig.xml">
 
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 
-<script id="hexo-configurations">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"s1nh.org","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","version":"8.3.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
   </script>
-
-  <meta name="description" content="no other developers required.">
+<meta name="description" content="no other developers required.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="S1NH">
-<meta property="og:url" content="http:&#x2F;&#x2F;s1nh.org&#x2F;index.html">
+<meta property="og:url" content="http://s1nh.org/index.html">
 <meta property="og:site_name" content="S1NH">
 <meta property="og:description" content="no other developers required.">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="S1NH">
 <meta name="twitter:card" content="summary">
+
 
 <link rel="canonical" href="http://s1nh.org/">
 
 
-<script id="page-configurations">
+<script class="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
     isHome : true,
-    isPost : false
+    isPost : false,
+    lang   : 'zh-CN'
   };
 </script>
-
-  <title>S1NH</title>
+<title>S1NH</title>
   
-
 
   <script>
     var _hmt = _hmt || [];
@@ -59,56 +62,65 @@
 
 
 
-
   <noscript>
   <style>
-  .use-motion .brand,
+  body { margin-top: 2rem; }
+
   .use-motion .menu-item,
-  .sidebar-inner,
+  .use-motion .sidebar,
   .use-motion .post-block,
   .use-motion .pagination,
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
 
   .use-motion .site-title,
-  .use-motion .site-subtitle {
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
     opacity: initial;
     top: initial;
   }
 
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
   </style>
 </noscript>
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
+  <main class="main">
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
   <div class="site-meta">
 
-    <div>
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">S1NH</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-        <p class="site-subtitle">世界在旅程的尽头终结</p>
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">S1NH</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">世界在旅程的尽头终结</p>
   </div>
 
   <div class="site-nav-right">
@@ -119,85 +131,150 @@
 </div>
 
 
+
 <nav class="site-nav">
-  
-  <ul id="menu" class="menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
-
-  </li>
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
       </li>
   </ul>
-
 </nav>
-  <div class="site-search">
-    <div class="search-pop-overlay">
-  <div class="popup search-popup">
-      <div class="search-header">
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
   <span class="search-icon">
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
            placeholder="搜索..." spellcheck="false"
            type="search" class="search-input">
   </div>
-  <span class="popup-btn-close">
+  <span class="popup-btn-close" role="button">
     <i class="fa fa-times-circle"></i>
   </span>
 </div>
-<div id="search-result">
-  <div id="no-result">
-    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
   </div>
 </div>
 
+    </div>
   </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="S1NH"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">S1NH</p>
+  <div class="site-description" itemprop="description">no other developers required.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">78</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">75</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
 </div>
 
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.92ez.com/" title="https:&#x2F;&#x2F;www.92ez.com&#x2F;" rel="noopener" target="_blank">一只猿</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://s1nh.com/" title="http:&#x2F;&#x2F;s1nh.com&#x2F;" rel="noopener" target="_blank">本站 github 镜像</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://s1nh.org/" title="http:&#x2F;&#x2F;s1nh.org&#x2F;">本站国内镜像</a>
+        </li>
+    </ul>
   </div>
-</div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
     </header>
 
     
-  <div class="back-to-top">
+  <div class="back-to-top" role="button" aria-label="返回顶部">
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
 
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
 
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
 
-          <div class="content">
-            
+    <div class="main-inner index posts-expand">
 
-  <div class="posts-expand">
-        
+    
+
+
+<div class="post-block">
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/996-ICU/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -210,52 +287,46 @@
       <meta itemprop="name" content="S1NH">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/post/996-ICU/" class="post-title-link" itemprop="url">996.ICU</a>
-        </h1>
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/996-ICU/" class="post-title-link" itemprop="url">996.ICU</a>
+        </h2>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：9969-09-06 00:04:44" itemprop="dateCreated datePublished" datetime="9969-09-06T00:04:44+08:00">9969-09-06</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-30 01:09:04" itemprop="dateModified" datetime="2019-11-30T01:09:04+08:00">2019-11-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/post/996-ICU/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/996-ICU/" itemprop="commentCount"></span>
-    </a>
-  </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：9969-09-06 00:04:44" itemprop="dateCreated datePublished" datetime="9969-09-06T00:04:44+08:00">9969-09-06</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2019-11-30 01:09:04" itemprop="dateModified" datetime="2019-11-30T01:09:04+08:00">2019-11-30</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
+        </span>
+    </span>
+
   
-  
+    <span id="/post/996-ICU/" class="post-meta-item leancloud_visitors" data-flag-title="996.ICU" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
 
         </div>
       </header>
@@ -264,8 +335,6 @@
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
           <p><strong>一位保守党政客讲得再清楚不过，穷人全都“必须要不断地吃，不断地喝，不断地工作，不断地死去”。</strong></p>
           <!--noindex-->
             <div class="post-button">
@@ -281,18 +350,25 @@
     
     
     
-      <footer class="post-footer">
+
+    <footer class="post-footer">
         <div class="post-eof"></div>
-      </footer>
+      
+    </footer>
   </article>
-  
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/tensorflow-bug2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -305,46 +381,40 @@
       <meta itemprop="name" content="S1NH">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/post/tensorflow-bug2/" class="post-title-link" itemprop="url">「tensorflow」 Variable was uninitialized</a>
-        </h1>
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/tensorflow-bug2/" class="post-title-link" itemprop="url">「tensorflow」 Variable was uninitialized</a>
+        </h2>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-10-12 12:50:35 / 修改时间：15:52:04" itemprop="dateCreated datePublished" datetime="2020-10-12T12:50:35+08:00">2020-10-12</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/post/tensorflow-bug2/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/tensorflow-bug2/" itemprop="commentCount"></span>
-    </a>
-  </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2020-10-12 12:50:35 / 修改时间：15:52:04" itemprop="dateCreated datePublished" datetime="2020-10-12T12:50:35+08:00">2020-10-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
+        </span>
+    </span>
+
   
-  
+    <span id="/post/tensorflow-bug2/" class="post-meta-item leancloud_visitors" data-flag-title="「tensorflow」 Variable was uninitialized" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
 
         </div>
       </header>
@@ -353,20 +423,18 @@
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
           <p>Initialize:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">import numpy as np</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">dir &#x3D; &#39;.&#x2F;model&#x2F;tf_savedmodel&#39;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">zeros &#x3D; tf.constant(np.zeros([1, 640, 960, 3]), dtype&#x3D;float)</span></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">dir &#x3D; &#39;.&#x2F;model&#x2F;tf_savedmodel&#39;</span><br><span class="line">zeros &#x3D; tf.constant(np.zeros([1, 640, 960, 3]), dtype&#x3D;float)</span><br></pre></td></tr></table></figure>
 
 <p>Work:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">model &#x3D; tf.saved_model.load(dir)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">output &#x3D; model.signatures[&#39;serving_default&#39;](zeros)</span></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">model &#x3D; tf.saved_model.load(dir)</span><br><span class="line">output &#x3D; model.signatures[&#39;serving_default&#39;](zeros)</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">model &#x3D; tf.saved_model.load(dir)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">output &#x3D; model(zeros)</span></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">model &#x3D; tf.saved_model.load(dir)</span><br><span class="line">output &#x3D; model(zeros)</span><br></pre></td></tr></table></figure>
 
 <p>Failed:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">model &#x3D; tf.saved_model.load(dir).signatures[&#39;serving_default&#39;]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">output &#x3D; model(zeros)</span></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">model &#x3D; tf.saved_model.load(dir).signatures[&#39;serving_default&#39;]</span><br><span class="line">output &#x3D; model(zeros)</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">tensorflow.python.framework.errors_impl.FailedPreconditionError:  Error while reading resource variable conv5_block17_0_bn&#x2F;gamma_96932 from Container: localhost. This could mean that the variable was uninitialized. Not found: Resource localhost&#x2F;conv5_block17_0_bn&#x2F;gamma_96932&#x2F;N10tensorflow3VarE does not exist.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">	 [[&#123;&#123;node StatefulPartitionedCall&#x2F;fusion_network&#x2F;conv5_block17_0_bn&#x2F;ReadVariableOp&#125;&#125;]] [Op:__inference_signature_wrapper_21102]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">Function call stack:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">signature_wrapper</span></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tensorflow.python.framework.errors_impl.FailedPreconditionError:  Error while reading resource variable conv5_block17_0_bn&#x2F;gamma_96932 from Container: localhost. This could mean that the variable was uninitialized. Not found: Resource localhost&#x2F;conv5_block17_0_bn&#x2F;gamma_96932&#x2F;N10tensorflow3VarE does not exist.</span><br><span class="line">	 [[&#123;&#123;node StatefulPartitionedCall&#x2F;fusion_network&#x2F;conv5_block17_0_bn&#x2F;ReadVariableOp&#125;&#125;]] [Op:__inference_signature_wrapper_21102]</span><br><span class="line"></span><br><span class="line">Function call stack:</span><br><span class="line">signature_wrapper</span><br></pre></td></tr></table></figure>
 
 
       
@@ -375,18 +443,25 @@
     
     
     
-      <footer class="post-footer">
+
+    <footer class="post-footer">
         <div class="post-eof"></div>
-      </footer>
+      
+    </footer>
   </article>
-  
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/first-impressions/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -399,46 +474,40 @@
       <meta itemprop="name" content="S1NH">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/post/first-impressions/" class="post-title-link" itemprop="url">第一印象（First Impressions）人物性格特征预测</a>
-        </h1>
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/first-impressions/" class="post-title-link" itemprop="url">第一印象（First Impressions）人物性格特征预测</a>
+        </h2>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-10-12 12:21:18 / 修改时间：17:15:24" itemprop="dateCreated datePublished" datetime="2020-10-12T12:21:18+08:00">2020-10-12</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/post/first-impressions/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/first-impressions/" itemprop="commentCount"></span>
-    </a>
-  </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2020-10-12 12:21:18 / 修改时间：17:15:24" itemprop="dateCreated datePublished" datetime="2020-10-12T12:21:18+08:00">2020-10-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
+        </span>
+    </span>
+
   
-  
+    <span id="/post/first-impressions/" class="post-meta-item leancloud_visitors" data-flag-title="第一印象（First Impressions）人物性格特征预测" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
 
         </div>
       </header>
@@ -447,8 +516,6 @@
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
           <table>
 <thead>
 <tr>
@@ -462,7 +529,7 @@
 </tr>
 </thead>
 <tbody><tr>
-<td><a href="https://github.com/frkngrpnr/jcs" target="_blank" rel="noopener">heysky</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/frkngrpnr/jcs">heysky</a></td>
 <td>0.920916</td>
 <td>0.913731</td>
 <td>0.919769</td>
@@ -471,7 +538,7 @@
 <td>0.917014</td>
 </tr>
 <tr>
-<td><a href="https://github.com/hershd23/VideoModalitiesML" target="_blank" rel="noopener">hershd23</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/hershd23/VideoModalitiesML">hershd23</a></td>
 <td>0.9180</td>
 <td>0.9111</td>
 <td>0.9153</td>
@@ -489,7 +556,7 @@
 <td>0.911123</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Bekhouche/FirstImpressionsV2" target="_blank" rel="noopener">bekhouche</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Bekhouche/FirstImpressionsV2">bekhouche</a></td>
 <td>0.915746</td>
 <td>0.910312</td>
 <td>0.913775</td>
@@ -498,7 +565,7 @@
 <td>0.910078</td>
 </tr>
 <tr>
-<td><a href="https://github.com/MS1997/Apparent-personality-analysis-using-videos" target="_blank" rel="noopener">*MS1997</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/MS1997/Apparent-personality-analysis-using-videos">*MS1997</a></td>
 <td>0.9047</td>
 <td>0.9075</td>
 <td>0.9066</td>
@@ -507,7 +574,7 @@
 <td>0.9046</td>
 </tr>
 <tr>
-<td><a href="https://github.com/ROC-HCI/chalearn_coopetition_2017" target="_blank" rel="noopener">go2chayan</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/ROC-HCI/chalearn_coopetition_2017">go2chayan</a></td>
 <td>0.901859</td>
 <td>0.903216</td>
 <td>0.894914</td>
@@ -516,7 +583,7 @@
 <td>0.904709</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Benlamoudi/FDMB" target="_blank" rel="noopener">azzasama</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Benlamoudi/FDMB">azzasama</a></td>
 <td>0.872129</td>
 <td>0.891004</td>
 <td>0.865975</td>
@@ -539,18 +606,25 @@
     
     
     
-      <footer class="post-footer">
+
+    <footer class="post-footer">
         <div class="post-eof"></div>
-      </footer>
+      
+    </footer>
   </article>
-  
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/jetson-nano-reduce-memory-usage/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -563,46 +637,40 @@
       <meta itemprop="name" content="S1NH">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/post/jetson-nano-reduce-memory-usage/" class="post-title-link" itemprop="url">「Jetson Nano」 Reduce Memory Usage</a>
-        </h1>
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/jetson-nano-reduce-memory-usage/" class="post-title-link" itemprop="url">「Jetson Nano」 Reduce Memory Usage</a>
+        </h2>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-10-12 12:17:16 / 修改时间：15:26:57" itemprop="dateCreated datePublished" datetime="2020-10-12T12:17:16+08:00">2020-10-12</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/post/jetson-nano-reduce-memory-usage/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/jetson-nano-reduce-memory-usage/" itemprop="commentCount"></span>
-    </a>
-  </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2020-10-12 12:17:16 / 修改时间：15:26:57" itemprop="dateCreated datePublished" datetime="2020-10-12T12:17:16+08:00">2020-10-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
+        </span>
+    </span>
+
   
-  
+    <span id="/post/jetson-nano-reduce-memory-usage/" class="post-meta-item leancloud_visitors" data-flag-title="「Jetson Nano」 Reduce Memory Usage" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
 
         </div>
       </header>
@@ -611,8 +679,6 @@
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
           <blockquote>
 <p>Nano 的4G内存太小了（最近还出来一个2G版nano &gt;_&lt;），模型跑不动的患者可以通过以下几个步骤减少内存消耗。</p>
 </blockquote>
@@ -633,18 +699,25 @@
     
     
     
-      <footer class="post-footer">
+
+    <footer class="post-footer">
         <div class="post-eof"></div>
-      </footer>
+      
+    </footer>
   </article>
-  
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/vqg-survey/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -657,46 +730,40 @@
       <meta itemprop="name" content="S1NH">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/post/vqg-survey/" class="post-title-link" itemprop="url">A Survey of Visual Question Generation</a>
-        </h1>
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/vqg-survey/" class="post-title-link" itemprop="url">A Survey of Visual Question Generation</a>
+        </h2>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-09-21 19:35:09 / 修改时间：19:54:49" itemprop="dateCreated datePublished" datetime="2020-09-21T19:35:09+08:00">2020-09-21</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/post/vqg-survey/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/vqg-survey/" itemprop="commentCount"></span>
-    </a>
-  </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2020-09-21 19:35:09 / 修改时间：19:54:49" itemprop="dateCreated datePublished" datetime="2020-09-21T19:35:09+08:00">2020-09-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
+        </span>
+    </span>
+
   
-  
+    <span id="/post/vqg-survey/" class="post-meta-item leancloud_visitors" data-flag-title="A Survey of Visual Question Generation" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
 
         </div>
       </header>
@@ -705,16 +772,14 @@
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
           <img src="http://qiniu.s1nh.org/vqg-intro.svg" width = 70% div align=center />
 
 
 <p>Give an image, the task is to generate natural Question based on the image.</p>
 <ul>
-<li>Another list of VQA <a href="https://github.com/jokieleung/awesome-visual-question-answering" target="_blank" rel="noopener">https://github.com/jokieleung/awesome-visual-question-answering</a></li>
-<li>A survey of Image Caption in Chinese <a href="https://zhuanlan.zhihu.com/p/27771046" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/27771046</a></li>
-<li>Survey of the State of the Art in Natural Language Generation: Core tasks, applications and evaluation [<a href="https://www.researchgate.net/profile/Albert_Gatt/publication/315696017_Survey_of_the_State_of_the_Art_in_Natural_Language_Generation_Core_tasks_applications_and_evaluation/links/58e4909caca272d62977a6b8/Survey-of-the-State-of-the-Art-in-Natural-Language-Generation-Core-tasks-applications-and-evaluation.pdf" target="_blank" rel="noopener">Link</a></li>
+<li>Another list of VQA <a target="_blank" rel="noopener" href="https://github.com/jokieleung/awesome-visual-question-answering">https://github.com/jokieleung/awesome-visual-question-answering</a></li>
+<li>A survey of Image Caption in Chinese <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/27771046">https://zhuanlan.zhihu.com/p/27771046</a></li>
+<li>Survey of the State of the Art in Natural Language Generation: Core tasks, applications and evaluation [<a target="_blank" rel="noopener" href="https://www.researchgate.net/profile/Albert_Gatt/publication/315696017_Survey_of_the_State_of_the_Art_in_Natural_Language_Generation_Core_tasks_applications_and_evaluation/links/58e4909caca272d62977a6b8/Survey-of-the-State-of-the-Art-in-Natural-Language-Generation-Core-tasks-applications-and-evaluation.pdf">Link</a></li>
 </ul>
           <!--noindex-->
             <div class="post-button">
@@ -730,18 +795,25 @@
     
     
     
-      <footer class="post-footer">
+
+    <footer class="post-footer">
         <div class="post-eof"></div>
-      </footer>
+      
+    </footer>
   </article>
-  
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/inference-using-tensorrt-backend/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -754,46 +826,40 @@
       <meta itemprop="name" content="S1NH">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/post/inference-using-tensorrt-backend/" class="post-title-link" itemprop="url">Inference using TensorRT Backend.</a>
-        </h1>
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/inference-using-tensorrt-backend/" class="post-title-link" itemprop="url">Inference using TensorRT Backend.</a>
+        </h2>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-09-21 19:30:35 / 修改时间：19:56:08" itemprop="dateCreated datePublished" datetime="2020-09-21T19:30:35+08:00">2020-09-21</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">深度学习</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/post/inference-using-tensorrt-backend/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/inference-using-tensorrt-backend/" itemprop="commentCount"></span>
-    </a>
-  </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2020-09-21 19:30:35 / 修改时间：19:56:08" itemprop="dateCreated datePublished" datetime="2020-09-21T19:30:35+08:00">2020-09-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">深度学习</span></a>
+        </span>
+    </span>
+
   
-  
+    <span id="/post/inference-using-tensorrt-backend/" class="post-meta-item leancloud_visitors" data-flag-title="Inference using TensorRT Backend." title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
 
         </div>
       </header>
@@ -802,10 +868,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
           <h2 id="0x01-Tensorflow-2-0"><a href="#0x01-Tensorflow-2-0" class="headerlink" title="0x01 Tensorflow 2.0"></a>0x01 Tensorflow 2.0</h2><h3 id="1-1-Convert"><a href="#1-1-Convert" class="headerlink" title="1.1. Convert"></a>1.1. Convert</h3><p><strong>keras hdf5 –&gt; .pb</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"># V2 behaviour is disabled by default in Jetpack 4.4.DP.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">import tensorflow.compat.v2 as tf</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">from tensorflow.keras.models import load_model</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">model &#x3D; load_model(&#39;.&#x2F;model&#x2F;fer2013_mini_XCEPTION.102-0.66.hdf5&#39;)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">model.save(&#39;.&#x2F;model&#x2F;tf_savedmodel&#39;, save_format&#x3D;&#39;tf&#39;)</span></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># V2 behaviour is disabled by default in Jetpack 4.4.DP.</span><br><span class="line">import tensorflow.compat.v2 as tf</span><br><span class="line">from tensorflow.keras.models import load_model</span><br><span class="line"></span><br><span class="line">model &#x3D; load_model(&#39;.&#x2F;model&#x2F;fer2013_mini_XCEPTION.102-0.66.hdf5&#39;)</span><br><span class="line">model.save(&#39;.&#x2F;model&#x2F;tf_savedmodel&#39;, save_format&#x3D;&#39;tf&#39;)</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/inference-using-tensorrt-backend/#more" rel="contents">
@@ -820,18 +884,25 @@
     
     
     
-      <footer class="post-footer">
+
+    <footer class="post-footer">
         <div class="post-eof"></div>
-      </footer>
+      
+    </footer>
   </article>
-  
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/multi-modal-and-edge-compute/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -844,46 +915,40 @@
       <meta itemprop="name" content="S1NH">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/post/multi-modal-and-edge-compute/" class="post-title-link" itemprop="url">多模态人工智能与边缘计算技术</a>
-        </h1>
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/multi-modal-and-edge-compute/" class="post-title-link" itemprop="url">多模态人工智能与边缘计算技术</a>
+        </h2>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-09-21 19:13:28 / 修改时间：19:28:41" itemprop="dateCreated datePublished" datetime="2020-09-21T19:13:28+08:00">2020-09-21</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/post/multi-modal-and-edge-compute/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/multi-modal-and-edge-compute/" itemprop="commentCount"></span>
-    </a>
-  </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2020-09-21 19:13:28 / 修改时间：19:28:41" itemprop="dateCreated datePublished" datetime="2020-09-21T19:13:28+08:00">2020-09-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
+        </span>
+    </span>
+
   
-  
+    <span id="/post/multi-modal-and-edge-compute/" class="post-meta-item leancloud_visitors" data-flag-title="多模态人工智能与边缘计算技术" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
 
         </div>
       </header>
@@ -892,8 +957,6 @@
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
           <ul>
 <li><code>自然交互</code>：更接近与人之间的交互方式。 <strong>PC</strong>：键盘鼠标；<strong>移动</strong>：触控；<strong>现在</strong>：语音、手势、图像。</li>
 <li><code>云端一体</code>：</li>
@@ -902,7 +965,7 @@
 <h2 id="0x01-多模态自然交互"><a href="#0x01-多模态自然交互" class="headerlink" title="0x01 多模态自然交互"></a>0x01 多模态自然交互</h2><blockquote>
 <p>5G加速智联网时代的到来，多模态数据成为主流<br>电阻屏=&gt;电容屏：流量从PC时代走向移动时代<br>多模态自然交互：移动时代走向智联网时代</p>
 </blockquote>
-<p><img src="http://qiniu.s1nh.org/multi_modal_20200918205030958_203510884.png-QNthin" alt=""></p>
+<p><img src="http://qiniu.s1nh.org/multi_modal_20200918205030958_203510884.png-QNthin"></p>
 <ul>
 <li><code>1976</code> 发现麦格克效应</li>
 <li><code>2015</code> 200 citation–&gt;3000+ citation. 有代表的论文 VQA: Visual Question Answering (ICCV 2015)</li>
@@ -924,18 +987,25 @@
     
     
     
-      <footer class="post-footer">
+
+    <footer class="post-footer">
         <div class="post-eof"></div>
-      </footer>
+      
+    </footer>
   </article>
-  
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/planar-reconstruction/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -948,52 +1018,46 @@
       <meta itemprop="name" content="S1NH">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/post/planar-reconstruction/" class="post-title-link" itemprop="url">Planar Reconstruction - 深度学习之平面重建</a>
-        </h1>
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/planar-reconstruction/" class="post-title-link" itemprop="url">Planar Reconstruction - 深度学习之平面重建</a>
+        </h2>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-11-30 01:03:52" itemprop="dateCreated datePublished" datetime="2019-11-30T01:03:52+08:00">2019-11-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-17 01:27:37" itemprop="dateModified" datetime="2020-03-17T01:27:37+08:00">2020-03-17</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">深度学习</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/post/planar-reconstruction/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/planar-reconstruction/" itemprop="commentCount"></span>
-    </a>
-  </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-11-30 01:03:52" itemprop="dateCreated datePublished" datetime="2019-11-30T01:03:52+08:00">2019-11-30</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-03-17 01:27:37" itemprop="dateModified" datetime="2020-03-17T01:27:37+08:00">2020-03-17</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">深度学习</span></a>
+        </span>
+    </span>
+
   
-  
+    <span id="/post/planar-reconstruction/" class="post-meta-item leancloud_visitors" data-flag-title="Planar Reconstruction - 深度学习之平面重建" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
 
         </div>
       </header>
@@ -1002,8 +1066,6 @@
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
           <table>
 <thead>
 <tr>
@@ -1036,18 +1098,25 @@
     
     
     
-      <footer class="post-footer">
+
+    <footer class="post-footer">
         <div class="post-eof"></div>
-      </footer>
+      
+    </footer>
   </article>
-  
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/project-velodyne/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1060,52 +1129,46 @@
       <meta itemprop="name" content="S1NH">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/post/project-velodyne/" class="post-title-link" itemprop="url">多线激光 Velodyne 与相机的配准及投影</a>
-        </h1>
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/project-velodyne/" class="post-title-link" itemprop="url">多线激光 Velodyne 与相机的配准及投影</a>
+        </h2>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-06-25 00:13:16" itemprop="dateCreated datePublished" datetime="2019-06-25T00:13:16+08:00">2019-06-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-30 01:09:27" itemprop="dateModified" datetime="2019-11-30T01:09:27+08:00">2019-11-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/SLAM/" itemprop="url" rel="index"><span itemprop="name">SLAM</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/post/project-velodyne/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/project-velodyne/" itemprop="commentCount"></span>
-    </a>
-  </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-06-25 00:13:16" itemprop="dateCreated datePublished" datetime="2019-06-25T00:13:16+08:00">2019-06-25</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2019-11-30 01:09:27" itemprop="dateModified" datetime="2019-11-30T01:09:27+08:00">2019-11-30</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/SLAM/" itemprop="url" rel="index"><span itemprop="name">SLAM</span></a>
+        </span>
+    </span>
+
   
-  
+    <span id="/post/project-velodyne/" class="post-meta-item leancloud_visitors" data-flag-title="多线激光 Velodyne 与相机的配准及投影" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
 
         </div>
       </header>
@@ -1114,11 +1177,9 @@
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="0x00-Velodyne-简介"><a href="#0x00-Velodyne-简介" class="headerlink" title="0x00 Velodyne 简介"></a>0x00 Velodyne 简介</h2><h3 id="1-数据结构及坐标系"><a href="#1-数据结构及坐标系" class="headerlink" title="1. 数据结构及坐标系"></a>1. 数据结构及坐标系</h3><p>Velodyne 通过网线发送的原始数据包为球坐标（spherical coordinates, r, ω, α）。它的 <a href="https://github.com/ros-drivers/velodyne" target="_blank" rel="noopener">ros driver</a> 提供了两种更方便的格式：<code>/velodyne_points</code>和<code>/velodyne_scan</code></p>
+          <h2 id="0x00-Velodyne-简介"><a href="#0x00-Velodyne-简介" class="headerlink" title="0x00 Velodyne 简介"></a>0x00 Velodyne 简介</h2><h3 id="1-数据结构及坐标系"><a href="#1-数据结构及坐标系" class="headerlink" title="1. 数据结构及坐标系"></a>1. 数据结构及坐标系</h3><p>Velodyne 通过网线发送的原始数据包为球坐标（spherical coordinates, r, ω, α）。它的 <a target="_blank" rel="noopener" href="https://github.com/ros-drivers/velodyne">ros driver</a> 提供了两种更方便的格式：<code>/velodyne_points</code>和<code>/velodyne_scan</code></p>
 <p>其中，<code>/velodyne_points</code>是转换为XYZ后的坐标，转换的方式如下图；<code>/velodyne_scan</code>为第8根线的scan值（可直接用来模拟单线雷达）。 </p>
-<p><img src="http://qiniu.s1nh.org/project_velodyne_5.png-QNthin" alt=""></p>
+<p><img src="http://qiniu.s1nh.org/project_velodyne_5.png-QNthin"></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/project-velodyne/#more" rel="contents">
@@ -1133,18 +1194,25 @@
     
     
     
-      <footer class="post-footer">
+
+    <footer class="post-footer">
         <div class="post-eof"></div>
-      </footer>
+      
+    </footer>
   </article>
-  
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/calib-velodyne-camera/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1157,52 +1225,46 @@
       <meta itemprop="name" content="S1NH">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/post/calib-velodyne-camera/" class="post-title-link" itemprop="url">多目相机、Velodyne标定那些破事</a>
-        </h1>
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/calib-velodyne-camera/" class="post-title-link" itemprop="url">多目相机、Velodyne标定那些破事</a>
+        </h2>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-03-01 23:34:12" itemprop="dateCreated datePublished" datetime="2019-03-01T23:34:12+08:00">2019-03-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-30 01:10:18" itemprop="dateModified" datetime="2019-11-30T01:10:18+08:00">2019-11-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/SLAM/" itemprop="url" rel="index"><span itemprop="name">SLAM</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/post/calib-velodyne-camera/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/calib-velodyne-camera/" itemprop="commentCount"></span>
-    </a>
-  </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-03-01 23:34:12" itemprop="dateCreated datePublished" datetime="2019-03-01T23:34:12+08:00">2019-03-01</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2019-11-30 01:10:18" itemprop="dateModified" datetime="2019-11-30T01:10:18+08:00">2019-11-30</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/SLAM/" itemprop="url" rel="index"><span itemprop="name">SLAM</span></a>
+        </span>
+    </span>
+
   
-  
+    <span id="/post/calib-velodyne-camera/" class="post-meta-item leancloud_visitors" data-flag-title="多目相机、Velodyne标定那些破事" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
 
         </div>
       </header>
@@ -1211,15 +1273,13 @@
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
           <h2 id="0x01-制作标定板"><a href="#0x01-制作标定板" class="headerlink" title="0x01 制作标定板"></a>0x01 制作标定板</h2><ul>
-<li>在线生成棋盘格 <a href="https://calib.io/pages/camera-calibration-pattern-generator" target="_blank" rel="noopener">https://calib.io/pages/camera-calibration-pattern-generator</a></li>
-<li>在线生成aruco <a href="http://chev.me/arucogen/" target="_blank" rel="noopener">http://chev.me/arucogen/</a></li>
+<li>在线生成棋盘格 <a target="_blank" rel="noopener" href="https://calib.io/pages/camera-calibration-pattern-generator">https://calib.io/pages/camera-calibration-pattern-generator</a></li>
+<li>在线生成aruco <a target="_blank" rel="noopener" href="http://chev.me/arucogen/">http://chev.me/arucogen/</a></li>
 </ul>
 <h2 id="0x02-相机标定"><a href="#0x02-相机标定" class="headerlink" title="0x02 相机标定"></a>0x02 相机标定</h2><ul>
-<li><a href="http://wiki.ros.org/camera_calibration/Tutorials/StereoCalibration" target="_blank" rel="noopener">camera_calibration</a>: 使用棋盘格进行标定；</li>
-<li><a href="https://github.com/ethz-asl/kalibr" target="_blank" rel="noopener">kalibr</a>: 这个感觉更专业一些，可以同时标多目和IMU。</li>
+<li><a target="_blank" rel="noopener" href="http://wiki.ros.org/camera_calibration/Tutorials/StereoCalibration">camera_calibration</a>: 使用棋盘格进行标定；</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/ethz-asl/kalibr">kalibr</a>: 这个感觉更专业一些，可以同时标多目和IMU。</li>
 </ul>
 <h2 id="0x03-雷达–-gt-相机外参标定"><a href="#0x03-雷达–-gt-相机外参标定" class="headerlink" title="0x03 雷达–&gt;相机外参标定"></a>0x03 雷达–&gt;相机外参标定</h2><p>目前我成功的有两种方法：</p>
 <ul>
@@ -1240,18 +1300,25 @@
     
     
     
-      <footer class="post-footer">
+
+    <footer class="post-footer">
         <div class="post-eof"></div>
-      </footer>
+      
+    </footer>
   </article>
-  
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/setup-ubuntu-in-macbook/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1264,43 +1331,37 @@
       <meta itemprop="name" content="S1NH">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/post/setup-ubuntu-in-macbook/" class="post-title-link" itemprop="url">在 Macbook 中美美的运行 Ubuntu</a>
-        </h1>
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/setup-ubuntu-in-macbook/" class="post-title-link" itemprop="url">在 Macbook 中美美的运行 Ubuntu</a>
+        </h2>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-03-01 00:55:52" itemprop="dateCreated datePublished" datetime="2019-03-01T00:55:52+08:00">2019-03-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-30 01:22:28" itemprop="dateModified" datetime="2019-11-30T01:22:28+08:00">2019-11-30</time>
-              </span>
-
-          
-  
-  <span class="post-meta-item">
-    
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/post/setup-ubuntu-in-macbook/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/setup-ubuntu-in-macbook/" itemprop="commentCount"></span>
-    </a>
-  </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-03-01 00:55:52" itemprop="dateCreated datePublished" datetime="2019-03-01T00:55:52+08:00">2019-03-01</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2019-11-30 01:22:28" itemprop="dateModified" datetime="2019-11-30T01:22:28+08:00">2019-11-30</time>
+      </span>
+
   
-  
+    <span id="/post/setup-ubuntu-in-macbook/" class="post-meta-item leancloud_visitors" data-flag-title="在 Macbook 中美美的运行 Ubuntu" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
 
         </div>
       </header>
@@ -1309,9 +1370,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
-          <p><img src="http://qiniu.s1nh.org/mbp-2016-linux-device-status.png-QNthin" alt=""></p>
+          <p><img src="http://qiniu.s1nh.org/mbp-2016-linux-device-status.png-QNthin"></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/setup-ubuntu-in-macbook/#more" rel="contents">
@@ -1326,18 +1385,25 @@
     
     
     
-      <footer class="post-footer">
+
+    <footer class="post-footer">
         <div class="post-eof"></div>
-      </footer>
+      
+    </footer>
   </article>
-  
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/2018-summary/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1350,52 +1416,46 @@
       <meta itemprop="name" content="S1NH">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/post/2018-summary/" class="post-title-link" itemprop="url">2018 年终总结</a>
-        </h1>
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/2018-summary/" class="post-title-link" itemprop="url">2018 年终总结</a>
+        </h2>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-01-09 00:30:19" itemprop="dateCreated datePublished" datetime="2019-01-09T00:30:19+08:00">2019-01-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-30 01:10:47" itemprop="dateModified" datetime="2019-11-30T01:10:47+08:00">2019-11-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/post/2018-summary/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/2018-summary/" itemprop="commentCount"></span>
-    </a>
-  </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-01-09 00:30:19" itemprop="dateCreated datePublished" datetime="2019-01-09T00:30:19+08:00">2019-01-09</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2019-11-30 01:10:47" itemprop="dateModified" datetime="2019-11-30T01:10:47+08:00">2019-11-30</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
+        </span>
+    </span>
+
   
-  
+    <span id="/post/2018-summary/" class="post-meta-item leancloud_visitors" data-flag-title="2018 年终总结" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
 
         </div>
       </header>
@@ -1404,13 +1464,11 @@
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
           <blockquote>
 <p>又到写年终总结的时间了</p>
 </blockquote>
 <p>毕业工作了</p>
-<p><img src="http://qiniu.s1nh.org/Blog_2018-summary_01.jpeg-QNthin" alt=""></p>
+<p><img src="http://qiniu.s1nh.org/Blog_2018-summary_01.jpeg-QNthin"></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/2018-summary/#more" rel="contents">
@@ -1425,18 +1483,25 @@
     
     
     
-      <footer class="post-footer">
+
+    <footer class="post-footer">
         <div class="post-eof"></div>
-      </footer>
+      
+    </footer>
   </article>
-  
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/document-layout-analysis/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1449,52 +1514,46 @@
       <meta itemprop="name" content="S1NH">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/post/document-layout-analysis/" class="post-title-link" itemprop="url">文档布局分析 & 扭曲文档图像恢复 --- Document Layout Analysis & Document Image Dewarping</a>
-        </h1>
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/document-layout-analysis/" class="post-title-link" itemprop="url">文档布局分析 & 扭曲文档图像恢复 --- Document Layout Analysis & Document Image Dewarping</a>
+        </h2>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-09-20 02:01:58" itemprop="dateCreated datePublished" datetime="2018-09-20T02:01:58+08:00">2018-09-20</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-30 01:12:18" itemprop="dateModified" datetime="2019-11-30T01:12:18+08:00">2019-11-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%9B%BE%E5%BD%A2%E5%9B%BE%E5%83%8F/" itemprop="url" rel="index"><span itemprop="name">图形图像</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/post/document-layout-analysis/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/document-layout-analysis/" itemprop="commentCount"></span>
-    </a>
-  </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-09-20 02:01:58" itemprop="dateCreated datePublished" datetime="2018-09-20T02:01:58+08:00">2018-09-20</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2019-11-30 01:12:18" itemprop="dateModified" datetime="2019-11-30T01:12:18+08:00">2019-11-30</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%9B%BE%E5%BD%A2%E5%9B%BE%E5%83%8F/" itemprop="url" rel="index"><span itemprop="name">图形图像</span></a>
+        </span>
+    </span>
+
   
-  
+    <span id="/post/document-layout-analysis/" class="post-meta-item leancloud_visitors" data-flag-title="文档布局分析 & 扭曲文档图像恢复 --- Document Layout Analysis & Document Image Dewarping" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
 
         </div>
       </header>
@@ -1503,8 +1562,6 @@
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
           <!--
 > 不知道各位有没有碰到过这种同事，经常一遇到问题就找你帮忙。等你坑赤坑赤花了几个小时在这个问题上，甚至已经帮他解决了问题的时候，他悠悠的来一句问题已经搞定了不麻烦你了；
 > 还有另一种同事，你跟他结对编程，他只做自己擅长的部分，剩下擦屁股的工作都丢给你，出去宣扬这个部分都是他做的好累呀，出了问题背锅的总是你；
@@ -1513,7 +1570,7 @@
 <h2 id="0x00"><a href="#0x00" class="headerlink" title="0x00"></a>0x00</h2><p>对文本进行OCR前，必须分析和定义文档的逻辑结构。 例如文本块、段落、行的位置；是否有应该重建的表格；是否有“图像”“条形码等”。</p>
 <p>文档布局分析 (Document Layout Analysis) 是识别和分类文本文档的扫描图像中的感兴趣区域（RoI, Regions of Interest) 的过程。阅读系统需要从非文本区域分割文本区域，并按正确的阅读顺序排列。将文本正文，插图，数学符号和嵌入文档中的表格等不同区域（或块）的检测和标记称为<strong>几何布局分析</strong>。但文本区域在文档中扮演不同的逻辑角色（标题，标题，脚注等），这种语义标记是<strong>逻辑布局分析</strong>的范围。</p>
 <p>文档布局分析是几何和逻辑标签的结合。它通常在将文档图像发送到OCR引擎之前执行，但也可用于检测大型存档中同一文档的重复副本，或者通过其结构或图示内容索引文档。</p>
-<p><img src="http://qiniu.s1nh.org/Blog_fr-editable-copy-result.png" alt="" title="Document Layout Analysis"></p>
+<p><img src="http://qiniu.s1nh.org/Blog_fr-editable-copy-result.png" title="Document Layout Analysis"></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/document-layout-analysis/#more" rel="contents">
@@ -1528,18 +1585,25 @@
     
     
     
-      <footer class="post-footer">
+
+    <footer class="post-footer">
         <div class="post-eof"></div>
-      </footer>
+      
+    </footer>
   </article>
-  
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/xb/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1552,52 +1616,46 @@
       <meta itemprop="name" content="S1NH">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/post/xb/" class="post-title-link" itemprop="url">竟然拍了照片</a>
-        </h1>
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/xb/" class="post-title-link" itemprop="url">竟然拍了照片</a>
+        </h2>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-08-31 01:43:55" itemprop="dateCreated datePublished" datetime="2018-08-31T01:43:55+08:00">2018-08-31</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-30 01:23:09" itemprop="dateModified" datetime="2019-11-30T01:23:09+08:00">2019-11-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%9F%B3%E4%B9%90/" itemprop="url" rel="index"><span itemprop="name">音乐</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/post/xb/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/xb/" itemprop="commentCount"></span>
-    </a>
-  </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-08-31 01:43:55" itemprop="dateCreated datePublished" datetime="2018-08-31T01:43:55+08:00">2018-08-31</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2019-11-30 01:23:09" itemprop="dateModified" datetime="2019-11-30T01:23:09+08:00">2019-11-30</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9F%B3%E4%B9%90/" itemprop="url" rel="index"><span itemprop="name">音乐</span></a>
+        </span>
+    </span>
+
   
-  
+    <span id="/post/xb/" class="post-meta-item leancloud_visitors" data-flag-title="竟然拍了照片" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
 
         </div>
       </header>
@@ -1606,8 +1664,6 @@
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
           <blockquote>
 <p>淘宝的搞活动临时拉我跑龙套，拍了几张照片</p>
 </blockquote>
@@ -1625,18 +1681,25 @@
     
     
     
-      <footer class="post-footer">
+
+    <footer class="post-footer">
         <div class="post-eof"></div>
-      </footer>
+      
+    </footer>
   </article>
-  
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/whale-fall-2018/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1649,46 +1712,40 @@
       <meta itemprop="name" content="S1NH">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/post/whale-fall-2018/" class="post-title-link" itemprop="url">鲸落分手演出</a>
-        </h1>
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/whale-fall-2018/" class="post-title-link" itemprop="url">鲸落分手演出</a>
+        </h2>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2018-05-14 02:00:19 / 修改时间：02:07:29" itemprop="dateCreated datePublished" datetime="2018-05-14T02:00:19+08:00">2018-05-14</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%9F%B3%E4%B9%90/" itemprop="url" rel="index"><span itemprop="name">音乐</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/post/whale-fall-2018/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/whale-fall-2018/" itemprop="commentCount"></span>
-    </a>
-  </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2018-05-14 02:00:19 / 修改时间：02:07:29" itemprop="dateCreated datePublished" datetime="2018-05-14T02:00:19+08:00">2018-05-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9F%B3%E4%B9%90/" itemprop="url" rel="index"><span itemprop="name">音乐</span></a>
+        </span>
+    </span>
+
   
-  
+    <span id="/post/whale-fall-2018/" class="post-meta-item leancloud_visitors" data-flag-title="鲸落分手演出" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
 
         </div>
       </header>
@@ -1697,9 +1754,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
-          <p><img src="http://qiniu.s1nh.org/whale_fall_2018_4.jpg" alt=""></p>
+          <p><img src="http://qiniu.s1nh.org/whale_fall_2018_4.jpg"></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/whale-fall-2018/#more" rel="contents">
@@ -1714,18 +1769,25 @@
     
     
     
-      <footer class="post-footer">
+
+    <footer class="post-footer">
         <div class="post-eof"></div>
-      </footer>
+      
+    </footer>
   </article>
-  
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/arm64-after-jetpack/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1738,46 +1800,40 @@
       <meta itemprop="name" content="S1NH">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/post/arm64-after-jetpack/" class="post-title-link" itemprop="url">安装NVIDIA Jetpack/DriveInstall后，apt-get 报错无arm64源</a>
-        </h1>
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/arm64-after-jetpack/" class="post-title-link" itemprop="url">安装NVIDIA Jetpack/DriveInstall后，apt-get 报错无arm64源</a>
+        </h2>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2018-05-12 16:38:48 / 修改时间：16:49:45" itemprop="dateCreated datePublished" datetime="2018-05-12T16:38:48+08:00">2018-05-12</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/post/arm64-after-jetpack/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/arm64-after-jetpack/" itemprop="commentCount"></span>
-    </a>
-  </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2018-05-12 16:38:48 / 修改时间：16:49:45" itemprop="dateCreated datePublished" datetime="2018-05-12T16:38:48+08:00">2018-05-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
+        </span>
+    </span>
+
   
-  
+    <span id="/post/arm64-after-jetpack/" class="post-meta-item leancloud_visitors" data-flag-title="安装NVIDIA Jetpack/DriveInstall后，apt-get 报错无arm64源" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
 
         </div>
       </header>
@@ -1786,8 +1842,6 @@
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
           <blockquote>
 <p>网上的解决方案大多是<code>删除已经安装的arm64包，然后执行dpkg --remove-architecture arm64</code>，但是错误在下次刷机后依然会出现</p>
 </blockquote>
@@ -1805,18 +1859,25 @@
     
     
     
-      <footer class="post-footer">
+
+    <footer class="post-footer">
         <div class="post-eof"></div>
-      </footer>
+      
+    </footer>
   </article>
-  
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/making-a-coffeebot-ORB_SLAM/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1829,46 +1890,40 @@
       <meta itemprop="name" content="S1NH">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/post/making-a-coffeebot-ORB_SLAM/" class="post-title-link" itemprop="url">制作一个送咖啡机器人 -- ORB SLAM2</a>
-        </h1>
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/making-a-coffeebot-ORB_SLAM/" class="post-title-link" itemprop="url">制作一个送咖啡机器人 -- ORB SLAM2</a>
+        </h2>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2018-05-12 16:21:01 / 修改时间：17:06:15" itemprop="dateCreated datePublished" datetime="2018-05-12T16:21:01+08:00">2018-05-12</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/SLAM/" itemprop="url" rel="index"><span itemprop="name">SLAM</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/post/making-a-coffeebot-ORB_SLAM/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/making-a-coffeebot-ORB_SLAM/" itemprop="commentCount"></span>
-    </a>
-  </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2018-05-12 16:21:01 / 修改时间：17:06:15" itemprop="dateCreated datePublished" datetime="2018-05-12T16:21:01+08:00">2018-05-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/SLAM/" itemprop="url" rel="index"><span itemprop="name">SLAM</span></a>
+        </span>
+    </span>
+
   
-  
+    <span id="/post/making-a-coffeebot-ORB_SLAM/" class="post-meta-item leancloud_visitors" data-flag-title="制作一个送咖啡机器人 -- ORB SLAM2" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
 
         </div>
       </header>
@@ -1877,12 +1932,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
           <blockquote>
 <p>几个月前在计算所用rplidar做过一个送咖啡机器人。可是运用到室外场景Lidar成本太高，于是转战视觉SLAM。<br>花了几天时间用gazebo仿真，跑通了ORB SLAM2框架。</p>
 </blockquote>
-<p><img src="http://qiniu.s1nh.org/orb_slam_simulation-loop.gif" alt="" title="解决闭环"></p>
+<p><img src="http://qiniu.s1nh.org/orb_slam_simulation-loop.gif" title="解决闭环"></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/making-a-coffeebot-ORB_SLAM/#more" rel="contents">
@@ -1897,18 +1950,25 @@
     
     
     
-      <footer class="post-footer">
+
+    <footer class="post-footer">
         <div class="post-eof"></div>
-      </footer>
+      
+    </footer>
   </article>
-  
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/deeplearning-ai-3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1921,52 +1981,46 @@
       <meta itemprop="name" content="S1NH">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/post/deeplearning-ai-3/" class="post-title-link" itemprop="url">Deeplearning.ai 学习笔记 -- 浅层神经网络</a>
-        </h1>
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/deeplearning-ai-3/" class="post-title-link" itemprop="url">Deeplearning.ai 学习笔记 -- 浅层神经网络</a>
+        </h2>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-04-06 02:06:19" itemprop="dateCreated datePublished" datetime="2018-04-06T02:06:19+08:00">2018-04-06</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2018-04-08 02:09:09" itemprop="dateModified" datetime="2018-04-08T02:09:09+08:00">2018-04-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" itemprop="url" rel="index"><span itemprop="name">人工智能</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/post/deeplearning-ai-3/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/deeplearning-ai-3/" itemprop="commentCount"></span>
-    </a>
-  </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-04-06 02:06:19" itemprop="dateCreated datePublished" datetime="2018-04-06T02:06:19+08:00">2018-04-06</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2018-04-08 02:09:09" itemprop="dateModified" datetime="2018-04-08T02:09:09+08:00">2018-04-08</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" itemprop="url" rel="index"><span itemprop="name">人工智能</span></a>
+        </span>
+    </span>
+
   
-  
+    <span id="/post/deeplearning-ai-3/" class="post-meta-item leancloud_visitors" data-flag-title="Deeplearning.ai 学习笔记 -- 浅层神经网络" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
 
         </div>
       </header>
@@ -1975,10 +2029,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
           <h2 id="0x01-神经网络的表示"><a href="#0x01-神经网络的表示" class="headerlink" title="0x01 神经网络的表示"></a>0x01 神经网络的表示</h2><p>首先要理解神经网络每一层的表示方法，搞清楚每个变量的意义，如下图：</p>
-<p><img src="http://qiniu.s1nh.org/Deeplearning.ai-5.png" alt=""></p>
+<p><img src="http://qiniu.s1nh.org/Deeplearning.ai-5.png"></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/deeplearning-ai-3/#more" rel="contents">
@@ -1993,18 +2045,25 @@
     
     
     
-      <footer class="post-footer">
+
+    <footer class="post-footer">
         <div class="post-eof"></div>
-      </footer>
+      
+    </footer>
   </article>
-  
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/deeplearning-ai-2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2017,46 +2076,40 @@
       <meta itemprop="name" content="S1NH">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/post/deeplearning-ai-2/" class="post-title-link" itemprop="url">Deeplearning.ai 学习笔记 -- Logistic Regression</a>
-        </h1>
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/deeplearning-ai-2/" class="post-title-link" itemprop="url">Deeplearning.ai 学习笔记 -- Logistic Regression</a>
+        </h2>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2018-04-06 01:20:19 / 修改时间：23:27:00" itemprop="dateCreated datePublished" datetime="2018-04-06T01:20:19+08:00">2018-04-06</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" itemprop="url" rel="index"><span itemprop="name">人工智能</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/post/deeplearning-ai-2/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/deeplearning-ai-2/" itemprop="commentCount"></span>
-    </a>
-  </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2018-04-06 01:20:19 / 修改时间：23:27:00" itemprop="dateCreated datePublished" datetime="2018-04-06T01:20:19+08:00">2018-04-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" itemprop="url" rel="index"><span itemprop="name">人工智能</span></a>
+        </span>
+    </span>
+
   
-  
+    <span id="/post/deeplearning-ai-2/" class="post-meta-item leancloud_visitors" data-flag-title="Deeplearning.ai 学习笔记 -- Logistic Regression" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
 
         </div>
       </header>
@@ -2065,12 +2118,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
           <blockquote>
 <p>这一节教你手撸逻辑回归。<br>逻辑回归可以解决简单的二分类问题，比如下图的猫，通过一系列计算后得到它是猫的概率</p>
 </blockquote>
-<p><img src="http://qiniu.s1nh.org/Deeplearning.ai-LogReg_kiank.png" alt=""></p>
+<p><img src="http://qiniu.s1nh.org/Deeplearning.ai-LogReg_kiank.png"></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/deeplearning-ai-2/#more" rel="contents">
@@ -2085,18 +2136,25 @@
     
     
     
-      <footer class="post-footer">
+
+    <footer class="post-footer">
         <div class="post-eof"></div>
-      </footer>
+      
+    </footer>
   </article>
-  
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/deeplearning-ai-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2109,46 +2167,40 @@
       <meta itemprop="name" content="S1NH">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/post/deeplearning-ai-1/" class="post-title-link" itemprop="url">Deeplearning.ai 学习笔记--基本概念</a>
-        </h1>
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/deeplearning-ai-1/" class="post-title-link" itemprop="url">Deeplearning.ai 学习笔记--基本概念</a>
+        </h2>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2018-04-06 01:10:19 / 修改时间：23:28:09" itemprop="dateCreated datePublished" datetime="2018-04-06T01:10:19+08:00">2018-04-06</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" itemprop="url" rel="index"><span itemprop="name">人工智能</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/post/deeplearning-ai-1/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/deeplearning-ai-1/" itemprop="commentCount"></span>
-    </a>
-  </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2018-04-06 01:10:19 / 修改时间：23:28:09" itemprop="dateCreated datePublished" datetime="2018-04-06T01:10:19+08:00">2018-04-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" itemprop="url" rel="index"><span itemprop="name">人工智能</span></a>
+        </span>
+    </span>
+
   
-  
+    <span id="/post/deeplearning-ai-1/" class="post-meta-item leancloud_visitors" data-flag-title="Deeplearning.ai 学习笔记--基本概念" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
 
         </div>
       </header>
@@ -2157,15 +2209,13 @@
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
           <blockquote>
 <p>对应《神经网络和深度学习.第二周.作业1》</p>
 </blockquote>
 <h3 id="归一化"><a href="#归一化" class="headerlink" title="归一化"></a>归一化</h3><blockquote>
 <p>很多非数学背景的同学不知道归一化有什么卵用。简单来说，向量可以表示<code>方向</code>和<code>长度</code>；通过归一化后，向量的<code>长度 = 1</code>，方向不变，使得<code>向量仅代表特征的方向</code>。优点是归一化后梯度下降得更快。（下图）</p>
 </blockquote>
-<p><img src="http://qiniu.s1nh.org/Deeplearning.ai-1.png" alt=""></p>
+<p><img src="http://qiniu.s1nh.org/Deeplearning.ai-1.png"></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/deeplearning-ai-1/#more" rel="contents">
@@ -2180,18 +2230,25 @@
     
     
     
-      <footer class="post-footer">
+
+    <footer class="post-footer">
         <div class="post-eof"></div>
-      </footer>
+      
+    </footer>
   </article>
-  
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/littlebug/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2204,52 +2261,46 @@
       <meta itemprop="name" content="S1NH">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/post/littlebug/" class="post-title-link" itemprop="url">linux kernel bug 导致无法载入 nvidia 驱动</a>
-        </h1>
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/littlebug/" class="post-title-link" itemprop="url">linux kernel bug 导致无法载入 nvidia 驱动</a>
+        </h2>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-03-23 19:45:52" itemprop="dateCreated datePublished" datetime="2018-03-23T19:45:52+08:00">2018-03-23</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2018-05-12 15:30:51" itemprop="dateModified" datetime="2018-05-12T15:30:51+08:00">2018-05-12</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/post/littlebug/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/littlebug/" itemprop="commentCount"></span>
-    </a>
-  </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-03-23 19:45:52" itemprop="dateCreated datePublished" datetime="2018-03-23T19:45:52+08:00">2018-03-23</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2018-05-12 15:30:51" itemprop="dateModified" datetime="2018-05-12T15:30:51+08:00">2018-05-12</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
+        </span>
+    </span>
+
   
-  
+    <span id="/post/littlebug/" class="post-meta-item leancloud_visitors" data-flag-title="linux kernel bug 导致无法载入 nvidia 驱动" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
 
         </div>
       </header>
@@ -2258,8 +2309,6 @@
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
           <p>执行 <code>nvidia-smi</code> 显示：  NVIDIA-SMI has failed because it couldn’t communicate with the NVIDIA driver. Make sure that the latest NVIDIA driver is installed and running.</p>
           <!--noindex-->
             <div class="post-button">
@@ -2275,18 +2324,25 @@
     
     
     
-      <footer class="post-footer">
+
+    <footer class="post-footer">
         <div class="post-eof"></div>
-      </footer>
+      
+    </footer>
   </article>
-  
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/RSA-KMP-RB-TREE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2299,52 +2355,46 @@
       <meta itemprop="name" content="S1NH">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/post/RSA-KMP-RB-TREE/" class="post-title-link" itemprop="url">RSA，KMP，AVL树，红黑树和LLRB-tree</a>
-        </h1>
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/RSA-KMP-RB-TREE/" class="post-title-link" itemprop="url">RSA，KMP，AVL树，红黑树和LLRB-tree</a>
+        </h2>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-03-03 01:15:23" itemprop="dateCreated datePublished" datetime="2018-03-03T01:15:23+08:00">2018-03-03</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2018-03-05 22:05:41" itemprop="dateModified" datetime="2018-03-05T22:05:41+08:00">2018-03-05</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/post/RSA-KMP-RB-TREE/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/RSA-KMP-RB-TREE/" itemprop="commentCount"></span>
-    </a>
-  </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-03-03 01:15:23" itemprop="dateCreated datePublished" datetime="2018-03-03T01:15:23+08:00">2018-03-03</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2018-03-05 22:05:41" itemprop="dateModified" datetime="2018-03-05T22:05:41+08:00">2018-03-05</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
+        </span>
+    </span>
+
   
-  
+    <span id="/post/RSA-KMP-RB-TREE/" class="post-meta-item leancloud_visitors" data-flag-title="RSA，KMP，AVL树，红黑树和LLRB-tree" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
 
         </div>
       </header>
@@ -2353,12 +2403,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
           <blockquote>
 <p>这三个算法是好几年前就好奇但一直没搞懂的神奇算法</p>
 </blockquote>
-<p><img src="http://qiniu.s1nh.org/algorithm-23-234.png-QNthin" alt=""></p>
+<p><img src="http://qiniu.s1nh.org/algorithm-23-234.png-QNthin"></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/RSA-KMP-RB-TREE/#more" rel="contents">
@@ -2373,18 +2421,25 @@
     
     
     
-      <footer class="post-footer">
+
+    <footer class="post-footer">
         <div class="post-eof"></div>
-      </footer>
+      
+    </footer>
   </article>
-  
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/lcs/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2397,52 +2452,46 @@
       <meta itemprop="name" content="S1NH">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/post/lcs/" class="post-title-link" itemprop="url">最长公共子序列（LCS）到git diff</a>
-        </h1>
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/lcs/" class="post-title-link" itemprop="url">最长公共子序列（LCS）到git diff</a>
+        </h2>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-02-28 22:45:58" itemprop="dateCreated datePublished" datetime="2018-02-28T22:45:58+08:00">2018-02-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2018-03-17 23:03:28" itemprop="dateModified" datetime="2018-03-17T23:03:28+08:00">2018-03-17</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/post/lcs/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/lcs/" itemprop="commentCount"></span>
-    </a>
-  </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-02-28 22:45:58" itemprop="dateCreated datePublished" datetime="2018-02-28T22:45:58+08:00">2018-02-28</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2018-03-17 23:03:28" itemprop="dateModified" datetime="2018-03-17T23:03:28+08:00">2018-03-17</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
+        </span>
+    </span>
+
   
-  
+    <span id="/post/lcs/" class="post-meta-item leancloud_visitors" data-flag-title="最长公共子序列（LCS）到git diff" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
 
         </div>
       </header>
@@ -2451,8 +2500,6 @@
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
           <blockquote>
 <p>当宿命从你门前走过的时候，芸芸众生总是显得那么渺小</p>
 </blockquote>
@@ -2472,18 +2519,25 @@
     
     
     
-      <footer class="post-footer">
+
+    <footer class="post-footer">
         <div class="post-eof"></div>
-      </footer>
+      
+    </footer>
   </article>
-  
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/YZSY/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2496,52 +2550,46 @@
       <meta itemprop="name" content="S1NH">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/post/YZSY/" class="post-title-link" itemprop="url">豫章书院与当代鲁迅的倒下</a>
-        </h1>
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/YZSY/" class="post-title-link" itemprop="url">豫章书院与当代鲁迅的倒下</a>
+        </h2>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-02-13 13:33:29" itemprop="dateCreated datePublished" datetime="2018-02-13T13:33:29+08:00">2018-02-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2018-05-12 17:03:19" itemprop="dateModified" datetime="2018-05-12T17:03:19+08:00">2018-05-12</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/post/YZSY/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/YZSY/" itemprop="commentCount"></span>
-    </a>
-  </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-02-13 13:33:29" itemprop="dateCreated datePublished" datetime="2018-02-13T13:33:29+08:00">2018-02-13</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2018-05-12 17:03:19" itemprop="dateModified" datetime="2018-05-12T17:03:19+08:00">2018-05-12</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
+        </span>
+    </span>
+
   
-  
+    <span id="/post/YZSY/" class="post-meta-item leancloud_visitors" data-flag-title="豫章书院与当代鲁迅的倒下" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
 
         </div>
       </header>
@@ -2550,12 +2598,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
           <blockquote>
 <p>有多少人，终其一生只为摆脱原生家庭</p>
 </blockquote>
-<p><img src="http://qiniu.s1nh.org/family-of-origin_01.jpg-QNthin" alt=""></p>
+<p><img src="http://qiniu.s1nh.org/family-of-origin_01.jpg-QNthin"></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/YZSY/#more" rel="contents">
@@ -2570,18 +2616,25 @@
     
     
     
-      <footer class="post-footer">
+
+    <footer class="post-footer">
         <div class="post-eof"></div>
-      </footer>
+      
+    </footer>
   </article>
-  
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/2017-summary/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2594,52 +2647,46 @@
       <meta itemprop="name" content="S1NH">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/post/2017-summary/" class="post-title-link" itemprop="url">2017年终总结</a>
-        </h1>
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/2017-summary/" class="post-title-link" itemprop="url">2017年终总结</a>
+        </h2>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-01-02 11:19:02" itemprop="dateCreated datePublished" datetime="2018-01-02T11:19:02+08:00">2018-01-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2018-01-15 15:15:06" itemprop="dateModified" datetime="2018-01-15T15:15:06+08:00">2018-01-15</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/post/2017-summary/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/2017-summary/" itemprop="commentCount"></span>
-    </a>
-  </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-01-02 11:19:02" itemprop="dateCreated datePublished" datetime="2018-01-02T11:19:02+08:00">2018-01-02</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2018-01-15 15:15:06" itemprop="dateModified" datetime="2018-01-15T15:15:06+08:00">2018-01-15</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
+        </span>
+    </span>
+
   
-  
+    <span id="/post/2017-summary/" class="post-meta-item leancloud_visitors" data-flag-title="2017年终总结" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
 
         </div>
       </header>
@@ -2648,15 +2695,13 @@
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
           <blockquote>
 <p>2017年应该是最折腾的一年，为了传说中的梦想从深圳到了北京，离开了我超喜欢的一个领导，到计算所后由期待到失望…</p>
 </blockquote>
 <blockquote>
 <p>时间过的很快，因为把时间都浪费在搬家和融入新团队中了。不过忙忙碌碌的好处就是没有时间发呆和难过了哈哈哈 &gt;_&lt;</p>
 </blockquote>
-<p><img src="http://qiniu.s1nh.org/2017_summary_23.jpg-QNthin" alt="" title="画质也是有点糙"></p>
+<p><img src="http://qiniu.s1nh.org/2017_summary_23.jpg-QNthin" title="画质也是有点糙"></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/2017-summary/#more" rel="contents">
@@ -2671,18 +2716,25 @@
     
     
     
-      <footer class="post-footer">
+
+    <footer class="post-footer">
         <div class="post-eof"></div>
-      </footer>
+      
+    </footer>
   </article>
-  
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/Algorithm-Review/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2695,52 +2747,46 @@
       <meta itemprop="name" content="S1NH">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/post/Algorithm-Review/" class="post-title-link" itemprop="url">《数据结构与算法分析》复习笔记</a>
-        </h1>
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/Algorithm-Review/" class="post-title-link" itemprop="url">《数据结构与算法分析》复习笔记</a>
+        </h2>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2017-12-06 13:16:55" itemprop="dateCreated datePublished" datetime="2017-12-06T13:16:55+08:00">2017-12-06</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2018-01-09 17:27:14" itemprop="dateModified" datetime="2018-01-09T17:27:14+08:00">2018-01-09</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/post/Algorithm-Review/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/Algorithm-Review/" itemprop="commentCount"></span>
-    </a>
-  </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-12-06 13:16:55" itemprop="dateCreated datePublished" datetime="2017-12-06T13:16:55+08:00">2017-12-06</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2018-01-09 17:27:14" itemprop="dateModified" datetime="2018-01-09T17:27:14+08:00">2018-01-09</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
+        </span>
+    </span>
+
   
-  
+    <span id="/post/Algorithm-Review/" class="post-meta-item leancloud_visitors" data-flag-title="《数据结构与算法分析》复习笔记" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
 
         </div>
       </header>
@@ -2749,8 +2795,6 @@
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
           <blockquote>
 <p>不过我喝咖啡从来不是为了提神的 这个世界上唯一提神的东西就是你今天必须完成的事情呀</p>
 </blockquote>
@@ -2769,18 +2813,25 @@
     
     
     
-      <footer class="post-footer">
+
+    <footer class="post-footer">
         <div class="post-eof"></div>
-      </footer>
+      
+    </footer>
   </article>
-  
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/Keras-MNIST/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2793,52 +2844,46 @@
       <meta itemprop="name" content="S1NH">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/post/Keras-MNIST/" class="post-title-link" itemprop="url">通过MNIST熟悉Keras——《TensorFlow 实战》读书笔记</a>
-        </h1>
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/Keras-MNIST/" class="post-title-link" itemprop="url">通过MNIST熟悉Keras——《TensorFlow 实战》读书笔记</a>
+        </h2>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2017-10-16 10:06:31" itemprop="dateCreated datePublished" datetime="2017-10-16T10:06:31+08:00">2017-10-16</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2017-10-18 09:42:43" itemprop="dateModified" datetime="2017-10-18T09:42:43+08:00">2017-10-18</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" itemprop="url" rel="index"><span itemprop="name">人工智能</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/post/Keras-MNIST/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/Keras-MNIST/" itemprop="commentCount"></span>
-    </a>
-  </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-10-16 10:06:31" itemprop="dateCreated datePublished" datetime="2017-10-16T10:06:31+08:00">2017-10-16</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2017-10-18 09:42:43" itemprop="dateModified" datetime="2017-10-18T09:42:43+08:00">2017-10-18</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" itemprop="url" rel="index"><span itemprop="name">人工智能</span></a>
+        </span>
+    </span>
+
   
-  
+    <span id="/post/Keras-MNIST/" class="post-meta-item leancloud_visitors" data-flag-title="通过MNIST熟悉Keras——《TensorFlow 实战》读书笔记" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
 
         </div>
       </header>
@@ -2847,11 +2892,9 @@
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
           <p>Tensorflow 的使用者虽多，但真的<strong>很难用</strong>。幸亏有基于TF和Theano的高层框架<code>Keras</code>（不幸的是Theano已经停止更新了）。我们通过MNIST来熟悉一下Keras。</p>
 <blockquote>
-<p>先推荐一个学习线性代数的教程<a href="http://www.bilibili.com/video/av6731067/" target="_blank" rel="noopener">http://www.bilibili.com/video/av6731067/</a>，不管你多忙也请看上面这个视频。<br><a href="http://space.bilibili.com/88461692" target="_blank" rel="noopener">3Blue1Brown</a>制作，深入浅出、直观明了地分享数学之美。</p>
+<p>先推荐一个学习线性代数的教程<a target="_blank" rel="noopener" href="http://www.bilibili.com/video/av6731067/">http://www.bilibili.com/video/av6731067/</a>，不管你多忙也请看上面这个视频。<br><a target="_blank" rel="noopener" href="http://space.bilibili.com/88461692">3Blue1Brown</a>制作，深入浅出、直观明了地分享数学之美。</p>
 </blockquote>
           <!--noindex-->
             <div class="post-button">
@@ -2867,18 +2910,25 @@
     
     
     
-      <footer class="post-footer">
+
+    <footer class="post-footer">
         <div class="post-eof"></div>
-      </footer>
+      
+    </footer>
   </article>
-  
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/making-a-coffeebot-fine-tune/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2891,52 +2941,46 @@
       <meta itemprop="name" content="S1NH">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/post/making-a-coffeebot-fine-tune/" class="post-title-link" itemprop="url">新工作：制作一个送咖啡机器人——调参</a>
-        </h1>
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/making-a-coffeebot-fine-tune/" class="post-title-link" itemprop="url">新工作：制作一个送咖啡机器人——调参</a>
+        </h2>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2017-09-01 15:00:36" itemprop="dateCreated datePublished" datetime="2017-09-01T15:00:36+08:00">2017-09-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2018-05-12 16:19:07" itemprop="dateModified" datetime="2018-05-12T16:19:07+08:00">2018-05-12</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/SLAM/" itemprop="url" rel="index"><span itemprop="name">SLAM</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/post/making-a-coffeebot-fine-tune/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/making-a-coffeebot-fine-tune/" itemprop="commentCount"></span>
-    </a>
-  </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-09-01 15:00:36" itemprop="dateCreated datePublished" datetime="2017-09-01T15:00:36+08:00">2017-09-01</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2018-05-12 16:19:07" itemprop="dateModified" datetime="2018-05-12T16:19:07+08:00">2018-05-12</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/SLAM/" itemprop="url" rel="index"><span itemprop="name">SLAM</span></a>
+        </span>
+    </span>
+
   
-  
+    <span id="/post/making-a-coffeebot-fine-tune/" class="post-meta-item leancloud_visitors" data-flag-title="新工作：制作一个送咖啡机器人——调参" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
 
         </div>
       </header>
@@ -2945,12 +2989,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
           <blockquote>
 <p>调了一下午参数调到怀疑人生，最后发现是参数配置文件没有同步 - -<br>晚上遗留的一大堆Bug，第二天都自动消失了<br>肯定是有会写代码的海螺姑娘偷偷入侵了我的电脑 &gt;_&lt;</p>
 </blockquote>
-<p><img src="http://qiniu.s1nh.org/Blog_fine_tune_joke.jpg-QNthin" alt=""></p>
+<p><img src="http://qiniu.s1nh.org/Blog_fine_tune_joke.jpg-QNthin"></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/making-a-coffeebot-fine-tune/#more" rel="contents">
@@ -2965,18 +3007,25 @@
     
     
     
-      <footer class="post-footer">
+
+    <footer class="post-footer">
         <div class="post-eof"></div>
-      </footer>
+      
+    </footer>
   </article>
-  
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/fender-57-62-strat-pickup-first-reissue/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2989,52 +3038,46 @@
       <meta itemprop="name" content="S1NH">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/post/fender-57-62-strat-pickup-first-reissue/" class="post-title-link" itemprop="url">首版复刻的Fender '57 & '62 Strat 拾音器</a>
-        </h1>
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/fender-57-62-strat-pickup-first-reissue/" class="post-title-link" itemprop="url">首版复刻的Fender '57 & '62 Strat 拾音器</a>
+        </h2>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2017-08-31 13:15:44" itemprop="dateCreated datePublished" datetime="2017-08-31T13:15:44+08:00">2017-08-31</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2018-01-15 12:00:43" itemprop="dateModified" datetime="2018-01-15T12:00:43+08:00">2018-01-15</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%9F%B3%E4%B9%90/" itemprop="url" rel="index"><span itemprop="name">音乐</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/post/fender-57-62-strat-pickup-first-reissue/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/fender-57-62-strat-pickup-first-reissue/" itemprop="commentCount"></span>
-    </a>
-  </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-08-31 13:15:44" itemprop="dateCreated datePublished" datetime="2017-08-31T13:15:44+08:00">2017-08-31</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2018-01-15 12:00:43" itemprop="dateModified" datetime="2018-01-15T12:00:43+08:00">2018-01-15</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9F%B3%E4%B9%90/" itemprop="url" rel="index"><span itemprop="name">音乐</span></a>
+        </span>
+    </span>
+
   
-  
+    <span id="/post/fender-57-62-strat-pickup-first-reissue/" class="post-meta-item leancloud_visitors" data-flag-title="首版复刻的Fender '57 & '62 Strat 拾音器" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
 
         </div>
       </header>
@@ -3043,12 +3086,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
           <blockquote>
 <p>去年10月份左右从咸鱼买了一把号称93年产原装无修改的Fender vintage 57 stratocaster，拆开看了一下，琴颈的生产日期是1993.05.21，还挺有纪念意义的。但就在我买了新拾音器准备改装它的时候，好像发现了一个天大的秘密。</p>
 </blockquote>
-<p><img src="http://qiniu.s1nh.org/Blog_guitars_1.jpg-QNthin" alt="" title="上面那把（找不到其它完整的图了）"></p>
+<p><img src="http://qiniu.s1nh.org/Blog_guitars_1.jpg-QNthin" title="上面那把（找不到其它完整的图了）"></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/fender-57-62-strat-pickup-first-reissue/#more" rel="contents">
@@ -3063,18 +3104,25 @@
     
     
     
-      <footer class="post-footer">
+
+    <footer class="post-footer">
         <div class="post-eof"></div>
-      </footer>
+      
+    </footer>
   </article>
-  
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/making-a-coffeebot-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -3087,52 +3135,46 @@
       <meta itemprop="name" content="S1NH">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/post/making-a-coffeebot-1/" class="post-title-link" itemprop="url">新工作：制作一个送咖啡机器人——第一周</a>
-        </h1>
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/making-a-coffeebot-1/" class="post-title-link" itemprop="url">新工作：制作一个送咖啡机器人——第一周</a>
+        </h2>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2017-08-28 17:15:13" itemprop="dateCreated datePublished" datetime="2017-08-28T17:15:13+08:00">2017-08-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2018-05-12 16:19:48" itemprop="dateModified" datetime="2018-05-12T16:19:48+08:00">2018-05-12</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/SLAM/" itemprop="url" rel="index"><span itemprop="name">SLAM</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/post/making-a-coffeebot-1/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/making-a-coffeebot-1/" itemprop="commentCount"></span>
-    </a>
-  </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-08-28 17:15:13" itemprop="dateCreated datePublished" datetime="2017-08-28T17:15:13+08:00">2017-08-28</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2018-05-12 16:19:48" itemprop="dateModified" datetime="2018-05-12T16:19:48+08:00">2018-05-12</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/SLAM/" itemprop="url" rel="index"><span itemprop="name">SLAM</span></a>
+        </span>
+    </span>
+
   
-  
+    <span id="/post/making-a-coffeebot-1/" class="post-meta-item leancloud_visitors" data-flag-title="新工作：制作一个送咖啡机器人——第一周" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
 
         </div>
       </header>
@@ -3141,12 +3183,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
           <blockquote>
 <p>来北京一个月，一直蜗居在一个小屋里，没有钱花+前途迷茫的感觉真是浑身难受。<br>我现在的任务是接手之前几个客座生的项目，用Turtlebot做一个送咖啡机器人。第一周的时间用来搭建一个完整的demo</p>
 </blockquote>
-<p><img src="http://qiniu.s1nh.org/Blog_cartographer_main.gif" alt="" title="别紧张，这个是 Cartographer 官方的Gif图"></p>
+<p><img src="http://qiniu.s1nh.org/Blog_cartographer_main.gif" title="别紧张，这个是 Cartographer 官方的Gif图"></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/making-a-coffeebot-1/#more" rel="contents">
@@ -3161,25 +3201,21 @@
     
     
     
-      <footer class="post-footer">
+
+    <footer class="post-footer">
         <div class="post-eof"></div>
-      </footer>
+      
+    </footer>
   </article>
-  
-  
-  
+</div>
 
-  </div>
 
-  
+
+
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
-
-
-          </div>
-          
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -3188,7 +3224,7 @@
       activeClass = localStorage.getItem('comments_active') || activeClass;
     }
     if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
       if (activeTab) {
         activeTab.click();
       }
@@ -3197,127 +3233,27 @@
   if (CONFIG.comments.storage) {
     window.addEventListener('tabs:click', event => {
       if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
+      const commentClass = event.target.classList[1];
       localStorage.setItem('comments_active', commentClass);
     });
   }
 </script>
-
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="S1NH"
-      src="/images/avatar.jpg">
-  <p class="site-author-name" itemprop="name">S1NH</p>
-  <div class="site-description" itemprop="description">no other developers required.</div>
 </div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">79</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
-        <span class="site-state-item-count">9</span>
-        <span class="site-state-item-name">分类</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-        <span class="site-state-item-count">77</span>
-        <span class="site-state-item-name">标签</span></a>
-      </div>
-  </nav>
-</div>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-        <a href="http://weibo.com/santuxuezhang" title="程序员吐槽师 → http:&#x2F;&#x2F;weibo.com&#x2F;santuxuezhang" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>程序员吐槽师</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="https://www.gitbook.com/book/xcode-jianghu/xcode-jianghu/details" title="Xcode江湖录 → https:&#x2F;&#x2F;www.gitbook.com&#x2F;book&#x2F;xcode-jianghu&#x2F;xcode-jianghu&#x2F;details" rel="noopener" target="_blank"><i class="fa fa-fw fa-book"></i>Xcode江湖录</a>
-      </span>
-  </div>
+  </main>
 
+  <footer class="footer">
+    <div class="footer-inner">
 
-  <div class="links-of-blogroll motion-element">
-    <div class="links-of-blogroll-title">
-      <i class="fa fa-fw fa-link"></i>
-      Links
-    </div>
-    <ul class="links-of-blogroll-list">
-        <li class="links-of-blogroll-item">
-          <a href="http://t.tips/" title="http:&#x2F;&#x2F;t.tips&#x2F;" rel="noopener" target="_blank">一只猿</a>
-        </li>
-        <li class="links-of-blogroll-item">
-          <a href="http://s1nh.com/" title="http:&#x2F;&#x2F;s1nh.com&#x2F;" rel="noopener" target="_blank">本站 github 镜像</a>
-        </li>
-        <li class="links-of-blogroll-item">
-          <a href="/http:/s1nh.org/" title="http:&#x2F;&#x2F;s1nh.org&#x2F;">本站国内镜像</a>
-        </li>
-    </ul>
-  </div>
-
-      </div>
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
 
 <div class="copyright">
-  
   &copy; 2015 – 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
-    <i class="fa fa-user"></i>
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">S1NH</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0
-  </div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.7.2
-  </div>
-
-        
 <div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
       <span class="post-meta-item-icon">
         <i class="fa fa-user"></i>
@@ -3326,7 +3262,6 @@
         <span id="busuanzi_value_site_uv"></span>
       </span>
     </span>
-    <span class="post-meta-divider">|</span>
     <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
       <span class="post-meta-item-icon">
         <i class="fa fa-eye"></i>
@@ -3336,49 +3271,18 @@
       </span>
     </span>
 </div>
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
-  
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
-<script src="/js/schemes/pisces.js"></script>
-<script src="/js/next-boot.js"></script>
-
-
+    </div>
+  </footer>
 
   
-  <script>
-    (function(){
-      var bp = document.createElement('script');
-      var curProtocol = window.location.protocol.split(':')[0];
-      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(bp, s);
-    })();
-  </script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
-
-
-
-  <script src="/js/local-search.js"></script>
-
-
-
-
-
-
+  
+<script src="/js/local-search.js"></script>
 
 
 
@@ -3386,37 +3290,130 @@
 
 
   
-
-  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
 <script>
-NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
-  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
-    var GUEST = ['nick', 'mail', 'link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(item => {
-      return GUEST.includes(item);
-    });
-    new Valine({
-      el         : '#valine-comments',
-      verify     : false,
-      notify     : false,
-      appId      : 'XOzH1c25Dogu8cYTuRxfnTFo-gzGzoHsz',
-      appKey     : 'RxlSioLPtr2tPejVVqIcrEq2',
-      placeholder: "Just go go",
-      avatar     : 'mm',
-      meta       : guest,
-      pageSize   : '10' || 10,
-      visitor    : false,
-      lang       : '' || 'zh-cn',
-      path       : location.pathname,
-      recordIP   : true,
-      serverURLs : ''
-    });
-  }, window.Valine);
-});
+  (function() {
+    function leancloudSelector(url) {
+      url = encodeURI(url);
+      return document.getElementById(url).querySelector('.leancloud-visitors-count');
+    }
+
+    function addCount(Counter) {
+      const visitors = document.querySelector('.leancloud_visitors');
+      const url = decodeURI(visitors.id);
+      const title = visitors.dataset.flagTitle;
+
+      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url })))
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            const counter = results[0];
+            leancloudSelector(url).innerText = counter.time + 1;
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .catch(error => {
+                console.error('Failed to save visitor count', error);
+              });
+          } else {
+              leancloudSelector(url).innerText = 'Counter not initialized! More info at console err msg.';
+              console.error('ATTENTION! LeanCloud counter has security bug, see how to solve it here: https://github.com/theme-next/hexo-leancloud-counter-security. \n However, you can still use LeanCloud without security, by setting `security` option to `false`.');
+            
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+
+    function showTime(Counter) {
+      const visitors = document.querySelectorAll('.leancloud_visitors');
+      const entries = [...visitors].map(element => {
+        return decodeURI(element.id);
+      });
+
+      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url: { '$in': entries } })))
+        .then(response => response.json())
+        .then(({ results }) => {
+          for (let url of entries) {
+            const target = results.find(item => item.url === url);
+            leancloudSelector(url).innerText = target ? target.time : 0;
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+
+    const { app_id, app_key, server_url } = {"enable":true,"app_id":"6DfRIwT9PDOmweurpXmSotWE-gzGzoHsz","app_key":"AG3rkzafm0Kv6lYsyVw1RvJL","server_url":null,"security":true};
+    function fetchData(api_server) {
+      const Counter = (method, url, data) => {
+        return fetch(`${api_server}/1.1${url}`, {
+          method,
+          headers: {
+            'X-LC-Id'     : app_id,
+            'X-LC-Key'    : app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        if (CONFIG.hostname !== location.hostname) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    }
+
+    const api_server = app_id.slice(-9) === '-MdYXbMMI' ? `https://${app_id.slice(0, 8).toLowerCase()}.api.lncldglobal.com` : server_url;
+
+    if (api_server) {
+      fetchData(api_server);
+    } else {
+      fetch('https://app-router.leancloud.cn/2/route?appId=' + app_id)
+        .then(response => response.json())
+        .then(({ api_server }) => {
+          fetchData('https://' + api_server);
+        });
+    }
+  })();
 </script>
+
+
+  <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'none'
+      },
+      options: {
+        renderActions: {
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+
 
 </body>
 </html>

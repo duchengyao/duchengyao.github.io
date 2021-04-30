@@ -4,62 +4,68 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.0.0">
+<meta name="generator" content="Hexo 5.4.0">
+
+
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
   <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
   <link rel="manifest" href="/images/site.webmanifest">
-  <meta name="msapplication-config" content="/images/browserconfig.xml">
 
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 
-<script id="hexo-configurations">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"s1nh.org","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","version":"8.3.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
   </script>
-
-  <meta name="description" content="最近没有什么特别紧急的工作，终于有时间做点喜欢的事情了。">
-<meta name="keywords" content="Beaglebone Black,Lantern,node.js">
+<meta name="description" content="最近没有什么特别紧急的工作，终于有时间做点喜欢的事情了。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Beaglebone Black 折腾笔记（一） 折腾些没用的">
-<meta property="og:url" content="http:&#x2F;&#x2F;s1nh.org&#x2F;post&#x2F;Beaglebone-Black_01&#x2F;index.html">
+<meta property="og:url" content="http://s1nh.org/post/Beaglebone-Black_01/index.html">
 <meta property="og:site_name" content="S1NH">
 <meta property="og:description" content="最近没有什么特别紧急的工作，终于有时间做点喜欢的事情了。">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;Blog_BBB-setup_1.jpg-QNthin">
-<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;Blog_BBB-setup_2.jpg-QNthin">
-<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;Blog_BBB-setup_3.jpg-QNthin">
-<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;Blog_BBB-setup_4.jpg-QNthin">
-<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;Blog_BBB-setup_5.jpg-QNthin">
-<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;Blog_BBB-setup_6.jpg-QNthin">
-<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;Blog_BBB-setup_8.jpg-QNthin">
-<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;Blog_BBB-setup_7.jpg-QNthin">
-<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;Blog_BBB-setup_9.jpg-QNthin">
-<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;Blog_BBB-setup_10.jpg-QNthin">
-<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;Blog_BBB-setup_11.jpg-QNthin">
-<meta property="og:updated_time" content="2018-01-15T04:00:43.000Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://qiniu.s1nh.org/Blog_BBB-setup_1.jpg-QNthin">
+<meta property="og:image" content="http://qiniu.s1nh.org/Blog_BBB-setup_2.jpg-QNthin">
+<meta property="og:image" content="http://qiniu.s1nh.org/Blog_BBB-setup_3.jpg-QNthin">
+<meta property="og:image" content="http://qiniu.s1nh.org/Blog_BBB-setup_4.jpg-QNthin">
+<meta property="og:image" content="http://qiniu.s1nh.org/Blog_BBB-setup_5.jpg-QNthin">
+<meta property="og:image" content="http://qiniu.s1nh.org/Blog_BBB-setup_6.jpg-QNthin">
+<meta property="og:image" content="http://qiniu.s1nh.org/Blog_BBB-setup_8.jpg-QNthin">
+<meta property="og:image" content="http://qiniu.s1nh.org/Blog_BBB-setup_7.jpg-QNthin">
+<meta property="og:image" content="http://qiniu.s1nh.org/Blog_BBB-setup_9.jpg-QNthin">
+<meta property="og:image" content="http://qiniu.s1nh.org/Blog_BBB-setup_10.jpg-QNthin">
+<meta property="og:image" content="http://qiniu.s1nh.org/Blog_BBB-setup_11.jpg-QNthin">
+<meta property="article:published_time" content="2015-12-04T11:23:27.000Z">
+<meta property="article:modified_time" content="2018-01-15T04:00:43.000Z">
+<meta property="article:author" content="S1NH">
+<meta property="article:tag" content="Lantern">
+<meta property="article:tag" content="Beaglebone Black">
+<meta property="article:tag" content="node.js">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;Blog_BBB-setup_1.jpg-QNthin">
+<meta name="twitter:image" content="http://qiniu.s1nh.org/Blog_BBB-setup_1.jpg-QNthin">
+
 
 <link rel="canonical" href="http://s1nh.org/post/Beaglebone-Black_01/">
 
 
-<script id="page-configurations">
+<script class="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : true
+    isPost : true,
+    lang   : 'zh-CN'
   };
 </script>
-
-  <title>Beaglebone Black 折腾笔记（一） 折腾些没用的 | S1NH</title>
+<title>Beaglebone Black 折腾笔记（一） 折腾些没用的 | S1NH</title>
   
-
 
   <script>
     var _hmt = _hmt || [];
@@ -73,56 +79,65 @@
 
 
 
-
   <noscript>
   <style>
-  .use-motion .brand,
+  body { margin-top: 2rem; }
+
   .use-motion .menu-item,
-  .sidebar-inner,
+  .use-motion .sidebar,
   .use-motion .post-block,
   .use-motion .pagination,
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
 
   .use-motion .site-title,
-  .use-motion .site-subtitle {
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
     opacity: initial;
     top: initial;
   }
 
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
   </style>
 </noscript>
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
+  <main class="main">
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
   <div class="site-meta">
 
-    <div>
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">S1NH</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-        <p class="site-subtitle">世界在旅程的尽头终结</p>
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">S1NH</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">世界在旅程的尽头终结</p>
   </div>
 
   <div class="site-nav-right">
@@ -133,85 +148,152 @@
 </div>
 
 
+
 <nav class="site-nav">
-  
-  <ul id="menu" class="menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
-
-  </li>
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
       </li>
   </ul>
-
 </nav>
-  <div class="site-search">
-    <div class="search-pop-overlay">
-  <div class="popup search-popup">
-      <div class="search-header">
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
   <span class="search-icon">
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
            placeholder="搜索..." spellcheck="false"
            type="search" class="search-input">
   </div>
-  <span class="popup-btn-close">
+  <span class="popup-btn-close" role="button">
     <i class="fa fa-times-circle"></i>
   </span>
 </div>
-<div id="search-result">
-  <div id="no-result">
-    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
   </div>
 </div>
 
+    </div>
   </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87"><span class="nav-number">1.</span> <span class="nav-text">前期准备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9D%9C%E9%82%A6%E7%BA%BF"><span class="nav-number">1.1.</span> <span class="nav-text">杜邦线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TP-Link-%E4%BA%A4%E6%8D%A2%E6%9C%BA%E6%8C%87%E7%A4%BA%E7%81%AF%E5%85%A8%E4%BA%AE%E4%BF%AE%E5%A4%8D"><span class="nav-number">1.2.</span> <span class="nav-text">TP-Link 交换机指示灯全亮修复</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8%E5%B1%80%E5%9F%9F%E7%BD%91%E4%B8%AD%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%90%86%E5%85%B1%E4%BA%ABLANTERN%E6%9D%A5%E7%BF%BB%E5%A2%99"><span class="nav-number">1.3.</span> <span class="nav-text">在局域网中使用代理共享LANTERN来翻墙</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0node-js"><span class="nav-number">1.4.</span> <span class="nav-text">更新node.js</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="S1NH"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">S1NH</p>
+  <div class="site-description" itemprop="description">no other developers required.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">78</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">75</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
 </div>
 
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.92ez.com/" title="https:&#x2F;&#x2F;www.92ez.com&#x2F;" rel="noopener" target="_blank">一只猿</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://s1nh.com/" title="http:&#x2F;&#x2F;s1nh.com&#x2F;" rel="noopener" target="_blank">本站 github 镜像</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://s1nh.org/" title="http:&#x2F;&#x2F;s1nh.org&#x2F;">本站国内镜像</a>
+        </li>
+    </ul>
   </div>
-</div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
     </header>
 
     
-  <div class="back-to-top">
+  <div class="back-to-top" role="button" aria-label="返回顶部">
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
 
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
 
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
 
-          <div class="content">
-            
+    <div class="main-inner post posts-expand">
 
-  <div class="posts-expand">
-      
+
+  
+
+
+<div class="post-block">
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/Beaglebone-Black_01/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -228,54 +310,49 @@
           Beaglebone Black 折腾笔记（一） 折腾些没用的
         </h1>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2015-12-04 19:23:27" itemprop="dateCreated datePublished" datetime="2015-12-04T19:23:27+08:00">2015-12-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2018-01-15 12:00:43" itemprop="dateModified" datetime="2018-01-15T12:00:43+08:00">2018-01-15</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%A1%AC%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">硬件</span></a>
-                </span>
-            </span>
-
-          
-            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span id="busuanzi_value_page_pv"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/post/Beaglebone-Black_01/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/Beaglebone-Black_01/" itemprop="commentCount"></span>
-    </a>
-  </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2015-12-04 19:23:27" itemprop="dateCreated datePublished" datetime="2015-12-04T19:23:27+08:00">2015-12-04</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2018-01-15 12:00:43" itemprop="dateModified" datetime="2018-01-15T12:00:43+08:00">2018-01-15</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%A1%AC%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">硬件</span></a>
+        </span>
+    </span>
+
   
-  
+    <span id="/post/Beaglebone-Black_01/" class="post-meta-item leancloud_visitors" data-flag-title="Beaglebone Black 折腾笔记（一） 折腾些没用的" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
 
         </div>
       </header>
@@ -284,26 +361,24 @@
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
-        <p><img src="http://qiniu.s1nh.org/Blog_BBB-setup_1.jpg-QNthin" alt=""></p>
+        <p><img src="http://qiniu.s1nh.org/Blog_BBB-setup_1.jpg-QNthin"></p>
 <p>最近没有什么特别紧急的工作，终于有时间做点喜欢的事情了。</p>
-<a id="more"></a>
+<span id="more"></span>
 
 <h2 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h2><p>从仓库里面挑了几个还能用的显示器，找出了好久之前买的Beaglebone Black (BBB)，买了micro HDMI -&gt; DVI , Display Port -&gt; DVI , Mini Display Port -&gt; DVI 转接线，准备搭建一个新的工作平台。</p>
-<p><img src="http://qiniu.s1nh.org/Blog_BBB-setup_2.jpg-QNthin" alt=""></p>
+<p><img src="http://qiniu.s1nh.org/Blog_BBB-setup_2.jpg-QNthin"></p>
 <h3 id="杜邦线"><a href="#杜邦线" class="headerlink" title="杜邦线"></a>杜邦线</h3><p>之前串口调试线太短了，并且容易插错，就去广埠屯买了这种线（老板说叫杜邦线），并且买了4/7的插头各一个。以后就不用纠结哪根线插在哪个针上了。</p>
-<p><img src="http://qiniu.s1nh.org/Blog_BBB-setup_3.jpg-QNthin" alt=""></p>
-<p><img src="http://qiniu.s1nh.org/Blog_BBB-setup_4.jpg-QNthin" alt=""></p>
+<p><img src="http://qiniu.s1nh.org/Blog_BBB-setup_3.jpg-QNthin"></p>
+<p><img src="http://qiniu.s1nh.org/Blog_BBB-setup_4.jpg-QNthin"></p>
 <h3 id="TP-Link-交换机指示灯全亮修复"><a href="#TP-Link-交换机指示灯全亮修复" class="headerlink" title="TP-Link 交换机指示灯全亮修复"></a>TP-Link 交换机指示灯全亮修复</h3><p>实验室有两台服务器、一个工作站、Mac Mini和BBB，想把它们组建成局域网。</p>
 <p>从办公室里翻出来了一个坏的交换机，通电后发现所有的灯常亮。百度了一下好多这种现象，可能是TP-link的通病。拆开以后可以看到3个电容爆了，去电子市场买了3个3300uF/16V的电容，问题解决。</p>
-<p><img src="http://qiniu.s1nh.org/Blog_BBB-setup_5.jpg-QNthin" alt=""></p>
-<p><img src="http://qiniu.s1nh.org/Blog_BBB-setup_6.jpg-QNthin" alt=""></p>
-<p><img src="http://qiniu.s1nh.org/Blog_BBB-setup_8.jpg-QNthin" alt=""></p>
+<p><img src="http://qiniu.s1nh.org/Blog_BBB-setup_5.jpg-QNthin"></p>
+<p><img src="http://qiniu.s1nh.org/Blog_BBB-setup_6.jpg-QNthin"></p>
+<p><img src="http://qiniu.s1nh.org/Blog_BBB-setup_8.jpg-QNthin"></p>
 <p>在换电容的时候发现了一个奇怪的问题，为什么电路板上会有下面这种一条一条的焊锡线（下图）</p>
-<p><img src="http://qiniu.s1nh.org/Blog_BBB-setup_7.jpg-QNthin" alt=""></p>
+<p><img src="http://qiniu.s1nh.org/Blog_BBB-setup_7.jpg-QNthin"></p>
 <h3 id="在局域网中使用代理共享LANTERN来翻墙"><a href="#在局域网中使用代理共享LANTERN来翻墙" class="headerlink" title="在局域网中使用代理共享LANTERN来翻墙"></a>在局域网中使用代理共享LANTERN来翻墙</h3><p>给BBB下载了最新版的Debian 8.X，安装后执行apt-get时出现了问题，<code>rcn-ee.com/repos</code>源被墙了。因为是armhf架构，所以找了半天都找不到合适的源。最后就决定用Latern共享代理服务器来翻墙。(Lantarn简直太好用了，<a href="/post/Lantern/">安装方式点这里</a>)</p>
-<p>具体实现方式参考了：<a href="https://github.com/getlantern/lantern/issues/2940" target="_blank" rel="noopener">《如何在局域网中共享LANTERN来翻墙？》</a>、<a href="https://xiaolan.me/lantern2.html" target="_blank" rel="noopener">《Lantern 2.x翻墙教程》</a></p>
+<p>具体实现方式参考了：<a target="_blank" rel="noopener" href="https://github.com/getlantern/lantern/issues/2940">《如何在局域网中共享LANTERN来翻墙？》</a>、<a target="_blank" rel="noopener" href="https://xiaolan.me/lantern2.html">《Lantern 2.x翻墙教程》</a></p>
 <p>实施方案如下：</p>
 <ul>
 <li>运行Win+R，打开<code>%AppData%/Lantern/</code></li>
@@ -312,17 +387,21 @@
 <li>在BBB中输入<code>export http_proxy=http://192.168.1.100:8787/</code>，<code>export https_proxy=http://192.168.1.100:8787/</code>（192.168.1.100为运行Latern电脑的ip）为其设置代理</li>
 </ul>
 <p>设置完以后，用Wget随便下载个东西，如果提示connected，就设置好啦（如下图）</p>
-<p><img src="http://qiniu.s1nh.org/Blog_BBB-setup_9.jpg-QNthin" alt=""></p>
+<p><img src="http://qiniu.s1nh.org/Blog_BBB-setup_9.jpg-QNthin"></p>
 <p>设置完以后我的BBB就已经可以愉快的更新内核了。</p>
 <p>可是！最后发现了两个问题：</p>
 <pre><code>1. 修改完 lantern-2.0.10.yaml 后，本机电脑无法翻墙；
-2. 重新启动 Lantern 后，lantern-2.0.10.yaml 被自动恢复到了初始状态。</code></pre><p>也就是说，设置的代理只能用一次，重启Lantern就失效了；并且设置完代理以后，开启Lantern的电脑是无法翻墙的（这个好像可以通过把0.0.0.0改成本机ip:192.168.1.100来解决）</p>
+2. 重新启动 Lantern 后，lantern-2.0.10.yaml 被自动恢复到了初始状态。
+</code></pre>
+<p>也就是说，设置的代理只能用一次，重启Lantern就失效了；并且设置完代理以后，开启Lantern的电脑是无法翻墙的（这个好像可以通过把0.0.0.0改成本机ip:192.168.1.100来解决）</p>
 <h3 id="更新node-js"><a href="#更新node-js" class="headerlink" title="更新node.js"></a>更新node.js</h3><p>执行apt-get更新软件的时候又报错了&gt;_&lt; 说什么node版本太旧了</p>
-<p><img src="http://qiniu.s1nh.org/Blog_BBB-setup_10.jpg-QNthin" alt=""></p>
+<p><img src="http://qiniu.s1nh.org/Blog_BBB-setup_10.jpg-QNthin"></p>
 <p>找了一下更新node的办法：</p>
 <pre><code>npm install -g n //居然有名字叫&quot;n&quot;的软件
-n latest</code></pre><p>再看一下版本，瞬间从0.10.40变成了5.1.1（我觉得这步肯定出问题了，版本怎么变化这么大 0_0）</p>
-<p><img src="http://qiniu.s1nh.org/Blog_BBB-setup_11.jpg-QNthin" alt=""></p>
+n latest
+</code></pre>
+<p>再看一下版本，瞬间从0.10.40变成了5.1.1（我觉得这步肯定出问题了，版本怎么变化这么大 0_0）</p>
+<p><img src="http://qiniu.s1nh.org/Blog_BBB-setup_11.jpg-QNthin"></p>
 
     </div>
 
@@ -330,40 +409,36 @@ n latest</code></pre><p>再看一下版本，瞬间从0.10.40变成了5.1.1（�
     
     
 
-      <footer class="post-footer">
+    <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Beaglebone-Black/" rel="tag"># Beaglebone Black</a>
               <a href="/tags/Lantern/" rel="tag"># Lantern</a>
+              <a href="/tags/Beaglebone-Black/" rel="tag"># Beaglebone Black</a>
               <a href="/tags/node-js/" rel="tag"># node.js</a>
           </div>
 
         
 
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/post/SimulatedAnnealing/" rel="prev" title="模拟退火算法">
-      <i class="fa fa-chevron-left"></i> 模拟退火算法
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/post/Beaglebone-Black_02/" rel="next" title="Beaglebone Black 折腾笔记（二） 搭建环境">
-      Beaglebone Black 折腾笔记（二） 搭建环境 <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
-  </article>
-  
-  
-  
-
-  </div>
-
-
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/SimulatedAnnealing/" rel="prev" title="模拟退火算法">
+                  <i class="fa fa-chevron-left"></i> 模拟退火算法
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/post/Beaglebone-Black_02/" rel="next" title="Beaglebone Black 折腾笔记（二） 搭建环境">
+                  Beaglebone Black 折腾笔记（二） 搭建环境 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
           </div>
-          
-    <div class="comments" id="valine-comments"></div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -372,7 +447,7 @@ n latest</code></pre><p>再看一下版本，瞬间从0.10.40变成了5.1.1（�
       activeClass = localStorage.getItem('comments_active') || activeClass;
     }
     if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
       if (activeTab) {
         activeTab.click();
       }
@@ -381,128 +456,27 @@ n latest</code></pre><p>再看一下版本，瞬间从0.10.40变成了5.1.1（�
   if (CONFIG.comments.storage) {
     window.addEventListener('tabs:click', event => {
       if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
+      const commentClass = event.target.classList[1];
       localStorage.setItem('comments_active', commentClass);
     });
   }
 </script>
-
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前期准备"><span class="nav-number">1.</span> <span class="nav-text">前期准备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#杜邦线"><span class="nav-number">1.1.</span> <span class="nav-text">杜邦线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TP-Link-交换机指示灯全亮修复"><span class="nav-number">1.2.</span> <span class="nav-text">TP-Link 交换机指示灯全亮修复</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在局域网中使用代理共享LANTERN来翻墙"><span class="nav-number">1.3.</span> <span class="nav-text">在局域网中使用代理共享LANTERN来翻墙</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更新node-js"><span class="nav-number">1.4.</span> <span class="nav-text">更新node.js</span></a></li></ol></li></ol></div>
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="S1NH"
-      src="/images/avatar.jpg">
-  <p class="site-author-name" itemprop="name">S1NH</p>
-  <div class="site-description" itemprop="description">no other developers required.</div>
 </div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">79</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
-        <span class="site-state-item-count">9</span>
-        <span class="site-state-item-name">分类</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-        <span class="site-state-item-count">77</span>
-        <span class="site-state-item-name">标签</span></a>
-      </div>
-  </nav>
-</div>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-        <a href="http://weibo.com/santuxuezhang" title="程序员吐槽师 → http:&#x2F;&#x2F;weibo.com&#x2F;santuxuezhang" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>程序员吐槽师</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="https://www.gitbook.com/book/xcode-jianghu/xcode-jianghu/details" title="Xcode江湖录 → https:&#x2F;&#x2F;www.gitbook.com&#x2F;book&#x2F;xcode-jianghu&#x2F;xcode-jianghu&#x2F;details" rel="noopener" target="_blank"><i class="fa fa-fw fa-book"></i>Xcode江湖录</a>
-      </span>
-  </div>
+  </main>
 
+  <footer class="footer">
+    <div class="footer-inner">
 
-  <div class="links-of-blogroll motion-element">
-    <div class="links-of-blogroll-title">
-      <i class="fa fa-fw fa-link"></i>
-      Links
-    </div>
-    <ul class="links-of-blogroll-list">
-        <li class="links-of-blogroll-item">
-          <a href="http://t.tips/" title="http:&#x2F;&#x2F;t.tips&#x2F;" rel="noopener" target="_blank">一只猿</a>
-        </li>
-        <li class="links-of-blogroll-item">
-          <a href="http://s1nh.com/" title="http:&#x2F;&#x2F;s1nh.com&#x2F;" rel="noopener" target="_blank">本站 github 镜像</a>
-        </li>
-        <li class="links-of-blogroll-item">
-          <a href="/http:/s1nh.org/" title="http:&#x2F;&#x2F;s1nh.org&#x2F;">本站国内镜像</a>
-        </li>
-    </ul>
-  </div>
-
-      </div>
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
 
 <div class="copyright">
-  
   &copy; 2015 – 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
-    <i class="fa fa-user"></i>
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">S1NH</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0
-  </div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.7.2
-  </div>
-
-        
 <div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
       <span class="post-meta-item-icon">
         <i class="fa fa-user"></i>
@@ -511,7 +485,6 @@ n latest</code></pre><p>再看一下版本，瞬间从0.10.40变成了5.1.1（�
         <span id="busuanzi_value_site_uv"></span>
       </span>
     </span>
-    <span class="post-meta-divider">|</span>
     <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
       <span class="post-meta-item-icon">
         <i class="fa fa-eye"></i>
@@ -521,49 +494,18 @@ n latest</code></pre><p>再看一下版本，瞬间从0.10.40变成了5.1.1（�
       </span>
     </span>
 </div>
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
-  
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
-<script src="/js/schemes/pisces.js"></script>
-<script src="/js/next-boot.js"></script>
-
-
+    </div>
+  </footer>
 
   
-  <script>
-    (function(){
-      var bp = document.createElement('script');
-      var curProtocol = window.location.protocol.split(':')[0];
-      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(bp, s);
-    })();
-  </script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
-
-
-
-  <script src="/js/local-search.js"></script>
-
-
-
-
-
-
+  
+<script src="/js/local-search.js"></script>
 
 
 
@@ -571,37 +513,130 @@ n latest</code></pre><p>再看一下版本，瞬间从0.10.40变成了5.1.1（�
 
 
   
-
-  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
 <script>
-NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
-  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
-    var GUEST = ['nick', 'mail', 'link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(item => {
-      return GUEST.includes(item);
-    });
-    new Valine({
-      el         : '#valine-comments',
-      verify     : false,
-      notify     : false,
-      appId      : 'XOzH1c25Dogu8cYTuRxfnTFo-gzGzoHsz',
-      appKey     : 'RxlSioLPtr2tPejVVqIcrEq2',
-      placeholder: "Just go go",
-      avatar     : 'mm',
-      meta       : guest,
-      pageSize   : '10' || 10,
-      visitor    : false,
-      lang       : '' || 'zh-cn',
-      path       : location.pathname,
-      recordIP   : true,
-      serverURLs : ''
-    });
-  }, window.Valine);
-});
+  (function() {
+    function leancloudSelector(url) {
+      url = encodeURI(url);
+      return document.getElementById(url).querySelector('.leancloud-visitors-count');
+    }
+
+    function addCount(Counter) {
+      const visitors = document.querySelector('.leancloud_visitors');
+      const url = decodeURI(visitors.id);
+      const title = visitors.dataset.flagTitle;
+
+      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url })))
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            const counter = results[0];
+            leancloudSelector(url).innerText = counter.time + 1;
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .catch(error => {
+                console.error('Failed to save visitor count', error);
+              });
+          } else {
+              leancloudSelector(url).innerText = 'Counter not initialized! More info at console err msg.';
+              console.error('ATTENTION! LeanCloud counter has security bug, see how to solve it here: https://github.com/theme-next/hexo-leancloud-counter-security. \n However, you can still use LeanCloud without security, by setting `security` option to `false`.');
+            
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+
+    function showTime(Counter) {
+      const visitors = document.querySelectorAll('.leancloud_visitors');
+      const entries = [...visitors].map(element => {
+        return decodeURI(element.id);
+      });
+
+      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url: { '$in': entries } })))
+        .then(response => response.json())
+        .then(({ results }) => {
+          for (let url of entries) {
+            const target = results.find(item => item.url === url);
+            leancloudSelector(url).innerText = target ? target.time : 0;
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+
+    const { app_id, app_key, server_url } = {"enable":true,"app_id":"6DfRIwT9PDOmweurpXmSotWE-gzGzoHsz","app_key":"AG3rkzafm0Kv6lYsyVw1RvJL","server_url":null,"security":true};
+    function fetchData(api_server) {
+      const Counter = (method, url, data) => {
+        return fetch(`${api_server}/1.1${url}`, {
+          method,
+          headers: {
+            'X-LC-Id'     : app_id,
+            'X-LC-Key'    : app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        if (CONFIG.hostname !== location.hostname) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    }
+
+    const api_server = app_id.slice(-9) === '-MdYXbMMI' ? `https://${app_id.slice(0, 8).toLowerCase()}.api.lncldglobal.com` : server_url;
+
+    if (api_server) {
+      fetchData(api_server);
+    } else {
+      fetch('https://app-router.leancloud.cn/2/route?appId=' + app_id)
+        .then(response => response.json())
+        .then(({ api_server }) => {
+          fetchData('https://' + api_server);
+        });
+    }
+  })();
 </script>
+
+
+  <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'none'
+      },
+      options: {
+        renderActions: {
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+
 
 </body>
 </html>

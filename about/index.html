@@ -4,52 +4,56 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.0.0">
+<meta name="generator" content="Hexo 5.4.0">
+
+
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
   <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
   <link rel="manifest" href="/images/site.webmanifest">
-  <meta name="msapplication-config" content="/images/browserconfig.xml">
 
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 
-<script id="hexo-configurations">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"s1nh.org","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","version":"8.3.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
   </script>
-
-  <meta name="description" content="Cheng-Yao Du, MSMail: hbyls#live.com Education: Wuhan University of Technology (BS, MS，2011~2018)Fields: Computer ScienceThesis:&amp;emsp;&amp;emsp;[1] Li Junyang, Du Chengyao, Hu Xueting, Lu Li. “Xcode Jia">
+<meta name="description" content="Cheng-Yao Du, MSMail: hbyls#live.com Education: Wuhan University of Technology (BS, MS，2011~2018)Fields: Computer ScienceThesis:&amp;emsp;&amp;emsp;[1] Li Junyang, Du Chengyao, Hu Xueting, Lu Li. “Xcode Jia">
 <meta property="og:type" content="website">
 <meta property="og:title" content="S1NH">
-<meta property="og:url" content="http:&#x2F;&#x2F;s1nh.org&#x2F;about&#x2F;index.html">
+<meta property="og:url" content="http://s1nh.org/about/index.html">
 <meta property="og:site_name" content="S1NH">
 <meta property="og:description" content="Cheng-Yao Du, MSMail: hbyls#live.com Education: Wuhan University of Technology (BS, MS，2011~2018)Fields: Computer ScienceThesis:&amp;emsp;&amp;emsp;[1] Li Junyang, Du Chengyao, Hu Xueting, Lu Li. “Xcode Jia">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;Blog_duchengyao_s.png">
-<meta property="og:updated_time" content="2020-03-18T17:01:50.364Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://qiniu.s1nh.org/Blog_duchengyao_s.png">
+<meta property="article:published_time" content="2021-04-27T06:28:31.929Z">
+<meta property="article:modified_time" content="2020-03-18T17:01:50.000Z">
+<meta property="article:author" content="S1NH">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;qiniu.s1nh.org&#x2F;Blog_duchengyao_s.png">
+<meta name="twitter:image" content="http://qiniu.s1nh.org/Blog_duchengyao_s.png">
+
 
 <link rel="canonical" href="http://s1nh.org/about/">
 
 
-<script id="page-configurations">
+<script class="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false
+    isPost : false,
+    lang   : 'zh-CN'
   };
 </script>
-
-  <title> | S1NH
-  </title>
+<title> | S1NH
+</title>
   
-
 
   <script>
     var _hmt = _hmt || [];
@@ -63,56 +67,65 @@
 
 
 
-
   <noscript>
   <style>
-  .use-motion .brand,
+  body { margin-top: 2rem; }
+
   .use-motion .menu-item,
-  .sidebar-inner,
+  .use-motion .sidebar,
   .use-motion .post-block,
   .use-motion .pagination,
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
 
   .use-motion .site-title,
-  .use-motion .site-subtitle {
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
     opacity: initial;
     top: initial;
   }
 
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
   </style>
 </noscript>
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
+  <main class="main">
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
   <div class="site-meta">
 
-    <div>
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">S1NH</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-        <p class="site-subtitle">世界在旅程的尽头终结</p>
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">S1NH</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">世界在旅程的尽头终结</p>
   </div>
 
   <div class="site-nav-right">
@@ -123,174 +136,58 @@
 </div>
 
 
+
 <nav class="site-nav">
-  
-  <ul id="menu" class="menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
-
-  </li>
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
       </li>
   </ul>
-
 </nav>
-  <div class="site-search">
-    <div class="search-pop-overlay">
-  <div class="popup search-popup">
-      <div class="search-header">
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
   <span class="search-icon">
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
            placeholder="搜索..." spellcheck="false"
            type="search" class="search-input">
   </div>
-  <span class="popup-btn-close">
+  <span class="popup-btn-close" role="button">
     <i class="fa fa-times-circle"></i>
   </span>
 </div>
-<div id="search-result">
-  <div id="no-result">
-    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
   </div>
 </div>
 
-  </div>
-</div>
-
-  </div>
-</div>
-    </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-  
-  
-
-          <div class="content">
-            
-
-  <div class="posts-expand">
-    
-    
-    
-    <div class="post-block" lang="zh-CN">
-      <header class="post-header">
-
-<h1 class="post-title" itemprop="name headline">
-</h1>
-
-<div class="post-meta">
-  
-
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
-          <img src="http://qiniu.s1nh.org/Blog_duchengyao_s.png" align="right" >
-
-<h3 id="Cheng-Yao-Du-MS"><a href="#Cheng-Yao-Du-MS" class="headerlink" title="Cheng-Yao Du, MS"></a>Cheng-Yao Du, MS</h3><p><code>Mail</code>: hbyls#live.com</p>
-<p><code>Education</code>: Wuhan University of Technology (BS, MS，2011~2018)<br><code>Fields</code>: Computer Science<br><code>Thesis</code>:<br>&emsp;&emsp;[1] <a href="https://legacy.gitbook.com/@xcode-jianghu" target="_blank" rel="noopener">Li Junyang, Du Chengyao, Hu Xueting, Lu Li. “Xcode Jianghu.” <em>China Machine Press</em> (2015)</a><br>&emsp;&emsp;[2] <a href="http://crad.ict.ac.cn/CN/10.7544/issn1000-1239.2017.20170095" target="_blank" rel="noopener">Du Chengyao, et al. “Real-Time Panoramic Video Stitching Based on GPU Acceleration Using Local ORB Feature Extraction.” <em>Journal of Computer Research and Development</em> 54.6 (2017): 1316-1325.</a><br>&emsp;&emsp;[3] <a href="https://doi.org/10.1016/j.patrec.2019.06.018" target="_blank" rel="noopener">Du, Chengyao, et al. “GPU based parallel optimization for real time panoramic video stitching.” <em>Pattern Recognition Letters</em> 133 (2020): 62-69.</a></p>
-<p><code>Website</code>: <a href="http://s1nh.com" target="_blank" rel="noopener">S1NH.com</a><br><code>Skill</code>: <strong>Full Stack Developer</strong>, Python, Deep-learning, Computer Vision, SLAM, CUDA, iOS, Post Rock, (<em>Metasploit, ROS, Labview, Software Defind Radio</em>)amateur</p>
-<blockquote>
-<hr>
-</blockquote>
-<h3 id="0x00-Profile"><a href="#0x00-Profile" class="headerlink" title="0x00 Profile"></a>0x00 Profile</h3><p>杜承垚，1992年生，青岛人。（2018.11毕业，10+年互联网工作经验🤣）<br>9岁学习VB并开始痴迷于Coding；12岁爱好内网渗透、木马免杀；<code>NOIP</code> 全国一等奖，保送本科，免试研究生。<br>武汉理工大学<code>本科+硕士</code>，卓越奖学金。软件工程，<code>机器视觉</code>方向。著一本书，一篇学报，一篇SCI。</p>
-<p>擅长：各种Coding，各种算法落地，各种ARM（边缘计算？hahaha），10+ 年 Linux 使用经验&gt;_&lt;<br>个人定位：懂点算法的<code>全栈工程师</code> ^_^</p>
-<h3 id="0x01-Work-Experience"><a href="#0x01-Work-Experience" class="headerlink" title="0x01 Work Experience"></a>0x01 Work Experience</h3><p><code>2018/06/21 至今</code> 阿里巴巴 <strong>人工智能实验室-机器感知</strong></p>
-<h3 id="0x02-Part-Time"><a href="#0x02-Part-Time" class="headerlink" title="0x02 Part-Time"></a>0x02 Part-Time</h3><p><code>2018</code> 「实习」百度无人车<strong>L3: valet parking</strong><br><code>2017</code> 「兼职」<strong><a href="http://www.lanternfish.cn/" target="_blank" rel="noopener">Lantern Fish</a></strong> Algorithm Engineer<br><code>2017</code> 「实习」<strong>中国科学院计算技术研究所</strong>客座研究生<br><code>2016</code> 「全职」<strong>迅雷</strong>公司人工智能研究员<br><code>2014</code> 「创业」创办“益行科技”，担任技术总监（<a href="http://newspaper.wutnews.net/#word_news_id=7555" target="_blank" rel="noopener">报道</a>）</p>
-<h3 id="0x03-Project"><a href="#0x03-Project" class="headerlink" title="0x03 Project"></a>0x03 Project</h3><p><code>2019</code> <strong>SLAM</strong>组：机器人视觉前端特征点提取/过滤；独立研发基于<strong>LSTM积分器</strong>的廉价imu惯性导航系统。<br><code>2018</code> 某<strong>深度学习</strong>组：图像分割/图像深度检测/图像检索 等偏算法落地的工作。<br><code>2018</code> 百度无人车：打酱油<br><code>2017</code> <a href="http://www.lanternfish.cn/" target="_blank" rel="noopener">Lantern Fish</a> 商标检索系统: 独立从0到上线<br><code>2016</code> <strong>迅雷</strong>文本情感分析的落地；美颜、扣图算法的尝试<br><code>2016</code> <strong>硕士</strong>期间进行<code>全景视频实时拼接</code>的研究，并进行<code>Nvidia TX1</code>嵌入式GPU的应用开发<br><code>2016</code> 前期组织开发<a href="http://whrt.whut.edu.cn/" target="_blank" rel="noopener">武汉地铁工程安全风险预警系统</a>（<a href="whrt-demo.gif">演示</a>）<br><code>2015</code> 独立开发“<a href="/post/Infrared_optical_material_detector/">红外光学材料均匀性检测仪</a>”控制程序，<strong>Labview</strong> <em><a href="http://silicate.whut.edu.cn/kxyj/yjkt/201612/t20161215_251865.shtml" target="_blank" rel="noopener">湖北省重大科技创新计划项目2013AEA005</a></em><br><code>2015</code> 独立开发<strong>iOS游戏</strong>，“<a href="http://www.1-xing.com/crazybounce.html" target="_blank" rel="noopener">Crazy Bounce</a>”（现在已经被无聊的程序员们用Cocos2D重构了- -）<br><code>2014</code> 基于<strong>Baidu LBS</strong>设计了游戏“<a href="http://www.1-xing.com/went0.html" target="_blank" rel="noopener">行界</a>”（<a href="/post/WENT_Zero/">介绍</a>，现在已经被牛逼的程序员重构了。）<br><code>2014</code> 孵化“基于LBS的<strong>位置分享</strong>工具”（有点像现在微信的<code>Real-time Location</code>，<a href="http://qiniu.s1nh.org/Blog_一起APP路演.pdf" target="_blank" rel="noopener">路演PPT下载</a>）</p>
-<h3 id="0x04-Skills"><a href="#0x04-Skills" class="headerlink" title="0x04 Skills"></a>0x04 Skills</h3><p><code>Give me a challenge, and I‘ll meet it with joy.</code></p>
-<p>擅长<code>Python</code> <code>纯C</code> <code>Tensorflow</code> <code>OpenCV</code>；<code>嵌入式</code> <code>SLAM</code> <code>CUDA</code>菜鸟水平。<br>专业深度学习调试（Tensorflow安装<code>$10</code>，Caffe 安装<code>$20</code>，多GPU平台搭建<code>$30/台</code>，CNN<code>$5/层</code>，RNN<code>$8/层</code>）😂</p>
-<p><code>LabView</code> <code>Swift</code> <code>C#</code>均可以独立开发项目。<br>曾经调研过并且会用所有的<code>地图</code>/<code>LBS</code>API (-_-.)<br>会<code>焊电路板</code>、<code>修变压器</code>、入侵<code>隔壁女生</code>的Wi-Fi<br>爱好信息安全：软件无线电、内网渗透（kali,metasploit,etc.)<br>利用漏洞收过Google的<strong>支票</strong><a href="http://qiniu.s1nh.org/Blog_memory_08.jpg" target="_blank" rel="noopener">（图片链接）</a>😂<br>接到过校报的两次采访（<a href="http://newspaper.wutnews.net/#word_news_id=6394" target="_blank" rel="noopener">链接1</a>，<a href="http://newspaper.wutnews.net/#word_news_id=7555" target="_blank" rel="noopener">链接2</a>）<br>曾任<a href="http://music.163.com/#/m/song?id=405253951" target="_blank" rel="noopener">Mental乐队</a>吉他手（后摇、迷幻）<br>曾任<a href="http://i.xiami.com/jingluo" target="_blank" rel="noopener">鲸落乐队</a>吉他手（都市民谣）<br>有辆Mazda RX-8 （你没看错🥰）</p>
-<h3 id="0x05-Awards"><a href="#0x05-Awards" class="headerlink" title="0x05 Awards"></a>0x05 Awards</h3><p><code>2016</code> 省首届<code>网络安全技术竞赛</code>，武汉理工大学高校排名第一，担任队长、队内得分最高（<a href="http://news.cjn.cn/24hour/wh24/201609/t2890250.htm" target="_blank" rel="noopener">报道</a>,<a href="http://weibo.com/3877603593/E9jMW0Tk5" target="_blank" rel="noopener">微博</a>）<br><code>2014</code> <a href="http://news.whut.edu.cn/article/68532.html" target="_blank" rel="noopener">《益行人“圆梦益行”计划项目》</a>，金奖<br><code>2014</code> 《华中赛区数学建模邀请赛》，一等奖<br><code>2012</code> <a href="http://www.lanqiao.org/" target="_blank" rel="noopener">《IBM“蓝桥杯”全国软件大赛C/C++组》</a>（类似于ACM），二等奖<br><code>2009</code> <a href="http://www.noi.cn/" target="_blank" rel="noopener">《National Olympiad in Informatics in Provinces, NOIP》</a>全国一等奖</p>
-<h3 id="0x06-Publications"><a href="#0x06-Publications" class="headerlink" title="0x06 Publications"></a>0x06 Publications</h3><p>[1] <a href="https://doi.org/10.1016/j.patrec.2019.06.018" target="_blank" rel="noopener">Du, Chengyao, et al. “GPU based parallel optimization for real time panoramic video stitching.” Pattern Recognition Letters 133 (2020): 62-69.</a><br>[2] <a href="http://crad.ict.ac.cn/CN/10.7544/issn1000-1239.2017.20170095" target="_blank" rel="noopener">杜承垚, et al. “GPU 加速与 L-ORB 特征提取的全景视频实时拼接.” 计算机研究与发展 54.6 (2017): 1316-1325.</a><br>[3] <a href="https://legacy.gitbook.com/@xcode-jianghu" target="_blank" rel="noopener">李俊阳、杜承垚、胡雪婷、卢力，Xcode江湖录，机械工业出版社 (2015)</a></p>
-
-      </div>
-      
-      
-      
     </div>
-    
-
-    
-    
-    
   </div>
 
-
-          </div>
-          
-    <div class="comments" id="valine-comments"></div>
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
-        </div>
-          
+</div>
+        
   
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
   </div>
 
   <aside class="sidebar">
-    <div class="sidebar-inner">
 
-      <ul class="sidebar-nav motion-element">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
         </li>
@@ -299,25 +196,26 @@
         </li>
       </ul>
 
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Cheng-Yao-Du-MS"><span class="nav-number">1.</span> <span class="nav-text">Cheng-Yao Du, MS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x00-Profile"><span class="nav-number">2.</span> <span class="nav-text">0x00 Profile</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01-Work-Experience"><span class="nav-number">3.</span> <span class="nav-text">0x01 Work Experience</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x02-Part-Time"><span class="nav-number">4.</span> <span class="nav-text">0x02 Part-Time</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x03-Project"><span class="nav-number">5.</span> <span class="nav-text">0x03 Project</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x04-Skills"><span class="nav-number">6.</span> <span class="nav-text">0x04 Skills</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x05-Awards"><span class="nav-number">7.</span> <span class="nav-text">0x05 Awards</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x06-Publications"><span class="nav-number">8.</span> <span class="nav-text">0x06 Publications</span></a></li></ol></div>
-      </div>
-      <!--/noindex-->
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Cheng-Yao-Du-MS"><span class="nav-number">1.</span> <span class="nav-text">Cheng-Yao Du, MS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x00-Profile"><span class="nav-number">2.</span> <span class="nav-text">0x00 Profile</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01-Work-Experience"><span class="nav-number">3.</span> <span class="nav-text">0x01 Work Experience</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x02-Part-Time"><span class="nav-number">4.</span> <span class="nav-text">0x02 Part-Time</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x03-Project"><span class="nav-number">5.</span> <span class="nav-text">0x03 Project</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x04-Skills"><span class="nav-number">6.</span> <span class="nav-text">0x04 Skills</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x05-Awards"><span class="nav-number">7.</span> <span class="nav-text">0x05 Awards</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x06-Publications"><span class="nav-number">8.</span> <span class="nav-text">0x06 Publications</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
 
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="S1NH"
       src="/images/avatar.jpg">
   <p class="site-author-name" itemprop="name">S1NH</p>
   <div class="site-description" itemprop="description">no other developers required.</div>
 </div>
-<div class="site-state-wrap motion-element">
+<div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">79</span>
+          <span class="site-state-item-count">78</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -329,71 +227,138 @@
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">77</span>
+        <span class="site-state-item-count">75</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-        <a href="http://weibo.com/santuxuezhang" title="程序员吐槽师 → http:&#x2F;&#x2F;weibo.com&#x2F;santuxuezhang" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>程序员吐槽师</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="https://www.gitbook.com/book/xcode-jianghu/xcode-jianghu/details" title="Xcode江湖录 → https:&#x2F;&#x2F;www.gitbook.com&#x2F;book&#x2F;xcode-jianghu&#x2F;xcode-jianghu&#x2F;details" rel="noopener" target="_blank"><i class="fa fa-fw fa-book"></i>Xcode江湖录</a>
-      </span>
-  </div>
 
 
-  <div class="links-of-blogroll motion-element">
-    <div class="links-of-blogroll-title">
-      <i class="fa fa-fw fa-link"></i>
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
       Links
     </div>
     <ul class="links-of-blogroll-list">
         <li class="links-of-blogroll-item">
-          <a href="http://t.tips/" title="http:&#x2F;&#x2F;t.tips&#x2F;" rel="noopener" target="_blank">一只猿</a>
+          <a href="https://www.92ez.com/" title="https:&#x2F;&#x2F;www.92ez.com&#x2F;" rel="noopener" target="_blank">一只猿</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="http://s1nh.com/" title="http:&#x2F;&#x2F;s1nh.com&#x2F;" rel="noopener" target="_blank">本站 github 镜像</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="/http:/s1nh.org/" title="http:&#x2F;&#x2F;s1nh.org&#x2F;">本站国内镜像</a>
+          <a href="http://s1nh.org/" title="http:&#x2F;&#x2F;s1nh.org&#x2F;">本站国内镜像</a>
         </li>
     </ul>
   </div>
 
+        </div>
       </div>
-
     </div>
   </aside>
-  <div id="sidebar-dimmer"></div>
+  <div class="sidebar-dimmer"></div>
 
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner page posts-expand">
+  
+  
+
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN"><header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">
+</h1>
+
+<div class="post-meta-container">
+</div>
+
+</header>
+
+      
+      
+      <div class="post-body">
+          <img src="http://qiniu.s1nh.org/Blog_duchengyao_s.png" align="right" >
+
+<h3 id="Cheng-Yao-Du-MS"><a href="#Cheng-Yao-Du-MS" class="headerlink" title="Cheng-Yao Du, MS"></a>Cheng-Yao Du, MS</h3><p><code>Mail</code>: hbyls#live.com</p>
+<p><code>Education</code>: Wuhan University of Technology (BS, MS，2011~2018)<br><code>Fields</code>: Computer Science<br><code>Thesis</code>:<br>&emsp;&emsp;[1] <a target="_blank" rel="noopener" href="https://legacy.gitbook.com/@xcode-jianghu">Li Junyang, Du Chengyao, Hu Xueting, Lu Li. “Xcode Jianghu.” <em>China Machine Press</em> (2015)</a><br>&emsp;&emsp;[2] <a target="_blank" rel="noopener" href="http://crad.ict.ac.cn/CN/10.7544/issn1000-1239.2017.20170095">Du Chengyao, et al. “Real-Time Panoramic Video Stitching Based on GPU Acceleration Using Local ORB Feature Extraction.” <em>Journal of Computer Research and Development</em> 54.6 (2017): 1316-1325.</a><br>&emsp;&emsp;[3] <a target="_blank" rel="noopener" href="https://doi.org/10.1016/j.patrec.2019.06.018">Du, Chengyao, et al. “GPU based parallel optimization for real time panoramic video stitching.” <em>Pattern Recognition Letters</em> 133 (2020): 62-69.</a></p>
+<p><code>Website</code>: <a target="_blank" rel="noopener" href="http://s1nh.com/">S1NH.com</a><br><code>Skill</code>: <strong>Full Stack Developer</strong>, Python, Deep-learning, Computer Vision, SLAM, CUDA, iOS, Post Rock, (<em>Metasploit, ROS, Labview, Software Defind Radio</em>)amateur</p>
+<blockquote>
+<hr>
+</blockquote>
+<h3 id="0x00-Profile"><a href="#0x00-Profile" class="headerlink" title="0x00 Profile"></a>0x00 Profile</h3><p>杜承垚，1992年生，青岛人。（2018.11毕业，10+年互联网工作经验🤣）<br>9岁学习VB并开始痴迷于Coding；12岁爱好内网渗透、木马免杀；<code>NOIP</code> 全国一等奖，保送本科，免试研究生。<br>武汉理工大学<code>本科+硕士</code>，卓越奖学金。软件工程，<code>机器视觉</code>方向。著一本书，一篇学报，一篇SCI。</p>
+<p>擅长：各种Coding，各种算法落地，各种ARM（边缘计算？hahaha），10+ 年 Linux 使用经验&gt;_&lt;<br>个人定位：懂点算法的<code>全栈工程师</code> ^_^</p>
+<h3 id="0x01-Work-Experience"><a href="#0x01-Work-Experience" class="headerlink" title="0x01 Work Experience"></a>0x01 Work Experience</h3><p><code>2018/06/21 至今</code> 阿里巴巴 <strong>人工智能实验室-机器感知</strong></p>
+<h3 id="0x02-Part-Time"><a href="#0x02-Part-Time" class="headerlink" title="0x02 Part-Time"></a>0x02 Part-Time</h3><p><code>2018</code> 「实习」百度无人车<strong>L3: valet parking</strong><br><code>2017</code> 「兼职」**<a target="_blank" rel="noopener" href="http://www.lanternfish.cn/">Lantern Fish</a>** Algorithm Engineer<br><code>2017</code> 「实习」<strong>中国科学院计算技术研究所</strong>客座研究生<br><code>2016</code> 「全职」<strong>迅雷</strong>公司人工智能研究员<br><code>2014</code> 「创业」创办“益行科技”，担任技术总监（<a target="_blank" rel="noopener" href="http://newspaper.wutnews.net/#word_news_id=7555">报道</a>）</p>
+<h3 id="0x03-Project"><a href="#0x03-Project" class="headerlink" title="0x03 Project"></a>0x03 Project</h3><p><code>2019</code> <strong>SLAM</strong>组：机器人视觉前端特征点提取/过滤；独立研发基于<strong>LSTM积分器</strong>的廉价imu惯性导航系统。<br><code>2018</code> 某<strong>深度学习</strong>组：图像分割/图像深度检测/图像检索 等偏算法落地的工作。<br><code>2018</code> 百度无人车：打酱油<br><code>2017</code> <a target="_blank" rel="noopener" href="http://www.lanternfish.cn/">Lantern Fish</a> 商标检索系统: 独立从0到上线<br><code>2016</code> <strong>迅雷</strong>文本情感分析的落地；美颜、扣图算法的尝试<br><code>2016</code> <strong>硕士</strong>期间进行<code>全景视频实时拼接</code>的研究，并进行<code>Nvidia TX1</code>嵌入式GPU的应用开发<br><code>2016</code> 前期组织开发<a target="_blank" rel="noopener" href="http://whrt.whut.edu.cn/">武汉地铁工程安全风险预警系统</a>（<a href="whrt-demo.gif">演示</a>）<br><code>2015</code> 独立开发“<a href="/post/Infrared_optical_material_detector/">红外光学材料均匀性检测仪</a>”控制程序，<strong>Labview</strong> <em><a target="_blank" rel="noopener" href="http://silicate.whut.edu.cn/kxyj/yjkt/201612/t20161215_251865.shtml">湖北省重大科技创新计划项目2013AEA005</a></em><br><code>2015</code> 独立开发<strong>iOS游戏</strong>，“<a target="_blank" rel="noopener" href="http://www.1-xing.com/crazybounce.html">Crazy Bounce</a>”（现在已经被无聊的程序员们用Cocos2D重构了- -）<br><code>2014</code> 基于<strong>Baidu LBS</strong>设计了游戏“<a target="_blank" rel="noopener" href="http://www.1-xing.com/went0.html">行界</a>”（<a href="/post/WENT_Zero/">介绍</a>，现在已经被牛逼的程序员重构了。）<br><code>2014</code> 孵化“基于LBS的<strong>位置分享</strong>工具”（有点像现在微信的<code>Real-time Location</code>，<a target="_blank" rel="noopener" href="http://qiniu.s1nh.org/Blog_%E4%B8%80%E8%B5%B7APP%E8%B7%AF%E6%BC%94.pdf">路演PPT下载</a>）</p>
+<h3 id="0x04-Skills"><a href="#0x04-Skills" class="headerlink" title="0x04 Skills"></a>0x04 Skills</h3><p><code>Give me a challenge, and I‘ll meet it with joy.</code></p>
+<p>擅长<code>Python</code> <code>纯C</code> <code>Tensorflow</code> <code>OpenCV</code>；<code>嵌入式</code> <code>SLAM</code> <code>CUDA</code>菜鸟水平。<br>专业深度学习调试（Tensorflow安装<code>$10</code>，Caffe 安装<code>$20</code>，多GPU平台搭建<code>$30/台</code>，CNN<code>$5/层</code>，RNN<code>$8/层</code>）😂</p>
+<p><code>LabView</code> <code>Swift</code> <code>C#</code>均可以独立开发项目。<br>曾经调研过并且会用所有的<code>地图</code>/<code>LBS</code>API (-_-.)<br>会<code>焊电路板</code>、<code>修变压器</code>、入侵<code>隔壁女生</code>的Wi-Fi<br>爱好信息安全：软件无线电、内网渗透（kali,metasploit,etc.)<br>利用漏洞收过Google的<strong>支票</strong><a target="_blank" rel="noopener" href="http://qiniu.s1nh.org/Blog_memory_08.jpg">（图片链接）</a>😂<br>接到过校报的两次采访（<a target="_blank" rel="noopener" href="http://newspaper.wutnews.net/#word_news_id=6394">链接1</a>，<a target="_blank" rel="noopener" href="http://newspaper.wutnews.net/#word_news_id=7555">链接2</a>）<br>曾任<a target="_blank" rel="noopener" href="http://music.163.com/#/m/song?id=405253951">Mental乐队</a>吉他手（后摇、迷幻）<br>曾任<a target="_blank" rel="noopener" href="http://i.xiami.com/jingluo">鲸落乐队</a>吉他手（都市民谣）<br>有辆Mazda RX-8 （你没看错🥰）</p>
+<h3 id="0x05-Awards"><a href="#0x05-Awards" class="headerlink" title="0x05 Awards"></a>0x05 Awards</h3><p><code>2016</code> 省首届<code>网络安全技术竞赛</code>，武汉理工大学高校排名第一，担任队长、队内得分最高（<a target="_blank" rel="noopener" href="http://news.cjn.cn/24hour/wh24/201609/t2890250.htm">报道</a>,<a target="_blank" rel="noopener" href="http://weibo.com/3877603593/E9jMW0Tk5">微博</a>）<br><code>2014</code> <a target="_blank" rel="noopener" href="http://news.whut.edu.cn/article/68532.html">《益行人“圆梦益行”计划项目》</a>，金奖<br><code>2014</code> 《华中赛区数学建模邀请赛》，一等奖<br><code>2012</code> <a target="_blank" rel="noopener" href="http://www.lanqiao.org/">《IBM“蓝桥杯”全国软件大赛C/C++组》</a>（类似于ACM），二等奖<br><code>2009</code> <a target="_blank" rel="noopener" href="http://www.noi.cn/">《National Olympiad in Informatics in Provinces, NOIP》</a>全国一等奖</p>
+<h3 id="0x06-Publications"><a href="#0x06-Publications" class="headerlink" title="0x06 Publications"></a>0x06 Publications</h3><p>[1] <a target="_blank" rel="noopener" href="https://doi.org/10.1016/j.patrec.2019.06.018">Du, Chengyao, et al. “GPU based parallel optimization for real time panoramic video stitching.” Pattern Recognition Letters 133 (2020): 62-69.</a><br>[2] <a target="_blank" rel="noopener" href="http://crad.ict.ac.cn/CN/10.7544/issn1000-1239.2017.20170095">杜承垚, et al. “GPU 加速与 L-ORB 特征提取的全景视频实时拼接.” 计算机研究与发展 54.6 (2017): 1316-1325.</a><br>[3] <a target="_blank" rel="noopener" href="https://legacy.gitbook.com/@xcode-jianghu">李俊阳、杜承垚、胡雪婷、卢力，Xcode江湖录，机械工业出版社 (2015)</a></p>
 
       </div>
-    </main>
+      
+      
+      
+    </div>
 
-    <footer class="footer">
-      <div class="footer-inner">
-        
+    
+    
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
 
 <div class="copyright">
-  
   &copy; 2015 – 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
-    <i class="fa fa-user"></i>
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">S1NH</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0
-  </div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.7.2
-  </div>
-
-        
 <div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
       <span class="post-meta-item-icon">
         <i class="fa fa-user"></i>
@@ -402,7 +367,6 @@
         <span id="busuanzi_value_site_uv"></span>
       </span>
     </span>
-    <span class="post-meta-divider">|</span>
     <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
       <span class="post-meta-item-icon">
         <i class="fa fa-eye"></i>
@@ -412,49 +376,18 @@
       </span>
     </span>
 </div>
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
-  
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
-<script src="/js/schemes/pisces.js"></script>
-<script src="/js/next-boot.js"></script>
-
-
+    </div>
+  </footer>
 
   
-  <script>
-    (function(){
-      var bp = document.createElement('script');
-      var curProtocol = window.location.protocol.split(':')[0];
-      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(bp, s);
-    })();
-  </script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
-
-
-
-  <script src="/js/local-search.js"></script>
-
-
-
-
-
-
+  
+<script src="/js/local-search.js"></script>
 
 
 
@@ -462,37 +395,130 @@
 
 
   
-
-  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
 <script>
-NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
-  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
-    var GUEST = ['nick', 'mail', 'link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(item => {
-      return GUEST.includes(item);
-    });
-    new Valine({
-      el         : '#valine-comments',
-      verify     : false,
-      notify     : false,
-      appId      : 'XOzH1c25Dogu8cYTuRxfnTFo-gzGzoHsz',
-      appKey     : 'RxlSioLPtr2tPejVVqIcrEq2',
-      placeholder: "Just go go",
-      avatar     : 'mm',
-      meta       : guest,
-      pageSize   : '10' || 10,
-      visitor    : false,
-      lang       : '' || 'zh-cn',
-      path       : location.pathname,
-      recordIP   : true,
-      serverURLs : ''
-    });
-  }, window.Valine);
-});
+  (function() {
+    function leancloudSelector(url) {
+      url = encodeURI(url);
+      return document.getElementById(url).querySelector('.leancloud-visitors-count');
+    }
+
+    function addCount(Counter) {
+      const visitors = document.querySelector('.leancloud_visitors');
+      const url = decodeURI(visitors.id);
+      const title = visitors.dataset.flagTitle;
+
+      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url })))
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            const counter = results[0];
+            leancloudSelector(url).innerText = counter.time + 1;
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .catch(error => {
+                console.error('Failed to save visitor count', error);
+              });
+          } else {
+              leancloudSelector(url).innerText = 'Counter not initialized! More info at console err msg.';
+              console.error('ATTENTION! LeanCloud counter has security bug, see how to solve it here: https://github.com/theme-next/hexo-leancloud-counter-security. \n However, you can still use LeanCloud without security, by setting `security` option to `false`.');
+            
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+
+    function showTime(Counter) {
+      const visitors = document.querySelectorAll('.leancloud_visitors');
+      const entries = [...visitors].map(element => {
+        return decodeURI(element.id);
+      });
+
+      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url: { '$in': entries } })))
+        .then(response => response.json())
+        .then(({ results }) => {
+          for (let url of entries) {
+            const target = results.find(item => item.url === url);
+            leancloudSelector(url).innerText = target ? target.time : 0;
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+
+    const { app_id, app_key, server_url } = {"enable":true,"app_id":"6DfRIwT9PDOmweurpXmSotWE-gzGzoHsz","app_key":"AG3rkzafm0Kv6lYsyVw1RvJL","server_url":null,"security":true};
+    function fetchData(api_server) {
+      const Counter = (method, url, data) => {
+        return fetch(`${api_server}/1.1${url}`, {
+          method,
+          headers: {
+            'X-LC-Id'     : app_id,
+            'X-LC-Key'    : app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        if (CONFIG.hostname !== location.hostname) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    }
+
+    const api_server = app_id.slice(-9) === '-MdYXbMMI' ? `https://${app_id.slice(0, 8).toLowerCase()}.api.lncldglobal.com` : server_url;
+
+    if (api_server) {
+      fetchData(api_server);
+    } else {
+      fetch('https://app-router.leancloud.cn/2/route?appId=' + app_id)
+        .then(response => response.json())
+        .then(({ api_server }) => {
+          fetchData('https://' + api_server);
+        });
+    }
+  })();
 </script>
+
+
+  <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'none'
+      },
+      options: {
+        renderActions: {
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+
 
 </body>
 </html>
