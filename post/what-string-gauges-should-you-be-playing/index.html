@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <link rel="manifest" href="/images/site.webmanifest">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","version":"8.3.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="本文大多数内容翻译自 Ernie Ball 的官方博客  在知乎看到这样一个问题，因此搬运了一篇文章：原文链接在练习曲目的过程中，有一些一些关于降调调弦及琴弦规格的一些问题疑问。 从一开始的标准调弦，到后来的drop C。自己用的琴有效弦长25.5。极限应该是dropC了，但一些喜欢的曲目需要dropB调弦，所以有这些疑问： 1:有效弦长25.5的琴，能否达到dropB的要求？所选用弦的规格如何挑">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何挑选适合的电吉他琴弦规格，及关于drop调弦适用琴弦规格的问题">
+<meta property="og:url" content="http://s1nh.org/post/what-string-gauges-should-you-be-playing/index.html">
+<meta property="og:site_name" content="S1NH">
+<meta property="og:description" content="本文大多数内容翻译自 Ernie Ball 的官方博客  在知乎看到这样一个问题，因此搬运了一篇文章：原文链接在练习曲目的过程中，有一些一些关于降调调弦及琴弦规格的一些问题疑问。 从一开始的标准调弦，到后来的drop C。自己用的琴有效弦长25.5。极限应该是dropC了，但一些喜欢的曲目需要dropB调弦，所以有这些疑问： 1:有效弦长25.5的琴，能否达到dropB的要求？所选用弦的规格如何挑">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://qiniu.s1nh.org/ernie-ball-strings.png">
+<meta property="article:published_time" content="2021-11-28T08:23:10.000Z">
+<meta property="article:modified_time" content="2021-11-28T08:29:58.233Z">
+<meta property="article:author" content="S1NH">
+<meta property="article:tag" content="琴弦">
+<meta property="article:tag" content="drop 调弦">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://qiniu.s1nh.org/ernie-ball-strings.png">
+
+
+<link rel="canonical" href="http://s1nh.org/post/what-string-gauges-should-you-be-playing/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>如何挑选适合的电吉他琴弦规格，及关于drop调弦适用琴弦规格的问题 | S1NH</title>
+  
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?4c66a84272e0f7943a305accf6dbdf41";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">S1NH</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">世界在旅程的尽头终结</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01-ELECTRIC-GUITAR-STRING-GAUGES"><span class="nav-number">1.</span> <span class="nav-text">0x01 ELECTRIC GUITAR STRING GAUGES</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02-GUITAR-TUNINGS"><span class="nav-number">2.</span> <span class="nav-text">0x02 GUITAR TUNINGS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x03-BASS-TUNINGS"><span class="nav-number">3.</span> <span class="nav-text">0x03 BASS TUNINGS</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="S1NH"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">S1NH</p>
+  <div class="site-description" itemprop="description">no other developers required.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">78</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">80</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.92ez.com/" title="https:&#x2F;&#x2F;www.92ez.com&#x2F;" rel="noopener" target="_blank">一只猿</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://s1nh.com/" title="http:&#x2F;&#x2F;s1nh.com&#x2F;" rel="noopener" target="_blank">本站 github 镜像</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://s1nh.org/" title="http:&#x2F;&#x2F;s1nh.org&#x2F;">本站国内镜像</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/what-string-gauges-should-you-be-playing/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="S1NH">
+      <meta itemprop="description" content="no other developers required.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="S1NH">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          如何挑选适合的电吉他琴弦规格，及关于drop调弦适用琴弦规格的问题
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-11-28 16:23:10 / 修改时间：16:29:58" itemprop="dateCreated datePublished" datetime="2021-11-28T16:23:10+08:00">2021-11-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9F%B3%E4%B9%90/" itemprop="url" rel="index"><span itemprop="name">音乐</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/post/what-string-gauges-should-you-be-playing/" class="post-meta-item leancloud_visitors" data-flag-title="如何挑选适合的电吉他琴弦规格，及关于drop调弦适用琴弦规格的问题" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><code>本文大多数内容翻译自 Ernie Ball 的官方博客</code></p>
+<blockquote>
+<p>在知乎看到这样一个问题，因此搬运了一篇文章：<a target="_blank" rel="noopener" href="https://blog.ernieball.com/strings/what-string-gauges-should-you-be-playing/">原文链接</a><br>在练习曲目的过程中，有一些一些关于降调调弦及琴弦规格的一些问题疑问。</p>
+<p>从一开始的标准调弦，到后来的drop C。自己用的琴有效弦长25.5。极限应该是dropC了，但一些喜欢的曲目需要dropB调弦，所以有这些疑问：</p>
+<p>1:有效弦长25.5的琴，能否达到dropB的要求？所选用弦的规格如何挑选？</p>
+<p>2:影响调弦的因素还有那些，比如跟琴本身有没有关系，打个比方，存不存在schecter的琴可以降到B而dean的琴不行？</p>
+<p>3:我现在自己琴用的10-46，会不会对琴颈有影响？</p>
+</blockquote>
+<p><img src="http://qiniu.s1nh.org/ernie-ball-strings.png" alt="image"></p>
+<span id="more"></span>
+<hr>
+<p>Ernie Ball的艺术家和YouTube上的杰出人物Ryan “Fluff” Bruce分享了一份非常有用的指南，帮助你选择哪种琴弦的型号。他考虑了许多不同的因素，包括音阶长度（Fender音阶[25.5英寸]或Gibson音阶[24.75英寸]），调音，演奏风格等等。</p>
+<h2 id="0x01-ELECTRIC-GUITAR-STRING-GAUGES"><a href="#0x01-ELECTRIC-GUITAR-STRING-GAUGES" class="headerlink" title="0x01 ELECTRIC GUITAR STRING GAUGES"></a>0x01 ELECTRIC GUITAR STRING GAUGES</h2><p>电吉他弦有不同的粗细规格。除了琴弦材料等其他因素外，琴弦的粗细对演奏性能和声音也有很大影响。</p>
+<p><strong>更细（Light）的琴弦</strong></p>
+<ul>
+<li>更容易弯曲和演奏，因此非常适合手无缚鸡之力的吉他初学者</li>
+<li>是复古电吉他的理想选择</li>
+<li>投射力均匀，声音明亮</li>
+</ul>
+<p><strong>更粗（Heavy）的琴弦</strong></p>
+<ul>
+<li>需要更多的手指压力来弹奏和推弦</li>
+<li>更大的输出，更有力的音色</li>
+<li>适用于降低调弦，如 Drop D, Drop A 等。</li>
+<li>会对吉他颈部施加更大的张力</li>
+</ul>
+<h2 id="0x02-GUITAR-TUNINGS"><a href="#0x02-GUITAR-TUNINGS" class="headerlink" title="0x02 GUITAR TUNINGS"></a>0x02 GUITAR TUNINGS</h2><p><strong>标准调弦（E Standard）</strong></p>
+<ul>
+<li><code>10-46</code> 适用与<strong>所有</strong> scale 的标准琴弦，通常是原厂的配置；</li>
+<li><code>09-42</code> 更适合在 <strong>Fender</strong> Scale 乐器上获得更宽松、类似 Les Paul 的感觉；</li>
+<li><code>10-52</code> 更适合在 <strong>Gibson</strong> Scale 乐器上获得更重、更像 Strat 的张力；</li>
+<li><code>08-46</code> Yngwie 喜欢的配置，极细的1、2弦可以作出特别夸张的推弦效果；</li>
+<li><code>09-46</code> <strong>Fender</strong> Scale 乐器上我比较喜欢的配置，较细的1-3弦和较粗的4-6弦，且没有Yngwie那么夸张。</li>
+</ul>
+<p><strong>Drop D (DADGBE)</strong></p>
+<ul>
+<li><code>10-52</code> 保持高弦的紧绷感，增强低弦的手感，尤其是在降低的6弦。</li>
+</ul>
+<p><strong>降半音调弦（Eb Standard）</strong></p>
+<ul>
+<li><code>10-52</code> <strong>Fender</strong> Scale 乐器上在较低的琴弦上获得更紧的感觉。</li>
+<li><code>11-48</code> <strong>Gibson</strong> Scale稍微重一点，同时保留一点松散和紧身（looseness and slinkiness）。</li>
+</ul>
+<p><strong>金属乐队比较喜欢的 Drop C#</strong></p>
+<ul>
+<li><code>11-48+52</code> <strong>Fender</strong> Scale 使用 11-48 设置，将低 E 弦换成 52，在粗弦中可以为您提供所需的 low-end chug，同时仍然感觉像是在较高弦上进行标准调音。</li>
+<li><code>11-54</code>  <strong>Gibson</strong> Scale 中保持标准调音的感觉。</li>
+</ul>
+<p><strong>降一个全音的标准调弦（D Standard）</strong></p>
+<ul>
+<li><code>11-54</code> <strong>Fender</strong> Scale Optimal for detuning. Similar to the Skinny Top / Heavy Bottom, but several gauges heavier. Provides a higher-tension feel.</li>
+<li><code>11-48</code> <strong>Gibson</strong> Scale 即使降低了调音，也能保留了正常的琴弦张力。</li>
+</ul>
+<p><strong>C Standard</strong></p>
+<ul>
+<li><code>12-56</code> <strong>Fender</strong> Scale (Option A) 仍然感觉很纤细，但保持了良好的张力。</li>
+<li><code>11-54</code> <strong>Fender</strong> Scale (Option B) 为了获得更纤细、更宽松的感觉。</li>
+<li><code>12-56</code> <strong>Gibson</strong> Scale 有助于在较短的音阶上保持适当的张力。</li>
+</ul>
+<p><strong>Drop C</strong></p>
+<ul>
+<li><code>11-54 + 56</code> <strong>Fender</strong> Scale 将 low-E 换成 56 甚至 60 感觉非常好.</li>
+<li><code>12-56</code> <strong>Gibson</strong> Scale  在尺寸和张力方面是一个很好的中间地带。在低E弦上添加60号，也可以为低端提供更多的 “动力”。</li>
+</ul>
+<p><strong>Drop B</strong></p>
+<ul>
+<li><code>单独购买 11, 15, 20, 36, 48, 60</code> <strong>Fender</strong> Scale 创建一组自定义的单根琴弦可以让您在较高的琴弦上保持张力，同时在较低的琴弦上提供足够的音调。</li>
+<li><code>单独购买 12, 16, 24, 36, 48, 60</code> <strong>Gibson</strong> Scale 稍微调整的自定义单弦组可以让您加强较高的琴弦，同时保持较低琴弦的尺寸。也可以在低 E 弦上使用 62 或 64 以增加重量和张力。</li>
+</ul>
+<h2 id="0x03-BASS-TUNINGS"><a href="#0x03-BASS-TUNINGS" class="headerlink" title="0x03 BASS TUNINGS"></a>0x03 BASS TUNINGS</h2><p><strong>E Standard and Drop D</strong></p>
+<ul>
+<li><code>50-105</code> ` 良好的张力和音头。不会太紧，也不会太松。</li>
+</ul>
+<p><strong>Eb Standard and Drop C#</strong></p>
+<ul>
+<li><code>50-105</code> 从 E 标准和 Drop D 一直到 Eb 标准和 Drop C#。</li>
+</ul>
+<p><strong>D Standard and Drop C</strong></p>
+<ul>
+<li><code>55-110</code> 不错的张力，但不是矫枉过正。不会使手疲劳，但有足够的张力来进行重击。</li>
+</ul>
+<p><strong>Drop B</strong></p>
+<ul>
+<li><code>60-125+40</code> </li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%90%B4%E5%BC%A6/" rel="tag"># 琴弦</a>
+              <a href="/tags/drop-%E8%B0%83%E5%BC%A6/" rel="tag"># drop 调弦</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/rx8-engine/" rel="prev" title="关于 MAZDA RX8 转子发动机 —— 您需要了解的所有内容">
+                  <i class="fa fa-chevron-left"></i> 关于 MAZDA RX8 转子发动机 —— 您需要了解的所有内容
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/post/996-ICU/" rel="next" title="996.ICU">
+                  996.ICU <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2015 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">S1NH</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script>
+  (function() {
+    function leancloudSelector(url) {
+      url = encodeURI(url);
+      return document.getElementById(url).querySelector('.leancloud-visitors-count');
+    }
+
+    function addCount(Counter) {
+      const visitors = document.querySelector('.leancloud_visitors');
+      const url = decodeURI(visitors.id);
+      const title = visitors.dataset.flagTitle;
+
+      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url })))
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            const counter = results[0];
+            leancloudSelector(url).innerText = counter.time + 1;
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .catch(error => {
+                console.error('Failed to save visitor count', error);
+              });
+          } else {
+              Counter('post', '/classes/Counter', { title, url, time: 1 })
+                .then(response => response.json())
+                .then(() => {
+                  leancloudSelector(url).innerText = 1;
+                })
+                .catch(error => {
+                  console.error('Failed to create', error);
+                });
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+
+    function showTime(Counter) {
+      const visitors = document.querySelectorAll('.leancloud_visitors');
+      const entries = [...visitors].map(element => {
+        return decodeURI(element.id);
+      });
+
+      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url: { '$in': entries } })))
+        .then(response => response.json())
+        .then(({ results }) => {
+          for (let url of entries) {
+            const target = results.find(item => item.url === url);
+            leancloudSelector(url).innerText = target ? target.time : 0;
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+
+    const { app_id, app_key, server_url } = {"enable":true,"app_id":"6DfRIwT9PDOmweurpXmSotWE-gzGzoHsz","app_key":"AG3rkzafm0Kv6lYsyVw1RvJL","server_url":null,"security":false};
+    function fetchData(api_server) {
+      const Counter = (method, url, data) => {
+        return fetch(`${api_server}/1.1${url}`, {
+          method,
+          headers: {
+            'X-LC-Id'     : app_id,
+            'X-LC-Key'    : app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        if (CONFIG.hostname !== location.hostname) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    }
+
+    const api_server = app_id.slice(-9) === '-MdYXbMMI' ? `https://${app_id.slice(0, 8).toLowerCase()}.api.lncldglobal.com` : server_url;
+
+    if (api_server) {
+      fetchData(api_server);
+    } else {
+      fetch('https://app-router.leancloud.cn/2/route?appId=' + app_id)
+        .then(response => response.json())
+        .then(({ api_server }) => {
+          fetchData('https://' + api_server);
+        });
+    }
+  })();
+</script>
+
+
+  <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'none'
+      },
+      options: {
+        renderActions: {
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+
+
+</body>
+</html>

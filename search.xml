@@ -2320,18 +2320,6 @@ apt-get install libusb-1.0-0-dev
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/post/hello-world/</url>
-    <content><![CDATA[<blockquote>
-<p>博客都是孤芳自赏，分享都是自我陶醉。</p>
-</blockquote>
-<p><img src="/about/block-3.png"></p>
-]]></content>
-      <categories>
-        <category>工作笔记</category>
-      </categories>
-  </entry>
-  <entry>
     <title>HackRF 入门 -- GPS欺骗、GSM嗅探</title>
     <url>/post/hackrf-quick-start/</url>
     <content><![CDATA[<p><img src="http://qiniu.s1nh.org/Blog_HackRF_00.png-QNthin"></p>
@@ -2370,6 +2358,18 @@ apt-get install libusb-1.0-0-dev
       <tags>
         <tag>HackRF</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/post/hello-world/</url>
+    <content><![CDATA[<blockquote>
+<p>博客都是孤芳自赏，分享都是自我陶醉。</p>
+</blockquote>
+<p><img src="/about/block-3.png"></p>
+]]></content>
+      <categories>
+        <category>工作笔记</category>
+      </categories>
   </entry>
   <entry>
     <title>Inference using TensorRT Backend.</title>
@@ -3872,6 +3872,103 @@ Your browser does not support the video tag.
       </categories>
   </entry>
   <entry>
+    <title>如何挑选适合的电吉他琴弦规格，及关于drop调弦适用琴弦规格的问题</title>
+    <url>/post/what-string-gauges-should-you-be-playing/</url>
+    <content><![CDATA[<p><code>本文大多数内容翻译自 Ernie Ball 的官方博客</code></p>
+<blockquote>
+<p>在知乎看到这样一个问题，因此搬运了一篇文章：<a href="https://blog.ernieball.com/strings/what-string-gauges-should-you-be-playing/">原文链接</a><br>在练习曲目的过程中，有一些一些关于降调调弦及琴弦规格的一些问题疑问。</p>
+<p>从一开始的标准调弦，到后来的drop C。自己用的琴有效弦长25.5。极限应该是dropC了，但一些喜欢的曲目需要dropB调弦，所以有这些疑问：</p>
+<p>1:有效弦长25.5的琴，能否达到dropB的要求？所选用弦的规格如何挑选？</p>
+<p>2:影响调弦的因素还有那些，比如跟琴本身有没有关系，打个比方，存不存在schecter的琴可以降到B而dean的琴不行？</p>
+<p>3:我现在自己琴用的10-46，会不会对琴颈有影响？</p>
+</blockquote>
+<p><img src="http://qiniu.s1nh.org/ernie-ball-strings.png" alt="image"></p>
+<span id="more"></span>
+<hr>
+<p>Ernie Ball的艺术家和YouTube上的杰出人物Ryan “Fluff” Bruce分享了一份非常有用的指南，帮助你选择哪种琴弦的型号。他考虑了许多不同的因素，包括音阶长度（Fender音阶[25.5英寸]或Gibson音阶[24.75英寸]），调音，演奏风格等等。</p>
+<h2 id="0x01-ELECTRIC-GUITAR-STRING-GAUGES"><a href="#0x01-ELECTRIC-GUITAR-STRING-GAUGES" class="headerlink" title="0x01 ELECTRIC GUITAR STRING GAUGES"></a>0x01 ELECTRIC GUITAR STRING GAUGES</h2><p>电吉他弦有不同的粗细规格。除了琴弦材料等其他因素外，琴弦的粗细对演奏性能和声音也有很大影响。</p>
+<p><strong>更细（Light）的琴弦</strong></p>
+<ul>
+<li>更容易弯曲和演奏，因此非常适合手无缚鸡之力的吉他初学者</li>
+<li>是复古电吉他的理想选择</li>
+<li>投射力均匀，声音明亮</li>
+</ul>
+<p><strong>更粗（Heavy）的琴弦</strong></p>
+<ul>
+<li>需要更多的手指压力来弹奏和推弦</li>
+<li>更大的输出，更有力的音色</li>
+<li>适用于降低调弦，如 Drop D, Drop A 等。</li>
+<li>会对吉他颈部施加更大的张力</li>
+</ul>
+<h2 id="0x02-GUITAR-TUNINGS"><a href="#0x02-GUITAR-TUNINGS" class="headerlink" title="0x02 GUITAR TUNINGS"></a>0x02 GUITAR TUNINGS</h2><p><strong>标准调弦（E Standard）</strong></p>
+<ul>
+<li><code>10-46</code> 适用与<strong>所有</strong> scale 的标准琴弦，通常是原厂的配置；</li>
+<li><code>09-42</code> 更适合在 <strong>Fender</strong> Scale 乐器上获得更宽松、类似 Les Paul 的感觉；</li>
+<li><code>10-52</code> 更适合在 <strong>Gibson</strong> Scale 乐器上获得更重、更像 Strat 的张力；</li>
+<li><code>08-46</code> Yngwie 喜欢的配置，极细的1、2弦可以作出特别夸张的推弦效果；</li>
+<li><code>09-46</code> <strong>Fender</strong> Scale 乐器上我比较喜欢的配置，较细的1-3弦和较粗的4-6弦，且没有Yngwie那么夸张。</li>
+</ul>
+<p><strong>Drop D (DADGBE)</strong></p>
+<ul>
+<li><code>10-52</code> 保持高弦的紧绷感，增强低弦的手感，尤其是在降低的6弦。</li>
+</ul>
+<p><strong>降半音调弦（Eb Standard）</strong></p>
+<ul>
+<li><code>10-52</code> <strong>Fender</strong> Scale 乐器上在较低的琴弦上获得更紧的感觉。</li>
+<li><code>11-48</code> <strong>Gibson</strong> Scale稍微重一点，同时保留一点松散和紧身（looseness and slinkiness）。</li>
+</ul>
+<p><strong>金属乐队比较喜欢的 Drop C#</strong></p>
+<ul>
+<li><code>11-48+52</code> <strong>Fender</strong> Scale 使用 11-48 设置，将低 E 弦换成 52，在粗弦中可以为您提供所需的 low-end chug，同时仍然感觉像是在较高弦上进行标准调音。</li>
+<li><code>11-54</code>  <strong>Gibson</strong> Scale 中保持标准调音的感觉。</li>
+</ul>
+<p><strong>降一个全音的标准调弦（D Standard）</strong></p>
+<ul>
+<li><code>11-54</code> <strong>Fender</strong> Scale Optimal for detuning. Similar to the Skinny Top / Heavy Bottom, but several gauges heavier. Provides a higher-tension feel.</li>
+<li><code>11-48</code> <strong>Gibson</strong> Scale 即使降低了调音，也能保留了正常的琴弦张力。</li>
+</ul>
+<p><strong>C Standard</strong></p>
+<ul>
+<li><code>12-56</code> <strong>Fender</strong> Scale (Option A) 仍然感觉很纤细，但保持了良好的张力。</li>
+<li><code>11-54</code> <strong>Fender</strong> Scale (Option B) 为了获得更纤细、更宽松的感觉。</li>
+<li><code>12-56</code> <strong>Gibson</strong> Scale 有助于在较短的音阶上保持适当的张力。</li>
+</ul>
+<p><strong>Drop C</strong></p>
+<ul>
+<li><code>11-54 + 56</code> <strong>Fender</strong> Scale 将 low-E 换成 56 甚至 60 感觉非常好.</li>
+<li><code>12-56</code> <strong>Gibson</strong> Scale  在尺寸和张力方面是一个很好的中间地带。在低E弦上添加60号，也可以为低端提供更多的 “动力”。</li>
+</ul>
+<p><strong>Drop B</strong></p>
+<ul>
+<li><code>单独购买 11, 15, 20, 36, 48, 60</code> <strong>Fender</strong> Scale 创建一组自定义的单根琴弦可以让您在较高的琴弦上保持张力，同时在较低的琴弦上提供足够的音调。</li>
+<li><code>单独购买 12, 16, 24, 36, 48, 60</code> <strong>Gibson</strong> Scale 稍微调整的自定义单弦组可以让您加强较高的琴弦，同时保持较低琴弦的尺寸。也可以在低 E 弦上使用 62 或 64 以增加重量和张力。</li>
+</ul>
+<h2 id="0x03-BASS-TUNINGS"><a href="#0x03-BASS-TUNINGS" class="headerlink" title="0x03 BASS TUNINGS"></a>0x03 BASS TUNINGS</h2><p><strong>E Standard and Drop D</strong></p>
+<ul>
+<li><code>50-105</code> ` 良好的张力和音头。不会太紧，也不会太松。</li>
+</ul>
+<p><strong>Eb Standard and Drop C#</strong></p>
+<ul>
+<li><code>50-105</code> 从 E 标准和 Drop D 一直到 Eb 标准和 Drop C#。</li>
+</ul>
+<p><strong>D Standard and Drop C</strong></p>
+<ul>
+<li><code>55-110</code> 不错的张力，但不是矫枉过正。不会使手疲劳，但有足够的张力来进行重击。</li>
+</ul>
+<p><strong>Drop B</strong></p>
+<ul>
+<li><code>60-125+40</code> </li>
+</ul>
+]]></content>
+      <categories>
+        <category>音乐</category>
+      </categories>
+      <tags>
+        <tag>琴弦</tag>
+        <tag>drop 调弦</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>竟然拍了照片</title>
     <url>/post/xb/</url>
     <content><![CDATA[<blockquote>
@@ -4314,7 +4411,7 @@ Your browser does not support the video tag.
 <p>如果你想保持原厂的供油和排气（保留三元催化），可以换一个不锈钢头段。虽然不会提升功率，但它的重量远远小于原厂头段。</p>
 <p>对于排气后段，更多的是个人喜好，你得自己研究看哪一个更适合你的口味。</p>
 <p><strong>3.3. ECU TUNING</strong></p>
-<p>一旦你修改了进气和排气，可以适当调整ECU来或的更大的马力。</p>
+<p>一旦你修改了进气和排气，可以适当调整ECU来获得更大的马力。</p>
 <p>在保留原厂ECU的情况下（不使用全取代电脑），有两个软件可以调整RX8。MazdaEdit 和 VersaTuner 都适用于S1和S2 RX8。外挂电脑等试图“欺骗”ECU的方法是不够的。原厂ECU会发现问题并进行调整。</p>
 <p><img src="http://qiniu.s1nh.org/blog_Mazda-Rx8-10-675x349.webp" alt="Mazda Rx8 10"></p>
 <p>COBB AcessPORT 在过去是可行的，但现在他们已经放弃支持任何自然吸气汽车。它也只适用于前期 ECU。</p>
