@@ -3310,7 +3310,8 @@ apt-get install libusb-1.0-0-dev
   <entry>
     <title>有关 Chatbot 基本原理、开源框架和 Rasa</title>
     <url>/post/review-of-chatbot-framework/</url>
-    <content><![CDATA[<blockquote>
+    <content><![CDATA[<p><code>之前使用的 valine 评论工具有一些漏洞会导致隐私泄漏和XSS攻击，比如</code><a href="https://blog.maplesugar.top/valine-prank/"><code>这个</code></a><code>，目前更换为 utteranc ，一个基于 github 的评论工具，之前的评论内容正在努力迁移中...</code></p>
+<blockquote>
 <p>阅读了几篇关于 Chatbot 的综述、文档，Rasa 的介绍。另外，调研了一些大厂的 Chatbot 框架，包括Google 的 <a href="https://cloud.google.com/dialogflow/pricing">Dialogflow</a>, <a href="https://dev.botframework.com/">Microsoft Bot</a>, <a href="https://aws.amazon.com/lex/pricing/">AWS LEX</a>, <a href="https://www.alixiaomi.com/">阿里小蜜</a>；和开源超过 1k stars 的框架，包括 <a href="https://rasa.com/">Rasa</a>, <a href="https://github.com/oyfml/opennlu">OpenNLU</a>, <a href="https://github.com/facebookresearch/ParlAI">ParlAI</a>, <a href="https://github.com/gunthercox/ChatterBot">ChatterBot</a>, <a href="https://github.com/alfredfrancis/ai-chatbot-framework">ai-chatbot-framework</a>。</p>
 </blockquote>
 <span id="more"></span>
