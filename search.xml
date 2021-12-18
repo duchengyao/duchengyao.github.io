@@ -813,7 +813,7 @@ Test accuracy: 0.9828
 </code></pre>
 ]]></content>
       <categories>
-        <category>人工智能</category>
+        <category>深度学习</category>
       </categories>
       <tags>
         <tag>MNIST</tag>
@@ -1566,7 +1566,7 @@ y1 =  [6 6]     (x在第1维度相加)
 </code></pre>
 ]]></content>
       <categories>
-        <category>人工智能</category>
+        <category>深度学习</category>
       </categories>
       <tags>
         <tag>MNIST</tag>
@@ -3332,7 +3332,7 @@ apt-get install libusb-1.0-0-dev
 <li>f. <code>采用混合方法的聊天机器人</code></li>
 </ul>
 <p><strong>a. 基于模式匹配（模板）的聊天机器人</strong></p>
-<p>基于AIML(人工智能标记语言)，匹配预定义的模板。LSA（潜在语义分析）使用单词之间的相似性作为向量表示，可与作为 AIML 的兜底，当 AIML 无法匹配到问题时，使用LSA进行回复。</p>
+<p>基于 AIML(人工智能标记语言)，匹配预定义的模板。LSA（潜在语义分析）使用单词之间的相似性作为向量表示，可与作为 AIML 的兜底，当 AIML 无法匹配到问题时，使用LSA进行回复。</p>
 <p>此方法致命的缺陷是，不会存储历史对话，可能导致循环对话。</p>
 <p><code>AIML 的一个例子</code></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;aiml&gt;</span><br><span class="line">  &lt;category&gt;</span><br><span class="line">    &lt;pattern&gt; My name is * and I am * years old &lt;&#x2F;pattern&gt;</span><br><span class="line">    &lt;template&gt; Hello &lt;star&#x2F;&gt;. I am also &lt;Star index&#x3D;&quot;2&quot;&#x2F;&gt; years old! &lt;&#x2F;template&gt;</span><br><span class="line">  &lt;&#x2F;category&gt;</span><br><span class="line">&lt;&#x2F;aiml&gt;</span><br></pre></td></tr></table></figure>
@@ -3508,8 +3508,7 @@ apt-get install libusb-1.0-0-dev
 <p><strong>c. Rules</strong></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">rules:</span><br><span class="line">- rule: Only say &#96;hey&#96; when the user provided a name</span><br><span class="line">  condition:</span><br><span class="line">  - slot_was_set:</span><br><span class="line">    - user_provided_name: true</span><br><span class="line">  steps:</span><br><span class="line">  - intent: greet</span><br><span class="line">  - action: utter_greet</span><br></pre></td></tr></table></figure>
 
-
-
+<p>(To be continued…)</p>
 <h2 id="0xFF-其它有用的资料："><a href="#0xFF-其它有用的资料：" class="headerlink" title="0xFF 其它有用的资料："></a>0xFF 其它有用的资料：</h2><ul>
 <li><a href="uploads/8ef381b0acd4ed2832d709879be277e1/Conversational+AI+with+Rasa.pdf">Conversational AI with Rasa.pdf</a></li>
 <li><a href="https://github.com/fighting41love/funNLP">NLP民工的乐园: 几乎最全的中文NLP资源库</a></li>
@@ -3522,7 +3521,7 @@ apt-get install libusb-1.0-0-dev
 </ul>
 ]]></content>
       <categories>
-        <category>工作笔记</category>
+        <category>深度学习</category>
       </categories>
       <tags>
         <tag>NLP</tag>
@@ -4495,7 +4494,7 @@ Your browser does not support the video tag.
 </ul>
 ]]></content>
       <categories>
-        <category>人工智能</category>
+        <category>深度学习</category>
       </categories>
       <tags>
         <tag>卷积</tag>
