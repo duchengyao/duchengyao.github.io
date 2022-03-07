@@ -18,7 +18,7 @@
 <h2 id="0x02"><a href="#0x02" class="headerlink" title="0x02"></a>0x02</h2><p><img src="http://qiniu.s1nh.org/Blog_2016_summary_14.jpg-QNthin" title="看到这个背影还是忍不住会哭"></p>
 ]]></content>
       <categories>
-        <category>工作笔记</category>
+        <category>其它笔记</category>
       </categories>
   </entry>
   <entry>
@@ -45,7 +45,7 @@
 <p><img src="http://qiniu.s1nh.org/2017_summary_01.jpg-QNthin"><br><img src="http://qiniu.s1nh.org/2017_summary_08.jpg-QNthin"><br><img src="http://qiniu.s1nh.org/2017_summary_10.jpg-QNthin"><br><img src="http://qiniu.s1nh.org/2017_summary_16.jpg-QNthin"><br><img src="http://qiniu.s1nh.org/2017_summary_17.jpg-QNthin"><br><img src="http://qiniu.s1nh.org/2017_summary_18.jpg-QNthin"><br><img src="http://qiniu.s1nh.org/2017_summary_19.jpg-QNthin"></p>
 ]]></content>
       <categories>
-        <category>工作笔记</category>
+        <category>其它笔记</category>
       </categories>
   </entry>
   <entry>
@@ -70,7 +70,7 @@
 <p><img src="http://qiniu.s1nh.org/Blog_2018-summary_07.jpeg-QNthin"></p>
 ]]></content>
       <categories>
-        <category>工作笔记</category>
+        <category>其它笔记</category>
       </categories>
   </entry>
   <entry>
@@ -184,7 +184,7 @@
 
 ]]></content>
       <categories>
-        <category>工作笔记</category>
+        <category>算法与硬件</category>
       </categories>
   </entry>
   <entry>
@@ -233,7 +233,7 @@ n latest
 <p><img src="http://qiniu.s1nh.org/Blog_BBB-setup_11.jpg-QNthin"></p>
 ]]></content>
       <categories>
-        <category>硬件</category>
+        <category>算法与硬件</category>
       </categories>
       <tags>
         <tag>Beaglebone Black</tag>
@@ -334,7 +334,7 @@ root@kali:~# depmod -a -v &quot;3.8.13-bone53&quot;
 <h4 id="最后的解决方案"><a href="#最后的解决方案" class="headerlink" title="最后的解决方案"></a>最后的解决方案</h4><p>很丢脸的解决方案：我安装了1.0.9的Image，然后dist-upgrade升级到sana。</p>
 ]]></content>
       <categories>
-        <category>硬件</category>
+        <category>算法与硬件</category>
       </categories>
       <tags>
         <tag>Beaglebone Black</tag>
@@ -382,7 +382,7 @@ root@kali:~# depmod -a -v &quot;3.8.13-bone53&quot;
 <h2 id="4-结语"><a href="#4-结语" class="headerlink" title="4. 结语"></a>4. 结语</h2><p>目标检测是计算机视觉中基础而且热门的领域，最近两年的由于深度学习的影响产生了巨大的进步，相信在未来的一两年时间有更优秀的工作出现。</p>
 ]]></content>
       <categories>
-        <category>图形图像</category>
+        <category>算法与硬件</category>
       </categories>
       <tags>
         <tag>CVPR</tag>
@@ -427,7 +427,7 @@ root@kali:~# depmod -a -v &quot;3.8.13-bone53&quot;
 <p><img src="http://qiniu.s1nh.org/Blog_N3_Noiseless_With_S1_Switch.jpg-QNthin"></p>
 ]]></content>
       <categories>
-        <category>音乐</category>
+        <category>音乐相关</category>
       </categories>
   </entry>
   <entry>
@@ -449,7 +449,7 @@ root@kali:~# depmod -a -v &quot;3.8.13-bone53&quot;
 <p><a href="http://qiniu.s1nh.org/Blog_Fender_Am_Dlx_Stratocaster_HSS_Shawbucker_011911XXXX_Service_Manual.pdf">Fender_011911XXXX_Service_Manual.pdf</a></p>
 ]]></content>
       <categories>
-        <category>音乐</category>
+        <category>音乐相关</category>
       </categories>
       <tags>
         <tag>fender</tag>
@@ -492,7 +492,7 @@ root@kali:~# depmod -a -v &quot;3.8.13-bone53&quot;
 <p>参考：<a href="https://help.github.com/categories/working-with-non-code-files/">Github Help : Working with non-code files</a></p>
 ]]></content>
       <categories>
-        <category>工作笔记</category>
+        <category>算法与硬件</category>
       </categories>
       <tags>
         <tag>Github</tag>
@@ -512,7 +512,7 @@ root@kali:~# depmod -a -v &quot;3.8.13-bone53&quot;
 <p>原始发布地址：<a href="http://guitarnuts2.proboards.com/thread/3627">http://guitarnuts2.proboards.com/thread/3627</a></p>
 ]]></content>
       <categories>
-        <category>音乐</category>
+        <category>音乐相关</category>
       </categories>
       <tags>
         <tag>wiring diagram</tag>
@@ -596,7 +596,7 @@ root@kali:~# depmod -a -v &quot;3.8.13-bone53&quot;
 -->
 ]]></content>
       <categories>
-        <category>图形图像</category>
+        <category>算法与硬件</category>
       </categories>
       <tags>
         <tag>全景视频</tag>
@@ -640,7 +640,7 @@ root@kali:~# depmod -a -v &quot;3.8.13-bone53&quot;
 <p><img src="http://qiniu.s1nh.org/Blog_Glass_1.png-QNthin"></p>
 ]]></content>
       <categories>
-        <category>图形图像</category>
+        <category>算法与硬件</category>
       </categories>
       <tags>
         <tag>红外光学材料均匀性检测仪</tag>
@@ -718,7 +718,7 @@ Test accuracy: 0.9828
 </code></pre>
 ]]></content>
       <categories>
-        <category>深度学习</category>
+        <category>算法与硬件</category>
       </categories>
       <tags>
         <tag>MNIST</tag>
@@ -755,7 +755,7 @@ Test accuracy: 0.9828
 <p><img src="http://qiniu.s1nh.org/Blog_Mental_45.jpg-QNthin" alt="Mental"></p>
 ]]></content>
       <categories>
-        <category>音乐</category>
+        <category>音乐相关</category>
       </categories>
       <tags>
         <tag>Mental</tag>
@@ -789,7 +789,7 @@ Test accuracy: 0.9828
 <h2 id="tensorflow"><a href="#tensorflow" class="headerlink" title="tensorflow"></a>tensorflow</h2><p>谷歌的深度学习系统<br><a href="https://www.tensorflow.org/">https://www.tensorflow.org/</a></p>
 ]]></content>
       <categories>
-        <category>硬件</category>
+        <category>算法与硬件</category>
       </categories>
       <tags>
         <tag>机器人</tag>
@@ -839,7 +839,7 @@ For information about changes from previous versions of the tisean package, run&
 </blockquote>
 ]]></content>
       <categories>
-        <category>科学计算</category>
+        <category>算法与硬件</category>
       </categories>
       <tags>
         <tag>Octave</tag>
@@ -866,7 +866,7 @@ For information about changes from previous versions of the tisean package, run&
 <p><img src="http://qiniu.s1nh.org/Blog_Open-source_hardware_8.png-QNthin" alt="开源硬件"></p>
 ]]></content>
       <categories>
-        <category>硬件</category>
+        <category>算法与硬件</category>
       </categories>
       <tags>
         <tag>开源</tag>
@@ -949,7 +949,7 @@ For information about changes from previous versions of the tisean package, run&
 <p><img src="http://qiniu.s1nh.org/algorithm-23-234.png-QNthin"></p>
 ]]></content>
       <categories>
-        <category>工作笔记</category>
+        <category>算法与硬件</category>
       </categories>
   </entry>
   <entry>
@@ -983,7 +983,7 @@ For information about changes from previous versions of the tisean package, run&
 <p>我听见窗外哗啦啦的雨声，一滴一滴击中我的心头，我的心脏开始隐隐作痛，就在雨水一点，一点，淌出心房时，我知道，雨季不会再来了，我长大了。</p>
 ]]></content>
       <categories>
-        <category>工作笔记</category>
+        <category>其它笔记</category>
       </categories>
   </entry>
   <entry>
@@ -1055,7 +1055,7 @@ http://winebottler.kronenberg.org/
 </code></pre>
 ]]></content>
       <categories>
-        <category>工作笔记</category>
+        <category>算法与硬件</category>
       </categories>
   </entry>
   <entry>
@@ -1303,7 +1303,7 @@ class SA&#123;
 </ol>
 ]]></content>
       <categories>
-        <category>工作笔记</category>
+        <category>算法与硬件</category>
       </categories>
       <tags>
         <tag>爬山算法</tag>
@@ -1471,7 +1471,7 @@ y1 =  [6 6]     (x在第1维度相加)
 </code></pre>
 ]]></content>
       <categories>
-        <category>深度学习</category>
+        <category>算法与硬件</category>
       </categories>
       <tags>
         <tag>MNIST</tag>
@@ -1501,7 +1501,7 @@ y1 =  [6 6]     (x在第1维度相加)
 <p>陈桂林身后翅膀的骨架终究是残缺的，在代表着一代人热情与汗水的工厂烟囱倒塌时，拽倒的还有他们曾经昂扬的梦想。</p>
 ]]></content>
       <categories>
-        <category>工作笔记</category>
+        <category>其它笔记</category>
       </categories>
   </entry>
   <entry>
@@ -1555,7 +1555,7 @@ apt-get install libusb-1.0-0-dev
 </ul>
 ]]></content>
       <categories>
-        <category>信息安全</category>
+        <category>算法与硬件</category>
       </categories>
       <tags>
         <tag>无线电</tag>
@@ -1575,7 +1575,7 @@ apt-get install libusb-1.0-0-dev
 <p>影片的结局，秋水与柳青再次相遇，这是导演李玉对观众青春的一种补偿和馈赠。还是那个迷人的下午，阳光明媚，她拿着我的书坐在餐厅一角，我怔怔地走过去，她认出了我，我们四目相对，微微一笑，仿佛又回到了从前。可终究，柳青是“沙”里“水”挣扎的幻影迷梦，这场相遇分不清是真是假，或是带着内心隐隐作痛的青春，或是不加言语的眼神相对，也或是直到迷梦坍塌后的沉重回响。</p>
 ]]></content>
       <categories>
-        <category>工作笔记</category>
+        <category>其它笔记</category>
       </categories>
   </entry>
   <entry>
@@ -1616,7 +1616,7 @@ apt-get install libusb-1.0-0-dev
 <p><img src="http://qiniu.s1nh.org/Blog_Yixing_Wechat.jpg-QNthin" alt="行界"></p>
 ]]></content>
       <categories>
-        <category>工作笔记</category>
+        <category>其它笔记</category>
       </categories>
       <tags>
         <tag>益行游戏</tag>
@@ -1656,7 +1656,7 @@ apt-get install libusb-1.0-0-dev
 <p><img src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_26.jpg-QNthin" alt="鲸落"></p>
 ]]></content>
       <categories>
-        <category>音乐</category>
+        <category>音乐相关</category>
       </categories>
       <tags>
         <tag>Live</tag>
@@ -1677,7 +1677,7 @@ apt-get install libusb-1.0-0-dev
 <p><a href="https://github.com/Xcode-Jianghu/Xcode-Jianghu">勘误, 代码, etc @GitHub</a></p>
 ]]></content>
       <categories>
-        <category>工作笔记</category>
+        <category>其它笔记</category>
       </categories>
   </entry>
   <entry>
@@ -1715,7 +1715,7 @@ apt-get install libusb-1.0-0-dev
 <p>我送你一座崭新的奥斯维辛，<br>我送你一个工艺精湛的地狱，<br>我送你一具肥美多汁的躯体，<br>掀开头盖骨偷走了粉嫩的脑子，<br>挖出来的肠子鲜艳的红色很可爱，<br>绿色的苍蝇在你腐烂的躯体上显得晶莹剔透，<br>我给你烤一份新鲜的脑花，<br>我给你烤一份新鲜的心脏，<br>我给你化妆，遮住星星点点的尸斑，<br>我帮你剔除未来不需要的，<br>你要在跑道上飞起来啊。<br>孩子，你说话啊，妈妈爸爸爱你。<br>孩子，你说话啊，我们在教育你成才。<br>孩子，你说话啊，你爱我们。<br>孩子，你说话啊，你爱祖国。<br>孩子，你说话啊，你爱世界。</p>
 ]]></content>
       <categories>
-        <category>工作笔记</category>
+        <category>其它笔记</category>
       </categories>
   </entry>
   <entry>
@@ -1736,7 +1736,7 @@ apt-get install libusb-1.0-0-dev
 
 ]]></content>
       <categories>
-        <category>工作笔记</category>
+        <category>算法与硬件</category>
       </categories>
   </entry>
   <entry>
@@ -1780,7 +1780,7 @@ apt-get install libusb-1.0-0-dev
 
 ]]></content>
       <categories>
-        <category>图形图像</category>
+        <category>算法与硬件</category>
       </categories>
       <tags>
         <tag>cuda</tag>
@@ -1851,7 +1851,7 @@ apt-get install libusb-1.0-0-dev
 <p>具体表现在，即使只有PPS信号，配置网页中也会显示已经Locked，但是抓包<code>UDP 8308</code>端口不会有时间戳显示。</p>
 ]]></content>
       <categories>
-        <category>SLAM</category>
+        <category>算法与硬件</category>
       </categories>
   </entry>
   <entry>
@@ -1862,7 +1862,7 @@ apt-get install libusb-1.0-0-dev
 <p>仔细查阅文档后，发现<strong>只有Mac和Windows的Chrome对NPAPI提供支持</strong>。</p>
 ]]></content>
       <categories>
-        <category>工作笔记</category>
+        <category>算法与硬件</category>
       </categories>
       <tags>
         <tag>HIKVISION</tag>
@@ -1897,7 +1897,7 @@ apt-get install libusb-1.0-0-dev
 <p>这个故事告诉我们，遇到问题之前要<strong>先-去-看-官-方-文-档</strong></p>
 ]]></content>
       <categories>
-        <category>工作笔记</category>
+        <category>算法与硬件</category>
       </categories>
       <tags>
         <tag>Cuda</tag>
@@ -2000,7 +2000,7 @@ apt-get install libusb-1.0-0-dev
 </ul>
 ]]></content>
       <categories>
-        <category>图形图像</category>
+        <category>算法与硬件</category>
       </categories>
       <tags>
         <tag>OCR</tag>
@@ -2033,7 +2033,7 @@ apt-get install libusb-1.0-0-dev
 <p>已经提交<a href="https://bugs.kali.org/view.php?id=3630">Bug Tracker</a>（估计又有人要嫌弃我的英文水平了）</p>
 ]]></content>
       <categories>
-        <category>工作笔记</category>
+        <category>算法与硬件</category>
       </categories>
   </entry>
   <entry>
@@ -2061,7 +2061,7 @@ apt-get install libusb-1.0-0-dev
 <p><img src="http://qiniu.s1nh.org/Blog_vintage_57_after.jpg-QNthin"></p>
 ]]></content>
       <categories>
-        <category>音乐</category>
+        <category>音乐相关</category>
       </categories>
       <tags>
         <tag>Fender</tag>
@@ -2192,7 +2192,7 @@ apt-get install libusb-1.0-0-dev
 </ul>
 ]]></content>
       <categories>
-        <category>工作笔记</category>
+        <category>算法与硬件</category>
       </categories>
   </entry>
   <entry>
@@ -2308,7 +2308,7 @@ apt-get install libusb-1.0-0-dev
 </tbody></table>
 ]]></content>
       <categories>
-        <category>音乐</category>
+        <category>音乐相关</category>
       </categories>
   </entry>
   <entry>
@@ -2334,9 +2334,10 @@ apt-get install libusb-1.0-0-dev
 <h2 id="0x04-自己编译固件"><a href="#0x04-自己编译固件" class="headerlink" title="0x04 自己编译固件"></a>0x04 自己编译固件</h2><p>可以参考<a href="http://scateu.me/2015/08/06/hackrf-how-to-compile-firmware.html">HackRF固件更新及编译环境搭建</a></p>
 ]]></content>
       <categories>
-        <category>信息安全</category>
+        <category>算法与硬件</category>
       </categories>
       <tags>
+        <tag>信息安全</tag>
         <tag>HackRF</tag>
       </tags>
   </entry>
@@ -2374,9 +2375,10 @@ apt-get install libusb-1.0-0-dev
 <h2 id="0x03-未完待续"><a href="#0x03-未完待续" class="headerlink" title="0x03 未完待续"></a>0x03 未完待续</h2><p>接下来的工作主要是解密收到的GSM信号，解密LTE信号，以及搭建伪基站。<br><a href="http://www.freebuf.com/articles/wireless/105324.html">GSM Hacking：如何对GSM/GPRS网络测试进行测试？</a><br><a href="http://www.freebuf.com/articles/wireless/111577.html">GSM Hacking Part ② ：使用SDR捕获GSM网络数据并解密</a><br><a href="http://www.freebuf.com/articles/wireless/32331.html"> 使用HackRF解调TDD-LTE信号 </a></p>
 ]]></content>
       <categories>
-        <category>信息安全</category>
+        <category>算法与硬件</category>
       </categories>
       <tags>
+        <tag>信息安全</tag>
         <tag>HackRF</tag>
       </tags>
   </entry>
@@ -2389,7 +2391,7 @@ apt-get install libusb-1.0-0-dev
 <p><img src="/about/block-3.png"></p>
 ]]></content>
       <categories>
-        <category>工作笔记</category>
+        <category>其它笔记</category>
       </categories>
   </entry>
   <entry>
@@ -2412,7 +2414,7 @@ apt-get install libusb-1.0-0-dev
 <p><img src="http://qiniu.s1nh.org/blog_05.final-stitching.png-QNthin"></p>
 ]]></content>
       <categories>
-        <category>图形图像</category>
+        <category>算法与硬件</category>
       </categories>
   </entry>
   <entry>
@@ -2440,7 +2442,7 @@ apt-get install libusb-1.0-0-dev
 <h3 id="2-4-pycuda"><a href="#2-4-pycuda" class="headerlink" title="2.4. pycuda"></a>2.4. pycuda</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">try:</span><br><span class="line">    # Sometimes python2 does not understand FileNotFoundError</span><br><span class="line">    FileNotFoundError</span><br><span class="line">except NameError:</span><br><span class="line">    FileNotFoundError &#x3D; IOError</span><br><span class="line"></span><br><span class="line">def GiB(val):</span><br><span class="line">    return val * 1 &lt;&lt; 30   # 1 &lt;&lt; 10 &lt;&lt; 10 &lt;&lt; 10, 1024*1024*1024</span><br><span class="line"></span><br><span class="line"># Simple helper data class that&#39;s a little nicer to use than a 2-tuple.</span><br><span class="line">class HostDeviceMem(object):</span><br><span class="line">    def __init__(self, host_mem, device_mem):</span><br><span class="line">        self.host &#x3D; host_mem</span><br><span class="line">        self.device &#x3D; device_mem</span><br><span class="line"></span><br><span class="line">    def __str__(self):</span><br><span class="line">        return &quot;Host:\n&quot; + str(self.host) + &quot;\nDevice:\n&quot; + str(self.device)</span><br><span class="line"></span><br><span class="line">    def __repr__(self):</span><br><span class="line">        return self.__str__()</span><br><span class="line"></span><br><span class="line"># Allocates all buffers required for an engine, i.e. host&#x2F;device inputs&#x2F;outputs.</span><br><span class="line">def allocate_buffers(engine):</span><br><span class="line">    inputs &#x3D; []</span><br><span class="line">    outputs &#x3D; []</span><br><span class="line">    bindings &#x3D; []</span><br><span class="line">    stream &#x3D; cuda.Stream()</span><br><span class="line">    for binding in engine:</span><br><span class="line">        size &#x3D; trt.volume(engine.get_binding_shape(binding)) * engine.max_batch_size</span><br><span class="line">        dtype &#x3D; trt.nptype(engine.get_binding_dtype(binding))</span><br><span class="line">        # Allocate host and device buffers</span><br><span class="line">        host_mem &#x3D; cuda.pagelocked_empty(size, dtype)      # pagelocked memory (Direct Memory Access，DMA)</span><br><span class="line">        device_mem &#x3D; cuda.mem_alloc(host_mem.nbytes)</span><br><span class="line">        # Append the device buffer to device bindings.</span><br><span class="line">        bindings.append(int(device_mem))</span><br><span class="line">        # Append to the appropriate list.</span><br><span class="line">        if engine.binding_is_input(binding):</span><br><span class="line">            inputs.append(HostDeviceMem(host_mem, device_mem))</span><br><span class="line">        else:</span><br><span class="line">            outputs.append(HostDeviceMem(host_mem, device_mem))</span><br><span class="line">    return inputs, outputs, bindings, stream</span><br><span class="line"></span><br><span class="line"># This function is generalized for multiple inputs&#x2F;outputs.</span><br><span class="line"># inputs and outputs are expected to be lists of HostDeviceMem objects.</span><br><span class="line">def do_inference(context, bindings, inputs, outputs, stream, batch_size&#x3D;1):</span><br><span class="line">    # Transfer input data to the GPU.</span><br><span class="line">    [cuda.memcpy_htod_async(inp.device, inp.host, stream) for inp in inputs]</span><br><span class="line">    # Run inference.</span><br><span class="line">    context.execute_async(batch_size&#x3D;batch_size, bindings&#x3D;bindings, stream_handle&#x3D;stream.handle)</span><br><span class="line">    # Transfer predictions back from the GPU.</span><br><span class="line">    [cuda.memcpy_dtoh_async(out.host, out.device, stream) for out in outputs]</span><br><span class="line">    # Synchronize the stream</span><br><span class="line">    stream.synchronize()</span><br><span class="line">    # Return only the host outputs.</span><br><span class="line">    return [out.host for out in outputs]</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>深度学习</category>
+        <category>算法与硬件</category>
       </categories>
       <tags>
         <tag>边缘计算</tag>
@@ -2464,7 +2466,7 @@ apt-get install libusb-1.0-0-dev
 <p><strong>3. 关闭 dockerd 节约 49M</strong></p>
 ]]></content>
       <categories>
-        <category>工作笔记</category>
+        <category>算法与硬件</category>
       </categories>
       <tags>
         <tag>Jetson</tag>
@@ -2522,7 +2524,7 @@ apt-get install libusb-1.0-0-dev
 <h2 id="0x04-开启VNC"><a href="#0x04-开启VNC" class="headerlink" title="0x04 开启VNC"></a>0x04 开启VNC</h2><p>默认的 ubuntu 点几下鼠标就可以开启 VNC 请看下面的讨论<br><a href="https://devtalk.nvidia.com/default/topic/984355/set-up-vnc-on-the-tx1/">Set up VNC on the TX1</a></p>
 ]]></content>
       <categories>
-        <category>硬件</category>
+        <category>算法与硬件</category>
       </categories>
       <tags>
         <tag>GPU</tag>
@@ -2570,8 +2572,11 @@ apt-get install libusb-1.0-0-dev
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://xiao106347.blog.163.com/blog/#m=0&t=3&c=kali-linux">Linux 折腾笔记 - Kali linux</a></p>
 ]]></content>
       <categories>
-        <category>信息安全</category>
+        <category>算法与硬件</category>
       </categories>
+      <tags>
+        <tag>信息安全</tag>
+      </tags>
   </entry>
   <entry>
     <title>最长公共子序列（LCS）到git diff</title>
@@ -2599,7 +2604,7 @@ apt-get install libusb-1.0-0-dev
 </blockquote>
 ]]></content>
       <categories>
-        <category>工作笔记</category>
+        <category>算法与硬件</category>
       </categories>
   </entry>
   <entry>
@@ -2613,7 +2618,7 @@ apt-get install libusb-1.0-0-dev
 <h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>这是<code>linux kernel 4.4.0-116-generic</code> 的一个小bug，降级到<code>linux kernel 4.4.0-112-generic</code>，再重装一下driver（不用重装cuda）问题就解决了</p>
 ]]></content>
       <categories>
-        <category>工作笔记</category>
+        <category>算法与硬件</category>
       </categories>
   </entry>
   <entry>
@@ -2665,7 +2670,7 @@ apt-get install libusb-1.0-0-dev
 </blockquote>
 ]]></content>
       <categories>
-        <category>SLAM</category>
+        <category>算法与硬件</category>
       </categories>
       <tags>
         <tag>Turtlebot</tag>
@@ -2703,7 +2708,7 @@ apt-get install libusb-1.0-0-dev
 <h2 id="参考教程："><a href="#参考教程：" class="headerlink" title="参考教程："></a>参考教程：</h2><p><code>http://wiki.ros.org/cn/ROS/Tutorials</code><br><code>https://www.ncnynl.com/archives/201609/799.html</code></p>
 ]]></content>
       <categories>
-        <category>SLAM</category>
+        <category>算法与硬件</category>
       </categories>
       <tags>
         <tag>Turtlebot</tag>
@@ -2747,7 +2752,7 @@ apt-get install libusb-1.0-0-dev
 <p>没接触过navigation的同鞋可以看这篇blog《<a href="http://blog.exbot.net/archives/1129">拿ROS navigation 玩自主导航攻略（1）——by 西工大一小学生</a>》写得很详细。</p>
 ]]></content>
       <categories>
-        <category>SLAM</category>
+        <category>算法与硬件</category>
       </categories>
       <tags>
         <tag>Turtlebot</tag>
@@ -2797,7 +2802,7 @@ apt-get install libusb-1.0-0-dev
 <p><em>–未完待续–</em></p>
 ]]></content>
       <categories>
-        <category>科学计算</category>
+        <category>算法与硬件</category>
       </categories>
       <tags>
         <tag>python</tag>
@@ -2843,7 +2848,7 @@ apt-get install libusb-1.0-0-dev
 <p><img src="http://qiniu.s1nh.org/Blog_memory_06.png"></p>
 ]]></content>
       <categories>
-        <category>工作笔记</category>
+        <category>其它笔记</category>
       </categories>
   </entry>
   <entry>
@@ -2893,7 +2898,7 @@ apt-get install libusb-1.0-0-dev
 <p><em>–未完待续–</em></p>
 ]]></content>
       <categories>
-        <category>工作笔记</category>
+        <category>其它笔记</category>
       </categories>
       <tags>
         <tag>经济学</tag>
@@ -2983,7 +2988,7 @@ apt-get install libusb-1.0-0-dev
 </ul>
 ]]></content>
       <categories>
-        <category>工作笔记</category>
+        <category>算法与硬件</category>
       </categories>
       <tags>
         <tag>边缘计算</tag>
@@ -3007,7 +3012,7 @@ apt-get install libusb-1.0-0-dev
 </blockquote>
 ]]></content>
       <categories>
-        <category>图形图像</category>
+        <category>算法与硬件</category>
       </categories>
       <tags>
         <tag>图像拼接</tag>
@@ -3045,7 +3050,7 @@ apt-get install libusb-1.0-0-dev
 <p>IJCV2011有一篇文章，《<a href="http://vision.middlebury.edu/flow/">A Database and Evaluation Methodology for Optical Flow</a>》里面对主流的光流算法做了简要的介绍和对不同算法进行了评估。</p>
 ]]></content>
       <categories>
-        <category>图形图像</category>
+        <category>算法与硬件</category>
       </categories>
   </entry>
   <entry>
@@ -3280,7 +3285,7 @@ apt-get install libusb-1.0-0-dev
 
 ]]></content>
       <categories>
-        <category>深度学习</category>
+        <category>算法与硬件</category>
       </categories>
   </entry>
   <entry>
@@ -3325,7 +3330,7 @@ apt-get install libusb-1.0-0-dev
 <p><img src="http://qiniu.s1nh.org/project_velodyne_4.png-QNthin"></p>
 ]]></content>
       <categories>
-        <category>SLAM</category>
+        <category>算法与硬件</category>
       </categories>
   </entry>
   <entry>
@@ -3543,7 +3548,7 @@ apt-get install libusb-1.0-0-dev
 </ul>
 ]]></content>
       <categories>
-        <category>深度学习</category>
+        <category>算法与硬件</category>
       </categories>
       <tags>
         <tag>NLP</tag>
@@ -3602,7 +3607,7 @@ apt-get install libusb-1.0-0-dev
 </ul>
 ]]></content>
       <categories>
-        <category>赛车</category>
+        <category>其它笔记</category>
       </categories>
       <tags>
         <tag>底盘强化</tag>
@@ -3642,7 +3647,7 @@ apt-get install libusb-1.0-0-dev
 <hr>
 ]]></content>
       <categories>
-        <category>工作笔记</category>
+        <category>算法与硬件</category>
       </categories>
       <tags>
         <tag>Debian</tag>
@@ -3666,7 +3671,7 @@ apt-get install libusb-1.0-0-dev
 <h3 id="0x02-解决方案"><a href="#0x02-解决方案" class="headerlink" title="0x02 解决方案"></a>0x02 解决方案</h3><p>暂时的解决方案为<strong>放弃anaconda</strong>，全部用apt安装软件包，使用系统默认的Opencv，运行成功。</p>
 ]]></content>
       <categories>
-        <category>工作笔记</category>
+        <category>算法与硬件</category>
       </categories>
       <tags>
         <tag>caffe</tag>
@@ -3704,7 +3709,7 @@ apt-get install libusb-1.0-0-dev
 <p><img src="http://qiniu.s1nh.org/Blog_matcaffe-helloworld.png" alt="matcaffe helloworld" title="matcaffe helloworld"></p>
 ]]></content>
       <categories>
-        <category>工作笔记</category>
+        <category>算法与硬件</category>
       </categories>
       <tags>
         <tag>matlab</tag>
@@ -3739,6 +3744,9 @@ apt-get install libusb-1.0-0-dev
 <p>XFCE4 支持三指拖拽<br>无论是 synaptics 还是 libinput 都不支持三指拖拽，之前只能使用非官方的mtrack或<a href="https://github.com/daveriedstra/libinput-gestures">libinput-gesture</a>来解决问题，然而就在前些日子，有位大牛写了段脚本（mod libinput-gesture 的三指拖拽功能也是他写的）</p>
 <p>请使用这个很牛逼的脚本：<a href="https://github.com/daveriedstra/draggy">draggy</a></p>
 ]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
   </entry>
   <entry>
     <title>「tensorflow」 Variable was uninitialized</title>
@@ -3758,7 +3766,7 @@ apt-get install libusb-1.0-0-dev
 
 ]]></content>
       <categories>
-        <category>工作笔记</category>
+        <category>算法与硬件</category>
       </categories>
       <tags>
         <tag>tensorflow</tag>
@@ -3859,7 +3867,7 @@ Symbols: &#39;.&#39; no key found, &#39;/&#39; A key found, &#39;\&#39; B key fo
 <h2 id="亚克力"><a href="#亚克力" class="headerlink" title="亚克力"></a>亚克力</h2><p><img src="http://qiniu.s1nh.org/Blog_Year-end-summary_30.jpg-QNthin"><br><img src="http://qiniu.s1nh.org/Blog_Year-end-summary_31.jpg-QNthin"><br><img src="http://qiniu.s1nh.org/Blog_Year-end-summary_32.jpg-QNthin"></p>
 ]]></content>
       <categories>
-        <category>信息安全</category>
+        <category>算法与硬件</category>
       </categories>
       <tags>
         <tag>信息安全</tag>
@@ -3879,7 +3887,7 @@ Symbols: &#39;.&#39; no key found, &#39;/&#39; A key found, &#39;\&#39; B key fo
 <p>当木材的径向表面显示波状生长或颗粒时，切向面是光滑的，并且可以观察到波状或起伏的颗粒，但是触摸不明显。 当具有卷曲纹的木材部分分裂时，其沿着光线并沿着波纹状颗粒分离，并且表现为在径向表面上可以看到和感觉到的波纹状表面。 起伏的生长是在同一时间开始的单个细胞的延长的结果，其有些延迟，导致一些比其它细胞长。 </p>
 ]]></content>
       <categories>
-        <category>音乐</category>
+        <category>音乐相关</category>
       </categories>
       <tags>
         <tag>Maple</tag>
@@ -3898,7 +3906,7 @@ Symbols: &#39;.&#39; no key found, &#39;/&#39; A key found, &#39;\&#39; B key fo
 <p><img src="http://qiniu.s1nh.org/Blog_PM_%E5%AE%89%E5%85%A8%E7%9B%91%E6%8E%A74.jpg-QNthin"></p>
 ]]></content>
       <categories>
-        <category>工作笔记</category>
+        <category>其它笔记</category>
       </categories>
       <tags>
         <tag>产品经理</tag>
@@ -3943,7 +3951,7 @@ Symbols: &#39;.&#39; no key found, &#39;/&#39; A key found, &#39;\&#39; B key fo
 <h2 id="0x03-参考"><a href="#0x03-参考" class="headerlink" title="0x03 参考"></a>0x03 参考</h2><p><a href="https://devtalk.nvidia.com/default/topic/810053/jetson-tk1/opencv-performance-tk1/post/4479121/#4479121">[1]OpenCV Performance TK1</a><br><a href="https://devtalk.nvidia.com/default/topic/922626/jetson-tx1/regarding-usage-of-zero-copy-on-tx1-to-improve-performance/post/4834970/#4834970">[2]Regarding Usage of Zero Copy on TX1 to improve performance</a><br><a href="http://www.swisst.net/files/swisstnet/de/dokumente/ECC/ECC16/Referate/S4R2_Matthias%20Rosenthal.pdf">[3]PPT: General purpose processing using embedded  GPUs: A study of latency and its variation</a><br><a href="https://cs.unc.edu/~anderson/papers/rtas17b.pdf">[4]An Evaluation of the NVIDIA TX1 for Supporting Real-timeComputer-Vision Workloads</a><br><a href="https://gold.xitu.io/entry/575692ba816dfa005f87fbfb">NVIDIA Tegra TK/X 系列板子的零拷贝 (zero copy) 问题</a><br><a href="http://www.findspace.name/easycoding/1349">Cuda锁页内存和零复制</a><br><a href="http://www.tuicool.com/articles/zmEn2q">CUDA零复制内存</a><br><a href="http://blog.csdn.net/langb2014/article/details/51348616">CUDA学习笔记九</a><br><a href="http://www.cnblogs.com/biglucky/p/4305131.html">CPU和GPU内存交互</a></p>
 ]]></content>
       <categories>
-        <category>图形图像</category>
+        <category>算法与硬件</category>
       </categories>
       <tags>
         <tag>TX-1</tag>
@@ -4109,7 +4117,7 @@ Symbols: &#39;.&#39; no key found, &#39;/&#39; A key found, &#39;\&#39; B key fo
 </ul>
 ]]></content>
       <categories>
-        <category>工作笔记</category>
+        <category>算法与硬件</category>
       </categories>
       <tags>
         <tag>深度学习</tag>
@@ -4134,7 +4142,7 @@ Your browser does not support the video tag.
 <p><img src="http://qiniu.s1nh.org/whale_fall_2018_3.jpg"><br><img src="http://qiniu.s1nh.org/whale_fall_2018_2.jpg"></p>
 ]]></content>
       <categories>
-        <category>音乐</category>
+        <category>音乐相关</category>
       </categories>
   </entry>
   <entry>
@@ -4224,7 +4232,7 @@ Your browser does not support the video tag.
 </ul>
 ]]></content>
       <categories>
-        <category>音乐</category>
+        <category>音乐相关</category>
       </categories>
       <tags>
         <tag>琴弦</tag>
@@ -4242,7 +4250,7 @@ Your browser does not support the video tag.
 <p><img src="http://qiniu.s1nh.org/xb-02.jpg"><br><img src="http://qiniu.s1nh.org/xb-03.jpg"><br><img src="http://qiniu.s1nh.org/xb-04.jpg"><br><img src="http://qiniu.s1nh.org/xb-05.jpg"><br><img src="http://qiniu.s1nh.org/xb-06.jpg"><br><img src="http://qiniu.s1nh.org/xb-01.jpg"></p>
 ]]></content>
       <categories>
-        <category>音乐</category>
+        <category>音乐相关</category>
       </categories>
   </entry>
   <entry>
@@ -4377,7 +4385,7 @@ Your browser does not support the video tag.
 <p><A NAME="79"> [79] <a href="http://blog.csdn.net/dandan_397/article/details/42110719">详解Harris角点检测及代码实现</a></a></p>
 ]]></content>
       <categories>
-        <category>图形图像</category>
+        <category>算法与硬件</category>
       </categories>
       <tags>
         <tag>图像拼接</tag>
@@ -4513,7 +4521,7 @@ Your browser does not support the video tag.
 </ul>
 ]]></content>
       <categories>
-        <category>深度学习</category>
+        <category>算法与硬件</category>
       </categories>
       <tags>
         <tag>卷积</tag>
@@ -4585,7 +4593,7 @@ Your browser does not support the video tag.
 <p>文章在这里 <a href="https://arxiv.org/abs/1703.06870">https://arxiv.org/abs/1703.06870</a><br>具体中文讨论在这里 <a href="https://www.zhihu.com/question/57403701">https://www.zhihu.com/question/57403701</a><br>但是，没有代码，我们组也在复现中 </p>
 ]]></content>
       <categories>
-        <category>图形图像</category>
+        <category>算法与硬件</category>
       </categories>
   </entry>
   <entry>
@@ -4724,7 +4732,7 @@ Your browser does not support the video tag.
 <p>如果你对待你的RX8像一辆跑车一样提供维护，那么它是一个令人惊讶的品质优良且有充足动力的汽车。而且 RX8 价格不高，所以它是你踏入跑车圈子的第一步。</p>
 ]]></content>
       <categories>
-        <category>赛车</category>
+        <category>其它笔记</category>
       </categories>
       <tags>
         <tag>rx8</tag>
