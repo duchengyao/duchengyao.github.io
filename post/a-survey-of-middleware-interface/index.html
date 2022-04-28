@@ -35,7 +35,7 @@
 <meta property="og:image" content="http://qiniu.s1nh.org/fast-dds-zero-copy-performance.svg">
 <meta property="og:image" content="http://qiniu.s1nh.org/fast-dds-monitor-statistics.png">
 <meta property="article:published_time" content="2022-04-24T11:49:12.000Z">
-<meta property="article:modified_time" content="2022-04-28T07:11:58.412Z">
+<meta property="article:modified_time" content="2022-04-28T07:45:36.145Z">
 <meta property="article:author" content="S1NH">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://qiniu.s1nh.org/DDS-communication-model.png">
@@ -300,6 +300,7 @@
 </blockquote>
 <p><code>ROS 2</code> 和 <code>Apollo 3</code> 的计算框架 <code>Cyber RT</code> 构建在现有中间件解决方案 <code>DDS</code> 之上 <a name="r1" href="#1"><sup>[1]</sup></a>  <a name="r2" href="#2"><sup>[2]</sup></a> </p>
 <p><code>Cyber RT</code> 在此基础上构建了自己的调度器 <a name="r3" href="#3"><sup>[3]</sup></a>，由一个多队列的<code>任务编排策略</code>调度协程（Coroutine）在 Native Thread 上有序运行。其中，Cyber RT 会动态的根据不同调度顺序的执行时间来动态的选择一个时间最短的调度策略。</p>
+<span id="more"></span>
 <h2 id="0x01-Data-Distribution-Servic-DDS"><a href="#0x01-Data-Distribution-Servic-DDS" class="headerlink" title="0x01 Data Distribution Servic, DDS"></a>0x01 Data Distribution Servic, DDS</h2><p>DDS解决了通信层面的问题，这使操作系统的开发者、应用的开发者得以集中精力专注于业务的研究。 DDS 已经广泛用于 <strong>战列舰</strong>、<strong>大坝等大型公用设施</strong>、<strong>金融系统</strong>、<strong>空间系统</strong>、<strong>飞行系统</strong>、<strong>火车总机系统</strong> 中。</p>
 <p>DDS 通过 <code>可靠传输策略 (Quality of Service, QoS)</code>，控制与底层通信机制的方方面面，主要从时限、可靠性、连续性、历史等方面来满足不同场景的用户数据需求。</p>
 <p>DDS 是一个 DCPS (Data-Centric Publish Subscribe) 模型，其中包括Participant, Publisher, Subscriber, DataWriter, DataReader, Topic等概念。具体通信机制如下图：</p>
