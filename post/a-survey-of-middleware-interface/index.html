@@ -22,33 +22,33 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="去年把全景拼接算法部署到了郑州机场，实现 4×4K 视频采集、拼接、发布，在单个 1080ti 上可以达到 300FPS。  因为机场光照特别强烈，使用的廉价摄像头曝光不均匀。表现为每张图片都是中间曝光强，四周曝光弱，拼接以后在接缝处会出现条纹（下图）。因为摄像头上半部分是天空，我们假设天空的亮度、颜色是统一的，可以设计一个很简单的算法解决亮度不均匀的问题。">
+<meta name="description" content="ROS 和前期的 Apollo 定义了一个 API，它向用户公开如发布&#x2F;订阅等通信概念。这些通信概念的实现基于自定义协议，并使用共享内存去降低基于Socket通信的开销。这些传统方法存在一些问题，如每个节点以单独进程的形式存在，由底层操作系统调度，而Linux是个通用系统，每个节点的运行顺序并无任何逻辑。ROS是专用系统，任务应按照一定的业务逻辑执行。  ROS 2 和 Apollo 3 的计算">
 <meta property="og:type" content="article">
-<meta property="og:title" content="解决廉价摄像头在图像拼接中产生的曝光不均匀问题">
-<meta property="og:url" content="http://s1nh.org/post/image-stitching-post-process/index.html">
+<meta property="og:title" content="百度阿波罗 和 ROS 2.0 采用的消息中间件">
+<meta property="og:url" content="http://s1nh.org/post/a-survey-of-middleware-interface/index.html">
 <meta property="og:site_name" content="S1NH">
-<meta property="og:description" content="去年把全景拼接算法部署到了郑州机场，实现 4×4K 视频采集、拼接、发布，在单个 1080ti 上可以达到 300FPS。  因为机场光照特别强烈，使用的廉价摄像头曝光不均匀。表现为每张图片都是中间曝光强，四周曝光弱，拼接以后在接缝处会出现条纹（下图）。因为摄像头上半部分是天空，我们假设天空的亮度、颜色是统一的，可以设计一个很简单的算法解决亮度不均匀的问题。">
+<meta property="og:description" content="ROS 和前期的 Apollo 定义了一个 API，它向用户公开如发布&#x2F;订阅等通信概念。这些通信概念的实现基于自定义协议，并使用共享内存去降低基于Socket通信的开销。这些传统方法存在一些问题，如每个节点以单独进程的形式存在，由底层操作系统调度，而Linux是个通用系统，每个节点的运行顺序并无任何逻辑。ROS是专用系统，任务应按照一定的业务逻辑执行。  ROS 2 和 Apollo 3 的计算">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://qiniu.s1nh.org/blog_01.origin-stitching.png-QNthin">
-<meta property="og:image" content="http://qiniu.s1nh.org/blog_02.exposure-mask.png-QNthin">
-<meta property="og:image" content="http://qiniu.s1nh.org/blog_03.exposure-mask-refine.png-QNthin">
-<meta property="og:image" content="http://qiniu.s1nh.org/blog_04.apply-mask.png-QNthin">
-<meta property="og:image" content="http://qiniu.s1nh.org/blog_05.final-stitching.png-QNthin">
-<meta property="article:published_time" content="2021-12-15T13:01:31.000Z">
-<meta property="article:modified_time" content="2022-03-07T09:08:46.044Z">
+<meta property="og:image" content="http://qiniu.s1nh.org/DDS-communication-model.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/fast-dds-architecture.svg">
+<meta property="og:image" content="http://qiniu.s1nh.org/fast-dds-data-sharing-zoro-copy.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/fast-dds-zero-copy-performance.svg">
+<meta property="og:image" content="http://qiniu.s1nh.org/fast-dds-monitor-statistics.png">
+<meta property="article:published_time" content="2022-04-24T11:49:12.000Z">
+<meta property="article:modified_time" content="2022-04-28T07:11:58.412Z">
 <meta property="article:author" content="S1NH">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://qiniu.s1nh.org/blog_01.origin-stitching.png-QNthin">
+<meta name="twitter:image" content="http://qiniu.s1nh.org/DDS-communication-model.png">
 
 
-<link rel="canonical" href="http://s1nh.org/post/image-stitching-post-process/">
+<link rel="canonical" href="http://s1nh.org/post/a-survey-of-middleware-interface/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://s1nh.org/post/image-stitching-post-process/","path":"post/image-stitching-post-process/","title":"解决廉价摄像头在图像拼接中产生的曝光不均匀问题"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://s1nh.org/post/a-survey-of-middleware-interface/","path":"post/a-survey-of-middleware-interface/","title":"百度阿波罗 和 ROS 2.0 采用的消息中间件"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>解决廉价摄像头在图像拼接中产生的曝光不均匀问题 | S1NH</title>
+<title>百度阿波罗 和 ROS 2.0 采用的消息中间件 | S1NH</title>
   
 
   <script src="/js/third-party/analytics/baidu-analytics.js"></script>
@@ -143,7 +143,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -156,6 +156,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01-Data-Distribution-Servic-DDS"><span class="nav-number">1.</span> <span class="nav-text">0x01 Data Distribution Servic, DDS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02-Fast-DDS"><span class="nav-number">2.</span> <span class="nav-text">0x02 Fast DDS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E7%AE%80%E4%BB%8B"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E7%89%B9%E6%80%A7"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 特性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0xFF-Reference"><span class="nav-number">3.</span> <span class="nav-text">0xFF Reference</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -241,7 +242,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/image-stitching-post-process/">
+    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/a-survey-of-middleware-interface/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -254,7 +255,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          解决廉价摄像头在图像拼接中产生的曝光不均匀问题
+          百度阿波罗 和 ROS 2.0 采用的消息中间件
         </h1>
 
         <div class="post-meta-container">
@@ -265,7 +266,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-12-15 21:01:31" itemprop="dateCreated datePublished" datetime="2021-12-15T21:01:31+08:00">2021-12-15</time>
+      <time title="创建时间：2022-04-24 19:49:12" itemprop="dateCreated datePublished" datetime="2022-04-24T19:49:12+08:00">2022-04-24</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -295,20 +296,67 @@
     
     <div class="post-body" itemprop="articleBody">
         <blockquote>
-<p>去年把全景拼接算法部署到了郑州机场，实现 4×4K 视频采集、拼接、发布，在单个 1080ti 上可以达到 300FPS。</p>
+<p>ROS 和前期的 Apollo 定义了一个 API，它向用户公开如<code>发布</code>/<code>订阅</code>等通信概念。<br>这些通信概念的实现基于自定义协议，并使用共享内存去降低基于Socket通信的开销。<br>这些传统方法存在一些问题，如每个节点以单独进程的形式存在，由底层操作系统调度，而Linux是个通用系统，每个节点的运行顺序并无任何逻辑。ROS是专用系统，任务应按照一定的业务逻辑执行。</p>
 </blockquote>
-<p>因为机场光照特别强烈，使用的廉价摄像头曝光不均匀。表现为每张图片都是中间曝光强，四周曝光弱，拼接以后在接缝处会出现条纹（下图）。因为摄像头上半部分是天空，我们假设天空的亮度、颜色是统一的，可以设计一个很简单的算法解决亮度不均匀的问题。</p>
-<p><img src="http://qiniu.s1nh.org/blog_01.origin-stitching.png-QNthin"></p>
-<span id="more"></span>
+<p><code>ROS 2</code> 和 <code>Apollo 3</code> 的计算框架 <code>Cyber RT</code> 构建在现有中间件解决方案 <code>DDS</code> 之上 <a name="r1" href="#1"><sup>[1]</sup></a>  <a name="r2" href="#2"><sup>[2]</sup></a> </p>
+<p><code>Cyber RT</code> 在此基础上构建了自己的调度器 <a name="r3" href="#3"><sup>[3]</sup></a>，由一个多队列的<code>任务编排策略</code>调度协程（Coroutine）在 Native Thread 上有序运行。其中，Cyber RT 会动态的根据不同调度顺序的执行时间来动态的选择一个时间最短的调度策略。</p>
+<h2 id="0x01-Data-Distribution-Servic-DDS"><a href="#0x01-Data-Distribution-Servic-DDS" class="headerlink" title="0x01 Data Distribution Servic, DDS"></a>0x01 Data Distribution Servic, DDS</h2><p>DDS解决了通信层面的问题，这使操作系统的开发者、应用的开发者得以集中精力专注于业务的研究。 DDS 已经广泛用于 <strong>战列舰</strong>、<strong>大坝等大型公用设施</strong>、<strong>金融系统</strong>、<strong>空间系统</strong>、<strong>飞行系统</strong>、<strong>火车总机系统</strong> 中。</p>
+<p>DDS 通过 <code>可靠传输策略 (Quality of Service, QoS)</code>，控制与底层通信机制的方方面面，主要从时限、可靠性、连续性、历史等方面来满足不同场景的用户数据需求。</p>
+<p>DDS 是一个 DCPS (Data-Centric Publish Subscribe) 模型，其中包括Participant, Publisher, Subscriber, DataWriter, DataReader, Topic等概念。具体通信机制如下图：</p>
+<p><img src="http://qiniu.s1nh.org/DDS-communication-model.png" alt="DDS-communication-model"></p>
+<p>使用DDS与传统通信的优势：</p>
+<ul>
+<li>实时性：DDS通过优化的内核机制，实现微秒级的数据传输；纯分布式的系统结构，保证系统内不存在影响实时性的瓶颈节点。DDS 实体被建模为类或类型化接口，<strong>允许提前分配内存</strong>而不是动态分配内存,可以更有效的对资源处理。</li>
+<li>可靠性：DDS提供点到点的信息交互服务，从而保证整个系统服务不存在单点故障的风险；同时提供可靠传输策略，<strong>通过重发机制确保数据可靠地传输</strong>。</li>
+<li>持续性：DDS可以通过相应的QoS为ROS提供<strong>数据历史</strong>的服务，新加入的节点也可以获取发布的所有历史数据。</li>
+<li>灵活性：应用系统可以根据应用场景需求，灵活选择多种DDS提供的应用级QoS策略（例如可靠性传输、数据过滤、优先级排序等等），以满足系统的灵活性需求。</li>
+<li>扩展性：DDS使用“订阅/发布”机制进行数据交互，建立<strong>全局的虚拟数据空间</strong>，在通信层面将应用逻辑与节点的物理信息解耦合，使系统能够方便的实现节点增减或系统本身的分割/合并，满足系统的扩展性需求；运行时由DDS自动发现并连接设备和应用程序，即插即用，无需系统管理或目录服务。</li>
+<li>异构网络支持：DDS通过适配底层多种异构架构网络，对上层提供无差别的通信服务，使通信软硬件层对应用层完全透明。</li>
+</ul>
+<h2 id="0x02-Fast-DDS"><a href="#0x02-Fast-DDS" class="headerlink" title="0x02 Fast DDS"></a>0x02 Fast DDS</h2><h3 id="2-1-简介"><a href="#2-1-简介" class="headerlink" title="2.1 简介"></a>2.1 简介</h3><p>ROS 2 的大多数版本使用 <code>Fast DDS</code> 作为中间件。ROS 团队提供了一个很完善的报告<a name="r4" href="#4"><sup>[4]</sup></a> 详细对比了各个主流 DDS 中间件在压力测试中的 <code>CPU/内存占用率</code> <code>延时</code> <code>丢包</code>，以及<code>代码质量</code> <code>社区评价</code> 等指标，以及阐述了使用 <code>FastDDS</code> 作为默认中间件的理由。</p>
+<p><strong>a. 架构</strong></p>
+<p>Fast DDS 的架构如下图 ，包括 <code>应用层</code> <code>FastDDS层</code> <code>RTPS层</code> 和 <code>传输层</code> 。其中，<code>传输层</code> 可以选择<code>UDP</code> <code>TCP</code> 或 <code>共享内存(SHM)</code>。<br>具体每个实体和接口的介绍可参考<a name="r5" href="#5">[FASTDDS: Library Overview]</a>。</p>
+<img style="background-color:white" src="http://qiniu.s1nh.org/fast-dds-architecture.svg"  width=40% />
 
-<p>首先，取天空中的一行像素拉伸到整张图片作为 <code>mask</code></p>
-<p><img src="http://qiniu.s1nh.org/blog_02.exposure-mask.png-QNthin"></p>
-<p>将像素值归一化到最大为255 <code>mask_refine = 255 - max(mask) + mask</code></p>
-<p><img src="http://qiniu.s1nh.org/blog_03.exposure-mask-refine.png-QNthin"></p>
-<p>应用 mask <code>final_stitching = origin_stitching + (255 - mask_refine)</code>，效果就好很多了。</p>
-<p><img src="http://qiniu.s1nh.org/blog_04.apply-mask.png-QNthin"></p>
-<p>如果要适配大屏幕，还可以最后人工调整一下直方图。</p>
-<p><img src="http://qiniu.s1nh.org/blog_05.final-stitching.png-QNthin"></p>
+<p><strong>b. 并发</strong></p>
+<p>Fast DDS 是多线程且线程安全的，包括由应用程序管理的<strong>主线程</strong>，Domain管理的多个<strong>事件线程</strong>，一个<strong>异步写入线程</strong>和多个<strong>接收线程</strong></p>
+<p><strong>c. 消息结构</strong></p>
+<p>接口描述语言 (Interface Description Language, IDL) </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; HelloWorld.idl</span><br><span class="line"></span><br><span class="line">struct HelloWorld</span><br><span class="line">&#123;</span><br><span class="line">    unsigned long index;</span><br><span class="line">    string message;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>使用 <code>$./fastddsgen HelloWorld.idl</code> 编译成接口文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">HelloWorld.h&#x2F;cxx: HelloWorld type 定义.</span><br><span class="line">HelloWorldPubSubTypes.h&#x2F;cxx: HelloWorld type 的序列化和反序列化代码。</span><br></pre></td></tr></table></figure>
+
+<p><strong>d. 编写subscriber/publisher</strong></p>
+<p>参考 <a name="r6" href="#6">[Fast-DDS/examples]</a> 编写代码，其中包含共享内存的使用方法。另外， <a name="r7" href="#7">[FASTDDS: Typical Use-Cases]</a> 有包括<strong>高速率通信</strong>、<strong>实时场景</strong>、<strong>零拷贝</strong>等对符合我们应用场景的配置示例。</p>
+<h3 id="2-2-特性"><a href="#2-2-特性" class="headerlink" title="2.2 特性"></a>2.2 特性</h3><p><strong>a. 历史记录</strong></p>
+<p>Fast DDS 提供数据历史的服务，可以定义过去样本的存储策略。</p>
+<ul>
+<li>Keep Last：历史记录将保存并允许访问最后“k”个收到的样本。这个“k”数字称为历史深度，也可以由用户手动设置。</li>
+<li>Keep All：历史记录将保存并允许访问所有收到的样本，直到达到历史记录的最大样本大小。</li>
+</ul>
+<p><strong>b. 零拷贝</strong></p>
+<p>传统的共享内存方式避免了传输层中涉及的开销，节省内存的占用（左图）。</p>
+<p>FastDDS不仅提供共享内存，还提供类似 NVIDIA Jetson 的零拷贝模式 <a name="r8" href="#8"><sup>[8]</sup></a>（右图，后者基于GPU/CPU使用同一块内存）。应用程序获取接收到的数据作为引用，这可以防止将数据从共享内存复制到应用程序。</p>
+<p><img src="http://qiniu.s1nh.org/fast-dds-data-sharing-zoro-copy.png" alt="DDS-communication-model"></p>
+<p>使用零拷贝可以显著加速进程间的通信速度 <a name="r9" href="#9"><sup>[9]</sup></a>，吞吐量测试结果如下：</p>
+<img style="background-color:white" src="http://qiniu.s1nh.org/fast-dds-zero-copy-performance.svg" />
+
+<p><strong>z. DDS Monitor</strong></p>
+<p>Fast DDS 提供一个GUI应用，可以实时监控 DDS 实体之间的发布/订阅状态，物理架构和统计数据。</p>
+<img src="http://qiniu.s1nh.org/fast-dds-monitor-statistics.png"  width=70% />
+
+<h2 id="0xFF-Reference"><a href="#0xFF-Reference" class="headerlink" title="0xFF Reference"></a>0xFF Reference</h2><ul>
+<li>[1] <a name="1" href="#r1">^</a> <a target="_blank" rel="noopener" href="https://design.ros2.org/articles/ros_middleware_interface.html">ROS 2 middleware interface</a></li>
+<li>[2] <a name="2" href="#r2">^</a> <a target="_blank" rel="noopener" href="https://design.ros2.org/articles/ros_on_dds.html">ROS on DDS</a></li>
+<li>[3] <a name="3" href="#r3">^</a> <a target="_blank" rel="noopener" href="https://download.csdn.net/course/detail/16425">Apollo 3.5 计算框架（Cyber RT）设计分享</a></li>
+<li>[4] <a name="4" href="#r4">^</a> <a target="_blank" rel="noopener" href="https://osrf.github.io/TSC-RMW-Reports/humble/#121-cpu-utilization-in-a-spinning-node-by-rmw">2021 ROS Middleware Evaluation Report</a></li>
+<li>[5] <a name="5" href="#r5">^</a> <a target="_blank" rel="noopener" href="https://fast-dds.docs.eprosima.com/en/latest/fastdds/library_overview/library_overview.html">FASTDDS: Library Overview</a></li>
+<li>[6] <a name="6" href="#r6">^</a> <a target="_blank" rel="noopener" href="https://github.com/eProsima/Fast-DDS/tree/master/examples/">Fast-DDS/examples</a></li>
+<li>[7] <a name="7" href="#r7">^</a> <a target="_blank" rel="noopener" href="https://fast-dds.docs.eprosima.com/en/latest/fastdds/use_cases/use_cases.html">FASTDDS: Typical Use-Cases</a></li>
+<li>[8] <a name="8" href="#r8">^</a> <a target="_blank" rel="noopener" href="https://fast-dds.docs.eprosima.com/en/latest/fastdds/use_cases/zero_copy/zero_copy.html">FASTDDS: ZERO COPY</a></li>
+<li>[9] <a name="9" href="#r9">^</a> <a href="eprosima.com/index.php/resources-all/performance/eprosima-fast-dds-performance">eProsima Fast DDS Performance</a></li>
+</ul>
 
     </div>
 
@@ -326,7 +374,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="http://s1nh.org/post/image-stitching-post-process/" title="解决廉价摄像头在图像拼接中产生的曝光不均匀问题">http://s1nh.org/post/image-stitching-post-process/</a>
+      <a href="http://s1nh.org/post/a-survey-of-middleware-interface/" title="百度阿波罗 和 ROS 2.0 采用的消息中间件">http://s1nh.org/post/a-survey-of-middleware-interface/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -339,14 +387,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/post/what-string-gauges-should-you-be-playing/" rel="prev" title="如何挑选适合的电吉他琴弦规格，及关于drop调弦适用琴弦规格的问题">
-                  <i class="fa fa-chevron-left"></i> 如何挑选适合的电吉他琴弦规格，及关于drop调弦适用琴弦规格的问题
+                <a href="/post/guitar-factory-setup-specs/" rel="prev" title="将吉他恢复为出厂设置 —— 各种型号吉他的出厂参数">
+                  <i class="fa fa-chevron-left"></i> 将吉他恢复为出厂设置 —— 各种型号吉他的出厂参数
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/post/review-of-chatbot-framework/" rel="next" title="有关 Chatbot 基本原理、开源框架和 Rasa">
-                  有关 Chatbot 基本原理、开源框架和 Rasa <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
