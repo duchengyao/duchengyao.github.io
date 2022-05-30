@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
@@ -17,12 +16,12 @@
 
 
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/@fancyapps/fancybox/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="编译OpenCV with CUDA编译方法官方文档写的特别清楚。此外，如果要使用python接口，编译完成后需要把opencv&#x2F;site-packages目录下的cv2.so链接（或复制）到python&#x2F;site-packages中，我执行的命令为sudo ln -s  &#x2F;usr&#x2F;local&#x2F;opencv3&#x2F;lib&#x2F;python2.7&#x2F;dist-packages&#x2F;cv2.so &#x2F;usr&#x2F;lib&#x2F;">
+<script class="next-config" data-name="main" type="application/json">{"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.11.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="编译OpenCV with CUDA编译方法官方文档写的特别清楚。此外，如果要使用python接口，编译完成后需要把opencv&#x2F;site-packages目录下的cv2.so链接（或复制）到python&#x2F;site-packages中，我执行的命令为sudo ln -s  &#x2F;usr&#x2F;local&#x2F;opencv3&#x2F;lib&#x2F;python2.7&#x2F;dist-packages&#x2F;cv2.so &#x2F;usr&#x2F;lib&#x2F;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OpenCV 编译安装笔记">
 <meta property="og:url" content="http://s1nh.org/post/build-cuda-with-opencv/index.html">
@@ -57,12 +56,13 @@
 
 
 
+
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+<body itemscope itemtype="http://schema.org/WebPage">
   <div class="headband"></div>
 
   <main class="main">
@@ -96,11 +96,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu">
-        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
-        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -189,7 +185,7 @@
   </nav>
 </div>
   <div class="cc-license site-overview-item animated" itemprop="license">
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/lib/@creativecommons/vocabulary/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
   </div>
 
 
@@ -248,11 +244,16 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="S1NH">
-      <meta itemprop="description" content="no other developers required.">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="S1NH">
+      <meta itemprop="description" content="no other developers required.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="OpenCV 编译安装笔记 | S1NH">
+      <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -298,12 +299,12 @@
     <div class="post-body" itemprop="articleBody">
         <h2 id="编译OpenCV-with-CUDA"><a href="#编译OpenCV-with-CUDA" class="headerlink" title="编译OpenCV with CUDA"></a>编译OpenCV with CUDA</h2><p>编译方法<a target="_blank" rel="noopener" href="http://docs.opencv.org/3.1.0/d7/d9f/tutorial_linux_install.html">官方文档</a>写的特别清楚。此外，如果要使用python接口，编译完成后需要把<code>opencv/site-packages</code>目录下的<code>cv2.so</code>链接（或复制）到<code>python/site-packages</code>中，我执行的命令为<code>sudo ln -s  /usr/local/opencv3/lib/python2.7/dist-packages/cv2.so /usr/lib/python2.7/dist-packages/cv2.so</code>（如果不清楚可以参照<a target="_blank" rel="noopener" href="http://www.jianshu.com/p/67293b547261">[翻译]Python 2.7 和 Python 3+ 的OpenCV 3.0 安装教程</a>）</p>
 <p>查看Api和Guides推荐使用Zeal/Dash，就不用那么麻烦跑去官网搜索了：</p>
-<p><img src="http://qiniu.s1nh.org/Blog_zeal-main.png"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_zeal-main.png"></p>
 <span id="more"></span>
 
 <p>编译时如果要支持cuda，需要增加几个编译参数，可以参照<a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/28010399/build-opencv-with-cuda-support">Build OpenCV with CUDA support</a>。如果您不会用cmake，不知到应该加填什么参数。我建议用图形化的cmake-gui来设置参数。</p>
 <p>其中要注意的是 CUDA_GENERATION 的设置。如果选择您GPU内核的型号（<code>Pascal</code>、<code>Maxwell</code>等），那么就不需要设置<code>CUDA_ARC_BIN</code>和<code>CUDA_ARC_PTX</code>参数，可是这种条件下会导致一些错误。推荐的方法是设置 <code>CUDA_GENERATION = Auto</code> 然后到<a target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda-gpus">CUDA GPUs</a>查看您显卡的<code>Compute Capability</code>，填到<code>CUDA_ARC_BIN</code>，<code>CUDA_ARC_PTX</code>中。</p>
-<p><img src="http://qiniu.s1nh.org/Blog_build-cuda-with-opencv-cmake.png" title="cmake-gui"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_build-cuda-with-opencv-cmake.png" title="cmake-gui"></p>
 <h2 id="Bugs"><a href="#Bugs" class="headerlink" title="Bugs:"></a>Bugs:</h2><h3 id="Ubuntu-16-OpenCV-3-Cuda-8-0-编译Bug"><a href="#Ubuntu-16-OpenCV-3-Cuda-8-0-编译Bug" class="headerlink" title="Ubuntu 16 + OpenCV 3 + Cuda 8.0 编译Bug"></a>Ubuntu 16 + OpenCV 3 + Cuda 8.0 编译Bug</h3><p>编译时会出现如下已知错误<code>error: no default constructor exists for class &quot;thrust::detail::execute_with_allocator&lt;cv::cuda::device::ThrustAllocator, thrust::system::cuda::detail::execute_on_stream_base&gt;&quot;</code>。解决方案为：</p>
 <ol>
 <li>下载<code>https://github.com/thrust/thrust</code>的<code>cuda-next-release</code>分支</li>
@@ -314,7 +315,7 @@
 <p>参考:<br>　　1.<a target="_blank" rel="noopener" href="http://answers.opencv.org/question/95991/opencv-30-build-error-cuda-80/?answer=96837">OpenCV 3.0 Build Error Cuda 8.0</a><br>　　2.<a target="_blank" rel="noopener" href="https://github.com/opencv/opencv/issues/6632">Opencv 3.1. CUDA 8 compatibility issues</a><br>　　3.<a target="_blank" rel="noopener" href="https://github.com/thrust/thrust/issues/800">thrust 1.8.3 exclusive_scan with custom temporary allocation, no default constructor error</a></p>
 </blockquote>
 <h3 id="缺少-ImfChromaticities-h"><a href="#缺少-ImfChromaticities-h" class="headerlink" title="缺少 ImfChromaticities.h"></a>缺少 ImfChromaticities.h</h3><p>过了一个星期重新编译的时候发现了一个错误</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">In file included from &#x2F;home&#x2F;duchengyao&#x2F;project&#x2F;opencv&#x2F;modules&#x2F;imgcodecs&#x2F;src&#x2F;grfmts.hpp:53:0,</span><br><span class="line">                 from &#x2F;home&#x2F;duchengyao&#x2F;project&#x2F;opencv&#x2F;modules&#x2F;imgcodecs&#x2F;src&#x2F;loadsave.cpp:47:</span><br><span class="line"></span><br><span class="line">***&#x2F;opencv&#x2F;modules&#x2F;imgcodecs&#x2F;src&#x2F;grfmt_exr.hpp:52:31: fatal error: ImfChromaticities.h: No such file or directory</span><br><span class="line">compilation terminated.</span><br><span class="line">modules&#x2F;imgcodecs&#x2F;CMakeFiles&#x2F;opencv_imgcodecs.dir&#x2F;build.make:62: recipe for target &#39;modules&#x2F;imgcodecs&#x2F;CMakeFiles&#x2F;opencv_imgcodecs.dir&#x2F;src&#x2F;loadsave.cpp.o&#39; failed</span><br><span class="line">make[2]: *** [modules&#x2F;imgcodecs&#x2F;CMakeFiles&#x2F;opencv_imgcodecs.dir&#x2F;src&#x2F;loadsave.cpp.o] Error 1</span><br><span class="line">CMakeFiles&#x2F;Makefile2:4114: recipe for target &#39;modules&#x2F;imgcodecs&#x2F;CMakeFiles&#x2F;opencv_imgcodecs.dir&#x2F;all&#39; failed</span><br><span class="line">make[1]: *** [modules&#x2F;imgcodecs&#x2F;CMakeFiles&#x2F;opencv_imgcodecs.dir&#x2F;all] Error 2</span><br><span class="line">make[1]: *** Waiting for unfinished jobs....</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">In file included from /home/duchengyao/project/opencv/modules/imgcodecs/src/grfmts.hpp:53:0,</span><br><span class="line">                 from /home/duchengyao/project/opencv/modules/imgcodecs/src/loadsave.cpp:47:</span><br><span class="line"></span><br><span class="line">***/opencv/modules/imgcodecs/src/grfmt_exr.hpp:52:31: fatal error: ImfChromaticities.h: No such file or directory</span><br><span class="line">compilation terminated.</span><br><span class="line">modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/build.make:62: recipe for target &#x27;modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/src/loadsave.cpp.o&#x27; failed</span><br><span class="line">make[2]: *** [modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/src/loadsave.cpp.o] Error 1</span><br><span class="line">CMakeFiles/Makefile2:4114: recipe for target &#x27;modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/all&#x27; failed</span><br><span class="line">make[1]: *** [modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/all] Error 2</span><br><span class="line">make[1]: *** Waiting for unfinished jobs....</span><br></pre></td></tr></table></figure>
 
 <p>解决方案：安装<code>libopenexr-dev</code></p>
 <h2 id="OpenCV-2与3共存"><a href="#OpenCV-2与3共存" class="headerlink" title="OpenCV 2与3共存"></a>OpenCV 2与3共存</h2><p>参见<a target="_blank" rel="noopener" href="http://blog.csdn.net/Swearos/article/details/51307304">ubuntu 16.04 编译opencv3.1，opencv多版本切换</a></p>
@@ -324,11 +325,11 @@
 <li>添加<code>PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/opencv3/lib/pkgconfig</code></li>
 <li>添加<code>LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/opencv3/lib</code></li>
 </ol>
-<p><img src="http://qiniu.s1nh.org/Blog_build-cuda-with-opencv-cv3-environment.png" title="在eclipse中设置OpenCV3的环境变量"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_build-cuda-with-opencv-cv3-environment.png" title="在eclipse中设置OpenCV3的环境变量"></p>
 <p>用Eclipse开发还需要记得添加<code>include</code>和<code>lib</code>目录，参照<a target="_blank" rel="noopener" href="http://docs.opencv.org/3.1.0/d7/d16/tutorial_linux_eclipse.html">Using OpenCV with Eclipse (plugin CDT)</a></p>
 <h2 id="OpenCV-3-Demo"><a href="#OpenCV-3-Demo" class="headerlink" title="OpenCV 3 Demo"></a>OpenCV 3 Demo</h2><p><code>OpenCV 3</code>的<code>CUDA</code>模块跟<code>OpenCV2</code>的完全不一样，升级OpenCV3以后，你会发现<a target="_blank" rel="noopener" href="http://opencv.org/platforms/cuda.html">官方的Hello World for CUDA</a>都跑不起来，因为 OpenCV 3 连GPU类都没了。详细请参见<a target="_blank" rel="noopener" href="http://docs.opencv.org/3.1.0/">doc.OpenCV3</a>, <a target="_blank" rel="noopener" href="http://docs.opencv.org/2.4.13/">doc.OpenCV2</a></p>
 <p>Cuda OpenCV 3 的 Demo 如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;代码修改自 [OpenCV 3 CUDA小测试](http:&#x2F;&#x2F;blog.csdn.net&#x2F;zimizile&#x2F;article&#x2F;details&#x2F;47168107)</span><br><span class="line"></span><br><span class="line">#include&quot;opencv2&#x2F;opencv.hpp&quot;</span><br><span class="line">#include&quot;opencv2&#x2F;cudaimgproc.hpp&quot;</span><br><span class="line">#include&lt;time.h&gt;</span><br><span class="line">#include&lt;iostream&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line">using namespace cv;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    clock_t t1 &#x3D; clock();</span><br><span class="line"></span><br><span class="line">    int num_devices &#x3D; cv::cuda::getCudaEnabledDeviceCount();</span><br><span class="line"></span><br><span class="line">    if (num_devices &lt;&#x3D; 0)&#123;</span><br><span class="line">        cerr &lt;&lt; &quot;There is no device.&quot; &lt;&lt; endl;</span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    int enable_device_id &#x3D; -1;</span><br><span class="line">    for (int i &#x3D; 0; i &lt; num_devices; i++)&#123;</span><br><span class="line">        cv::cuda::DeviceInfo dev_info(i);</span><br><span class="line">        if (dev_info.isCompatible())&#123;</span><br><span class="line">            enable_device_id &#x3D; i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (enable_device_id &lt; 0)&#123;</span><br><span class="line">        cerr &lt;&lt; &quot;GPU module isn&#39;t built for GPU&quot; &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    cv::cuda::setDevice(enable_device_id);</span><br><span class="line"></span><br><span class="line">    Mat src_image &#x3D; imread(&quot;&#x2F;home&#x2F;duchengyao&#x2F;cuda-workspace&#x2F;cat.jpg&quot;);</span><br><span class="line">    Mat dst_image;</span><br><span class="line">    cuda::GpuMat d_src_img(src_image); &#x2F;&#x2F;upload src image to gpu</span><br><span class="line">    cuda::GpuMat d_dst_img;</span><br><span class="line">    cuda::cvtColor(d_src_img, d_dst_img, CV_BGR2GRAY);</span><br><span class="line">    d_dst_img.download(dst_image);</span><br><span class="line">    imshow(&quot;test&quot;, dst_image);</span><br><span class="line"></span><br><span class="line">    clock_t t2 &#x3D; clock();</span><br><span class="line"></span><br><span class="line">    std::cout &lt;&lt; &quot;time: &quot; &lt;&lt; (t2 - t1) &#x2F; 1000 &lt;&lt; &quot;s&quot; &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    waitKey();</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">//代码修改自 [OpenCV 3 CUDA小测试](http://blog.csdn.net/zimizile/article/details/47168107)</span><br><span class="line"></span><br><span class="line">#include&quot;opencv2/opencv.hpp&quot;</span><br><span class="line">#include&quot;opencv2/cudaimgproc.hpp&quot;</span><br><span class="line">#include&lt;time.h&gt;</span><br><span class="line">#include&lt;iostream&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line">using namespace cv;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    clock_t t1 = clock();</span><br><span class="line"></span><br><span class="line">    int num_devices = cv::cuda::getCudaEnabledDeviceCount();</span><br><span class="line"></span><br><span class="line">    if (num_devices &lt;= 0)&#123;</span><br><span class="line">        cerr &lt;&lt; &quot;There is no device.&quot; &lt;&lt; endl;</span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    int enable_device_id = -1;</span><br><span class="line">    for (int i = 0; i &lt; num_devices; i++)&#123;</span><br><span class="line">        cv::cuda::DeviceInfo dev_info(i);</span><br><span class="line">        if (dev_info.isCompatible())&#123;</span><br><span class="line">            enable_device_id = i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (enable_device_id &lt; 0)&#123;</span><br><span class="line">        cerr &lt;&lt; &quot;GPU module isn&#x27;t built for GPU&quot; &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    cv::cuda::setDevice(enable_device_id);</span><br><span class="line"></span><br><span class="line">    Mat src_image = imread(&quot;/home/duchengyao/cuda-workspace/cat.jpg&quot;);</span><br><span class="line">    Mat dst_image;</span><br><span class="line">    cuda::GpuMat d_src_img(src_image); //upload src image to gpu</span><br><span class="line">    cuda::GpuMat d_dst_img;</span><br><span class="line">    cuda::cvtColor(d_src_img, d_dst_img, CV_BGR2GRAY);</span><br><span class="line">    d_dst_img.download(dst_image);</span><br><span class="line">    imshow(&quot;test&quot;, dst_image);</span><br><span class="line"></span><br><span class="line">    clock_t t2 = clock();</span><br><span class="line"></span><br><span class="line">    std::cout &lt;&lt; &quot;time: &quot; &lt;&lt; (t2 - t1) / 1000 &lt;&lt; &quot;s&quot; &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    waitKey();</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
 
@@ -427,13 +428,14 @@
   </footer>
 
   
-  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+  <script src="/lib/animejs/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="/lib/jquery/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="/lib/@fancyapps/fancybox/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="/lib/lozad/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
 
   
-<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/lib/hexo-generator-searchdb/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
 
@@ -449,7 +451,7 @@
 
   
 
-  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"/lib/mathjax/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
 <script src="/js/third-party/math/mathjax.js"></script>
 
 

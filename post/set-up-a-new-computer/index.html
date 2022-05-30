@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
@@ -17,12 +16,12 @@
 
 
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/@fancyapps/fancybox/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="本文整理了在安装完Ubuntu和OS X后需要的基本配置。">
+<script class="next-config" data-name="main" type="application/json">{"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.11.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="本文整理了在安装完Ubuntu和OS X后需要的基本配置。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="配置一台新电脑">
 <meta property="og:url" content="http://s1nh.org/post/set-up-a-new-computer/index.html">
@@ -53,12 +52,13 @@
 
 
 
+
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+<body itemscope itemtype="http://schema.org/WebPage">
   <div class="headband"></div>
 
   <main class="main">
@@ -92,11 +92,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu">
-        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
-        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -185,7 +181,7 @@
   </nav>
 </div>
   <div class="cc-license site-overview-item animated" itemprop="license">
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/lib/@creativecommons/vocabulary/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
   </div>
 
 
@@ -244,11 +240,16 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="S1NH">
-      <meta itemprop="description" content="no other developers required.">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="S1NH">
+      <meta itemprop="description" content="no other developers required.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="配置一台新电脑 | S1NH">
+      <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -295,9 +296,9 @@
         <p>本文整理了在安装完Ubuntu和OS X后需要的基本配置。</p>
 <span id="more"></span>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">## 安装 NPM</span><br><span class="line">sudo apt-get install npm</span><br><span class="line">npm set registry https:&#x2F;&#x2F;registry.npm.taobao.org # 注册模块镜像</span><br><span class="line">npm set disturl https:&#x2F;&#x2F;npm.taobao.org&#x2F;dist # node-gyp 编译依赖的 node 源码镜像</span><br><span class="line">npm cache clean # 清空缓存</span><br><span class="line"></span><br><span class="line">## 修改pip源</span><br><span class="line">cat &lt;&lt; EOF &gt; ~&#x2F;.pip&#x2F;pip.conf</span><br><span class="line">[global]</span><br><span class="line">index-url &#x3D; https:&#x2F;&#x2F;pypi.tuna.tsinghua.edu.cn&#x2F;simple</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">## 安装pyenv</span><br><span class="line">curl -L https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;yyuu&#x2F;pyenv-installer&#x2F;master&#x2F;bin&#x2F;pyenv-installer | bash </span><br><span class="line"></span><br><span class="line">## 安装anaconda</span><br><span class="line"></span><br><span class="line">pyenv install --list # 显示可用 python 版本</span><br><span class="line">pyenv install anaconda3-4.3.0 # 安装 anaconda 3 （这一步下载安装包时特别慢，请按照下面的方法提前下载好安装包放到cache目录里）</span><br><span class="line"></span><br><span class="line"># 访问&#96;https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;anaconda&#x2F;archive&#x2F;&#96;下载安装包</span><br><span class="line"># 复制安装包到&#96;~&#x2F;.pyenv&#x2F;cache&#96;中，执行&#96;pyenv install&#96;安装。如果安装失败请参照[pyenv ~&#x2F;.pyenv&#x2F;cache 不生效问题](http:&#x2F;&#x2F;www.jianshu.com&#x2F;p&#x2F;f3190b697e8d)</span><br><span class="line"></span><br><span class="line">## 修改conda源</span><br><span class="line">conda config --add channels https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;anaconda&#x2F;pkgs&#x2F;free&#x2F;</span><br><span class="line">conda config --add channels https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;anaconda&#x2F;pkgs&#x2F;main&#x2F;</span><br><span class="line">conda config --add channels https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;anaconda&#x2F;cloud&#x2F;conda-forge&#x2F;</span><br><span class="line">conda config --add channels https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;anaconda&#x2F;cloud&#x2F;msys2&#x2F;</span><br><span class="line">conda config --add channels https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;anaconda&#x2F;cloud&#x2F;bioconda&#x2F;</span><br><span class="line">conda config --add channels https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;anaconda&#x2F;cloud&#x2F;menpo&#x2F;</span><br><span class="line">conda config --add channels https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;anaconda&#x2F;cloud&#x2F;pytorch&#x2F;</span><br><span class="line"></span><br><span class="line">conda config --remove channels defaults</span><br><span class="line">conda config --set show_channel_urls yes</span><br><span class="line"></span><br><span class="line">## 安装 Shadowsocks 客户端</span><br><span class="line">sudo add-apt-repository ppa:hzwhuang&#x2F;ss-qt5</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install shadowsocks-qt5</span><br><span class="line"></span><br><span class="line">## 可以安装 Chrome 扩展 SwitchyOmega。项目地址：https:&#x2F;&#x2F;github.com&#x2F;FelisCatus&#x2F;SwitchyOmega&#x2F;releases</span><br><span class="line"></span><br><span class="line">sudo apt-get install gimp wireshark zeal</span><br><span class="line"></span><br><span class="line">## 辞典 https:&#x2F;&#x2F;github.com&#x2F;goldendict&#x2F;goldendict http:&#x2F;&#x2F;www.cnblogs.com&#x2F;F-32&#x2F;p&#x2F;4888387.html</span><br><span class="line"></span><br><span class="line">## QuiteRSS 阅读器</span><br><span class="line"></span><br><span class="line">sudo add-apt-repository ppa:quiterss&#x2F;quiterss</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install quiterss</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">## 安装 NPM</span><br><span class="line">sudo apt-get install npm</span><br><span class="line">npm set registry https://registry.npm.taobao.org # 注册模块镜像</span><br><span class="line">npm set disturl https://npm.taobao.org/dist # node-gyp 编译依赖的 node 源码镜像</span><br><span class="line">npm cache clean # 清空缓存</span><br><span class="line"></span><br><span class="line">## 修改pip源</span><br><span class="line">cat &lt;&lt; EOF &gt; ~/.pip/pip.conf</span><br><span class="line">[global]</span><br><span class="line">index-url = https://pypi.tuna.tsinghua.edu.cn/simple</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">## 安装pyenv</span><br><span class="line">curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash </span><br><span class="line"></span><br><span class="line">## 安装anaconda</span><br><span class="line"></span><br><span class="line">pyenv install --list # 显示可用 python 版本</span><br><span class="line">pyenv install anaconda3-4.3.0 # 安装 anaconda 3 （这一步下载安装包时特别慢，请按照下面的方法提前下载好安装包放到cache目录里）</span><br><span class="line"></span><br><span class="line"># 访问`https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/`下载安装包</span><br><span class="line"># 复制安装包到`~/.pyenv/cache`中，执行`pyenv install`安装。如果安装失败请参照[pyenv ~/.pyenv/cache 不生效问题](http://www.jianshu.com/p/f3190b697e8d)</span><br><span class="line"></span><br><span class="line">## 修改conda源</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2/</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/bioconda/</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/menpo/</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/</span><br><span class="line"></span><br><span class="line">conda config --remove channels defaults</span><br><span class="line">conda config --set show_channel_urls yes</span><br><span class="line"></span><br><span class="line">## 安装 Shadowsocks 客户端</span><br><span class="line">sudo add-apt-repository ppa:hzwhuang/ss-qt5</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install shadowsocks-qt5</span><br><span class="line"></span><br><span class="line">## 可以安装 Chrome 扩展 SwitchyOmega。项目地址：https://github.com/FelisCatus/SwitchyOmega/releases</span><br><span class="line"></span><br><span class="line">sudo apt-get install gimp wireshark zeal</span><br><span class="line"></span><br><span class="line">## 辞典 https://github.com/goldendict/goldendict http://www.cnblogs.com/F-32/p/4888387.html</span><br><span class="line"></span><br><span class="line">## QuiteRSS 阅读器</span><br><span class="line"></span><br><span class="line">sudo add-apt-repository ppa:quiterss/quiterss</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install quiterss</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h3 id="关于CUDA"><a href="#关于CUDA" class="headerlink" title="关于CUDA"></a>关于CUDA</h3><p>安装之前一定要看好安装手册中的系统要求。目前CUDA9.1只支持4.4.0版的Kernel，并且不能用<code>linux kernel 4.4.0-116</code>（<a href="http://s1nh.org/post/littlebug/">参考</a>）。可以参考下面的命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install linux-headers-4.4.0-112 linux-headers-4.4.0-112-generic linux-image-4.4.0-112-generic linux-image-extra-4.4.0-112-generic linux-signed-image-4.4.0-112-generic</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install linux-headers-4.4.0-112 linux-headers-4.4.0-112-generic linux-image-4.4.0-112-generic linux-image-extra-4.4.0-112-generic linux-signed-image-4.4.0-112-generic</span><br></pre></td></tr></table></figure>
 
 <p>然后重启系统切换到4.4.0内核再装cuda</p>
 <h3 id="Matlab-Crash-with-NVIDIA-361-driver"><a href="#Matlab-Crash-with-NVIDIA-361-driver" class="headerlink" title="Matlab Crash with NVIDIA 361 driver"></a>Matlab Crash with NVIDIA 361 driver</h3><p>装完Cuda8.0以后，Matlab无法启动，有两个解决办法(<a target="_blank" rel="noopener" href="http://askubuntu.com/questions/765455/how-to-run-matlab-2016a-with-nvidia-drivers-of-gtx-960-in-ubuntu-16-04">详细教程</a>：</p>
@@ -315,7 +316,7 @@
 <li>更换为国内源</li>
 <li>使用brew和brew cask安装必备软件（brew cask是一个管理GUI软件的系统）</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;usr&#x2F;bin&#x2F;ruby -e &quot;$(curl -fsSL https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Homebrew&#x2F;install&#x2F;master&#x2F;install)&quot; #安装brew</span><br><span class="line"></span><br><span class="line">echo &#39;export HOMEBREW_BOTTLE_DOMAIN&#x3D;https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;homebrew-bottles&#39; &gt;&gt; ~&#x2F;.bash_profile</span><br><span class="line">source ~&#x2F;.bash_profile #切换至国内bottles</span><br><span class="line"></span><br><span class="line">brew update</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">brew install wget polipo node libusb python sqlite </span><br><span class="line">brew cask install qq  alfred  neteasemusic google-chrome the-unarchiver thunder weibox mplayerx qiyimedia #必备软件</span><br><span class="line">brew cask install pycharm visual-studio-code mou sourcetree anaconda #安装写代码的软件</span><br><span class="line">brew cask install  shadowsocksx-ng torbrowser #翻墙</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot; #安装brew</span><br><span class="line"></span><br><span class="line">echo &#x27;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles&#x27; &gt;&gt; ~/.bash_profile</span><br><span class="line">source ~/.bash_profile #切换至国内bottles</span><br><span class="line"></span><br><span class="line">brew update</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">brew install wget polipo node libusb python sqlite </span><br><span class="line">brew cask install qq  alfred  neteasemusic google-chrome the-unarchiver thunder weibox mplayerx qiyimedia #必备软件</span><br><span class="line">brew cask install pycharm visual-studio-code mou sourcetree anaconda #安装写代码的软件</span><br><span class="line">brew cask install  shadowsocksx-ng torbrowser #翻墙</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
 
@@ -416,13 +417,14 @@
   </footer>
 
   
-  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+  <script src="/lib/animejs/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="/lib/jquery/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="/lib/@fancyapps/fancybox/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="/lib/lozad/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
 
   
-<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/lib/hexo-generator-searchdb/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
 
@@ -438,7 +440,7 @@
 
   
 
-  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"/lib/mathjax/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
 <script src="/js/third-party/math/mathjax.js"></script>
 
 

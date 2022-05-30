@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
@@ -17,12 +16,12 @@
 
 
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/@fancyapps/fancybox/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="最近没有什么特别紧急的工作，终于有时间做点喜欢的事情了。">
+<script class="next-config" data-name="main" type="application/json">{"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.11.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="最近没有什么特别紧急的工作，终于有时间做点喜欢的事情了。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Beaglebone Black 折腾笔记（一） 折腾些没用的">
 <meta property="og:url" content="http://s1nh.org/post/Beaglebone-Black_01/index.html">
@@ -65,12 +64,13 @@
 
 
 
+
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+<body itemscope itemtype="http://schema.org/WebPage">
   <div class="headband"></div>
 
   <main class="main">
@@ -104,11 +104,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu">
-        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
-        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -197,7 +193,7 @@
   </nav>
 </div>
   <div class="cc-license site-overview-item animated" itemprop="license">
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/lib/@creativecommons/vocabulary/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
   </div>
 
 
@@ -256,11 +252,16 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="S1NH">
-      <meta itemprop="description" content="no other developers required.">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="S1NH">
+      <meta itemprop="description" content="no other developers required.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Beaglebone Black 折腾笔记（一） 折腾些没用的 | S1NH">
+      <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -304,22 +305,22 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><img src="http://qiniu.s1nh.org/Blog_BBB-setup_1.jpg-QNthin"></p>
+        <p><img data-src="http://qiniu.s1nh.org/Blog_BBB-setup_1.jpg-QNthin"></p>
 <p>最近没有什么特别紧急的工作，终于有时间做点喜欢的事情了。</p>
 <span id="more"></span>
 
 <h2 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h2><p>从仓库里面挑了几个还能用的显示器，找出了好久之前买的Beaglebone Black (BBB)，买了micro HDMI -&gt; DVI , Display Port -&gt; DVI , Mini Display Port -&gt; DVI 转接线，准备搭建一个新的工作平台。</p>
-<p><img src="http://qiniu.s1nh.org/Blog_BBB-setup_2.jpg-QNthin"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_BBB-setup_2.jpg-QNthin"></p>
 <h3 id="杜邦线"><a href="#杜邦线" class="headerlink" title="杜邦线"></a>杜邦线</h3><p>之前串口调试线太短了，并且容易插错，就去广埠屯买了这种线（老板说叫杜邦线），并且买了4/7的插头各一个。以后就不用纠结哪根线插在哪个针上了。</p>
-<p><img src="http://qiniu.s1nh.org/Blog_BBB-setup_3.jpg-QNthin"></p>
-<p><img src="http://qiniu.s1nh.org/Blog_BBB-setup_4.jpg-QNthin"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_BBB-setup_3.jpg-QNthin"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_BBB-setup_4.jpg-QNthin"></p>
 <h3 id="TP-Link-交换机指示灯全亮修复"><a href="#TP-Link-交换机指示灯全亮修复" class="headerlink" title="TP-Link 交换机指示灯全亮修复"></a>TP-Link 交换机指示灯全亮修复</h3><p>实验室有两台服务器、一个工作站、Mac Mini和BBB，想把它们组建成局域网。</p>
 <p>从办公室里翻出来了一个坏的交换机，通电后发现所有的灯常亮。百度了一下好多这种现象，可能是TP-link的通病。拆开以后可以看到3个电容爆了，去电子市场买了3个3300uF/16V的电容，问题解决。</p>
-<p><img src="http://qiniu.s1nh.org/Blog_BBB-setup_5.jpg-QNthin"></p>
-<p><img src="http://qiniu.s1nh.org/Blog_BBB-setup_6.jpg-QNthin"></p>
-<p><img src="http://qiniu.s1nh.org/Blog_BBB-setup_8.jpg-QNthin"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_BBB-setup_5.jpg-QNthin"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_BBB-setup_6.jpg-QNthin"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_BBB-setup_8.jpg-QNthin"></p>
 <p>在换电容的时候发现了一个奇怪的问题，为什么电路板上会有下面这种一条一条的焊锡线（下图）</p>
-<p><img src="http://qiniu.s1nh.org/Blog_BBB-setup_7.jpg-QNthin"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_BBB-setup_7.jpg-QNthin"></p>
 <h3 id="在局域网中使用代理共享LANTERN来翻墙"><a href="#在局域网中使用代理共享LANTERN来翻墙" class="headerlink" title="在局域网中使用代理共享LANTERN来翻墙"></a>在局域网中使用代理共享LANTERN来翻墙</h3><p>给BBB下载了最新版的Debian 8.X，安装后执行apt-get时出现了问题，<code>rcn-ee.com/repos</code>源被墙了。因为是armhf架构，所以找了半天都找不到合适的源。最后就决定用Latern共享代理服务器来翻墙。(Lantarn简直太好用了，<a href="/post/Lantern/">安装方式点这里</a>)</p>
 <p>具体实现方式参考了：<a target="_blank" rel="noopener" href="https://github.com/getlantern/lantern/issues/2940">《如何在局域网中共享LANTERN来翻墙？》</a>、<a target="_blank" rel="noopener" href="https://xiaolan.me/lantern2.html">《Lantern 2.x翻墙教程》</a></p>
 <p>实施方案如下：</p>
@@ -330,7 +331,7 @@
 <li>在BBB中输入<code>export http_proxy=http://192.168.1.100:8787/</code>，<code>export https_proxy=http://192.168.1.100:8787/</code>（192.168.1.100为运行Latern电脑的ip）为其设置代理</li>
 </ul>
 <p>设置完以后，用Wget随便下载个东西，如果提示connected，就设置好啦（如下图）</p>
-<p><img src="http://qiniu.s1nh.org/Blog_BBB-setup_9.jpg-QNthin"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_BBB-setup_9.jpg-QNthin"></p>
 <p>设置完以后我的BBB就已经可以愉快的更新内核了。</p>
 <p>可是！最后发现了两个问题：</p>
 <pre><code>1. 修改完 lantern-2.0.10.yaml 后，本机电脑无法翻墙；
@@ -338,13 +339,13 @@
 </code></pre>
 <p>也就是说，设置的代理只能用一次，重启Lantern就失效了；并且设置完代理以后，开启Lantern的电脑是无法翻墙的（这个好像可以通过把0.0.0.0改成本机ip:192.168.1.100来解决）</p>
 <h3 id="更新node-js"><a href="#更新node-js" class="headerlink" title="更新node.js"></a>更新node.js</h3><p>执行apt-get更新软件的时候又报错了&gt;_&lt; 说什么node版本太旧了</p>
-<p><img src="http://qiniu.s1nh.org/Blog_BBB-setup_10.jpg-QNthin"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_BBB-setup_10.jpg-QNthin"></p>
 <p>找了一下更新node的办法：</p>
 <pre><code>npm install -g n //居然有名字叫&quot;n&quot;的软件
 n latest
 </code></pre>
 <p>再看一下版本，瞬间从0.10.40变成了5.1.1（我觉得这步肯定出问题了，版本怎么变化这么大 0_0）</p>
-<p><img src="http://qiniu.s1nh.org/Blog_BBB-setup_11.jpg-QNthin"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_BBB-setup_11.jpg-QNthin"></p>
 
     </div>
 
@@ -440,13 +441,14 @@ n latest
   </footer>
 
   
-  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+  <script src="/lib/animejs/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="/lib/jquery/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="/lib/@fancyapps/fancybox/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="/lib/lozad/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
 
   
-<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/lib/hexo-generator-searchdb/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
 
@@ -462,7 +464,7 @@ n latest
 
   
 
-  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"/lib/mathjax/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
 <script src="/js/third-party/math/mathjax.js"></script>
 
 

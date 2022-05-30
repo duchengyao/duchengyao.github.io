@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
@@ -17,12 +16,12 @@
 
 
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/@fancyapps/fancybox/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="这三个算法是好几年前就好奇但一直没搞懂的神奇算法">
+<script class="next-config" data-name="main" type="application/json">{"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.11.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="这三个算法是好几年前就好奇但一直没搞懂的神奇算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RSA，KMP，AVL树，红黑树和LLRB-tree">
 <meta property="og:url" content="http://s1nh.org/post/RSA-KMP-RB-TREE/index.html">
@@ -58,12 +57,13 @@
 
 
 
+
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+<body itemscope itemtype="http://schema.org/WebPage">
   <div class="headband"></div>
 
   <main class="main">
@@ -97,11 +97,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu">
-        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
-        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -190,7 +186,7 @@
   </nav>
 </div>
   <div class="cc-license site-overview-item animated" itemprop="license">
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/lib/@creativecommons/vocabulary/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
   </div>
 
 
@@ -249,11 +245,16 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="S1NH">
-      <meta itemprop="description" content="no other developers required.">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="S1NH">
+      <meta itemprop="description" content="no other developers required.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="RSA，KMP，AVL树，红黑树和LLRB-tree | S1NH">
+      <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -300,7 +301,7 @@
         <blockquote>
 <p>这三个算法是好几年前就好奇但一直没搞懂的神奇算法</p>
 </blockquote>
-<p><img src="http://qiniu.s1nh.org/algorithm-23-234.png-QNthin"></p>
+<p><img data-src="http://qiniu.s1nh.org/algorithm-23-234.png-QNthin"></p>
 <span id="more"></span>
 
 
@@ -321,7 +322,7 @@
 <li>解密过程： $c^d = m ,(\mod n ,)$</li>
 </ul>
 <h2 id="0x02-KMP算法"><a href="#0x02-KMP算法" class="headerlink" title="0x02 KMP算法"></a>0x02 KMP算法</h2><p>KMP是字符串匹配的算法，由普通的O(MN)缩减到了O(M+N)。KMP 算法的意思是找到目标字符串（模式串）中已经匹配过的前缀，并略去其匹配过程。<br>先看知乎大神的解释</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">from https:&#x2F;&#x2F;www.zhihu.com&#x2F;question&#x2F;34623343&#x2F;answer&#x2F;59516921</span><br><span class="line">我我是我是傻我不是傻逼我是傻逼我是大傻逼</span><br><span class="line">找出句中的“我是傻逼”</span><br><span class="line">普通的字符串匹配比较傻逼：</span><br><span class="line">我我是我是傻我不是傻逼我是傻逼我是大傻逼</span><br><span class="line">我</span><br><span class="line">对上了</span><br><span class="line">我我是我是傻我不是傻逼我是傻逼我是大傻逼</span><br><span class="line">我是</span><br><span class="line">对不上了，往后移一个，我们再来</span><br><span class="line">我我是我是傻我不是傻逼我是傻逼我是大傻逼</span><br><span class="line">__我</span><br><span class="line">对上了</span><br><span class="line">我我是我是傻我不是傻逼我是傻逼我是大傻逼</span><br><span class="line">__我是</span><br><span class="line">对上了</span><br><span class="line">我我是我是傻我不是傻逼我是傻逼我是大傻逼</span><br><span class="line">__我是傻</span><br><span class="line">对不上了，往后移一下，我们再来</span><br><span class="line">等等，你傻啊，你往后移一个明显不可能对的上嘛，为毛不一下移两个呢？</span><br><span class="line">好好好，我移两个移两个</span><br><span class="line">我我是我是傻我不是傻逼我是傻逼我是大傻逼</span><br><span class="line">_____我对上了</span><br><span class="line">我我是我是傻我不是傻逼我是傻逼我是大傻逼</span><br><span class="line">_____我是对上了</span><br><span class="line">我我是我是傻我不是傻逼我是傻逼我是大傻逼</span><br><span class="line">_____我是傻对上了</span><br><span class="line">我我是我是傻我不是傻逼我是傻逼我是大傻逼</span><br><span class="line">_____我是傻逼对不上了。。。</span><br><span class="line">这次还往后移一个吗？还是……移两个？</span><br><span class="line">啊？你傻啊，你看不出来能一次往后移三个啊！！！</span><br><span class="line"></span><br><span class="line">嗯？怎么看出来的呢？</span><br><span class="line">这个嘛，当然是和我是傻逼这四个字有关系啦。匹配的越多，失配后后移的越多。</span><br><span class="line">那后移多少呢？</span><br><span class="line">那就是next数组啦。。。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">from https://www.zhihu.com/question/34623343/answer/59516921</span><br><span class="line">我我是我是傻我不是傻逼我是傻逼我是大傻逼</span><br><span class="line">找出句中的“我是傻逼”</span><br><span class="line">普通的字符串匹配比较傻逼：</span><br><span class="line">我我是我是傻我不是傻逼我是傻逼我是大傻逼</span><br><span class="line">我</span><br><span class="line">对上了</span><br><span class="line">我我是我是傻我不是傻逼我是傻逼我是大傻逼</span><br><span class="line">我是</span><br><span class="line">对不上了，往后移一个，我们再来</span><br><span class="line">我我是我是傻我不是傻逼我是傻逼我是大傻逼</span><br><span class="line">__我</span><br><span class="line">对上了</span><br><span class="line">我我是我是傻我不是傻逼我是傻逼我是大傻逼</span><br><span class="line">__我是</span><br><span class="line">对上了</span><br><span class="line">我我是我是傻我不是傻逼我是傻逼我是大傻逼</span><br><span class="line">__我是傻</span><br><span class="line">对不上了，往后移一下，我们再来</span><br><span class="line">等等，你傻啊，你往后移一个明显不可能对的上嘛，为毛不一下移两个呢？</span><br><span class="line">好好好，我移两个移两个</span><br><span class="line">我我是我是傻我不是傻逼我是傻逼我是大傻逼</span><br><span class="line">_____我对上了</span><br><span class="line">我我是我是傻我不是傻逼我是傻逼我是大傻逼</span><br><span class="line">_____我是对上了</span><br><span class="line">我我是我是傻我不是傻逼我是傻逼我是大傻逼</span><br><span class="line">_____我是傻对上了</span><br><span class="line">我我是我是傻我不是傻逼我是傻逼我是大傻逼</span><br><span class="line">_____我是傻逼对不上了。。。</span><br><span class="line">这次还往后移一个吗？还是……移两个？</span><br><span class="line">啊？你傻啊，你看不出来能一次往后移三个啊！！！</span><br><span class="line"></span><br><span class="line">嗯？怎么看出来的呢？</span><br><span class="line">这个嘛，当然是和我是傻逼这四个字有关系啦。匹配的越多，失配后后移的越多。</span><br><span class="line">那后移多少呢？</span><br><span class="line">那就是next数组啦。。。</span><br></pre></td></tr></table></figure>
 
 <h2 id="0x03-AVL树与红黑树"><a href="#0x03-AVL树与红黑树" class="headerlink" title="0x03 AVL树与红黑树"></a>0x03 AVL树与红黑树</h2><p>对于普通的排序二叉树，如果运气不好（比如插入的数据本来就是有序的），那么树就会变成链表（只有左儿子或右儿子）。于是科学家们就发明了完全平衡的AVL树和允许一丢丢不平衡的红黑树。</p>
 <ul>
@@ -333,9 +334,9 @@
 <h4 id="1-AVL树（平衡二叉树）"><a href="#1-AVL树（平衡二叉树）" class="headerlink" title="1. AVL树（平衡二叉树）"></a>1. AVL树（平衡二叉树）</h4><p><code>AVL树的左子树和右子树的深度之差(平衡因子)的绝对值不超过1，且它的左子树和右子树都是一颗平衡二叉树。</code></p>
 <p>为了防止排序二叉树的不平衡，AVL树中添加了平衡因子，当树不平衡时对树进行旋转。（<a target="_blank" rel="noopener" href="http://blog.csdn.net/javazejian/article/details/53892797">这篇文章</a>写得很清楚）</p>
 <p>其中，对右子树中插入右孩子导致不平衡需要<code>左旋</code>，对右子树中插入左孩子导致不平衡需要<code>右旋+左旋</code>。当<code>删除</code>左孩子的时候，其实相当与插入了右孩子。具体实现方法如图：</p>
-<p><img src="http://qiniu.s1nh.org/algorithm-avl-1.jpg-QNthin"></p>
+<p><img data-src="http://qiniu.s1nh.org/algorithm-avl-1.jpg-QNthin"></p>
 <h4 id="2-红黑树"><a href="#2-红黑树" class="headerlink" title="2. 红黑树"></a>2. 红黑树</h4><p><code>下图出自&quot;程序员小灰&quot;公众号</code></p>
-<p><img src="http://qiniu.s1nh.org/algorithm-rat.png-QNthin" title="我这几天一直属于这种状态&gt;_&lt;"></p>
+<p><img data-src="http://qiniu.s1nh.org/algorithm-rat.png-QNthin" title="我这几天一直属于这种状态&gt;_&lt;"></p>
 <p>红黑树的规则如下：</p>
 <ol>
 <li>每个节点不是红色就是黑色的；</li>
@@ -351,7 +352,7 @@
 <li>4节点：胖胖节点</li>
 </ul>
 <p>因此，往瘦节点插入元素后会变成胖节点（2个值的节点）；往胖节点再插入元素时，胖节点会变成胖胖节点，接着胖胖节点分解成3个瘦节点。</p>
-<p>理解2-3-4树以后再来看红黑树。以2-3-4树的理论，红节点与父节点构成了胖（胖）节点，他们彼此是等价的。因此就不难理解，旋转操作只是为了下一步计算方便，而并没有改变这等价关系。如下图。<br><img src="http://qiniu.s1nh.org/algorithm-4-node.png-QNthin"><br><img src="http://qiniu.s1nh.org/algorithm-3-node.png-QNthin"><br><img src="http://qiniu.s1nh.org/algorithm-23-rb.png-QNthin"></p>
+<p>理解2-3-4树以后再来看红黑树。以2-3-4树的理论，红节点与父节点构成了胖（胖）节点，他们彼此是等价的。因此就不难理解，旋转操作只是为了下一步计算方便，而并没有改变这等价关系。如下图。<br><img data-src="http://qiniu.s1nh.org/algorithm-4-node.png-QNthin"><br><img data-src="http://qiniu.s1nh.org/algorithm-3-node.png-QNthin"><br><img data-src="http://qiniu.s1nh.org/algorithm-23-rb.png-QNthin"></p>
 <p>对于红黑树，插入操作分为4种情况</p>
 <ol>
 <li>当前节点N是树中的根节点—&gt;将节点直接染成黑色</li>
@@ -368,7 +369,7 @@
 <li>出现了胖胖节点，立刻分解成3个瘦节点（变色）</li>
 </ol>
 <p>下面是作者给出的RB-tree和LLRB-tree的代码差别：</p>
-<p><img src="http://qiniu.s1nh.org/algorithm-23-234.png-QNthin"></p>
+<p><img data-src="http://qiniu.s1nh.org/algorithm-23-234.png-QNthin"></p>
 
     </div>
 
@@ -459,13 +460,14 @@
   </footer>
 
   
-  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+  <script src="/lib/animejs/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="/lib/jquery/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="/lib/@fancyapps/fancybox/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="/lib/lozad/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
 
   
-<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/lib/hexo-generator-searchdb/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
 
@@ -481,7 +483,7 @@
 
   
 
-  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"/lib/mathjax/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
 <script src="/js/third-party/math/mathjax.js"></script>
 
 
