@@ -2131,40 +2131,6 @@ apt-get install libusb-1.0-0-dev
       </tags>
   </entry>
   <entry>
-    <title>重新安装Cuda碰到了超级大坑</title>
-    <url>/post/cuda-reinstall/</url>
-    <content><![CDATA[<blockquote>
-<p>本文其实就是为了炫耀一下我买的新玩具，地球人X411</p>
-</blockquote>
-<p><img data-src="http://qiniu.s1nh.org/Blog_cuda_01.jpg-QNthin"></p>
-<span id="more"></span>
-
-<p>为了更方便的用cuda，买了一台新笔电，配置i7-6700HQ+GTX970M。</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_cuda_02.jpg-QNthin"></p>
-<h2 id="莫名其妙的原因不支持-4-0-以上内核"><a href="#莫名其妙的原因不支持-4-0-以上内核" class="headerlink" title="莫名其妙的原因不支持 4.0 以上内核"></a>莫名其妙的原因不支持 4.0 以上内核</h2><p>之前我一直用一个移动固态硬盘装了<code>Ubuntu-14.04</code>，<code>cuda7.5</code>的工作环境。很单纯的以为像以前一样插到USB3.0开机就可以用了，结果<code>kernel 3.13</code>识别不了<strong>无线网卡</strong>（Mac Mini的无线网卡也无法识别，可是之前一直用有线就没在意）。<code>apt-get</code> 升级到 <code>kernel 4.2/4.4</code>都无法开机，grub引导后识别不到硬盘的<code>UUID</code>（废寝忘食的折腾了很久，最后还是失败了）。</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_cuda_04.jpg-QNthin"></p>
-<p>好吧，重装系统（大坑开始了）</p>
-<h2 id="显卡太牛逼，nouveu驱动不兼容"><a href="#显卡太牛逼，nouveu驱动不兼容" class="headerlink" title="显卡太牛逼，nouveu驱动不兼容"></a>显卡太牛逼，nouveu驱动不兼容</h2><p>像以前一样装完<strong>ubuntu 14.04</strong>，无法开机（第一次碰到装完系统无法开机的情况）。又下了个<strong>ubuntu 16.04</strong>和<strong>Debian 8.5</strong> 依、然、无、法、开机😂😂😂……点亮以后，卡在开机画面不动，风扇呼呼响😂😂</p>
-<p>查了一下debug，发现nouveu什么什么鬼载入不了（不记得具体内容了），就百度了一下，好像nouveu是个开源的驱动，可是对新设备兼容性不好。教程都说先把N卡拔下来，然后开机装好驱动再插上。可是笔记本并不能拔下来，BIOS里面也没有设置选项😂😂😂😂。我是通过以下方法禁用nouveu的：</p>
-<ol>
-<li>在Live CD中创建<code>/etc/modprobe.d/blacklist-nouveau.conf</code>，内容如下<br><code>blacklist nouveau options nouveau modeset=0</code></li>
-<li>重新生成 kernel initramfs: <code>sudo update-initramfs -u</code></li>
-</ol>
-<h2 id="Cuda-版本对内核的兼容性"><a href="#Cuda-版本对内核的兼容性" class="headerlink" title="Cuda 版本对内核的兼容性"></a>Cuda 版本对内核的兼容性</h2><p>我是用官方的deb包装的cuda，顺利的装完以后，预料之中的<strong>又无法开机了</strong>，这下直接懵逼了，都不知道昨晚是怎么过来的。（开机以后卡在Ubuntu那不动，按啥键都不管用，风扇也不狂吹了，感觉是挂了。可是系统能响应<code>Ctr+Alt+Del</code>，按后过一会能重新启动😂😂）</p>
-<p>去官网喵了一眼，发现<code>Cuda8.0</code>居然发布了，支持<code>Ubuntu16</code>。发布页面最后跟着一行小字“For further information, see the <a href="https://developer.nvidia.com/compute/cuda/8.0/rc/docs/sidebar/CUDA_Installation_Guide_Linux-pdf">Installation Guide for Linux</a>”。卧槽，我一直为官网的安装说明就下面这三行字：</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_cuda_05.png-QNthin"></p>
-<p>点开<strong>Installation Guide</strong>后，一切问题原来都不需要瞎百度、瞎折腾。安装说明写得很清楚什么时候需要<code>Disable Nouveau</code>，还有Cuda对各个Kernel依赖库的兼容性，并且<code>cuda 7.5</code>只支持<code>Kernel 3.13</code>😂😂😂</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_cuda_04.jpg-QNthin"></p>
-<p>这个故事告诉我们，遇到问题之前要<strong>先-去-看-官-方-文-档</strong></p>
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
-      </categories>
-      <tags>
-        <tag>Cuda</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>什么是卷积神经网络</title>
     <url>/post/convolutional-neural-network-introduction/</url>
     <content><![CDATA[<p>学到卷积神经网络，搜索到的资料一般都是这样的</p>
@@ -2301,6 +2267,40 @@ apt-get install libusb-1.0-0-dev
       </tags>
   </entry>
   <entry>
+    <title>重新安装Cuda碰到了超级大坑</title>
+    <url>/post/cuda-reinstall/</url>
+    <content><![CDATA[<blockquote>
+<p>本文其实就是为了炫耀一下我买的新玩具，地球人X411</p>
+</blockquote>
+<p><img data-src="http://qiniu.s1nh.org/Blog_cuda_01.jpg-QNthin"></p>
+<span id="more"></span>
+
+<p>为了更方便的用cuda，买了一台新笔电，配置i7-6700HQ+GTX970M。</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_cuda_02.jpg-QNthin"></p>
+<h2 id="莫名其妙的原因不支持-4-0-以上内核"><a href="#莫名其妙的原因不支持-4-0-以上内核" class="headerlink" title="莫名其妙的原因不支持 4.0 以上内核"></a>莫名其妙的原因不支持 4.0 以上内核</h2><p>之前我一直用一个移动固态硬盘装了<code>Ubuntu-14.04</code>，<code>cuda7.5</code>的工作环境。很单纯的以为像以前一样插到USB3.0开机就可以用了，结果<code>kernel 3.13</code>识别不了<strong>无线网卡</strong>（Mac Mini的无线网卡也无法识别，可是之前一直用有线就没在意）。<code>apt-get</code> 升级到 <code>kernel 4.2/4.4</code>都无法开机，grub引导后识别不到硬盘的<code>UUID</code>（废寝忘食的折腾了很久，最后还是失败了）。</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_cuda_04.jpg-QNthin"></p>
+<p>好吧，重装系统（大坑开始了）</p>
+<h2 id="显卡太牛逼，nouveu驱动不兼容"><a href="#显卡太牛逼，nouveu驱动不兼容" class="headerlink" title="显卡太牛逼，nouveu驱动不兼容"></a>显卡太牛逼，nouveu驱动不兼容</h2><p>像以前一样装完<strong>ubuntu 14.04</strong>，无法开机（第一次碰到装完系统无法开机的情况）。又下了个<strong>ubuntu 16.04</strong>和<strong>Debian 8.5</strong> 依、然、无、法、开机😂😂😂……点亮以后，卡在开机画面不动，风扇呼呼响😂😂</p>
+<p>查了一下debug，发现nouveu什么什么鬼载入不了（不记得具体内容了），就百度了一下，好像nouveu是个开源的驱动，可是对新设备兼容性不好。教程都说先把N卡拔下来，然后开机装好驱动再插上。可是笔记本并不能拔下来，BIOS里面也没有设置选项😂😂😂😂。我是通过以下方法禁用nouveu的：</p>
+<ol>
+<li>在Live CD中创建<code>/etc/modprobe.d/blacklist-nouveau.conf</code>，内容如下<br><code>blacklist nouveau options nouveau modeset=0</code></li>
+<li>重新生成 kernel initramfs: <code>sudo update-initramfs -u</code></li>
+</ol>
+<h2 id="Cuda-版本对内核的兼容性"><a href="#Cuda-版本对内核的兼容性" class="headerlink" title="Cuda 版本对内核的兼容性"></a>Cuda 版本对内核的兼容性</h2><p>我是用官方的deb包装的cuda，顺利的装完以后，预料之中的<strong>又无法开机了</strong>，这下直接懵逼了，都不知道昨晚是怎么过来的。（开机以后卡在Ubuntu那不动，按啥键都不管用，风扇也不狂吹了，感觉是挂了。可是系统能响应<code>Ctr+Alt+Del</code>，按后过一会能重新启动😂😂）</p>
+<p>去官网喵了一眼，发现<code>Cuda8.0</code>居然发布了，支持<code>Ubuntu16</code>。发布页面最后跟着一行小字“For further information, see the <a href="https://developer.nvidia.com/compute/cuda/8.0/rc/docs/sidebar/CUDA_Installation_Guide_Linux-pdf">Installation Guide for Linux</a>”。卧槽，我一直为官网的安装说明就下面这三行字：</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_cuda_05.png-QNthin"></p>
+<p>点开<strong>Installation Guide</strong>后，一切问题原来都不需要瞎百度、瞎折腾。安装说明写得很清楚什么时候需要<code>Disable Nouveau</code>，还有Cuda对各个Kernel依赖库的兼容性，并且<code>cuda 7.5</code>只支持<code>Kernel 3.13</code>😂😂😂</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_cuda_04.jpg-QNthin"></p>
+<p>这个故事告诉我们，遇到问题之前要<strong>先-去-看-官-方-文-档</strong></p>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+      <tags>
+        <tag>Cuda</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>计算机视觉技术调查报告</title>
     <url>/post/cv-sjtu/</url>
     <content><![CDATA[<p><code>本资源来自网络，侵权请按ALT+F4</code></p>
@@ -2363,6 +2363,49 @@ apt-get install libusb-1.0-0-dev
 <p>• Xiong, Caiming, Stephen Merity, and Richard Socher. “Dynamic Memory Networks for Visual and Textual Question Answering.” arXiv:1603.01417 (2016).<br>• Mateusz Malinowski, Marcus Rohrbach, Mario Fritz, Ask Your Neurons: A Neural-based Approach to Answering Questions about Images, arXiv:1505.01121.<br>• Stanislaw Antol, Aishwarya Agrawal, Jiasen Lu, Margaret Mitchell, Dhruv Batra, C. Lawrence Zitnick, Devi Parikh, VQA: Visual Question Answering, CVPR, 2015 SUNw:Scene Understanding workshop.<br>• Hauyuan Gao, Junhua Mao, Jie Zhou, Zhiheng Huang, Lei Wang, Wei Xu, Are You Talking to a Machine? Dataset and Methods for Multilingual Image Question Answering, arXiv:1505.05612.<br>• Hyeonwoo Noh, Paul Hongsuck Seo, and Bohyung Han, Image Question Answering using Convolutional Neural Network with Dynamic Parameter Prediction, arXiv:1511.05765<br>• Yang, Z., He, X., Gao, J., Deng, L., &amp; Smola, A. (2015). Stacked Attention Networks for Image Question Answering. arXiv:1511.02274.<br>• Jin-Hwa Kim, Sang-Woo Lee, Dong-Hyun Kwak, Min-Oh Heo, Jeonghee Kim, Jung-Woo Ha, Byoung-Tak Zhang, Multimodal Residual Learning for Visual QA, arXiv:1606:01455<br>• Hyeonwoo Noh and Bohyung Han, Training Recurrent Answering Units with Joint Loss Minimization for VQA, arXiv:1606.03647<br>• Jin-Hwa Kim, Kyoung Woon On, Jeonghee Kim, Jung-Woo Ha, Byoung-Tak Zhang, Hadamard Product for Low-rank Bilinear Pooling, arXiv:1610.04325. </p>
 <h4 id="5-Mask-R-CNN"><a href="#5-Mask-R-CNN" class="headerlink" title="(5) Mask-R-CNN"></a>(5) Mask-R-CNN</h4><p>另外还有一篇是刚刚出来的 Mask RCNN，也是比较火。</p>
 <p>文章在这里 <a href="https://arxiv.org/abs/1703.06870">https://arxiv.org/abs/1703.06870</a><br>具体中文讨论在这里 <a href="https://www.zhihu.com/question/57403701">https://www.zhihu.com/question/57403701</a><br>但是，没有代码，我们组也在复现中 </p>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>不推荐购买创想三维 Creality Sermoon V1 的几个理由</title>
+    <url>/post/do-not-buy-sermoon-v1/</url>
+    <content><![CDATA[<blockquote>
+<p>看过 [<a href="https://www.zhihu.com/zvideo/1457409894764335104">阿文君的视频</a>] 买了 <code>Sermoon V1</code>。体验过后感觉比较适合新手但也只适合新手了，在这里提出几个不该买的理由。</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="0x01-缺少-Linear-Advance-（压力提前-线性推进）-的支持"><a href="#0x01-缺少-Linear-Advance-（压力提前-线性推进）-的支持" class="headerlink" title="0x01 缺少 Linear Advance （压力提前/线性推进） 的支持"></a>0x01 缺少 Linear Advance （压力提前/线性推进） 的支持</h2><p><code>Linear Advance 的校准是打印一个优秀模型的决定性因素</code></p>
+<p>默认情况下，挤出机以线性方式工作。但挤出机不是线性系统，如下图，在因此这种方法最明显会导致在每一步打印后挤出额外材料，并且在下一步开始打印时材料不够。（下图2处材料挤出不够，且在4、5处产生堆料）</p>
+<p><img data-src="http://qiniu.s1nh.org/sermoon-v1-k-factor_low.png"></p>
+<p>使用 Linear Advance 的优点：</p>
+<ul>
+<li>减少粗糙的边缘，尺寸精度更高。</li>
+<li>可以在不损失任何打印质量的情况下实现更高的打印速度。</li>
+<li>即使在较低的打印速度下，打印质量也会得到提高。</li>
+<li>获得更锋利的边缘。</li>
+</ul>
+<p>网络有很多矫正线性推进的教程，比如：</p>
+<ul>
+<li><a href="https://www.bilibili.com/video/BV1Z94y1U7UL">3D打印机klipper在Voron0.1机器上进行挤出机压力提前测试和校准：新手教程</a></li>
+<li><a href="https://www.bilibili.com/video/BV18541117Yk">【klipper】3D打印机挤出机压力提前测试和校准【3集全】拐角膨胀和起始点分离修正办法</a></li>
+</ul>
+<p>Marlin 官网也提供了详细的<a href="https://marlinfw.org/docs/features/lin_advance.html">调整教程</a></p>
+<p>然而我们的 Sermoon V1 不支持此功能，无法进行调整。我打电话到厂家，给的答复也是“不开源” “没有你想要的固件”</p>
+<h2 id="0x02-鸡肋的-wifi-功能"><a href="#0x02-鸡肋的-wifi-功能" class="headerlink" title="0x02 鸡肋的 wifi 功能"></a>0x02 鸡肋的 wifi 功能</h2><p>Sermoon V1 自带一个 wifi 板子（下图中间绿色的电路板），功能很弱鸡。比如录像没办法下载，官方给的答复是可以<code>打开手机的录屏功能</code>。</p>
+<p><img data-src="http://qiniu.s1nh.org/sermoon-v1-whole.png"></p>
+<p>我已经把它换成树莓派了，<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2sh1t/mod_octoprint_setup_for_the_creality_sermoon_v1/">有手就能改</a>，可以安装 octoprint 以支持更强大的 <code>wifi</code> <code>远程监控</code> <code>延时摄影</code> 等功能。</p>
+<iframe src="//player.bilibili.com/player.html?aid=342230292&bvid=BV1194y1m7y7&cid=735894030&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+<h2 id="0x03-不开源的主控板"><a href="#0x03-不开源的主控板" class="headerlink" title="0x03 不开源的主控板"></a>0x03 不开源的主控板</h2><p>机器左下角的主板基于开源的 <code>Marlin 1</code> 固件魔改而成，<code>Marlin</code> 固件基于 <code>GPL v3</code> 协议，简单来说就是 <code>你可以免费使用、复制、修改、分发受保护程序，但分发时一定要提供源码</code>。然而此主板不提供源码，后果就是我们只能使用老旧的 Marlin 第一代固件，没办法自行升级到 2.0 以上版本，或者最近流行的<code>klipper</code>固件。</p>
+<ul>
+<li>国外有个哥们请求开源，被直接关闭了issue <a href="https://github.com/CrealityOfficial/Ender-3S1/issues/2">链接</a></li>
+<li>无法校准挤出机<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/ui2u5v/how_to_calibrate_extruder_esteps_z_axis_baby/">链接</a></li>
+<li><a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2stxx/sermoon_v1_and_v1_pro_general_info_thoughts/">这里</a> 有一些讨论</li>
+<li><a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2toy2/marlin_stock_firmware_notes_from_the_sermoon_v1/">这里</a>有一些关于固件的信息</li>
+</ul>
+<h2 id="0x04-无用的pro版本"><a href="#0x04-无用的pro版本" class="headerlink" title="0x04 无用的pro版本"></a>0x04 无用的pro版本</h2><p>它的 pro 版本包含开盖暂停和相机功能，然而开盖暂停除了在使用SD卡打印时无效；摄像头会经常断线（国外有人讨论过可能是这种摄像头不支持在高温环境下工作）。</p>
 ]]></content>
       <categories>
         <category>算法与硬件</category>
@@ -4214,7 +4257,7 @@ apt-get install libusb-1.0-0-dev
 <p>如果你对待你的RX8像一辆跑车一样提供维护，那么它是一个令人惊讶的品质优良且有充足动力的汽车。而且 RX8 价格不高，所以它是你踏入跑车圈子的第一步。</p>
 ]]></content>
       <categories>
-        <category>其它笔记</category>
+        <category>赛车</category>
       </categories>
       <tags>
         <tag>rx8</tag>
