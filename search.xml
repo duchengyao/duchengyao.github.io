@@ -2372,12 +2372,12 @@ apt-get install libusb-1.0-0-dev
     <title>不推荐购买创想三维 Creality Sermoon V1 的几个理由</title>
     <url>/post/do-not-buy-sermoon-v1/</url>
     <content><![CDATA[<blockquote>
-<p>看过 [<a href="https://www.zhihu.com/zvideo/1457409894764335104">阿文君的视频</a>] 买了 <code>Sermoon V1</code>。体验过后感觉比较适合新手但也只适合新手了，在这里提出几个不该买的理由。</p>
+<p>看过 [<a href="https://www.zhihu.com/zvideo/1457409894764335104">阿文君的视频</a>] 买了 <code>Sermoon V1</code>。体验过后感觉比较玩具、拓展性也比较差，在这里提出几个不该买的理由。</p>
 </blockquote>
 <span id="more"></span>
 
-<h2 id="0x01-缺少-Linear-Advance-（压力提前-线性推进）-的支持"><a href="#0x01-缺少-Linear-Advance-（压力提前-线性推进）-的支持" class="headerlink" title="0x01 缺少 Linear Advance （压力提前/线性推进） 的支持"></a>0x01 缺少 Linear Advance （压力提前/线性推进） 的支持</h2><p><code>Linear Advance 的校准是打印一个优秀模型的决定性因素</code></p>
-<p>默认情况下，挤出机以线性方式工作。但挤出机不是线性系统，如下图，在因此这种方法最明显会导致在每一步打印后挤出额外材料，并且在下一步开始打印时材料不够。（下图2处材料挤出不够，且在4、5处产生堆料）</p>
+<h2 id="0x01-缺少-Linear-Advance-（压力提前-线性推进）-的支持"><a href="#0x01-缺少-Linear-Advance-（压力提前-线性推进）-的支持" class="headerlink" title="0x01 缺少 Linear Advance （压力提前/线性推进） 的支持"></a>0x01 缺少 Linear Advance （压力提前/线性推进） 的支持</h2><p><code>准确的 Linear Advance 的校准是打印一个优秀模型的重要因素</code></p>
+<p>默认情况下，挤出机以线性方式工作。但挤出机不是线性系统，明显会导致在每一步打印后挤出额外材料，并且在下一步开始打印时材料不够。（下图表示了打印机在加速减速的过程，在2处材料挤出不够，且在4、5处产生堆料）</p>
 <p><img data-src="http://qiniu.s1nh.org/sermoon-v1-k-factor_low.png"></p>
 <p>使用 Linear Advance 的优点：</p>
 <ul>
@@ -2405,7 +2405,11 @@ apt-get install libusb-1.0-0-dev
 <li><a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2stxx/sermoon_v1_and_v1_pro_general_info_thoughts/">这里</a> 有一些讨论</li>
 <li><a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2toy2/marlin_stock_firmware_notes_from_the_sermoon_v1/">这里</a>有一些关于固件的信息</li>
 </ul>
-<h2 id="0x04-无用的pro版本"><a href="#0x04-无用的pro版本" class="headerlink" title="0x04 无用的pro版本"></a>0x04 无用的pro版本</h2><p>它的 pro 版本包含开盖暂停和相机功能，然而开盖暂停除了在使用SD卡打印时无效；摄像头会经常断线（国外有人讨论过可能是这种摄像头不支持在高温环境下工作）。</p>
+<h2 id="0x04-无用的-pro-版本"><a href="#0x04-无用的-pro-版本" class="headerlink" title="0x04 无用的 pro 版本"></a>0x04 无用的 pro 版本</h2><p>它的 pro 版本包含开盖暂停和相机功能，然而</p>
+<ul>
+<li>开盖暂停/断料检测只在SD卡打印时有效；</li>
+<li>摄像头会经常断线（国外有人讨论过可能是这种摄像头不支持在高温环境下工作[<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2stxx/sermoon_v1_and_v1_pro_general_info_thoughts/i2r7irn/?utm_source=reddit&utm_medium=web2x&context=3">链接</a>]）。</li>
+</ul>
 ]]></content>
       <categories>
         <category>算法与硬件</category>
