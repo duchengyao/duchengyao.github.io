@@ -74,6 +74,101 @@
       </categories>
   </entry>
   <entry>
+    <title>996.ICU</title>
+    <url>/post/996-ICU/</url>
+    <content><![CDATA[<p><strong>一位保守党政客讲得再清楚不过，穷人全都“必须要不断地吃，不断地喝，不断地工作，不断地死去”。</strong></p>
+<span id="more"></span>
+
+<ul>
+<li><a href="https://github.com/996icu/996.ICU/blob/master/README.md">English version</a></li>
+</ul>
+<p><code>996.ICU</code>  是指“工作 996， 生病 ICU” 。这是中国程序员之间的一种自嘲说法，意思是如果按照 996 的模式工作，那以后就得进 ICU 了。</p>
+<h2 id="相关报道"><a href="#相关报道" class="headerlink" title="相关报道"></a>相关报道</h2><ul>
+<li>《共青团中央》：<a href="https://mp.weixin.qq.com/s/e5qaW6ED_WUunNYG-q7frg">工作996，生病ICU？关注：年轻人该如何奋斗</a></li>
+<li>《中国青年报》：<a href="http://zqb.cyol.com/html/2019-04/02/nw.D110000zgqnb_20190402_1-02.htm">被“996”工作制围困的年轻人：像是定好闹钟的机器</a></li>
+<li>《半月谈评论》：<a href="http://www.banyuetan.org/dyp/detail/20190415/1000200033134991555306789054254821_1.html">996与奋斗无关，与利益有关</a></li>
+</ul>
+<p>点击此处查看相关报道的<a href="https://github.com/996icu/996.ICU/blob/master/externals/news.md">完整列表</a></p>
+<h2 id="什么是996？"><a href="#什么是996？" class="headerlink" title="什么是996？"></a>什么是996？</h2><p>“996”工作制，指的是一种越来越流行的非官方工作制（早上 9 点 ~ 晚上 9 点，每周 6 天）。在一个实行“996”工作制的公司工作就意味着每周至少要工作 60 个小时。</p>
+<h2 id="我能做什么？"><a href="#我能做什么？" class="headerlink" title="我能做什么？"></a>我能做什么？</h2><ul>
+<li>更新这个<a href="https://github.com/996icu/996.ICU/blob/master/blacklist/README.md">名单</a>（注附带证据），来帮助每一位工作者。<a href="https://www.996action.com/index.php/889799">为不熟悉GitHub劳动者准备的提交渠道</a></li>
+<li>把这个<a href="https://github.com/996icu/996.ICU/blob/master/externals/instruction.md">徽章</a>添加到你的项目来支持 996.ICU</li>
+<li>为你的项目添加<a href="LICENSE_CN">反 996 许可证</a>。</li>
+<li>给社区与项目发展提出新的<a href="https://github.com/996icu/996.ICU/blob/master/proposal/README.md">议案</a>。</li>
+<li>下午6点钟下班回家。</li>
+<li>企业和群众可以登录中国政府网（<a href="http://www.gov.cn)/">www.gov.cn）</a> 或下载国务院客户端，进入国务院“互联网+督查”专栏，也可以关注中国政府网微信公众号，进入国务院“互联网+督查”小程序提供线索、反映问题、提出建议。国务院办公厅将对收到的问题线索和意见建议进行汇总整理，督促有关地方、部门处理。对企业和群众反映强烈、带有普遍性的重要问题线索，国务院办公厅督查室将直接派员督查。经查证属实、较为典型的问题，将予以公开曝光、严肃处理。 </li>
+<li>互助式举报，通过群聊频道<a href="https://join.slack.com/t/996icu/shared_invite/enQtNjI0MjEzMTUxNDI0LTA5NTc3MTk0MDRlMzIzNTI3ZDk1Y2IxNzQzZmM0NGQzNmI0NDA3MWE2ZWQyY2RlNjhkN2ViYjYyMDAzMGVmNjQ">Slack</a> 找到有相似举报需求的加班受害者，相互举报对方公司的违法事实，根据《劳动保障监察条例》第一章第九条 “任何组织或者个人对违反劳动保障法律、法规或者规章的行为，有权向劳动保障行政部门举报。” 通过电话以朋友的名义向当地劳动监察大队举报，以便更稳妥的保护当事人身份信息。详细内容请见<a href="https://github.com/996icu/996.ICU/blob/master/externals/mutual_help.md">互助式举报说明细项</a></li>
+</ul>
+<h2 id="各界声音"><a href="#各界声音" class="headerlink" title="各界声音"></a>各界声音</h2><h3 id="官媒"><a href="#官媒" class="headerlink" title="官媒"></a>官媒</h3><ul>
+<li><a href="http://www.xinhuanet.com/politics/2019-04/15/c_1124370790.htm">996当退场</a></li>
+</ul>
+<h3 id="资本家"><a href="#资本家" class="headerlink" title="资本家"></a>资本家</h3><ul>
+<li><strong>马云, 阿里巴巴创始人</strong>: <code>“996”是一种福报</code>。</li>
+<li><strong>刘强东，京东创始人</strong>: <code>京东不会强制995或者996</code>。<br>但是有许多员工匿名表示，公司内部有一个“加班排名表”，列举了各个部门的加班情况排名，排名低的部门会受到惩罚。领导们安排996工作时，也会注意不留下证据。</li>
+<li><strong>白鸦, 有赞CEO</strong>: <code>几年后回看，这次绝对是好事</code>。</li>
+</ul>
+<h3 id="开发者"><a href="#开发者" class="headerlink" title="开发者"></a>开发者</h3><ul>
+<li>Guido van Rossum, Python之父: <a href="https://twitter.com/gvanrossum/status/1111628076801236993"><code>&quot;996&quot;工作制是不人道的</code></a>.</li>
+</ul>
+<h2 id="原则和目的"><a href="#原则和目的" class="headerlink" title="原则和目的"></a>原则和目的</h2><ul>
+<li><p>首先需要申明的是这不是一个政治运动，我们每个人都坚定维护劳动法，但我们同时要求雇主也要尊重雇员的合法权益。</p>
+</li>
+<li><p>996.ICU 是中国众多的 IT 从业者发起的一项倡议，我们欢迎其他领域、其他国家的人士加入讨论。</p>
+</li>
+<li><p>从闭源到开源是一次伟大的进步，从开源到同时强调保护劳工权益也将是一次伟大的进步，我们想要创造一个主张保护劳动者权益的开源软件许可证。</p>
+</li>
+<li><p>我们欢迎一切积极的、具有建设性意义的建议，倡导成熟、负责任以及有价值的发言。</p>
+</li>
+</ul>
+<h2 id="扩大影响"><a href="#扩大影响" class="headerlink" title="扩大影响"></a>扩大影响</h2><p><a href="https://github.com/996icu/996.ICU/blob/master/i18n/README.md">996.ICU 内容翻译</a>，请自由发挥你的能力，调整格式、添加内容或修正语法。不过要注意，添加过多的翻译版本并非我们的目标。</p>
+<h2 id="社区"><a href="#社区" class="headerlink" title="社区"></a>社区</h2><ul>
+<li><p><a href="https://github.com/formulahendry/955.WLB">955.WLB</a> 955 公司白名单，旨在让更多的人逃离 996，加入 955 的行列。</p>
+</li>
+<li><p><a href="https://github.com/fengT-T/996_list">996.LIST</a> 此 repo 为 996 和 955 的匿名投票列表。</p>
+</li>
+<li><p><a href="https://github.com/CPdogson/996.law">996.law</a> 面向所有劳动者的一份劳动仲裁与劳动诉讼的攻略手册，看完它之后你甚至不用找律师。并且倡导劳动者在工作中随时取证以备后患。</p>
+</li>
+<li><p><a href="https://github.com/boycott996/yaocl">996.YAOCL</a> Yet Another Overtime Corps List, 另外一个匿名投票列表</p>
+</li>
+<li><p><a href="https://github.com/623637646/996.Leave">996.Leave</a> 介绍与鼓励海外工作。</p>
+</li>
+<li><p><a href="https://996.rip/">996.RIP</a> 企业可能会忘，但我们不会忘。</p>
+</li>
+<li><p><a href="https://github.com/xokctah/996.petition">996.Petition</a> 向相关政府主管单位投递公开信，请求主管单位采取行动。</p>
+</li>
+<li><p><a href="https://github.com/CPdogson/996action">996.action</a> 强调用行动抗议996的板块，向政府信息公开火热进行中，#向马云寄劳动法#行为艺术式，除此之外还有许多行动选择。</p>
+</li>
+<li><p><a href="https://github.com/996-icu-avengers/Natasha">996.avengers</a> 旨在各大招聘网站标记996.ICU和955.WLB上榜公司。</p>
+</li>
+<li><p><a href="https://github.com/zheolong/996.OD.git">996.OD</a> 程序员长期996导致的职业病，为广大程序员兄弟提供可以查询的常见职业病信息，为职业病防治法的立法改进提供依据。</p>
+</li>
+<li><p><a href="https://github.com/alexddhuang/996.Q">996.Q</a> 收集有关 996 的自嘲、笑话、段子。</p>
+</li>
+<li><p><a href="https://github.com/0594mazhiyuan/996.survey">996.survey</a> 一份对于 996 现状的调查。</p>
+</li>
+<li><p><a href="https://github.com/msworkers/support.996.ICU">support.996.ICU</a> 微软与GitHub员工自发组织 实名签名 支持 996.ICU</p>
+</li>
+<li><p><a href="https://github.com/996-699/996.699">699cn</a> 一键存证微信小程序，免安装永久免费，完全公益性质。一键采集员工当前经纬度和打卡时间存证到服务器，未来目标是期望更多志愿者加入团队，建设成为基于分布式账本技术的存证平台，只要地球上还有程序员，证据就永远存在。</p>
+</li>
+<li><p><a href="https://github.com/996BC/996.Blockchain">996.Blockchain</a> 一个存储加班证据摘要的区块链项目</p>
+</li>
+<li><p><a href="https://github.com/MagicLu550/996Error">996.Error</a> 收集各种语言写的“996”异常,可以在项目中直接使用</p>
+</li>
+</ul>
+<h2 id="Issues-去哪了？"><a href="#Issues-去哪了？" class="headerlink" title="Issues 去哪了？"></a>Issues 去哪了？</h2><p>即使有互动限制，Issues 区依然完全失去了控制。<br>因此我<strong>个人</strong>决定关闭 Issues，这与 GitHub 或其他方面无关。</p>
+<h2 id="License"><a href="#License" class="headerlink" title="License"></a>License</h2><p><a href="LICENSE">反 996 许可证</a></p>
+<ul>
+<li>此许可证的目的是阻止违反劳动法的公司使用许可证下的软件或代码，并强迫这些公司权衡他们的行为。</li>
+<li>在此处查看反 996 许可证下的<a href="https://github.com/996icu/996.ICU/blob/master/awesomelist/README.md">完整项目列表</a></li>
+<li>该草案改编自 MIT 许可证，如需更多信息请查看 <a href="https://github.com/kattgu7/996-License-Draft/wiki">Wiki</a>。此许可证旨在与所有主流开源许可证兼容。</li>
+<li>如果你是法律专业人士，或是任何愿意为未来版本做出直接贡献的人，请访问 <a href="https://github.com/kattgu7/996-License-Draft">Anti-996-License-1.0</a>。感谢你的帮助。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>工作笔记</category>
+      </categories>
+  </entry>
+  <entry>
     <title>图像拼接算法的综述</title>
     <url>/post/A-survey-on-image-mosaicing-techniques/</url>
     <content><![CDATA[<blockquote>
@@ -903,6 +998,39 @@ Test accuracy: 0.9828
       </tags>
   </entry>
   <entry>
+    <title>NVIDIA Jetson TX1 学习资源整理</title>
+    <url>/post/NVIDIA-Jetson-TX1-note/</url>
+    <content><![CDATA[<blockquote>
+<p>今天的朋友圈都被王宝强和她出轨的老婆刷屏了<br>想起了一句话：“他们自以为美貌是自己人生的武器，却被自己的美貌支配着走进了困顿。”</p>
+</blockquote>
+<h2 id="Nvidia-TX1"><a href="#Nvidia-TX1" class="headerlink" title="Nvidia TX1"></a>Nvidia TX1</h2><p>信用卡大小的 NVIDIA Jetson TX1 有内置ARM64 CPU，256 cores CUDA GPU，还内置了4G内存、16G emmc、Wi-Fi、蓝牙，集成度超级高，用来做机器人，嵌入式图像处理特别方便。 <a href="https://devblogs.nvidia.com/parallelforall/nvidia-jetson-tx1-supercomputer-on-module-drives-next-wave-of-autonomous-machines/"><strong>比较详细的一个介绍</strong></a></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_TX1_block.png-QNthin"></p>
+<span id="more"></span>
+
+<p>联系了台湾的代理商，购买了教育优惠的 TX1 Developer Kit（导师出的钱哈哈哈） </p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_TX1_1.jpg-QNthin"></p>
+<p>手头没有合适的盒子，就用了一块亚克力板保护一下，上面装了一个USB HUB、路由器。</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_TX1_2.jpg-QNthin" title="左下角是瑞芯微ARM架构的本本，右下角为TX1，显示器运行着TX1的Ubuntu系统"></p>
+<p>现在还不知道怎么连接多个摄像头，虽然有接口，但是我去哪做一块子板来接多个CSI Camera呢</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_TX1_3.jpg-QNthin"></p>
+<h2 id="扩展板"><a href="#扩展板" class="headerlink" title="扩展板"></a>扩展板</h2><p>原装的Dev Kit太大了，如果要装在无人机上还得用小一点的扩展板：<a href="http://diydrones.com/m/blogpost?id=705844:BlogPost:2257198"><strong>Nvidia 扩展版的对比</strong></a>（<a href="http://www.wtoutiao.com/p/294agBh.html">中文翻译</a>）组装起来只有一个树莓派大小（自从树莓派3出来以后，我的BeagleBone Black就放角落里吃灰了）</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_TX1_Orbitty.png-QNthin" title="这块扩展版只有树莓派大小"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_TX1_Astron.png-QNthin" title="包含8个同轴输入的扩展版"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_TX1_chart.png-QNthin" title="扩展版对比"></p>
+<h2 id="TurtleBot"><a href="#TurtleBot" class="headerlink" title="TurtleBot"></a>TurtleBot</h2><p>TurtleBot 是个开源的机器人平台，准备接下来用iRobot Create当底座，把TX1集成到这个平台上去。</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_TX1_turtlebot_1.png-QNthin"></p>
+<p><a href="http://www.turtlebot.com/">http://www.turtlebot.com/</a></p>
+<h2 id="tensorflow"><a href="#tensorflow" class="headerlink" title="tensorflow"></a>tensorflow</h2><p>谷歌的深度学习系统<br><a href="https://www.tensorflow.org/">https://www.tensorflow.org/</a></p>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+      <tags>
+        <tag>机器人</tag>
+        <tag>开源</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>开始使用 Octave</title>
     <url>/post/Octave-Tutorial/</url>
     <content><![CDATA[<p>由于基于armhf架构的Chromebook没法安装X86的binary，所以选用开源的Octave代替Matlab做科学计算</p>
@@ -950,39 +1078,6 @@ For information about changes from previous versions of the tisean package, run&
       <tags>
         <tag>Octave</tag>
         <tag>OpenSource</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>NVIDIA Jetson TX1 学习资源整理</title>
-    <url>/post/NVIDIA-Jetson-TX1-note/</url>
-    <content><![CDATA[<blockquote>
-<p>今天的朋友圈都被王宝强和她出轨的老婆刷屏了<br>想起了一句话：“他们自以为美貌是自己人生的武器，却被自己的美貌支配着走进了困顿。”</p>
-</blockquote>
-<h2 id="Nvidia-TX1"><a href="#Nvidia-TX1" class="headerlink" title="Nvidia TX1"></a>Nvidia TX1</h2><p>信用卡大小的 NVIDIA Jetson TX1 有内置ARM64 CPU，256 cores CUDA GPU，还内置了4G内存、16G emmc、Wi-Fi、蓝牙，集成度超级高，用来做机器人，嵌入式图像处理特别方便。 <a href="https://devblogs.nvidia.com/parallelforall/nvidia-jetson-tx1-supercomputer-on-module-drives-next-wave-of-autonomous-machines/"><strong>比较详细的一个介绍</strong></a></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_TX1_block.png-QNthin"></p>
-<span id="more"></span>
-
-<p>联系了台湾的代理商，购买了教育优惠的 TX1 Developer Kit（导师出的钱哈哈哈） </p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_TX1_1.jpg-QNthin"></p>
-<p>手头没有合适的盒子，就用了一块亚克力板保护一下，上面装了一个USB HUB、路由器。</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_TX1_2.jpg-QNthin" title="左下角是瑞芯微ARM架构的本本，右下角为TX1，显示器运行着TX1的Ubuntu系统"></p>
-<p>现在还不知道怎么连接多个摄像头，虽然有接口，但是我去哪做一块子板来接多个CSI Camera呢</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_TX1_3.jpg-QNthin"></p>
-<h2 id="扩展板"><a href="#扩展板" class="headerlink" title="扩展板"></a>扩展板</h2><p>原装的Dev Kit太大了，如果要装在无人机上还得用小一点的扩展板：<a href="http://diydrones.com/m/blogpost?id=705844:BlogPost:2257198"><strong>Nvidia 扩展版的对比</strong></a>（<a href="http://www.wtoutiao.com/p/294agBh.html">中文翻译</a>）组装起来只有一个树莓派大小（自从树莓派3出来以后，我的BeagleBone Black就放角落里吃灰了）</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_TX1_Orbitty.png-QNthin" title="这块扩展版只有树莓派大小"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_TX1_Astron.png-QNthin" title="包含8个同轴输入的扩展版"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_TX1_chart.png-QNthin" title="扩展版对比"></p>
-<h2 id="TurtleBot"><a href="#TurtleBot" class="headerlink" title="TurtleBot"></a>TurtleBot</h2><p>TurtleBot 是个开源的机器人平台，准备接下来用iRobot Create当底座，把TX1集成到这个平台上去。</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_TX1_turtlebot_1.png-QNthin"></p>
-<p><a href="http://www.turtlebot.com/">http://www.turtlebot.com/</a></p>
-<h2 id="tensorflow"><a href="#tensorflow" class="headerlink" title="tensorflow"></a>tensorflow</h2><p>谷歌的深度学习系统<br><a href="https://www.tensorflow.org/">https://www.tensorflow.org/</a></p>
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
-      </categories>
-      <tags>
-        <tag>机器人</tag>
-        <tag>开源</tag>
       </tags>
   </entry>
   <entry>
@@ -1718,51 +1813,6 @@ apt-get install libusb-1.0-0-dev
       </categories>
   </entry>
   <entry>
-    <title>《行界：零》</title>
-    <url>/post/WENT_Zero/</url>
-    <content><![CDATA[<blockquote>
-<p>“每个成功的合作关系都是如此，完全地、盲目地投入，不计后果，和婚姻一样。否则就是交易。”</p>
-</blockquote>
-<p><img data-src="http://qiniu.s1nh.org/Blog_XingjieDesign_8.jpg-QNthin"></p>
-<span id="more"></span>
-
-<hr>
-<p>游戏的背景是设定在另一个平行世界。</p>
-<p>灵感来源是Google实验室的ingress。</p>
-<p>这个游戏的设计几乎陪伴了我整个大四，各种地图Api、各种游戏引擎。</p>
-<p>整整一个学期的策划，我们一次次的头脑风暴，一次次的推翻。</p>
-<p>刚开始我们的设计图还没那么“后摇”，有点日系，有点小清新。好像还起了英文名字《WENT：Went EN Tesseract》</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_WENT_02.png-QNthin" alt="行界"></p>
-<p>当然少不了宣传“小球”——当时我通宵写的代码现在被重构的一行都不剩:(</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_WENT_01.png-QNthin" alt="行界"></p>
-<p>还很幼稚的做了“游戏数值建模”。</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_WENT_03.png-QNthin" alt="行界"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_WENT_05.png-QNthin" alt="行界"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_WENT_04.png-QNthin" alt="行界"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_XingjieDesign_2.png-QNthin" alt="行界"></p>
-<p>这几个月游戏开发进度特别快，游戏策划、UI都已经基本完成了，还确定了名字《行界：零》。下午去公司转了一圈，他们正在讨论游戏交互的设计。突然发现游戏开发团队已经扩大到十几人了。</p>
-<!-- ![](http://qiniu.s1nh.org/Blog_XingjieDesign_5.jpg-QNthin) -->
-
-<p><img data-src="http://qiniu.s1nh.org/Blog_XingjieDesign_6.jpg-QNthin" alt="行界"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_XingjieDesign_1.jpg-QNthin" alt="行界"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_XingjieDesign_3.jpg-QNthin" alt="行界"></p>
-<p>寒冬要到了，祝“益行游戏”能傲然挺立。</p>
-<p>官方网站：<a href="http://www.1-xing.com/">http://www.1-xing.com</a></p>
-<p>交流群：250293575</p>
-<p>官方微博：<a href="http://weibo.com/u/5208965212">@益行游戏</a></p>
-<p>百度贴吧：<a href="http://tieba.baidu.com/f?kw=%E8%A1%8C%E7%95%8C">行界吧</a></p>
-<p>官方微信公众号：</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Yixing_Wechat.jpg-QNthin" alt="行界"></p>
-]]></content>
-      <categories>
-        <category>其它笔记</category>
-      </categories>
-      <tags>
-        <tag>益行游戏</tag>
-        <tag>行界</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>鲸落双城记</title>
     <url>/post/WhaleFallLive_201511/</url>
     <content><![CDATA[<p>新加入鲸落乐队，我当Bass手。弹Bass没什么存在感，可是玩的很开心:-) </p>
@@ -1818,6 +1868,51 @@ apt-get install libusb-1.0-0-dev
       <categories>
         <category>其它笔记</category>
       </categories>
+  </entry>
+  <entry>
+    <title>《行界：零》</title>
+    <url>/post/WENT_Zero/</url>
+    <content><![CDATA[<blockquote>
+<p>“每个成功的合作关系都是如此，完全地、盲目地投入，不计后果，和婚姻一样。否则就是交易。”</p>
+</blockquote>
+<p><img data-src="http://qiniu.s1nh.org/Blog_XingjieDesign_8.jpg-QNthin"></p>
+<span id="more"></span>
+
+<hr>
+<p>游戏的背景是设定在另一个平行世界。</p>
+<p>灵感来源是Google实验室的ingress。</p>
+<p>这个游戏的设计几乎陪伴了我整个大四，各种地图Api、各种游戏引擎。</p>
+<p>整整一个学期的策划，我们一次次的头脑风暴，一次次的推翻。</p>
+<p>刚开始我们的设计图还没那么“后摇”，有点日系，有点小清新。好像还起了英文名字《WENT：Went EN Tesseract》</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_WENT_02.png-QNthin" alt="行界"></p>
+<p>当然少不了宣传“小球”——当时我通宵写的代码现在被重构的一行都不剩:(</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_WENT_01.png-QNthin" alt="行界"></p>
+<p>还很幼稚的做了“游戏数值建模”。</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_WENT_03.png-QNthin" alt="行界"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_WENT_05.png-QNthin" alt="行界"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_WENT_04.png-QNthin" alt="行界"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_XingjieDesign_2.png-QNthin" alt="行界"></p>
+<p>这几个月游戏开发进度特别快，游戏策划、UI都已经基本完成了，还确定了名字《行界：零》。下午去公司转了一圈，他们正在讨论游戏交互的设计。突然发现游戏开发团队已经扩大到十几人了。</p>
+<!-- ![](http://qiniu.s1nh.org/Blog_XingjieDesign_5.jpg-QNthin) -->
+
+<p><img data-src="http://qiniu.s1nh.org/Blog_XingjieDesign_6.jpg-QNthin" alt="行界"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_XingjieDesign_1.jpg-QNthin" alt="行界"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_XingjieDesign_3.jpg-QNthin" alt="行界"></p>
+<p>寒冬要到了，祝“益行游戏”能傲然挺立。</p>
+<p>官方网站：<a href="http://www.1-xing.com/">http://www.1-xing.com</a></p>
+<p>交流群：250293575</p>
+<p>官方微博：<a href="http://weibo.com/u/5208965212">@益行游戏</a></p>
+<p>百度贴吧：<a href="http://tieba.baidu.com/f?kw=%E8%A1%8C%E7%95%8C">行界吧</a></p>
+<p>官方微信公众号：</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Yixing_Wechat.jpg-QNthin" alt="行界"></p>
+]]></content>
+      <categories>
+        <category>其它笔记</category>
+      </categories>
+      <tags>
+        <tag>益行游戏</tag>
+        <tag>行界</tag>
+      </tags>
   </entry>
   <entry>
     <title>豫章书院与当代鲁迅的倒下</title>
@@ -2131,6 +2226,25 @@ apt-get install libusb-1.0-0-dev
       </tags>
   </entry>
   <entry>
+    <title>逆向了 SermoonV1 的 CR-FDM-v2.4.S1.200 主板</title>
+    <url>/post/config-for-sermoonv1/</url>
+    <content><![CDATA[<blockquote>
+<p>上一篇文章吐槽了 <code>创想三维 Sermoon V1</code> 的缺点，其中包括不开源的主板。我花了几天时间逆向，得到了主板的配置文件。<br>使用此配置文件可以自行编译固件：开启 Lineradvance、加入 BLTouch 自动调平、降低待机时风扇的噪声。<br>新的配置文件在 <a href="https://github.com/Klipper3d/klipper/pull/5621">Klipper3d/klipper#5621</a></p>
+</blockquote>
+<p><img data-src="http://qiniu.s1nh.org/sermoon_v1_board_diagram.png-QNthin"></p>
+<span id="more"></span>
+
+<h2 id="0x01-风扇控制"><a href="#0x01-风扇控制" class="headerlink" title="0x01 风扇控制"></a>0x01 风扇控制</h2><p>除挤出机上的两个风扇以外，SermoonV1 还提供 <code>机箱风扇</code> <code>主板风扇</code> <code>电源风扇</code>，其中电源、主板风扇默认连接在<code>常开风扇</code>接口中。<br>机器噪音最大的是主板风扇，在待机的时候没必要开启它。因此，我们可以按照下图把主板风扇插到 <code>PB4</code> 中。</p>
+<p>另外，原厂固件只能手动控制机箱风扇的开关。如果使用Klipper固件，将自动设置为“打印时开启机箱风扇”。</p>
+<p><img data-src="http://qiniu.s1nh.org/sermoon_v1_modify_fan_pin.jpg-QNthin"></p>
+<h2 id="0x02-自动调平"><a href="#0x02-自动调平" class="headerlink" title="0x02 自动调平"></a>0x02 自动调平</h2><p>此主板和挤出机扩展板有额外的接口可以添加BLTouch自动调平，虽然没多大必要，但有兴趣的可以自行DIY。</p>
+<h2 id="0x03-其它"><a href="#0x03-其它" class="headerlink" title="0x03 其它"></a>0x03 其它</h2><p>目前只添加了Klipper的配置文件，晚些会编写Marlin的代码。</p>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+  </entry>
+  <entry>
     <title>什么是卷积神经网络</title>
     <url>/post/convolutional-neural-network-introduction/</url>
     <content><![CDATA[<p>学到卷积神经网络，搜索到的资料一般都是这样的</p>
@@ -2420,6 +2534,35 @@ apt-get install libusb-1.0-0-dev
       </categories>
   </entry>
   <entry>
+    <title>Kali linux 主题 与 eclipse 黑色主题冲突</title>
+    <url>/post/eclipse-dark-theme-conflicts-with-gnome-theme-kali/</url>
+    <content><![CDATA[<p><code>2016-09-27 07:49 Fixed in Version 2016.3</code></p>
+<blockquote>
+<p>秉承着以解决问题为乐趣，没有问题创造问题也要解决问题为基本准则。今天发现了一个gnome-theme-kal主题在xfce4下的Bug</p>
+</blockquote>
+<p>最近用Nvidia提供的Nsight来写OpenCV/CUDA，白色主题实在是太丑了，就采用通用的方法换成了黑色主题。结果不管怎么折腾，旁边的Navigator都还是白色的，使得整个界面不白不黑的，简直比VIM还丑。</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_kali-theme_1.png-QNthin"></p>
+<span id="more"></span>
+
+<h2 id="0x00"><a href="#0x00" class="headerlink" title="0x00"></a>0x00</h2><p>本以为是Eclipse配置的问题，昨晚折腾了一宿都没搞定，今天一大早起来换了个主题，问题就解决了。看来是Kali的主题跟Eclipse有冲突。</p>
+<p>主题目录为<code>/usr/share/themes/Kali-X/gtk-2.0/</code>。一顿瞎折腾，定位到冲突的代码为<code>gtkrc</code>文件的如下几行：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">GtkTreeView::odd_row_color	= shade (0.97, @base_color)</span><br><span class="line">GtkTreeView::even_row_color	= @base_color</span><br></pre></td></tr></table></figure>
+
+<p>Bug的原因为Kali已经设置好了GtkTreeView的颜色，Eclipse会使用系统默认的颜色，导致黑色主题无效。注释掉以上代码，问题解决。</p>
+<h2 id="0x01"><a href="#0x01" class="headerlink" title="0x01"></a>0x01</h2><p>同样，按钮的颜色也很丑，是<code>default_button_color = shade (1.12, @bg_color)</code>和<code>bg[PRELIGHT] = shade (1.13, @bg_color)</code>代码导致的。</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_kali-theme_2.png-QNthin"></p>
+<p>我的解决方案为注释前一行，修改后一行，如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># default_button_color = shade (1.12, @bg_color)   ##注释掉这行</span><br><span class="line"></span><br><span class="line">bg[PRELIGHT] = shade (1.13, @selected_bg_color)    ##修改颜色</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>修改后问题解决：</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_kali-theme_3.png-QNthin"></p>
+<p>已经提交<a href="https://bugs.kali.org/view.php?id=3630">Bug Tracker</a>（估计又有人要嫌弃我的英文水平了）</p>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+  </entry>
+  <entry>
     <title>文档布局分析 &amp; 扭曲文档图像恢复 --- Document Layout Analysis &amp; Document Image Dewarping</title>
     <url>/post/document-layout-analysis/</url>
     <content><![CDATA[<!--
@@ -2522,35 +2665,6 @@ apt-get install libusb-1.0-0-dev
         <tag>OCR</tag>
         <tag>docstrum</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Kali linux 主题 与 eclipse 黑色主题冲突</title>
-    <url>/post/eclipse-dark-theme-conflicts-with-gnome-theme-kali/</url>
-    <content><![CDATA[<p><code>2016-09-27 07:49 Fixed in Version 2016.3</code></p>
-<blockquote>
-<p>秉承着以解决问题为乐趣，没有问题创造问题也要解决问题为基本准则。今天发现了一个gnome-theme-kal主题在xfce4下的Bug</p>
-</blockquote>
-<p>最近用Nvidia提供的Nsight来写OpenCV/CUDA，白色主题实在是太丑了，就采用通用的方法换成了黑色主题。结果不管怎么折腾，旁边的Navigator都还是白色的，使得整个界面不白不黑的，简直比VIM还丑。</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_kali-theme_1.png-QNthin"></p>
-<span id="more"></span>
-
-<h2 id="0x00"><a href="#0x00" class="headerlink" title="0x00"></a>0x00</h2><p>本以为是Eclipse配置的问题，昨晚折腾了一宿都没搞定，今天一大早起来换了个主题，问题就解决了。看来是Kali的主题跟Eclipse有冲突。</p>
-<p>主题目录为<code>/usr/share/themes/Kali-X/gtk-2.0/</code>。一顿瞎折腾，定位到冲突的代码为<code>gtkrc</code>文件的如下几行：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">GtkTreeView::odd_row_color	= shade (0.97, @base_color)</span><br><span class="line">GtkTreeView::even_row_color	= @base_color</span><br></pre></td></tr></table></figure>
-
-<p>Bug的原因为Kali已经设置好了GtkTreeView的颜色，Eclipse会使用系统默认的颜色，导致黑色主题无效。注释掉以上代码，问题解决。</p>
-<h2 id="0x01"><a href="#0x01" class="headerlink" title="0x01"></a>0x01</h2><p>同样，按钮的颜色也很丑，是<code>default_button_color = shade (1.12, @bg_color)</code>和<code>bg[PRELIGHT] = shade (1.13, @bg_color)</code>代码导致的。</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_kali-theme_2.png-QNthin"></p>
-<p>我的解决方案为注释前一行，修改后一行，如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># default_button_color = shade (1.12, @bg_color)   ##注释掉这行</span><br><span class="line"></span><br><span class="line">bg[PRELIGHT] = shade (1.13, @selected_bg_color)    ##修改颜色</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>修改后问题解决：</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_kali-theme_3.png-QNthin"></p>
-<p>已经提交<a href="https://bugs.kali.org/view.php?id=3630">Bug Tracker</a>（估计又有人要嫌弃我的英文水平了）</p>
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
-      </categories>
   </entry>
   <entry>
     <title>首版复刻的Fender &#39;57 &amp; &#39;62 Strat 拾音器</title>
@@ -2934,6 +3048,30 @@ apt-get install libusb-1.0-0-dev
       </categories>
   </entry>
   <entry>
+    <title>「Jetson Nano」 Reduce Memory Usage</title>
+    <url>/post/jetson-nano-reduce-memory-usage/</url>
+    <content><![CDATA[<blockquote>
+<p>Nano 的4G内存太小了（最近还出来一个2G版nano &gt;_&lt;），模型跑不动的患者可以通过以下几个步骤减少内存消耗。</p>
+</blockquote>
+<p><strong>1. 关闭用户图形界面</strong><br>sudo systemctl set-default multi-user.target<br>sudo reboot</p>
+<p>开启用户图形界面<br>sudo systemctl set-default graphical.target<br>sudo reboot</p>
+<p><strong>2. 切换图形界面</strong><br>默认图形界面为Unity，Ubuntu 18 系统自带Gnome3，可切换到 lxde 以节约内存。</p>
+<ul>
+<li>GNOME3 :1047M</li>
+<li>Unity: 517M</li>
+<li>xfce: 247M</li>
+<li>lxde: 214M</li>
+</ul>
+<p><strong>3. 关闭 dockerd 节约 49M</strong></p>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+      <tags>
+        <tag>Jetson</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Inference using TensorRT Backend.</title>
     <url>/post/inference-using-tensorrt-backend/</url>
     <content><![CDATA[<h2 id="0x01-Tensorflow-2-0"><a href="#0x01-Tensorflow-2-0" class="headerlink" title="0x01 Tensorflow 2.0"></a>0x01 Tensorflow 2.0</h2><h3 id="1-1-Convert"><a href="#1-1-Convert" class="headerlink" title="1.1. Convert"></a>1.1. Convert</h3><p><strong>keras hdf5 –&gt; .pb</strong></p>
@@ -2962,30 +3100,6 @@ apt-get install libusb-1.0-0-dev
       </categories>
       <tags>
         <tag>边缘计算</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>「Jetson Nano」 Reduce Memory Usage</title>
-    <url>/post/jetson-nano-reduce-memory-usage/</url>
-    <content><![CDATA[<blockquote>
-<p>Nano 的4G内存太小了（最近还出来一个2G版nano &gt;_&lt;），模型跑不动的患者可以通过以下几个步骤减少内存消耗。</p>
-</blockquote>
-<p><strong>1. 关闭用户图形界面</strong><br>sudo systemctl set-default multi-user.target<br>sudo reboot</p>
-<p>开启用户图形界面<br>sudo systemctl set-default graphical.target<br>sudo reboot</p>
-<p><strong>2. 切换图形界面</strong><br>默认图形界面为Unity，Ubuntu 18 系统自带Gnome3，可切换到 lxde 以节约内存。</p>
-<ul>
-<li>GNOME3 :1047M</li>
-<li>Unity: 517M</li>
-<li>xfce: 247M</li>
-<li>lxde: 214M</li>
-</ul>
-<p><strong>3. 关闭 dockerd 节约 49M</strong></p>
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
-      </categories>
-      <tags>
-        <tag>Jetson</tag>
       </tags>
   </entry>
   <entry>
