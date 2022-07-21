@@ -664,33 +664,6 @@ root@kali:~# depmod -a -v &quot;3.8.13-bone53&quot;
       </categories>
   </entry>
   <entry>
-    <title>Fender S-1 开关的接法</title>
-    <url>/post/Fender_S-1_WiringDiagram/</url>
-    <content><![CDATA[<p>最近在改造吉他的电路，搜集了一些关于拾音器电路的网站：</p>
-<span id="more"></span>
-
-<ul>
-<li><a href="http://www.seymourduncan.com/support/wiring-diagrams/">Seymour Duncan wiring-diagrams/</a>：Seymour Duncan 官方的电路参考，在这里可以找到各种配置的电路，特别强大。这个网站刚刚改版，看起来比之前人性化许多。</li>
-<li><a href="http://www.deluxeguitar.com/">Deluxe Guitar</a>：包含了美豪的电路、琴颈形状、旋钮、音色试听等各种信息。</li>
-<li><a href="http://guitarwiring.blogspot.jp/">The Guitar Wiring Blog</a>：各种各样奇奇怪怪的吉他电路图。</li>
-<li><a href="http://www.premierguitar.com/articles/Mod_Garage_The_Fender_S_1_Switching_System">Mod Garage The Fender S-1 Switching System</a>：这个帖子是介绍S-1开关的</li>
-</ul>
-<p>下面是从fender官网搜集的4个不同型号的Fender Deluxe St电路图：</p>
-<p><a href="http://qiniu.s1nh.org/Blog_011-8102A_SISD.pdf">011-8102A_SISD.pdf</a></p>
-<p><a href="http://qiniu.s1nh.org/Blog_011-9000B_SISD.pdf">011-9000B_SISD.pdf</a></p>
-<p><a href="http://qiniu.s1nh.org/Blog_011-9100A_SISD.pdf">011-9100A_SISD.pdf</a></p>
-<p><a href="http://qiniu.s1nh.org/Blog_Fender_Am_Dlx_Stratocaster_HSS_Shawbucker_011911XXXX_Service_Manual.pdf">Fender_011911XXXX_Service_Manual.pdf</a></p>
-]]></content>
-      <categories>
-        <category>音乐相关</category>
-      </categories>
-      <tags>
-        <tag>fender</tag>
-        <tag>wiring diagram</tag>
-        <tag>S1</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Github 支持除代码以外的文件格式</title>
     <url>/post/Github-non-code-files/</url>
     <content><![CDATA[<p>Github 支持图片, geoJSON, 3D模型, 表格, PDF等格式的查看和版本对比。</p>
@@ -729,6 +702,33 @@ root@kali:~# depmod -a -v &quot;3.8.13-bone53&quot;
       </categories>
       <tags>
         <tag>Github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Fender S-1 开关的接法</title>
+    <url>/post/Fender_S-1_WiringDiagram/</url>
+    <content><![CDATA[<p>最近在改造吉他的电路，搜集了一些关于拾音器电路的网站：</p>
+<span id="more"></span>
+
+<ul>
+<li><a href="http://www.seymourduncan.com/support/wiring-diagrams/">Seymour Duncan wiring-diagrams/</a>：Seymour Duncan 官方的电路参考，在这里可以找到各种配置的电路，特别强大。这个网站刚刚改版，看起来比之前人性化许多。</li>
+<li><a href="http://www.deluxeguitar.com/">Deluxe Guitar</a>：包含了美豪的电路、琴颈形状、旋钮、音色试听等各种信息。</li>
+<li><a href="http://guitarwiring.blogspot.jp/">The Guitar Wiring Blog</a>：各种各样奇奇怪怪的吉他电路图。</li>
+<li><a href="http://www.premierguitar.com/articles/Mod_Garage_The_Fender_S_1_Switching_System">Mod Garage The Fender S-1 Switching System</a>：这个帖子是介绍S-1开关的</li>
+</ul>
+<p>下面是从fender官网搜集的4个不同型号的Fender Deluxe St电路图：</p>
+<p><a href="http://qiniu.s1nh.org/Blog_011-8102A_SISD.pdf">011-8102A_SISD.pdf</a></p>
+<p><a href="http://qiniu.s1nh.org/Blog_011-9000B_SISD.pdf">011-9000B_SISD.pdf</a></p>
+<p><a href="http://qiniu.s1nh.org/Blog_011-9100A_SISD.pdf">011-9100A_SISD.pdf</a></p>
+<p><a href="http://qiniu.s1nh.org/Blog_Fender_Am_Dlx_Stratocaster_HSS_Shawbucker_011911XXXX_Service_Manual.pdf">Fender_011911XXXX_Service_Manual.pdf</a></p>
+]]></content>
+      <categories>
+        <category>音乐相关</category>
+      </categories>
+      <tags>
+        <tag>fender</tag>
+        <tag>wiring diagram</tag>
+        <tag>S1</tag>
       </tags>
   </entry>
   <entry>
@@ -2245,6 +2245,7 @@ apt-get install libusb-1.0-0-dev
 <h2 id="0x02-其它配置"><a href="#0x02-其它配置" class="headerlink" title="0x02 其它配置"></a>0x02 其它配置</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pressure_advance: 0.04</span><br><span class="line"></span><br><span class="line">[input_shaper]</span><br><span class="line"># 原厂散热风扇</span><br><span class="line">shaper_freq_x: 55.6</span><br><span class="line">shaper_type_x: ei</span><br><span class="line">shaper_freq_y: 65.6</span><br><span class="line">shaper_type_y: 2hump_ei</span><br><span class="line"></span><br><span class="line"># Ben哥散热风扇</span><br><span class="line"># shaper_freq_x: 39.0</span><br><span class="line"># shaper_type_x: mzv</span><br><span class="line"># shaper_freq_y: 44.0</span><br><span class="line"># shaper_type_y: mzv</span><br></pre></td></tr></table></figure>
 
 <h2 id="0x03-Ben-哥散热神器"><a href="#0x03-Ben-哥散热神器" class="headerlink" title="0x03 Ben 哥散热神器"></a>0x03 Ben 哥散热神器</h2><p>原帖在<a href="https://fl.himi3d.cn/d/426-bengo10-ender3-s1">这里</a>，已经改成适合SermoonV1的版本【<a href="http://qiniu.s1nh.org/bengo-sermoon-v1-release.stl">下载</a>】。需要注意的是，散热神器与挤出机支架的部分建议用泡沫胶黏住，减少Y轴噪声。（这破机器Y轴噪声在不加散热器的情况下可以达到 <code>500 mm/sec^2</code>，用<a href="https://www.klipper3d.org/Measuring_Resonances.html#measuring-the-resonances">这种方法</a>测出来的）</p>
+<p>注意，固定风扇的孔位比原作者的大，用于嵌入<code>M3*4*3双通花母</code>。</p>
 <p>另外，最好支持一下原作者，在他的淘宝店购买钩爪和风扇。</p>
 <p><img data-src="http://qiniu.s1nh.org/bengo-sermoon-v1.png"></p>
 ]]></content>
