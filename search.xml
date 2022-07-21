@@ -155,8 +155,7 @@
 <li><p><a href="https://github.com/MagicLu550/996Error">996.Error</a> 收集各种语言写的“996”异常,可以在项目中直接使用</p>
 </li>
 </ul>
-<h2 id="Issues-去哪了？"><a href="#Issues-去哪了？" class="headerlink" title="Issues 去哪了？"></a>Issues 去哪了？</h2><p>即使有互动限制，Issues 区依然完全失去了控制。<br>因此我<strong>个人</strong>决定关闭 Issues，这与 GitHub 或其他方面无关。</p>
-<h2 id="License"><a href="#License" class="headerlink" title="License"></a>License</h2><p><a href="LICENSE">反 996 许可证</a></p>
+<h2 id="License"><a href="#License" class="headerlink" title="License"></a>License</h2><p><a href="https://github.com/cmxc2006/996_ICU/blob/master/LICENSE">反 996 许可证</a></p>
 <ul>
 <li>此许可证的目的是阻止违反劳动法的公司使用许可证下的软件或代码，并强迫这些公司权衡他们的行为。</li>
 <li>在此处查看反 996 许可证下的<a href="https://github.com/996icu/996.ICU/blob/master/awesomelist/README.md">完整项目列表</a></li>
@@ -1813,6 +1812,51 @@ apt-get install libusb-1.0-0-dev
       </categories>
   </entry>
   <entry>
+    <title>《行界：零》</title>
+    <url>/post/WENT_Zero/</url>
+    <content><![CDATA[<blockquote>
+<p>“每个成功的合作关系都是如此，完全地、盲目地投入，不计后果，和婚姻一样。否则就是交易。”</p>
+</blockquote>
+<p><img data-src="http://qiniu.s1nh.org/Blog_XingjieDesign_8.jpg-QNthin"></p>
+<span id="more"></span>
+
+<hr>
+<p>游戏的背景是设定在另一个平行世界。</p>
+<p>灵感来源是Google实验室的ingress。</p>
+<p>这个游戏的设计几乎陪伴了我整个大四，各种地图Api、各种游戏引擎。</p>
+<p>整整一个学期的策划，我们一次次的头脑风暴，一次次的推翻。</p>
+<p>刚开始我们的设计图还没那么“后摇”，有点日系，有点小清新。好像还起了英文名字《WENT：Went EN Tesseract》</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_WENT_02.png-QNthin" alt="行界"></p>
+<p>当然少不了宣传“小球”——当时我通宵写的代码现在被重构的一行都不剩:(</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_WENT_01.png-QNthin" alt="行界"></p>
+<p>还很幼稚的做了“游戏数值建模”。</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_WENT_03.png-QNthin" alt="行界"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_WENT_05.png-QNthin" alt="行界"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_WENT_04.png-QNthin" alt="行界"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_XingjieDesign_2.png-QNthin" alt="行界"></p>
+<p>这几个月游戏开发进度特别快，游戏策划、UI都已经基本完成了，还确定了名字《行界：零》。下午去公司转了一圈，他们正在讨论游戏交互的设计。突然发现游戏开发团队已经扩大到十几人了。</p>
+<!-- ![](http://qiniu.s1nh.org/Blog_XingjieDesign_5.jpg-QNthin) -->
+
+<p><img data-src="http://qiniu.s1nh.org/Blog_XingjieDesign_6.jpg-QNthin" alt="行界"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_XingjieDesign_1.jpg-QNthin" alt="行界"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_XingjieDesign_3.jpg-QNthin" alt="行界"></p>
+<p>寒冬要到了，祝“益行游戏”能傲然挺立。</p>
+<p>官方网站：<a href="http://www.1-xing.com/">http://www.1-xing.com</a></p>
+<p>交流群：250293575</p>
+<p>官方微博：<a href="http://weibo.com/u/5208965212">@益行游戏</a></p>
+<p>百度贴吧：<a href="http://tieba.baidu.com/f?kw=%E8%A1%8C%E7%95%8C">行界吧</a></p>
+<p>官方微信公众号：</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Yixing_Wechat.jpg-QNthin" alt="行界"></p>
+]]></content>
+      <categories>
+        <category>其它笔记</category>
+      </categories>
+      <tags>
+        <tag>益行游戏</tag>
+        <tag>行界</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>鲸落双城记</title>
     <url>/post/WhaleFallLive_201511/</url>
     <content><![CDATA[<p>新加入鲸落乐队，我当Bass手。弹Bass没什么存在感，可是玩的很开心:-) </p>
@@ -1868,51 +1912,6 @@ apt-get install libusb-1.0-0-dev
       <categories>
         <category>其它笔记</category>
       </categories>
-  </entry>
-  <entry>
-    <title>《行界：零》</title>
-    <url>/post/WENT_Zero/</url>
-    <content><![CDATA[<blockquote>
-<p>“每个成功的合作关系都是如此，完全地、盲目地投入，不计后果，和婚姻一样。否则就是交易。”</p>
-</blockquote>
-<p><img data-src="http://qiniu.s1nh.org/Blog_XingjieDesign_8.jpg-QNthin"></p>
-<span id="more"></span>
-
-<hr>
-<p>游戏的背景是设定在另一个平行世界。</p>
-<p>灵感来源是Google实验室的ingress。</p>
-<p>这个游戏的设计几乎陪伴了我整个大四，各种地图Api、各种游戏引擎。</p>
-<p>整整一个学期的策划，我们一次次的头脑风暴，一次次的推翻。</p>
-<p>刚开始我们的设计图还没那么“后摇”，有点日系，有点小清新。好像还起了英文名字《WENT：Went EN Tesseract》</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_WENT_02.png-QNthin" alt="行界"></p>
-<p>当然少不了宣传“小球”——当时我通宵写的代码现在被重构的一行都不剩:(</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_WENT_01.png-QNthin" alt="行界"></p>
-<p>还很幼稚的做了“游戏数值建模”。</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_WENT_03.png-QNthin" alt="行界"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_WENT_05.png-QNthin" alt="行界"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_WENT_04.png-QNthin" alt="行界"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_XingjieDesign_2.png-QNthin" alt="行界"></p>
-<p>这几个月游戏开发进度特别快，游戏策划、UI都已经基本完成了，还确定了名字《行界：零》。下午去公司转了一圈，他们正在讨论游戏交互的设计。突然发现游戏开发团队已经扩大到十几人了。</p>
-<!-- ![](http://qiniu.s1nh.org/Blog_XingjieDesign_5.jpg-QNthin) -->
-
-<p><img data-src="http://qiniu.s1nh.org/Blog_XingjieDesign_6.jpg-QNthin" alt="行界"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_XingjieDesign_1.jpg-QNthin" alt="行界"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_XingjieDesign_3.jpg-QNthin" alt="行界"></p>
-<p>寒冬要到了，祝“益行游戏”能傲然挺立。</p>
-<p>官方网站：<a href="http://www.1-xing.com/">http://www.1-xing.com</a></p>
-<p>交流群：250293575</p>
-<p>官方微博：<a href="http://weibo.com/u/5208965212">@益行游戏</a></p>
-<p>百度贴吧：<a href="http://tieba.baidu.com/f?kw=%E8%A1%8C%E7%95%8C">行界吧</a></p>
-<p>官方微信公众号：</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Yixing_Wechat.jpg-QNthin" alt="行界"></p>
-]]></content>
-      <categories>
-        <category>其它笔记</category>
-      </categories>
-      <tags>
-        <tag>益行游戏</tag>
-        <tag>行界</tag>
-      </tags>
   </entry>
   <entry>
     <title>豫章书院与当代鲁迅的倒下</title>
@@ -2230,15 +2229,24 @@ apt-get install libusb-1.0-0-dev
     <url>/post/config-for-sermoonv1/</url>
     <content><![CDATA[<blockquote>
 <p>上一篇文章吐槽了 <code>创想三维 Sermoon V1</code> 的缺点，其中包括不开源的主板。我花了几天时间逆向，得到了主板的配置文件。<br>使用此配置文件可以自行编译固件：开启 Lineradvance、加入 BLTouch 自动调平、降低待机时风扇的噪声。<br>新的配置文件在 <a href="https://github.com/Klipper3d/klipper/pull/5621">Klipper3d/klipper#5621</a></p>
+<p>另外，文章最后提供一个散热套件的模型。</p>
 </blockquote>
 <p><img data-src="http://qiniu.s1nh.org/sermoon_v1_board_diagram.png-QNthin"></p>
 <span id="more"></span>
 
-<h2 id="0x01-风扇控制"><a href="#0x01-风扇控制" class="headerlink" title="0x01 风扇控制"></a>0x01 风扇控制</h2><p>除挤出机上的两个风扇以外，SermoonV1 还提供 <code>机箱风扇</code> <code>主板风扇</code> <code>电源风扇</code>，其中电源、主板风扇默认连接在<code>常开风扇</code>接口中。<br>机器噪音最大的是主板风扇，在待机的时候没必要开启它。因此，我们可以按照下图把主板风扇插到 <code>PB4</code> 中。</p>
+<h2 id="0x01-配置文件"><a href="#0x01-配置文件" class="headerlink" title="0x01 配置文件"></a>0x01 配置文件</h2><p><strong>a. 风扇控制</strong></p>
+<p>除挤出机上的两个风扇以外，SermoonV1 还提供 <code>机箱风扇</code> <code>主板风扇</code> <code>电源风扇</code>，其中电源、主板风扇默认连接在<code>常开风扇</code>接口中。<br>机器噪音最大的是主板风扇，在待机的时候没必要开启它。因此，我们可以按照下图把主板风扇插到 <code>PB4</code> 中。</p>
 <p>另外，原厂固件只能手动控制机箱风扇的开关。如果使用Klipper固件，将自动设置为“打印时开启机箱风扇”。</p>
 <p><img data-src="http://qiniu.s1nh.org/sermoon_v1_modify_fan_pin.jpg-QNthin"></p>
-<h2 id="0x02-自动调平"><a href="#0x02-自动调平" class="headerlink" title="0x02 自动调平"></a>0x02 自动调平</h2><p>此主板和挤出机扩展板有额外的接口可以添加BLTouch自动调平，虽然没多大必要，但有兴趣的可以自行DIY。</p>
-<h2 id="0x03-其它"><a href="#0x03-其它" class="headerlink" title="0x03 其它"></a>0x03 其它</h2><p>目前只添加了Klipper的配置文件，晚些会编写Marlin的代码。</p>
+<p><strong>b. 自动调平</strong></p>
+<p>此主板和挤出机扩展板有额外的接口可以添加BLTouch自动调平，虽然没多大必要，但有兴趣的可以自行DIY。</p>
+<p><strong>c. 其它</strong></p>
+<p>目前只添加了Klipper的配置文件，晚些会编写Marlin的代码。</p>
+<h2 id="0x02-其它配置"><a href="#0x02-其它配置" class="headerlink" title="0x02 其它配置"></a>0x02 其它配置</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pressure_advance: 0.04</span><br><span class="line"></span><br><span class="line">[input_shaper]</span><br><span class="line"># 原厂散热风扇</span><br><span class="line">shaper_freq_x: 55.6</span><br><span class="line">shaper_type_x: ei</span><br><span class="line">shaper_freq_y: 65.6</span><br><span class="line">shaper_type_y: 2hump_ei</span><br><span class="line"></span><br><span class="line"># Ben哥散热风扇</span><br><span class="line"># shaper_freq_x: 39.0</span><br><span class="line"># shaper_type_x: mzv</span><br><span class="line"># shaper_freq_y: 44.0</span><br><span class="line"># shaper_type_y: mzv</span><br></pre></td></tr></table></figure>
+
+<h2 id="0x03-Ben-哥散热神器"><a href="#0x03-Ben-哥散热神器" class="headerlink" title="0x03 Ben 哥散热神器"></a>0x03 Ben 哥散热神器</h2><p>原帖在<a href="https://fl.himi3d.cn/d/426-bengo10-ender3-s1">这里</a>，已经改成适合SermoonV1的版本【<a href="http://qiniu.s1nh.org/bengo-sermoon-v1-release.stl">下载</a>】。需要注意的是，散热神器与挤出机支架的部分建议用泡沫胶黏住，减少Y轴噪声。（这破机器Y轴噪声在不加散热器的情况下可以达到 <code>500 mm/sec^2</code>，用<a href="https://www.klipper3d.org/Measuring_Resonances.html#measuring-the-resonances">这种方法</a>测出来的）</p>
+<p>另外，最好支持一下原作者，在他的淘宝店购买钩爪和风扇。</p>
+<p><img data-src="http://qiniu.s1nh.org/bengo-sermoon-v1.png"></p>
 ]]></content>
       <categories>
         <category>算法与硬件</category>
@@ -2534,35 +2542,6 @@ apt-get install libusb-1.0-0-dev
       </categories>
   </entry>
   <entry>
-    <title>Kali linux 主题 与 eclipse 黑色主题冲突</title>
-    <url>/post/eclipse-dark-theme-conflicts-with-gnome-theme-kali/</url>
-    <content><![CDATA[<p><code>2016-09-27 07:49 Fixed in Version 2016.3</code></p>
-<blockquote>
-<p>秉承着以解决问题为乐趣，没有问题创造问题也要解决问题为基本准则。今天发现了一个gnome-theme-kal主题在xfce4下的Bug</p>
-</blockquote>
-<p>最近用Nvidia提供的Nsight来写OpenCV/CUDA，白色主题实在是太丑了，就采用通用的方法换成了黑色主题。结果不管怎么折腾，旁边的Navigator都还是白色的，使得整个界面不白不黑的，简直比VIM还丑。</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_kali-theme_1.png-QNthin"></p>
-<span id="more"></span>
-
-<h2 id="0x00"><a href="#0x00" class="headerlink" title="0x00"></a>0x00</h2><p>本以为是Eclipse配置的问题，昨晚折腾了一宿都没搞定，今天一大早起来换了个主题，问题就解决了。看来是Kali的主题跟Eclipse有冲突。</p>
-<p>主题目录为<code>/usr/share/themes/Kali-X/gtk-2.0/</code>。一顿瞎折腾，定位到冲突的代码为<code>gtkrc</code>文件的如下几行：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">GtkTreeView::odd_row_color	= shade (0.97, @base_color)</span><br><span class="line">GtkTreeView::even_row_color	= @base_color</span><br></pre></td></tr></table></figure>
-
-<p>Bug的原因为Kali已经设置好了GtkTreeView的颜色，Eclipse会使用系统默认的颜色，导致黑色主题无效。注释掉以上代码，问题解决。</p>
-<h2 id="0x01"><a href="#0x01" class="headerlink" title="0x01"></a>0x01</h2><p>同样，按钮的颜色也很丑，是<code>default_button_color = shade (1.12, @bg_color)</code>和<code>bg[PRELIGHT] = shade (1.13, @bg_color)</code>代码导致的。</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_kali-theme_2.png-QNthin"></p>
-<p>我的解决方案为注释前一行，修改后一行，如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># default_button_color = shade (1.12, @bg_color)   ##注释掉这行</span><br><span class="line"></span><br><span class="line">bg[PRELIGHT] = shade (1.13, @selected_bg_color)    ##修改颜色</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>修改后问题解决：</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_kali-theme_3.png-QNthin"></p>
-<p>已经提交<a href="https://bugs.kali.org/view.php?id=3630">Bug Tracker</a>（估计又有人要嫌弃我的英文水平了）</p>
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
-      </categories>
-  </entry>
-  <entry>
     <title>文档布局分析 &amp; 扭曲文档图像恢复 --- Document Layout Analysis &amp; Document Image Dewarping</title>
     <url>/post/document-layout-analysis/</url>
     <content><![CDATA[<!--
@@ -2665,6 +2644,35 @@ apt-get install libusb-1.0-0-dev
         <tag>OCR</tag>
         <tag>docstrum</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Kali linux 主题 与 eclipse 黑色主题冲突</title>
+    <url>/post/eclipse-dark-theme-conflicts-with-gnome-theme-kali/</url>
+    <content><![CDATA[<p><code>2016-09-27 07:49 Fixed in Version 2016.3</code></p>
+<blockquote>
+<p>秉承着以解决问题为乐趣，没有问题创造问题也要解决问题为基本准则。今天发现了一个gnome-theme-kal主题在xfce4下的Bug</p>
+</blockquote>
+<p>最近用Nvidia提供的Nsight来写OpenCV/CUDA，白色主题实在是太丑了，就采用通用的方法换成了黑色主题。结果不管怎么折腾，旁边的Navigator都还是白色的，使得整个界面不白不黑的，简直比VIM还丑。</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_kali-theme_1.png-QNthin"></p>
+<span id="more"></span>
+
+<h2 id="0x00"><a href="#0x00" class="headerlink" title="0x00"></a>0x00</h2><p>本以为是Eclipse配置的问题，昨晚折腾了一宿都没搞定，今天一大早起来换了个主题，问题就解决了。看来是Kali的主题跟Eclipse有冲突。</p>
+<p>主题目录为<code>/usr/share/themes/Kali-X/gtk-2.0/</code>。一顿瞎折腾，定位到冲突的代码为<code>gtkrc</code>文件的如下几行：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">GtkTreeView::odd_row_color	= shade (0.97, @base_color)</span><br><span class="line">GtkTreeView::even_row_color	= @base_color</span><br></pre></td></tr></table></figure>
+
+<p>Bug的原因为Kali已经设置好了GtkTreeView的颜色，Eclipse会使用系统默认的颜色，导致黑色主题无效。注释掉以上代码，问题解决。</p>
+<h2 id="0x01"><a href="#0x01" class="headerlink" title="0x01"></a>0x01</h2><p>同样，按钮的颜色也很丑，是<code>default_button_color = shade (1.12, @bg_color)</code>和<code>bg[PRELIGHT] = shade (1.13, @bg_color)</code>代码导致的。</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_kali-theme_2.png-QNthin"></p>
+<p>我的解决方案为注释前一行，修改后一行，如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># default_button_color = shade (1.12, @bg_color)   ##注释掉这行</span><br><span class="line"></span><br><span class="line">bg[PRELIGHT] = shade (1.13, @selected_bg_color)    ##修改颜色</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>修改后问题解决：</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_kali-theme_3.png-QNthin"></p>
+<p>已经提交<a href="https://bugs.kali.org/view.php?id=3630">Bug Tracker</a>（估计又有人要嫌弃我的英文水平了）</p>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
   </entry>
   <entry>
     <title>首版复刻的Fender &#39;57 &amp; &#39;62 Strat 拾音器</title>
@@ -3048,30 +3056,6 @@ apt-get install libusb-1.0-0-dev
       </categories>
   </entry>
   <entry>
-    <title>「Jetson Nano」 Reduce Memory Usage</title>
-    <url>/post/jetson-nano-reduce-memory-usage/</url>
-    <content><![CDATA[<blockquote>
-<p>Nano 的4G内存太小了（最近还出来一个2G版nano &gt;_&lt;），模型跑不动的患者可以通过以下几个步骤减少内存消耗。</p>
-</blockquote>
-<p><strong>1. 关闭用户图形界面</strong><br>sudo systemctl set-default multi-user.target<br>sudo reboot</p>
-<p>开启用户图形界面<br>sudo systemctl set-default graphical.target<br>sudo reboot</p>
-<p><strong>2. 切换图形界面</strong><br>默认图形界面为Unity，Ubuntu 18 系统自带Gnome3，可切换到 lxde 以节约内存。</p>
-<ul>
-<li>GNOME3 :1047M</li>
-<li>Unity: 517M</li>
-<li>xfce: 247M</li>
-<li>lxde: 214M</li>
-</ul>
-<p><strong>3. 关闭 dockerd 节约 49M</strong></p>
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
-      </categories>
-      <tags>
-        <tag>Jetson</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Inference using TensorRT Backend.</title>
     <url>/post/inference-using-tensorrt-backend/</url>
     <content><![CDATA[<h2 id="0x01-Tensorflow-2-0"><a href="#0x01-Tensorflow-2-0" class="headerlink" title="0x01 Tensorflow 2.0"></a>0x01 Tensorflow 2.0</h2><h3 id="1-1-Convert"><a href="#1-1-Convert" class="headerlink" title="1.1. Convert"></a>1.1. Convert</h3><p><strong>keras hdf5 –&gt; .pb</strong></p>
@@ -3100,6 +3084,30 @@ apt-get install libusb-1.0-0-dev
       </categories>
       <tags>
         <tag>边缘计算</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>「Jetson Nano」 Reduce Memory Usage</title>
+    <url>/post/jetson-nano-reduce-memory-usage/</url>
+    <content><![CDATA[<blockquote>
+<p>Nano 的4G内存太小了（最近还出来一个2G版nano &gt;_&lt;），模型跑不动的患者可以通过以下几个步骤减少内存消耗。</p>
+</blockquote>
+<p><strong>1. 关闭用户图形界面</strong><br>sudo systemctl set-default multi-user.target<br>sudo reboot</p>
+<p>开启用户图形界面<br>sudo systemctl set-default graphical.target<br>sudo reboot</p>
+<p><strong>2. 切换图形界面</strong><br>默认图形界面为Unity，Ubuntu 18 系统自带Gnome3，可切换到 lxde 以节约内存。</p>
+<ul>
+<li>GNOME3 :1047M</li>
+<li>Unity: 517M</li>
+<li>xfce: 247M</li>
+<li>lxde: 214M</li>
+</ul>
+<p><strong>3. 关闭 dockerd 节约 49M</strong></p>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+      <tags>
+        <tag>Jetson</tag>
       </tags>
   </entry>
   <entry>
