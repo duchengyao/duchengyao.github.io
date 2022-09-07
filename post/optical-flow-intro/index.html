@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
@@ -16,10 +16,10 @@
 
 
 
-<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-xejo6yLi6vGtAjcMIsY8BHdKsLg7QynVlFMzdQgUuy8=" crossorigin="anonymous">
   <link rel="stylesheet" href="/lib/@fancyapps/fancybox/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.11.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="绝大部分摘自光流Optical Flow介绍与OpenCV实现，光流法介绍  光流是空间运动物体在观察成像平面上的像素运动的瞬时速度，是利用图像序列中像素在时间域上的变化以及相邻帧之间的相关性来找到上一帧跟当前帧之间存在的对应关系，从而计算出相邻帧之间物体的运动信息的一种方法。">
 <meta property="og:type" content="article">
@@ -163,7 +163,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">85</span>
+          <span class="site-state-item-count">89</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -174,7 +174,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">83</span>
+        <span class="site-state-item-count">85</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -201,6 +201,10 @@
     </ul>
   </div>
 
+<div>
+<hr>
+<img src="/images/wechatpay-ss.jpg" alt="Buy me a coffe.">
+</div>
         </div>
       </div>
     </div>
@@ -301,13 +305,13 @@
 <p>1981年，Horn和Schunck创造性地将二维速度场与灰度相联系，引入光流约束方程，得到光流计算的基本算法。人们基于不同的理论基础提出各种光流计算方法，算法性能各有不同。Barron等人对多种光流计算技术进行了总结，按照理论基础与数学方法的区别把它们分成四种：基于梯度的方法、基于匹配的方法、基于能量的方法、基于相位的方法。近年来神经动力学方法也颇受学者重视。</p>
 <p>在比较理想的情况下，它能够检测独立运动的对象，不需要预先知道场景的任何信息，可以很精确地计算出运动物体的速度，并且可用于摄像机运动的情况。</p>
 <p>但光流法存在下面的缺点：有时即使没有发生运动，在外部照明发生变化时，也可以观测到光流；另外，在缺乏足够的灰度等级变化的区域，实际运动也往往观测不到。三维物体的运动投影到二维图像的亮度变化，本身由于部分信息的丢失而使光流法存在孔径问题和遮挡问题，用光流法估算二维运动场是不确定的，需要附加的假设模型来模拟二维运动场的结构；在准确分割时，光流法还需要利用颜色、灰度、边缘等空域特征来提高分割精度；同时由于光流法采用迭代的方法，计算复杂耗时，如果没有特殊的硬件支持，很难应用于视频序列的实时检测。</p>
-<h3 id="光流方程"><a href="#光流方程" class="headerlink" title="光流方程"></a>光流方程</h3><p>假设$E(x,y,t)$为$(x,y)$点在时刻t的灰度（照度）。设$t+dt$时刻该点运动到$(x+dx,y+dy)$点，他的照度为$E(x+dx,y+dy,t+dt)$。我们认为，由于对应同一个点，所以<br>$$E(x,y,t) = E(x+dx,y+dy,t+dt) ,,,,,,,（光流约束方程）$$<br>将上式右边做泰勒展开，并令$dt-&gt;0$，则得到 $Exu+Eyv+Et = 0$，其中：<br>$$Ex =  \dfrac{dE}{dx} ,,,, Ey =  \dfrac{dE}{dy} ,,,, Et = \dfrac{dE}{dt} ,,,, u = \dfrac{dx}{dt} ,,,, v = \dfrac{dy}{dt} $$<br>上面的Ex,Ey,Et的计算都很简单，用离散的差分代替导数就可以了。光流法的主要任务就是通过求解光流约束方程求出u,v。如果用于摄像机固定的这一特定情况，问题可以大大简化。</p>
-<h3 id="摄像机固定的情形"><a href="#摄像机固定的情形" class="headerlink" title="摄像机固定的情形"></a>摄像机固定的情形</h3><p>在摄像机固定的情形下，运动物体的检测其实就是分离前景和背景的问题。对于背景，理想情况下，其光流应当为0，只有前景才有光流。所以并不要求通过求解光流约束方程求出u,v。只要求出亮度梯度方向的速率$sqrt(u*u+v*v)$即可。<br>由光流约束方程得到到梯度方向的光流速率为 $V = abs(\dfrac{Et}{sqrt(Ex*Ex+Ey*Ey)})$。<br>设定一个阈值T，若$V(x,y) &gt; T$ 则$(x,y)$是前景 ，反之是背景。</p>
+<h3 id="光流方程"><a href="#光流方程" class="headerlink" title="光流方程"></a>光流方程</h3><p>假设$E(x,y,t)$为$(x,y)$点在时刻t的灰度（照度）。设$t+dt$时刻该点运动到$(x+dx,y+dy)$点，他的照度为$E(x+dx,y+dy,t+dt)$。我们认为，由于对应同一个点，所以<br>$$E(x,y,t) &#x3D; E(x+dx,y+dy,t+dt) ,,,,,,,（光流约束方程）$$<br>将上式右边做泰勒展开，并令$dt-&gt;0$，则得到 $Exu+Eyv+Et &#x3D; 0$，其中：<br>$$Ex &#x3D;  \dfrac{dE}{dx} ,,,, Ey &#x3D;  \dfrac{dE}{dy} ,,,, Et &#x3D; \dfrac{dE}{dt} ,,,, u &#x3D; \dfrac{dx}{dt} ,,,, v &#x3D; \dfrac{dy}{dt} $$<br>上面的Ex,Ey,Et的计算都很简单，用离散的差分代替导数就可以了。光流法的主要任务就是通过求解光流约束方程求出u,v。如果用于摄像机固定的这一特定情况，问题可以大大简化。</p>
+<h3 id="摄像机固定的情形"><a href="#摄像机固定的情形" class="headerlink" title="摄像机固定的情形"></a>摄像机固定的情形</h3><p>在摄像机固定的情形下，运动物体的检测其实就是分离前景和背景的问题。对于背景，理想情况下，其光流应当为0，只有前景才有光流。所以并不要求通过求解光流约束方程求出u,v。只要求出亮度梯度方向的速率$sqrt(u*u+v*v)$即可。<br>由光流约束方程得到到梯度方向的光流速率为 $V &#x3D; abs(\dfrac{Et}{sqrt(Ex*Ex+Ey*Ey)})$。<br>设定一个阈值T，若$V(x,y) &gt; T$ 则$(x,y)$是前景 ，反之是背景。</p>
 <h3 id="Munsell颜色系统"><a href="#Munsell颜色系统" class="headerlink" title="Munsell颜色系统"></a>Munsell颜色系统</h3><p>光流场是图片中每个像素都有一个x方向和y方向的位移，所以在上面那些光流计算结束后得到的光流flow是个和原来图像大小相等的双通道图像。可以用Munsell颜色系统来显示。</p>
 <p><img data-src="http://qiniu.s1nh.org/Blog_optical_flow-01.jpg-QNthin"></p>
 <p>孟塞尔颜色系统的空间大致成一个圆柱形：</p>
 <blockquote>
-<p>南北轴=明度（value），从全黑（1）到全白（10）。<br>经度=色相（hue）。把一周均分成五种主色调和五种中间色：红(R)、红黄(YR)、黄(Y)、黄绿(GY)、绿(G)、绿蓝(BG)、蓝(B)、蓝紫(PB)、紫(P)、紫红(RP)。相邻的两个位置之间再均分10份，共100份。<br>距轴的距离=色度（chroma），表示色调的纯度。其数值从中间（0）向外随着色调的纯度增加，没有理论上的上限（普通的颜色实际上限为10左右，反光、荧光等材料可高达30）。由于人眼对各种颜色的的敏感度不同，色度不一定与每个色调和明度组合相匹配。</p>
+<p>南北轴&#x3D;明度（value），从全黑（1）到全白（10）。<br>经度&#x3D;色相（hue）。把一周均分成五种主色调和五种中间色：红(R)、红黄(YR)、黄(Y)、黄绿(GY)、绿(G)、绿蓝(BG)、蓝(B)、蓝紫(PB)、紫(P)、紫红(RP)。相邻的两个位置之间再均分10份，共100份。<br>距轴的距离&#x3D;色度（chroma），表示色调的纯度。其数值从中间（0）向外随着色调的纯度增加，没有理论上的上限（普通的颜色实际上限为10左右，反光、荧光等材料可高达30）。由于人眼对各种颜色的的敏感度不同，色度不一定与每个色调和明度组合相匹配。</p>
 </blockquote>
 <p>具体颜色的标识形式为：色相+明度+色度。</p>
 <h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><p>[1]Pyramidal Implementation of the Lucas Kanade Feature TrackerDescription of the algorithm<br>通过金字塔Lucas-Kanade 光流方法计算某些点集的光流（稀疏光流）。</p>
@@ -429,7 +433,7 @@
 
   
 
-  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"/lib/mathjax/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"/lib/mathjax/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
 <script src="/js/third-party/math/mathjax.js"></script>
 
 

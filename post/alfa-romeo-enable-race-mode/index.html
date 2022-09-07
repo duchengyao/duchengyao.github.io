@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
@@ -16,10 +16,10 @@
 
 
 
-<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-xejo6yLi6vGtAjcMIsY8BHdKsLg7QynVlFMzdQgUuy8=" crossorigin="anonymous">
   <link rel="stylesheet" href="/lib/@fancyapps/fancybox/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.11.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="阿尔法罗密欧的四叶草（Quadrifoglio）版本具有 Race 模式，在此模式下打开双模式排气，停用 ESC 稳定控制系统，同时提高油门、变速箱、制动和转向响应。 在普通版本的阿尔法罗密欧中，可以通过修改 Body Control Module(BCM) 的配置文件来启动隐藏的 Race 模式。 通常，改装 Race 模式的方法是去闲鱼购买一个四叶草版本的 DNA 开关（￥1100），远">
 <meta property="og:type" content="article">
@@ -167,7 +167,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">85</span>
+          <span class="site-state-item-count">89</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -178,7 +178,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">83</span>
+        <span class="site-state-item-count">85</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -205,6 +205,10 @@
     </ul>
   </div>
 
+<div>
+<hr>
+<img src="/images/wechatpay-ss.jpg" alt="Buy me a coffe.">
+</div>
         </div>
       </div>
     </div>
@@ -324,7 +328,7 @@
 
 <h2 id="0x02-三种-DNA-模式"><a href="#0x02-三种-DNA-模式" class="headerlink" title="0x02 三种 DNA 模式"></a>0x02 三种 DNA 模式</h2><p>在设置DNA模式时，有三种可选项，分别是<code>Stock</code> <code>Type 2/DNA</code> <code>Type 3/DNA/Sport</code>，三种模式的原理是将配置文件的第88字节设置为 AC(1<strong>01</strong>0 1100)、CC(1<strong>10</strong>0 1100)、EC(1<strong>11</strong>0 1100)。</p>
 <p>修改为非Stock模式后，不但拥有了Race模式，其它模式的映射也会相应改变。最明显的感觉是<strong>在所有模式中，油门踏板都为线性映射</strong>，不再存在之前在D档一碰油门就乱窜的奇怪映射了。</p>
-<h2 id="0xFE-已知问题"><a href="#0xFE-已知问题" class="headerlink" title="0xFE 已知问题"></a>0xFE 已知问题</h2><p>2017 年初或更早产的 Giulia/Stelvio DTCM 版本过低，PROXI 时会出现以下错误。虽然可以启动 Race 模式，但无法在此模式下使用拨片。</p>
+<h2 id="0xFE-已知问题"><a href="#0xFE-已知问题" class="headerlink" title="0xFE 已知问题"></a>0xFE 已知问题</h2><p>2017 年初或更早产的 Giulia&#x2F;Stelvio DTCM 版本过低，PROXI 时会出现以下错误。虽然可以启动 Race 模式，但无法在此模式下使用拨片。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Error: WRITING PROXI DATA Drive Train Control Node (DTCM)... FAILED! - Request out of range error</span><br><span class="line">Error: Drive Train Control Module (DTCM) EOL Failed</span><br></pre></td></tr></table></figure>
 
 <p>解决方法：</p>
@@ -334,7 +338,7 @@
 <li>去闲鱼收一块新版的电脑板（价格不明）</li>
 <li>放弃 Race 模式，使用 <a target="_blank" rel="noopener" href="https://squadra-tuning.com/obd-tools/traction-controller/">Squadra Tuning</a> 关闭 ESP。</li>
 </ol>
-<h2 id="0xFF-SGW-旁路"><a href="#0xFF-SGW-旁路" class="headerlink" title="0xFF SGW 旁路"></a>0xFF SGW 旁路</h2><p>对于 2018+ 的 Giulia/Stelvio（生产日期大约在 2018 年 2 月之后），您的车里很可能有一个称为安全网关模块 (SGW / SGM) 的设备。</p>
+<h2 id="0xFF-SGW-旁路"><a href="#0xFF-SGW-旁路" class="headerlink" title="0xFF SGW 旁路"></a>0xFF SGW 旁路</h2><p>对于 2018+ 的 Giulia&#x2F;Stelvio（生产日期大约在 2018 年 2 月之后），您的车里很可能有一个称为安全网关模块 (SGW &#x2F; SGM) 的设备。</p>
 <p>需要购买一个 SGW Bypass 设备，才能修改配置。</p>
 
     </div>
@@ -452,7 +456,7 @@
 
   
 
-  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"/lib/mathjax/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"/lib/mathjax/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
 <script src="/js/third-party/math/mathjax.js"></script>
 
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
@@ -16,10 +16,10 @@
 
 
 
-<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-xejo6yLi6vGtAjcMIsY8BHdKsLg7QynVlFMzdQgUuy8=" crossorigin="anonymous">
   <link rel="stylesheet" href="/lib/@fancyapps/fancybox/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.11.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="本文作者在2017年提出了L-ORB算法。速度是传统ORB算法的11倍、传统SIFT算法的639倍。将算法应用到嵌入式系统中性能提升了29倍，但其功耗低至10W。有兴趣的可以点击：**杜承垚,袁景凌,陈旻骋,李涛. GPU加速与L-ORB特征提取的全景视频实时拼接[J]. 计算机研究与发展, 2017, 54(6): 1316-1325.**    本文翻译自：Ghosh, Debabrata,">
 <meta property="og:type" content="article">
@@ -175,7 +175,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">85</span>
+          <span class="site-state-item-count">89</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -186,7 +186,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">83</span>
+        <span class="site-state-item-count">85</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -213,6 +213,10 @@
     </ul>
   </div>
 
+<div>
+<hr>
+<img src="/images/wechatpay-ss.jpg" alt="Buy me a coffe.">
+</div>
         </div>
       </div>
     </div>
@@ -333,26 +337,26 @@
 <h4 id="3-1-1-基于归一化互相关（Normalized-Cross-Correlation-NCC）的拼接"><a href="#3-1-1-基于归一化互相关（Normalized-Cross-Correlation-NCC）的拼接" class="headerlink" title="3.1.1 基于归一化互相关（Normalized Cross Correlation, NCC）的拼接"></a>3.1.1 基于归一化互相关（Normalized Cross Correlation, NCC）的拼接</h4><p>此方法计算在两个图像中的每个位移（shifts）的“窗口”之间的相似性。它被定义为<sup><a href="#20">20</a></sup>：</p>
 <p><img data-src="http://qiniu.s1nh.org/Blog_1-s2.0-S1047320315002059-si1.gif"></p>
 <p>且</p>
-<p>$\overline{I_1} = {1\over N} \sum_i I_1(x_i)$</p>
-<p>$\overline{I_2}=\frac{1}{N}\sum_i I_2(x_i+u)$</p>
-<p>$\overline{I_1}$  和 $\overline{I_2}$ 是窗口的平均值图像。$I_1(x,y)$和$I_2(x,y)$分别是两张图片。$N$是“窗口”大小，$x_i=(x_i,y_i)$ 是窗口的像素坐标，$u=(u,v)$ 是通过NCC系数计算出的位移或偏移。NCC系数的范围为[-1,1]。   NCC峰值相对应的位移参数表示两个图像之间的几何变换。此方法的优点是计算简单，但是速度特别慢。此外，此类算法要求源图像之间必须有显著的重叠。</p>
+<p>$\overline{I_1} &#x3D; {1\over N} \sum_i I_1(x_i)$</p>
+<p>$\overline{I_2}&#x3D;\frac{1}{N}\sum_i I_2(x_i+u)$</p>
+<p>$\overline{I_1}$  和 $\overline{I_2}$ 是窗口的平均值图像。$I_1(x,y)$和$I_2(x,y)$分别是两张图片。$N$是“窗口”大小，$x_i&#x3D;(x_i,y_i)$ 是窗口的像素坐标，$u&#x3D;(u,v)$ 是通过NCC系数计算出的位移或偏移。NCC系数的范围为[-1,1]。   NCC峰值相对应的位移参数表示两个图像之间的几何变换。此方法的优点是计算简单，但是速度特别慢。此外，此类算法要求源图像之间必须有显著的重叠。</p>
 <p>为了解决上述问题，<sup><a href="#27">27</a></sup> ，<sup><a href="#44">44</a></sup> ，<sup><a href="#45">45</a></sup> ，<sup><a href="#46">46</a></sup>几种技术已经被提出。Nasibov等人在图像匹配步骤之前使用的亮度校正矩阵，以便使算法对光照变化不敏感[27]。为了使计算速度更快，Berberidis等人提出的空间互相关来计算源的图像之间的位移的迭代算法<sup><a href="#44">44</a></sup>。Zhao等人提出了通过基于调整根据规模，从源图像中提取兴趣点的方向的相关窗口方法等<sup><a href="#45">45</a></sup> ，以增加计算速度。为了提高算法的非刚性变形的存在下的性能，Vercauteren等人<sup><a href="#46">46</a></sup>提出用黎曼统计（Riemannian statistics）与基于散乱数据拟合（scattered data fitting）的拼接。</p>
 <h4 id="3-1-2-基于互信息（Mutual-Information-MI）的图像拼接"><a href="#3-1-2-基于互信息（Mutual-Information-MI）的图像拼接" class="headerlink" title="3.1.2 基于互信息（Mutual Information, MI）的图像拼接"></a>3.1.2 基于互信息（Mutual Information, MI）的图像拼接</h4><p>不同于基于图像强度值其计算相似性的NCC，互信息测量基于两个图像之间共享信息数量的相似性。两个图像$I_1(X,Y)$与$I_2(X,Y)$之间的MI以熵表示：</p>
-<p>$MI(I_1,I_2)=E(I_1)+E(I_2)-E(I_1,I_2)$</p>
+<p>$MI(I_1,I_2)&#x3D;E(I_1)+E(I_2)-E(I_1,I_2)$</p>
 <p>$E(I_1)$和$E(I_2)$分别是$I_1(x,y)$和$I_2(x,y)$的熵。$E(I_1,I_2)$表示两个图像之间的联合熵。熵是一个随机变量的变异性指标。$I_1(x,y)$的变异性指标为：</p>
-<p>$E(I_1)=-\sum_g p_{I_1}(g)log(p_{I_1}(g)) $</p>
+<p>$E(I_1)&#x3D;-\sum_g p_{I_1}(g)log(p_{I_1}(g)) $</p>
 <p>g是$I_1(x,y) $可能的灰度值，因此$p_{I_1}(g)$是g的概率分布函数。同理，$I_1(x,y)$和$I_2(x,y)$的联合变异性指标为：</p>
-<p>$E(I_1,I_2)=-\sum_{g,h} p_{I_1,I_2}(g,h)log(p_{I_1,I_2}(g,h)) $</p>
+<p>$E(I_1,I_2)&#x3D;-\sum_{g,h} p_{I_1,I_2}(g,h)log(p_{I_1,I_2}(g,h)) $</p>
 <p>h是$I_2(x,y) $可能的灰度值，$P_{I_1,I_2}(g,h) $是g和h的联合概率分布函数。通常情况下，两个图像灰度值的联合直方图来用于衡量两个图像之间的联合概率分布。两个图像之间有更好的对齐，那么这两张图的MI值更大。因此，MI值为最大时，两张图像在变换中为几何对齐的。这种拼接方法的优点是对光线和咬合的变化不敏感。然而，这种于基于NCC的方法有计算速度慢、需要大面积输入图像的重叠等缺点。</p>
 <p>为了解决上述的缺点，几个技术<sup><a href="#29">29</a></sup>、<sup><a href="#47">47</a></sup>和<sup><a href="#48">48</a></sup>已被提出。在<sup><a href="#29">29</a></sup>，Luna等人使用随机梯度算法（stochastic gradient optimization along with MI-based similarity measure）来加快算法的速度。Dame等人<sup><a href="#47">47</a></sup>采用 B-spline function for normalized mutual probability density加快运算速度。他们进一步采用牛顿法（Newton’s method）来加快位移参数的估计。对于低重叠图片<sup><a href="#48">48</a></sup>，Césare等人提出了一种模版匹配方法。</p>
 <p>不同于基于区域（area-based）的方法，基于特征（feature-based）的拼接技术使用特征之间的匹配，来计算一对图像之间的几何变换。因此，这些方法主要依赖于能够提取显著特征的算法。显着特征是图像域的子集，通常是独立的点、连续曲线或连续区域<sup><a href="#49">49</a></sup>。一般的方法是，从源图像检测几个相应的特征，然后使用可靠的对应关系估计单应性矩阵。利用单应矩阵图像进行扭曲然后缝合在一个共同的参考系。因为特征是出发点，整体算法往往会取决于特征提取算法。基于特征的拼接技术一般优于基于区域的技术，但是需要更高的计算成本。根据提取的特征类型，基于特征的拼接方法可分为底层特征的拼接和基于轮廓拼接。</p>
 <h4 id="3-1-3-基于底层特征的（Low-level-feature）拼接"><a href="#3-1-3-基于底层特征的（Low-level-feature）拼接" class="headerlink" title="3.1.3 基于底层特征的（Low-level feature）拼接"></a>3.1.3 基于底层特征的（Low-level feature）拼接</h4><p>这些拼接方法不需要大量重叠区域的图像。</p>
 <h5 id="3-1-3-1-基于Harris角点检测器的拼接79"><a href="#3-1-3-1-基于Harris角点检测器的拼接79" class="headerlink" title="3.1.3.1 基于Harris角点检测器的拼接79"></a>3.1.3.1 基于Harris角点检测器的拼接<sup><a href="#79">79</a></sup></h5><p>Harris角点检测器在底层拼接中具有较强的鲁棒性。最初检测图像中的局部窗口。然后通过改变在不同的方向窗口的一个小的量来改变强度。<sup><a href="#41">41</a></sup> ：</p>
-<p>$E(u,v)=\sum_i w(x_i,y_i)[I(x_i+u,y_i+v)-I(x_i,y_i)]^2$</p>
+<p>$E(u,v)&#x3D;\sum_i w(x_i,y_i)[I(x_i+u,y_i+v)-I(x_i,y_i)]^2$</p>
 <p>$w(x_i,y_i) $ 是 检测窗口$(x_i,y_i) $ 的窗口函数。$I(x_i,y_i) $ 是在$(x_i,y_i)$位置的图像强度值，$I(x_i+u,y_i+v) $ 是到$(u,v)$的位移强度。本地纹理周围像素(local texture around pixel,$(x_i,y_i) $可表示为如下自相关矩阵:</p>
-<p>$C=\sum_i w(x_i,y_i)<br>\begin{bmatrix}<br> I^2_{x_i} &amp; I_{x_i}I_{y_i}  \\<br> I_{x_i}I_{y_i} &amp;  I^2_{y_i}  \\<br>\end{bmatrix}$</p>
+<p>$C&#x3D;\sum_i w(x_i,y_i)<br>\begin{bmatrix}<br> I^2_{x_i} &amp; I_{x_i}I_{y_i}  \\<br> I_{x_i}I_{y_i} &amp;  I^2_{y_i}  \\<br>\end{bmatrix}$</p>
 <p>$I_{x_i}$和$I_{x_i}$是$I(x_i,y_i)$的导数。两个矩阵C对应的极大特征值对应着一个角点。窗口的中心点为一个角点的特征。为了使算法更强壮，可以用“cornerness”的R值来消除边缘点：</p>
-<p>$R=Det(C)-\alpha Tr^2(C)$</p>
+<p>$R&#x3D;Det(C)-\alpha Tr^2(C)$</p>
 <p>$Tr(C) $ 是C的跟踪函数，$\alpha$的范围是$0.04 \leq \alpha \leq 0.06$。如果R的局部最大值高于阈值T，那么此点即为角点。两张图片的角点全部检测完成后，可以通过NCC或者SDD（Sum of Squared Difference）方法来确定其对应关系。随后利用算出的几何对应关系把图片统一到全局参考系中，以便进行拼接。采用Harris角点拼接算法计算简单，准确。</p>
 <p>Harris 角点检测算法的缺点是会有大量密集的角点产生。然而，可以通过排除附近角点的方式来克服次缺点<sup><a href="#23">23</a></sup>。用Harris角点方法的一个主要问题是，在旋转变化比较大时，往往会在拼接时产生重影。<sup><a href="#30">30</a></sup>中通过在Harris角点匹配时使用“slope clustering”的“luminance center-weighting”算法来解决这个问题。另一个问题是在<sup><a href="#50">50</a></sup>中提到的选择局部检测窗口的不确定性，<sup><a href="#51">51</a></sup>，其中使用的区域分割和匹配，来限制搜索窗口中潜在的同源点。</p>
 <h5 id="3-1-3-2-基于FAST角点检测器的拼接"><a href="#3-1-3-2-基于FAST角点检测器的拼接" class="headerlink" title="3.1.3.2 基于FAST角点检测器的拼接"></a>3.1.3.2 基于FAST角点检测器的拼接</h5><p>FAST算法是一个在计算上更有效率且比大多数其他低级别特征提取方法快的角点检测算法，因此基于该算法的拼接方法特别适用于实时图像处理应用程序。算法首先围绕一个候选角点选择16个像素点。如果其中有n（n一般为12）个连续的像素都比候选角点加上一个阈值要高，或者比候选角点减去一个阈值要低，那么此点即为角点（如图4所示）。为了加快FAST算法的速度，通常会使用角点响应函数（a corner response function, CRF) 。CRF给出了基于在本地附近的图像强度的角点的“cornerness”的数值<sup><a href="#41">41</a></sup>通过计算出的CRF值检测局部最大值来确定角点。检测后，对每一对帧进行角点匹配。有时，“词袋”（Bag-of-Words, BoW）算法是用来表示每个图像作为一组角点的描述，以加快匹配过程<sup><a href="#31">31</a></sup>。然后，计算出单应矩阵（homography matrices），最后，把图像投射到一个共同的坐标得到最终的拼接图像。</p>
@@ -368,7 +372,7 @@
 <p>Different optimal seam finding methods have been used in mosaicing literature. For example, in [36] a modified region-of-difference method is used. In [77], authors proposed the use of an algorithm based on watershed segmentation and graph cut optimization. Another method based on dynamic programming and grey relational analysis is used in [78].</p>
 <p>A general comparison of different categories of mosaicing algorithms based on image blending is presented in Table 3. Table 4 highlights the processing times of different mosaicing papers surveyed based on image blending.</p>
 <p>Table 3.<br>Comparative overview of different categories of mosaicing methods based on image blending.</p>
-<p>Category     | Advantages| Disadvantages|<br>Feathering-based |    Fast and good performer under exposure differences | Output often suffer from blur and ghosting effect<br>Pyramid-based |    Good in preventing blur and edge duplication | Suffers from double contouring and ghosting when registration error significant<br>Gradient-based    Output visually more appealing than other methods    High computation required and registration error must be small for good performance<br>Optimal seam-based    Good in dealing with moving objects and parallax    Transition obvious when there are exposure differences</p>
+<p>Category	 | Advantages| Disadvantages|<br>Feathering-based |	Fast and good performer under exposure differences | Output often suffer from blur and ghosting effect<br>Pyramid-based |	Good in preventing blur and edge duplication | Suffers from double contouring and ghosting when registration error significant<br>Gradient-based	Output visually more appealing than other methods	High computation required and registration error must be small for good performance<br>Optimal seam-based	Good in dealing with moving objects and parallax	Transition obvious when there are exposure differences</p>
 <h2 id="五、结论"><a href="#五、结论" class="headerlink" title="五、结论"></a>五、结论</h2><p>Image mosaicing is an important task in the field of computer vision. Success of a mosaicing algorithm depends primarily on registration and blending methods. This paper provides a classification of image mosaicing methods based on image registration and blending algorithms. In addition to providing the description of the different categories, this paper discusses the advantages and disadvantages of each category. From the discussion, it is obvious that there is no single best image mosaicing category. At the same time, the continuous advent of new mosaicing methods in recent years makes it really difficult to choose an appropriate mosaicing algorithm for a specific purpose. Hence, this paper aims at providing a guide for selecting a suitable mosaicing method for a specific application. Although an extensive research has been done in the area of mosaicing, there are still problems to be addressed. For example, mosaicing in the presence of images with significant parallax is still a challenge. Another problem is the processing time. All mosaicing techniques are time consuming and cannot run on low power and low frequency devices. Addressing these issues would be where the future research might be directed at.</p>
 <h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><A NAME="18">[18]: Sa. Ghannam, A.L. Abbott <strong>Cross correlation versus mutual information for image mosaicing</strong> Int. J. Adv. Comput. Sci. Appl. (IJACSA), 4 (2013)</a></p>
 <p><A NAME="19">[19]: A. Levin, A. Zomet, S. Peleg, Y. Weiss <strong>Seamless image stitching in the gradient domain</strong> Comput. Vis.-ECCV (2004), pp. 377–389</a></p>
@@ -376,7 +380,7 @@
 <p><A NAME="21">[21]: A. Behrens, M. Guski, T. Stehle, S. Gross, T. Aach, Intensity based multi-scale blending for panoramic images in fluorescence endoscopy, in: IEEE International Symposium on Biomedical Imaging: From Nano to Macro, 2010, pp. 1305–1308.</a></p>
 <p><A NAME="22">[22]: G. Guandong, J. Kebin, A new image mosaics algorithm based on feature points matching, in: International Conference on Innovative Computing, Information and Control, 2007, pp. 471–471.</a></p>
 <p><A NAME="23">[23]: K.-I. Okumura, S. Raut, Q. Gu, T. Aoyama, T. Takaki, I. Ishii, Real-time feature-based video mosaicing at 500 fps, in: International Conference on Intelligent Robots and Systems (IROS), 2013, pp. 2665–2670.</a></p>
-<p><A NAME="24">[24]: S. Park, D. Ghosh, N. Kaabouch, R.A. Fevig, W. Semke, Hierarchical multi-level image mosaicing for autonomous navigation of UAV, in: IS&amp;T/SPIE Electronic Imaging, 2012, pp. 830116–830116-9.</a></p>
+<p><A NAME="24">[24]: S. Park, D. Ghosh, N. Kaabouch, R.A. Fevig, W. Semke, Hierarchical multi-level image mosaicing for autonomous navigation of UAV, in: IS&amp;T&#x2F;SPIE Electronic Imaging, 2012, pp. 830116–830116-9.</a></p>
 <p><A NAME="25">[25]L. Miao, Y. Yue, Automatic document image mosaicing algorithm with hand-held camera, in: International Conference on Intelligent Control and Information Processing (ICICIP), 2011, pp. 1094–1097.</a></p>
 <p><A NAME="26">[26]<br>H. Shejiao, H. Yaling, C. Zonghai, J. Ping, Feature-based image automatic mosaicing algorithm, in: in: World Congress on Intelligent Control and Automation, 2006, pp. 10361–10364.</a></p>
 <p><A NAME="27">[27]<br>A. Nasibov, H. Nasibov, F. Hacizade, Seamless image stitching algorithm using radiometric lens calibration for high resolution optical microscopy, in: International Conference on Soft Computing, Computing with Words and Perceptions in System Analysis, Decision and Control, 2009, pp. 1–4.</a></p>
@@ -389,7 +393,7 @@
 <p><A NAME="34">[34]<br>F. Yang, L. Wei, Z. Zhang, H. Tang<br><strong>Image mosaic based on phase correlation and Harris operator</strong><br>J. Comput. Inform. Syst., 8 (2012), pp. 2647–2655</a></p>
 <p><A NAME="35">[35]<br>M. Vivet, S. Peleg, X. Binefa, Real-time stereo mosaicing using feature tracking, in: IEEE International Symposium on Multimedia (ISM), 2011, pp. 577–582.</a></p>
 <p><A NAME="36">[36]<br>M. El-Saban, M. Izz, A. Kaheel, M. Refaat, Improved optimal seam selection blending for fast video stitching of videos captured from freely moving devices, in: IEEE International Conference on Image Processing (ICIP), 2011, pp. 1481–1484.</a></p>
-<p><A NAME="37">[37]<br>S.Z. Kovalsky, G. Cohen, J.M. Francos, Registration of joint geometric and radiometric image deformations in the presence of noise, in: IEEE/SP Workshop on Statistical Signal Processing, 2007, pp. 561–565.</a></p>
+<p><A NAME="37">[37]<br>S.Z. Kovalsky, G. Cohen, J.M. Francos, Registration of joint geometric and radiometric image deformations in the presence of noise, in: IEEE&#x2F;SP Workshop on Statistical Signal Processing, 2007, pp. 561–565.</a></p>
 <p><A NAME="38">[38]<br>D. Vaghela, K. Naina<br><strong>A review of image mosaicing techniques</strong><br>Int. J. Adv. Res. Comput. Sci. Manage. Stud., 2 (3) (2014)</a></p>
 <p><A NAME="39">[39]<br>P. Jain, V.K. Shandliya<br><strong>A review paper on various approaches for image mosaicing</strong><br>Int. J. Comput. Eng. Res., 3 (4) (2013)</a></p>
 <p><A NAME="40">[40]<br>R. Abraham, P. Simon, Review on mosaicing techniques in image processing, in: International Conference on Advanced Computing and Communication Technologies (ACCT), 2013, pp. 63–68.</a></p>
@@ -419,7 +423,7 @@
 <p><A NAME="65">[65]<br>J. Xiao, Y. Zhang, M. Shah, Adaptive region-based video registration, in: IEEE Workshops on Application of Computer Vision, 2005, pp. 215-220.</a></p>
 <p><A NAME="66">[66]<br>J. Prescott, M. Clary, G. Wiet, T. Pan, K. Huang, Automatic registration of large set of microscopic images using high-level features, in: IEEE International Symposium on Biomedical Imaging: Nano to Macro, 2006, pp. 1284–1287.</a></p>
 <p><A NAME="67">[67]<br>M. Deshmukh, U. Bhosle<br><strong>A survey of image registration</strong><br>Int. J. Image Process. (IJIP), 5 (2011), p. 245</a></p>
-<p><A NAME="68">[68]<br>H. Xie, N. Hicks, G.R. Keller, H. Huang, V. Kreinovich<br><strong>An IDL/ENVI implementation of the FFT-based algorithm for automatic image registration</strong><br>Comput. Geosci., 29 (8) (2003), pp. 1045–1055</a></p>
+<p><A NAME="68">[68]<br>H. Xie, N. Hicks, G.R. Keller, H. Huang, V. Kreinovich<br><strong>An IDL&#x2F;ENVI implementation of the FFT-based algorithm for automatic image registration</strong><br>Comput. Geosci., 29 (8) (2003), pp. 1045–1055</a></p>
 <p><A NAME="69">[69]<br>C. Wang, Y. Cheng, C. Zhao, Robust subpixel registration for image mosaicing, in: Chinese Conference on Pattern Recognition, 2009, pp. 1–5.</a></p>
 <p><A NAME="70">[70]<br>R. Prados Gutiérrez<br><strong>Image Blending Techniques and their Application in Underwater Mosaicing</strong><br>Springer (2014)</a></p>
 <p><A NAME="71">[71]<br>D.K. Jain, G. Saxena, V.K. Singh, Image mosaicing using corner techniques, in: International Conference on Communication Systems and Network Technologies (CSNT), 2012, pp. 79–84.</a></p>
@@ -548,7 +552,7 @@
 
   
 
-  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"/lib/mathjax/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"/lib/mathjax/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
 <script src="/js/third-party/math/mathjax.js"></script>
 
 

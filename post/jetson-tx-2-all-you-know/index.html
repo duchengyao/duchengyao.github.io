@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
@@ -16,10 +16,10 @@
 
 
 
-<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-xejo6yLi6vGtAjcMIsY8BHdKsLg7QynVlFMzdQgUuy8=" crossorigin="anonymous">
   <link rel="stylesheet" href="/lib/@fancyapps/fancybox/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.11.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="首先庆祝一下我用TX-1做实验写的《GPU加速与L-ORB特征提取的全景视频实时拼接》发表啦^_^导师表示很开心，又给我买了两台TX-2  TX-2比TX-1除了性能的升级，其它部分没有太大变化，接下来要写的小技巧对于TX-1&#x2F;2都适用。使用期间发现的问题都会持续更新到这篇博客，目前发现的问题有：  OpenCV4Tegra 不支持 -lopencv_nonfree OpenCV4Tegra 在">
 <meta property="og:type" content="article">
@@ -162,7 +162,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">85</span>
+          <span class="site-state-item-count">89</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -173,7 +173,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">83</span>
+        <span class="site-state-item-count">85</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -200,6 +200,10 @@
     </ul>
   </div>
 
+<div>
+<hr>
+<img src="/images/wechatpay-ss.jpg" alt="Buy me a coffe.">
+</div>
         </div>
       </div>
     </div>
@@ -299,20 +303,20 @@
 <li>OpenCV4Tegra 不支持 -lopencv_nonfree</li>
 <li>OpenCV4Tegra 在TX-2中不支持 GPU 模块</li>
 <li>如何开启被屏蔽的2块CPU并设置为最大频率</li>
-<li>开启Nvidia TX-1/2 的VNC</li>
+<li>开启Nvidia TX-1&#x2F;2 的VNC</li>
 </ul>
 <span id="more"></span>
 
-<h2 id="0x01-OpenCV4Tegra-不支持-lopencv-nonfree"><a href="#0x01-OpenCV4Tegra-不支持-lopencv-nonfree" class="headerlink" title="0x01 OpenCV4Tegra 不支持 -lopencv_nonfree"></a>0x01 OpenCV4Tegra 不支持 -lopencv_nonfree</h2><p>Jetpack 自带的 Opencv 不支持 nonfree 库，因此就不能使用SIFT/SURF这种专利算法。要使用nonfree库有两种解决方案<a target="_blank" rel="noopener" href="http://elinux.org/Jetson/Installing_OpenCV#Prebuilt_OpenCV_library_versus_Building_the_OpenCV_library_from_source">[参考]</a>：</p>
+<h2 id="0x01-OpenCV4Tegra-不支持-lopencv-nonfree"><a href="#0x01-OpenCV4Tegra-不支持-lopencv-nonfree" class="headerlink" title="0x01 OpenCV4Tegra 不支持 -lopencv_nonfree"></a>0x01 OpenCV4Tegra 不支持 -lopencv_nonfree</h2><p>Jetpack 自带的 Opencv 不支持 nonfree 库，因此就不能使用SIFT&#x2F;SURF这种专利算法。要使用nonfree库有两种解决方案<a target="_blank" rel="noopener" href="http://elinux.org/Jetson/Installing_OpenCV#Prebuilt_OpenCV_library_versus_Building_the_OpenCV_library_from_source">[参考]</a>：</p>
 <blockquote>
-<p>Note about SIFT/SURF in the nonfree module: OpenCV4Tegra doesn’t include the opencv_nonfree package (containing SIFT &amp; SURF feature detectors) since those algorithms are patented by other companies and therefore anyone using opencv_nonfree is at risk of liability.</p>
+<p>Note about SIFT&#x2F;SURF in the nonfree module: OpenCV4Tegra doesn’t include the opencv_nonfree package (containing SIFT &amp; SURF feature detectors) since those algorithms are patented by other companies and therefore anyone using opencv_nonfree is at risk of liability.</p>
 </blockquote>
 <blockquote>
 <p>If you need something from the nonfree module, you have 2 options:</p>
 </blockquote>
 <blockquote>
 <ol>
-<li>Analyze the public OpenCV source code then copy/paste the parts of the nonfree module that you want (eg: SURF feature detector) from OpenCV into your own project. You will have the CPU optimizations of OpenCV4Tegra for most of your code and will have the GPU module and will have the non-optimized patented code that you need from the nonfree package such as SURF. So this option gives full performance (for everything except the nonfree code) but is tedious.</li>
+<li>Analyze the public OpenCV source code then copy&#x2F;paste the parts of the nonfree module that you want (eg: SURF feature detector) from OpenCV into your own project. You will have the CPU optimizations of OpenCV4Tegra for most of your code and will have the GPU module and will have the non-optimized patented code that you need from the nonfree package such as SURF. So this option gives full performance (for everything except the nonfree code) but is tedious.</li>
 <li>Ignore OpenCV4Tegra, and instead, download &amp; build public OpenCV (by following the instructions below for natively compiling the OpenCV library from source). You will still have the GPU module but not any CPU optimizations, but you won’t need to spend time ripping out parts of the OpenCV non-free module code. So this option is easiest but produces slower code if you are running most of your code on CPU.</li>
 </ol>
 </blockquote>
@@ -454,7 +458,7 @@
 
   
 
-  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"/lib/mathjax/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"/lib/mathjax/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
 <script src="/js/third-party/math/mathjax.js"></script>
 
 

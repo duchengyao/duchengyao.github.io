@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
@@ -16,10 +16,10 @@
 
 
 
-<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-xejo6yLi6vGtAjcMIsY8BHdKsLg7QynVlFMzdQgUuy8=" crossorigin="anonymous">
   <link rel="stylesheet" href="/lib/@fancyapps/fancybox/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.11.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="不要代码写多了就变得那么没有人情味了 0x00 Intro1. 读入MNIST数据库执行mnist &#x3D; input_data.read_data_sets(&quot;MNIST_data&#x2F;&quot;, one_hot&#x3D;True)后，会检查MNIST_data&#x2F;文件夹下有没有数据库文件，如果没有会自动下载。这一步如果执行比较慢，可以用迅雷手动下载下面四个文件，保存到MNIST_data目录（不需">
 <meta property="og:type" content="article">
@@ -168,7 +168,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">85</span>
+          <span class="site-state-item-count">89</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -179,7 +179,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">83</span>
+        <span class="site-state-item-count">85</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -206,6 +206,10 @@
     </ul>
   </div>
 
+<div>
+<hr>
+<img src="/images/wechatpay-ss.jpg" alt="Buy me a coffe.">
+</div>
         </div>
       </div>
     </div>
@@ -303,7 +307,7 @@
 <li><a target="_blank" rel="noopener" href="http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz">train-images-idx3-ubyte.gz</a>:  training set images (9912422 bytes)</li>
 <li><a target="_blank" rel="noopener" href="http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz">train-labels-idx1-ubyte.gz</a>:  training set labels (28881 bytes)</li>
 <li><a target="_blank" rel="noopener" href="http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz">t10k-images-idx3-ubyte.gz</a>:   test set images (1648877 bytes)</li>
-<li><a target="_blank" rel="noopener" href="http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz">t10k-labels-idx1-ubyte.gz</a>:   test set labels (4542 bytes) </li>
+<li><a target="_blank" rel="noopener" href="http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz">t10k-labels-idx1-ubyte.gz</a>:   test set labels (4542 bytes)</li>
 </ul>
 <span id="more"></span>
 
@@ -319,11 +323,11 @@ Extracting MNIST_data/t10k-labels-idx1-ubyte.gz
 
 <h2 id="0x01-Softmax"><a href="#0x01-Softmax" class="headerlink" title="0x01 Softmax"></a>0x01 Softmax</h2><p>只用 Softmax Regression 进行分类，正确率约为92%</p>
 <h3 id="1-定义变量"><a href="#1-定义变量" class="headerlink" title="1. 定义变量"></a>1. 定义变量</h3><p>Softmax Regression 的公式可以写成：</p>
-<p>$$y=softmax(Wx+b)$$</p>
+<p>$$y&#x3D;softmax(Wx+b)$$</p>
 <p>其中，<code>x</code>为输入数据（手写数字图片），不限条数的<code>784</code>维的<code>Float32</code>型数据；<br><code>W</code>为<code>784×10（特征维数×图片种类）</code>的<code>Variable</code>向量；<br><code>b</code>是bias（偏置）<br><code>y</code>为Softmax分类后得出的结果</p>
 <p>loss function为<code>cross_entropy</code>，定义如下：</p>
-<p>$$H_y’(y)=-\sum_{i}{y’_ilog(y_i)}$$</p>
-<p>而<code>reduce_mean</code>为对每个batch求均值（reduction_indices=[1]的意思请看后面的附录， 在新版的<a target="_blank" rel="noopener" href="https://www.tensorflow.org/get_started/mnist/beginners">Tensorflow tutorial</a>中，这部分稍有区别<br>）</p>
+<p>$$H_y’(y)&#x3D;-\sum_{i}{y’_ilog(y_i)}$$</p>
+<p>而<code>reduce_mean</code>为对每个batch求均值（reduction_indices&#x3D;[1]的意思请看后面的附录， 在新版的<a target="_blank" rel="noopener" href="https://www.tensorflow.org/get_started/mnist/beginners">Tensorflow tutorial</a>中，这部分稍有区别<br>）</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">x = tf.placeholder(tf.float32,[<span class="literal">None</span>,<span class="number">784</span>])</span><br><span class="line">W = tf.Variable(tf.zeros([<span class="number">784</span>,<span class="number">10</span>]))</span><br><span class="line">b = tf.Variable(tf.zeros([<span class="number">10</span>]))</span><br><span class="line"></span><br><span class="line">y = tf.nn.softmax(tf.matmul(x,W) + b)</span><br><span class="line">y_ = tf.placeholder(tf.float32,[<span class="literal">None</span>,<span class="number">10</span>])</span><br><span class="line"></span><br><span class="line">cross_entropy = tf.reduce_mean(-tf.reduce_sum(y_ * tf.log(y),reduction_indices=[<span class="number">1</span>]))</span><br><span class="line"></span><br><span class="line">train_step = tf.train.GradientDescentOptimizer(<span class="number">0.5</span>).minimize(cross_entropy)</span><br></pre></td></tr></table></figure>
 
 <h3 id="2-训练"><a href="#2-训练" class="headerlink" title="2. 训练"></a>2. 训练</h3><p>每次训练抽取100个样本作为<code>mini-batch</code>，并传给<code>placeholder(x,y_)</code>进行训练，并每隔250输出一次权重。</p>
@@ -450,8 +454,8 @@ step 19900, training accuracy 1
 <h2 id="0x04-附录"><a href="#0x04-附录" class="headerlink" title="0x04 附录"></a>0x04 附录</h2><h3 id="1-关于reduction-indices"><a href="#1-关于reduction-indices" class="headerlink" title="1. 关于reduction_indices"></a>1. 关于reduction_indices</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">x=[[<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>],[<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>]]</span><br><span class="line">y0=tf.reduce_sum(x,reduction_indices=[<span class="number">0</span>])</span><br><span class="line">y1=tf.reduce_sum(x,reduction_indices=[<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;x  = &quot;</span>, x)</span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;y0 = &quot;</span>, sess.run(y0), <span class="string">&quot;\t(x在第0维度相加)&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;y1 = &quot;</span>, sess.run(y1), <span class="string">&quot;\t(x在第1维度相加)&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <pre><code>x  =  [[2, 2, 2], [2, 2, 2]]
-y0 =  [4 4 4]     (x在第0维度相加)
-y1 =  [6 6]     (x在第1维度相加)
+y0 =  [4 4 4] 	(x在第0维度相加)
+y1 =  [6 6] 	(x在第1维度相加)
 </code></pre>
 
     </div>
@@ -570,7 +574,7 @@ y1 =  [6 6]     (x在第1维度相加)
 
   
 
-  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"/lib/mathjax/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"/lib/mathjax/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
 <script src="/js/third-party/math/mathjax.js"></script>
 
 

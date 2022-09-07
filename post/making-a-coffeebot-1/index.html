@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
@@ -16,10 +16,10 @@
 
 
 
-<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-xejo6yLi6vGtAjcMIsY8BHdKsLg7QynVlFMzdQgUuy8=" crossorigin="anonymous">
   <link rel="stylesheet" href="/lib/@fancyapps/fancybox/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.11.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="来北京一个月，一直蜗居在一个小屋里，没有钱花+前途迷茫的感觉真是浑身难受。我现在的任务是接手之前几个客座生的项目，用Turtlebot做一个送咖啡机器人。第一周的时间用来搭建一个完整的demo">
 <meta property="og:type" content="article">
@@ -166,7 +166,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">85</span>
+          <span class="site-state-item-count">89</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -177,7 +177,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">83</span>
+        <span class="site-state-item-count">85</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -204,6 +204,10 @@
     </ul>
   </div>
 
+<div>
+<hr>
+<img src="/images/wechatpay-ss.jpg" alt="Buy me a coffe.">
+</div>
         </div>
       </div>
     </div>
@@ -305,12 +309,12 @@
 <ul>
 <li><strong>安装ROS</strong></li>
 <li><strong>配置环境</strong></li>
-<li><strong>文件系统工具</strong> <code>rospack</code> <code>roscd</code> `</li>
-<li><strong>catkin管理工具包</strong> （因为我经常使用 <code>catkin_make_isolate</code> 所以我在 ~/.bash_alias 中添加了一行<code>alias make_robot=&#39;cd ~/project/catkin_ws ; catkin_make_isolated --install --use-ninja ; cd -&#39;</code>）</li>
+<li><strong>文件系统工具</strong> <code>rospack</code> <code>roscd</code> &#96;</li>
+<li><strong>catkin管理工具包</strong> （因为我经常使用 <code>catkin_make_isolate</code> 所以我在 ~&#x2F;.bash_alias 中添加了一行<code>alias make_robot=&#39;cd ~/project/catkin_ws ; catkin_make_isolated --install --use-ninja ; cd -&#39;</code>）</li>
 <li><strong>节点(node)</strong> <code>roscore</code> <code>rosnode list/info/ping</code> <code>rosrun</code></li>
-<li><strong><a target="_blank" rel="noopener" href="http://wiki.ros.org/cn/ROS/Tutorials/UnderstandingTopics">话题(Topic)</a></strong> 键盘/代码控制小乌龟到处跑， <code>rqt_graph</code> <code>rqt_plot</code> <code>rostopic echo</code> <code>rostopic list -v</code> <code>rostopic type</code> <code>rosmsg show</code> <code>rostopic pub [topic] [msg_type] [args]</code></li>
-<li><strong>服务/参数</strong> <code>rosservice list/type/call</code> <code>rossrv</code> <code>rosparam list/get/set/dump/load</code></li>
-<li><strong>调试/运行</strong> <code>rqt_console</code> <code>rqt_logger_level</code> <code>roslaunch</code></li>
+<li><strong><a target="_blank" rel="noopener" href="http://wiki.ros.org/cn/ROS/Tutorials/UnderstandingTopics">话题(Topic)</a></strong> 键盘&#x2F;代码控制小乌龟到处跑， <code>rqt_graph</code> <code>rqt_plot</code> <code>rostopic echo</code> <code>rostopic list -v</code> <code>rostopic type</code> <code>rosmsg show</code> <code>rostopic pub [topic] [msg_type] [args]</code></li>
+<li><strong>服务&#x2F;参数</strong> <code>rosservice list/type/call</code> <code>rossrv</code> <code>rosparam list/get/set/dump/load</code></li>
+<li><strong>调试&#x2F;运行</strong> <code>rqt_console</code> <code>rqt_logger_level</code> <code>roslaunch</code></li>
 </ul>
 <h2 id="0x02-SLAM-Cartographer-ROS-for-TurtleBots"><a href="#0x02-SLAM-Cartographer-ROS-for-TurtleBots" class="headerlink" title="0x02 SLAM: Cartographer ROS for TurtleBots"></a>0x02 SLAM: Cartographer ROS for TurtleBots</h2><p>我按照<a target="_blank" rel="noopener" href="https://google-cartographer-ros-for-turtlebots.readthedocs.io/en/latest/">官方教程</a>没有出错，可能因为我这边原生ipv6翻墙。如果在<code>catkin_make_isolated</code>这一步出问题了，可以看<a target="_blank" rel="noopener" href="http://blog.csdn.net/ywj447/article/details/52922487">这篇</a>。</p>
 <p>装完以后记得运行一下<a target="_blank" rel="noopener" href="https://google-cartographer-ros-for-turtlebots.readthedocs.io/en/latest/#running-the-demo">官方教程</a>的demo。</p>
@@ -457,7 +461,7 @@
 
   
 
-  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"/lib/mathjax/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"/lib/mathjax/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
 <script src="/js/third-party/math/mathjax.js"></script>
 
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
@@ -16,10 +16,10 @@
 
 
 
-<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-xejo6yLi6vGtAjcMIsY8BHdKsLg7QynVlFMzdQgUuy8=" crossorigin="anonymous">
   <link rel="stylesheet" href="/lib/@fancyapps/fancybox/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.11.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="听说最近推出了5美元的树莓派，一度被黄牛抢光然后卖到了50美元。">
 <meta property="og:type" content="article">
@@ -163,7 +163,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">85</span>
+          <span class="site-state-item-count">89</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -174,7 +174,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">83</span>
+        <span class="site-state-item-count">85</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -201,6 +201,10 @@
     </ul>
   </div>
 
+<div>
+<hr>
+<img src="/images/wechatpay-ss.jpg" alt="Buy me a coffe.">
+</div>
         </div>
       </div>
     </div>
@@ -305,7 +309,7 @@
 </ul>
 <p>要注意的是，BBB 现在推出了有4G eMMC 的 Rev C，所以下载之前一定要看好<code>版本号(Rev)</code>；还有要注意的是要主意<code>microSD/Standalone</code>和<code>lxde/console</code>。</p>
 <p>注意，有些网站在天朝被墙了，请参照之前的文章用<a href="/tags/Lantern/">Lantern</a>翻墙。</p>
-<h3 id="安装Image到microSD卡"><a href="#安装Image到microSD卡" class="headerlink" title="安装Image到microSD卡"></a>安装Image到microSD卡</h3><p>分别在插入/拔出SD卡的时候输入命令<code>ls /dev</code>，查看SD卡的磁盘名称，我的是<code>disk2</code>。</p>
+<h3 id="安装Image到microSD卡"><a href="#安装Image到microSD卡" class="headerlink" title="安装Image到microSD卡"></a>安装Image到microSD卡</h3><p>分别在插入&#x2F;拔出SD卡的时候输入命令<code>ls /dev</code>，查看SD卡的磁盘名称，我的是<code>disk2</code>。</p>
 <pre><code>//警告！如果不知道dd命令是干嘛的，或者不知道我上面说的`disk2`是怎么来的
 //在你baidu清楚之前，不要执行下面那行代码。
 
@@ -322,7 +326,7 @@ dd if=BBB-eMMC-flasher-debian-7.9-lxde-armhf-2015-11-03-2gb.img of=/dev/rdisk2 b
 <p>重新启动，就会看到BBB的四个LED灯像流水一样闪烁。刷完以后BBB会自动关机。等它刷新完eMMC以后，记得拔出microSD卡，否则下次开机后会重新刷一遍- -</p>
 <h3 id="安装LXDE"><a href="#安装LXDE" class="headerlink" title="安装LXDE"></a>安装LXDE</h3><p>在官网下载了Debian8.2的Image，安装完毕后发现没有桌面环境。输入以下命令手动安装<a target="_blank" rel="noopener" href="http://wiki.lxde.org/zh/Debian">LXDE桌面环境</a>：</p>
 <pre><code>aptitude install --without-recommends lxde  //安装简化版的LXDE
-apt-get install xorg xserver-xorg           //如果不安装这个，没有startx命令                    
+apt-get install xorg xserver-xorg           //如果不安装这个，没有startx命令					
 </code></pre>
 <p>安装完毕后，执行<code>startx</code>运行桌面环境。启动后的桌面环境会报错<code>no session for pid ****</code>，不知道是什么原因耶。</p>
 <p>因为板载eMMC只有2G，最后我放弃了这种方式，选择了直接使用4G-SD卡的Image。</p>
@@ -497,7 +501,7 @@ root@kali:~# depmod -a -v &quot;3.8.13-bone53&quot;
 
   
 
-  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"/lib/mathjax/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"/lib/mathjax/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
 <script src="/js/third-party/math/mathjax.js"></script>
 
 

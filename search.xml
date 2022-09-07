@@ -199,26 +199,26 @@
 <h4 id="3-1-1-基于归一化互相关（Normalized-Cross-Correlation-NCC）的拼接"><a href="#3-1-1-基于归一化互相关（Normalized-Cross-Correlation-NCC）的拼接" class="headerlink" title="3.1.1 基于归一化互相关（Normalized Cross Correlation, NCC）的拼接"></a>3.1.1 基于归一化互相关（Normalized Cross Correlation, NCC）的拼接</h4><p>此方法计算在两个图像中的每个位移（shifts）的“窗口”之间的相似性。它被定义为<sup><a href="#20">20</a></sup>：</p>
 <p><img data-src="http://qiniu.s1nh.org/Blog_1-s2.0-S1047320315002059-si1.gif"></p>
 <p>且</p>
-<p>$\overline{I_1} = {1\over N} \sum_i I_1(x_i)$</p>
-<p>$\overline{I_2}=\frac{1}{N}\sum_i I_2(x_i+u)$</p>
-<p>$\overline{I_1}$  和 $\overline{I_2}$ 是窗口的平均值图像。$I_1(x,y)$和$I_2(x,y)$分别是两张图片。$N$是“窗口”大小，$x_i=(x_i,y_i)$ 是窗口的像素坐标，$u=(u,v)$ 是通过NCC系数计算出的位移或偏移。NCC系数的范围为[-1,1]。   NCC峰值相对应的位移参数表示两个图像之间的几何变换。此方法的优点是计算简单，但是速度特别慢。此外，此类算法要求源图像之间必须有显著的重叠。</p>
+<p>$\overline{I_1} &#x3D; {1\over N} \sum_i I_1(x_i)$</p>
+<p>$\overline{I_2}&#x3D;\frac{1}{N}\sum_i I_2(x_i+u)$</p>
+<p>$\overline{I_1}$  和 $\overline{I_2}$ 是窗口的平均值图像。$I_1(x,y)$和$I_2(x,y)$分别是两张图片。$N$是“窗口”大小，$x_i&#x3D;(x_i,y_i)$ 是窗口的像素坐标，$u&#x3D;(u,v)$ 是通过NCC系数计算出的位移或偏移。NCC系数的范围为[-1,1]。   NCC峰值相对应的位移参数表示两个图像之间的几何变换。此方法的优点是计算简单，但是速度特别慢。此外，此类算法要求源图像之间必须有显著的重叠。</p>
 <p>为了解决上述问题，<sup><a href="#27">27</a></sup> ，<sup><a href="#44">44</a></sup> ，<sup><a href="#45">45</a></sup> ，<sup><a href="#46">46</a></sup>几种技术已经被提出。Nasibov等人在图像匹配步骤之前使用的亮度校正矩阵，以便使算法对光照变化不敏感[27]。为了使计算速度更快，Berberidis等人提出的空间互相关来计算源的图像之间的位移的迭代算法<sup><a href="#44">44</a></sup>。Zhao等人提出了通过基于调整根据规模，从源图像中提取兴趣点的方向的相关窗口方法等<sup><a href="#45">45</a></sup> ，以增加计算速度。为了提高算法的非刚性变形的存在下的性能，Vercauteren等人<sup><a href="#46">46</a></sup>提出用黎曼统计（Riemannian statistics）与基于散乱数据拟合（scattered data fitting）的拼接。</p>
 <h4 id="3-1-2-基于互信息（Mutual-Information-MI）的图像拼接"><a href="#3-1-2-基于互信息（Mutual-Information-MI）的图像拼接" class="headerlink" title="3.1.2 基于互信息（Mutual Information, MI）的图像拼接"></a>3.1.2 基于互信息（Mutual Information, MI）的图像拼接</h4><p>不同于基于图像强度值其计算相似性的NCC，互信息测量基于两个图像之间共享信息数量的相似性。两个图像$I_1(X,Y)$与$I_2(X,Y)$之间的MI以熵表示：</p>
-<p>$MI(I_1,I_2)=E(I_1)+E(I_2)-E(I_1,I_2)$</p>
+<p>$MI(I_1,I_2)&#x3D;E(I_1)+E(I_2)-E(I_1,I_2)$</p>
 <p>$E(I_1)$和$E(I_2)$分别是$I_1(x,y)$和$I_2(x,y)$的熵。$E(I_1,I_2)$表示两个图像之间的联合熵。熵是一个随机变量的变异性指标。$I_1(x,y)$的变异性指标为：</p>
-<p>$E(I_1)=-\sum_g p_{I_1}(g)log(p_{I_1}(g)) $</p>
+<p>$E(I_1)&#x3D;-\sum_g p_{I_1}(g)log(p_{I_1}(g)) $</p>
 <p>g是$I_1(x,y) $可能的灰度值，因此$p_{I_1}(g)$是g的概率分布函数。同理，$I_1(x,y)$和$I_2(x,y)$的联合变异性指标为：</p>
-<p>$E(I_1,I_2)=-\sum_{g,h} p_{I_1,I_2}(g,h)log(p_{I_1,I_2}(g,h)) $</p>
+<p>$E(I_1,I_2)&#x3D;-\sum_{g,h} p_{I_1,I_2}(g,h)log(p_{I_1,I_2}(g,h)) $</p>
 <p>h是$I_2(x,y) $可能的灰度值，$P_{I_1,I_2}(g,h) $是g和h的联合概率分布函数。通常情况下，两个图像灰度值的联合直方图来用于衡量两个图像之间的联合概率分布。两个图像之间有更好的对齐，那么这两张图的MI值更大。因此，MI值为最大时，两张图像在变换中为几何对齐的。这种拼接方法的优点是对光线和咬合的变化不敏感。然而，这种于基于NCC的方法有计算速度慢、需要大面积输入图像的重叠等缺点。</p>
 <p>为了解决上述的缺点，几个技术<sup><a href="#29">29</a></sup>、<sup><a href="#47">47</a></sup>和<sup><a href="#48">48</a></sup>已被提出。在<sup><a href="#29">29</a></sup>，Luna等人使用随机梯度算法（stochastic gradient optimization along with MI-based similarity measure）来加快算法的速度。Dame等人<sup><a href="#47">47</a></sup>采用 B-spline function for normalized mutual probability density加快运算速度。他们进一步采用牛顿法（Newton’s method）来加快位移参数的估计。对于低重叠图片<sup><a href="#48">48</a></sup>，Césare等人提出了一种模版匹配方法。</p>
 <p>不同于基于区域（area-based）的方法，基于特征（feature-based）的拼接技术使用特征之间的匹配，来计算一对图像之间的几何变换。因此，这些方法主要依赖于能够提取显著特征的算法。显着特征是图像域的子集，通常是独立的点、连续曲线或连续区域<sup><a href="#49">49</a></sup>。一般的方法是，从源图像检测几个相应的特征，然后使用可靠的对应关系估计单应性矩阵。利用单应矩阵图像进行扭曲然后缝合在一个共同的参考系。因为特征是出发点，整体算法往往会取决于特征提取算法。基于特征的拼接技术一般优于基于区域的技术，但是需要更高的计算成本。根据提取的特征类型，基于特征的拼接方法可分为底层特征的拼接和基于轮廓拼接。</p>
 <h4 id="3-1-3-基于底层特征的（Low-level-feature）拼接"><a href="#3-1-3-基于底层特征的（Low-level-feature）拼接" class="headerlink" title="3.1.3 基于底层特征的（Low-level feature）拼接"></a>3.1.3 基于底层特征的（Low-level feature）拼接</h4><p>这些拼接方法不需要大量重叠区域的图像。</p>
 <h5 id="3-1-3-1-基于Harris角点检测器的拼接79"><a href="#3-1-3-1-基于Harris角点检测器的拼接79" class="headerlink" title="3.1.3.1 基于Harris角点检测器的拼接79"></a>3.1.3.1 基于Harris角点检测器的拼接<sup><a href="#79">79</a></sup></h5><p>Harris角点检测器在底层拼接中具有较强的鲁棒性。最初检测图像中的局部窗口。然后通过改变在不同的方向窗口的一个小的量来改变强度。<sup><a href="#41">41</a></sup> ：</p>
-<p>$E(u,v)=\sum_i w(x_i,y_i)[I(x_i+u,y_i+v)-I(x_i,y_i)]^2$</p>
+<p>$E(u,v)&#x3D;\sum_i w(x_i,y_i)[I(x_i+u,y_i+v)-I(x_i,y_i)]^2$</p>
 <p>$w(x_i,y_i) $ 是 检测窗口$(x_i,y_i) $ 的窗口函数。$I(x_i,y_i) $ 是在$(x_i,y_i)$位置的图像强度值，$I(x_i+u,y_i+v) $ 是到$(u,v)$的位移强度。本地纹理周围像素(local texture around pixel,$(x_i,y_i) $可表示为如下自相关矩阵:</p>
-<p>$C=\sum_i w(x_i,y_i)<br>\begin{bmatrix}<br> I^2_{x_i} &amp; I_{x_i}I_{y_i}  \\<br> I_{x_i}I_{y_i} &amp;  I^2_{y_i}  \\<br>\end{bmatrix}$</p>
+<p>$C&#x3D;\sum_i w(x_i,y_i)<br>\begin{bmatrix}<br> I^2_{x_i} &amp; I_{x_i}I_{y_i}  \\<br> I_{x_i}I_{y_i} &amp;  I^2_{y_i}  \\<br>\end{bmatrix}$</p>
 <p>$I_{x_i}$和$I_{x_i}$是$I(x_i,y_i)$的导数。两个矩阵C对应的极大特征值对应着一个角点。窗口的中心点为一个角点的特征。为了使算法更强壮，可以用“cornerness”的R值来消除边缘点：</p>
-<p>$R=Det(C)-\alpha Tr^2(C)$</p>
+<p>$R&#x3D;Det(C)-\alpha Tr^2(C)$</p>
 <p>$Tr(C) $ 是C的跟踪函数，$\alpha$的范围是$0.04 \leq \alpha \leq 0.06$。如果R的局部最大值高于阈值T，那么此点即为角点。两张图片的角点全部检测完成后，可以通过NCC或者SDD（Sum of Squared Difference）方法来确定其对应关系。随后利用算出的几何对应关系把图片统一到全局参考系中，以便进行拼接。采用Harris角点拼接算法计算简单，准确。</p>
 <p>Harris 角点检测算法的缺点是会有大量密集的角点产生。然而，可以通过排除附近角点的方式来克服次缺点<sup><a href="#23">23</a></sup>。用Harris角点方法的一个主要问题是，在旋转变化比较大时，往往会在拼接时产生重影。<sup><a href="#30">30</a></sup>中通过在Harris角点匹配时使用“slope clustering”的“luminance center-weighting”算法来解决这个问题。另一个问题是在<sup><a href="#50">50</a></sup>中提到的选择局部检测窗口的不确定性，<sup><a href="#51">51</a></sup>，其中使用的区域分割和匹配，来限制搜索窗口中潜在的同源点。</p>
 <h5 id="3-1-3-2-基于FAST角点检测器的拼接"><a href="#3-1-3-2-基于FAST角点检测器的拼接" class="headerlink" title="3.1.3.2 基于FAST角点检测器的拼接"></a>3.1.3.2 基于FAST角点检测器的拼接</h5><p>FAST算法是一个在计算上更有效率且比大多数其他低级别特征提取方法快的角点检测算法，因此基于该算法的拼接方法特别适用于实时图像处理应用程序。算法首先围绕一个候选角点选择16个像素点。如果其中有n（n一般为12）个连续的像素都比候选角点加上一个阈值要高，或者比候选角点减去一个阈值要低，那么此点即为角点（如图4所示）。为了加快FAST算法的速度，通常会使用角点响应函数（a corner response function, CRF) 。CRF给出了基于在本地附近的图像强度的角点的“cornerness”的数值<sup><a href="#41">41</a></sup>通过计算出的CRF值检测局部最大值来确定角点。检测后，对每一对帧进行角点匹配。有时，“词袋”（Bag-of-Words, BoW）算法是用来表示每个图像作为一组角点的描述，以加快匹配过程<sup><a href="#31">31</a></sup>。然后，计算出单应矩阵（homography matrices），最后，把图像投射到一个共同的坐标得到最终的拼接图像。</p>
@@ -234,7 +234,7 @@
 <p>Different optimal seam finding methods have been used in mosaicing literature. For example, in [36] a modified region-of-difference method is used. In [77], authors proposed the use of an algorithm based on watershed segmentation and graph cut optimization. Another method based on dynamic programming and grey relational analysis is used in [78].</p>
 <p>A general comparison of different categories of mosaicing algorithms based on image blending is presented in Table 3. Table 4 highlights the processing times of different mosaicing papers surveyed based on image blending.</p>
 <p>Table 3.<br>Comparative overview of different categories of mosaicing methods based on image blending.</p>
-<p>Category     | Advantages| Disadvantages|<br>Feathering-based |    Fast and good performer under exposure differences | Output often suffer from blur and ghosting effect<br>Pyramid-based |    Good in preventing blur and edge duplication | Suffers from double contouring and ghosting when registration error significant<br>Gradient-based    Output visually more appealing than other methods    High computation required and registration error must be small for good performance<br>Optimal seam-based    Good in dealing with moving objects and parallax    Transition obvious when there are exposure differences</p>
+<p>Category	 | Advantages| Disadvantages|<br>Feathering-based |	Fast and good performer under exposure differences | Output often suffer from blur and ghosting effect<br>Pyramid-based |	Good in preventing blur and edge duplication | Suffers from double contouring and ghosting when registration error significant<br>Gradient-based	Output visually more appealing than other methods	High computation required and registration error must be small for good performance<br>Optimal seam-based	Good in dealing with moving objects and parallax	Transition obvious when there are exposure differences</p>
 <h2 id="五、结论"><a href="#五、结论" class="headerlink" title="五、结论"></a>五、结论</h2><p>Image mosaicing is an important task in the field of computer vision. Success of a mosaicing algorithm depends primarily on registration and blending methods. This paper provides a classification of image mosaicing methods based on image registration and blending algorithms. In addition to providing the description of the different categories, this paper discusses the advantages and disadvantages of each category. From the discussion, it is obvious that there is no single best image mosaicing category. At the same time, the continuous advent of new mosaicing methods in recent years makes it really difficult to choose an appropriate mosaicing algorithm for a specific purpose. Hence, this paper aims at providing a guide for selecting a suitable mosaicing method for a specific application. Although an extensive research has been done in the area of mosaicing, there are still problems to be addressed. For example, mosaicing in the presence of images with significant parallax is still a challenge. Another problem is the processing time. All mosaicing techniques are time consuming and cannot run on low power and low frequency devices. Addressing these issues would be where the future research might be directed at.</p>
 <h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><A NAME="18">[18]: Sa. Ghannam, A.L. Abbott <strong>Cross correlation versus mutual information for image mosaicing</strong> Int. J. Adv. Comput. Sci. Appl. (IJACSA), 4 (2013)</a></p>
 <p><A NAME="19">[19]: A. Levin, A. Zomet, S. Peleg, Y. Weiss <strong>Seamless image stitching in the gradient domain</strong> Comput. Vis.-ECCV (2004), pp. 377–389</a></p>
@@ -242,7 +242,7 @@
 <p><A NAME="21">[21]: A. Behrens, M. Guski, T. Stehle, S. Gross, T. Aach, Intensity based multi-scale blending for panoramic images in fluorescence endoscopy, in: IEEE International Symposium on Biomedical Imaging: From Nano to Macro, 2010, pp. 1305–1308.</a></p>
 <p><A NAME="22">[22]: G. Guandong, J. Kebin, A new image mosaics algorithm based on feature points matching, in: International Conference on Innovative Computing, Information and Control, 2007, pp. 471–471.</a></p>
 <p><A NAME="23">[23]: K.-I. Okumura, S. Raut, Q. Gu, T. Aoyama, T. Takaki, I. Ishii, Real-time feature-based video mosaicing at 500 fps, in: International Conference on Intelligent Robots and Systems (IROS), 2013, pp. 2665–2670.</a></p>
-<p><A NAME="24">[24]: S. Park, D. Ghosh, N. Kaabouch, R.A. Fevig, W. Semke, Hierarchical multi-level image mosaicing for autonomous navigation of UAV, in: IS&amp;T/SPIE Electronic Imaging, 2012, pp. 830116–830116-9.</a></p>
+<p><A NAME="24">[24]: S. Park, D. Ghosh, N. Kaabouch, R.A. Fevig, W. Semke, Hierarchical multi-level image mosaicing for autonomous navigation of UAV, in: IS&amp;T&#x2F;SPIE Electronic Imaging, 2012, pp. 830116–830116-9.</a></p>
 <p><A NAME="25">[25]L. Miao, Y. Yue, Automatic document image mosaicing algorithm with hand-held camera, in: International Conference on Intelligent Control and Information Processing (ICICIP), 2011, pp. 1094–1097.</a></p>
 <p><A NAME="26">[26]<br>H. Shejiao, H. Yaling, C. Zonghai, J. Ping, Feature-based image automatic mosaicing algorithm, in: in: World Congress on Intelligent Control and Automation, 2006, pp. 10361–10364.</a></p>
 <p><A NAME="27">[27]<br>A. Nasibov, H. Nasibov, F. Hacizade, Seamless image stitching algorithm using radiometric lens calibration for high resolution optical microscopy, in: International Conference on Soft Computing, Computing with Words and Perceptions in System Analysis, Decision and Control, 2009, pp. 1–4.</a></p>
@@ -255,7 +255,7 @@
 <p><A NAME="34">[34]<br>F. Yang, L. Wei, Z. Zhang, H. Tang<br><strong>Image mosaic based on phase correlation and Harris operator</strong><br>J. Comput. Inform. Syst., 8 (2012), pp. 2647–2655</a></p>
 <p><A NAME="35">[35]<br>M. Vivet, S. Peleg, X. Binefa, Real-time stereo mosaicing using feature tracking, in: IEEE International Symposium on Multimedia (ISM), 2011, pp. 577–582.</a></p>
 <p><A NAME="36">[36]<br>M. El-Saban, M. Izz, A. Kaheel, M. Refaat, Improved optimal seam selection blending for fast video stitching of videos captured from freely moving devices, in: IEEE International Conference on Image Processing (ICIP), 2011, pp. 1481–1484.</a></p>
-<p><A NAME="37">[37]<br>S.Z. Kovalsky, G. Cohen, J.M. Francos, Registration of joint geometric and radiometric image deformations in the presence of noise, in: IEEE/SP Workshop on Statistical Signal Processing, 2007, pp. 561–565.</a></p>
+<p><A NAME="37">[37]<br>S.Z. Kovalsky, G. Cohen, J.M. Francos, Registration of joint geometric and radiometric image deformations in the presence of noise, in: IEEE&#x2F;SP Workshop on Statistical Signal Processing, 2007, pp. 561–565.</a></p>
 <p><A NAME="38">[38]<br>D. Vaghela, K. Naina<br><strong>A review of image mosaicing techniques</strong><br>Int. J. Adv. Res. Comput. Sci. Manage. Stud., 2 (3) (2014)</a></p>
 <p><A NAME="39">[39]<br>P. Jain, V.K. Shandliya<br><strong>A review paper on various approaches for image mosaicing</strong><br>Int. J. Comput. Eng. Res., 3 (4) (2013)</a></p>
 <p><A NAME="40">[40]<br>R. Abraham, P. Simon, Review on mosaicing techniques in image processing, in: International Conference on Advanced Computing and Communication Technologies (ACCT), 2013, pp. 63–68.</a></p>
@@ -285,7 +285,7 @@
 <p><A NAME="65">[65]<br>J. Xiao, Y. Zhang, M. Shah, Adaptive region-based video registration, in: IEEE Workshops on Application of Computer Vision, 2005, pp. 215-220.</a></p>
 <p><A NAME="66">[66]<br>J. Prescott, M. Clary, G. Wiet, T. Pan, K. Huang, Automatic registration of large set of microscopic images using high-level features, in: IEEE International Symposium on Biomedical Imaging: Nano to Macro, 2006, pp. 1284–1287.</a></p>
 <p><A NAME="67">[67]<br>M. Deshmukh, U. Bhosle<br><strong>A survey of image registration</strong><br>Int. J. Image Process. (IJIP), 5 (2011), p. 245</a></p>
-<p><A NAME="68">[68]<br>H. Xie, N. Hicks, G.R. Keller, H. Huang, V. Kreinovich<br><strong>An IDL/ENVI implementation of the FFT-based algorithm for automatic image registration</strong><br>Comput. Geosci., 29 (8) (2003), pp. 1045–1055</a></p>
+<p><A NAME="68">[68]<br>H. Xie, N. Hicks, G.R. Keller, H. Huang, V. Kreinovich<br><strong>An IDL&#x2F;ENVI implementation of the FFT-based algorithm for automatic image registration</strong><br>Comput. Geosci., 29 (8) (2003), pp. 1045–1055</a></p>
 <p><A NAME="69">[69]<br>C. Wang, Y. Cheng, C. Zhao, Robust subpixel registration for image mosaicing, in: Chinese Conference on Pattern Recognition, 2009, pp. 1–5.</a></p>
 <p><A NAME="70">[70]<br>R. Prados Gutiérrez<br><strong>Image Blending Techniques and their Application in Underwater Mosaicing</strong><br>Springer (2014)</a></p>
 <p><A NAME="71">[71]<br>D.K. Jain, G. Saxena, V.K. Singh, Image mosaicing using corner techniques, in: International Conference on Communication Systems and Network Technologies (CSNT), 2012, pp. 79–84.</a></p>
@@ -349,7 +349,7 @@
 <p><strong>构建堆</strong></p>
 <ol>
 <li>随便放</li>
-<li>N/2 -&gt; 0 下滤</li>
+<li>N&#x2F;2 -&gt; 0 下滤</li>
 </ol>
 <p><strong>插入</strong></p>
 <ol>
@@ -369,14 +369,14 @@
 <p><strong>左式堆</strong> –&gt; 左式堆是专门用来解优先队列合并的麻烦（任意二叉堆的合并都必须重新合并，O（N）的时间）。趋向于非常不平衡</p>
 <ol>
 <li>零路径长度：到没有两个儿子的节点最短距离</li>
-<li>零路径长：左儿子≧右儿子，父节点= min{儿子} +1（这条性质导致了左式堆的严重左偏）</li>
+<li>零路径长：左儿子≧右儿子，父节点&#x3D; min{儿子} +1（这条性质导致了左式堆的严重左偏）</li>
 <li>根值大的堆与根值小的堆的右子堆合并(根值：根位置的元素值，并非零路径长度)</li>
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">合并方法</span><br><span class="line">1. 根值大的堆（H1）与根值小的堆（H2）的右子堆合并</span><br><span class="line">2. 若H2有右子堆，取出（H3）与H1合并（递归）</span><br><span class="line">3. 若不满足根的左儿子≧右儿子，交换左右孩子</span><br><span class="line"> </span><br><span class="line">Merge(PriorityQueue H1,H2)   //H1&lt;H2</span><br><span class="line">&#123;</span><br><span class="line">  if(H1.left==NULL)</span><br><span class="line">    H1.left=H2;</span><br><span class="line">  else&#123;</span><br><span class="line">    H1.right = Merge_(H1.right,H2); //Merge_要判断是否为空和H1,H2的大小</span><br><span class="line">    if(H1.left.NP1&lt;H1.right.NP1)</span><br><span class="line">      swapChildren(H1)</span><br><span class="line">  &#125;</span><br><span class="line">  return H1;</span><br></pre></td></tr></table></figure>
 <p><strong>二项队列</strong> –&gt; 二项队列是由不同高度堆序树组成的森林</p>
 <ol>
 <li>合并：相同高度的合并，不同高度的添加</li>
-<li>插入=合并</li>
+<li>插入&#x3D;合并</li>
 <li>DeleteMin: &lt;1&gt;遍历所有最小节点 &lt;2&gt;将最小点的树DeleteMin并删除 &lt;3&gt;将最小点的树合并到原始二项队列</li>
 </ol>
 <hr>
@@ -390,8 +390,8 @@
 <p><strong>最短路 - Dijkstra</strong></p>
 <ol>
 <li>选取集合外与起始节点距离最小的点加入集合</li>
-<li>调整所有与集合相邻的节点的最短路径 D(w)=min(D(w),D(v)+j(v,w))</li>
-<li>重复直到集合=全集</li>
+<li>调整所有与集合相邻的节点的最短路径 D(w)&#x3D;min(D(w),D(v)+j(v,w))</li>
+<li>重复直到集合&#x3D;全集</li>
 </ol>
 <p><strong>最短路 - 有负边</strong> –&gt; 使用队列</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#适用于有负边的Dijkstra版本</span><br><span class="line">Table T, Queue Q, Start vertex S</span><br><span class="line">While(Q is not Empty)&#123;</span><br><span class="line">  V=Dequeue(Q)</span><br><span class="line">  for each w adjacent V</span><br><span class="line">    if (T[V].dist+Cvw&lt;T[w].dist)&#123;</span><br><span class="line">      T[w].dist=T[v].dist+Cvw</span><br><span class="line">      T[w].path=V</span><br><span class="line">      if w∉Q</span><br><span class="line">        Enqueue(w,Q)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">DisposeQueue(Q)</span><br></pre></td></tr></table></figure>
@@ -401,7 +401,7 @@
 
 <p>如果要记录路径，</p>
 <ol>
-<li>初始化P(u,v)=u</li>
+<li>初始化P(u,v)&#x3D;u</li>
 <li>在循环中<code>if(D[u,k]+D[k,v]&lt;D[u,v]) P(u,v)=P(k,u)</code></li>
 </ol>
 <p><strong>网络流</strong><br><code>最大流可能不止一个</code></p>
@@ -429,11 +429,11 @@
 
 <h2 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h2><p>从仓库里面挑了几个还能用的显示器，找出了好久之前买的Beaglebone Black (BBB)，买了micro HDMI -&gt; DVI , Display Port -&gt; DVI , Mini Display Port -&gt; DVI 转接线，准备搭建一个新的工作平台。</p>
 <p><img data-src="http://qiniu.s1nh.org/Blog_BBB-setup_2.jpg-QNthin"></p>
-<h3 id="杜邦线"><a href="#杜邦线" class="headerlink" title="杜邦线"></a>杜邦线</h3><p>之前串口调试线太短了，并且容易插错，就去广埠屯买了这种线（老板说叫杜邦线），并且买了4/7的插头各一个。以后就不用纠结哪根线插在哪个针上了。</p>
+<h3 id="杜邦线"><a href="#杜邦线" class="headerlink" title="杜邦线"></a>杜邦线</h3><p>之前串口调试线太短了，并且容易插错，就去广埠屯买了这种线（老板说叫杜邦线），并且买了4&#x2F;7的插头各一个。以后就不用纠结哪根线插在哪个针上了。</p>
 <p><img data-src="http://qiniu.s1nh.org/Blog_BBB-setup_3.jpg-QNthin"></p>
 <p><img data-src="http://qiniu.s1nh.org/Blog_BBB-setup_4.jpg-QNthin"></p>
 <h3 id="TP-Link-交换机指示灯全亮修复"><a href="#TP-Link-交换机指示灯全亮修复" class="headerlink" title="TP-Link 交换机指示灯全亮修复"></a>TP-Link 交换机指示灯全亮修复</h3><p>实验室有两台服务器、一个工作站、Mac Mini和BBB，想把它们组建成局域网。</p>
-<p>从办公室里翻出来了一个坏的交换机，通电后发现所有的灯常亮。百度了一下好多这种现象，可能是TP-link的通病。拆开以后可以看到3个电容爆了，去电子市场买了3个3300uF/16V的电容，问题解决。</p>
+<p>从办公室里翻出来了一个坏的交换机，通电后发现所有的灯常亮。百度了一下好多这种现象，可能是TP-link的通病。拆开以后可以看到3个电容爆了，去电子市场买了3个3300uF&#x2F;16V的电容，问题解决。</p>
 <p><img data-src="http://qiniu.s1nh.org/Blog_BBB-setup_5.jpg-QNthin"></p>
 <p><img data-src="http://qiniu.s1nh.org/Blog_BBB-setup_6.jpg-QNthin"></p>
 <p><img data-src="http://qiniu.s1nh.org/Blog_BBB-setup_8.jpg-QNthin"></p>
@@ -490,7 +490,7 @@ n latest
 </ul>
 <p>要注意的是，BBB 现在推出了有4G eMMC 的 Rev C，所以下载之前一定要看好<code>版本号(Rev)</code>；还有要注意的是要主意<code>microSD/Standalone</code>和<code>lxde/console</code>。</p>
 <p>注意，有些网站在天朝被墙了，请参照之前的文章用<a href="/tags/Lantern/">Lantern</a>翻墙。</p>
-<h3 id="安装Image到microSD卡"><a href="#安装Image到microSD卡" class="headerlink" title="安装Image到microSD卡"></a>安装Image到microSD卡</h3><p>分别在插入/拔出SD卡的时候输入命令<code>ls /dev</code>，查看SD卡的磁盘名称，我的是<code>disk2</code>。</p>
+<h3 id="安装Image到microSD卡"><a href="#安装Image到microSD卡" class="headerlink" title="安装Image到microSD卡"></a>安装Image到microSD卡</h3><p>分别在插入&#x2F;拔出SD卡的时候输入命令<code>ls /dev</code>，查看SD卡的磁盘名称，我的是<code>disk2</code>。</p>
 <pre><code>//警告！如果不知道dd命令是干嘛的，或者不知道我上面说的`disk2`是怎么来的
 //在你baidu清楚之前，不要执行下面那行代码。
 
@@ -507,7 +507,7 @@ dd if=BBB-eMMC-flasher-debian-7.9-lxde-armhf-2015-11-03-2gb.img of=/dev/rdisk2 b
 <p>重新启动，就会看到BBB的四个LED灯像流水一样闪烁。刷完以后BBB会自动关机。等它刷新完eMMC以后，记得拔出microSD卡，否则下次开机后会重新刷一遍- -</p>
 <h3 id="安装LXDE"><a href="#安装LXDE" class="headerlink" title="安装LXDE"></a>安装LXDE</h3><p>在官网下载了Debian8.2的Image，安装完毕后发现没有桌面环境。输入以下命令手动安装<a href="http://wiki.lxde.org/zh/Debian">LXDE桌面环境</a>：</p>
 <pre><code>aptitude install --without-recommends lxde  //安装简化版的LXDE
-apt-get install xorg xserver-xorg           //如果不安装这个，没有startx命令                    
+apt-get install xorg xserver-xorg           //如果不安装这个，没有startx命令					
 </code></pre>
 <p>安装完毕后，执行<code>startx</code>运行桌面环境。启动后的桌面环境会报错<code>no session for pid ****</code>，不知道是什么原因耶。</p>
 <p>因为板载eMMC只有2G，最后我放弃了这种方式，选择了直接使用4G-SD卡的Image。</p>
@@ -611,7 +611,7 @@ root@kali:~# depmod -a -v &quot;3.8.13-bone53&quot;
 <p><img data-src="http://qiniu.s1nh.org/Blog_CVPR2016_LocNet.jpg-QNthin" alt="LocNet" title="LocNet"></p>
 <p>在目标检测的评价体系中，有一个参数叫做IoU，简单来讲就是模型产生的目标窗口和原来标记窗口的交叠率。在Pascal VOC中，这个值为0.5。而2014年以来出现的MS COCO竞赛规则把这个IoU变成了0.5-1.0之间的综合评价值，也就是说，定位越准确，其得分越高，这也侧面反映了目标检测在评价指标方面的不断进步。</p>
 <p>回到这个话题，如何产生更准确的目标位置呢？LocNet的解决方案是：针对每一个给定的初始框进行适当的放大，然后用一个CNN的网络回归出这个放大后的框包含的那个正确框的位置。为了达到这个目标，需要定义回归方式，网络以及模型，具体的细节参见[7]。</p>
-<p>经过把原始的框（比如selective search生成的）进行再一次回归之后，再放入Fast R-CNN进行检测，在IoU=0.5的情况下，在Pascal VOC 数据集上mAP可以提升大约5个百分点，而IoU=0.7时可以达到13个百分点的提升，效果还是挺惊人的。</p>
+<p>经过把原始的框（比如selective search生成的）进行再一次回归之后，再放入Fast R-CNN进行检测，在IoU&#x3D;0.5的情况下，在Pascal VOC 数据集上mAP可以提升大约5个百分点，而IoU&#x3D;0.7时可以达到13个百分点的提升，效果还是挺惊人的。</p>
 <h2 id="4-结语"><a href="#4-结语" class="headerlink" title="4. 结语"></a>4. 结语</h2><p>目标检测是计算机视觉中基础而且热门的领域，最近两年的由于深度学习的影响产生了巨大的进步，相信在未来的一两年时间有更优秀的工作出现。</p>
 ]]></content>
       <categories>
@@ -664,6 +664,33 @@ root@kali:~# depmod -a -v &quot;3.8.13-bone53&quot;
       </categories>
   </entry>
   <entry>
+    <title>Fender S-1 开关的接法</title>
+    <url>/post/Fender_S-1_WiringDiagram/</url>
+    <content><![CDATA[<p>最近在改造吉他的电路，搜集了一些关于拾音器电路的网站：</p>
+<span id="more"></span>
+
+<ul>
+<li><a href="http://www.seymourduncan.com/support/wiring-diagrams/">Seymour Duncan wiring-diagrams&#x2F;</a>：Seymour Duncan 官方的电路参考，在这里可以找到各种配置的电路，特别强大。这个网站刚刚改版，看起来比之前人性化许多。</li>
+<li><a href="http://www.deluxeguitar.com/">Deluxe Guitar</a>：包含了美豪的电路、琴颈形状、旋钮、音色试听等各种信息。</li>
+<li><a href="http://guitarwiring.blogspot.jp/">The Guitar Wiring Blog</a>：各种各样奇奇怪怪的吉他电路图。</li>
+<li><a href="http://www.premierguitar.com/articles/Mod_Garage_The_Fender_S_1_Switching_System">Mod Garage The Fender S-1 Switching System</a>：这个帖子是介绍S-1开关的</li>
+</ul>
+<p>下面是从fender官网搜集的4个不同型号的Fender Deluxe St电路图：</p>
+<p><a href="http://qiniu.s1nh.org/Blog_011-8102A_SISD.pdf">011-8102A_SISD.pdf</a></p>
+<p><a href="http://qiniu.s1nh.org/Blog_011-9000B_SISD.pdf">011-9000B_SISD.pdf</a></p>
+<p><a href="http://qiniu.s1nh.org/Blog_011-9100A_SISD.pdf">011-9100A_SISD.pdf</a></p>
+<p><a href="http://qiniu.s1nh.org/Blog_Fender_Am_Dlx_Stratocaster_HSS_Shawbucker_011911XXXX_Service_Manual.pdf">Fender_011911XXXX_Service_Manual.pdf</a></p>
+]]></content>
+      <categories>
+        <category>音乐相关</category>
+      </categories>
+      <tags>
+        <tag>fender</tag>
+        <tag>wiring diagram</tag>
+        <tag>S1</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Github 支持除代码以外的文件格式</title>
     <url>/post/Github-non-code-files/</url>
     <content><![CDATA[<p>Github 支持图片, geoJSON, 3D模型, 表格, PDF等格式的查看和版本对比。</p>
@@ -674,7 +701,7 @@ root@kali:~# depmod -a -v &quot;3.8.13-bone53&quot;
 <p>注意：<code>SVGs don&#39;t currently support inline scripting or animation.</code></p>
 <h3 id="对比不同版本的图片"><a href="#对比不同版本的图片" class="headerlink" title="对比不同版本的图片"></a>对比不同版本的图片</h3><p>有三种方法对比不同版本的图片: 2-up, swipe, and onion skin. 最后那个Onion skin很有意思</p>
 <ul>
-<li>2-up </li>
+<li>2-up</li>
 </ul>
 <p><img data-src="https://help.github.com/assets/images/help/repository/images-2up-view.png" alt="2-up"></p>
 <ul>
@@ -702,33 +729,6 @@ root@kali:~# depmod -a -v &quot;3.8.13-bone53&quot;
       </categories>
       <tags>
         <tag>Github</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Fender S-1 开关的接法</title>
-    <url>/post/Fender_S-1_WiringDiagram/</url>
-    <content><![CDATA[<p>最近在改造吉他的电路，搜集了一些关于拾音器电路的网站：</p>
-<span id="more"></span>
-
-<ul>
-<li><a href="http://www.seymourduncan.com/support/wiring-diagrams/">Seymour Duncan wiring-diagrams/</a>：Seymour Duncan 官方的电路参考，在这里可以找到各种配置的电路，特别强大。这个网站刚刚改版，看起来比之前人性化许多。</li>
-<li><a href="http://www.deluxeguitar.com/">Deluxe Guitar</a>：包含了美豪的电路、琴颈形状、旋钮、音色试听等各种信息。</li>
-<li><a href="http://guitarwiring.blogspot.jp/">The Guitar Wiring Blog</a>：各种各样奇奇怪怪的吉他电路图。</li>
-<li><a href="http://www.premierguitar.com/articles/Mod_Garage_The_Fender_S_1_Switching_System">Mod Garage The Fender S-1 Switching System</a>：这个帖子是介绍S-1开关的</li>
-</ul>
-<p>下面是从fender官网搜集的4个不同型号的Fender Deluxe St电路图：</p>
-<p><a href="http://qiniu.s1nh.org/Blog_011-8102A_SISD.pdf">011-8102A_SISD.pdf</a></p>
-<p><a href="http://qiniu.s1nh.org/Blog_011-9000B_SISD.pdf">011-9000B_SISD.pdf</a></p>
-<p><a href="http://qiniu.s1nh.org/Blog_011-9100A_SISD.pdf">011-9100A_SISD.pdf</a></p>
-<p><a href="http://qiniu.s1nh.org/Blog_Fender_Am_Dlx_Stratocaster_HSS_Shawbucker_011911XXXX_Service_Manual.pdf">Fender_011911XXXX_Service_Manual.pdf</a></p>
-]]></content>
-      <categories>
-        <category>音乐相关</category>
-      </categories>
-      <tags>
-        <tag>fender</tag>
-        <tag>wiring diagram</tag>
-        <tag>S1</tag>
       </tags>
   </entry>
   <entry>
@@ -784,8 +784,8 @@ root@kali:~# depmod -a -v &quot;3.8.13-bone53&quot;
 <p>大多数视频采用H.264标准获得高压缩比编码。然而，高的计算复杂度和强大的数据依赖性，使实时编码困难。由于流体系结构具有丰富的运算单元和灵活可编程的，他们更适合媒体应用比ASIC和DSP。本文介绍了H.264帧内编码的聚流体系结构的实时实现。在流级和内核级的优化被认为是提高了利用率的算术单元，然后编码性能。在流水平，块与块之间的相似性，利用宏块，切片。在内核级，内核分区和内核融合相结合，得到优化的内核。实验结果表明，所提出的优化技术，提高性能显着。1080p视频编码的帧内编码速率可以达到每秒50.2帧。</p>
 <p><strong>[21].</strong> W.F. Liu, J.L. Lu, Z.F. Wang, H.J. Song, X.Z. Han <strong>A High Compression Algorithm for Video Stream</strong> Proceedings of Congress on Image and Signal Processing, Sanya, Hainan (2008), pp. 287–291</p>
 <p>为了减少当前和现有图像之间的相似性的视频帧序列的时间冗余度，本文提出了一种基于零树小波的非常高的压缩的新的视频编码算法。提出了一种新的方案，它采用基于帧序列中检测到的不同运动的自适应策略。用该算法实现了高逼真度的视频流的实时压缩。©IEEE 2008。</p>
-<p><strong>[22].</strong> N. Mao, L. Zhuo, J. Zhang, X. Li <strong>Fast Compression Domain Video Encryption Scheme for H.264/AVC Streaming</strong> Proceedings of International Conference On Advanced Communication Technology, PyeongChang (2012), pp. 425–429</p>
-<p>本文提出了一种新方法保护H.264/AVC流。已指出的压缩域视频加密的问题，并充分解决。优化安全水平和计算复杂度之间的权衡，只有在H.264/AVC流重建视频质量的最重要的位进行加密，包括帧内预测模式的编码、帧内和运动矢量差的低频DCT系数（MVD）。保持加密的流媒体格式符合H.264标准的解码器的帧内预测模式的码字加密IPME，对DCT系数的码字符号位加密和MVD的码字后缀加密信息。实验结果表明，该方案具有显着的计算效率和可靠的安全性，可以抵御不仅感性的攻击，但也蛮力攻击。因此，所提出的方案将非常适合于实时和资源有限的系统。©2012女孩。</p>
+<p><strong>[22].</strong> N. Mao, L. Zhuo, J. Zhang, X. Li <strong>Fast Compression Domain Video Encryption Scheme for H.264&#x2F;AVC Streaming</strong> Proceedings of International Conference On Advanced Communication Technology, PyeongChang (2012), pp. 425–429</p>
+<p>本文提出了一种新方法保护H.264&#x2F;AVC流。已指出的压缩域视频加密的问题，并充分解决。优化安全水平和计算复杂度之间的权衡，只有在H.264&#x2F;AVC流重建视频质量的最重要的位进行加密，包括帧内预测模式的编码、帧内和运动矢量差的低频DCT系数（MVD）。保持加密的流媒体格式符合H.264标准的解码器的帧内预测模式的码字加密IPME，对DCT系数的码字符号位加密和MVD的码字后缀加密信息。实验结果表明，该方案具有显着的计算效率和可靠的安全性，可以抵御不仅感性的攻击，但也蛮力攻击。因此，所提出的方案将非常适合于实时和资源有限的系统。©2012女孩。</p>
 <p><strong>[23].</strong> Y. Wu, C. Liu, S. Lan, M. Yang <strong>Real-time 3D road scene based on virtual-real fusion method</strong> Sensors J. IEEE, 15 (12) (Feb. 2015)</p>
 <p>道路监控在应急处置、交通事故责任认定、交通趋势分析等领域中起着至关重要的作用。本文设计了一个实时的虚拟现实融合框架的大规模场景的多视角监控，其中二维全景，卫星的纹理，和3D模型合并。该系统的实施与以下的贡献。首先，提出了一种新的多视点重叠图像自动拼接算法。相邻的相机检测到的特征点通过comotion统计地图。此外，变换模型是使用随机抽样一致性算法。其次，多视点图像演变到同一个架空的观点。最后，基于高精度地面控制点，对二维全景图像和三维场景模型进行了组合。所提出的框架已成功地应用到一个大的道路交叉口。随着虚拟现实融合的方法，观察者可以随意监控及大规模三维场景漫游的路。</p>
 <p>在本文中，我们提出了一种通过对安装在经历主要平移运动的机载平台上的摄像机收集的光学数据的无缝配准来自动和有效地生成立体马赛克的新颖方法。在本文中讨论了四个关键点：1）使用平行透视表示，一对几何注册的立体马赛克可以<br>构建之前我们明确地恢复任何3D信息在相当一般的运动。 2）提出了一种PRISM（用于立体马赛克的平行光线插值）技术，使立体马赛克在运动视差的存在下无缝，并且用于相当任意的场景。提出了一种快速PRISM算法，并讨论了缝合点选择和遮挡处理的问题。 3）在约束6自由度运动下产生的平行透视立体马赛克的对极几何被公式化，其显示最佳基线，容易搜索对应和恒定深度分辨率。 4）所提出的方法<br>生成立体马赛克并且然后重建3D地图在计算和存储两者中是高效的。给出了长视频序列的实验结果。</p>
@@ -808,7 +808,7 @@ root@kali:~# depmod -a -v &quot;3.8.13-bone53&quot;
 <p><img data-src="http://qiniu.s1nh.org/Blog_Image_keypoint_8.png" title="未完全匹配的图像"><br><img data-src="http://qiniu.s1nh.org/Blog_Image_keypoint_9.png" title="没有采用增益补偿"><br><img data-src="http://qiniu.s1nh.org/Blog_Image_keypoint_10.png" title="采用增益补偿"><br><img data-src="http://qiniu.s1nh.org/Blog_Image_keypoint_11.png" title="采用增益补偿+多频带融合"></p>
 <h2 id="0x05-拼接流程"><a href="#0x05-拼接流程" class="headerlink" title="0x05 拼接流程"></a>0x05 拼接流程</h2><p>下面是一个简略的拼接流程。</p>
 <blockquote>
-<p><strong>输入</strong>: n 幅图像<br><strong>I.</strong> 对全部的 n 幅图像提取角点<br><strong>II.</strong> 用 k-d 树对邻近特征进行提取<br><strong>III.</strong> For (每个图像):<br>&emsp;(i) 选择 m 幅图像进行特征匹配<br>&emsp;(ii) 对匹配好的特征执行 RANSAC 算法筛选出正确的特征点<br>&emsp;(iii) 使用概率模型验证图像匹配<br><strong>IV.</strong> 寻找匹配的图像<br><strong>V.</strong> For (每一对匹配的图像):<br>&emsp;(i) 通过旋转角 θ1, θ2, θ3 和焦距 f 执行几何调整<br>&emsp;(ii) 使用多频带融合渲染全景<br><strong>输出</strong>: 全景图像</p>
+<p><strong>输入</strong>: n 幅图像<br><strong>I.</strong> 对全部的 n 幅图像提取角点<br><strong>II.</strong> 用 k-d 树对邻近特征进行提取<br><strong>III.</strong> For (每个图像):<br>&amp;emsp;(i) 选择 m 幅图像进行特征匹配<br>&amp;emsp;(ii) 对匹配好的特征执行 RANSAC 算法筛选出正确的特征点<br>&amp;emsp;(iii) 使用概率模型验证图像匹配<br><strong>IV.</strong> 寻找匹配的图像<br><strong>V.</strong> For (每一对匹配的图像):<br>&amp;emsp;(i) 通过旋转角 θ1, θ2, θ3 和焦距 f 执行几何调整<br>&amp;emsp;(ii) 使用多频带融合渲染全景<br><strong>输出</strong>: 全景图像</p>
 </blockquote>
 <p>教科书般的流程可直接参照OpenCV源码里的<code>stitching_detailed.cpp</code></p>
 <!--
@@ -1086,7 +1086,7 @@ For information about changes from previous versions of the tisean package, run&
 <span id="more"></span>
 
 <h1 id="NFC-模块"><a href="#NFC-模块" class="headerlink" title="NFC 模块"></a>NFC 模块</h1><p>看到了这个很有意思《<a href="http://www.tuicool.com/articles/zuaIb2">kali linux 下使用PN532［NFC Module For Arduino V1.0］＋CP2102［USB to Serial］读取公交卡信息</a>》就淘宝了一个RDM8800（RDM8800其实是Arduino + PN532）</p>
-<p>可是，买了以后不能用。跟客服聊了半天，还拍了接线的照片给他，都没有解决，最后换上了我自己的串口模块居然好用了。量了一下电压，买的那个串口模块供电只有4.29V（差点写成4.5V，哎呀最近不知道怎么了，老觉得0.3=1/2）。</p>
+<p>可是，买了以后不能用。跟客服聊了半天，还拍了接线的照片给他，都没有解决，最后换上了我自己的串口模块居然好用了。量了一下电压，买的那个串口模块供电只有4.29V（差点写成4.5V，哎呀最近不知道怎么了，老觉得0.3&#x3D;1&#x2F;2）。</p>
 <p><img data-src="http://qiniu.s1nh.org/Blog_Open-source_hardware_1.jpg-QNthin" alt="开源硬件"></p>
 <p><img data-src="http://qiniu.s1nh.org/Blog_Open-source_hardware_2.jpg-QNthin" alt="开源硬件"></p>
 <p><img data-src="http://qiniu.s1nh.org/Blog_Open-source_hardware_3.jpg-QNthin" alt="开源硬件"></p>
@@ -1120,16 +1120,16 @@ For information about changes from previous versions of the tisean package, run&
 </blockquote>
 <p>RSA的生成步骤如下：</p>
 <ol>
-<li>随意选择两个大质数<code>p</code> <code>q</code>，并计算$N=p*q$</li>
-<li>$r=(p-1)(q-1)$ 这是根据欧拉函数$r = φ(N) = φ(p)\cdotφ(q) = (p-1)\cdot(q-1)$获得的</li>
-<li>选择一个小于r并与r互质的整数e（通常取<strong>65537</strong>），求得e关于r的模反元素d（$ed = 1(mod r)$，模反元素存在，当且仅当e与r互质）</li>
+<li>随意选择两个大质数<code>p</code> <code>q</code>，并计算$N&#x3D;p*q$</li>
+<li>$r&#x3D;(p-1)(q-1)$ 这是根据欧拉函数$r &#x3D; φ(N) &#x3D; φ(p)\cdotφ(q) &#x3D; (p-1)\cdot(q-1)$获得的</li>
+<li>选择一个小于r并与r互质的整数e（通常取<strong>65537</strong>），求得e关于r的模反元素d（$ed &#x3D; 1(mod r)$，模反元素存在，当且仅当e与r互质）</li>
 <li>销毁p和q</li>
 <li>(N , e)是公钥，(N, d)为私钥</li>
 </ol>
 <p>假设明文内容<code>m</code>，密文内容<code>c</code></p>
 <ul>
-<li>加密过程： $m^e = c ,(\mod n ,)$</li>
-<li>解密过程： $c^d = m ,(\mod n ,)$</li>
+<li>加密过程： $m^e &#x3D; c ,(\mod n ,)$</li>
+<li>解密过程： $c^d &#x3D; m ,(\mod n ,)$</li>
 </ul>
 <h2 id="0x02-KMP算法"><a href="#0x02-KMP算法" class="headerlink" title="0x02 KMP算法"></a>0x02 KMP算法</h2><p>KMP是字符串匹配的算法，由普通的O(MN)缩减到了O(M+N)。KMP 算法的意思是找到目标字符串（模式串）中已经匹配过的前缀，并略去其匹配过程。<br>先看知乎大神的解释</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from https://www.zhihu.com/question/34623343/answer/59516921</span><br><span class="line">我我是我是傻我不是傻逼我是傻逼我是大傻逼</span><br><span class="line">找出句中的“我是傻逼”</span><br><span class="line">普通的字符串匹配比较傻逼：</span><br><span class="line">我我是我是傻我不是傻逼我是傻逼我是大傻逼</span><br><span class="line">我</span><br><span class="line">对上了</span><br><span class="line">我我是我是傻我不是傻逼我是傻逼我是大傻逼</span><br><span class="line">我是</span><br><span class="line">对不上了，往后移一个，我们再来</span><br><span class="line">我我是我是傻我不是傻逼我是傻逼我是大傻逼</span><br><span class="line">__我</span><br><span class="line">对上了</span><br><span class="line">我我是我是傻我不是傻逼我是傻逼我是大傻逼</span><br><span class="line">__我是</span><br><span class="line">对上了</span><br><span class="line">我我是我是傻我不是傻逼我是傻逼我是大傻逼</span><br><span class="line">__我是傻</span><br><span class="line">对不上了，往后移一下，我们再来</span><br><span class="line">等等，你傻啊，你往后移一个明显不可能对的上嘛，为毛不一下移两个呢？</span><br><span class="line">好好好，我移两个移两个</span><br><span class="line">我我是我是傻我不是傻逼我是傻逼我是大傻逼</span><br><span class="line">_____我对上了</span><br><span class="line">我我是我是傻我不是傻逼我是傻逼我是大傻逼</span><br><span class="line">_____我是对上了</span><br><span class="line">我我是我是傻我不是傻逼我是傻逼我是大傻逼</span><br><span class="line">_____我是傻对上了</span><br><span class="line">我我是我是傻我不是傻逼我是傻逼我是大傻逼</span><br><span class="line">_____我是傻逼对不上了。。。</span><br><span class="line">这次还往后移一个吗？还是……移两个？</span><br><span class="line">啊？你傻啊，你看不出来能一次往后移三个啊！！！</span><br><span class="line"></span><br><span class="line">嗯？怎么看出来的呢？</span><br><span class="line">这个嘛，当然是和我是傻逼这四个字有关系啦。匹配的越多，失配后后移的越多。</span><br><span class="line">那后移多少呢？</span><br><span class="line">那就是next数组啦。。。</span><br></pre></td></tr></table></figure>
@@ -1138,7 +1138,7 @@ For information about changes from previous versions of the tisean package, run&
 <ul>
 <li>AVL树：最早的平衡二叉树之一，应用比较少。Windows对进程地址空间的管理用到了AVL树。</li>
 <li>红黑树：广泛应用在C++的STL中，比如map和set都是红黑树实现的</li>
-<li>B/B+树：磁盘文件组织，数据库的索引</li>
+<li>B&#x2F;B+树：磁盘文件组织，数据库的索引</li>
 <li>Trie树：统计排序大量字符串（自动机）</li>
 </ul>
 <h4 id="1-AVL树（平衡二叉树）"><a href="#1-AVL树（平衡二叉树）" class="headerlink" title="1. AVL树（平衡二叉树）"></a>1. AVL树（平衡二叉树）</h4><p><code>AVL树的左子树和右子树的深度之差(平衡因子)的绝对值不超过1，且它的左子树和右子树都是一颗平衡二叉树。</code></p>
@@ -1152,7 +1152,7 @@ For information about changes from previous versions of the tisean package, run&
 <li>每个节点不是红色就是黑色的；</li>
 <li>根节点总是黑色的；</li>
 <li>如果节点是红色的，则它的子节点必须是黑色的（反之不一定）；</li>
-<li>从根节点到叶节点或空子节点的每条路径，必须包含相同数目的黑色节点（即相同的黑色高度）。   </li>
+<li>从根节点到叶节点或空子节点的每条路径，必须包含相同数目的黑色节点（即相同的黑色高度）。</li>
 </ol>
 <p>红黑树的规则太复杂了，然而我们从<a href="http://blog.csdn.net/chen_zhang_yu/article/details/52415077">这篇文章</a>中读懂红黑树的起源<code>2-3-4树</code>，问题就迎刃而解啦。</p>
 <p>我们定义</p>
@@ -1552,7 +1552,7 @@ class SA&#123;
 <li><a href="http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz">train-images-idx3-ubyte.gz</a>:  training set images (9912422 bytes)</li>
 <li><a href="http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz">train-labels-idx1-ubyte.gz</a>:  training set labels (28881 bytes)</li>
 <li><a href="http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz">t10k-images-idx3-ubyte.gz</a>:   test set images (1648877 bytes)</li>
-<li><a href="http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz">t10k-labels-idx1-ubyte.gz</a>:   test set labels (4542 bytes) </li>
+<li><a href="http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz">t10k-labels-idx1-ubyte.gz</a>:   test set labels (4542 bytes)</li>
 </ul>
 <span id="more"></span>
 
@@ -1568,11 +1568,11 @@ Extracting MNIST_data/t10k-labels-idx1-ubyte.gz
 
 <h2 id="0x01-Softmax"><a href="#0x01-Softmax" class="headerlink" title="0x01 Softmax"></a>0x01 Softmax</h2><p>只用 Softmax Regression 进行分类，正确率约为92%</p>
 <h3 id="1-定义变量"><a href="#1-定义变量" class="headerlink" title="1. 定义变量"></a>1. 定义变量</h3><p>Softmax Regression 的公式可以写成：</p>
-<p>$$y=softmax(Wx+b)$$</p>
+<p>$$y&#x3D;softmax(Wx+b)$$</p>
 <p>其中，<code>x</code>为输入数据（手写数字图片），不限条数的<code>784</code>维的<code>Float32</code>型数据；<br><code>W</code>为<code>784×10（特征维数×图片种类）</code>的<code>Variable</code>向量；<br><code>b</code>是bias（偏置）<br><code>y</code>为Softmax分类后得出的结果</p>
 <p>loss function为<code>cross_entropy</code>，定义如下：</p>
-<p>$$H_y’(y)=-\sum_{i}{y’_ilog(y_i)}$$</p>
-<p>而<code>reduce_mean</code>为对每个batch求均值（reduction_indices=[1]的意思请看后面的附录， 在新版的<a href="https://www.tensorflow.org/get_started/mnist/beginners">Tensorflow tutorial</a>中，这部分稍有区别<br>）</p>
+<p>$$H_y’(y)&#x3D;-\sum_{i}{y’_ilog(y_i)}$$</p>
+<p>而<code>reduce_mean</code>为对每个batch求均值（reduction_indices&#x3D;[1]的意思请看后面的附录， 在新版的<a href="https://www.tensorflow.org/get_started/mnist/beginners">Tensorflow tutorial</a>中，这部分稍有区别<br>）</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x = tf.placeholder(tf.float32,[<span class="literal">None</span>,<span class="number">784</span>])</span><br><span class="line">W = tf.Variable(tf.zeros([<span class="number">784</span>,<span class="number">10</span>]))</span><br><span class="line">b = tf.Variable(tf.zeros([<span class="number">10</span>]))</span><br><span class="line"></span><br><span class="line">y = tf.nn.softmax(tf.matmul(x,W) + b)</span><br><span class="line">y_ = tf.placeholder(tf.float32,[<span class="literal">None</span>,<span class="number">10</span>])</span><br><span class="line"></span><br><span class="line">cross_entropy = tf.reduce_mean(-tf.reduce_sum(y_ * tf.log(y),reduction_indices=[<span class="number">1</span>]))</span><br><span class="line"></span><br><span class="line">train_step = tf.train.GradientDescentOptimizer(<span class="number">0.5</span>).minimize(cross_entropy)</span><br></pre></td></tr></table></figure>
 
 <h3 id="2-训练"><a href="#2-训练" class="headerlink" title="2. 训练"></a>2. 训练</h3><p>每次训练抽取100个样本作为<code>mini-batch</code>，并传给<code>placeholder(x,y_)</code>进行训练，并每隔250输出一次权重。</p>
@@ -1699,8 +1699,8 @@ step 19900, training accuracy 1
 <h2 id="0x04-附录"><a href="#0x04-附录" class="headerlink" title="0x04 附录"></a>0x04 附录</h2><h3 id="1-关于reduction-indices"><a href="#1-关于reduction-indices" class="headerlink" title="1. 关于reduction_indices"></a>1. 关于reduction_indices</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x=[[<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>],[<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>]]</span><br><span class="line">y0=tf.reduce_sum(x,reduction_indices=[<span class="number">0</span>])</span><br><span class="line">y1=tf.reduce_sum(x,reduction_indices=[<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;x  = &quot;</span>, x)</span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;y0 = &quot;</span>, sess.run(y0), <span class="string">&quot;\t(x在第0维度相加)&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;y1 = &quot;</span>, sess.run(y1), <span class="string">&quot;\t(x在第1维度相加)&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <pre><code>x  =  [[2, 2, 2], [2, 2, 2]]
-y0 =  [4 4 4]     (x在第0维度相加)
-y1 =  [6 6]     (x在第1维度相加)
+y0 =  [4 4 4] 	(x在第0维度相加)
+y1 =  [6 6] 	(x在第1维度相加)
 </code></pre>
 ]]></content>
       <categories>
@@ -1755,7 +1755,7 @@ y1 =  [6 6]     (x在第1维度相加)
 root@kali:~/sdr# cd dump1090/ 
 </code></pre>
 <p>如果这时执行make命令会提示：</p>
-<pre><code>Package librtlsdr was not found in the pkg-config search     path.
+<pre><code>Package librtlsdr was not found in the pkg-config search 	path.
 Perhaps you should add the directory containing `librtlsdr.pc&#39;
 to the PKG_CONFIG_PATH environment variable
 No package &#39;librtlsdr&#39; found
@@ -1942,7 +1942,7 @@ apt-get install libusb-1.0-0-dev
 <p>孩子养好了 出息了 成功了<br>家长：看我把孩子教育的多好</p>
 </blockquote>
 <blockquote>
-<p>孩子沉迷了 抑郁了 甚至犯罪了<br>家长：游戏/社会害了他</p>
+<p>孩子沉迷了 抑郁了 甚至犯罪了<br>家长：游戏&#x2F;社会害了他</p>
 </blockquote>
 <hr>
 <p>我送你一座崭新的奥斯维辛，<br>我送你一个工艺精湛的地狱，<br>我送你一具肥美多汁的躯体，<br>掀开头盖骨偷走了粉嫩的脑子，<br>挖出来的肠子鲜艳的红色很可爱，<br>绿色的苍蝇在你腐烂的躯体上显得晶莹剔透，<br>我给你烤一份新鲜的脑花，<br>我给你烤一份新鲜的心脏，<br>我给你化妆，遮住星星点点的尸斑，<br>我帮你剔除未来不需要的，<br>你要在跑道上飞起来啊。<br>孩子，你说话啊，妈妈爸爸爱你。<br>孩子，你说话啊，我们在教育你成才。<br>孩子，你说话啊，你爱我们。<br>孩子，你说话啊，你爱祖国。<br>孩子，你说话啊，你爱世界。</p>
@@ -1955,7 +1955,7 @@ apt-get install libusb-1.0-0-dev
     <title>百度阿波罗 和 ROS 2.0 采用的消息中间件</title>
     <url>/post/a-survey-of-middleware-interface/</url>
     <content><![CDATA[<blockquote>
-<p>ROS 和前期的 Apollo 定义了一个 API，它向用户公开如<code>发布</code>/<code>订阅</code>等通信概念。<br>这些通信概念的实现基于自定义协议，并使用共享内存去降低基于Socket通信的开销。<br>这些传统方法存在一些问题，如每个节点以单独进程的形式存在，由底层操作系统调度，而Linux是个通用系统，每个节点的运行顺序并无任何逻辑。ROS是专用系统，任务应按照一定的业务逻辑执行。</p>
+<p>ROS 和前期的 Apollo 定义了一个 API，它向用户公开如<code>发布</code>&#x2F;<code>订阅</code>等通信概念。<br>这些通信概念的实现基于自定义协议，并使用共享内存去降低基于Socket通信的开销。<br>这些传统方法存在一些问题，如每个节点以单独进程的形式存在，由底层操作系统调度，而Linux是个通用系统，每个节点的运行顺序并无任何逻辑。ROS是专用系统，任务应按照一定的业务逻辑执行。</p>
 </blockquote>
 <p><code>ROS 2</code> 和 <code>Apollo 3</code> 的计算框架 <code>Cyber RT</code> 构建在现有中间件解决方案 <code>DDS</code> 之上 <a name="r1" href="#1"><sup>[1]</sup></a>  <a name="r2" href="#2"><sup>[2]</sup></a> </p>
 <p><code>Cyber RT</code> 在此基础上构建了自己的调度器 <a name="r3" href="#3"><sup>[3]</sup></a>，由一个多队列的<code>任务编排策略</code>调度协程（Coroutine）在 Native Thread 上有序运行。其中，Cyber RT 会动态的根据不同调度顺序的执行时间来动态的选择一个时间最短的调度策略。</p>
@@ -1970,7 +1970,7 @@ apt-get install libusb-1.0-0-dev
 <li>可靠性：DDS提供点到点的信息交互服务，从而保证整个系统服务不存在单点故障的风险；同时提供可靠传输策略，<strong>通过重发机制确保数据可靠地传输</strong>。</li>
 <li>持续性：DDS可以通过相应的QoS为ROS提供<strong>数据历史</strong>的服务，新加入的节点也可以获取发布的所有历史数据。</li>
 <li>灵活性：应用系统可以根据应用场景需求，灵活选择多种DDS提供的应用级QoS策略（例如可靠性传输、数据过滤、优先级排序等等），以满足系统的灵活性需求。</li>
-<li>扩展性：DDS使用“订阅/发布”机制进行数据交互，建立<strong>全局的虚拟数据空间</strong>，在通信层面将应用逻辑与节点的物理信息解耦合，使系统能够方便的实现节点增减或系统本身的分割/合并，满足系统的扩展性需求；运行时由DDS自动发现并连接设备和应用程序，即插即用，无需系统管理或目录服务。</li>
+<li>扩展性：DDS使用“订阅&#x2F;发布”机制进行数据交互，建立<strong>全局的虚拟数据空间</strong>，在通信层面将应用逻辑与节点的物理信息解耦合，使系统能够方便的实现节点增减或系统本身的分割&#x2F;合并，满足系统的扩展性需求；运行时由DDS自动发现并连接设备和应用程序，即插即用，无需系统管理或目录服务。</li>
 <li>异构网络支持：DDS通过适配底层多种异构架构网络，对上层提供无差别的通信服务，使通信软硬件层对应用层完全透明。</li>
 </ul>
 <h2 id="0x02-Fast-DDS"><a href="#0x02-Fast-DDS" class="headerlink" title="0x02 Fast DDS"></a>0x02 Fast DDS</h2><h3 id="2-1-简介"><a href="#2-1-简介" class="headerlink" title="2.1 简介"></a>2.1 简介</h3><p>ROS 2 的大多数版本使用 <code>Fast DDS</code> 作为中间件。ROS 团队提供了一个很完善的报告<a name="r4" href="#4"><sup>[4]</sup></a> 详细对比了各个主流 DDS 中间件在压力测试中的 <code>CPU/内存占用率</code> <code>延时</code> <code>丢包</code>，以及<code>代码质量</code> <code>社区评价</code> 等指标，以及阐述了使用 <code>FastDDS</code> 作为默认中间件的理由。</p>
@@ -1987,8 +1987,8 @@ apt-get install libusb-1.0-0-dev
 <p>使用 <code>$./fastddsgen HelloWorld.idl</code> 编译成接口文件：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">HelloWorld.h/cxx: HelloWorld type 定义.</span><br><span class="line">HelloWorldPubSubTypes.h/cxx: HelloWorld type 的序列化和反序列化代码。</span><br></pre></td></tr></table></figure>
 
-<p><strong>d. 编写subscriber/publisher</strong></p>
-<p>参考 <a name="r6" href="#6">[Fast-DDS/examples]</a> 编写代码，其中包含共享内存的使用方法。另外， <a name="r7" href="#7">[FASTDDS: Typical Use-Cases]</a> 有包括<strong>高速率通信</strong>、<strong>实时场景</strong>、<strong>零拷贝</strong>等对符合我们应用场景的配置示例。</p>
+<p><strong>d. 编写subscriber&#x2F;publisher</strong></p>
+<p>参考 <a name="r6" href="#6">[Fast-DDS&#x2F;examples]</a> 编写代码，其中包含共享内存的使用方法。另外， <a name="r7" href="#7">[FASTDDS: Typical Use-Cases]</a> 有包括<strong>高速率通信</strong>、<strong>实时场景</strong>、<strong>零拷贝</strong>等对符合我们应用场景的配置示例。</p>
 <h3 id="2-2-特性"><a href="#2-2-特性" class="headerlink" title="2.2 特性"></a>2.2 特性</h3><p><strong>a. 历史记录</strong></p>
 <p>Fast DDS 提供数据历史的服务，可以定义过去样本的存储策略。</p>
 <ul>
@@ -1997,13 +1997,13 @@ apt-get install libusb-1.0-0-dev
 </ul>
 <p><strong>b. 零拷贝</strong></p>
 <p>传统的共享内存方式避免了传输层中涉及的开销，节省内存的占用（左图）。</p>
-<p>FastDDS不仅提供共享内存，还提供类似 NVIDIA Jetson 的零拷贝模式 <a name="r8" href="#8"><sup>[8]</sup></a>（右图，后者基于GPU/CPU使用同一块内存）。应用程序获取接收到的数据作为引用，这可以防止将数据从共享内存复制到应用程序。</p>
+<p>FastDDS不仅提供共享内存，还提供类似 NVIDIA Jetson 的零拷贝模式 <a name="r8" href="#8"><sup>[8]</sup></a>（右图，后者基于GPU&#x2F;CPU使用同一块内存）。应用程序获取接收到的数据作为引用，这可以防止将数据从共享内存复制到应用程序。</p>
 <p><img data-src="http://qiniu.s1nh.org/fast-dds-data-sharing-zoro-copy.png" alt="DDS-communication-model"></p>
 <p>使用零拷贝可以显著加速进程间的通信速度 <a name="r9" href="#9"><sup>[9]</sup></a>，吞吐量测试结果如下：</p>
 <img style="background-color:white" data-src="http://qiniu.s1nh.org/fast-dds-zero-copy-performance.svg" />
 
 <p><strong>z. DDS Monitor</strong></p>
-<p>Fast DDS 提供一个GUI应用，可以实时监控 DDS 实体之间的发布/订阅状态，物理架构和统计数据。</p>
+<p>Fast DDS 提供一个GUI应用，可以实时监控 DDS 实体之间的发布&#x2F;订阅状态，物理架构和统计数据。</p>
 <img data-src="http://qiniu.s1nh.org/fast-dds-monitor-statistics.png"  width=70% />
 
 <h2 id="0xFF-Reference"><a href="#0xFF-Reference" class="headerlink" title="0xFF Reference"></a>0xFF Reference</h2><ul>
@@ -2012,7 +2012,7 @@ apt-get install libusb-1.0-0-dev
 <li>[3] <a name="3" href="#r3">^</a> <a href="https://download.csdn.net/course/detail/16425">Apollo 3.5 计算框架（Cyber RT）设计分享</a></li>
 <li>[4] <a name="4" href="#r4">^</a> <a href="https://osrf.github.io/TSC-RMW-Reports/humble/#121-cpu-utilization-in-a-spinning-node-by-rmw">2021 ROS Middleware Evaluation Report</a></li>
 <li>[5] <a name="5" href="#r5">^</a> <a href="https://fast-dds.docs.eprosima.com/en/latest/fastdds/library_overview/library_overview.html">FASTDDS: Library Overview</a></li>
-<li>[6] <a name="6" href="#r6">^</a> <a href="https://github.com/eProsima/Fast-DDS/tree/master/examples/">Fast-DDS/examples</a></li>
+<li>[6] <a name="6" href="#r6">^</a> <a href="https://github.com/eProsima/Fast-DDS/tree/master/examples/">Fast-DDS&#x2F;examples</a></li>
 <li>[7] <a name="7" href="#r7">^</a> <a href="https://fast-dds.docs.eprosima.com/en/latest/fastdds/use_cases/use_cases.html">FASTDDS: Typical Use-Cases</a></li>
 <li>[8] <a name="8" href="#r8">^</a> <a href="https://fast-dds.docs.eprosima.com/en/latest/fastdds/use_cases/zero_copy/zero_copy.html">FASTDDS: ZERO COPY</a></li>
 <li>[9] <a name="9" href="#r9">^</a> <a href="eprosima.com/index.php/resources-all/performance/eprosima-fast-dds-performance">eProsima Fast DDS Performance</a></li>
@@ -2021,6 +2021,9 @@ apt-get install libusb-1.0-0-dev
       <categories>
         <category>算法与硬件</category>
       </categories>
+      <tags>
+        <tag>FastDDS</tag>
+      </tags>
   </entry>
   <entry>
     <title>阿尔法罗密欧零成本自制 Race 模式开关，关闭牵引力控制和 ESP</title>
@@ -2053,7 +2056,7 @@ apt-get install libusb-1.0-0-dev
 
 <h2 id="0x02-三种-DNA-模式"><a href="#0x02-三种-DNA-模式" class="headerlink" title="0x02 三种 DNA 模式"></a>0x02 三种 DNA 模式</h2><p>在设置DNA模式时，有三种可选项，分别是<code>Stock</code> <code>Type 2/DNA</code> <code>Type 3/DNA/Sport</code>，三种模式的原理是将配置文件的第88字节设置为 AC(1<strong>01</strong>0 1100)、CC(1<strong>10</strong>0 1100)、EC(1<strong>11</strong>0 1100)。</p>
 <p>修改为非Stock模式后，不但拥有了Race模式，其它模式的映射也会相应改变。最明显的感觉是<strong>在所有模式中，油门踏板都为线性映射</strong>，不再存在之前在D档一碰油门就乱窜的奇怪映射了。</p>
-<h2 id="0xFE-已知问题"><a href="#0xFE-已知问题" class="headerlink" title="0xFE 已知问题"></a>0xFE 已知问题</h2><p>2017 年初或更早产的 Giulia/Stelvio DTCM 版本过低，PROXI 时会出现以下错误。虽然可以启动 Race 模式，但无法在此模式下使用拨片。</p>
+<h2 id="0xFE-已知问题"><a href="#0xFE-已知问题" class="headerlink" title="0xFE 已知问题"></a>0xFE 已知问题</h2><p>2017 年初或更早产的 Giulia&#x2F;Stelvio DTCM 版本过低，PROXI 时会出现以下错误。虽然可以启动 Race 模式，但无法在此模式下使用拨片。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Error: WRITING PROXI DATA Drive Train Control Node (DTCM)... FAILED! - Request out of range error</span><br><span class="line">Error: Drive Train Control Module (DTCM) EOL Failed</span><br></pre></td></tr></table></figure>
 
 <p>解决方法：</p>
@@ -2063,7 +2066,7 @@ apt-get install libusb-1.0-0-dev
 <li>去闲鱼收一块新版的电脑板（价格不明）</li>
 <li>放弃 Race 模式，使用 <a href="https://squadra-tuning.com/obd-tools/traction-controller/">Squadra Tuning</a> 关闭 ESP。</li>
 </ol>
-<h2 id="0xFF-SGW-旁路"><a href="#0xFF-SGW-旁路" class="headerlink" title="0xFF SGW 旁路"></a>0xFF SGW 旁路</h2><p>对于 2018+ 的 Giulia/Stelvio（生产日期大约在 2018 年 2 月之后），您的车里很可能有一个称为安全网关模块 (SGW / SGM) 的设备。</p>
+<h2 id="0xFF-SGW-旁路"><a href="#0xFF-SGW-旁路" class="headerlink" title="0xFF SGW 旁路"></a>0xFF SGW 旁路</h2><p>对于 2018+ 的 Giulia&#x2F;Stelvio（生产日期大约在 2018 年 2 月之后），您的车里很可能有一个称为安全网关模块 (SGW &#x2F; SGM) 的设备。</p>
 <p>需要购买一个 SGW Bypass 设备，才能修改配置。</p>
 ]]></content>
       <categories>
@@ -2081,7 +2084,7 @@ apt-get install libusb-1.0-0-dev
 </blockquote>
 <span id="more"></span>
 
-<p>使用NVIDIA Jetson TX1/TX2，Drive PX2 的同学在刷完机以后，宿主机的apt-get无法正确使用。原因是自带的刷机包（Jetpack/DriveInstall）给系统安装了arm64的软件包，报错如下：</p>
+<p>使用NVIDIA Jetson TX1&#x2F;TX2，Drive PX2 的同学在刷完机以后，宿主机的apt-get无法正确使用。原因是自带的刷机包（Jetpack&#x2F;DriveInstall）给系统安装了arm64的软件包，报错如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> Err:29 http://archive.ubuntu.com/ubuntu xenial/main arm64 Packages</span><br><span class="line">  404  Not Found [IP: 91.189.88.161 80]</span><br><span class="line">Ign:37 http://archive.ubuntu.com/ubuntu xenial/universe arm64 Packages</span><br><span class="line">Ign:40 http://archive.ubuntu.com/ubuntu xenial/multiverse arm64 Packages</span><br><span class="line">Err:46 http://archive.ubuntu.com/ubuntu xenial-updates/main arm64 Packages</span><br><span class="line">  404  Not Found [IP: 91.189.88.161 80]</span><br><span class="line">Ign:56 http://archive.ubuntu.com/ubuntu xenial-updates/universe arm64 Packages</span><br><span class="line">Ign:62 http://archive.ubuntu.com/ubuntu xenial-updates/multiverse arm64 Packages</span><br><span class="line">Err:68 http://archive.ubuntu.com/ubuntu xenial-backports/main arm64 Packages</span><br><span class="line">  404  Not Found [IP: 91.189.88.161 80]</span><br><span class="line">Ign:75 http://archive.ubuntu.com/ubuntu xenial-backports/universe arm64 Packages</span><br><span class="line">Err:83 http://archive.ubuntu.com/ubuntu xenial-security/main arm64 Packages</span><br><span class="line">  404  Not Found [IP: 91.189.88.161 80]</span><br><span class="line">Ign:93 http://archive.ubuntu.com/ubuntu xenial-security/universe arm64 Packages</span><br><span class="line">Ign:99 http://archive.ubuntu.com/ubuntu xenial-security/multiverse arm64 Packages</span><br></pre></td></tr></table></figure>
 
 <p>正确的解决方案为，修改<code>/etc/apt/source.list</code>在每一行的<code>deb</code>和<code>http://×××</code>中间加入<code>[arch=amd64,i386]</code>，修改后的<code>source.list</code>文件如下（仅供参考，请按需修改）：</p>
@@ -2095,10 +2098,30 @@ apt-get install libusb-1.0-0-dev
       </categories>
   </entry>
   <entry>
+    <title>boost::interprocess 新版本修复了死锁</title>
+    <url>/post/boost-robustness-interprocess-mutex-deadlock/</url>
+    <content><![CDATA[<p>boost::interprocess 在 1.78 版本之前如果进程崩溃可能导致死锁。从18年就有人提出这个issue，21年才修复。<br>最简单的复现方法是执行三遍下面的代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &quot;boost/interprocess/managed_shared_memory.hpp&quot;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">  boost::interprocess::managed_shared_memory managed_shm&#123;</span><br><span class="line">      boost::interprocess::open_or_create, &quot;Boost&quot;, 1024</span><br><span class="line">  &#125;;</span><br><span class="line">  int* i = managed_shm.construct&lt;int&gt;(&quot;Int&quot;)(99);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>第一遍在共享内存中创建 Boost 文件，并写入一个 Key 为 Int 的变量 99；</li>
+<li>第二遍尝试再次写入时发现已经有这个Key了，写不进去。程序崩溃，并抛出异常：<br><code>terminate called after throwing an instance of &#39;boost::interprocess::interprocess_exception&#39;</code><br><code>what():  boost::interprocess_exception::library_error</code></li>
+<li>第三遍因为上次的崩溃时没有释放锁，程序死锁；</li>
+<li>新版本的 boost 在第三次执行程序的时候会不会死锁，抛出异常 ：<br><code>terminate called after throwing an instance of &#39;boost::interprocess::lock_exception&#39;</code><br><code>what():  boost::interprocess::lock_exception</code></li>
+</ul>
+<p>原因在<a href="https://github.com/boostorg/interprocess/commit/7c8893788d3823615d6ddbfd125d2ad153817111#diff-334412084c0f3abf945468528eb917ebe6a4ae50c59d7ae3c672f1e402c96bd4R44-R49">这几行</a>，如果不想更新boost，改那几行也可以。</p>
+<p>如果编译器支持 <code>_POSIX_C_SOURCE &gt;= 200809L</code>，在构造锁的时候判断 <code>pthread_mutexattr_setrobust(&amp;m_attr, PTHREAD_MUTEX_ROBUST) != 0</code>。</p>
+<p>pthread_mutexattr_setrobust 的说明在<a href="https://man7.org/linux/man-pages/man3/pthread_mutexattr_setrobust.3.html">这里</a></p>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+  </entry>
+  <entry>
     <title>OpenCV 编译安装笔记</title>
     <url>/post/build-cuda-with-opencv/</url>
     <content><![CDATA[<h2 id="编译OpenCV-with-CUDA"><a href="#编译OpenCV-with-CUDA" class="headerlink" title="编译OpenCV with CUDA"></a>编译OpenCV with CUDA</h2><p>编译方法<a href="http://docs.opencv.org/3.1.0/d7/d9f/tutorial_linux_install.html">官方文档</a>写的特别清楚。此外，如果要使用python接口，编译完成后需要把<code>opencv/site-packages</code>目录下的<code>cv2.so</code>链接（或复制）到<code>python/site-packages</code>中，我执行的命令为<code>sudo ln -s  /usr/local/opencv3/lib/python2.7/dist-packages/cv2.so /usr/lib/python2.7/dist-packages/cv2.so</code>（如果不清楚可以参照<a href="http://www.jianshu.com/p/67293b547261">[翻译]Python 2.7 和 Python 3+ 的OpenCV 3.0 安装教程</a>）</p>
-<p>查看Api和Guides推荐使用Zeal/Dash，就不用那么麻烦跑去官网搜索了：</p>
+<p>查看Api和Guides推荐使用Zeal&#x2F;Dash，就不用那么麻烦跑去官网搜索了：</p>
 <p><img data-src="http://qiniu.s1nh.org/Blog_zeal-main.png"></p>
 <span id="more"></span>
 
@@ -2109,7 +2132,7 @@ apt-get install libusb-1.0-0-dev
 <ol>
 <li>下载<code>https://github.com/thrust/thrust</code>的<code>cuda-next-release</code>分支</li>
 <li>把<code>CUDA\v8.0\include\thrust\</code> 重命名为 <code>thrust_old</code></li>
-<li>建立软链接``CUDA\v8.0\include\thrust` 到 <code>...cuda-next-release\thrust</code></li>
+<li>建立软链接&#96;&#96;CUDA\v8.0\include\thrust` 到 <code>...cuda-next-release\thrust</code></li>
 </ol>
 <blockquote>
 <p>参考:<br>　　1.<a href="http://answers.opencv.org/question/95991/opencv-30-build-error-cuda-80/?answer=96837">OpenCV 3.0 Build Error Cuda 8.0</a><br>　　2.<a href="https://github.com/opencv/opencv/issues/6632">Opencv 3.1. CUDA 8 compatibility issues</a><br>　　3.<a href="https://github.com/thrust/thrust/issues/800">thrust 1.8.3 exclusive_scan with custom temporary allocation, no default constructor error</a></p>
@@ -2228,7 +2251,7 @@ apt-get install libusb-1.0-0-dev
     <title>逆向了 SermoonV1 的 CR-FDM-v2.4.S1.200 主板</title>
     <url>/post/config-for-sermoonv1/</url>
     <content><![CDATA[<blockquote>
-<p>上一篇文章吐槽了 <code>创想三维 Sermoon V1</code> 的缺点，其中包括不开源的主板。我花了几天时间逆向，得到了主板的配置文件。<br>使用此配置文件可以自行编译固件：开启 Lineradvance、加入 BLTouch 自动调平、降低待机时风扇的噪声。<br>新的配置文件在 <a href="https://github.com/Klipper3d/klipper/pull/5621">Klipper3d/klipper#5621</a></p>
+<p>上一篇文章吐槽了 <code>创想三维 Sermoon V1</code> 的缺点，其中包括不开源的主板。我花了几天时间逆向，得到了主板的配置文件。<br>使用此配置文件可以自行编译固件：开启 Lineradvance、加入 BLTouch 自动调平、降低待机时风扇的噪声。<br>新的配置文件在 <a href="https://github.com/Klipper3d/klipper/pull/5621">Klipper3d&#x2F;klipper#5621</a></p>
 <p>另外，文章最后提供一个散热套件的模型。</p>
 </blockquote>
 <p><img data-src="http://qiniu.s1nh.org/sermoon_v1_board_diagram.png-QNthin"></p>
@@ -2278,7 +2301,7 @@ apt-get install libusb-1.0-0-dev
 <p><img data-src="http://qiniu.s1nh.org/CNN_perceptron_1.png-QNthin"></p>
 <p>简化的感知机模型未免也太弱智了，必须所有的传入神经同时刺激胞体才能使此神经元有响应（激活）。于是科学家们把弱智的神经元胞体改造了一下，成为下面这样子（图片来自网络，所以下图的y对应于上图的output）</p>
 <p><img data-src="http://qiniu.s1nh.org/CNN_perceptron_2.png-QNthin"></p>
-<p>这就有点高级了，首先，每个传入信号$x_i$都被标注了权重$w_i$，还增加了偏置<code>b</code>（bias)。其中c是组合函数（通常情况是求和），a为激活函数（这个有点复杂，有兴趣的自行google）。<strong>别被上面的图搞糊涂，其实神经元（感知机）就是一个数学公式：$y=(x_1 * w_1+x_2 * w_2+…+x_n * w_n+b)*a$ 即首先对所有的输入数据乘以对应的权重并求和，最后与激活函数相乘。</strong></p>
+<p>这就有点高级了，首先，每个传入信号$x_i$都被标注了权重$w_i$，还增加了偏置<code>b</code>（bias)。其中c是组合函数（通常情况是求和），a为激活函数（这个有点复杂，有兴趣的自行google）。<strong>别被上面的图搞糊涂，其实神经元（感知机）就是一个数学公式：$y&#x3D;(x_1 * w_1+x_2 * w_2+…+x_n * w_n+b)*a$ 即首先对所有的输入数据乘以对应的权重并求和，最后与激活函数相乘。</strong></p>
 <p>也许你会发现_卧槽这么简单，小学乘法呀，那有什么卵用_。感知机能（且一定能）将线性可分的数据集分开，想不明白的可以看<a href="https://zhuanlan.zhihu.com/p/27224109">这篇文章</a>的第一节<code>感知机能做什么？</code>。除了区分线性可分数据集以外，缺失没什么卵用了，连异或（XOR）问题都解决不了。</p>
 <h3 id="2-我们把神经元连接起来（多层感知机）"><a href="#2-我们把神经元连接起来（多层感知机）" class="headerlink" title="2. 我们把神经元连接起来（多层感知机）"></a>2. 我们把神经元连接起来（多层感知机）</h3><p>自从发现感知机对除了线性可分的数据外没什么卵用以后，感知机的研究进入了寒冬，直到有个大神把几个感知机链接起来成下面的样子：</p>
 <p><img data-src="http://qiniu.s1nh.org/CNN_perceptron_3.jpg-QNthin"></p>
@@ -2317,7 +2340,7 @@ apt-get install libusb-1.0-0-dev
 <ul>
 <li><p><code>AlexNet</code>: The model that started a revolution! The original model was crazy with the split GPU thing so this is the model from some follow-up work.</p>
 </li>
-<li><p><code>Darknet Reference Model</code>: This model is designed to be small but powerful. It attains the same top-1 and top-5 performance as AlexNet but with 1/10th the parameters. It uses mostly convolutional layers without the large fully connected layers at the end. It is about twice as fast as AlexNet on CPU making it more suitable for some vision applications.</p>
+<li><p><code>Darknet Reference Model</code>: This model is designed to be small but powerful. It attains the same top-1 and top-5 performance as AlexNet but with 1&#x2F;10th the parameters. It uses mostly convolutional layers without the large fully connected layers at the end. It is about twice as fast as AlexNet on CPU making it more suitable for some vision applications.</p>
 </li>
 <li><p><code>VGG-16</code>: The Visual Geometry Group at Oxford developed the VGG-16 model for the ILSVRC-2014 competition. It is highly accurate and widely used for classification and detection. I adapted this version from the Caffe pre-trained model. It was trained for an additional 6 epochs to adjust to Darknet-specific image preprocessing (instead of mean subtraction Darknet adjusts images to fall between -1 and 1).</p>
 </li>
@@ -2345,14 +2368,14 @@ apt-get install libusb-1.0-0-dev
 <h4 id="2-物理意义"><a href="#2-物理意义" class="headerlink" title="2. 物理意义"></a>2. 物理意义</h4><p>我们先画几个简单的函数图像，理解“卷积”的<strong>物理意义</strong>，暂时不管它为什么要对称，为什么要反转。</p>
 <p>已知f(t)为老板在t时刻打了你f(t)巴掌。如下图，老板分别在第0秒时打了2巴掌，第1秒打了1巴掌，第2秒打了3巴掌；g(t)为打完巴掌后的t时刻肿胀的程度，下图刚打完时肿胀程度为2，等了1秒后变大为3，2秒后变成1，3秒后完全消肿。</p>
 <p><img data-src="http://qiniu.s1nh.org/Blog_Convolution_b1.png-QNthin" title="左图是f(t)＝[2, 1, 3]，右图是g(t)=[2, 3, 1]"></p>
-<p>下面三个图$h_0(t)$，$h_1(t)$，$h_2(t)$，分别是f(0),f(1),f(2)单独作用时的h(x)值，也就是分别为第0秒打了f(0)=2巴掌，第1秒打f(1)=1巴掌，第2秒打了f(2)=3巴掌的肿胀曲线。</p>
-<p>计算方法为：$h_0(t) = f(0) * g(t) = 2 * [2, 3, 1] = [4, 6, 2]$</p>
+<p>下面三个图$h_0(t)$，$h_1(t)$，$h_2(t)$，分别是f(0),f(1),f(2)单独作用时的h(x)值，也就是分别为第0秒打了f(0)&#x3D;2巴掌，第1秒打f(1)&#x3D;1巴掌，第2秒打了f(2)&#x3D;3巴掌的肿胀曲线。</p>
+<p>计算方法为：$h_0(t) &#x3D; f(0) * g(t) &#x3D; 2 * [2, 3, 1] &#x3D; [4, 6, 2]$</p>
 <p><img data-src="http://qiniu.s1nh.org/Blog_Convolution_b2.png-QNthin" title="$h0(t)$"></p>
-<p>$h_1(t) = f(1) * g(t) = 1 * [2, 3, 1] $ 然后向右平移1个单位</p>
+<p>$h_1(t) &#x3D; f(1) * g(t) &#x3D; 1 * [2, 3, 1] $ 然后向右平移1个单位</p>
 <p><img data-src="http://qiniu.s1nh.org/Blog_Convolution_b3.png-QNthin" title="$h_1(t)$"></p>
-<p>$h_2(t) = f(2) * g(t) = = 3 * [2, 3, 1] = [6, 9, 3]$ 然后向右平移2个单位</p>
+<p>$h_2(t) &#x3D; f(2) * g(t) &#x3D; &#x3D; 3 * [2, 3, 1] &#x3D; [6, 9, 3]$ 然后向右平移2个单位</p>
 <p><img data-src="http://qiniu.s1nh.org/Blog_Convolution_b4.png-QNthin" title="$h2(t)$"></p>
-<p>很明显，要求t时间的作用程度h(t)，就是把上面三个函数加起来$h(t)=h_0(t)+h_1(t)+h_2(t)$ </p>
+<p>很明显，要求t时间的作用程度h(t)，就是把上面三个函数加起来$h(t)&#x3D;h_0(t)+h_1(t)+h_2(t)$ </p>
 <p><img data-src="http://qiniu.s1nh.org/Blog_Convolution_b5.png-QNthin" title="$h(t)$"></p>
 <ul>
 <li>说白了，卷积就是<strong>平移、叠加</strong>。（从这里，可以看到卷积的重要的物理意义是：一个函数（如：单位响应）在另一个函数（如：输入信号）上的<strong>加权叠加</strong>。）</li>
@@ -2361,7 +2384,7 @@ apt-get install libusb-1.0-0-dev
 <h4 id="3-更有意思的来了"><a href="#3-更有意思的来了" class="headerlink" title="3. 更有意思的来了"></a>3. 更有意思的来了</h4><p>我们接下来做一个简单的初中数学题。求$(3x^2+x+2)*(x^2+3x+2)$ 中$x^3$的系数。</p>
 <p><strong>普通方法</strong></p>
 <p>常规做法是先把它合并同类项：</p>
-<p>$(3x^2+x+2)*(x^2+3x+2)$<br>$=(3x^4+9x^3+6x^2)+(x^3+3x^2+2x)+(2x^2+6x+4)$<br>$=3x^4+10x^3+11x^2+8x+4$</p>
+<p>$(3x^2+x+2)*(x^2+3x+2)$<br>$&#x3D;(3x^4+9x^3+6x^2)+(x^3+3x^2+2x)+(2x^2+6x+4)$<br>$&#x3D;3x^4+10x^3+11x^2+8x+4$</p>
 <p>进行完计算后，我们一眼就可以看出$x^3$的系数是10. （这种算法，我们一共进行了<strong>9次乘法运算和4次加法运算</strong>）</p>
 <p><strong>文艺方法</strong></p>
 <p>还是刚才那个题目，进行如下计算：</p>
@@ -2377,7 +2400,7 @@ apt-get install libusb-1.0-0-dev
 <p>运用在连续函数中，只需把最后一步的求和改成求积分即可。</p>
 <p>参考：</p>
 <ul>
-<li>[知乎]:(<a href="https://www.zhihu.com/question/22298352/)%60%E5%A6%82%E6%9E%9C%E4%BD%A0%E8%BF%98%E7%9C%8B%E4%B8%8D%E6%87%82%EF%BC%8C%E5%8F%AF%E4%BB%A5%E8%87%AA%E5%B7%B1%E5%8E%BB%E7%9F%A5%E4%B9%8E%E6%85%A2%E6%85%A2%E7%9C%8B^_^%60">https://www.zhihu.com/question/22298352/)`如果你还看不懂，可以自己去知乎慢慢看^_^`</a></li>
+<li></li>
 <li><a href="http://blog.sciencenet.cn/home.php?mod=space&uid=287179&do=blog&id=425373">辐射、服碘、补盐、空袭和卷积—–教学难点讨论之一</a></li>
 </ul>
 ]]></content>
@@ -2424,74 +2447,6 @@ apt-get install libusb-1.0-0-dev
       </tags>
   </entry>
   <entry>
-    <title>计算机视觉技术调查报告</title>
-    <url>/post/cv-sjtu/</url>
-    <content><![CDATA[<p><code>本资源来自网络，侵权请按ALT+F4</code></p>
-<h2 id="0x01-深度学习基础框架"><a href="#0x01-深度学习基础框架" class="headerlink" title="0x01 深度学习基础框架"></a>0x01 深度学习基础框架</h2><h3 id="1-人脸检测、跟踪、识别、三维建模的开源框架、算法、论文"><a href="#1-人脸检测、跟踪、识别、三维建模的开源框架、算法、论文" class="headerlink" title="1.人脸检测、跟踪、识别、三维建模的开源框架、算法、论文"></a>1.人脸检测、跟踪、识别、三维建模的开源框架、算法、论文</h3><h4 id="1-人脸检测"><a href="#1-人脸检测" class="headerlink" title="(1) 人脸检测"></a>(1) 人脸检测</h4><p>在人脸检测方面常用的用两个，一个是 <a href="https://www.cs.cmu.edu/~peiyunh/tiny/">Tinyface</a> 能检测到比较小的人脸。可以先玩通<a href="https://github.com/peiyunh/tiny">demo</a><br>另外一篇更为常用，如果你们对固定场景，比如视频对话，检测效果不错。而且他们能标注人脸关键点。<br>文章：Joint Face Detection and Alignment using Multi-task Cascaded Convolutional Networksb(<a href="http://vis-www.cs.umass.edu/fddb/results.html">(Code)</a>) 很多最近的创业公司用这个，但是如果场景特殊需要 re-train 一下 </p>
-<h4 id="2-人脸跟踪"><a href="#2-人脸跟踪" class="headerlink" title="(2) 人脸跟踪"></a>(2) 人脸跟踪</h4><p>因为这个已经不是学术前沿问题，所以 CVPR、ICCV 上没有文章研究这一块<br>人脸跟踪这一块 openCV 有一个比较好的教程 <a href="http://opencv-java-tutorials.readthedocs.io/en/latest/06-face-detection-and-tracking.html">http://opencv-java-tutorials.readthedocs.io/en/latest/06-face-detection-and-tracking.html</a><br>但是，工程上通用的做法还是，逐帧用最好的 face detector(比如 tiny face)检测后，用 optical flow 串起来。因为现在 face detection 已经很快了，没必要用 tracking 来加速，能做到很快。具体怎么弄我们可以当面讨论。<br>我的学生找了一下开源库（仅作参考，不建议用），但是不是正规的文章 <a href="https://github.com/kylemcdonald/ofxFaceTracker">https://github.com/kylemcdonald/ofxFaceTracker</a> </p>
-<span id="more"></span>
-
-<h4 id="3-人脸识别"><a href="#3-人脸识别" class="headerlink" title="(3) 人脸识别"></a>(3) 人脸识别</h4><p>主要人脸识别的文章都在 LFW 上， <a href="http://vis-www.cs.umass.edu/lfw/results.html">http://vis-www.cs.umass.edu/lfw/results.html</a> 我们主要可以看 Table 6 Mean classification accuracy û and standard error of the mean SE。<br>不过这些靠前的方法很多没有代码。目前创业公司普遍用[1]。这个我指导过别人使用，[2]的口碑也不错但不是最新的。以建议你们用[1]加大数据 train 就行了。以后，有更好开源代码出来，我再更新。 </p>
-<p>[1] A Discriminative Feature Learning Approach for Deep Face Recognition[C] Yandong Wen, Kaipeng Zhang, Zhifeng Li, Yu Qia. ECCV 2016. (<a href="https://github.com/ydwen/caffe-face">(Code)</a>)<br>[2] OpenFace: A general-purpose face recognition library with mobile applications Amos, Brandon and Bartosz Ludwiczuk and Satyanarayanan, Mahadev， CMU-CS-16-118, CMU School of Computer Science，2016 (<a href="https://cmusatyalab.github.io/openface/">(Code)</a>)</p>
-<h4 id="4-人脸三维建模"><a href="#4-人脸三维建模" class="headerlink" title="(4) 人脸三维建模"></a>(4) 人脸三维建模</h4><p>这一块属于比较前沿的方面，所以基本没公开数据库，也没公开代码</p>
-<p>业内公认比较好的是：<br>文章：Real-time Facial Animation on Mobile Devices <a href="http://www.kunzhou.net/2013/mface-gmod.pdf">(Code)</a></p>
-<p>下面这两篇是基于关键点的<br>文章：3D Shape Regression for Real-time Facial Animation <a href="http://www.kunzhou.net/2013/vface.pdf">(Code)</a></p>
-<p>文章：Face Alignment Across Large Poses: A 3D Solution  <a href="https://arxiv.org/abs/1511.07212">(Code)</a><br>注：这问题属于坑比较多的，大家也不放代码用来赚钱，目前，是浙大的 Zhou Kun 有成熟的技术，需要购买的话，我可以去联系。</p>
-<h3 id="2-物体探测、物体定位、视频中的物体探测、场景分类、场景分析的算法、论文"><a href="#2-物体探测、物体定位、视频中的物体探测、场景分类、场景分析的算法、论文" class="headerlink" title="2.物体探测、物体定位、视频中的物体探测、场景分类、场景分析的算法、论文"></a>2.物体探测、物体定位、视频中的物体探测、场景分类、场景分析的算法、论文</h3><h4 id="1-物体探测和物体定位"><a href="#1-物体探测和物体定位" class="headerlink" title="(1) 物体探测和物体定位"></a>(1) 物体探测和物体定位</h4><p>物体探测也称物体检测（object detection）包括物体定位（object localization）和物体识别（object recognition）两部分。一般讲是先定位物体在哪里，然后识别是什么（猫，狗，车）。但是自从 faster RCNN 后，物体定位和物体识别就同时一起做了。目前主要的开源代码是 SSD，faster RCNN, Yolo。各有优劣，SSD 和 faster RCNN 是 recall 比较高，Yolo 是 precision 比较高。 综合上来看，如果一定要选一个的话，我推荐 Yolo。注意，目前的 object detection 是用 mAP 来衡量，但 mAP 差个几个点范围内很难说明实际效果的好坏。我们组写了一个 object detection 的详细结束文件（和这份文件一起交付）。</p>
-<p>另外还有一篇是刚刚出来的 Mask RCNN，性能比现在的物体检测器都好。 文章在这里 <a href="https://arxiv.org/abs/1703.06870">https://arxiv.org/abs/1703.06870</a></p>
-<p>具体中文讨论在这里 <a href="https://www.zhihu.com/question/57403701">https://www.zhihu.com/question/57403701</a> 但是，没有代码，我们组也在复现中</p>
-<h4 id="2-视频中的物体探测"><a href="#2-视频中的物体探测" class="headerlink" title="(2) 视频中的物体探测"></a>(2) 视频中的物体探测</h4><p>学术上这个被称为多物体跟踪（mutli-object tracking），他的基本原理是跟踪和物体检测联合训练。 主要的算法可以在这里两个网站上查到：<br>这个是专门做多物体跟踪的： <a href="https://motchallenge.net/">https://motchallenge.net/</a><br>里面有一些有文章<br>另一个网站是： <a href="http://www.cvlibs.net/datasets/kitti/eval_tracking.php">http://www.cvlibs.net/datasets/kitti/eval_tracking.php</a><br>这个虽然是无人车的，但原理差不多，你们可以用他们的模型</p>
-<p>如果代码的话推荐这篇，是我朋友的工作， <a href="http://yuxng.github.io/">http://yuxng.github.io/</a><br>这两篇文章都有代码，<br>Learning to Track: Online Multi-Object Tracking by Decision Making.<br>Subcategory-aware Convolutional Neural Networks for Object Proposals and Detection.（这篇没有 model，需要的话，我可以发给你们做研究用，但是如果要商用请和作者联系。） </p>
-<p>另外 multi-object tracking 都比较慢，如果要快点的话，可以使用 yolo 每帧做处理，然后简单复现这篇文章，就行了。<br>Seq-NMS for Video Object Detection <a href="https://arxiv.org/abs/1602.08465">https://arxiv.org/abs/1602.08465</a></p>
-<h4 id="3-场景分类、场景分析"><a href="#3-场景分类、场景分析" class="headerlink" title="(3) 场景分类、场景分析"></a>(3) 场景分类、场景分析</h4><p>场景分类本质上一个图像分类问题，你们只要对图像的场景打上多类标签，进入分类器训练就行了，目前最好的分类器，在 ResNet 之后有两个更好 ResNext，kaiming he 之后的作品。 </p>
-<p>• <a href="https://arxiv.org/abs/1611.05431">Aggregated Residual Transformations for Deep Neural Networks</a>, <a href="https://github.com/facebookresearch/ResNeXt">(Code)</a><br>• <a href="https://arxiv.org/abs/1602.07261">Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning</a> <a href="https://github.com/tensorflow/models/blob/master/slim/nets/ince9ption_resnet_v2.py">(Code)</a></p>
-<p>主流的场景分类数据库是 <a href="http://places.csail.mit.edu/">MIT scene dataset</a>你们可以好好用来做 pre-train<br>这里有一个 demo，比较 cool，你们可以直接用 <a href="http://places.csail.mit.edu/demo.html">http://places.csail.mit.edu/demo.html</a></p>
-<h3 id="3-图片场景描述的算法、论文"><a href="#3-图片场景描述的算法、论文" class="headerlink" title="3.图片场景描述的算法、论文"></a>3.图片场景描述的算法、论文</h3><p>这个在学术上叫 image-captioning 对于这个问题 coco 有一个排名，你们可以在这个排名上找到比较靠前的文章和代码，但是衡量好坏的 metric 比较受诟病。也就是分数高的不一定效果好，所以这个还是你要自己感受一下。 <a href="http://mscoco.org/dataset/#captions-leaderboard">http://mscoco.org/dataset/#captions-leaderboard</a> </p>
-<p>我先简单列出几个有代表性的，且有代码的</p>
-<p>• 论文：Oriol Vinyals, Alexander Toshev, Samy Bengio, Dumitru Erhan, Show and Tell: A Neural Image Caption Generator, arXiv:1411.4555. <a href="https://github.com/tensorflow/models/tree/master/im2txt">(Code)</a><br>• 论文：Andrej Karpathy, Li Fei-Fei, Deep Visual-Semantic Alignments for Generating Image Description, CVPR, 2015. <a href="https://github.com/karpathy/neuraltalk">(Code)</a><br>• 论文：Kelvin Xu, Jimmy Lei Ba, Ryan Kiros, Kyunghyun Cho, Aaron Courville, Ruslan Salakhutdinov, Richard S. Zemel, Yoshua Bengio, Show, Attend, and Tell: Neural Image Caption Generation with Visual Attention, arXiv:1502.03044 / ICML 2015 <a href="https://github.com/kelvinxu/arctic-captions">(Code)</a><br>• 论文：Ryan Kiros, Ruslan Salakhutdinov, Richard S. Zemel, Unifying Visual-Semantic Embeddings with Multimodal Neural Language Models, arXiv:1411.2539. <a href="https://github.com/ryankiros/visual-semantic-embedding">(Code)</a><br>• Jeff Donahue, Lisa Anne Hendricks, Sergio Guadarrama, Marcus Rohrbach, Subhashini Venugopalan, Kate Saenko, Trevor Darrell, Long-term Recurrent Convolutional Networks for Visual Recognition and Description, arXiv:1411.4389<a href="https://github.com/garythung/torch-lrcn">(Code)</a><br>• 论文：Jacob Devlin, Saurabh Gupta, Ross Girshick, Margaret Mitchell, C. Lawrence Zitnick, Exploring Nearest Neighbor Approaches for Image Captioning, arXiv:1505.04467 代码：虽然没代码但是实现起来比较简单 </p>
-<h3 id="4-视频场景描述的算法、论文"><a href="#4-视频场景描述的算法、论文" class="headerlink" title="4.视频场景描述的算法、论文"></a>4.视频场景描述的算法、论文</h3><p>我推荐几篇有代码的文章 </p>
-<p>• Subhashini Venugopalan, Marcus Rohrbach, Jeff Donahue, Raymond Mooney, Trevor Darrell, Kate Saenko, Sequence to Sequence–Video to Text, arXiv:1505.00487. <a href="https://gist.github.com/vsubhashini/38d087e140854fee4b14">(Code)</a><br>• Subhashini Venugopalan, Huijuan Xu, Jeff Donahue, Marcus Rohrbach, Raymond Mooney, Kate Saenko, Translating Videos to Natural Language Using Deep Recurrent Neural Networks, arXiv:1412.4729. <a href="https://gist.github.com/vsubhashini/3761b9ad43f60db9ac3d">(Code)</a><br>• Li Yao, Atousa Torabi, Kyunghyun Cho, Nicolas Ballas, Christopher Pal, Hugo Larochelle, Aaron Courville, Describing Videos by Exploiting Temporal Structure, arXiv:1502.08029 <a href="https://github.com/yaoli/arctic-capgen-vid">(Code)</a></p>
-<h3 id="5-人脸、物体、场景等算法的训练集大小、训练周期及能达到的效果，一些调参、训练技巧等"><a href="#5-人脸、物体、场景等算法的训练集大小、训练周期及能达到的效果，一些调参、训练技巧等" class="headerlink" title="5.人脸、物体、场景等算法的训练集大小、训练周期及能达到的效果，一些调参、训练技巧等"></a>5.人脸、物体、场景等算法的训练集大小、训练周期及能达到的效果，一些调参、训练技巧等</h3><p>• <strong>人脸数据库</strong> LFW，<a href="http://vis-www.cs.umass.edu/lfw/">http://vis-www.cs.umass.edu/lfw/</a> 6千对人脸图片，用于验证（判断是否为某个人）<br>• <strong>FDDB</strong>，<a href="http://vis-www.cs.umass.edu/fddb/">http://vis-www.cs.umass.edu/fddb/</a> 2800 张用于检测，测试<br>• <strong>CELEBA</strong> <a href="http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html">http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html</a> 20 万多张，用于配准，检测，属性分析，<br>• <strong>AFLW</strong> <a href="https://lrs.icg.tugraz.at/research/aflw/">https://lrs.icg.tugraz.at/research/aflw/</a> 2 万 3 千多图片，有检测，经常用于训练。<br>• <strong>megaface</strong> <a href="http://megaface.cs.washington.edu/">http://megaface.cs.washington.edu/</a> 100 万张图片，人脸识别和验证都有（现阶段比较热门的数据集）<br>• <strong>中科院数据库</strong> <a href="http://www.cbsr.ia.ac.cn/english/CASIA-WebFace-Database.html">http://www.cbsr.ia.ac.cn/english/CASIA-WebFace-Database.html</a> 50 万人脸验证数据，1 万多个人<br>• <strong>物体检测数据库</strong> 如果你们做小规模验证可以使用 VOC dataset <a href="http://host.robots.ox.ac.uk/pascal/VOC/">http://host.robots.ox.ac.uk/pascal/VOC/</a> 大概是万级别的数量<br>• 如果大规模话有两个数据集 <strong>Imagenet</strong> <a href="http://image-net.org/">http://image-net.org/</a> 和 <strong>COCO</strong> <a href="http://mscoco.org/">http://mscoco.org/</a> 这两个都百万级别的<br>• 调参技巧这个很难说，要看具体情况，很难说给出一个普遍的定论。主要是 learning rate 吧，开始的时候比较大，后面比较稳定的时候慢慢减小。 </p>
-<h3 id="6-自然场景中的文字检测的算法"><a href="#6-自然场景中的文字检测的算法" class="headerlink" title="6 自然场景中的文字检测的算法"></a>6 自然场景中的文字检测的算法</h3><p>这个问题的话，大量的算法和论文库在这里： <a href="https://github.com/chongyangtao/Awesome-Scene-Text-Recognition">https://github.com/chongyangtao/Awesome-Scene-Text-Recognition</a><br>把这些文章和代码看完就差不多了。这一块做得最好的华中科技大学的 xiang bai。需要购买技术的话，我可以联系。</p>
-<p>如果代码推荐的话，可以试一下<br><a href="https://github.com/baidu-research/warp-ctc">https://github.com/baidu-research/warp-ctc</a><br><a href="https://github.com/bgshih/crnn">https://github.com/bgshih/crnn</a> </p>
-<p>可以是这样两篇文章看看：<br>Connectionist Temporal Classification: Labelling Unsegmented Sequence Data with Recurrent Neural Networks.<br>An End-to-End Trainable Neural Network for Image-based Sequence Recognition and Its Application to Scene Text Recognition. </p>
-<h3 id="7-自然场景中人物（且有遮挡，如人脸被遮挡）较多的情况下实时检测及再识别。"><a href="#7-自然场景中人物（且有遮挡，如人脸被遮挡）较多的情况下实时检测及再识别。" class="headerlink" title="7 自然场景中人物（且有遮挡，如人脸被遮挡）较多的情况下实时检测及再识别。"></a>7 自然场景中人物（且有遮挡，如人脸被遮挡）较多的情况下实时检测及再识别。</h3><p>这个学术界有一个专门的 topic，叫做 Person Re-identification。这一块是中山大学的 weishi zhen 做得最好，需要购买技术，我可以办你们联系。我做了一个调研如下（推荐第一个）， </p>
-<p>[1] <a href="https://arxiv.org/abs/1604.07528">Xiao T, Li H, Ouyang W, et al. Learning deep feature representations with domain guided dropout for person re-identification[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. 2016: 1249-1258.</a>, <a href="https://github.com/Cysu/dgd_person_reid">(Code)</a></p>
-<p>[2] Yang Yang, LongyinWen, Siwei Lyu, Stan Z. Li,Unsupervised Learning of Multi-Level Descriptors for Person Re-Identification, Association for the Advancement of Artificial Intelligence (AAAI), San Francisco, California, USA, 2017<br>(Code): need email to author </p>
-<p>[3] <a href="http://t.cn/R6imzBZ">Matsukawa T, Okabe T, Suzuki E, et al. Hierarchical gaussian descriptor for person re-identification[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. 2016: 1363-1372.</a>, <a href="http://www.i.kyushu-u.ac.jp/~matsukawa/ReID_files/ReID_GOG_v1.01.zip">(Code)</a></p>
-<p>[4] <a href="http://isee.sysu.edu.cn/files/resource/Top-push_Video-based_Person_Re-identification.pdf">You J, Wu A, Li X, et al. Top-push video-based person re-identification[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. 2016: 1345-1353. </a>, <a href="http://isee.sysu.edu.cn/files/resource/TDL.zip">(Code)</a></p>
-<p>[5] <a href="https://arxiv.org/pdf/1611.05666.pdf">Zheng Z, Zheng L, Yang Y. A Discriminatively Learned CNN Embedding for Person Re-identification[J]. arXiv preprint arXiv:1611.05666, 2016.</a>, <a href="https://github.com/layumi/2016_person_re-ID">(Code)</a></p>
-<p>[6] <a href="http://www.cv-foundation.org/openaccess/content_cvpr_2015/papers/Ahmed_An_Improved_Deep_2015_CVPR_paper.pdf">Ahmed E, Jones M, Marks T K. An improved deep learning architecture for person re-identification[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. 2015: 3908-3916.</a>, <a href="https://github.com/Deep-Learning-Person-Re-Identification/Implementaion-1">(Code)</a></p>
-<p>[7] <a href="http://www.cv-foundation.org/openaccess/content_cvpr_2015/papers/Liao_Person_Re-Identification_by_2015_CVPR_paper.pdf">Liao S, Hu Y, Zhu X, et al. Person re-identification by local maximal occurrence representation and metric learning[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. 2015: 2197-2206.</a>, <a href="http://www.openpr.org.cn/index.php/(Code)-For-Image-ProcessingAnd-Computer-Vision/102-LOMO-Feature-Extraction-and-XQDA-Metric-Learning-for-Person-Re-identification/View-details.html">(Code)</a></p>
-<p>[8] <a href="http://t.cn/R6i1zBW">Zheng L, Wang S, Tian L, et al. Query-adaptive late fusion for image search and person re-identification[C]//Proceedings of the IEEE conference on computer vision and pattern recognition. 2015: 1741-1750.</a> (<a href="https://drive.google.com/open?id=0B6tjyrV1YrHedWZ2UGlWVHFiQUE">(Code) google drive</a>, <a href="http://pan.baidu.com/s/1nt3hvex">(Code) baidu pan</a>)</p>
-<p>[9] <a href="http://t.cn/R6irPZf">Yang Y, Yang J, Yan J, et al. Salient color names for person re-identification[C]//European Conference on Computer Vision. Springer International Publishing, 2014: 536-551.</a>, (Code): need email to author </p>
-<p>[10] <a href="http://t.cn/R6iBIQm">Bazzani L, Cristani M, Murino V. Symmetry-driven accumulation of local features for human characterization and re-identification[J]. Computer Vision and Image Understanding, 2013, 117(2): 130-144.</a>, <a href="https://github.com/lorisbaz/SDALF">(Code)</a></p>
-<p>[11] <a href="http://robustsystems.coe.neu.edu/sites/robustsystems.coe.neu.edu/files/systems/papers/FeiXiong_ECCV14.pdf">Xiong F, Gou M, Camps O, et al. Person re-identification using kernel-based metric learning methods[C]//European conference on computer vision. Springer International Publishing, 2014: 1-16.</a>, <a href="https://github.com/NEU-Gou/kernel-metric-learning-reid">(Code)</a></p>
-<p>[12] <a href="http://www.ee.cuhk.edu.hk/~rzhao/project/salience_cvpr13/zhaoOWcvpr13.pdf">Zhao R, Ouyang W, Wang X. Unsupervised salience learning for person re-identification[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. 2013: 3586-3593.</a>, <a href="https://github.com/Robert0812/salience_reid">(Code)</a></p>
-<p>[13] <a href="http://t.cn/R6iRdLN">Farenzena M, Bazzani L, Perina A, et al. Person re-identification by symmetry-driven accumulation of local features[C]//Computer Vision and Pattern Recognition (CVPR), 2010 IEEE Conference on. IEEE, 2010: 2360-2367. </a>, <a href="https://github.com/lorisbaz/SDALF">(Code)</a></p>
-<h2 id="0x02-相关问题"><a href="#0x02-相关问题" class="headerlink" title="0x02 相关问题"></a>0x02 相关问题</h2><p>1、低分辨率下的视频人脸识别（32*32 以下）<br>答： 这种一般没办法弄，你们可以尝试的做去 block，或者去噪预处理，会有一点点提升。  </p>
-<p>2、视屏中，带遮挡（遮挡会移动）的人脸识别<br>答： 如果遮挡不大的话，深度学习对这方面是有一定鲁棒性的  </p>
-<p>3、现有的人脸检测准确率不高的情况下，是否有办法通过结合深度学习和传统人脸检测方法来达到快速的高效方法<br>答：如果，你们人脸区间固定（比如人脸登录），可以先提取深度学习特征，然后做 add-boosting.做检测框。 Fast-RCNN 差不多能用。 To Boost or Not to Boost? On the Limits of Boosted Trees for Object Detection </p>
-<p>4、在训练数据不全面的情况（如不存在带眼镜的情况下），如果被识别人带了眼镜等饰物，如何不受干扰。（对于眼镜的情况，除了在数据增广中寻找眼睛加上遮挡，还有其他办法吗）<br>答：这个使用办法解决的，一般用深度学习产生去眼镜照片，再识别。 Robust Deep Auto-encoder for Occluded Face Recognition </p>
-<h2 id="0x03-学术前沿"><a href="#0x03-学术前沿" class="headerlink" title="0x03 学术前沿"></a>0x03 学术前沿</h2><h3 id="1-当前图像、视频领域的学术前沿研究方向、算法框架及相关论文"><a href="#1-当前图像、视频领域的学术前沿研究方向、算法框架及相关论文" class="headerlink" title="1.当前图像、视频领域的学术前沿研究方向、算法框架及相关论文"></a>1.当前图像、视频领域的学术前沿研究方向、算法框架及相关论文</h3><p>目前，比较前沿的大概有几个方向： </p>
-<h4 id="1-生成对抗模型："><a href="#1-生成对抗模型：" class="headerlink" title="(1) 生成对抗模型："></a>(1) 生成对抗模型：</h4><p>• Ian J. Goodfellow, Jean Pouget-Abadie, Mehdi Mirza, Bing Xu, David Warde-Farley, Sherjil Ozair, Aaron Courville, Yoshua Bengio, Generative Adversarial Networks, NIPS, 2014. （最早的一篇）<br>• Mehdi Mirza, Simon Osindero， Conditional Generative Adversarial Nets，arXiv:1411.1784 [cs.LG] （比较出名的一篇） </p>
-<p>这些都是近期作品</p>
-<p>• Jost Tobias Springenberg, “Unsupervised and Semi-supervised Learning with Categorical Generative Adversarial Networks”, ICLR 2016<br>• Harrison Edwards, Amos Storkey, “Censoring Representations with an Adversary”, ICLR 2016,<br>• Jun-Yan Zhu, Philipp Krahenbuhl, Eli Shechtman, and Alexei A. Efros, “Generative Visual Manipulation on the Natural Image Manifold”, ECCV 2016.<br>• Mixing Convolutional and Adversarial Networks ◦Alec Radford, Luke Metz, Soumith Chintala, “Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks”, ICLR 2016.   </p>
-<h4 id="2-深度增强学习"><a href="#2-深度增强学习" class="headerlink" title="(2) 深度增强学习"></a>(2) 深度增强学习</h4><p>• <a href="http://www0.cs.ucl.ac.uk/staff/d.silver/web/Teaching.html">Reinforcement Learning Course by David Silver</a><br>• <a href="https://webdocs.cs.ualberta.ca/~sutton/book/bookdraft2016sep.pdf">Reinforcement Learning: An Introduction by Richard S. Sutton and Andrew G. Barto</a><br>• Highly related with Silver’s course, you can read/skip the corresponding chapters while taking the courses </p>
-<p>一些开始的论文 f Deep Reinforcement Learning (DQN)<br>• Mnih, V., Kavukcuoglu, K., Silver, D., Graves, A., Antonoglou, I., Wierstra, D., &amp; Riedmiller, M. (2013, December 20). Playing Atari with Deep Reinforcement Learning. arXiv.org. SJTU Machine Vision and Intelligence Group page 7<br>• Mnih, V., Kavukcuoglu, K., Silver, D., Rusu, A. A., Veness, J., Bellemare, M. G., et al. (2015). Human-level control through deep reinforcement learning. Nature, 518(7540), 529–533. </p>
-<p>一些最近的论文<br>• Wang, Z., de Freitas, N., &amp; Lanctot, M. (2015). Dueling Network Architectures for Deep Reinforcement Learning. CoRR.<br>• van Hasselt, H., Guez, A., &amp; Silver, D. (2016). Deep Reinforcement Learning with Double Q-Learning. AAAI.<br>• Hausknecht, M. J., &amp; Stone, P. (2015). Deep Recurrent Q-Learning for Partially Observable MDPs. AAAI.<br>• Bellemare, M. G., Ostrovski, G., Guez, A., Thomas, P. S., &amp; Munos, R. (2015). Increasing the Action Gap - New Operators for Reinforcement Learning. CoRR, cs.AI.<br>• Osband, I., Blundell, C., Pritzel, A., &amp; Van Roy, B. (2016, February 15). Deep Exploration via Bootstrapped DQN. arXiv.org.<br>• Schaul, T., Quan, J., Antonoglou, I., &amp; Silver, D. (2015). Prioritized Experience Replay. CoRR.<br>• Mnih, V., Badia, A. P., Mirza, M., Graves, A., Lillicrap, T. P., Harley, T., et al. (2016, February 5). Asynchronous Methods for Deep Reinforcement Learning. arXiv.org. </p>
-<p>一些应用有关的论文<br>• Silver, D., Huang, A., Maddison, C. J., Guez, A., Sifre, L., van den Driessche, G., et al. (2016). Mastering the game of Go with deep neural networks and tree search. Nature, 529(7587), 484–489.<br>• Mnih, V., Heess, N., &amp; Graves, A. (2014). Recurrent models of visual attention. In Advances in Neural Information Processing Systems (pp. 2204-2212). SJTU Machine Vision and Intelligence Group page 8<br>• Zhu, Y., Mottaghi, R., Kolve, E., Lim, J. J., Gupta, A., Fei-Fei, L., &amp; Farhadi, A. (2016, September 17). Target-driven Visual Navigation in Indoor Scenes using Deep Reinforcement Learning. arXiv.org. </p>
-<h4 id="3-人体姿态估计"><a href="#3-人体姿态估计" class="headerlink" title="(3) 人体姿态估计"></a>(3) 人体姿态估计</h4><p>代表文章有两篇：<br>• Haoshu Fang, Shuqin Xie, Cewu Lu， RMPE: Regional Multi-person Pose Estimation， arXiv:1612.00137 [cs.CV]<br>• Zhe Cao, Tomas Simon, Shih-En Wei, Yaser Sheikh， Realtime Multi-person 2D Pose Estimation using Part Affinity Fields， CVPR 2017 </p>
-<h4 id="4-视觉问答"><a href="#4-视觉问答" class="headerlink" title="(4) 视觉问答"></a>(4) 视觉问答</h4><p>这方面的一些文章</p>
-<p>• Xiong, Caiming, Stephen Merity, and Richard Socher. “Dynamic Memory Networks for Visual and Textual Question Answering.” arXiv:1603.01417 (2016).<br>• Mateusz Malinowski, Marcus Rohrbach, Mario Fritz, Ask Your Neurons: A Neural-based Approach to Answering Questions about Images, arXiv:1505.01121.<br>• Stanislaw Antol, Aishwarya Agrawal, Jiasen Lu, Margaret Mitchell, Dhruv Batra, C. Lawrence Zitnick, Devi Parikh, VQA: Visual Question Answering, CVPR, 2015 SUNw:Scene Understanding workshop.<br>• Hauyuan Gao, Junhua Mao, Jie Zhou, Zhiheng Huang, Lei Wang, Wei Xu, Are You Talking to a Machine? Dataset and Methods for Multilingual Image Question Answering, arXiv:1505.05612.<br>• Hyeonwoo Noh, Paul Hongsuck Seo, and Bohyung Han, Image Question Answering using Convolutional Neural Network with Dynamic Parameter Prediction, arXiv:1511.05765<br>• Yang, Z., He, X., Gao, J., Deng, L., &amp; Smola, A. (2015). Stacked Attention Networks for Image Question Answering. arXiv:1511.02274.<br>• Jin-Hwa Kim, Sang-Woo Lee, Dong-Hyun Kwak, Min-Oh Heo, Jeonghee Kim, Jung-Woo Ha, Byoung-Tak Zhang, Multimodal Residual Learning for Visual QA, arXiv:1606:01455<br>• Hyeonwoo Noh and Bohyung Han, Training Recurrent Answering Units with Joint Loss Minimization for VQA, arXiv:1606.03647<br>• Jin-Hwa Kim, Kyoung Woon On, Jeonghee Kim, Jung-Woo Ha, Byoung-Tak Zhang, Hadamard Product for Low-rank Bilinear Pooling, arXiv:1610.04325. </p>
-<h4 id="5-Mask-R-CNN"><a href="#5-Mask-R-CNN" class="headerlink" title="(5) Mask-R-CNN"></a>(5) Mask-R-CNN</h4><p>另外还有一篇是刚刚出来的 Mask RCNN，也是比较火。</p>
-<p>文章在这里 <a href="https://arxiv.org/abs/1703.06870">https://arxiv.org/abs/1703.06870</a><br>具体中文讨论在这里 <a href="https://www.zhihu.com/question/57403701">https://www.zhihu.com/question/57403701</a><br>但是，没有代码，我们组也在复现中 </p>
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
-      </categories>
-  </entry>
-  <entry>
     <title>不推荐购买创想三维 Creality Sermoon V1 的几个理由</title>
     <url>/post/do-not-buy-sermoon-v1/</url>
     <content><![CDATA[<blockquote>
@@ -2499,7 +2454,7 @@ apt-get install libusb-1.0-0-dev
 </blockquote>
 <span id="more"></span>
 
-<h2 id="0x01-缺少-Linear-Advance-（压力提前-线性推进）-的支持"><a href="#0x01-缺少-Linear-Advance-（压力提前-线性推进）-的支持" class="headerlink" title="0x01 缺少 Linear Advance （压力提前/线性推进） 的支持"></a>0x01 缺少 Linear Advance （压力提前/线性推进） 的支持</h2><p><code>准确的 Linear Advance 的校准是打印一个优秀模型的重要因素</code></p>
+<h2 id="0x01-缺少-Linear-Advance-（压力提前-x2F-线性推进）-的支持"><a href="#0x01-缺少-Linear-Advance-（压力提前-x2F-线性推进）-的支持" class="headerlink" title="0x01 缺少 Linear Advance （压力提前&#x2F;线性推进） 的支持"></a>0x01 缺少 Linear Advance （压力提前&#x2F;线性推进） 的支持</h2><p><code>准确的 Linear Advance 的校准是打印一个优秀模型的重要因素</code></p>
 <p>默认情况下，挤出机以线性方式工作。但挤出机不是线性系统，明显会导致在每一步打印后挤出额外材料，并且在下一步开始打印时材料不够。（下图表示了打印机在加速减速的过程，在2处材料挤出不够，且在4、5处产生堆料）</p>
 <p><img data-src="http://qiniu.s1nh.org/sermoon-v1-k-factor_low.png"></p>
 <p>使用 Linear Advance 的优点：</p>
@@ -2533,10 +2488,78 @@ apt-get install libusb-1.0-0-dev
 </ul>
 <h2 id="0x05-无用的-pro-版本"><a href="#0x05-无用的-pro-版本" class="headerlink" title="0x05 无用的 pro 版本"></a>0x05 无用的 pro 版本</h2><p>它的 pro 版本包含开盖暂停和相机功能，然而</p>
 <ul>
-<li>开盖暂停/断料检测只在SD卡打印时有效；</li>
+<li>开盖暂停&#x2F;断料检测只在SD卡打印时有效；</li>
 <li>摄像头会经常断线（国外有人讨论过可能是这种摄像头不支持在高温环境下工作[<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2stxx/sermoon_v1_and_v1_pro_general_info_thoughts/i2r7irn/?utm_source=reddit&utm_medium=web2x&context=3">链接</a>]）。</li>
 </ul>
 <h2 id="0x06-吵"><a href="#0x06-吵" class="headerlink" title="0x06 吵"></a>0x06 吵</h2><p>这款机器主打静音，但你买了以后就知道给主板散热的小风扇有多吵了。我已经拔风扇插头了，目前没出现什么问题（后盖打开，26度空调）。</p>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>计算机视觉技术调查报告</title>
+    <url>/post/cv-sjtu/</url>
+    <content><![CDATA[<p><code>本资源来自网络，侵权请按ALT+F4</code></p>
+<h2 id="0x01-深度学习基础框架"><a href="#0x01-深度学习基础框架" class="headerlink" title="0x01 深度学习基础框架"></a>0x01 深度学习基础框架</h2><h3 id="1-人脸检测、跟踪、识别、三维建模的开源框架、算法、论文"><a href="#1-人脸检测、跟踪、识别、三维建模的开源框架、算法、论文" class="headerlink" title="1.人脸检测、跟踪、识别、三维建模的开源框架、算法、论文"></a>1.人脸检测、跟踪、识别、三维建模的开源框架、算法、论文</h3><h4 id="1-人脸检测"><a href="#1-人脸检测" class="headerlink" title="(1) 人脸检测"></a>(1) 人脸检测</h4><p>在人脸检测方面常用的用两个，一个是 <a href="https://www.cs.cmu.edu/~peiyunh/tiny/">Tinyface</a> 能检测到比较小的人脸。可以先玩通<a href="https://github.com/peiyunh/tiny">demo</a><br>另外一篇更为常用，如果你们对固定场景，比如视频对话，检测效果不错。而且他们能标注人脸关键点。<br>文章：Joint Face Detection and Alignment using Multi-task Cascaded Convolutional Networksb(<a href="http://vis-www.cs.umass.edu/fddb/results.html">(Code)</a>) 很多最近的创业公司用这个，但是如果场景特殊需要 re-train 一下 </p>
+<h4 id="2-人脸跟踪"><a href="#2-人脸跟踪" class="headerlink" title="(2) 人脸跟踪"></a>(2) 人脸跟踪</h4><p>因为这个已经不是学术前沿问题，所以 CVPR、ICCV 上没有文章研究这一块<br>人脸跟踪这一块 openCV 有一个比较好的教程 <a href="http://opencv-java-tutorials.readthedocs.io/en/latest/06-face-detection-and-tracking.html">http://opencv-java-tutorials.readthedocs.io/en/latest/06-face-detection-and-tracking.html</a><br>但是，工程上通用的做法还是，逐帧用最好的 face detector(比如 tiny face)检测后，用 optical flow 串起来。因为现在 face detection 已经很快了，没必要用 tracking 来加速，能做到很快。具体怎么弄我们可以当面讨论。<br>我的学生找了一下开源库（仅作参考，不建议用），但是不是正规的文章 <a href="https://github.com/kylemcdonald/ofxFaceTracker">https://github.com/kylemcdonald/ofxFaceTracker</a> </p>
+<span id="more"></span>
+
+<h4 id="3-人脸识别"><a href="#3-人脸识别" class="headerlink" title="(3) 人脸识别"></a>(3) 人脸识别</h4><p>主要人脸识别的文章都在 LFW 上， <a href="http://vis-www.cs.umass.edu/lfw/results.html">http://vis-www.cs.umass.edu/lfw/results.html</a> 我们主要可以看 Table 6 Mean classification accuracy û and standard error of the mean SE。<br>不过这些靠前的方法很多没有代码。目前创业公司普遍用[1]。这个我指导过别人使用，[2]的口碑也不错但不是最新的。以建议你们用[1]加大数据 train 就行了。以后，有更好开源代码出来，我再更新。 </p>
+<p>[1] A Discriminative Feature Learning Approach for Deep Face Recognition[C] Yandong Wen, Kaipeng Zhang, Zhifeng Li, Yu Qia. ECCV 2016. (<a href="https://github.com/ydwen/caffe-face">(Code)</a>)<br>[2] OpenFace: A general-purpose face recognition library with mobile applications Amos, Brandon and Bartosz Ludwiczuk and Satyanarayanan, Mahadev， CMU-CS-16-118, CMU School of Computer Science，2016 (<a href="https://cmusatyalab.github.io/openface/">(Code)</a>)</p>
+<h4 id="4-人脸三维建模"><a href="#4-人脸三维建模" class="headerlink" title="(4) 人脸三维建模"></a>(4) 人脸三维建模</h4><p>这一块属于比较前沿的方面，所以基本没公开数据库，也没公开代码</p>
+<p>业内公认比较好的是：<br>文章：Real-time Facial Animation on Mobile Devices <a href="http://www.kunzhou.net/2013/mface-gmod.pdf">(Code)</a></p>
+<p>下面这两篇是基于关键点的<br>文章：3D Shape Regression for Real-time Facial Animation <a href="http://www.kunzhou.net/2013/vface.pdf">(Code)</a></p>
+<p>文章：Face Alignment Across Large Poses: A 3D Solution  <a href="https://arxiv.org/abs/1511.07212">(Code)</a><br>注：这问题属于坑比较多的，大家也不放代码用来赚钱，目前，是浙大的 Zhou Kun 有成熟的技术，需要购买的话，我可以去联系。</p>
+<h3 id="2-物体探测、物体定位、视频中的物体探测、场景分类、场景分析的算法、论文"><a href="#2-物体探测、物体定位、视频中的物体探测、场景分类、场景分析的算法、论文" class="headerlink" title="2.物体探测、物体定位、视频中的物体探测、场景分类、场景分析的算法、论文"></a>2.物体探测、物体定位、视频中的物体探测、场景分类、场景分析的算法、论文</h3><h4 id="1-物体探测和物体定位"><a href="#1-物体探测和物体定位" class="headerlink" title="(1) 物体探测和物体定位"></a>(1) 物体探测和物体定位</h4><p>物体探测也称物体检测（object detection）包括物体定位（object localization）和物体识别（object recognition）两部分。一般讲是先定位物体在哪里，然后识别是什么（猫，狗，车）。但是自从 faster RCNN 后，物体定位和物体识别就同时一起做了。目前主要的开源代码是 SSD，faster RCNN, Yolo。各有优劣，SSD 和 faster RCNN 是 recall 比较高，Yolo 是 precision 比较高。 综合上来看，如果一定要选一个的话，我推荐 Yolo。注意，目前的 object detection 是用 mAP 来衡量，但 mAP 差个几个点范围内很难说明实际效果的好坏。我们组写了一个 object detection 的详细结束文件（和这份文件一起交付）。</p>
+<p>另外还有一篇是刚刚出来的 Mask RCNN，性能比现在的物体检测器都好。 文章在这里 <a href="https://arxiv.org/abs/1703.06870">https://arxiv.org/abs/1703.06870</a></p>
+<p>具体中文讨论在这里 <a href="https://www.zhihu.com/question/57403701">https://www.zhihu.com/question/57403701</a> 但是，没有代码，我们组也在复现中</p>
+<h4 id="2-视频中的物体探测"><a href="#2-视频中的物体探测" class="headerlink" title="(2) 视频中的物体探测"></a>(2) 视频中的物体探测</h4><p>学术上这个被称为多物体跟踪（mutli-object tracking），他的基本原理是跟踪和物体检测联合训练。 主要的算法可以在这里两个网站上查到：<br>这个是专门做多物体跟踪的： <a href="https://motchallenge.net/">https://motchallenge.net/</a><br>里面有一些有文章<br>另一个网站是： <a href="http://www.cvlibs.net/datasets/kitti/eval_tracking.php">http://www.cvlibs.net/datasets/kitti/eval_tracking.php</a><br>这个虽然是无人车的，但原理差不多，你们可以用他们的模型</p>
+<p>如果代码的话推荐这篇，是我朋友的工作， <a href="http://yuxng.github.io/">http://yuxng.github.io/</a><br>这两篇文章都有代码，<br>Learning to Track: Online Multi-Object Tracking by Decision Making.<br>Subcategory-aware Convolutional Neural Networks for Object Proposals and Detection.（这篇没有 model，需要的话，我可以发给你们做研究用，但是如果要商用请和作者联系。） </p>
+<p>另外 multi-object tracking 都比较慢，如果要快点的话，可以使用 yolo 每帧做处理，然后简单复现这篇文章，就行了。<br>Seq-NMS for Video Object Detection <a href="https://arxiv.org/abs/1602.08465">https://arxiv.org/abs/1602.08465</a></p>
+<h4 id="3-场景分类、场景分析"><a href="#3-场景分类、场景分析" class="headerlink" title="(3) 场景分类、场景分析"></a>(3) 场景分类、场景分析</h4><p>场景分类本质上一个图像分类问题，你们只要对图像的场景打上多类标签，进入分类器训练就行了，目前最好的分类器，在 ResNet 之后有两个更好 ResNext，kaiming he 之后的作品。 </p>
+<p>• <a href="https://arxiv.org/abs/1611.05431">Aggregated Residual Transformations for Deep Neural Networks</a>, <a href="https://github.com/facebookresearch/ResNeXt">(Code)</a><br>• <a href="https://arxiv.org/abs/1602.07261">Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning</a> <a href="https://github.com/tensorflow/models/blob/master/slim/nets/ince9ption_resnet_v2.py">(Code)</a></p>
+<p>主流的场景分类数据库是 <a href="http://places.csail.mit.edu/">MIT scene dataset</a>你们可以好好用来做 pre-train<br>这里有一个 demo，比较 cool，你们可以直接用 <a href="http://places.csail.mit.edu/demo.html">http://places.csail.mit.edu/demo.html</a></p>
+<h3 id="3-图片场景描述的算法、论文"><a href="#3-图片场景描述的算法、论文" class="headerlink" title="3.图片场景描述的算法、论文"></a>3.图片场景描述的算法、论文</h3><p>这个在学术上叫 image-captioning 对于这个问题 coco 有一个排名，你们可以在这个排名上找到比较靠前的文章和代码，但是衡量好坏的 metric 比较受诟病。也就是分数高的不一定效果好，所以这个还是你要自己感受一下。 <a href="http://mscoco.org/dataset/#captions-leaderboard">http://mscoco.org/dataset/#captions-leaderboard</a> </p>
+<p>我先简单列出几个有代表性的，且有代码的</p>
+<p>• 论文：Oriol Vinyals, Alexander Toshev, Samy Bengio, Dumitru Erhan, Show and Tell: A Neural Image Caption Generator, arXiv:1411.4555. <a href="https://github.com/tensorflow/models/tree/master/im2txt">(Code)</a><br>• 论文：Andrej Karpathy, Li Fei-Fei, Deep Visual-Semantic Alignments for Generating Image Description, CVPR, 2015. <a href="https://github.com/karpathy/neuraltalk">(Code)</a><br>• 论文：Kelvin Xu, Jimmy Lei Ba, Ryan Kiros, Kyunghyun Cho, Aaron Courville, Ruslan Salakhutdinov, Richard S. Zemel, Yoshua Bengio, Show, Attend, and Tell: Neural Image Caption Generation with Visual Attention, arXiv:1502.03044 &#x2F; ICML 2015 <a href="https://github.com/kelvinxu/arctic-captions">(Code)</a><br>• 论文：Ryan Kiros, Ruslan Salakhutdinov, Richard S. Zemel, Unifying Visual-Semantic Embeddings with Multimodal Neural Language Models, arXiv:1411.2539. <a href="https://github.com/ryankiros/visual-semantic-embedding">(Code)</a><br>• Jeff Donahue, Lisa Anne Hendricks, Sergio Guadarrama, Marcus Rohrbach, Subhashini Venugopalan, Kate Saenko, Trevor Darrell, Long-term Recurrent Convolutional Networks for Visual Recognition and Description, arXiv:1411.4389<a href="https://github.com/garythung/torch-lrcn">(Code)</a><br>• 论文：Jacob Devlin, Saurabh Gupta, Ross Girshick, Margaret Mitchell, C. Lawrence Zitnick, Exploring Nearest Neighbor Approaches for Image Captioning, arXiv:1505.04467 代码：虽然没代码但是实现起来比较简单 </p>
+<h3 id="4-视频场景描述的算法、论文"><a href="#4-视频场景描述的算法、论文" class="headerlink" title="4.视频场景描述的算法、论文"></a>4.视频场景描述的算法、论文</h3><p>我推荐几篇有代码的文章 </p>
+<p>• Subhashini Venugopalan, Marcus Rohrbach, Jeff Donahue, Raymond Mooney, Trevor Darrell, Kate Saenko, Sequence to Sequence–Video to Text, arXiv:1505.00487. <a href="https://gist.github.com/vsubhashini/38d087e140854fee4b14">(Code)</a><br>• Subhashini Venugopalan, Huijuan Xu, Jeff Donahue, Marcus Rohrbach, Raymond Mooney, Kate Saenko, Translating Videos to Natural Language Using Deep Recurrent Neural Networks, arXiv:1412.4729. <a href="https://gist.github.com/vsubhashini/3761b9ad43f60db9ac3d">(Code)</a><br>• Li Yao, Atousa Torabi, Kyunghyun Cho, Nicolas Ballas, Christopher Pal, Hugo Larochelle, Aaron Courville, Describing Videos by Exploiting Temporal Structure, arXiv:1502.08029 <a href="https://github.com/yaoli/arctic-capgen-vid">(Code)</a></p>
+<h3 id="5-人脸、物体、场景等算法的训练集大小、训练周期及能达到的效果，一些调参、训练技巧等"><a href="#5-人脸、物体、场景等算法的训练集大小、训练周期及能达到的效果，一些调参、训练技巧等" class="headerlink" title="5.人脸、物体、场景等算法的训练集大小、训练周期及能达到的效果，一些调参、训练技巧等"></a>5.人脸、物体、场景等算法的训练集大小、训练周期及能达到的效果，一些调参、训练技巧等</h3><p>• <strong>人脸数据库</strong> LFW，<a href="http://vis-www.cs.umass.edu/lfw/">http://vis-www.cs.umass.edu/lfw/</a> 6千对人脸图片，用于验证（判断是否为某个人）<br>• <strong>FDDB</strong>，<a href="http://vis-www.cs.umass.edu/fddb/">http://vis-www.cs.umass.edu/fddb/</a> 2800 张用于检测，测试<br>• <strong>CELEBA</strong> <a href="http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html">http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html</a> 20 万多张，用于配准，检测，属性分析，<br>• <strong>AFLW</strong> <a href="https://lrs.icg.tugraz.at/research/aflw/">https://lrs.icg.tugraz.at/research/aflw/</a> 2 万 3 千多图片，有检测，经常用于训练。<br>• <strong>megaface</strong> <a href="http://megaface.cs.washington.edu/">http://megaface.cs.washington.edu/</a> 100 万张图片，人脸识别和验证都有（现阶段比较热门的数据集）<br>• <strong>中科院数据库</strong> <a href="http://www.cbsr.ia.ac.cn/english/CASIA-WebFace-Database.html">http://www.cbsr.ia.ac.cn/english/CASIA-WebFace-Database.html</a> 50 万人脸验证数据，1 万多个人<br>• <strong>物体检测数据库</strong> 如果你们做小规模验证可以使用 VOC dataset <a href="http://host.robots.ox.ac.uk/pascal/VOC/">http://host.robots.ox.ac.uk/pascal/VOC/</a> 大概是万级别的数量<br>• 如果大规模话有两个数据集 <strong>Imagenet</strong> <a href="http://image-net.org/">http://image-net.org/</a> 和 <strong>COCO</strong> <a href="http://mscoco.org/">http://mscoco.org/</a> 这两个都百万级别的<br>• 调参技巧这个很难说，要看具体情况，很难说给出一个普遍的定论。主要是 learning rate 吧，开始的时候比较大，后面比较稳定的时候慢慢减小。 </p>
+<h3 id="6-自然场景中的文字检测的算法"><a href="#6-自然场景中的文字检测的算法" class="headerlink" title="6 自然场景中的文字检测的算法"></a>6 自然场景中的文字检测的算法</h3><p>这个问题的话，大量的算法和论文库在这里： <a href="https://github.com/chongyangtao/Awesome-Scene-Text-Recognition">https://github.com/chongyangtao/Awesome-Scene-Text-Recognition</a><br>把这些文章和代码看完就差不多了。这一块做得最好的华中科技大学的 xiang bai。需要购买技术的话，我可以联系。</p>
+<p>如果代码推荐的话，可以试一下<br><a href="https://github.com/baidu-research/warp-ctc">https://github.com/baidu-research/warp-ctc</a><br><a href="https://github.com/bgshih/crnn">https://github.com/bgshih/crnn</a> </p>
+<p>可以是这样两篇文章看看：<br>Connectionist Temporal Classification: Labelling Unsegmented Sequence Data with Recurrent Neural Networks.<br>An End-to-End Trainable Neural Network for Image-based Sequence Recognition and Its Application to Scene Text Recognition. </p>
+<h3 id="7-自然场景中人物（且有遮挡，如人脸被遮挡）较多的情况下实时检测及再识别。"><a href="#7-自然场景中人物（且有遮挡，如人脸被遮挡）较多的情况下实时检测及再识别。" class="headerlink" title="7 自然场景中人物（且有遮挡，如人脸被遮挡）较多的情况下实时检测及再识别。"></a>7 自然场景中人物（且有遮挡，如人脸被遮挡）较多的情况下实时检测及再识别。</h3><p>这个学术界有一个专门的 topic，叫做 Person Re-identification。这一块是中山大学的 weishi zhen 做得最好，需要购买技术，我可以办你们联系。我做了一个调研如下（推荐第一个）， </p>
+<p>[1] <a href="https://arxiv.org/abs/1604.07528">Xiao T, Li H, Ouyang W, et al. Learning deep feature representations with domain guided dropout for person re-identification[C]&#x2F;&#x2F;Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. 2016: 1249-1258.</a>, <a href="https://github.com/Cysu/dgd_person_reid">(Code)</a></p>
+<p>[2] Yang Yang, LongyinWen, Siwei Lyu, Stan Z. Li,Unsupervised Learning of Multi-Level Descriptors for Person Re-Identification, Association for the Advancement of Artificial Intelligence (AAAI), San Francisco, California, USA, 2017<br>(Code): need email to author </p>
+<p>[3] <a href="http://t.cn/R6imzBZ">Matsukawa T, Okabe T, Suzuki E, et al. Hierarchical gaussian descriptor for person re-identification[C]&#x2F;&#x2F;Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. 2016: 1363-1372.</a>, <a href="http://www.i.kyushu-u.ac.jp/~matsukawa/ReID_files/ReID_GOG_v1.01.zip">(Code)</a></p>
+<p>[4] <a href="http://isee.sysu.edu.cn/files/resource/Top-push_Video-based_Person_Re-identification.pdf">You J, Wu A, Li X, et al. Top-push video-based person re-identification[C]&#x2F;&#x2F;Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. 2016: 1345-1353. </a>, <a href="http://isee.sysu.edu.cn/files/resource/TDL.zip">(Code)</a></p>
+<p>[5] <a href="https://arxiv.org/pdf/1611.05666.pdf">Zheng Z, Zheng L, Yang Y. A Discriminatively Learned CNN Embedding for Person Re-identification[J]. arXiv preprint arXiv:1611.05666, 2016.</a>, <a href="https://github.com/layumi/2016_person_re-ID">(Code)</a></p>
+<p>[6] <a href="http://www.cv-foundation.org/openaccess/content_cvpr_2015/papers/Ahmed_An_Improved_Deep_2015_CVPR_paper.pdf">Ahmed E, Jones M, Marks T K. An improved deep learning architecture for person re-identification[C]&#x2F;&#x2F;Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. 2015: 3908-3916.</a>, <a href="https://github.com/Deep-Learning-Person-Re-Identification/Implementaion-1">(Code)</a></p>
+<p>[7] <a href="http://www.cv-foundation.org/openaccess/content_cvpr_2015/papers/Liao_Person_Re-Identification_by_2015_CVPR_paper.pdf">Liao S, Hu Y, Zhu X, et al. Person re-identification by local maximal occurrence representation and metric learning[C]&#x2F;&#x2F;Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. 2015: 2197-2206.</a>, <a href="http://www.openpr.org.cn/index.php/(Code)-For-Image-ProcessingAnd-Computer-Vision/102-LOMO-Feature-Extraction-and-XQDA-Metric-Learning-for-Person-Re-identification/View-details.html">(Code)</a></p>
+<p>[8] <a href="http://t.cn/R6i1zBW">Zheng L, Wang S, Tian L, et al. Query-adaptive late fusion for image search and person re-identification[C]&#x2F;&#x2F;Proceedings of the IEEE conference on computer vision and pattern recognition. 2015: 1741-1750.</a> (<a href="https://drive.google.com/open?id=0B6tjyrV1YrHedWZ2UGlWVHFiQUE">(Code) google drive</a>, <a href="http://pan.baidu.com/s/1nt3hvex">(Code) baidu pan</a>)</p>
+<p>[9] <a href="http://t.cn/R6irPZf">Yang Y, Yang J, Yan J, et al. Salient color names for person re-identification[C]&#x2F;&#x2F;European Conference on Computer Vision. Springer International Publishing, 2014: 536-551.</a>, (Code): need email to author </p>
+<p>[10] <a href="http://t.cn/R6iBIQm">Bazzani L, Cristani M, Murino V. Symmetry-driven accumulation of local features for human characterization and re-identification[J]. Computer Vision and Image Understanding, 2013, 117(2): 130-144.</a>, <a href="https://github.com/lorisbaz/SDALF">(Code)</a></p>
+<p>[11] <a href="http://robustsystems.coe.neu.edu/sites/robustsystems.coe.neu.edu/files/systems/papers/FeiXiong_ECCV14.pdf">Xiong F, Gou M, Camps O, et al. Person re-identification using kernel-based metric learning methods[C]&#x2F;&#x2F;European conference on computer vision. Springer International Publishing, 2014: 1-16.</a>, <a href="https://github.com/NEU-Gou/kernel-metric-learning-reid">(Code)</a></p>
+<p>[12] <a href="http://www.ee.cuhk.edu.hk/~rzhao/project/salience_cvpr13/zhaoOWcvpr13.pdf">Zhao R, Ouyang W, Wang X. Unsupervised salience learning for person re-identification[C]&#x2F;&#x2F;Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. 2013: 3586-3593.</a>, <a href="https://github.com/Robert0812/salience_reid">(Code)</a></p>
+<p>[13] <a href="http://t.cn/R6iRdLN">Farenzena M, Bazzani L, Perina A, et al. Person re-identification by symmetry-driven accumulation of local features[C]&#x2F;&#x2F;Computer Vision and Pattern Recognition (CVPR), 2010 IEEE Conference on. IEEE, 2010: 2360-2367. </a>, <a href="https://github.com/lorisbaz/SDALF">(Code)</a></p>
+<h2 id="0x02-相关问题"><a href="#0x02-相关问题" class="headerlink" title="0x02 相关问题"></a>0x02 相关问题</h2><p>1、低分辨率下的视频人脸识别（32*32 以下）<br>答： 这种一般没办法弄，你们可以尝试的做去 block，或者去噪预处理，会有一点点提升。  </p>
+<p>2、视屏中，带遮挡（遮挡会移动）的人脸识别<br>答： 如果遮挡不大的话，深度学习对这方面是有一定鲁棒性的  </p>
+<p>3、现有的人脸检测准确率不高的情况下，是否有办法通过结合深度学习和传统人脸检测方法来达到快速的高效方法<br>答：如果，你们人脸区间固定（比如人脸登录），可以先提取深度学习特征，然后做 add-boosting.做检测框。 Fast-RCNN 差不多能用。 To Boost or Not to Boost? On the Limits of Boosted Trees for Object Detection </p>
+<p>4、在训练数据不全面的情况（如不存在带眼镜的情况下），如果被识别人带了眼镜等饰物，如何不受干扰。（对于眼镜的情况，除了在数据增广中寻找眼睛加上遮挡，还有其他办法吗）<br>答：这个使用办法解决的，一般用深度学习产生去眼镜照片，再识别。 Robust Deep Auto-encoder for Occluded Face Recognition </p>
+<h2 id="0x03-学术前沿"><a href="#0x03-学术前沿" class="headerlink" title="0x03 学术前沿"></a>0x03 学术前沿</h2><h3 id="1-当前图像、视频领域的学术前沿研究方向、算法框架及相关论文"><a href="#1-当前图像、视频领域的学术前沿研究方向、算法框架及相关论文" class="headerlink" title="1.当前图像、视频领域的学术前沿研究方向、算法框架及相关论文"></a>1.当前图像、视频领域的学术前沿研究方向、算法框架及相关论文</h3><p>目前，比较前沿的大概有几个方向： </p>
+<h4 id="1-生成对抗模型："><a href="#1-生成对抗模型：" class="headerlink" title="(1) 生成对抗模型："></a>(1) 生成对抗模型：</h4><p>• Ian J. Goodfellow, Jean Pouget-Abadie, Mehdi Mirza, Bing Xu, David Warde-Farley, Sherjil Ozair, Aaron Courville, Yoshua Bengio, Generative Adversarial Networks, NIPS, 2014. （最早的一篇）<br>• Mehdi Mirza, Simon Osindero， Conditional Generative Adversarial Nets，arXiv:1411.1784 [cs.LG] （比较出名的一篇） </p>
+<p>这些都是近期作品</p>
+<p>• Jost Tobias Springenberg, “Unsupervised and Semi-supervised Learning with Categorical Generative Adversarial Networks”, ICLR 2016<br>• Harrison Edwards, Amos Storkey, “Censoring Representations with an Adversary”, ICLR 2016,<br>• Jun-Yan Zhu, Philipp Krahenbuhl, Eli Shechtman, and Alexei A. Efros, “Generative Visual Manipulation on the Natural Image Manifold”, ECCV 2016.<br>• Mixing Convolutional and Adversarial Networks ◦Alec Radford, Luke Metz, Soumith Chintala, “Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks”, ICLR 2016.   </p>
+<h4 id="2-深度增强学习"><a href="#2-深度增强学习" class="headerlink" title="(2) 深度增强学习"></a>(2) 深度增强学习</h4><p>• <a href="http://www0.cs.ucl.ac.uk/staff/d.silver/web/Teaching.html">Reinforcement Learning Course by David Silver</a><br>• <a href="https://webdocs.cs.ualberta.ca/~sutton/book/bookdraft2016sep.pdf">Reinforcement Learning: An Introduction by Richard S. Sutton and Andrew G. Barto</a><br>• Highly related with Silver’s course, you can read&#x2F;skip the corresponding chapters while taking the courses </p>
+<p>一些开始的论文 f Deep Reinforcement Learning (DQN)<br>• Mnih, V., Kavukcuoglu, K., Silver, D., Graves, A., Antonoglou, I., Wierstra, D., &amp; Riedmiller, M. (2013, December 20). Playing Atari with Deep Reinforcement Learning. arXiv.org. SJTU Machine Vision and Intelligence Group page 7<br>• Mnih, V., Kavukcuoglu, K., Silver, D., Rusu, A. A., Veness, J., Bellemare, M. G., et al. (2015). Human-level control through deep reinforcement learning. Nature, 518(7540), 529–533. </p>
+<p>一些最近的论文<br>• Wang, Z., de Freitas, N., &amp; Lanctot, M. (2015). Dueling Network Architectures for Deep Reinforcement Learning. CoRR.<br>• van Hasselt, H., Guez, A., &amp; Silver, D. (2016). Deep Reinforcement Learning with Double Q-Learning. AAAI.<br>• Hausknecht, M. J., &amp; Stone, P. (2015). Deep Recurrent Q-Learning for Partially Observable MDPs. AAAI.<br>• Bellemare, M. G., Ostrovski, G., Guez, A., Thomas, P. S., &amp; Munos, R. (2015). Increasing the Action Gap - New Operators for Reinforcement Learning. CoRR, cs.AI.<br>• Osband, I., Blundell, C., Pritzel, A., &amp; Van Roy, B. (2016, February 15). Deep Exploration via Bootstrapped DQN. arXiv.org.<br>• Schaul, T., Quan, J., Antonoglou, I., &amp; Silver, D. (2015). Prioritized Experience Replay. CoRR.<br>• Mnih, V., Badia, A. P., Mirza, M., Graves, A., Lillicrap, T. P., Harley, T., et al. (2016, February 5). Asynchronous Methods for Deep Reinforcement Learning. arXiv.org. </p>
+<p>一些应用有关的论文<br>• Silver, D., Huang, A., Maddison, C. J., Guez, A., Sifre, L., van den Driessche, G., et al. (2016). Mastering the game of Go with deep neural networks and tree search. Nature, 529(7587), 484–489.<br>• Mnih, V., Heess, N., &amp; Graves, A. (2014). Recurrent models of visual attention. In Advances in Neural Information Processing Systems (pp. 2204-2212). SJTU Machine Vision and Intelligence Group page 8<br>• Zhu, Y., Mottaghi, R., Kolve, E., Lim, J. J., Gupta, A., Fei-Fei, L., &amp; Farhadi, A. (2016, September 17). Target-driven Visual Navigation in Indoor Scenes using Deep Reinforcement Learning. arXiv.org. </p>
+<h4 id="3-人体姿态估计"><a href="#3-人体姿态估计" class="headerlink" title="(3) 人体姿态估计"></a>(3) 人体姿态估计</h4><p>代表文章有两篇：<br>• Haoshu Fang, Shuqin Xie, Cewu Lu， RMPE: Regional Multi-person Pose Estimation， arXiv:1612.00137 [cs.CV]<br>• Zhe Cao, Tomas Simon, Shih-En Wei, Yaser Sheikh， Realtime Multi-person 2D Pose Estimation using Part Affinity Fields， CVPR 2017 </p>
+<h4 id="4-视觉问答"><a href="#4-视觉问答" class="headerlink" title="(4) 视觉问答"></a>(4) 视觉问答</h4><p>这方面的一些文章</p>
+<p>• Xiong, Caiming, Stephen Merity, and Richard Socher. “Dynamic Memory Networks for Visual and Textual Question Answering.” arXiv:1603.01417 (2016).<br>• Mateusz Malinowski, Marcus Rohrbach, Mario Fritz, Ask Your Neurons: A Neural-based Approach to Answering Questions about Images, arXiv:1505.01121.<br>• Stanislaw Antol, Aishwarya Agrawal, Jiasen Lu, Margaret Mitchell, Dhruv Batra, C. Lawrence Zitnick, Devi Parikh, VQA: Visual Question Answering, CVPR, 2015 SUNw:Scene Understanding workshop.<br>• Hauyuan Gao, Junhua Mao, Jie Zhou, Zhiheng Huang, Lei Wang, Wei Xu, Are You Talking to a Machine? Dataset and Methods for Multilingual Image Question Answering, arXiv:1505.05612.<br>• Hyeonwoo Noh, Paul Hongsuck Seo, and Bohyung Han, Image Question Answering using Convolutional Neural Network with Dynamic Parameter Prediction, arXiv:1511.05765<br>• Yang, Z., He, X., Gao, J., Deng, L., &amp; Smola, A. (2015). Stacked Attention Networks for Image Question Answering. arXiv:1511.02274.<br>• Jin-Hwa Kim, Sang-Woo Lee, Dong-Hyun Kwak, Min-Oh Heo, Jeonghee Kim, Jung-Woo Ha, Byoung-Tak Zhang, Multimodal Residual Learning for Visual QA, arXiv:1606:01455<br>• Hyeonwoo Noh and Bohyung Han, Training Recurrent Answering Units with Joint Loss Minimization for VQA, arXiv:1606.03647<br>• Jin-Hwa Kim, Kyoung Woon On, Jeonghee Kim, Jung-Woo Ha, Byoung-Tak Zhang, Hadamard Product for Low-rank Bilinear Pooling, arXiv:1610.04325. </p>
+<h4 id="5-Mask-R-CNN"><a href="#5-Mask-R-CNN" class="headerlink" title="(5) Mask-R-CNN"></a>(5) Mask-R-CNN</h4><p>另外还有一篇是刚刚出来的 Mask RCNN，也是比较火。</p>
+<p>文章在这里 <a href="https://arxiv.org/abs/1703.06870">https://arxiv.org/abs/1703.06870</a><br>具体中文讨论在这里 <a href="https://www.zhihu.com/question/57403701">https://www.zhihu.com/question/57403701</a><br>但是，没有代码，我们组也在复现中 </p>
 ]]></content>
       <categories>
         <category>算法与硬件</category>
@@ -2574,7 +2597,7 @@ apt-get install libusb-1.0-0-dev
 <li><code>B</code> 预处理图像以去除<strong>高斯噪声</strong>和<strong>椒盐噪声</strong>。<em>（某些噪声消除滤波器可能会将逗号和句号视为噪声，因此必须小心谨慎）</em></li>
 <li><code>B</code> 将图像<strong>二值化</strong></li>
 <li><code>B</code> 将图像分割为黑色像素的<strong>连通分量（下文称 Symbol）</strong>。对于每个Symbol，计算边框和质心（bounding box, centroid）。</li>
-<li><code>C</code> 对于每个Symbol，确定其k近邻，且k&gt;=4。<em>（ O’Gorman在他的论文中建议将k = 5作为鲁棒性和速度之间的良好折衷。使用至少k = 4的原因是对于文档中的符号，两个或三个最接近的符号是在相同文本行上紧邻的那些符号。第四最近的符号通常在正上方或下方的一条线上，并且在下面的最近邻居计算中包括这些符号是很重要的。）</em></li>
+<li><code>C</code> 对于每个Symbol，确定其k近邻，且k&gt;&#x3D;4。<em>（ O’Gorman在他的论文中建议将k &#x3D; 5作为鲁棒性和速度之间的良好折衷。使用至少k &#x3D; 4的原因是对于文档中的符号，两个或三个最接近的符号是在相同文本行上紧邻的那些符号。第四最近的符号通常在正上方或下方的一条线上，并且在下面的最近邻居计算中包括这些符号是很重要的。）</em></li>
 <li><code>C</code> 每个Symbol的近邻对与两者质心的向量相关。如果为每对最近邻Symbol绘制这些向量，则可以得到文档的<strong>docstrum</strong>（下图）。通过来自水平的角度θ和两个最近邻居符号之间的距离D，创建<strong>最近邻角</strong>和<strong>最近邻距离直方图</strong>。</li>
 <li><code>D</code> 使用最近邻角度直方图，可以计算文档的歪斜。如果歪斜较小，则继续下一步。如果不是，旋转图像以消除歪斜并返回<em>步骤3</em>。</li>
 <li><code>D</code> 最近邻距离直方图具有若干峰值，并且这些峰值通常表示<strong>字符间间距</strong>，<strong>字间间距</strong>和<strong>行间间隔</strong>（between-character, between-word, between-line）。</li>
@@ -2595,13 +2618,17 @@ apt-get install libusb-1.0-0-dev
 <li><p><code>60多页</code> Cattoni, Roldano, et al. “Geometric layout analysis techniques for document image understanding: a review.” ITC-irst Technical Report 9703.09 (1998).</p>
 </li>
 <li><p><a href="https://www.researchgate.net/profile/Faisal_Shafait/publication/226110361_Coupled_snakelets_for_curled_text-line_segmentation_from_warped_document_images/links/542358fe0cf26120b7a6c334.pdf">[IJDAR 2013]</a> Bukhari, S. S., Shafait, F., &amp; Breuel, T. M.  Coupled snakelets for curled text-line segmentation from warped document images</p>
-<img data-src="http://qiniu.s1nh.org/Blog_docstrum_2.png" width="600"></li>
+<img data-src="http://qiniu.s1nh.org/Blog_docstrum_2.png" width="600">
+</li>
 <li><p><a href="https://www.researchgate.net/profile/Thomas_Breuel/publication/5431819_Performance_Evaluation_and_Benchmarking_of_Six-Page_Segmentation_Algorithms/links/551dd6dd0cf213ef063eb1ee.pdf">[TPAMI 2008]</a> Shafait, F., Keysers, D., &amp; Breuel, T. Performance evaluation and benchmarking of six-page segmentation algorithms </p>
-<img data-src="http://qiniu.s1nh.org/Blog_docstrum_3.png" width="600"></li>
+<img data-src="http://qiniu.s1nh.org/Blog_docstrum_3.png" width="600">
+</li>
 <li><p><a href="https://pdfs.semanticscholar.org/aa39/21e3a2eda4dd91c89f601ca9ae502f1e65e3.pdf">ICIAR 2014</a> Kassis, M., Kurar, B., Cohen, R., El-Sana, J., &amp; Kedem, K. Using Scale-Space Anisotropic Smoothing for Text Line Extraction in Historical Documents.</p>
-<img data-src="http://qiniu.s1nh.org/Blog_docstrum_6.png" width="700"></li>
+<img data-src="http://qiniu.s1nh.org/Blog_docstrum_6.png" width="700">
+</li>
 <li><p><a href="http://www.iapr-tc11.org/archive/das2012/attachments/FullPaperProceedings/4661a394.pdf">DAS 2012</a> Afzal, M. Z., Kramer, M., Bukhari, S. S., Shafait, F., &amp; Breuel, T. M.  Improvements to uncalibrated feature-based stereo matching for document images by using text-line segmentation</p>
-<img data-src="http://qiniu.s1nh.org/Blog_docstrum_4.png" width="500"></li>
+<img data-src="http://qiniu.s1nh.org/Blog_docstrum_4.png" width="500">
+</li>
 <li><p><a href="http://www.dfki.de/~bukhari/data/papers/29-Bukhari-Generic-Textline-Extraction-ICDAR13.pdf">ICDAR 2013</a>Bukhari, S. S., Shafait, F., &amp; Breuel, T. M. (2013, August). Towards generic text-line extraction.</p>
 <img data-src="http://qiniu.s1nh.org/Blog_docstrum_5.png" width="400"></li>
 </ul>
@@ -2653,7 +2680,7 @@ apt-get install libusb-1.0-0-dev
 <blockquote>
 <p>秉承着以解决问题为乐趣，没有问题创造问题也要解决问题为基本准则。今天发现了一个gnome-theme-kal主题在xfce4下的Bug</p>
 </blockquote>
-<p>最近用Nvidia提供的Nsight来写OpenCV/CUDA，白色主题实在是太丑了，就采用通用的方法换成了黑色主题。结果不管怎么折腾，旁边的Navigator都还是白色的，使得整个界面不白不黑的，简直比VIM还丑。</p>
+<p>最近用Nvidia提供的Nsight来写OpenCV&#x2F;CUDA，白色主题实在是太丑了，就采用通用的方法换成了黑色主题。结果不管怎么折腾，旁边的Navigator都还是白色的，使得整个界面不白不黑的，简直比VIM还丑。</p>
 <p><img data-src="http://qiniu.s1nh.org/Blog_kali-theme_1.png-QNthin"></p>
 <span id="more"></span>
 
@@ -2676,6 +2703,82 @@ apt-get install libusb-1.0-0-dev
       </categories>
   </entry>
   <entry>
+    <title>FastDDS 共享内存的使用笔记</title>
+    <url>/post/fastdds-shm/</url>
+    <content><![CDATA[<p><strong>1. 特定情况下 subscriber 无法重连</strong></p>
+<blockquote>
+<p>刚开始用 FastDDS 的时候就发现这个问题，原以为是共享内存 deadlock 了，于是就有了前面关于 boost 鲁棒锁的那篇帖子。但问题并没有这么简单 &gt;_&lt;</p>
+</blockquote>
+<p>对 FastDDS 程序进行 debug 时，将 subscriber 暂停，等一会再重启，subscriber将无法再次接收数据。Publisher &#x2F; Subscriber 的日志如下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Publisher</span><br><span class="line">2022-09-06 14:10:47.049 [RTPS_TRANSPORT_SHM Warning] SHM Port 7413 failure: the port is marked as not ok! -&gt; Function try_push</span><br><span class="line">2022-09-06 14:10:47.049 [RTPS_TRANSPORT_SHM Warning] (ID:140091162883648) Existing Port 7413 (5f4eeb5613a33705) NOT Healthy. -&gt; Function open_port_internal</span><br><span class="line">2022-09-06 14:10:47.049 [RTPS_TRANSPORT_SHM Warning] (ID:140091162883648) Port 7413 (5f4eeb5613a33705) Removed. -&gt; Function open_port_internal</span><br><span class="line">Message: HelloWorld with index: 157 SENT</span><br><span class="line">2022-09-06 14:10:47.246 [RTPS_TRANSPORT_SHM Warning] SHM Port 7412 failure: the port is marked as not ok! -&gt; Function try_push</span><br><span class="line">2022-09-06 14:10:47.248 [RTPS_TRANSPORT_SHM Warning] (ID:140091402036800) Existing Port 7412 (3e1fa9f9eb2b0ade) NOT Healthy. -&gt; Function open_port_internal</span><br><span class="line">2022-09-06 14:10:47.248 [RTPS_TRANSPORT_SHM Warning] (ID:140091402036800) Port 7412 (3e1fa9f9eb2b0ade) Removed. -&gt; Function open_port_internal</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Subscriber</span><br><span class="line">2022-09-07 14:50:27.441 [RTPS_TRANSPORT_SHM Warning] (ID:140737325877056) Port 7412 Zombie. Reset the port -&gt; Function open_port_internal</span><br><span class="line">2022-09-07 14:50:27.442 [RTPS_TRANSPORT_SHM Warning] (ID:140737325877056) Port 7413 Zombie. Reset the port -&gt; Function open_port_internal</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<p>详细复现过程记录在 <a href="https://github.com/eProsima/Fast-DDS/issues/2811">eProsima&#x2F;Fast-DDS#2811</a></p>
+<p>查看 log 对应的代码，最后定位到可能出现问题的 commit 在 <a href="https://github.com/eProsima/Fast-DDS/commit/e58dcb17e6732b827b18056520c1137b807d800f">eProsima&#x2F;Fast-DDS@e58dcb1</a>。</p>
+<p>这个 commit 是 Pull Request 时将几十个 commit squash 在一起的[<a href="https://github.com/eProsima/Fast-DDS/pull/1187/commits">链接</a>]。squash 前的 commit 在 github 可以查看，但用 git 命令是无法 checkout 的，所以手动下载了一堆源码编译，二分查找了一下，最后定位在下面这个 commit:</p>
+<blockquote>
+<p><a href="https://github.com/eProsima/Fast-DDS/pull/1187/commits/0b8af27cbed21143ececcf34a968d2fbc8d84cff">Refs #8250. Do not reuse zombie ports structures.</a><br>@adolfomarver authored and @MiguelCompany committed on May 12, 2020</p>
+</blockquote>
+<p>问题看起来像是 Subscriber 拒绝复用 zombie ports，但又没申请新的 port. 还没解决，期望能修好这个 bug &gt;_&lt;</p>
+<p><strong>其它</strong><br>分配的每个缓冲区意味着两个内部分配：节点和有效负载。每个内部分配消耗“per_allocation_extra_size_”字节</p>
+<p>open_or_create_and_lock_named_mutex:<br>Interprocess mutex timeout when locking. Possible deadlock: owner died without unlocking?<br>try to remove and create again</p>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>FastDDS 零拷贝模式下多个 subscriber 的原理</title>
+    <url>/post/fastdds-zerocopy-for-multiple-readers/</url>
+    <content><![CDATA[<p>FastDDS 新推出的零拷贝 (Zero Copy) 模式有很多难以理解的地方，在这里会持续做些整理。</p>
+<p><strong>目录</strong></p>
+<ol>
+<li>如何使用 ZeroCopy？</li>
+<li>ZeroCopy 理论上 <code>subscriber</code> 和 <code>publisher</code> 会使用同一个内存地址，为什么打印出来的地址不同？</li>
+<li>ZeroCopy 会分配多少空间，什么时候覆盖旧的样本？</li>
+<li><code>qos.history().depth</code> 与 <code>qos.resource_limits().max_samples/extra_samples</code> 什么关系？</li>
+</ol>
+<span id="more"></span>
+
+<p><strong>1. 如何使用 ZeroCopy？</strong></p>
+<p>满足以下条件才能使用 ZeroCopy  <a name="r1" href="#1"><sup>[1]</sup></a></p>
+<ul>
+<li>不禁用 DataSharingQosPolicy。 AUTO 种类会在可能的情况下自动启用零拷贝；</li>
+<li>数据类型必须为 <code>LoanableSequence</code>；</li>
+<li>在 publisher 使用 <code>loan_sample()</code> <code>write()</code> <code>discard_loan()</code> 操作数据样本；</li>
+<li>在 subscriber 使用 <code>read()</code> <code>take()</code> <code>return_loan()</code> 访问数据样本，类似 <code>take_next_sample</code> 会执行一次拷贝。<a name="r2" href="#2"><sup>[2]</sup></a></li>
+</ul>
+<p><strong>2. ZeroCopy 理论上 subscriber 和 publisher 会使用同一个内存地址，为什么打印出来的地址不同？</strong></p>
+<p>在程序里打印的是不同进程的<strong>虚拟地址</strong>，实际的物理地址是一样的，可以用 <a href="https://github.com/katsuster/virt2phys">这个工具</a> 查看。 <a name="r3" href="#3"><sup>[3]</sup></a></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ sudo ./src/v2p 57649 0x7fffed6671cc 0x4000</span><br><span class="line">pid: 57649:</span><br><span class="line">virt:0x7fffed667000, phys:0xa6b59000</span><br><span class="line"></span><br><span class="line">$ sudo ./src/v2p 57544 0x7f42280831d0 0x4000</span><br><span class="line">pid: 57544:</span><br><span class="line">virt:0x7f4228083000, phys:0xa6b59000</span><br></pre></td></tr></table></figure>
+
+<p><strong>3. ZeroCopy 会分配多少空间，什么时候覆盖旧的样本？</strong></p>
+<p>创建 DataWriter 时，Fast DDS 将预先分配 <code>max_samples + extra_samples</code> 个样本池，这些样本位于共享内存映射文件中。当调用 <code>loan_sample()</code> 函数时，该池将用于借出样本。</p>
+<p>如 <a href="https://fast-dds.docs.eprosima.com/en/latest/fastdds/use_cases/zero_copy/zero_copy.html#datawriter">此文档</a> 所述，在写入 <code>resource_limits().max_samples + resource_limits().extra_samples</code> 次后，样本将被覆盖。</p>
+<p>可以在 DataReader 上使用方法 <code>is_sample_valid</code> 来检查样本是否已被覆盖。</p>
+<p><strong>4. qos.history().depth 与 qos.resource_limits().max_samples&#x2F;extra_samples 什么关系？</strong></p>
+<p><code>history()</code> 的设置会覆盖 <code>resource_limits()</code>，具体的，<code>ResourceLimitsQosPolicy::allocated_samples/max_samples</code> 通过 <code>HistoryQosPolicy::depth</code> 和 <code>ResourceLimitsQosPolicy::max_instances</code> 重新计算，公式如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">max_samples = depth * allocated_samples</span><br><span class="line">initial_samples = min(allocated_samples, max_samples)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="0xFF-References"><a href="#0xFF-References" class="headerlink" title="0xFF References"></a>0xFF References</h2><ul>
+<li>[1] <a name="1" href="#r1">^</a> <a href="https://fast-dds.docs.eprosima.com/en/v2.7.1/fastdds/use_cases/zero_copy/zero_copy.html#getting-started">15.7. Zero-Copy communication</a></li>
+<li>[1] <a name="2" href="#r2">^</a> <a href="https://github.com/eProsima/Fast-DDS/discussions/2933">discussions&#x2F;2933</a></li>
+<li>[1] <a name="3" href="#r3">^</a> <a href="https://github.com/eProsima/Fast-DDS/issues/2369#issuecomment-999344740">issues&#x2F;2369#issuecomment-999344740</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+      <tags>
+        <tag>FastDDS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>首版复刻的Fender &#39;57 &amp; &#39;62 Strat 拾音器</title>
     <url>/post/fender-57-62-strat-pickup-first-reissue/</url>
     <content><![CDATA[<blockquote>
@@ -2687,12 +2790,12 @@ apt-get install libusb-1.0-0-dev
 <!-- ![](http://qiniu.s1nh.org/Blog_vintage_57_neck.jpg-QNthin) -->
 
 
-<p>按理说57/62拾音器相对别的Custom Shop拾音器是比较便宜的，特征是<code>直流电阻5.6K Ohm</code>，六根磁柱都有<code>倒角</code>，黄铜线圈（具体的可以查看<a href="http://shop.fender.com/en/intl/parts/pickups-preamps/fender-original-%E2%80%9957%E2%80%9962-strat-pickups/0992117000.html">fender官网介绍</a>。可是我刚拆开拾音器就看到了里面的<strong>紫铜线圈</strong>，我的第一反应是琴的原主人给换了<code>Texas Special Pickup</code>，这可赚大了，可经我查完资料以后发现这不是 <code>Texas Special</code>，而是首版复刻的<code>57/62</code>。</p>
-<p><em>网上的两篇介绍《<a href="https://planetbotch.blogspot.tw/2012/07/fender-57-62-strat-pickup-first-reissue.html">Fender ‘57 &amp; ‘62 Strat Pickup (First Reissue)</a>》《<a href="https://www.strat-talk.com/threads/poll-about-the-f-57-62-099-2117-000-s.205219/">Poll About the F ‘57/‘62 099-2117-000 s</a>》</em></p>
+<p>按理说57&#x2F;62拾音器相对别的Custom Shop拾音器是比较便宜的，特征是<code>直流电阻5.6K Ohm</code>，六根磁柱都有<code>倒角</code>，黄铜线圈（具体的可以查看<a href="http://shop.fender.com/en/intl/parts/pickups-preamps/fender-original-%E2%80%9957%E2%80%9962-strat-pickups/0992117000.html">fender官网介绍</a>。可是我刚拆开拾音器就看到了里面的<strong>紫铜线圈</strong>，我的第一反应是琴的原主人给换了<code>Texas Special Pickup</code>，这可赚大了，可经我查完资料以后发现这不是 <code>Texas Special</code>，而是首版复刻的<code>57/62</code>。</p>
+<p><em>网上的两篇介绍《<a href="https://planetbotch.blogspot.tw/2012/07/fender-57-62-strat-pickup-first-reissue.html">Fender ‘57 &amp; ‘62 Strat Pickup (First Reissue)</a>》《<a href="https://www.strat-talk.com/threads/poll-about-the-f-57-62-099-2117-000-s.205219/">Poll About the F ‘57&#x2F;‘62 099-2117-000 s</a>》</em></p>
 <p><strong>—–pre-1998 version of the Fender USA Vintage Stratocaster ’57 &amp; ’62 reissue pickup—–</strong></p>
-<p>拾音器的细节是<code>紫铜线圈</code> <code>电阻6.5K 6.2K 6.5K</code> <code>磁钢没有倒角</code>。除了背面没有红/蓝点，导线都是白/黑（Texas的琴桥为黄/黑）以外，外观跟 <code>Texas Special</code> 一模一样。</p>
+<p>拾音器的细节是<code>紫铜线圈</code> <code>电阻6.5K 6.2K 6.5K</code> <code>磁钢没有倒角</code>。除了背面没有红&#x2F;蓝点，导线都是白&#x2F;黑（Texas的琴桥为黄&#x2F;黑）以外，外观跟 <code>Texas Special</code> 一模一样。</p>
 <p><img data-src="http://qiniu.s1nh.org/Blog_fender_57_62_pickup.jpg-QNthin"></p>
-<p>Fender 在1992年前的复刻（vintage reissue）吉他中只有这个拾音器，代号为<code>99-2043-000</code>，之后Fender为了复制SRV的声音，以及制作签名款SRV吉他，才开始生产<code>Texas Special</code>拾音器。1998年以后<code>57/62</code>才开始用现在的拾音器<code>099-2117-000</code>（特征是塑料线/有倒角/黄铜线圈/电阻5.6k）</p>
+<p>Fender 在1992年前的复刻（vintage reissue）吉他中只有这个拾音器，代号为<code>99-2043-000</code>，之后Fender为了复制SRV的声音，以及制作签名款SRV吉他，才开始生产<code>Texas Special</code>拾音器。1998年以后<code>57/62</code>才开始用现在的拾音器<code>099-2117-000</code>（特征是塑料线&#x2F;有倒角&#x2F;黄铜线圈&#x2F;电阻5.6k）</p>
 <p><strong>—–我的93年复刻Vintage 57—–</strong></p>
 <p>这把57除了拾音器不同以外，电容也很独特<code>0.1uf</code>（刚换上新拾音器的时候声音闷的不行，直到我第二次拆开后发现电容那么大）。之前的<code>pre-1998 57/62</code>拾音器加上0.1的电容声音又大又亮（功率介于<code>dimarzio HS-2/3/4</code>与<code>Gibson P90</code>拾音器之间），可见如果换成正常的0.022uf电容功率得多大&gt;_&lt;</p>
 <p><img data-src="http://qiniu.s1nh.org/Blog_vintage_57_body.jpg-QNthin"></p>
@@ -2797,9 +2900,9 @@ apt-get install libusb-1.0-0-dev
 <h2 id="0x01-Dataset"><a href="#0x01-Dataset" class="headerlink" title="0x01 Dataset"></a>0x01 Dataset</h2><blockquote>
 <p>V1 (ECCV ‘16, ICPR ‘16) <a href="http://chalearnlap.cvc.uab.es/dataset/20/description/">http://chalearnlap.cvc.uab.es/dataset/20/description/</a><br>V2 (CVPR’17) <a href="http://chalearnlap.cvc.uab.es/dataset/24/description/">http://chalearnlap.cvc.uab.es/dataset/24/description/</a></p>
 </blockquote>
-<p>First Impressions 数据集包含10,000个剪辑（平均持续时间15s），这些剪辑是从3,000个不同的YouTube高清晰度（HD）视频中提取出来的，这些视频分别是面对和用英语对着摄像机说话的人。这些视频按3：1：1的比例分为训练/验证/测试集。视频中的人包括不同的性别，年龄，国籍和种族。</p>
+<p>First Impressions 数据集包含10,000个剪辑（平均持续时间15s），这些剪辑是从3,000个不同的YouTube高清晰度（HD）视频中提取出来的，这些视频分别是面对和用英语对着摄像机说话的人。这些视频按3：1：1的比例分为训练&#x2F;验证&#x2F;测试集。视频中的人包括不同的性别，年龄，国籍和种族。</p>
 <p>视频有人格特征标签（personality traits variables），使用Amazon Mechanical Turk（AMT）生成，采用了可靠的程序来保证标签的可靠性。认为的人格特质来自五因素模型（也称为“Big Five”），这是人格研究中的主导范式。它从五个方面对人格进行建模：性格外向（Extroversion），乐于助人（Agreeableness），尽职尽责（Conscientiousness），神经质（Neuroticism）和开放经验（Openness to experience）。因此，每个剪辑都有针对这五个特征的地面真相标签，并以[0，1]范围内的值表示。有关数据集的更多详细信息，请参见<a href="https://docs.google.com/viewer?a=v&pid=sites&srcid=Y2hhbGVhcm4ub3JnfGdlc3R1cmVjaGFsbGVuZ2V8Z3g6MWQ5NDEyZjQ4ODMyMGJmNw">此处</a>。</p>
-<p>此前基于 MTurk 注释和“小片段音/视频”对人格特质的进行预测的研究可以参考：</p>
+<p>此前基于 MTurk 注释和“小片段音&#x2F;视频”对人格特质的进行预测的研究可以参考：</p>
 <p>J.-I. Biel, O. Aran, and D. Gatica-Perez, You Are Known by How You Vlog: Personality Impressions and Nonverbal Behavior in YouTube in Proc. AAAI Int. Conf. on Weblogs and Social Media (ICWSM), Barcelona, Jul. 2011</p>
 <p>J.-I. Biel and D. Gatica-Perez, The YouTube Lens: Crowdsourced Personality Impressions and Audiovisual Analysis of Vlogs, IEEE Trans. on Multimedia, Vol. 15, No. 1, pp. 41-55, Jan. 2013</p>
 <p>以及在ACM Multimedia 2014上的相关事件：</p>
@@ -2826,13 +2929,30 @@ apt-get install libusb-1.0-0-dev
 <p><a href="https://arxiv.org/abs/1802.00745">Hugo Jair Escalante, Heysem Kaya, Albert Ali Salah, Sergio Escalera, Yagmur Gucluturk, Umut Guclu, Xavier Baro, Isabelle Guyon, Julio Jacques Junior, Meysam Madadi, Stephane Ayache, Evelyne Viegas, Furkan Gurpinar, Achmadnoer Sukma Wicaksana, Cynthia C. S. Liem, Marcel A. J. van Gerven, Rob van Lier Explaining First Impressions: Modeling, Recognizing, and Explaining Apparent Personality from Videos. ArXiv, 1802.00745, 2018</a></p>
 <p>标签如下：</p>
 <ul>
-<li>种族：亚洲人= 1，高加索人= 2，非裔美国人= 3</li>
-<li>性别：男= 1，女= 2</li>
+<li>种族：亚洲人&#x3D; 1，高加索人&#x3D; 2，非裔美国人&#x3D; 3</li>
+<li>性别：男&#x3D; 1，女&#x3D; 2</li>
 </ul>
 ]]></content>
       <categories>
         <category>算法与硬件</category>
       </categories>
+  </entry>
+  <entry>
+    <title>apt mirror DEP-11 64x64@2 Icons 404 Not Found</title>
+    <url>/post/fix-apt-mirror-error/</url>
+    <content><![CDATA[<p>目前使用 apt-mirror 会缺少文件，比如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Err:18 http://mymirror.blah:80/ubuntu bionic/main DEP-11 64x64@2 Icons 404 Not Found [IP: *.*.*.* 80]</span><br><span class="line">Err:64 http://mymirror.blah:80/ubuntu bionic-updates/main DEP-11 64x64@2 Icons 404 Not Found [IP: *.*.*.* 80]</span><br></pre></td></tr></table></figure>
+
+<p>需要使用下面的脚本修复。</p>
+<span id="more"></span>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line"># combined solutions for apt mirror from: https://github.com/apt-mirror/apt-mirror/issues/49,https://github.com/apt-mirror/apt-mirror/issues/102</span><br><span class="line"># I had to create this file, in order to solve the issue of not downloading DEP-11 @2 files</span><br><span class="line"># so all what I&#x27;m doing is running apt mirror manually, then downloading the other icon files every time</span><br><span class="line"># Grep will grep the line starting with &quot;set base_path&quot;</span><br><span class="line"># then we trim all extra white spaces</span><br><span class="line"># then we cut the string by delimiter white space and take third value</span><br><span class="line"></span><br><span class="line">dataFolder=$(grep -F &quot;set base_path&quot; /etc/apt/mirror.list | tr -s &quot; &quot; | cut -d&#x27; &#x27; -f3)</span><br><span class="line">echo &quot;Base Folder path set in /etc/apt/mirror.list is: $dataFolder&quot;</span><br><span class="line">#apt-mirror</span><br><span class="line">echo </span><br><span class="line">echo -n &quot;Do you want to Check MD5 Sum and Download Failed (auto Y in 5 seconds)? [Y/n]&quot;</span><br><span class="line">echo</span><br><span class="line">read -t 5 answer</span><br><span class="line">exit_status=$?</span><br><span class="line">if [ $exit_status -ne 0 ] || [ &quot;$answer&quot; != &quot;$&#123;answer#[Yy]&#125;&quot; ];then</span><br><span class="line">    FAILEDPACKAGES=&quot;&quot;</span><br><span class="line">    echo &quot;Reading and Checking MD5 checksum using file: $dataFolder/var/MD5&quot;</span><br><span class="line">    #cd $dataFolder/mirror</span><br><span class="line">    rm -f FAILED_MD5.txt</span><br><span class="line">    echo &quot;Failed File will be stored in: $(PWD)/FAILED_MD5.txt&quot;</span><br><span class="line">    while IFS=&#x27;&#x27; read -r line || [[ -n &quot;$line&quot; ]]; do</span><br><span class="line">        #echo &quot;Checking: $line&quot;</span><br><span class="line">        sum=$(echo $line | cut -d&#x27; &#x27; -f1)</span><br><span class="line">        filename=$(echo $line | cut -d&#x27; &#x27; -f2)</span><br><span class="line">        echo &quot;$sum $dataFolder/mirror/$filename&quot; | md5sum -c -</span><br><span class="line">        RESULT=$?</span><br><span class="line">        if [ $RESULT -ne 0 ];then</span><br><span class="line">            echo &quot;$dataFolder/mirror/$filename&quot; &gt;&gt; FAILED_MD5.txt</span><br><span class="line">            wget -O $dataFolder/mirror/$filename $filename</span><br><span class="line">            echo &quot;$sum $dataFolder/mirror/$filename&quot; | md5sum -c -</span><br><span class="line">            SUBRESULT=$?</span><br><span class="line">            if [ $SUBRESULT -ne 0 ];then</span><br><span class="line">                echo &quot;Sorry failed checksum again for file: $dataFolder/mirror/$filename&quot;</span><br><span class="line">                $FAILEDPACKAGES+=&quot;$dataFolder/mirror/$filename      Failed again, sorry cannot help&quot;</span><br><span class="line">            fi</span><br><span class="line">        fi</span><br><span class="line">    done &lt; &quot;$dataFolder/var/MD5&quot;</span><br><span class="line">    #md5sum -c $dataFolder/var/MD5 | grep --line-buffered -i &quot;FAILED&quot; | tee FAILED_MD5.txt</span><br><span class="line">    echo $FAILEDPACKAGES</span><br><span class="line">    break</span><br><span class="line">else</span><br><span class="line">    echo &quot;ok I will not check MD5&quot;</span><br><span class="line">fi</span><br><span class="line">echo -n &quot;Do you want Download DEP-11 @ 2 icons (auto Y in 5 seconds)? [Y/n]&quot;</span><br><span class="line">echo</span><br><span class="line">read -t 5 answer</span><br><span class="line">exit_status=$?</span><br><span class="line">ubuserv=$(grep -m1 tsinghua.edu.cn /etc/apt/mirror.list |awk &#x27;&#123;print $2&#125;&#x27; |cut -d &#x27;/&#x27; -f3)</span><br><span class="line">if [ &quot;$answer&quot; != &quot;$&#123;answer#[Yy]&#125;&quot; ] || [ $exit_status -ne 0 ] ;then</span><br><span class="line">    cd $dataFolder/mirror/$&#123;ubuserv&#125;/ubuntu/dists</span><br><span class="line">    for dist in *; do </span><br><span class="line">    dist=$(basename $dist)</span><br><span class="line">               for comp in main  multiverse universe; do</span><br><span class="line">                               mkdir -p $&#123;dist&#125;/$&#123;comp&#125;/dep11</span><br><span class="line">        for size in 48 64 128; do</span><br><span class="line">        wget http://$&#123;ubuserv&#125;/ubuntu/dists/$&#123;dist&#125;/$&#123;comp&#125;/dep11/icons-$&#123;size&#125;x$&#123;size&#125;@2.tar.gz -O $&#123;dist&#125;/$&#123;comp&#125;/dep11/icons-$&#123;size&#125;x$&#123;size&#125;@2.tar.gz;</span><br><span class="line">          done</span><br><span class="line">       done</span><br><span class="line">    done</span><br><span class="line">else</span><br><span class="line">    echo &quot;ok no downloading for icons&quot;</span><br><span class="line">fi</span><br><span class="line">echo -n &quot;Do you want to run Clean Script (auto Y in 5 seconds)? [Y/n]&quot;</span><br><span class="line">echo</span><br><span class="line">read -t 5 answer</span><br><span class="line">exit_status=$?</span><br><span class="line">if [ &quot;$answer&quot; != &quot;$&#123;answer#[Yy]&#125;&quot; ] || [ $exit_status -ne 0 ] ;then</span><br><span class="line">    $dataFolder/var/clean.sh</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+      <tags>
+        <tag>apt-mirror</tag>
+      </tags>
   </entry>
   <entry>
     <title>将吉他恢复为出厂设置 —— 各种型号吉他的出厂参数</title>
@@ -2850,10 +2970,10 @@ apt-get install libusb-1.0-0-dev
 </ol>
 <p><strong>调节琴枕</strong></p>
 <ul>
-<li>测量琴弦在一品的高度，一弦为0.4mm (1/64”)，6弦为 0.6mm (1.5/64”)</li>
+<li>测量琴弦在一品的高度，一弦为0.4mm (1&#x2F;64”)，6弦为 0.6mm (1.5&#x2F;64”)</li>
 <li>通常情况下不建议新手自行调节琴枕高度</li>
-<li><em>调节弦高</em>*</li>
 </ul>
+<p><strong>调节弦高</strong></p>
 <ol>
 <li>压住一品</li>
 <li>检查琴弦与 17 品(原声吉他为 14 品）的距离</li>
@@ -2878,71 +2998,71 @@ apt-get install libusb-1.0-0-dev
 <td>电吉他</td>
 <td>7.25″</td>
 <td>0.3</td>
-<td>2 (5/64)</td>
-<td>1.6 (4/64)</td>
+<td>2 (5&#x2F;64)</td>
+<td>1.6 (4&#x2F;64)</td>
 </tr>
 <tr>
 <td>电吉他</td>
 <td>9.5″ ~ 12″</td>
 <td>0.25</td>
-<td>1.6 (4/64)</td>
-<td>1.6 (4/64)</td>
+<td>1.6 (4&#x2F;64)</td>
+<td>1.6 (4&#x2F;64)</td>
 </tr>
 <tr>
 <td>电吉他</td>
 <td>15″ ~ 17″</td>
 <td>0.2</td>
-<td>1.6 (4/64)</td>
-<td>1.2 (3/64)</td>
+<td>1.6 (4&#x2F;64)</td>
+<td>1.2 (3&#x2F;64)</td>
 </tr>
 <tr>
 <td>电吉他</td>
 <td>PRS** (10”)</td>
 <td>0.2</td>
-<td>1.7 (4.2/64)</td>
-<td>1.6 (4/64)</td>
+<td>1.7 (4.2&#x2F;64)</td>
+<td>1.6 (4&#x2F;64)</td>
 </tr>
 <tr>
 <td>电吉他</td>
 <td>Gibson** (12”)</td>
 <td>0.1</td>
-<td>2 (5/64)</td>
-<td>1.2 (3/64)</td>
+<td>2 (5&#x2F;64)</td>
+<td>1.2 (3&#x2F;64)</td>
 </tr>
 <tr>
 <td>原声吉他</td>
 <td>9.5″ ~ 12″</td>
 <td>0.25</td>
-<td>2.4 (6/64)</td>
-<td>2 (5/64)</td>
+<td>2.4 (6&#x2F;64)</td>
+<td>2 (5&#x2F;64)</td>
 </tr>
 <tr>
 <td>原声吉他</td>
 <td>15″ ~ 17″</td>
 <td>0.2</td>
-<td>2.4 (6/64)</td>
-<td>2 (5/64)</td>
+<td>2.4 (6&#x2F;64)</td>
+<td>2 (5&#x2F;64)</td>
 </tr>
 <tr>
 <td>Bass</td>
 <td>7.25″</td>
 <td>0.35</td>
-<td>2.8 (7/64)</td>
-<td>2.4 (6/64)</td>
+<td>2.8 (7&#x2F;64)</td>
+<td>2.4 (6&#x2F;64)</td>
 </tr>
 <tr>
 <td>Bass</td>
 <td>9.5″ ~ 12″</td>
 <td>0.3</td>
-<td>2.4 (6/64)</td>
-<td>2 (5/64)</td>
+<td>2.4 (6&#x2F;64)</td>
+<td>2 (5&#x2F;64)</td>
 </tr>
 <tr>
 <td>Bass</td>
 <td>15″ ~ 17″</td>
 <td>0.25</td>
-<td>2.4 (6/64)</td>
-<td>2 (5/64)</td>
+<td>2.4 (6&#x2F;64)</td>
+<td>2 (5&#x2F;64)</td>
 </tr>
 </tbody></table>
 ]]></content>
@@ -2953,7 +3073,7 @@ apt-get install libusb-1.0-0-dev
   <entry>
     <title>更新 HackRF one 到最新的 2017.02.1 固件</title>
     <url>/post/hackrf-firmware-upgrade/</url>
-    <content><![CDATA[<p>HackRF已经吃灰一年多了，官方的上一个版本还是2015.07，最新的2017.02.1版增加了<code>Sweep mode</code>，<code>Hardware synchronization</code>，<code>hackrf_debug</code>，降低了功耗以及修复了Bug. 在<a href="https://github.com/mossmann/hackrf/releases">mossmann/hackrf/releases</a>有编译好的固件<a href="https://github.com/mossmann/hackrf/releases/download/v2017.02.1/hackrf-2017.02.1.tar.xz">hackrf-2017.02.1.tar.xz</a>下载</p>
+    <content><![CDATA[<p>HackRF已经吃灰一年多了，官方的上一个版本还是2015.07，最新的2017.02.1版增加了<code>Sweep mode</code>，<code>Hardware synchronization</code>，<code>hackrf_debug</code>，降低了功耗以及修复了Bug. 在<a href="https://github.com/mossmann/hackrf/releases">mossmann&#x2F;hackrf&#x2F;releases</a>有编译好的固件<a href="https://github.com/mossmann/hackrf/releases/download/v2017.02.1/hackrf-2017.02.1.tar.xz">hackrf-2017.02.1.tar.xz</a>下载</p>
 <p><img data-src="http://qiniu.s1nh.org/Blog_HackRF_01.jpeg-QNthin"></p>
 <span id="more"></span>
 
@@ -3008,10 +3128,10 @@ apt-get install libusb-1.0-0-dev
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">    return _osmosdr_swig.source_sptr_set_center_freq(self, freq, chan)</span><br><span class="line">RuntimeError: hackrf_set_freq(-399063) has failed (-1000) Pipe error</span><br></pre></td></tr></table></figure>
 
 <p>不知道是作者笔误还是grgsm的开发者修改了参数，这行<code>-f</code>参数应该以<code>HZ</code>为单位，所以输入<code>grgsm_livemon -f 937400000</code>，程序运行成功。</p>
-<h3 id="airprobe-rtlsdr-py-还是-grgsm-livemon-？"><a href="#airprobe-rtlsdr-py-还是-grgsm-livemon-？" class="headerlink" title="airprobe_rtlsdr.py 还是 grgsm_livemon ？"></a>airprobe_rtlsdr.py 还是 grgsm_livemon ？</h3><p>看完上面两篇文章会发现他们用了不同的命令来嗅探，一个是<code>airprobe_rtlsdr.py</code>另一个是<code>grgsm_livemon</code>。其实这两个命令是一样的，具体可以参考<a href="https://github.com/ptrkrysik/gr-gsm/wiki/Usage">ptrkrysik/gr-gsm/Usage</a>。我们进入<code>/usr/local/bin</code>目录也会发现<code>airprobe_rtlsdr.py</code>只是对应<code>grgsm_livemon</code>的链接：</p>
+<h3 id="airprobe-rtlsdr-py-还是-grgsm-livemon-？"><a href="#airprobe-rtlsdr-py-还是-grgsm-livemon-？" class="headerlink" title="airprobe_rtlsdr.py 还是 grgsm_livemon ？"></a>airprobe_rtlsdr.py 还是 grgsm_livemon ？</h3><p>看完上面两篇文章会发现他们用了不同的命令来嗅探，一个是<code>airprobe_rtlsdr.py</code>另一个是<code>grgsm_livemon</code>。其实这两个命令是一样的，具体可以参考<a href="https://github.com/ptrkrysik/gr-gsm/wiki/Usage">ptrkrysik&#x2F;gr-gsm&#x2F;Usage</a>。我们进入<code>/usr/local/bin</code>目录也会发现<code>airprobe_rtlsdr.py</code>只是对应<code>grgsm_livemon</code>的链接：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">root staff        12 Mar 15 02:31 airprobe_decode.py -&gt; grgsm_decode*</span><br><span class="line">root staff        16 Mar 15 02:31 airprobe_rtlsdr_capture.py -&gt; grgsm_capture.py*</span><br><span class="line">root staff        13 Mar 15 02:31 airprobe_rtlsdr.py -&gt; grgsm_livemon*</span><br><span class="line">root staff        13 Mar 15 02:31 airprobe_rtlsdr_scanner.py -&gt; grgsm_scanner*</span><br><span class="line">root staff     10870 Mar 15 02:30 grgsm_capture.py*</span><br><span class="line">root staff      7449 Mar 15 02:30 grgsm_channelize.py*</span><br><span class="line">root staff     19209 Mar 15 02:30 grgsm_decode*</span><br><span class="line">root staff     13354 Mar 15 02:30 grgsm_livemon*</span><br><span class="line">root staff     15654 Mar 15 02:30 grgsm_scanner*</span><br></pre></td></tr></table></figure>
 
-<h2 id="0x03-未完待续"><a href="#0x03-未完待续" class="headerlink" title="0x03 未完待续"></a>0x03 未完待续</h2><p>接下来的工作主要是解密收到的GSM信号，解密LTE信号，以及搭建伪基站。<br><a href="http://www.freebuf.com/articles/wireless/105324.html">GSM Hacking：如何对GSM/GPRS网络测试进行测试？</a><br><a href="http://www.freebuf.com/articles/wireless/111577.html">GSM Hacking Part ② ：使用SDR捕获GSM网络数据并解密</a><br><a href="http://www.freebuf.com/articles/wireless/32331.html"> 使用HackRF解调TDD-LTE信号 </a></p>
+<h2 id="0x03-未完待续"><a href="#0x03-未完待续" class="headerlink" title="0x03 未完待续"></a>0x03 未完待续</h2><p>接下来的工作主要是解密收到的GSM信号，解密LTE信号，以及搭建伪基站。<br><a href="http://www.freebuf.com/articles/wireless/105324.html">GSM Hacking：如何对GSM&#x2F;GPRS网络测试进行测试？</a><br><a href="http://www.freebuf.com/articles/wireless/111577.html">GSM Hacking Part ② ：使用SDR捕获GSM网络数据并解密</a><br><a href="http://www.freebuf.com/articles/wireless/32331.html"> 使用HackRF解调TDD-LTE信号 </a></p>
 ]]></content>
       <categories>
         <category>算法与硬件</category>
@@ -3071,7 +3191,7 @@ apt-get install libusb-1.0-0-dev
 <h3 id="1-3-v2-Behaviour"><a href="#1-3-v2-Behaviour" class="headerlink" title="1.3. v2 Behaviour"></a>1.3. v2 Behaviour</h3><p>It looks like the current Tensorflow for JP 4.4 was compiled with <code>--config=v1</code> flag, as V2 behaviour seems to be disabled in default.<br>The workaround is:</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import tensorflow.compat.v2 as tf</span><br><span class="line">import tensorflow.compat.v2.keras as keras</span><br><span class="line">tf.enable_v2_behavior()</span><br></pre></td></tr></table></figure>
 
-<h2 id="0x02-Others-Pytorch-MxNet-Caffe"><a href="#0x02-Others-Pytorch-MxNet-Caffe" class="headerlink" title="0x02 Others ( Pytorch / MxNet / Caffe )"></a>0x02 Others ( Pytorch / MxNet / Caffe )</h2><h3 id="2-1-Convert-model-to-ONNX"><a href="#2-1-Convert-model-to-ONNX" class="headerlink" title="2.1. Convert model to ONNX"></a>2.1. Convert model to ONNX</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pass</span><br></pre></td></tr></table></figure>
+<h2 id="0x02-Others-Pytorch-x2F-MxNet-x2F-Caffe"><a href="#0x02-Others-Pytorch-x2F-MxNet-x2F-Caffe" class="headerlink" title="0x02 Others ( Pytorch &#x2F; MxNet &#x2F; Caffe )"></a>0x02 Others ( Pytorch &#x2F; MxNet &#x2F; Caffe )</h2><h3 id="2-1-Convert-model-to-ONNX"><a href="#2-1-Convert-model-to-ONNX" class="headerlink" title="2.1. Convert model to ONNX"></a>2.1. Convert model to ONNX</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pass</span><br></pre></td></tr></table></figure>
 
 <h3 id="2-2-Build-TensorRT-Engine-from-ONNX-Model"><a href="#2-2-Build-TensorRT-Engine-from-ONNX-Model" class="headerlink" title="2.2. Build TensorRT Engine from ONNX Model"></a>2.2. Build TensorRT Engine from ONNX Model</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">def build_engine_onnx(model_file):</span><br><span class="line">    with trt.Builder(TRT_LOGGER) as builder,</span><br><span class="line">        builder.create_network(1 &lt;&lt; int(trt.NetworkDefinitionCreationFlag.EXPLICIT_BATCH)) as network,</span><br><span class="line">            trt.OnnxParser(network, TRT_LOGGER) as parser:</span><br><span class="line">                builder.max_workspace_size = common.GiB(1)</span><br><span class="line">                builder.max_batch_size = batch_size</span><br><span class="line">                # Load the Onnx model and parse it in order to populate the TensorRT network.</span><br><span class="line">                with open(model_file, &#x27;rb&#x27;) as model:</span><br><span class="line">                    parser.parse(model.read())</span><br><span class="line">                return builder.build_cuda_engine(network)</span><br><span class="line"></span><br><span class="line">engine = build_engine_onnx(&#x27;resnet100.onnx&#x27;)</span><br><span class="line">engine_file_path = &#x27;./arcface_trt.engine&#x27;</span><br><span class="line">with open(engine_file_path, &quot;wb&quot;) as f:</span><br><span class="line">    f.write(engine.serialize())</span><br></pre></td></tr></table></figure>
 
@@ -3122,20 +3242,20 @@ apt-get install libusb-1.0-0-dev
 <li>OpenCV4Tegra 不支持 -lopencv_nonfree</li>
 <li>OpenCV4Tegra 在TX-2中不支持 GPU 模块</li>
 <li>如何开启被屏蔽的2块CPU并设置为最大频率</li>
-<li>开启Nvidia TX-1/2 的VNC</li>
+<li>开启Nvidia TX-1&#x2F;2 的VNC</li>
 </ul>
 <span id="more"></span>
 
-<h2 id="0x01-OpenCV4Tegra-不支持-lopencv-nonfree"><a href="#0x01-OpenCV4Tegra-不支持-lopencv-nonfree" class="headerlink" title="0x01 OpenCV4Tegra 不支持 -lopencv_nonfree"></a>0x01 OpenCV4Tegra 不支持 -lopencv_nonfree</h2><p>Jetpack 自带的 Opencv 不支持 nonfree 库，因此就不能使用SIFT/SURF这种专利算法。要使用nonfree库有两种解决方案<a href="http://elinux.org/Jetson/Installing_OpenCV#Prebuilt_OpenCV_library_versus_Building_the_OpenCV_library_from_source">[参考]</a>：</p>
+<h2 id="0x01-OpenCV4Tegra-不支持-lopencv-nonfree"><a href="#0x01-OpenCV4Tegra-不支持-lopencv-nonfree" class="headerlink" title="0x01 OpenCV4Tegra 不支持 -lopencv_nonfree"></a>0x01 OpenCV4Tegra 不支持 -lopencv_nonfree</h2><p>Jetpack 自带的 Opencv 不支持 nonfree 库，因此就不能使用SIFT&#x2F;SURF这种专利算法。要使用nonfree库有两种解决方案<a href="http://elinux.org/Jetson/Installing_OpenCV#Prebuilt_OpenCV_library_versus_Building_the_OpenCV_library_from_source">[参考]</a>：</p>
 <blockquote>
-<p>Note about SIFT/SURF in the nonfree module: OpenCV4Tegra doesn’t include the opencv_nonfree package (containing SIFT &amp; SURF feature detectors) since those algorithms are patented by other companies and therefore anyone using opencv_nonfree is at risk of liability.</p>
+<p>Note about SIFT&#x2F;SURF in the nonfree module: OpenCV4Tegra doesn’t include the opencv_nonfree package (containing SIFT &amp; SURF feature detectors) since those algorithms are patented by other companies and therefore anyone using opencv_nonfree is at risk of liability.</p>
 </blockquote>
 <blockquote>
 <p>If you need something from the nonfree module, you have 2 options:</p>
 </blockquote>
 <blockquote>
 <ol>
-<li>Analyze the public OpenCV source code then copy/paste the parts of the nonfree module that you want (eg: SURF feature detector) from OpenCV into your own project. You will have the CPU optimizations of OpenCV4Tegra for most of your code and will have the GPU module and will have the non-optimized patented code that you need from the nonfree package such as SURF. So this option gives full performance (for everything except the nonfree code) but is tedious.</li>
+<li>Analyze the public OpenCV source code then copy&#x2F;paste the parts of the nonfree module that you want (eg: SURF feature detector) from OpenCV into your own project. You will have the CPU optimizations of OpenCV4Tegra for most of your code and will have the GPU module and will have the non-optimized patented code that you need from the nonfree package such as SURF. So this option gives full performance (for everything except the nonfree code) but is tedious.</li>
 <li>Ignore OpenCV4Tegra, and instead, download &amp; build public OpenCV (by following the instructions below for natively compiling the OpenCV library from source). You will still have the GPU module but not any CPU optimizations, but you won’t need to spend time ripping out parts of the OpenCV non-free module code. So this option is easiest but produces slower code if you are running most of your code on CPU.</li>
 </ol>
 </blockquote>
@@ -3178,7 +3298,7 @@ apt-get install libusb-1.0-0-dev
 <span id="more"></span>
 
 <h2 id="0x00-Information-Gathering"><a href="#0x00-Information-Gathering" class="headerlink" title="0x00 Information Gathering"></a>0x00 Information Gathering</h2><p>信息收集分为被动收集和主动收集。被动收集对主机没有交互，为静默式信息收集，如下：</p>
-<h3 id="DNS-Analysis"><a href="#DNS-Analysis" class="headerlink" title="DNS Analysis"></a>DNS Analysis</h3><p>通过对DNS的Google查询/暴力破解/Whois查询等，我们可以获得整个域的网站服务器</p>
+<h3 id="DNS-Analysis"><a href="#DNS-Analysis" class="headerlink" title="DNS Analysis"></a>DNS Analysis</h3><p>通过对DNS的Google查询&#x2F;暴力破解&#x2F;Whois查询等，我们可以获得整个域的网站服务器</p>
 <ul>
 <li>dnsenum</li>
 <li>dnsmap</li>
@@ -3224,7 +3344,7 @@ apt-get install libusb-1.0-0-dev
 <p>当宿命从你门前走过的时候，芸芸众生总是显得那么渺小</p>
 </blockquote>
 <h2 id="0x00-LCS"><a href="#0x00-LCS" class="headerlink" title="0x00 LCS"></a>0x00 LCS</h2><p><code>最长公共子序列</code>跟<code>最长不降子序列</code>以及<code>最长公共字串</code>都不是一回事。这种用搜索时间复杂度太高的问题一般都会选择用DP来解决。状态转移方程为：</p>
-<p>$$c[i,j] = \begin{cases}<br>0, &amp; i=0 \text{ or }  j=0<br>\\ c[i-1,j-1]+1, &amp; x_i =y_j<br>\\ max(c[i-1,j],c[i,j-1]), &amp;x_i \neq y_i<br> \end{cases}$$</p>
+<p>$$c[i,j] &#x3D; \begin{cases}<br>0, &amp; i&#x3D;0 \text{ or }  j&#x3D;0<br>\\ c[i-1,j-1]+1, &amp; x_i &#x3D;y_j<br>\\ max(c[i-1,j],c[i,j-1]), &amp;x_i \neq y_i<br> \end{cases}$$</p>
 <span id="more"></span>
 
 <p>然后我们顺手就可以写出伪代码：</p>
@@ -3273,12 +3393,12 @@ apt-get install libusb-1.0-0-dev
 <ul>
 <li><strong>安装ROS</strong></li>
 <li><strong>配置环境</strong></li>
-<li><strong>文件系统工具</strong> <code>rospack</code> <code>roscd</code> `</li>
-<li><strong>catkin管理工具包</strong> （因为我经常使用 <code>catkin_make_isolate</code> 所以我在 ~/.bash_alias 中添加了一行<code>alias make_robot=&#39;cd ~/project/catkin_ws ; catkin_make_isolated --install --use-ninja ; cd -&#39;</code>）</li>
+<li><strong>文件系统工具</strong> <code>rospack</code> <code>roscd</code> &#96;</li>
+<li><strong>catkin管理工具包</strong> （因为我经常使用 <code>catkin_make_isolate</code> 所以我在 ~&#x2F;.bash_alias 中添加了一行<code>alias make_robot=&#39;cd ~/project/catkin_ws ; catkin_make_isolated --install --use-ninja ; cd -&#39;</code>）</li>
 <li><strong>节点(node)</strong> <code>roscore</code> <code>rosnode list/info/ping</code> <code>rosrun</code></li>
-<li><strong><a href="http://wiki.ros.org/cn/ROS/Tutorials/UnderstandingTopics">话题(Topic)</a></strong> 键盘/代码控制小乌龟到处跑， <code>rqt_graph</code> <code>rqt_plot</code> <code>rostopic echo</code> <code>rostopic list -v</code> <code>rostopic type</code> <code>rosmsg show</code> <code>rostopic pub [topic] [msg_type] [args]</code></li>
-<li><strong>服务/参数</strong> <code>rosservice list/type/call</code> <code>rossrv</code> <code>rosparam list/get/set/dump/load</code></li>
-<li><strong>调试/运行</strong> <code>rqt_console</code> <code>rqt_logger_level</code> <code>roslaunch</code></li>
+<li><strong><a href="http://wiki.ros.org/cn/ROS/Tutorials/UnderstandingTopics">话题(Topic)</a></strong> 键盘&#x2F;代码控制小乌龟到处跑， <code>rqt_graph</code> <code>rqt_plot</code> <code>rostopic echo</code> <code>rostopic list -v</code> <code>rostopic type</code> <code>rosmsg show</code> <code>rostopic pub [topic] [msg_type] [args]</code></li>
+<li><strong>服务&#x2F;参数</strong> <code>rosservice list/type/call</code> <code>rossrv</code> <code>rosparam list/get/set/dump/load</code></li>
+<li><strong>调试&#x2F;运行</strong> <code>rqt_console</code> <code>rqt_logger_level</code> <code>roslaunch</code></li>
 </ul>
 <h2 id="0x02-SLAM-Cartographer-ROS-for-TurtleBots"><a href="#0x02-SLAM-Cartographer-ROS-for-TurtleBots" class="headerlink" title="0x02 SLAM: Cartographer ROS for TurtleBots"></a>0x02 SLAM: Cartographer ROS for TurtleBots</h2><p>我按照<a href="https://google-cartographer-ros-for-turtlebots.readthedocs.io/en/latest/">官方教程</a>没有出错，可能因为我这边原生ipv6翻墙。如果在<code>catkin_make_isolated</code>这一步出问题了，可以看<a href="http://blog.csdn.net/ywj447/article/details/52922487">这篇</a>。</p>
 <p>装完以后记得运行一下<a href="https://google-cartographer-ros-for-turtlebots.readthedocs.io/en/latest/#running-the-demo">官方教程</a>的demo。</p>
@@ -3370,7 +3490,7 @@ apt-get install libusb-1.0-0-dev
 </blockquote>
 <p>其实看了上面两个帖子，并没有什么太大的卵用，因为我不会越过 <code>Cartographer_ROS Api</code> 直接调用Cartographer的函数。如果在构建地图的时候碰到这种被劫持的情况（特别是搬动到比较远的地方），地图基本就GG了；如果已经构建好整个区域的地图，使用<code>-map_filename</code>调用地图文件进行导航的时候，还是有可能解决的：</p>
 <ul>
-<li><code>TRAJECTORY_BUILDER.pure_localization = true</code> 减少了增长的SLAM数据，使内存使用降低到以前的1/10左右</li>
+<li><code>TRAJECTORY_BUILDER.pure_localization = true</code> 减少了增长的SLAM数据，使内存使用降低到以前的1&#x2F;10左右</li>
 <li><code>SPARSE_POSE_GRAPH.optimize_every_n_scans = 1</code>进行全局校正的时间，每秒钟都会对自己的局部地图与全局地图进行匹配，如果位移不是很大，会看到地图被慢慢的矫正过去。（如果这个值设大了或者设为0，你的地图会乱成一坨屎也矫正不过去）</li>
 </ul>
 <p><img data-src="http://qiniu.s1nh.org/Blog_robot_fine_tune_move_map.gif" title="把机器人搬移一段位置，地图会自动矫正（map视图）"></p>
@@ -3404,11 +3524,11 @@ apt-get install libusb-1.0-0-dev
     <title>「草稿」使用 mplot3d 绘制动态 3D 图</title>
     <url>/post/matplotlib-animation/</url>
     <content><![CDATA[<p><code>最近记性特别差，做的东西如果不记下来，过几天就忘光了。照这样发展下去马上就老年痴呆了，趁年轻还是多学点东西</code></p>
-<p>最近正在学习一些大数据、机器学习的一些算法，脑子一热准备把<code>遗传算法</code>/<code>模拟退火算法</code>这些经典的算法用动图模拟出来。在《<a href="https://github.com/azheng333/BigDataML">白话大数据与机器学习</a>》中有实现遗传算法的代码，本文基于教程上的代码进行修改，实现模拟遗传算法求极值的过程。</p>
+<p>最近正在学习一些大数据、机器学习的一些算法，脑子一热准备把<code>遗传算法</code>&#x2F;<code>模拟退火算法</code>这些经典的算法用动图模拟出来。在《<a href="https://github.com/azheng333/BigDataML">白话大数据与机器学习</a>》中有实现遗传算法的代码，本文基于教程上的代码进行修改，实现模拟遗传算法求极值的过程。</p>
 <span id="more"></span>
 
-<p><del>题目是要通过遗传算法求解z=y sin(x) + x cos(y)在 [-10,10]内的极大值。想法是这样的，先绘制函数曲线，然后通过遗传算法进行计算，把每一步的计算结果依次显示在图像的坐标上，形成动画。（做了一半，感觉动图好像并不能形象的描绘出遗传算法）</del></p>
-<h2 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h2><p>有了NumPy，基本可以放弃Matlab/Octave了。将Python相当于变成一种免费的更强大的MatLab系统。</p>
+<p><del>题目是要通过遗传算法求解z&#x3D;y sin(x) + x cos(y)在 [-10,10]内的极大值。想法是这样的，先绘制函数曲线，然后通过遗传算法进行计算，把每一步的计算结果依次显示在图像的坐标上，形成动画。（做了一半，感觉动图好像并不能形象的描绘出遗传算法）</del></p>
+<h2 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h2><p>有了NumPy，基本可以放弃Matlab&#x2F;Octave了。将Python相当于变成一种免费的更强大的MatLab系统。</p>
 <p>“NumPy（Numeric Python）提供了许多高级的数值编程工具，如：矩阵数据类型、矢量处理，以及精密的运算库。专为进行严格的数字处理而产生。多为很多大型金融公司使用，以及核心的科学计算组织如：Lawrence Livermore，NASA用其处理一些本来使用C++，Fortran或Matlab等所做的任务。”</p>
 <p><a href="http://old.sebug.net/paper/books/scipydoc/index.html">《用Python做科学计算》</a>是一本超级好的教材，包含了不仅仅以下内容： </p>
 <ul>
@@ -3511,11 +3631,11 @@ apt-get install libusb-1.0-0-dev
 <p><img data-src="http://qiniu.s1nh.org/Blog_microeconomics-note_1_3.png-QNthin"></p>
 <h3 id="机会成本"><a href="#机会成本" class="headerlink" title="机会成本"></a>机会成本</h3><p>假如我们现在处于E位置，也就是说每天打1只兔子、采摘280个浆果时。<br>如果想变为一天打2只兔子，那么就要放弃40个浆果，则：在E情况下，多打一只兔子的<strong>机会成本</strong>(Opportunity Cost)为40个浆果。</p>
 <p><img data-src="http://qiniu.s1nh.org/Blog_microeconomics-note_2_1.png-QNthin"></p>
-<p>如果不想打兔子，改为打300个浆果，那么：在E情况下，多采摘20个浆果的<strong>机会成本</strong>为1只兔子。我们把左右两边同时除以20，多采摘1个浆果的<strong>边际成本</strong>(Marginal Cost, MC)为1/20。</p>
+<p>如果不想打兔子，改为打300个浆果，那么：在E情况下，多采摘20个浆果的<strong>机会成本</strong>为1只兔子。我们把左右两边同时除以20，多采摘1个浆果的<strong>边际成本</strong>(Marginal Cost, MC)为1&#x2F;20。</p>
 <p><img data-src="http://qiniu.s1nh.org/Blog_microeconomics-note_2_0.png-QNthin"></p>
 <h3 id="递增机会成本"><a href="#递增机会成本" class="headerlink" title="递增机会成本"></a>递增机会成本</h3><p>假设我们处于F位置，想多打1只兔子，将会放弃20只浆果（变成E位置）；当我们想再多打一只兔子（变成D位置）时，将要再放弃40只浆果……因此，每尝试多打一只兔子的时候，就要比之前放弃更多的浆果。这就是<strong>递增机会成本</strong>(Increasing Opportunity Cost)。在函数中，可以理解为随着横坐标的增加，曲线的负斜率越来越大。</p>
 <p><img data-src="http://qiniu.s1nh.org/Blog_microeconomics-note_3_1.png-QNthin"></p>
-<h3 id="配置效率和边际效益"><a href="#配置效率和边际效益" class="headerlink" title="配置效率和边际效益"></a>配置效率和边际效益</h3><p>我们先画出边际成本的列表和图像，表中20/40/60/80/100分别为在F/E/D/C/B时增加一个兔子的<strong>边际成本</strong>(MC)</p>
+<h3 id="配置效率和边际效益"><a href="#配置效率和边际效益" class="headerlink" title="配置效率和边际效益"></a>配置效率和边际效益</h3><p>我们先画出边际成本的列表和图像，表中20&#x2F;40&#x2F;60&#x2F;80&#x2F;100分别为在F&#x2F;E&#x2F;D&#x2F;C&#x2F;B时增加一个兔子的<strong>边际成本</strong>(MC)</p>
 <p><img data-src="http://qiniu.s1nh.org/Blog_microeconomics-note_4_1.png-QNthin"></p>
 <p><strong>边际效益</strong>(Marginal Benifit, MB)可以理解为，在某情形中愿意支付多少浆果来换取一只兔子。</p>
 <p><img data-src="http://qiniu.s1nh.org/Blog_microeconomics-note_1_1.png-QNthin"></p>
@@ -3552,7 +3672,7 @@ apt-get install libusb-1.0-0-dev
 <li><code>场景智能</code>：主动感知、用户理解、个性化推荐、智能决策。</li>
 </ul>
 <h2 id="0x01-多模态自然交互"><a href="#0x01-多模态自然交互" class="headerlink" title="0x01 多模态自然交互"></a>0x01 多模态自然交互</h2><blockquote>
-<p>5G加速智联网时代的到来，多模态数据成为主流<br>电阻屏=&gt;电容屏：流量从PC时代走向移动时代<br>多模态自然交互：移动时代走向智联网时代</p>
+<p>5G加速智联网时代的到来，多模态数据成为主流<br>电阻屏&#x3D;&gt;电容屏：流量从PC时代走向移动时代<br>多模态自然交互：移动时代走向智联网时代</p>
 </blockquote>
 <p><img data-src="http://qiniu.s1nh.org/multi_modal_20200918205030958_203510884.png-QNthin"></p>
 <ul>
@@ -3672,13 +3792,13 @@ apt-get install libusb-1.0-0-dev
 <p>1981年，Horn和Schunck创造性地将二维速度场与灰度相联系，引入光流约束方程，得到光流计算的基本算法。人们基于不同的理论基础提出各种光流计算方法，算法性能各有不同。Barron等人对多种光流计算技术进行了总结，按照理论基础与数学方法的区别把它们分成四种：基于梯度的方法、基于匹配的方法、基于能量的方法、基于相位的方法。近年来神经动力学方法也颇受学者重视。</p>
 <p>在比较理想的情况下，它能够检测独立运动的对象，不需要预先知道场景的任何信息，可以很精确地计算出运动物体的速度，并且可用于摄像机运动的情况。</p>
 <p>但光流法存在下面的缺点：有时即使没有发生运动，在外部照明发生变化时，也可以观测到光流；另外，在缺乏足够的灰度等级变化的区域，实际运动也往往观测不到。三维物体的运动投影到二维图像的亮度变化，本身由于部分信息的丢失而使光流法存在孔径问题和遮挡问题，用光流法估算二维运动场是不确定的，需要附加的假设模型来模拟二维运动场的结构；在准确分割时，光流法还需要利用颜色、灰度、边缘等空域特征来提高分割精度；同时由于光流法采用迭代的方法，计算复杂耗时，如果没有特殊的硬件支持，很难应用于视频序列的实时检测。</p>
-<h3 id="光流方程"><a href="#光流方程" class="headerlink" title="光流方程"></a>光流方程</h3><p>假设$E(x,y,t)$为$(x,y)$点在时刻t的灰度（照度）。设$t+dt$时刻该点运动到$(x+dx,y+dy)$点，他的照度为$E(x+dx,y+dy,t+dt)$。我们认为，由于对应同一个点，所以<br>$$E(x,y,t) = E(x+dx,y+dy,t+dt) ,,,,,,,（光流约束方程）$$<br>将上式右边做泰勒展开，并令$dt-&gt;0$，则得到 $Exu+Eyv+Et = 0$，其中：<br>$$Ex =  \dfrac{dE}{dx} ,,,, Ey =  \dfrac{dE}{dy} ,,,, Et = \dfrac{dE}{dt} ,,,, u = \dfrac{dx}{dt} ,,,, v = \dfrac{dy}{dt} $$<br>上面的Ex,Ey,Et的计算都很简单，用离散的差分代替导数就可以了。光流法的主要任务就是通过求解光流约束方程求出u,v。如果用于摄像机固定的这一特定情况，问题可以大大简化。</p>
-<h3 id="摄像机固定的情形"><a href="#摄像机固定的情形" class="headerlink" title="摄像机固定的情形"></a>摄像机固定的情形</h3><p>在摄像机固定的情形下，运动物体的检测其实就是分离前景和背景的问题。对于背景，理想情况下，其光流应当为0，只有前景才有光流。所以并不要求通过求解光流约束方程求出u,v。只要求出亮度梯度方向的速率$sqrt(u*u+v*v)$即可。<br>由光流约束方程得到到梯度方向的光流速率为 $V = abs(\dfrac{Et}{sqrt(Ex*Ex+Ey*Ey)})$。<br>设定一个阈值T，若$V(x,y) &gt; T$ 则$(x,y)$是前景 ，反之是背景。</p>
+<h3 id="光流方程"><a href="#光流方程" class="headerlink" title="光流方程"></a>光流方程</h3><p>假设$E(x,y,t)$为$(x,y)$点在时刻t的灰度（照度）。设$t+dt$时刻该点运动到$(x+dx,y+dy)$点，他的照度为$E(x+dx,y+dy,t+dt)$。我们认为，由于对应同一个点，所以<br>$$E(x,y,t) &#x3D; E(x+dx,y+dy,t+dt) ,,,,,,,（光流约束方程）$$<br>将上式右边做泰勒展开，并令$dt-&gt;0$，则得到 $Exu+Eyv+Et &#x3D; 0$，其中：<br>$$Ex &#x3D;  \dfrac{dE}{dx} ,,,, Ey &#x3D;  \dfrac{dE}{dy} ,,,, Et &#x3D; \dfrac{dE}{dt} ,,,, u &#x3D; \dfrac{dx}{dt} ,,,, v &#x3D; \dfrac{dy}{dt} $$<br>上面的Ex,Ey,Et的计算都很简单，用离散的差分代替导数就可以了。光流法的主要任务就是通过求解光流约束方程求出u,v。如果用于摄像机固定的这一特定情况，问题可以大大简化。</p>
+<h3 id="摄像机固定的情形"><a href="#摄像机固定的情形" class="headerlink" title="摄像机固定的情形"></a>摄像机固定的情形</h3><p>在摄像机固定的情形下，运动物体的检测其实就是分离前景和背景的问题。对于背景，理想情况下，其光流应当为0，只有前景才有光流。所以并不要求通过求解光流约束方程求出u,v。只要求出亮度梯度方向的速率$sqrt(u*u+v*v)$即可。<br>由光流约束方程得到到梯度方向的光流速率为 $V &#x3D; abs(\dfrac{Et}{sqrt(Ex*Ex+Ey*Ey)})$。<br>设定一个阈值T，若$V(x,y) &gt; T$ 则$(x,y)$是前景 ，反之是背景。</p>
 <h3 id="Munsell颜色系统"><a href="#Munsell颜色系统" class="headerlink" title="Munsell颜色系统"></a>Munsell颜色系统</h3><p>光流场是图片中每个像素都有一个x方向和y方向的位移，所以在上面那些光流计算结束后得到的光流flow是个和原来图像大小相等的双通道图像。可以用Munsell颜色系统来显示。</p>
 <p><img data-src="http://qiniu.s1nh.org/Blog_optical_flow-01.jpg-QNthin"></p>
 <p>孟塞尔颜色系统的空间大致成一个圆柱形：</p>
 <blockquote>
-<p>南北轴=明度（value），从全黑（1）到全白（10）。<br>经度=色相（hue）。把一周均分成五种主色调和五种中间色：红(R)、红黄(YR)、黄(Y)、黄绿(GY)、绿(G)、绿蓝(BG)、蓝(B)、蓝紫(PB)、紫(P)、紫红(RP)。相邻的两个位置之间再均分10份，共100份。<br>距轴的距离=色度（chroma），表示色调的纯度。其数值从中间（0）向外随着色调的纯度增加，没有理论上的上限（普通的颜色实际上限为10左右，反光、荧光等材料可高达30）。由于人眼对各种颜色的的敏感度不同，色度不一定与每个色调和明度组合相匹配。</p>
+<p>南北轴&#x3D;明度（value），从全黑（1）到全白（10）。<br>经度&#x3D;色相（hue）。把一周均分成五种主色调和五种中间色：红(R)、红黄(YR)、黄(Y)、黄绿(GY)、绿(G)、绿蓝(BG)、蓝(B)、蓝紫(PB)、紫(P)、紫红(RP)。相邻的两个位置之间再均分10份，共100份。<br>距轴的距离&#x3D;色度（chroma），表示色调的纯度。其数值从中间（0）向外随着色调的纯度增加，没有理论上的上限（普通的颜色实际上限为10左右，反光、荧光等材料可高达30）。由于人眼对各种颜色的的敏感度不同，色度不一定与每个色调和明度组合相匹配。</p>
 </blockquote>
 <p>具体颜色的标识形式为：色相+明度+色度。</p>
 <h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><p>[1]Pyramidal Implementation of the Lucas Kanade Feature TrackerDescription of the algorithm<br>通过金字塔Lucas-Kanade 光流方法计算某些点集的光流（稀疏光流）。</p>
@@ -3986,7 +4106,7 @@ apt-get install libusb-1.0-0-dev
 <li><code>知识领域</code>: open domain, close domain;</li>
 <li><code>提供服务</code>: interpersonal, inter-agent;</li>
 <li><code>目标</code>: informative(FAQ), chat-based(conversational), Task-based;</li>
-<li><code>输入处理和响应生成方法</code>: rule-based, retrieval-based, generative based; </li>
+<li><code>输入处理和响应生成方法</code>: rule-based, retrieval-based, generative based;</li>
 </ul>
 <h3 id="1-2-基于计算方法的分类"><a href="#1-2-基于计算方法的分类" class="headerlink" title="1.2 基于计算方法的分类"></a>1.2 基于计算方法的分类</h3><p>(<a href="https://wires.onlinelibrary.wiley.com/doi/pdf/10.1002/widm.1434?casa_token=L_ycUq2CuG0AAAAA:yyz7TUFvn3zF5FRu7mJBmFyMY0jlPe4eNGvs8KoKzrrtMbgn2LSWcQzpxsgCLUdItmOzDzfNQyLOcViZJ8M">Luo Bei,2021</a>) 对SOTA 的 chatbot 做了一个详细的综述，其中包括<code>基于计算方法的分类</code> <code>Chatbot 市面上的应用</code> <code>知识库建立方法</code>：</p>
 <ul>
@@ -4010,13 +4130,13 @@ apt-get install libusb-1.0-0-dev
 <p><strong>d. 强化学习的方法主要基于Markov决策过程，通常描述为</strong></p>
 <blockquote>
 <ol>
-<li>有限状态集 $S={s_i}$；</li>
-<li>有限的行动集 $A={a_i}$ 描述了从一个状态到另一个状态的变换；</li>
-<li>策略 $a=π(s)$ 指定在状态下执行动作的概率 $s$；</li>
-<li>状态转移模型 $T(s,a,s’)=P_r(s’|s,a)$ 表示从状态 $s$ 转移到下一个状态 $s’$ 的概率；</li>
+<li>有限状态集 $S&#x3D;{s_i}$；</li>
+<li>有限的行动集 $A&#x3D;{a_i}$ 描述了从一个状态到另一个状态的变换；</li>
+<li>策略 $a&#x3D;π(s)$ 指定在状态下执行动作的概率 $s$；</li>
+<li>状态转移模型 $T(s,a,s’)&#x3D;P_r(s’|s,a)$ 表示从状态 $s$ 转移到下一个状态 $s’$ 的概率；</li>
 <li>奖励函数 $R(s,a,s’)$ 指定某个状态转移后的即时奖励。</li>
 </ol>
-<p>通过上述定义，强化学习会找到一个最优策略，以最大化收益：<br>$Q_π(s,a)={max}_πE[r_t+γr_{t+1}+γ^2r_{t+2}+… \vee s_t=s, a_t=a,π]$</p>
+<p>通过上述定义，强化学习会找到一个最优策略，以最大化收益：<br>$Q_π(s,a)&#x3D;{max}_πE[r_t+γr_{t+1}+γ^2r_{t+2}+… \vee s_t&#x3D;s, a_t&#x3D;a,π]$</p>
 </blockquote>
 <p><strong>e. 基于各种计算方法的聊天机器人分类</strong></p>
 <table>
@@ -4045,9 +4165,9 @@ apt-get install libusb-1.0-0-dev
 <td align="left">Pattern matching</td>
 <td align="left">Text mining</td>
 <td align="left">SLU, DST, DPO, NLG</td>
-<td align="left">RNN and LSTM/GRU</td>
+<td align="left">RNN and LSTM&#x2F;GRU</td>
 <td align="left">RL</td>
-<td align="left">Ranking algorithm/embedded technology</td>
+<td align="left">Ranking algorithm&#x2F;embedded technology</td>
 </tr>
 <tr>
 <td align="left">Typical chatbot</td>
@@ -4083,7 +4203,7 @@ apt-get install libusb-1.0-0-dev
 <td align="left">User input understanding, dialogue state, and response generation</td>
 <td align="left">Response generation and multimedia interaction</td>
 <td align="left">Design for the appropriate application of RL chatbots</td>
-<td align="left">Ranking algorithm improvement/embedding technology</td>
+<td align="left">Ranking algorithm improvement&#x2F;embedding technology</td>
 </tr>
 </tbody></table>
 <p><strong>f. 名词解释</strong></p>
@@ -4163,7 +4283,7 @@ apt-get install libusb-1.0-0-dev
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">what is the next action for the bot?</span><br><span class="line">	0 	action_listen 			0.12</span><br><span class="line">			...</span><br><span class="line">	8 	utter_ask_cuisine 		0.03</span><br><span class="line">	9 	utter_ask_helpmore 		0.03	</span><br><span class="line">	10 	utter_ask_howcanhelp 		0.19</span><br><span class="line">	11 	utter_ask_location 		0.04</span><br><span class="line">	12 	utter_ask_moreupdates 		0.03</span><br><span class="line">	13 	utter_ask_numpeople 		0.05</span><br><span class="line">	14 	action_search_restaurants 	0.03</span><br></pre></td></tr></table></figure>
 
 <h3 id="2-7-对话图的可视化"><a href="#2-7-对话图的可视化" class="headerlink" title="2.7 对话图的可视化"></a>2.7 对话图的可视化</h3><p><img data-src="http://qiniu.s1nh.org/blog_chatbot-rasa-graph.png" alt="对话图的可视化"></p>
-<h3 id="2-8-在生产环境中部署"><a href="#2-8-在生产环境中部署" class="headerlink" title="2.8 在生产环境中部署"></a>2.8 在生产环境中部署</h3><p>支持 docker，线程/进程并行的 HTTP API.</p>
+<h3 id="2-8-在生产环境中部署"><a href="#2-8-在生产环境中部署" class="headerlink" title="2.8 在生产环境中部署"></a>2.8 在生产环境中部署</h3><p>支持 docker，线程&#x2F;进程并行的 HTTP API.</p>
 <h3 id="2-9-支持的数据"><a href="#2-9-支持的数据" class="headerlink" title="2.9 支持的数据"></a>2.9 支持的数据</h3><p>支持的数据包括由按意图分类的用户话语组成的 NLU 数据，其中还可以包括实体、正则表达式和查找表等额外信息；此外还可以包含 <code>story base</code> 和 <code>rule base</code> 的对话数据，如下。其它的例子参见 <a href="https://rasa.com/docs/rasa/training-data-format/">RASA: Training Data Format</a>：</p>
 <p><strong>a. Entities</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nlu:</span><br><span class="line">- intent: check_balance</span><br><span class="line">  examples: |</span><br><span class="line">    - What&#x27;s my [credit](account) balance?</span><br><span class="line">    - What&#x27;s the balance on my [credit card account]&#123;&quot;entity&quot;:&quot;account&quot;,&quot;value&quot;:&quot;credit&quot;&#125;</span><br></pre></td></tr></table></figure>
@@ -4180,10 +4300,10 @@ apt-get install libusb-1.0-0-dev
 <li><a href="https://github.com/fighting41love/funNLP">NLP民工的乐园: 几乎最全的中文NLP资源库</a></li>
 <li><a href="https://github.com/fendouai/Awesome-Chatbot">Awesome-Chatbot</a></li>
 <li><a href="https://github.com/codemayq/chinese_chatbot_corpus">中文公开聊天语料库</a></li>
-<li><a href="https://github.com/zhaoyingjun/chatbot">zhaoyingjun/chatbot</a></li>
+<li><a href="https://github.com/zhaoyingjun/chatbot">zhaoyingjun&#x2F;chatbot</a></li>
 <li><a href="https://github.com/codemayq/chinese_chatbot_corpus">开闲聊常用语料和短信</a></li>
 <li><a href="https://www.jianshu.com/p/43e8f9e4a335">如何打造你自己的聊天机器人</a></li>
-<li><a href="https://wechaty.js.org/docs/wechaty"><code>wechaty</code></a>: 一个可以把微信/京东客服等变成聊天机器人的工具，让运营人员更多的时间思考如何进行活动策划、留存用户，商业变现</li>
+<li><a href="https://wechaty.js.org/docs/wechaty"><code>wechaty</code></a>: 一个可以把微信&#x2F;京东客服等变成聊天机器人的工具，让运营人员更多的时间思考如何进行活动策划、留存用户，商业变现</li>
 </ul>
 ]]></content>
       <categories>
@@ -4236,7 +4356,7 @@ apt-get install libusb-1.0-0-dev
 <li>耐热性较低</li>
 </ul>
 <p>聚氨酯发动机支架在橡胶支架和钢制固体支架之间提供了一种折中方案。与橡胶相比，聚氨酯可以用于更高硬度的复合材料，这将比橡胶在更软硬度的复合材料更好地保持发动机的位置。使用较硬的材料时，更多的能量将通过传动系统传输。而聚氨酯由于其刚度增加，会增加驾驶员的振动感。有些振动可能取决于发动机的大小，无论是工业卡车、汽车、船、ATV还是其他类型的车辆。与许多事情一样，驾驶员对振动的一些容忍度可能归结为个人喜好。不过，总的来说，聚氨酯将比橡胶更硬，这使其成为更高级改装车辆的理想选择。</p>
-<p><strong>两者应用在摆臂/连杆的区别</strong></p>
+<p><strong>两者应用在摆臂&#x2F;连杆的区别</strong></p>
 <!--![](http://qiniu.s1nh.org/blog_suspension_1.jpg-QNthin)-->
 
 <ul>
@@ -4308,9 +4428,9 @@ apt-get install libusb-1.0-0-dev
 <p><img data-src="http://qiniu.s1nh.org/blog_intake2-large.jpg" alt="Sequential Dynamic Air Induction System (S-DAIS) 13B RX8"></p>
 <p>VDI阀位于四个主要进气流道之间。它仅在 WOT 7250 rpm 以上运行，以方便更快的进气压力充注。通过VDI效应加压并迫使空气进入RX8的发动机。它在4端口中以5750 rpm的转速打开。VDI本质上是延长歧管，以获得更好的中转速扭矩。</p>
 <p><img data-src="http://qiniu.s1nh.org/blog_rotary_intake_manifold3-627x533.webp" alt="VDI RX8 13B-MSP"></p>
-<p>有趣的是，额外的可变新鲜空气管道是6端口独有的。当转速为5500转/分时，风道打开，以缩短空气行驶距离。排气侧要简单得多，但马自达设计了高流量，几乎直通式排气系统，以减少流动阻力。</p>
+<p>有趣的是，额外的可变新鲜空气管道是6端口独有的。当转速为5500转&#x2F;分时，风道打开，以缩短空气行驶距离。排气侧要简单得多，但马自达设计了高流量，几乎直通式排气系统，以减少流动阻力。</p>
 <p><strong>2.6. FLYWHEEL WEIGHT</strong></p>
-<p>因为6端口的转速要高得多（8500转/分！）。马自达通过减少材料使每个转子的重量减少了5%。飞轮重量减少了15%。</p>
+<p>因为6端口的转速要高得多（8500转&#x2F;分！）。马自达通过减少材料使每个转子的重量减少了5%。飞轮重量减少了15%。</p>
 <p><img data-src="http://qiniu.s1nh.org/blog_screenshot.237-675x420.webp" alt="13b-msp lightweight rotor"></p>
 <p><strong>2.7. INJECTORS</strong></p>
 <p>对于转子发动机来说，充足、准确和迅速的供油系统是必不可少的。转子发动机共有6个喷油器，每个转子3个。它们分阶段注入，每个转子有2个主喷油器和1个二次喷油器。然而，后期RX8恢复到4喷油器设计，每个转子有1个主泵和1个次级喷油器。</p>
@@ -4327,7 +4447,7 @@ apt-get install libusb-1.0-0-dev
 <p><strong>3.1. PERFORMANCE INTAKE</strong></p>
 <p>大多数人开始从进气系统开始改装自己的车。但是马自达在RX8的进气系统研发上花了很大精力，改装进气系统未必有用。</p>
 <p>普遍认为RX8原厂的进气系统是一流的。只有AEM和Mazdaspeed的冷进气值得改装。</p>
-<p>AEM冷进气系统约400美元（在中国零售大约2500）。它将空气入口重新定位到散热器前面的保险杠上。AEM报告说，在约7000转/分的转速下，它们的冷空气进气又增加了8马力。</p>
+<p>AEM冷进气系统约400美元（在中国零售大约2500）。它将空气入口重新定位到散热器前面的保险杠上。AEM报告说，在约7000转&#x2F;分的转速下，它们的冷空气进气又增加了8马力。</p>
 <p>导致大多数改装进气降低功率的原因是由于空气流量传感器的位置。原厂进气的前端有一个网筛，可以保证空气笔直进入 <em>（has a straight flow into the MAF sensor with a mesh screen in front for laminar flow）</em> ，以保证空气流量计有一个准确的度数。大多数改装的进气没有这个网筛，它会导致空气流量传感器提供低于标准的读数，因此电子控制单元提供不准确的燃油和点火正时。</p>
 <p>另一款进气是 Racing Beat REVi。它的设计比原厂增加了很多进气的噪音。价格和AEM系统差不多。在红线附近，预期可以增加5-6马力。</p>
 <p>改装进气一个重要的原因是增加进气噪音。此外，当你抛弃笨重的原厂进气风箱后，机舱有更大的空间方便维修。</p>
@@ -4473,7 +4593,7 @@ apt-get install libusb-1.0-0-dev
 
 <h3 id="0x01-解决方法"><a href="#0x01-解决方法" class="headerlink" title="0x01 解决方法"></a>0x01 解决方法</h3><h4 id="坑1"><a href="#坑1" class="headerlink" title="坑1"></a>坑1</h4><p><code>export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libstdc++.so.6</code></p>
 <h4 id="坑2：-修改软链接"><a href="#坑2：-修改软链接" class="headerlink" title="坑2： 修改软链接"></a>坑2： 修改软链接</h4><p>原因是Caffe用系统的opencv编译，但是运行matcaffe时链接了matlab的opencv版本（<a href="https://github.com/BVLC/caffe/issues/3934%EF%BC%89">https://github.com/BVLC/caffe/issues/3934）</a></p>
-<p>进入matlab的安装目录``，修改了如下软链接，问题解决</p>
+<p>进入matlab的安装目录&#96;&#96;，修改了如下软链接，问题解决</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bopencv_core.so.2.4 -&gt; /usr/lib/x86_64-linux-gnu/libopencv_core.so.2.4.9</span><br><span class="line">libopencv_highgui.so.2.4 -&gt; /usr/lib/x86_64-linux-gnu/libopencv_highgui.so.2.4.9</span><br><span class="line">libopencv_imgproc.so.2.4 -&gt; /usr/lib/x86_64-linux-gnu/libopencv_imgproc.so.2.4.9</span><br></pre></td></tr></table></figure>
 
 <blockquote>
@@ -4509,7 +4629,7 @@ apt-get install libusb-1.0-0-dev
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Your installation CD-ROM couldn&#x27;t be mounted. This probably means that the CD-ROM was not in the drive. If so you can insert it and try again.</span><br></pre></td></tr></table></figure>
 
 <p><strong>尝试2</strong></p>
-<p>最后我用虚拟机把 Ubuntu 安装在U盘里，然后dd到Macbook的一个分区，就可以通过<a href="http://www.rodsbooks.com/refind/">rEFInd</a>来启动了。<br>不过启动后因为找不到EFI和SWAP分区，会自动进入单用户模式。这时需要注释掉/etc/fstab中关于EFI和SWAP的两行。</p>
+<p>最后我用虚拟机把 Ubuntu 安装在U盘里，然后dd到Macbook的一个分区，就可以通过<a href="http://www.rodsbooks.com/refind/">rEFInd</a>来启动了。<br>不过启动后因为找不到EFI和SWAP分区，会自动进入单用户模式。这时需要注释掉&#x2F;etc&#x2F;fstab中关于EFI和SWAP的两行。</p>
 <h2 id="驱动问题"><a href="#驱动问题" class="headerlink" title="驱动问题"></a>驱动问题</h2><p>安装好Ubuntu以后，触摸板、键盘、Wi-Fi都不好用。要先准备一个外接网卡、外接键盘鼠标；查看自己的Mac版本；然后跟着mbp-2016-linux项目配置好驱动。</p>
 <p>即使安装好了驱动，一眼有些功能无法使用。已知的问题有：</p>
 <ol>
@@ -4591,11 +4711,11 @@ apt-get install libusb-1.0-0-dev
 <p><img data-src="http://qiniu.s1nh.org/Blog_Year-end-summary_09.jpg-QNthin"></p>
 <h3 id="WiFi-router（Lenovo-Newifi）"><a href="#WiFi-router（Lenovo-Newifi）" class="headerlink" title="WiFi router（Lenovo Newifi）"></a>WiFi router（Lenovo Newifi）</h3><p><img data-src="http://qiniu.s1nh.org/Blog_Year-end-summary_10.png-QNthin"></p>
 <h4 id="CGI-vulnerability"><a href="#CGI-vulnerability" class="headerlink" title="CGI vulnerability"></a>CGI vulnerability</h4><p><a href="http://192.168.99.1/cgi-bin/luci/;stok=XXXXXXXX/admin/wifi_home">http://192.168.99.1/cgi-bin/luci/;stok=XXXXXXXX/admin/wifi_home</a> </p>
-<p>newwifi/comcmd?cmd=busybox telnet -p 23|mfg2 telnet 1 </p>
-<p>newwifi/comcmd?cmd=busybox%20telnetd%20-p%2023|mfg2%20telnet%201</p>
+<p>newwifi&#x2F;comcmd?cmd&#x3D;busybox telnet -p 23|mfg2 telnet 1 </p>
+<p>newwifi&#x2F;comcmd?cmd&#x3D;busybox%20telnetd%20-p%2023|mfg2%20telnet%201</p>
 <p><img data-src="http://qiniu.s1nh.org/Blog_Year-end-summary_11.png-QNthin"></p>
 <h4 id="Add-TTL-Serial-Plug"><a href="#Add-TTL-Serial-Plug" class="headerlink" title="Add TTL Serial Plug"></a>Add TTL Serial Plug</h4><p><img data-src="http://qiniu.s1nh.org/Blog_Year-end-summary_12.jpg-QNthin"><br><img data-src="http://qiniu.s1nh.org/Blog_Year-end-summary_13.jpg-QNthin"><br><img data-src="http://qiniu.s1nh.org/Blog_Year-end-summary_14.jpeg"><br><img data-src="http://qiniu.s1nh.org/Blog_Year-end-summary_15.png-QNthin"><br><img data-src="http://qiniu.s1nh.org/Blog_Year-end-summary_16.png-QNthin"><br><img data-src="http://qiniu.s1nh.org/Blog_Year-end-summary_17.png-QNthin"></p>
-<h2 id="NFC-Hacking-RDM8800"><a href="#NFC-Hacking-RDM8800" class="headerlink" title="NFC Hacking(RDM8800)"></a>NFC Hacking(RDM8800)</h2><p>RDM 8800 = Arduino + PN532</p>
+<h2 id="NFC-Hacking-RDM8800"><a href="#NFC-Hacking-RDM8800" class="headerlink" title="NFC Hacking(RDM8800)"></a>NFC Hacking(RDM8800)</h2><p>RDM 8800 &#x3D; Arduino + PN532</p>
 <p><img data-src="http://qiniu.s1nh.org/Blog_Year-end-summary_18.jpg-QNthin"><br><img data-src="http://qiniu.s1nh.org/Blog_Year-end-summary_19.jpg-QNthin"></p>
 <p>NFC List</p>
 <pre><code>nfc-list uses libnfc 1.7.1
@@ -4644,7 +4764,7 @@ Symbols: &#39;.&#39; no key found, &#39;/&#39; A key found, &#39;\&#39; B key fo
 <p><em>Alternative：bladeRF（support USB3.0，300MHz~3.8GHz）</em> </p>
 <h3 id="Dump-1090"><a href="#Dump-1090" class="headerlink" title="Dump 1090"></a>Dump 1090</h3><p>ADS-B open-source software<br>a Mode S decoder specifically designed for RTLSDR devices.</p>
 <p><img data-src="http://qiniu.s1nh.org/Blog_Year-end-summary_25.jpg-QNthin"><br><img data-src="http://qiniu.s1nh.org/Blog_Year-end-summary_26.jpg-QNthin"></p>
-<h3 id="Antenna"><a href="#Antenna" class="headerlink" title="Antenna"></a>Antenna</h3><p>L ≈ C / F * 0.96</p>
+<h3 id="Antenna"><a href="#Antenna" class="headerlink" title="Antenna"></a>Antenna</h3><p>L ≈ C &#x2F; F * 0.96</p>
 <p><img data-src="http://qiniu.s1nh.org/Blog_Year-end-summary_27.jpg-QNthin"><br><img data-src="http://qiniu.s1nh.org/Blog_Year-end-summary_28.png-QNthin"><br><img data-src="http://qiniu.s1nh.org/Blog_Year-end-summary_29.png-QNthin"></p>
 <h2 id="亚克力"><a href="#亚克力" class="headerlink" title="亚克力"></a>亚克力</h2><p><img data-src="http://qiniu.s1nh.org/Blog_Year-end-summary_30.jpg-QNthin"><br><img data-src="http://qiniu.s1nh.org/Blog_Year-end-summary_31.jpg-QNthin"><br><img data-src="http://qiniu.s1nh.org/Blog_Year-end-summary_32.jpg-QNthin"></p>
 ]]></content>
@@ -4666,6 +4786,8 @@ Symbols: &#39;.&#39; no key found, &#39;/&#39; A key found, &#39;\&#39; B key fo
 <p><img data-src="http://www.lespaulforum.com/slubarticle/maple/fullimages/1_f.jpg-QNthin" alt="纹理的类别" title="A.横向 B.径向 C.切线"></p>
 <p>虎纹或絮纹在活体树中主要作为颗粒在径向或切向方向上的垂直排列中的变化或变形，其导致称为条纹，起泡，卷曲，波浪和几个其它变化的常见图形类型。 在直径小于10英寸的树中很少发现可商购的图。 一旦它开始，它在随后的生长环变得更加显着。 波浪谷物在四肢和根附近是相当普遍，在那里它被局限在小区域。</p>
 <p>我们Les Paul爱好者最喜欢的木材种类是“起伏的生长”。一些在径向平面上是波浪形的，而一些在切向平面上是波浪形的。 起伏生长的原因追溯到细胞分裂和增大的方法。 波动的生长对观察者来说似乎是由纤维结构产生的光和暗区域的可移动条纹或对比斑块的光学错觉。 由木材中起伏纹造成的图像类似于在某些宝石中形成的条纹。 图也是部分地由于光线照射包含在图案木材中的细的起伏的纤维元件而产生的干涉图案的结果。</p>
+<pre><code>  		 
+</code></pre>
 <p>当木材的径向表面显示波状生长或颗粒时，切向面是光滑的，并且可以观察到波状或起伏的颗粒，但是触摸不明显。 当具有卷曲纹的木材部分分裂时，其沿着光线并沿着波纹状颗粒分离，并且表现为在径向表面上可以看到和感觉到的波纹状表面。 起伏的生长是在同一时间开始的单个细胞的延长的结果，其有些延迟，导致一些比其它细胞长。 </p>
 ]]></content>
       <categories>
@@ -4704,7 +4826,7 @@ Symbols: &#39;.&#39; no key found, &#39;/&#39; A key found, &#39;\&#39; B key fo
 <p>众所周知GPGPU的性能瓶颈为PCI-E传输速度，数据传输时会导致运算资源闲置。因此NVIDIA发明了一个很牛逼的技术<code>Zero Copy</code>，它把主机内存直接映射到GPU内存上，在GPU需要数据时直接从主机内存寻找，隐式的传输到GPU中。还有另一个技术叫<code>Pinned Memory</code>，会在产生一个不会被分页的内存，这块内存不会被交换到磁盘的虚拟内存上，内存地址也不会被重新定位，因此，相比普通的<code>Pageable Memory</code>有更高的速度。使用Pinned Memory是一定会提高性能的，不过也需要适当使用，否则太多Pinned Memory会把Host Memory给挤爆了（因为它不会分页到虚拟内存去）。<br><img data-src="http://qiniu.s1nh.org/Blog_pageable_pinned_memory.png-QNthin" alt="图1 Pageable 和 Pinned 的区别" title="图1 Pageanbe 和 Pinned 的区别"></p>
 <span id="more"></span>
 
-<h2 id="0x00-Zero-Copy"><a href="#0x00-Zero-Copy" class="headerlink" title="0x00 Zero Copy"></a>0x00 Zero Copy</h2><p>对于普通的GPU使用Zero Copy以后，读取的数据速度限制为PCI-E的速度，所以不适用于频繁读取数据的程序，直到 NVIDIA TX-1（TK-1）的出现。在TX-1中，CPU/GPU共享memory（如图2 Integrated GPU，图3 更详细的展示了TX-1 的架构），使用Zero Copy的速度与cudaMalloc开辟的内存的速度一样！在这种情况下，Zero Copy会完全节省掉内存传输时间，特别对于流媒体的应用效果显著。</p>
+<h2 id="0x00-Zero-Copy"><a href="#0x00-Zero-Copy" class="headerlink" title="0x00 Zero Copy"></a>0x00 Zero Copy</h2><p>对于普通的GPU使用Zero Copy以后，读取的数据速度限制为PCI-E的速度，所以不适用于频繁读取数据的程序，直到 NVIDIA TX-1（TK-1）的出现。在TX-1中，CPU&#x2F;GPU共享memory（如图2 Integrated GPU，图3 更详细的展示了TX-1 的架构），使用Zero Copy的速度与cudaMalloc开辟的内存的速度一样！在这种情况下，Zero Copy会完全节省掉内存传输时间，特别对于流媒体的应用效果显著。</p>
 <p><img data-src="http://qiniu.s1nh.org/Blog_zero-copy-discrete-integrated-GPU.png-QNthin" alt="图2 Discrete GPU, Integrated GPU" title="图2 Discrete GPU, Integrated GPU"></p>
 <p><img data-src="http://qiniu.s1nh.org/Blog_zero-copy-TX1-architecture.png-QNthin" alt="图3 TX-1 架构" title="图3 TX-1 架构"></p>
 <p>但是事情真的像我们想像中的这么完美吗？</p>
@@ -4719,7 +4841,7 @@ Symbols: &#39;.&#39; no key found, &#39;/&#39; A key found, &#39;\&#39; B key fo
 <h2 id="0x02-Zero-Copy-的-OpenCV-实现"><a href="#0x02-Zero-Copy-的-OpenCV-实现" class="headerlink" title="0x02 Zero Copy 的 OpenCV 实现"></a>0x02 Zero Copy 的 OpenCV 实现</h2><p><strong>1. OpenCV 3</strong></p>
 <p>OpenCV3可以使用<code>cv::cuda::HostMem</code>来使用ZeroCopy和Pinned Memory，</p>
 <ul>
-<li><strong>PAGE_LOCKED:</strong> sets a page locked memory type used commonly for fast and asynchronous uploading/downloading data from/to GPU.</li>
+<li><strong>PAGE_LOCKED:</strong> sets a page locked memory type used commonly for fast and asynchronous uploading&#x2F;downloading data from&#x2F;to GPU.</li>
 <li><strong>SHARED:</strong> specifies a zero copy memory allocation that enables mapping the host memory to GPU address space, if supported.</li>
 <li><strong>WRITE_COMBINED:</strong> sets the write combined buffer that is not cached by CPU. Such buffers are used to supply GPU with data when GPU only reads it. The advantage is a better CPU cache utilization.</li>
 </ul>
@@ -4730,7 +4852,7 @@ Symbols: &#39;.&#39; no key found, &#39;/&#39; A key found, &#39;\&#39; B key fo
 <p>从这抄了一段代码<a href="https://github.com/Error323/gpumat-tk1">https://github.com/Error323/gpumat-tk1</a></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">#include &lt;opencv2/opencv.hpp&gt;</span><br><span class="line">#include &lt;opencv2/gpu/gpu.hpp&gt;</span><br><span class="line"></span><br><span class="line">#include &quot;timer.h&quot;</span><br><span class="line"></span><br><span class="line">#define ITERS 100</span><br><span class="line"></span><br><span class="line">using namespace cv;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">void compute(gpu::GpuMat &amp;in, gpu::GpuMat &amp;bgr, gpu::GpuMat &amp;out)</span><br><span class="line">&#123;</span><br><span class="line">  cv::gpu::demosaicing(in, bgr, cv::COLOR_BayerBG2BGR);</span><br><span class="line">  cv::gpu::resize(bgr, out, out.size());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">  int w = 4608;</span><br><span class="line">  int h = 3288;</span><br><span class="line">  int wnew = 800;</span><br><span class="line">  int hnew = 600;</span><br><span class="line"></span><br><span class="line">  Mat in(h, w, CV_8UC1);</span><br><span class="line">  Mat out(hnew, wnew, CV_8UC3);</span><br><span class="line">  gpu::GpuMat d_in;</span><br><span class="line">  gpu::GpuMat d_bgr(h, w, CV_8UC3);</span><br><span class="line">  gpu::GpuMat d_out(hnew, wnew, CV_8UC3);</span><br><span class="line"></span><br><span class="line">  double t = GetRealTime();</span><br><span class="line">  for (int i = 0; i &lt; ITERS; i++)</span><br><span class="line">  &#123;</span><br><span class="line">    in.setTo(i);</span><br><span class="line">    d_in.upload(in);</span><br><span class="line">    compute(d_in, d_bgr, d_out);</span><br><span class="line">    d_out.download(out);</span><br><span class="line">  &#125;</span><br><span class="line">  cout &lt;&lt; &quot;Old Time: &quot; &lt;&lt; GetRealTime()-t &lt;&lt; &quot; (&quot; &lt;&lt; cv::sum(out)[0] &lt;&lt; &quot;)&quot; &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">  gpu::CudaMem c_in(h, w, CV_8UC1, gpu::CudaMem::ALLOC_ZEROCOPY);</span><br><span class="line">  gpu::CudaMem c_out(hnew, wnew, CV_8UC3, gpu::CudaMem::ALLOC_ZEROCOPY);</span><br><span class="line">  d_in = c_in.createGpuMatHeader();</span><br><span class="line">  d_out = c_out.createGpuMatHeader();</span><br><span class="line">  out = c_out.createMatHeader();</span><br><span class="line"></span><br><span class="line">  t = GetRealTime();</span><br><span class="line">  for (int i = 0; i &lt; ITERS; i++)</span><br><span class="line">  &#123;</span><br><span class="line">    d_in.setTo(i);</span><br><span class="line">    compute(d_in, d_bgr, d_out);</span><br><span class="line">  &#125;</span><br><span class="line">  cout &lt;&lt; &quot;New Time: &quot; &lt;&lt; GetRealTime()-t &lt;&lt; &quot; (&quot; &lt;&lt; cv::sum(out)[0] &lt;&lt; &quot;)&quot; &lt;&lt; endl;</span><br><span class="line">  </span><br><span class="line">    </span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h2 id="0x03-参考"><a href="#0x03-参考" class="headerlink" title="0x03 参考"></a>0x03 参考</h2><p><a href="https://devtalk.nvidia.com/default/topic/810053/jetson-tk1/opencv-performance-tk1/post/4479121/#4479121">[1]OpenCV Performance TK1</a><br><a href="https://devtalk.nvidia.com/default/topic/922626/jetson-tx1/regarding-usage-of-zero-copy-on-tx1-to-improve-performance/post/4834970/#4834970">[2]Regarding Usage of Zero Copy on TX1 to improve performance</a><br><a href="http://www.swisst.net/files/swisstnet/de/dokumente/ECC/ECC16/Referate/S4R2_Matthias%20Rosenthal.pdf">[3]PPT: General purpose processing using embedded  GPUs: A study of latency and its variation</a><br><a href="https://cs.unc.edu/~anderson/papers/rtas17b.pdf">[4]An Evaluation of the NVIDIA TX1 for Supporting Real-timeComputer-Vision Workloads</a><br><a href="https://gold.xitu.io/entry/575692ba816dfa005f87fbfb">NVIDIA Tegra TK/X 系列板子的零拷贝 (zero copy) 问题</a><br><a href="http://www.findspace.name/easycoding/1349">Cuda锁页内存和零复制</a><br><a href="http://www.tuicool.com/articles/zmEn2q">CUDA零复制内存</a><br><a href="http://blog.csdn.net/langb2014/article/details/51348616">CUDA学习笔记九</a><br><a href="http://www.cnblogs.com/biglucky/p/4305131.html">CPU和GPU内存交互</a></p>
+<h2 id="0x03-参考"><a href="#0x03-参考" class="headerlink" title="0x03 参考"></a>0x03 参考</h2><p><a href="https://devtalk.nvidia.com/default/topic/810053/jetson-tk1/opencv-performance-tk1/post/4479121/#4479121">[1]OpenCV Performance TK1</a><br><a href="https://devtalk.nvidia.com/default/topic/922626/jetson-tx1/regarding-usage-of-zero-copy-on-tx1-to-improve-performance/post/4834970/#4834970">[2]Regarding Usage of Zero Copy on TX1 to improve performance</a><br><a href="http://www.swisst.net/files/swisstnet/de/dokumente/ECC/ECC16/Referate/S4R2_Matthias%20Rosenthal.pdf">[3]PPT: General purpose processing using embedded  GPUs: A study of latency and its variation</a><br><a href="https://cs.unc.edu/~anderson/papers/rtas17b.pdf">[4]An Evaluation of the NVIDIA TX1 for Supporting Real-timeComputer-Vision Workloads</a><br><a href="https://gold.xitu.io/entry/575692ba816dfa005f87fbfb">NVIDIA Tegra TK&#x2F;X 系列板子的零拷贝 (zero copy) 问题</a><br><a href="http://www.findspace.name/easycoding/1349">Cuda锁页内存和零复制</a><br><a href="http://www.tuicool.com/articles/zmEn2q">CUDA零复制内存</a><br><a href="http://blog.csdn.net/langb2014/article/details/51348616">CUDA学习笔记九</a><br><a href="http://www.cnblogs.com/biglucky/p/4305131.html">CPU和GPU内存交互</a></p>
 ]]></content>
       <categories>
         <category>算法与硬件</category>
@@ -4766,12 +4888,12 @@ Symbols: &#39;.&#39; no key found, &#39;/&#39; A key found, &#39;\&#39; B key fo
 <li>3 plausible (but likely incorrect) answers per question</li>
 <li>Automatic evaluation metric</li>
 </ul>
-<h4 id="II-VQG-COCO-Bing-Flicker"><a href="#II-VQG-COCO-Bing-Flicker" class="headerlink" title="II.VQG-COCO/Bing/Flicker"></a>II.<a href="https://www.microsoft.com/en-us/download/details.aspx?id=53670">VQG-COCO/Bing/Flicker</a></h4><blockquote>
+<h4 id="II-VQG-COCO-x2F-Bing-x2F-Flicker"><a href="#II-VQG-COCO-x2F-Bing-x2F-Flicker" class="headerlink" title="II.VQG-COCO&#x2F;Bing&#x2F;Flicker"></a>II.<a href="https://www.microsoft.com/en-us/download/details.aspx?id=53670">VQG-COCO&#x2F;Bing&#x2F;Flicker</a></h4><blockquote>
 <p>Mostafazadeh, Nasrin, et al. “<strong>Generating Natural Questions About an Image.</strong>“ <em>Proceedings of the 54th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers).</em> 2016.</p>
 </blockquote>
 <p>This dataset is described in <a href="http://aclanthology.info/papers/generating-natural-questions-about-an-image">http://aclanthology.info/papers/generating-natural-questions-about-an-image</a>. The dataset is comprised of 9 csv’s, organized first by the source of the image, Bing, MSCOCO, or Flickr, then by type of dataset, train, dev and test. Within each file, we organize by image_id, the link to the image, and the up to 5 natural questions authored by crowdworkers on Amazon Mechnical Turk in response to the image. Please be sure to maintain these files separately in order to report system accuracy and progress on dev and test sets. For the Bing images, the dataset includes up to 5 captions for each image link; captions for the COCO and Flickr images are available elsewhere. In addition, each of the test set files includes the human rating of the question necessary to compute the deltaBleu score (see <a href="http://aclanthology.info/papers/deltableu-a-discriminative-metric-for-generation-tasks-with-intrinsically-diverse-targets">http://aclanthology.info/papers/deltableu-a-discriminative-metric-for-generation-tasks-with-intrinsically-diverse-targets</a>).</p>
 <h4 id="III-TextVQA"><a href="#III-TextVQA" class="headerlink" title="III. TextVQA"></a>III. <a href="https://textvqa.org/dataset">TextVQA</a></h4><h4 id="IV-Visual-Genome"><a href="#IV-Visual-Genome" class="headerlink" title="IV. Visual Genome"></a>IV. <a href="http://visualgenome.org/api/v0/api_home.html">Visual Genome</a></h4><h4 id="V-VizWiz"><a href="#V-VizWiz" class="headerlink" title="V. VizWiz"></a>V. <a href="https://vizwiz.org/">VizWiz</a></h4><h4 id="VI-Visual-Dialog"><a href="#VI-Visual-Dialog" class="headerlink" title="VI. Visual Dialog"></a>VI. <a href="https://visualdialog.org/">Visual Dialog</a></h4><h2 id="0x02-Researchers"><a href="#0x02-Researchers" class="headerlink" title="0x02. Researchers"></a>0x02. Researchers</h2><ul>
-<li><p> Indian Institute of Technology, <a href="https://badripatro.github.io/index.html">Badri N. Patro</a> &amp; <a href="https://vinaypn.github.io/">Vinay P. Namboodiri</a> <em>这哥们近期发了6篇有关VQG/VQA的文章，其中三篇被录用，两篇已经开源（不过star很少）</em></p>
+<li><p>Indian Institute of Technology, <a href="https://badripatro.github.io/index.html">Badri N. Patro</a> &amp; <a href="https://vinaypn.github.io/">Vinay P. Namboodiri</a> <em>这哥们近期发了6篇有关VQG&#x2F;VQA的文章，其中三篇被录用，两篇已经开源（不过star很少）</em></p>
 </li>
 <li><p>Microsoft, <strong>Nan Duan</strong>, <strong>Duyu Tang</strong>, <strong>Tong Wang</strong>(Maluuba)</p>
 </li>
@@ -4788,7 +4910,7 @@ Symbols: &#39;.&#39; no key found, &#39;/&#39; A key found, &#39;\&#39; B key fo
 
 
 
-<h3 id="2-IQ"><a href="#2-IQ" class="headerlink" title="2. IQ"></a>2. IQ</h3><p><strong>with VAE</strong>/<strong>maximizes mutual information</strong>/<strong>doesn’t need to know the expected answer</strong></p>
+<h3 id="2-IQ"><a href="#2-IQ" class="headerlink" title="2. IQ"></a>2. IQ</h3><p><strong>with VAE</strong>&#x2F;<strong>maximizes mutual information</strong>&#x2F;<strong>doesn’t need to know the expected answer</strong></p>
 <img data-src="http://qiniu.s1nh.org/vqg-pipeline-full.svg" width = 90% div align=center  />
 
 
@@ -4811,14 +4933,14 @@ Symbols: &#39;.&#39; no key found, &#39;/&#39; A key found, &#39;\&#39; B key fo
 </ul>
 <p><strong>Math</strong></p>
 <p>First compute brevity penalty BP shows below:</p>
-<p>$$BP=\begin{cases}<br>1, &amp;if \ c &gt; r\<br>e^{\ (\ 1 - r / c\ )}, &amp;if \ c&lt;r<br>\end{cases}$$</p>
+<p>$$BP&#x3D;\begin{cases}<br>1, &amp;if \ c &gt; r\<br>e^{\ (\ 1 - r &#x2F; c\ )}, &amp;if \ c&lt;r<br>\end{cases}$$</p>
 <p>Where c is the total length of the candidate translation corpus, and r is the effective reference corpus length.</p>
 <p>Next, compute the geometric average of the modified <strong>n-gram precisions</strong>, $p_n$, using n-grams up to length N and positive weights $w_n$ summing to one.</p>
 <p>Then, BELU is shown below:</p>
-<p>$$BLEU = BP \cdot exp\left(\sum_{n=1}^N w_n \log p_n\right)$$</p>
-<p>Where $exp\left(\sum_{n=1}^N w_n \log p_n\right)$ represents the weighted sum of the logarithms of the accuracy of different n-grams</p>
+<p>$$BLEU &#x3D; BP \cdot exp\left(\sum_{n&#x3D;1}^N w_n \log p_n\right)$$</p>
+<p>Where $exp\left(\sum_{n&#x3D;1}^N w_n \log p_n\right)$ represents the weighted sum of the logarithms of the accuracy of different n-grams</p>
 <p>And the ranking behavior is more immediately apparent in the log domain.</p>
-<p>$$log \ BLEU = min(1-\frac{r}{c},0) + \sum_{n=1}^N w_n \log p_n$$</p>
+<p>$$log \ BLEU &#x3D; min(1-\frac{r}{c},0) + \sum_{n&#x3D;1}^N w_n \log p_n$$</p>
 <p><strong>Ref.</strong><br>[<a href="https://www.aclweb.org/anthology/P02-1040.pdf">1</a>] [<a href="https://machinelearningmastery.com/calculate-bleu-score-for-text-python/">2</a>]</p>
 <h4 id="1-2-ROUGE"><a href="#1-2-ROUGE" class="headerlink" title="1.2. ROUGE"></a>1.2. ROUGE</h4><p><code>Is almost same as BLEU, but caculate recall instead of precision.</code></p>
 <h4 id="1-3-METOR"><a href="#1-3-METOR" class="headerlink" title="1.3. METOR"></a>1.3. METOR</h4><p><code>Not only based on exact matches but also stem, synonym, and paraphrase matches.</code></p>
@@ -4977,7 +5099,7 @@ Your browser does not support the video tag.
 </ul>
 <p><strong>降一个全音的标准调弦（D Standard）</strong></p>
 <ul>
-<li><code>11-54</code> <strong>Fender</strong> Scale Optimal for detuning. Similar to the Skinny Top / Heavy Bottom, but several gauges heavier. Provides a higher-tension feel.</li>
+<li><code>11-54</code> <strong>Fender</strong> Scale Optimal for detuning. Similar to the Skinny Top &#x2F; Heavy Bottom, but several gauges heavier. Provides a higher-tension feel.</li>
 <li><code>11-48</code> <strong>Gibson</strong> Scale 即使降低了调音，也能保留了正常的琴弦张力。</li>
 </ul>
 <p><strong>C Standard</strong></p>
@@ -4998,7 +5120,7 @@ Your browser does not support the video tag.
 </ul>
 <h2 id="0x03-BASS-TUNINGS"><a href="#0x03-BASS-TUNINGS" class="headerlink" title="0x03 BASS TUNINGS"></a>0x03 BASS TUNINGS</h2><p><strong>E Standard and Drop D</strong></p>
 <ul>
-<li><code>50-105</code> ` 良好的张力和音头。不会太紧，也不会太松。</li>
+<li><code>50-105</code> &#96; 良好的张力和音头。不会太紧，也不会太松。</li>
 </ul>
 <p><strong>Eb Standard and Drop C#</strong></p>
 <ul>
@@ -5010,7 +5132,7 @@ Your browser does not support the video tag.
 </ul>
 <p><strong>Drop B</strong></p>
 <ul>
-<li><code>60-125+40</code> </li>
+<li><code>60-125+40</code></li>
 </ul>
 ]]></content>
       <categories>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
@@ -16,10 +16,10 @@
 
 
 
-<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-xejo6yLi6vGtAjcMIsY8BHdKsLg7QynVlFMzdQgUuy8=" crossorigin="anonymous">
   <link rel="stylesheet" href="/lib/@fancyapps/fancybox/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.11.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="no other developers required.">
 <meta property="og:type" content="website">
@@ -158,7 +158,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">85</span>
+          <span class="site-state-item-count">89</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -169,7 +169,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">83</span>
+        <span class="site-state-item-count">85</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -196,6 +196,10 @@
     </ul>
   </div>
 
+<div>
+<hr>
+<img src="/images/wechatpay-ss.jpg" alt="Buy me a coffe.">
+</div>
         </div>
       </div>
     </div>
@@ -313,6 +317,367 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/fastdds-shm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="S1NH">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="S1NH">
+      <meta itemprop="description" content="no other developers required.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | S1NH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/fastdds-shm/" class="post-title-link" itemprop="url">FastDDS 共享内存的使用笔记</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-09-05 10:57:32" itemprop="dateCreated datePublished" datetime="2022-09-05T10:57:32+08:00">2022-09-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/programming/" itemprop="url" rel="index"><span itemprop="name">算法与硬件</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><strong>1. 特定情况下 subscriber 无法重连</strong></p>
+<blockquote>
+<p>刚开始用 FastDDS 的时候就发现这个问题，原以为是共享内存 deadlock 了，于是就有了前面关于 boost 鲁棒锁的那篇帖子。但问题并没有这么简单 &gt;_&lt;</p>
+</blockquote>
+<p>对 FastDDS 程序进行 debug 时，将 subscriber 暂停，等一会再重启，subscriber将无法再次接收数据。Publisher &#x2F; Subscriber 的日志如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Publisher</span><br><span class="line">2022-09-06 14:10:47.049 [RTPS_TRANSPORT_SHM Warning] SHM Port 7413 failure: the port is marked as not ok! -&gt; Function try_push</span><br><span class="line">2022-09-06 14:10:47.049 [RTPS_TRANSPORT_SHM Warning] (ID:140091162883648) Existing Port 7413 (5f4eeb5613a33705) NOT Healthy. -&gt; Function open_port_internal</span><br><span class="line">2022-09-06 14:10:47.049 [RTPS_TRANSPORT_SHM Warning] (ID:140091162883648) Port 7413 (5f4eeb5613a33705) Removed. -&gt; Function open_port_internal</span><br><span class="line">Message: HelloWorld with index: 157 SENT</span><br><span class="line">2022-09-06 14:10:47.246 [RTPS_TRANSPORT_SHM Warning] SHM Port 7412 failure: the port is marked as not ok! -&gt; Function try_push</span><br><span class="line">2022-09-06 14:10:47.248 [RTPS_TRANSPORT_SHM Warning] (ID:140091402036800) Existing Port 7412 (3e1fa9f9eb2b0ade) NOT Healthy. -&gt; Function open_port_internal</span><br><span class="line">2022-09-06 14:10:47.248 [RTPS_TRANSPORT_SHM Warning] (ID:140091402036800) Port 7412 (3e1fa9f9eb2b0ade) Removed. -&gt; Function open_port_internal</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Subscriber</span><br><span class="line">2022-09-07 14:50:27.441 [RTPS_TRANSPORT_SHM Warning] (ID:140737325877056) Port 7412 Zombie. Reset the port -&gt; Function open_port_internal</span><br><span class="line">2022-09-07 14:50:27.442 [RTPS_TRANSPORT_SHM Warning] (ID:140737325877056) Port 7413 Zombie. Reset the port -&gt; Function open_port_internal</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/post/fastdds-shm/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/boost-robustness-interprocess-mutex-deadlock/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="S1NH">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="S1NH">
+      <meta itemprop="description" content="no other developers required.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | S1NH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/boost-robustness-interprocess-mutex-deadlock/" class="post-title-link" itemprop="url">boost::interprocess 新版本修复了死锁</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-08-06 09:45:50" itemprop="dateCreated datePublished" datetime="2022-08-06T09:45:50+08:00">2022-08-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/programming/" itemprop="url" rel="index"><span itemprop="name">算法与硬件</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>boost::interprocess 在 1.78 版本之前如果进程崩溃可能导致死锁。从18年就有人提出这个issue，21年才修复。<br>最简单的复现方法是执行三遍下面的代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;boost/interprocess/managed_shared_memory.hpp&quot;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">  boost::interprocess::managed_shared_memory managed_shm&#123;</span><br><span class="line">      boost::interprocess::open_or_create, &quot;Boost&quot;, 1024</span><br><span class="line">  &#125;;</span><br><span class="line">  int* i = managed_shm.construct&lt;int&gt;(&quot;Int&quot;)(99);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>第一遍在共享内存中创建 Boost 文件，并写入一个 Key 为 Int 的变量 99；</li>
+<li>第二遍尝试再次写入时发现已经有这个Key了，写不进去。程序崩溃，并抛出异常：<br><code>terminate called after throwing an instance of &#39;boost::interprocess::interprocess_exception&#39;</code><br><code>what():  boost::interprocess_exception::library_error</code></li>
+<li>第三遍因为上次的崩溃时没有释放锁，程序死锁；</li>
+<li>新版本的 boost 在第三次执行程序的时候会不会死锁，抛出异常 ：<br><code>terminate called after throwing an instance of &#39;boost::interprocess::lock_exception&#39;</code><br><code>what():  boost::interprocess::lock_exception</code></li>
+</ul>
+<p>原因在<a target="_blank" rel="noopener" href="https://github.com/boostorg/interprocess/commit/7c8893788d3823615d6ddbfd125d2ad153817111#diff-334412084c0f3abf945468528eb917ebe6a4ae50c59d7ae3c672f1e402c96bd4R44-R49">这几行</a>，如果不想更新boost，改那几行也可以。</p>
+<p>如果编译器支持 <code>_POSIX_C_SOURCE &gt;= 200809L</code>，在构造锁的时候判断 <code>pthread_mutexattr_setrobust(&amp;m_attr, PTHREAD_MUTEX_ROBUST) != 0</code>。</p>
+<p>pthread_mutexattr_setrobust 的说明在<a target="_blank" rel="noopener" href="https://man7.org/linux/man-pages/man3/pthread_mutexattr_setrobust.3.html">这里</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/fastdds-zerocopy-for-multiple-readers/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="S1NH">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="S1NH">
+      <meta itemprop="description" content="no other developers required.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | S1NH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/fastdds-zerocopy-for-multiple-readers/" class="post-title-link" itemprop="url">FastDDS 零拷贝模式下多个 subscriber 的原理</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-07-27 23:01:39" itemprop="dateCreated datePublished" datetime="2022-07-27T23:01:39+08:00">2022-07-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/programming/" itemprop="url" rel="index"><span itemprop="name">算法与硬件</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>FastDDS 新推出的零拷贝 (Zero Copy) 模式有很多难以理解的地方，在这里会持续做些整理。</p>
+<p><strong>目录</strong></p>
+<ol>
+<li>如何使用 ZeroCopy？</li>
+<li>ZeroCopy 理论上 <code>subscriber</code> 和 <code>publisher</code> 会使用同一个内存地址，为什么打印出来的地址不同？</li>
+<li>ZeroCopy 会分配多少空间，什么时候覆盖旧的样本？</li>
+<li><code>qos.history().depth</code> 与 <code>qos.resource_limits().max_samples/extra_samples</code> 什么关系？</li>
+</ol>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/post/fastdds-zerocopy-for-multiple-readers/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/fix-apt-mirror-error/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="S1NH">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="S1NH">
+      <meta itemprop="description" content="no other developers required.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | S1NH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/fix-apt-mirror-error/" class="post-title-link" itemprop="url">apt mirror DEP-11 64x64@2 Icons 404 Not Found</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-07-20 18:18:03" itemprop="dateCreated datePublished" datetime="2022-07-20T18:18:03+08:00">2022-07-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/programming/" itemprop="url" rel="index"><span itemprop="name">算法与硬件</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>目前使用 apt-mirror 会缺少文件，比如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Err:18 http://mymirror.blah:80/ubuntu bionic/main DEP-11 64x64@2 Icons 404 Not Found [IP: *.*.*.* 80]</span><br><span class="line">Err:64 http://mymirror.blah:80/ubuntu bionic-updates/main DEP-11 64x64@2 Icons 404 Not Found [IP: *.*.*.* 80]</span><br></pre></td></tr></table></figure>
+
+<p>需要使用下面的脚本修复。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/post/fix-apt-mirror-error/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/config-for-sermoonv1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -365,7 +730,7 @@
     
     <div class="post-body" itemprop="articleBody">
           <blockquote>
-<p>上一篇文章吐槽了 <code>创想三维 Sermoon V1</code> 的缺点，其中包括不开源的主板。我花了几天时间逆向，得到了主板的配置文件。<br>使用此配置文件可以自行编译固件：开启 Lineradvance、加入 BLTouch 自动调平、降低待机时风扇的噪声。<br>新的配置文件在 <a target="_blank" rel="noopener" href="https://github.com/Klipper3d/klipper/pull/5621">Klipper3d/klipper#5621</a></p>
+<p>上一篇文章吐槽了 <code>创想三维 Sermoon V1</code> 的缺点，其中包括不开源的主板。我花了几天时间逆向，得到了主板的配置文件。<br>使用此配置文件可以自行编译固件：开启 Lineradvance、加入 BLTouch 自动调平、降低待机时风扇的噪声。<br>新的配置文件在 <a target="_blank" rel="noopener" href="https://github.com/Klipper3d/klipper/pull/5621">Klipper3d&#x2F;klipper#5621</a></p>
 <p>另外，文章最后提供一个散热套件的模型。</p>
 </blockquote>
 <p><img data-src="http://qiniu.s1nh.org/sermoon_v1_board_diagram.png-QNthin"></p>
@@ -630,7 +995,7 @@
     
     <div class="post-body" itemprop="articleBody">
           <blockquote>
-<p>ROS 和前期的 Apollo 定义了一个 API，它向用户公开如<code>发布</code>/<code>订阅</code>等通信概念。<br>这些通信概念的实现基于自定义协议，并使用共享内存去降低基于Socket通信的开销。<br>这些传统方法存在一些问题，如每个节点以单独进程的形式存在，由底层操作系统调度，而Linux是个通用系统，每个节点的运行顺序并无任何逻辑。ROS是专用系统，任务应按照一定的业务逻辑执行。</p>
+<p>ROS 和前期的 Apollo 定义了一个 API，它向用户公开如<code>发布</code>&#x2F;<code>订阅</code>等通信概念。<br>这些通信概念的实现基于自定义协议，并使用共享内存去降低基于Socket通信的开销。<br>这些传统方法存在一些问题，如每个节点以单独进程的形式存在，由底层操作系统调度，而Linux是个通用系统，每个节点的运行顺序并无任何逻辑。ROS是专用系统，任务应按照一定的业务逻辑执行。</p>
 </blockquote>
 <p><code>ROS 2</code> 和 <code>Apollo 3</code> 的计算框架 <code>Cyber RT</code> 构建在现有中间件解决方案 <code>DDS</code> 之上 <a name="r1" href="#1"><sup>[1]</sup></a>  <a name="r2" href="#2"><sup>[2]</sup></a> </p>
 <p><code>Cyber RT</code> 在此基础上构建了自己的调度器 <a name="r3" href="#3"><sup>[3]</sup></a>，由一个多队列的<code>任务编排策略</code>调度协程（Coroutine）在 Native Thread 上有序运行。其中，Cyber RT 会动态的根据不同调度顺序的执行时间来动态的选择一个时间最短的调度策略。</p>
@@ -1775,7 +2140,7 @@
 <li><code>场景智能</code>：主动感知、用户理解、个性化推荐、智能决策。</li>
 </ul>
 <h2 id="0x01-多模态自然交互"><a href="#0x01-多模态自然交互" class="headerlink" title="0x01 多模态自然交互"></a>0x01 多模态自然交互</h2><blockquote>
-<p>5G加速智联网时代的到来，多模态数据成为主流<br>电阻屏=&gt;电容屏：流量从PC时代走向移动时代<br>多模态自然交互：移动时代走向智联网时代</p>
+<p>5G加速智联网时代的到来，多模态数据成为主流<br>电阻屏&#x3D;&gt;电容屏：流量从PC时代走向移动时代<br>多模态自然交互：移动时代走向智联网时代</p>
 </blockquote>
 <p><img data-src="http://qiniu.s1nh.org/multi_modal_20200918205030958_203510884.png-QNthin"></p>
 <ul>
@@ -2622,356 +2987,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/making-a-coffeebot-ORB_SLAM/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="S1NH">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="S1NH">
-      <meta itemprop="description" content="no other developers required.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | S1NH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/post/making-a-coffeebot-ORB_SLAM/" class="post-title-link" itemprop="url">制作一个送咖啡机器人 -- ORB SLAM2</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2018-05-12 16:21:01" itemprop="dateCreated datePublished" datetime="2018-05-12T16:21:01+08:00">2018-05-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/programming/" itemprop="url" rel="index"><span itemprop="name">算法与硬件</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <blockquote>
-<p>几个月前在计算所用rplidar做过一个送咖啡机器人。可是运用到室外场景Lidar成本太高，于是转战视觉SLAM。<br>花了几天时间用gazebo仿真，跑通了ORB SLAM2框架。</p>
-</blockquote>
-<p><img data-src="http://qiniu.s1nh.org/orb_slam_simulation-loop.gif" title="解决闭环"></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/post/making-a-coffeebot-ORB_SLAM/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/littlebug/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="S1NH">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="S1NH">
-      <meta itemprop="description" content="no other developers required.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | S1NH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/post/littlebug/" class="post-title-link" itemprop="url">linux kernel bug 导致无法载入 nvidia 驱动</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2018-03-23 19:45:52" itemprop="dateCreated datePublished" datetime="2018-03-23T19:45:52+08:00">2018-03-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/programming/" itemprop="url" rel="index"><span itemprop="name">算法与硬件</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>执行 <code>nvidia-smi</code> 显示：  NVIDIA-SMI has failed because it couldn’t communicate with the NVIDIA driver. Make sure that the latest NVIDIA driver is installed and running.</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/post/littlebug/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/RSA-KMP-RB-TREE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="S1NH">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="S1NH">
-      <meta itemprop="description" content="no other developers required.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | S1NH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/post/RSA-KMP-RB-TREE/" class="post-title-link" itemprop="url">RSA，KMP，AVL树，红黑树和LLRB-tree</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2018-03-03 01:15:23" itemprop="dateCreated datePublished" datetime="2018-03-03T01:15:23+08:00">2018-03-03</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/programming/" itemprop="url" rel="index"><span itemprop="name">算法与硬件</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <blockquote>
-<p>这三个算法是好几年前就好奇但一直没搞懂的神奇算法</p>
-</blockquote>
-<p><img data-src="http://qiniu.s1nh.org/algorithm-23-234.png-QNthin"></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/post/RSA-KMP-RB-TREE/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/lcs/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="S1NH">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="S1NH">
-      <meta itemprop="description" content="no other developers required.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | S1NH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/post/lcs/" class="post-title-link" itemprop="url">最长公共子序列（LCS）到git diff</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2018-02-28 22:45:58" itemprop="dateCreated datePublished" datetime="2018-02-28T22:45:58+08:00">2018-02-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/programming/" itemprop="url" rel="index"><span itemprop="name">算法与硬件</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <blockquote>
-<p>当宿命从你门前走过的时候，芸芸众生总是显得那么渺小</p>
-</blockquote>
-<h2 id="0x00-LCS"><a href="#0x00-LCS" class="headerlink" title="0x00 LCS"></a>0x00 LCS</h2><p><code>最长公共子序列</code>跟<code>最长不降子序列</code>以及<code>最长公共字串</code>都不是一回事。这种用搜索时间复杂度太高的问题一般都会选择用DP来解决。状态转移方程为：</p>
-<p>$$c[i,j] = \begin{cases}<br>0, &amp; i=0 \text{ or }  j=0<br>\\ c[i-1,j-1]+1, &amp; x_i =y_j<br>\\ max(c[i-1,j],c[i,j-1]), &amp;x_i \neq y_i<br> \end{cases}$$</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/post/lcs/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
@@ -3039,7 +3054,7 @@
 
   
 
-  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"/lib/mathjax/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"/lib/mathjax/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
 <script src="/js/third-party/math/mathjax.js"></script>
 
 

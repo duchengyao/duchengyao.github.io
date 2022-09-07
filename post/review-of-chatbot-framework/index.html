@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
@@ -16,10 +16,10 @@
 
 
 
-<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-xejo6yLi6vGtAjcMIsY8BHdKsLg7QynVlFMzdQgUuy8=" crossorigin="anonymous">
   <link rel="stylesheet" href="/lib/@fancyapps/fancybox/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.11.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="之前使用的 valine 评论工具有一些漏洞会导致隐私泄漏和XSS攻击，比如这个，目前更换为 utteranc ，一个基于 github 的评论工具，之前的评论内容正在努力迁移中...  阅读了几篇关于 Chatbot 的综述、文档，Rasa 的介绍。另外，调研了一些大厂的 Chatbot 框架，包括Google 的 Dialogflow, Microsoft Bot, AWS LEX, 阿里小蜜">
 <meta property="og:type" content="article">
@@ -168,7 +168,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">85</span>
+          <span class="site-state-item-count">89</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -179,7 +179,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">83</span>
+        <span class="site-state-item-count">85</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -206,6 +206,10 @@
     </ul>
   </div>
 
+<div>
+<hr>
+<img src="/images/wechatpay-ss.jpg" alt="Buy me a coffe.">
+</div>
         </div>
       </div>
     </div>
@@ -308,7 +312,7 @@
 <li><code>知识领域</code>: open domain, close domain;</li>
 <li><code>提供服务</code>: interpersonal, inter-agent;</li>
 <li><code>目标</code>: informative(FAQ), chat-based(conversational), Task-based;</li>
-<li><code>输入处理和响应生成方法</code>: rule-based, retrieval-based, generative based; </li>
+<li><code>输入处理和响应生成方法</code>: rule-based, retrieval-based, generative based;</li>
 </ul>
 <h3 id="1-2-基于计算方法的分类"><a href="#1-2-基于计算方法的分类" class="headerlink" title="1.2 基于计算方法的分类"></a>1.2 基于计算方法的分类</h3><p>(<a target="_blank" rel="noopener" href="https://wires.onlinelibrary.wiley.com/doi/pdf/10.1002/widm.1434?casa_token=L_ycUq2CuG0AAAAA:yyz7TUFvn3zF5FRu7mJBmFyMY0jlPe4eNGvs8KoKzrrtMbgn2LSWcQzpxsgCLUdItmOzDzfNQyLOcViZJ8M">Luo Bei,2021</a>) 对SOTA 的 chatbot 做了一个详细的综述，其中包括<code>基于计算方法的分类</code> <code>Chatbot 市面上的应用</code> <code>知识库建立方法</code>：</p>
 <ul>
@@ -332,13 +336,13 @@
 <p><strong>d. 强化学习的方法主要基于Markov决策过程，通常描述为</strong></p>
 <blockquote>
 <ol>
-<li>有限状态集 $S={s_i}$；</li>
-<li>有限的行动集 $A={a_i}$ 描述了从一个状态到另一个状态的变换；</li>
-<li>策略 $a=π(s)$ 指定在状态下执行动作的概率 $s$；</li>
-<li>状态转移模型 $T(s,a,s’)=P_r(s’|s,a)$ 表示从状态 $s$ 转移到下一个状态 $s’$ 的概率；</li>
+<li>有限状态集 $S&#x3D;{s_i}$；</li>
+<li>有限的行动集 $A&#x3D;{a_i}$ 描述了从一个状态到另一个状态的变换；</li>
+<li>策略 $a&#x3D;π(s)$ 指定在状态下执行动作的概率 $s$；</li>
+<li>状态转移模型 $T(s,a,s’)&#x3D;P_r(s’|s,a)$ 表示从状态 $s$ 转移到下一个状态 $s’$ 的概率；</li>
 <li>奖励函数 $R(s,a,s’)$ 指定某个状态转移后的即时奖励。</li>
 </ol>
-<p>通过上述定义，强化学习会找到一个最优策略，以最大化收益：<br>$Q_π(s,a)={max}_πE[r_t+γr_{t+1}+γ^2r_{t+2}+… \vee s_t=s, a_t=a,π]$</p>
+<p>通过上述定义，强化学习会找到一个最优策略，以最大化收益：<br>$Q_π(s,a)&#x3D;{max}_πE[r_t+γr_{t+1}+γ^2r_{t+2}+… \vee s_t&#x3D;s, a_t&#x3D;a,π]$</p>
 </blockquote>
 <p><strong>e. 基于各种计算方法的聊天机器人分类</strong></p>
 <table>
@@ -367,9 +371,9 @@
 <td align="left">Pattern matching</td>
 <td align="left">Text mining</td>
 <td align="left">SLU, DST, DPO, NLG</td>
-<td align="left">RNN and LSTM/GRU</td>
+<td align="left">RNN and LSTM&#x2F;GRU</td>
 <td align="left">RL</td>
-<td align="left">Ranking algorithm/embedded technology</td>
+<td align="left">Ranking algorithm&#x2F;embedded technology</td>
 </tr>
 <tr>
 <td align="left">Typical chatbot</td>
@@ -405,7 +409,7 @@
 <td align="left">User input understanding, dialogue state, and response generation</td>
 <td align="left">Response generation and multimedia interaction</td>
 <td align="left">Design for the appropriate application of RL chatbots</td>
-<td align="left">Ranking algorithm improvement/embedding technology</td>
+<td align="left">Ranking algorithm improvement&#x2F;embedding technology</td>
 </tr>
 </tbody></table>
 <p><strong>f. 名词解释</strong></p>
@@ -485,7 +489,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">what is the next action for the bot?</span><br><span class="line">	0 	action_listen 			0.12</span><br><span class="line">			...</span><br><span class="line">	8 	utter_ask_cuisine 		0.03</span><br><span class="line">	9 	utter_ask_helpmore 		0.03	</span><br><span class="line">	10 	utter_ask_howcanhelp 		0.19</span><br><span class="line">	11 	utter_ask_location 		0.04</span><br><span class="line">	12 	utter_ask_moreupdates 		0.03</span><br><span class="line">	13 	utter_ask_numpeople 		0.05</span><br><span class="line">	14 	action_search_restaurants 	0.03</span><br></pre></td></tr></table></figure>
 
 <h3 id="2-7-对话图的可视化"><a href="#2-7-对话图的可视化" class="headerlink" title="2.7 对话图的可视化"></a>2.7 对话图的可视化</h3><p><img data-src="http://qiniu.s1nh.org/blog_chatbot-rasa-graph.png" alt="对话图的可视化"></p>
-<h3 id="2-8-在生产环境中部署"><a href="#2-8-在生产环境中部署" class="headerlink" title="2.8 在生产环境中部署"></a>2.8 在生产环境中部署</h3><p>支持 docker，线程/进程并行的 HTTP API.</p>
+<h3 id="2-8-在生产环境中部署"><a href="#2-8-在生产环境中部署" class="headerlink" title="2.8 在生产环境中部署"></a>2.8 在生产环境中部署</h3><p>支持 docker，线程&#x2F;进程并行的 HTTP API.</p>
 <h3 id="2-9-支持的数据"><a href="#2-9-支持的数据" class="headerlink" title="2.9 支持的数据"></a>2.9 支持的数据</h3><p>支持的数据包括由按意图分类的用户话语组成的 NLU 数据，其中还可以包括实体、正则表达式和查找表等额外信息；此外还可以包含 <code>story base</code> 和 <code>rule base</code> 的对话数据，如下。其它的例子参见 <a target="_blank" rel="noopener" href="https://rasa.com/docs/rasa/training-data-format/">RASA: Training Data Format</a>：</p>
 <p><strong>a. Entities</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">nlu:</span><br><span class="line">- intent: check_balance</span><br><span class="line">  examples: |</span><br><span class="line">    - What&#x27;s my [credit](account) balance?</span><br><span class="line">    - What&#x27;s the balance on my [credit card account]&#123;&quot;entity&quot;:&quot;account&quot;,&quot;value&quot;:&quot;credit&quot;&#125;</span><br></pre></td></tr></table></figure>
@@ -502,10 +506,10 @@
 <li><a target="_blank" rel="noopener" href="https://github.com/fighting41love/funNLP">NLP民工的乐园: 几乎最全的中文NLP资源库</a></li>
 <li><a target="_blank" rel="noopener" href="https://github.com/fendouai/Awesome-Chatbot">Awesome-Chatbot</a></li>
 <li><a target="_blank" rel="noopener" href="https://github.com/codemayq/chinese_chatbot_corpus">中文公开聊天语料库</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/zhaoyingjun/chatbot">zhaoyingjun/chatbot</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/zhaoyingjun/chatbot">zhaoyingjun&#x2F;chatbot</a></li>
 <li><a target="_blank" rel="noopener" href="https://github.com/codemayq/chinese_chatbot_corpus">开闲聊常用语料和短信</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/43e8f9e4a335">如何打造你自己的聊天机器人</a></li>
-<li><a target="_blank" rel="noopener" href="https://wechaty.js.org/docs/wechaty"><code>wechaty</code></a>: 一个可以把微信/京东客服等变成聊天机器人的工具，让运营人员更多的时间思考如何进行活动策划、留存用户，商业变现</li>
+<li><a target="_blank" rel="noopener" href="https://wechaty.js.org/docs/wechaty"><code>wechaty</code></a>: 一个可以把微信&#x2F;京东客服等变成聊天机器人的工具，让运营人员更多的时间思考如何进行活动策划、留存用户，商业变现</li>
 </ul>
 
     </div>
@@ -624,7 +628,7 @@
 
   
 
-  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"/lib/mathjax/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"/lib/mathjax/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
 <script src="/js/third-party/math/mathjax.js"></script>
 
 
