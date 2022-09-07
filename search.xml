@@ -2167,6 +2167,21 @@ apt-get install libusb-1.0-0-dev
       </tags>
   </entry>
   <entry>
+    <title>Chrome Linux 不支持npapi</title>
+    <url>/post/chrome-not-support-npapi-in-linux/</url>
+    <content><![CDATA[<p>Hikvision的web摄像头界面需要npapi的支持。<code>Chrome42</code>之前的版本都不支Npapi，<code>Chrome42~45</code>可以通过<code>chrome://flags/#enable-npapi</code>开启支持，<code>Chrome45</code>之后的版本不支持Npapi。</p>
+<p>花了很久的时间找到了低版本的Chrome安装包，安装完以后依然无法执行插件。</p>
+<p>仔细查阅文档后，发现<strong>只有Mac和Windows的Chrome对NPAPI提供支持</strong>。</p>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+      <tags>
+        <tag>HIKVISION</tag>
+        <tag>npapi</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>多目相机、Velodyne标定那些破事</title>
     <url>/post/calib-velodyne-camera/</url>
     <content><![CDATA[<h2 id="0x01-制作标定板"><a href="#0x01-制作标定板" class="headerlink" title="0x01 制作标定板"></a>0x01 制作标定板</h2><ul>
@@ -2231,21 +2246,6 @@ apt-get install libusb-1.0-0-dev
       <categories>
         <category>算法与硬件</category>
       </categories>
-  </entry>
-  <entry>
-    <title>Chrome Linux 不支持npapi</title>
-    <url>/post/chrome-not-support-npapi-in-linux/</url>
-    <content><![CDATA[<p>Hikvision的web摄像头界面需要npapi的支持。<code>Chrome42</code>之前的版本都不支Npapi，<code>Chrome42~45</code>可以通过<code>chrome://flags/#enable-npapi</code>开启支持，<code>Chrome45</code>之后的版本不支持Npapi。</p>
-<p>花了很久的时间找到了低版本的Chrome安装包，安装完以后依然无法执行插件。</p>
-<p>仔细查阅文档后，发现<strong>只有Mac和Windows的Chrome对NPAPI提供支持</strong>。</p>
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
-      </categories>
-      <tags>
-        <tag>HIKVISION</tag>
-        <tag>npapi</tag>
-      </tags>
   </entry>
   <entry>
     <title>逆向了 SermoonV1 的 CR-FDM-v2.4.S1.200 主板</title>
@@ -2447,57 +2447,6 @@ apt-get install libusb-1.0-0-dev
       </tags>
   </entry>
   <entry>
-    <title>不推荐购买创想三维 Creality Sermoon V1 的几个理由</title>
-    <url>/post/do-not-buy-sermoon-v1/</url>
-    <content><![CDATA[<blockquote>
-<p>看过 [<a href="https://www.zhihu.com/zvideo/1457409894764335104">阿文君的视频</a>] 买了 <code>Sermoon V1</code>。体验过后感觉比较玩具、拓展性也比较差，在这里提出几个不该买的理由。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="0x01-缺少-Linear-Advance-（压力提前-x2F-线性推进）-的支持"><a href="#0x01-缺少-Linear-Advance-（压力提前-x2F-线性推进）-的支持" class="headerlink" title="0x01 缺少 Linear Advance （压力提前&#x2F;线性推进） 的支持"></a>0x01 缺少 Linear Advance （压力提前&#x2F;线性推进） 的支持</h2><p><code>准确的 Linear Advance 的校准是打印一个优秀模型的重要因素</code></p>
-<p>默认情况下，挤出机以线性方式工作。但挤出机不是线性系统，明显会导致在每一步打印后挤出额外材料，并且在下一步开始打印时材料不够。（下图表示了打印机在加速减速的过程，在2处材料挤出不够，且在4、5处产生堆料）</p>
-<p><img data-src="http://qiniu.s1nh.org/sermoon-v1-k-factor_low.png"></p>
-<p>使用 Linear Advance 的优点：</p>
-<ul>
-<li>减少粗糙的边缘，尺寸精度更高。</li>
-<li>可以在不损失任何打印质量的情况下实现更高的打印速度。</li>
-<li>即使在较低的打印速度下，打印质量也会得到提高。</li>
-<li>获得更锋利的边缘。</li>
-</ul>
-<p>网络有很多矫正线性推进的教程，比如：</p>
-<ul>
-<li><a href="https://www.bilibili.com/video/BV1Z94y1U7UL">3D打印机klipper在Voron0.1机器上进行挤出机压力提前测试和校准：新手教程</a></li>
-<li><a href="https://www.bilibili.com/video/BV18541117Yk">【klipper】3D打印机挤出机压力提前测试和校准【3集全】拐角膨胀和起始点分离修正办法</a></li>
-</ul>
-<p>Marlin 官网也提供了详细的<a href="https://marlinfw.org/docs/features/lin_advance.html">调整教程</a></p>
-<p>然而我们的 Sermoon V1 不支持此功能，无法进行调整。我打电话到厂家，给的答复也是“不开源” “没有你想要的固件”</p>
-<h2 id="0x02-糟糕的散热"><a href="#0x02-糟糕的散热" class="headerlink" title="0x02 糟糕的散热"></a>0x02 糟糕的散热</h2><p>此机器的精灵挤出机主体跟 Ender3 S1 的相同，但附件不同。V1挤出机的附件有个致命缺陷散热风扇从底部吸入热空气再给模型降温，缺点是散热很差，在<a href="https://fl.himi3d.cn/d/439-bensermoon-v1">这篇文章</a>有讨论。有几种方式可以改造散热，我做了一版，调试好后会放出来（下图左上。另外：<code>右下黑</code>，原厂；右上黄，<a href="https://fl.himi3d.cn/d/426-bengo10-ender3-s1">S1 风道</a>；左下白，<a href="https://www.crealitycloud.cn/model-detail/626821aac54f1758304dc951">风扇侧装</a>）。</p>
-<p><img data-src="http://qiniu.s1nh.org/sermoon-v1-fan.jpg"></p>
-<p>另外，个人对于挤出机的排线耐久性持怀疑态度，加热棒的大电流不知道会不会导致排线老化。</p>
-<h2 id="0x03-鸡肋的-wifi-功能"><a href="#0x03-鸡肋的-wifi-功能" class="headerlink" title="0x03 鸡肋的 wifi 功能"></a>0x03 鸡肋的 wifi 功能</h2><p>Sermoon V1 自带一个 wifi 板子（下图中间绿色的电路板），功能很弱鸡。比如录像没办法下载，官方给的答复是可以<code>打开手机的录屏功能</code>。</p>
-<p><img data-src="http://qiniu.s1nh.org/sermoon-v1-whole.png"></p>
-<p>我已经把它换成树莓派了，<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2sh1t/mod_octoprint_setup_for_the_creality_sermoon_v1/">有手就能改</a>，可以安装 octoprint 以支持更强大的 <code>wifi</code> <code>远程监控</code> <code>延时摄影</code> 等功能。</p>
-<iframe src="//player.bilibili.com/player.html?aid=342230292&bvid=BV1194y1m7y7&cid=735894030&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-
-<h2 id="0x04-不开源的主控板"><a href="#0x04-不开源的主控板" class="headerlink" title="0x04 不开源的主控板"></a>0x04 不开源的主控板</h2><p>机器左下角的主板基于开源的 <code>Marlin 1</code> 固件魔改而成，<code>Marlin</code> 固件基于 <code>GPL v3</code> 协议，简单来说就是 <code>你可以免费使用、复制、修改、分发受保护程序，但分发时一定要提供源码</code>。然而此主板不提供源码，后果就是我们只能使用老旧的 Marlin 第一代固件，没办法自行升级到 2.0 以上版本，或者最近流行的<code>klipper</code>固件。</p>
-<ul>
-<li>国外有个哥们请求开源，被直接关闭了issue <a href="https://github.com/CrealityOfficial/Ender-3S1/issues/2">链接</a></li>
-<li>无法校准挤出机<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/ui2u5v/how_to_calibrate_extruder_esteps_z_axis_baby/">链接</a></li>
-<li><a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2stxx/sermoon_v1_and_v1_pro_general_info_thoughts/">这里</a> 有一些讨论</li>
-<li><a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2toy2/marlin_stock_firmware_notes_from_the_sermoon_v1/">这里</a>有一些关于固件的信息</li>
-</ul>
-<h2 id="0x05-无用的-pro-版本"><a href="#0x05-无用的-pro-版本" class="headerlink" title="0x05 无用的 pro 版本"></a>0x05 无用的 pro 版本</h2><p>它的 pro 版本包含开盖暂停和相机功能，然而</p>
-<ul>
-<li>开盖暂停&#x2F;断料检测只在SD卡打印时有效；</li>
-<li>摄像头会经常断线（国外有人讨论过可能是这种摄像头不支持在高温环境下工作[<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2stxx/sermoon_v1_and_v1_pro_general_info_thoughts/i2r7irn/?utm_source=reddit&utm_medium=web2x&context=3">链接</a>]）。</li>
-</ul>
-<h2 id="0x06-吵"><a href="#0x06-吵" class="headerlink" title="0x06 吵"></a>0x06 吵</h2><p>这款机器主打静音，但你买了以后就知道给主板散热的小风扇有多吵了。我已经拔风扇插头了，目前没出现什么问题（后盖打开，26度空调）。</p>
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
-      </categories>
-  </entry>
-  <entry>
     <title>计算机视觉技术调查报告</title>
     <url>/post/cv-sjtu/</url>
     <content><![CDATA[<p><code>本资源来自网络，侵权请按ALT+F4</code></p>
@@ -2560,6 +2509,57 @@ apt-get install libusb-1.0-0-dev
 <p>• Xiong, Caiming, Stephen Merity, and Richard Socher. “Dynamic Memory Networks for Visual and Textual Question Answering.” arXiv:1603.01417 (2016).<br>• Mateusz Malinowski, Marcus Rohrbach, Mario Fritz, Ask Your Neurons: A Neural-based Approach to Answering Questions about Images, arXiv:1505.01121.<br>• Stanislaw Antol, Aishwarya Agrawal, Jiasen Lu, Margaret Mitchell, Dhruv Batra, C. Lawrence Zitnick, Devi Parikh, VQA: Visual Question Answering, CVPR, 2015 SUNw:Scene Understanding workshop.<br>• Hauyuan Gao, Junhua Mao, Jie Zhou, Zhiheng Huang, Lei Wang, Wei Xu, Are You Talking to a Machine? Dataset and Methods for Multilingual Image Question Answering, arXiv:1505.05612.<br>• Hyeonwoo Noh, Paul Hongsuck Seo, and Bohyung Han, Image Question Answering using Convolutional Neural Network with Dynamic Parameter Prediction, arXiv:1511.05765<br>• Yang, Z., He, X., Gao, J., Deng, L., &amp; Smola, A. (2015). Stacked Attention Networks for Image Question Answering. arXiv:1511.02274.<br>• Jin-Hwa Kim, Sang-Woo Lee, Dong-Hyun Kwak, Min-Oh Heo, Jeonghee Kim, Jung-Woo Ha, Byoung-Tak Zhang, Multimodal Residual Learning for Visual QA, arXiv:1606:01455<br>• Hyeonwoo Noh and Bohyung Han, Training Recurrent Answering Units with Joint Loss Minimization for VQA, arXiv:1606.03647<br>• Jin-Hwa Kim, Kyoung Woon On, Jeonghee Kim, Jung-Woo Ha, Byoung-Tak Zhang, Hadamard Product for Low-rank Bilinear Pooling, arXiv:1610.04325. </p>
 <h4 id="5-Mask-R-CNN"><a href="#5-Mask-R-CNN" class="headerlink" title="(5) Mask-R-CNN"></a>(5) Mask-R-CNN</h4><p>另外还有一篇是刚刚出来的 Mask RCNN，也是比较火。</p>
 <p>文章在这里 <a href="https://arxiv.org/abs/1703.06870">https://arxiv.org/abs/1703.06870</a><br>具体中文讨论在这里 <a href="https://www.zhihu.com/question/57403701">https://www.zhihu.com/question/57403701</a><br>但是，没有代码，我们组也在复现中 </p>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>不推荐购买创想三维 Creality Sermoon V1 的几个理由</title>
+    <url>/post/do-not-buy-sermoon-v1/</url>
+    <content><![CDATA[<blockquote>
+<p>看过 [<a href="https://www.zhihu.com/zvideo/1457409894764335104">阿文君的视频</a>] 买了 <code>Sermoon V1</code>。体验过后感觉比较玩具、拓展性也比较差，在这里提出几个不该买的理由。</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="0x01-缺少-Linear-Advance-（压力提前-x2F-线性推进）-的支持"><a href="#0x01-缺少-Linear-Advance-（压力提前-x2F-线性推进）-的支持" class="headerlink" title="0x01 缺少 Linear Advance （压力提前&#x2F;线性推进） 的支持"></a>0x01 缺少 Linear Advance （压力提前&#x2F;线性推进） 的支持</h2><p><code>准确的 Linear Advance 的校准是打印一个优秀模型的重要因素</code></p>
+<p>默认情况下，挤出机以线性方式工作。但挤出机不是线性系统，明显会导致在每一步打印后挤出额外材料，并且在下一步开始打印时材料不够。（下图表示了打印机在加速减速的过程，在2处材料挤出不够，且在4、5处产生堆料）</p>
+<p><img data-src="http://qiniu.s1nh.org/sermoon-v1-k-factor_low.png"></p>
+<p>使用 Linear Advance 的优点：</p>
+<ul>
+<li>减少粗糙的边缘，尺寸精度更高。</li>
+<li>可以在不损失任何打印质量的情况下实现更高的打印速度。</li>
+<li>即使在较低的打印速度下，打印质量也会得到提高。</li>
+<li>获得更锋利的边缘。</li>
+</ul>
+<p>网络有很多矫正线性推进的教程，比如：</p>
+<ul>
+<li><a href="https://www.bilibili.com/video/BV1Z94y1U7UL">3D打印机klipper在Voron0.1机器上进行挤出机压力提前测试和校准：新手教程</a></li>
+<li><a href="https://www.bilibili.com/video/BV18541117Yk">【klipper】3D打印机挤出机压力提前测试和校准【3集全】拐角膨胀和起始点分离修正办法</a></li>
+</ul>
+<p>Marlin 官网也提供了详细的<a href="https://marlinfw.org/docs/features/lin_advance.html">调整教程</a></p>
+<p>然而我们的 Sermoon V1 不支持此功能，无法进行调整。我打电话到厂家，给的答复也是“不开源” “没有你想要的固件”</p>
+<h2 id="0x02-糟糕的散热"><a href="#0x02-糟糕的散热" class="headerlink" title="0x02 糟糕的散热"></a>0x02 糟糕的散热</h2><p>此机器的精灵挤出机主体跟 Ender3 S1 的相同，但附件不同。V1挤出机的附件有个致命缺陷散热风扇从底部吸入热空气再给模型降温，缺点是散热很差，在<a href="https://fl.himi3d.cn/d/439-bensermoon-v1">这篇文章</a>有讨论。有几种方式可以改造散热，我做了一版，调试好后会放出来（下图左上。另外：<code>右下黑</code>，原厂；右上黄，<a href="https://fl.himi3d.cn/d/426-bengo10-ender3-s1">S1 风道</a>；左下白，<a href="https://www.crealitycloud.cn/model-detail/626821aac54f1758304dc951">风扇侧装</a>）。</p>
+<p><img data-src="http://qiniu.s1nh.org/sermoon-v1-fan.jpg"></p>
+<p>另外，个人对于挤出机的排线耐久性持怀疑态度，加热棒的大电流不知道会不会导致排线老化。</p>
+<h2 id="0x03-鸡肋的-wifi-功能"><a href="#0x03-鸡肋的-wifi-功能" class="headerlink" title="0x03 鸡肋的 wifi 功能"></a>0x03 鸡肋的 wifi 功能</h2><p>Sermoon V1 自带一个 wifi 板子（下图中间绿色的电路板），功能很弱鸡。比如录像没办法下载，官方给的答复是可以<code>打开手机的录屏功能</code>。</p>
+<p><img data-src="http://qiniu.s1nh.org/sermoon-v1-whole.png"></p>
+<p>我已经把它换成树莓派了，<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2sh1t/mod_octoprint_setup_for_the_creality_sermoon_v1/">有手就能改</a>，可以安装 octoprint 以支持更强大的 <code>wifi</code> <code>远程监控</code> <code>延时摄影</code> 等功能。</p>
+<iframe src="//player.bilibili.com/player.html?aid=342230292&bvid=BV1194y1m7y7&cid=735894030&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+<h2 id="0x04-不开源的主控板"><a href="#0x04-不开源的主控板" class="headerlink" title="0x04 不开源的主控板"></a>0x04 不开源的主控板</h2><p>机器左下角的主板基于开源的 <code>Marlin 1</code> 固件魔改而成，<code>Marlin</code> 固件基于 <code>GPL v3</code> 协议，简单来说就是 <code>你可以免费使用、复制、修改、分发受保护程序，但分发时一定要提供源码</code>。然而此主板不提供源码，后果就是我们只能使用老旧的 Marlin 第一代固件，没办法自行升级到 2.0 以上版本，或者最近流行的<code>klipper</code>固件。</p>
+<ul>
+<li>国外有个哥们请求开源，被直接关闭了issue <a href="https://github.com/CrealityOfficial/Ender-3S1/issues/2">链接</a></li>
+<li>无法校准挤出机<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/ui2u5v/how_to_calibrate_extruder_esteps_z_axis_baby/">链接</a></li>
+<li><a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2stxx/sermoon_v1_and_v1_pro_general_info_thoughts/">这里</a> 有一些讨论</li>
+<li><a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2toy2/marlin_stock_firmware_notes_from_the_sermoon_v1/">这里</a>有一些关于固件的信息</li>
+</ul>
+<h2 id="0x05-无用的-pro-版本"><a href="#0x05-无用的-pro-版本" class="headerlink" title="0x05 无用的 pro 版本"></a>0x05 无用的 pro 版本</h2><p>它的 pro 版本包含开盖暂停和相机功能，然而</p>
+<ul>
+<li>开盖暂停&#x2F;断料检测只在SD卡打印时有效；</li>
+<li>摄像头会经常断线（国外有人讨论过可能是这种摄像头不支持在高温环境下工作[<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2stxx/sermoon_v1_and_v1_pro_general_info_thoughts/i2r7irn/?utm_source=reddit&utm_medium=web2x&context=3">链接</a>]）。</li>
+</ul>
+<h2 id="0x06-吵"><a href="#0x06-吵" class="headerlink" title="0x06 吵"></a>0x06 吵</h2><p>这款机器主打静音，但你买了以后就知道给主板散热的小风扇有多吵了。我已经拔风扇插头了，目前没出现什么问题（后盖打开，26度空调）。</p>
 ]]></content>
       <categories>
         <category>算法与硬件</category>
@@ -2703,10 +2703,9 @@ apt-get install libusb-1.0-0-dev
       </categories>
   </entry>
   <entry>
-    <title>FastDDS 共享内存的使用笔记</title>
+    <title>FastDDS 特定情况下 subscriber 无法重连</title>
     <url>/post/fastdds-shm/</url>
-    <content><![CDATA[<p><strong>1. 特定情况下 subscriber 无法重连</strong></p>
-<blockquote>
+    <content><![CDATA[<blockquote>
 <p>刚开始用 FastDDS 的时候就发现这个问题，原以为是共享内存 deadlock 了，于是就有了前面关于 boost 鲁棒锁的那篇帖子。但问题并没有这么简单 &gt;_&lt;</p>
 </blockquote>
 <p>对 FastDDS 程序进行 debug 时，将 subscriber 暂停，等一会再重启，subscriber将无法再次接收数据。Publisher &#x2F; Subscriber 的日志如下</p>
@@ -2714,17 +2713,22 @@ apt-get install libusb-1.0-0-dev
 
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Subscriber</span><br><span class="line">2022-09-07 14:50:27.441 [RTPS_TRANSPORT_SHM Warning] (ID:140737325877056) Port 7412 Zombie. Reset the port -&gt; Function open_port_internal</span><br><span class="line">2022-09-07 14:50:27.442 [RTPS_TRANSPORT_SHM Warning] (ID:140737325877056) Port 7413 Zombie. Reset the port -&gt; Function open_port_internal</span><br></pre></td></tr></table></figure>
 
-<span id="more"></span>
-
 <p>详细复现过程记录在 <a href="https://github.com/eProsima/Fast-DDS/issues/2811">eProsima&#x2F;Fast-DDS#2811</a></p>
 <p>查看 log 对应的代码，最后定位到可能出现问题的 commit 在 <a href="https://github.com/eProsima/Fast-DDS/commit/e58dcb17e6732b827b18056520c1137b807d800f">eProsima&#x2F;Fast-DDS@e58dcb1</a>。</p>
 <p>这个 commit 是 Pull Request 时将几十个 commit squash 在一起的[<a href="https://github.com/eProsima/Fast-DDS/pull/1187/commits">链接</a>]。squash 前的 commit 在 github 可以查看，但用 git 命令是无法 checkout 的，所以手动下载了一堆源码编译，二分查找了一下，最后定位在下面这个 commit:</p>
 <blockquote>
 <p><a href="https://github.com/eProsima/Fast-DDS/pull/1187/commits/0b8af27cbed21143ececcf34a968d2fbc8d84cff">Refs #8250. Do not reuse zombie ports structures.</a><br>@adolfomarver authored and @MiguelCompany committed on May 12, 2020</p>
 </blockquote>
-<p>问题看起来像是 Subscriber 拒绝复用 zombie ports，但又没申请新的 port. 还没解决，期望能修好这个 bug &gt;_&lt;</p>
-<p><strong>其它</strong><br>分配的每个缓冲区意味着两个内部分配：节点和有效负载。每个内部分配消耗“per_allocation_extra_size_”字节</p>
-<p>open_or_create_and_lock_named_mutex:<br>Interprocess mutex timeout when locking. Possible deadlock: owner died without unlocking?<br>try to remove and create again</p>
+<p>问题看起来像是 Subscriber 拒绝复用 zombie ports，但又没申请新的 port.<br>注释了几行代码，可以暂时避免这个问题，参考 <a href="https://github.com/duchengyao/Fast-DDS/commit/63ad6686d25cb80556e7f2bc101eb39734146729">duchengyao@Fast-DDS&#x2F;commit&#x2F;63ad668</a><br>还没完全解决，期望能修好这个 bug &gt;_&lt;</p>
+<!--
+**其它**
+分配的每个缓冲区意味着两个内部分配：节点和有效负载。每个内部分配消耗“per_allocation_extra_size_”字节
+
+open_or_create_and_lock_named_mutex: 
+Interprocess mutex timeout when locking. Possible deadlock: owner died without unlocking?
+try to remove and create again
+
+-->
 ]]></content>
       <categories>
         <category>算法与硬件</category>

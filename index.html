@@ -335,7 +335,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/post/fastdds-shm/" class="post-title-link" itemprop="url">FastDDS 共享内存的使用笔记</a>
+          <a href="/post/fastdds-shm/" class="post-title-link" itemprop="url">FastDDS 特定情况下 subscriber 无法重连</a>
         </h2>
 
         <div class="post-meta-container">
@@ -368,22 +368,31 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><strong>1. 特定情况下 subscriber 无法重连</strong></p>
-<blockquote>
+          <blockquote>
 <p>刚开始用 FastDDS 的时候就发现这个问题，原以为是共享内存 deadlock 了，于是就有了前面关于 boost 鲁棒锁的那篇帖子。但问题并没有这么简单 &gt;_&lt;</p>
 </blockquote>
 <p>对 FastDDS 程序进行 debug 时，将 subscriber 暂停，等一会再重启，subscriber将无法再次接收数据。Publisher &#x2F; Subscriber 的日志如下</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Publisher</span><br><span class="line">2022-09-06 14:10:47.049 [RTPS_TRANSPORT_SHM Warning] SHM Port 7413 failure: the port is marked as not ok! -&gt; Function try_push</span><br><span class="line">2022-09-06 14:10:47.049 [RTPS_TRANSPORT_SHM Warning] (ID:140091162883648) Existing Port 7413 (5f4eeb5613a33705) NOT Healthy. -&gt; Function open_port_internal</span><br><span class="line">2022-09-06 14:10:47.049 [RTPS_TRANSPORT_SHM Warning] (ID:140091162883648) Port 7413 (5f4eeb5613a33705) Removed. -&gt; Function open_port_internal</span><br><span class="line">Message: HelloWorld with index: 157 SENT</span><br><span class="line">2022-09-06 14:10:47.246 [RTPS_TRANSPORT_SHM Warning] SHM Port 7412 failure: the port is marked as not ok! -&gt; Function try_push</span><br><span class="line">2022-09-06 14:10:47.248 [RTPS_TRANSPORT_SHM Warning] (ID:140091402036800) Existing Port 7412 (3e1fa9f9eb2b0ade) NOT Healthy. -&gt; Function open_port_internal</span><br><span class="line">2022-09-06 14:10:47.248 [RTPS_TRANSPORT_SHM Warning] (ID:140091402036800) Port 7412 (3e1fa9f9eb2b0ade) Removed. -&gt; Function open_port_internal</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Subscriber</span><br><span class="line">2022-09-07 14:50:27.441 [RTPS_TRANSPORT_SHM Warning] (ID:140737325877056) Port 7412 Zombie. Reset the port -&gt; Function open_port_internal</span><br><span class="line">2022-09-07 14:50:27.442 [RTPS_TRANSPORT_SHM Warning] (ID:140737325877056) Port 7413 Zombie. Reset the port -&gt; Function open_port_internal</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/post/fastdds-shm/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+
+<p>详细复现过程记录在 <a target="_blank" rel="noopener" href="https://github.com/eProsima/Fast-DDS/issues/2811">eProsima&#x2F;Fast-DDS#2811</a></p>
+<p>查看 log 对应的代码，最后定位到可能出现问题的 commit 在 <a target="_blank" rel="noopener" href="https://github.com/eProsima/Fast-DDS/commit/e58dcb17e6732b827b18056520c1137b807d800f">eProsima&#x2F;Fast-DDS@e58dcb1</a>。</p>
+<p>这个 commit 是 Pull Request 时将几十个 commit squash 在一起的[<a target="_blank" rel="noopener" href="https://github.com/eProsima/Fast-DDS/pull/1187/commits">链接</a>]。squash 前的 commit 在 github 可以查看，但用 git 命令是无法 checkout 的，所以手动下载了一堆源码编译，二分查找了一下，最后定位在下面这个 commit:</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/eProsima/Fast-DDS/pull/1187/commits/0b8af27cbed21143ececcf34a968d2fbc8d84cff">Refs #8250. Do not reuse zombie ports structures.</a><br>@adolfomarver authored and @MiguelCompany committed on May 12, 2020</p>
+</blockquote>
+<p>问题看起来像是 Subscriber 拒绝复用 zombie ports，但又没申请新的 port.<br>注释了几行代码，可以暂时避免这个问题，参考 <a target="_blank" rel="noopener" href="https://github.com/duchengyao/Fast-DDS/commit/63ad6686d25cb80556e7f2bc101eb39734146729">duchengyao@Fast-DDS&#x2F;commit&#x2F;63ad668</a><br>还没完全解决，期望能修好这个 bug &gt;_&lt;</p>
+<!--
+**其它**
+分配的每个缓冲区意味着两个内部分配：节点和有效负载。每个内部分配消耗“per_allocation_extra_size_”字节
+
+open_or_create_and_lock_named_mutex: 
+Interprocess mutex timeout when locking. Possible deadlock: owner died without unlocking?
+try to remove and create again
+
+-->
+
       
     </div>
 
