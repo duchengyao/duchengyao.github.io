@@ -307,7 +307,7 @@
 <li><a target="_blank" rel="noopener" href="http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz">train-images-idx3-ubyte.gz</a>:  training set images (9912422 bytes)</li>
 <li><a target="_blank" rel="noopener" href="http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz">train-labels-idx1-ubyte.gz</a>:  training set labels (28881 bytes)</li>
 <li><a target="_blank" rel="noopener" href="http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz">t10k-images-idx3-ubyte.gz</a>:   test set images (1648877 bytes)</li>
-<li><a target="_blank" rel="noopener" href="http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz">t10k-labels-idx1-ubyte.gz</a>:   test set labels (4542 bytes)</li>
+<li><a target="_blank" rel="noopener" href="http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz">t10k-labels-idx1-ubyte.gz</a>:   test set labels (4542 bytes) </li>
 </ul>
 <span id="more"></span>
 
@@ -323,11 +323,11 @@ Extracting MNIST_data/t10k-labels-idx1-ubyte.gz
 
 <h2 id="0x01-Softmax"><a href="#0x01-Softmax" class="headerlink" title="0x01 Softmax"></a>0x01 Softmax</h2><p>只用 Softmax Regression 进行分类，正确率约为92%</p>
 <h3 id="1-定义变量"><a href="#1-定义变量" class="headerlink" title="1. 定义变量"></a>1. 定义变量</h3><p>Softmax Regression 的公式可以写成：</p>
-<p>$$y&#x3D;softmax(Wx+b)$$</p>
+<p>$$y=softmax(Wx+b)$$</p>
 <p>其中，<code>x</code>为输入数据（手写数字图片），不限条数的<code>784</code>维的<code>Float32</code>型数据；<br><code>W</code>为<code>784×10（特征维数×图片种类）</code>的<code>Variable</code>向量；<br><code>b</code>是bias（偏置）<br><code>y</code>为Softmax分类后得出的结果</p>
 <p>loss function为<code>cross_entropy</code>，定义如下：</p>
-<p>$$H_y’(y)&#x3D;-\sum_{i}{y’_ilog(y_i)}$$</p>
-<p>而<code>reduce_mean</code>为对每个batch求均值（reduction_indices&#x3D;[1]的意思请看后面的附录， 在新版的<a target="_blank" rel="noopener" href="https://www.tensorflow.org/get_started/mnist/beginners">Tensorflow tutorial</a>中，这部分稍有区别<br>）</p>
+<p>$$H_y’(y)=-\sum_{i}{y’_ilog(y_i)}$$</p>
+<p>而<code>reduce_mean</code>为对每个batch求均值（reduction_indices=[1]的意思请看后面的附录， 在新版的<a target="_blank" rel="noopener" href="https://www.tensorflow.org/get_started/mnist/beginners">Tensorflow tutorial</a>中，这部分稍有区别<br>）</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">x = tf.placeholder(tf.float32,[<span class="literal">None</span>,<span class="number">784</span>])</span><br><span class="line">W = tf.Variable(tf.zeros([<span class="number">784</span>,<span class="number">10</span>]))</span><br><span class="line">b = tf.Variable(tf.zeros([<span class="number">10</span>]))</span><br><span class="line"></span><br><span class="line">y = tf.nn.softmax(tf.matmul(x,W) + b)</span><br><span class="line">y_ = tf.placeholder(tf.float32,[<span class="literal">None</span>,<span class="number">10</span>])</span><br><span class="line"></span><br><span class="line">cross_entropy = tf.reduce_mean(-tf.reduce_sum(y_ * tf.log(y),reduction_indices=[<span class="number">1</span>]))</span><br><span class="line"></span><br><span class="line">train_step = tf.train.GradientDescentOptimizer(<span class="number">0.5</span>).minimize(cross_entropy)</span><br></pre></td></tr></table></figure>
 
 <h3 id="2-训练"><a href="#2-训练" class="headerlink" title="2. 训练"></a>2. 训练</h3><p>每次训练抽取100个样本作为<code>mini-batch</code>，并传给<code>placeholder(x,y_)</code>进行训练，并每隔250输出一次权重。</p>
@@ -454,8 +454,8 @@ step 19900, training accuracy 1
 <h2 id="0x04-附录"><a href="#0x04-附录" class="headerlink" title="0x04 附录"></a>0x04 附录</h2><h3 id="1-关于reduction-indices"><a href="#1-关于reduction-indices" class="headerlink" title="1. 关于reduction_indices"></a>1. 关于reduction_indices</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">x=[[<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>],[<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>]]</span><br><span class="line">y0=tf.reduce_sum(x,reduction_indices=[<span class="number">0</span>])</span><br><span class="line">y1=tf.reduce_sum(x,reduction_indices=[<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;x  = &quot;</span>, x)</span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;y0 = &quot;</span>, sess.run(y0), <span class="string">&quot;\t(x在第0维度相加)&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;y1 = &quot;</span>, sess.run(y1), <span class="string">&quot;\t(x在第1维度相加)&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <pre><code>x  =  [[2, 2, 2], [2, 2, 2]]
-y0 =  [4 4 4] 	(x在第0维度相加)
-y1 =  [6 6] 	(x在第1维度相加)
+y0 =  [4 4 4]     (x在第0维度相加)
+y1 =  [6 6]     (x在第1维度相加)
 </code></pre>
 
     </div>

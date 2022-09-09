@@ -548,7 +548,7 @@
 <p>当宿命从你门前走过的时候，芸芸众生总是显得那么渺小</p>
 </blockquote>
 <h2 id="0x00-LCS"><a href="#0x00-LCS" class="headerlink" title="0x00 LCS"></a>0x00 LCS</h2><p><code>最长公共子序列</code>跟<code>最长不降子序列</code>以及<code>最长公共字串</code>都不是一回事。这种用搜索时间复杂度太高的问题一般都会选择用DP来解决。状态转移方程为：</p>
-<p>$$c[i,j] &#x3D; \begin{cases}<br>0, &amp; i&#x3D;0 \text{ or }  j&#x3D;0<br>\\ c[i-1,j-1]+1, &amp; x_i &#x3D;y_j<br>\\ max(c[i-1,j],c[i,j-1]), &amp;x_i \neq y_i<br> \end{cases}$$</p>
+<p>$$c[i,j] = \begin{cases}<br>0, &amp; i=0 \text{ or }  j=0<br>\\ c[i-1,j-1]+1, &amp; x_i =y_j<br>\\ max(c[i-1,j],c[i,j-1]), &amp;x_i \neq y_i<br> \end{cases}$$</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/lcs/#more" rel="contents">
@@ -1259,7 +1259,7 @@
 <li>OpenCV4Tegra 不支持 -lopencv_nonfree</li>
 <li>OpenCV4Tegra 在TX-2中不支持 GPU 模块</li>
 <li>如何开启被屏蔽的2块CPU并设置为最大频率</li>
-<li>开启Nvidia TX-1&#x2F;2 的VNC</li>
+<li>开启Nvidia TX-1/2 的VNC</li>
 </ul>
           <!--noindex-->
             <div class="post-button">
@@ -1351,7 +1351,7 @@
 <li><a target="_blank" rel="noopener" href="http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz">train-images-idx3-ubyte.gz</a>:  training set images (9912422 bytes)</li>
 <li><a target="_blank" rel="noopener" href="http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz">train-labels-idx1-ubyte.gz</a>:  training set labels (28881 bytes)</li>
 <li><a target="_blank" rel="noopener" href="http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz">t10k-images-idx3-ubyte.gz</a>:   test set images (1648877 bytes)</li>
-<li><a target="_blank" rel="noopener" href="http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz">t10k-labels-idx1-ubyte.gz</a>:   test set labels (4542 bytes)</li>
+<li><a target="_blank" rel="noopener" href="http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz">t10k-labels-idx1-ubyte.gz</a>:   test set labels (4542 bytes) </li>
 </ul>
           <!--noindex-->
             <div class="post-button">
@@ -1523,7 +1523,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>HackRF已经吃灰一年多了，官方的上一个版本还是2015.07，最新的2017.02.1版增加了<code>Sweep mode</code>，<code>Hardware synchronization</code>，<code>hackrf_debug</code>，降低了功耗以及修复了Bug. 在<a target="_blank" rel="noopener" href="https://github.com/mossmann/hackrf/releases">mossmann&#x2F;hackrf&#x2F;releases</a>有编译好的固件<a target="_blank" rel="noopener" href="https://github.com/mossmann/hackrf/releases/download/v2017.02.1/hackrf-2017.02.1.tar.xz">hackrf-2017.02.1.tar.xz</a>下载</p>
+          <p>HackRF已经吃灰一年多了，官方的上一个版本还是2015.07，最新的2017.02.1版增加了<code>Sweep mode</code>，<code>Hardware synchronization</code>，<code>hackrf_debug</code>，降低了功耗以及修复了Bug. 在<a target="_blank" rel="noopener" href="https://github.com/mossmann/hackrf/releases">mossmann/hackrf/releases</a>有编译好的固件<a target="_blank" rel="noopener" href="https://github.com/mossmann/hackrf/releases/download/v2017.02.1/hackrf-2017.02.1.tar.xz">hackrf-2017.02.1.tar.xz</a>下载</p>
 <p><img data-src="http://qiniu.s1nh.org/Blog_HackRF_01.jpeg-QNthin"></p>
           <!--noindex-->
             <div class="post-button">
@@ -2049,7 +2049,7 @@
 <blockquote>
 <p>秉承着以解决问题为乐趣，没有问题创造问题也要解决问题为基本准则。今天发现了一个gnome-theme-kal主题在xfce4下的Bug</p>
 </blockquote>
-<p>最近用Nvidia提供的Nsight来写OpenCV&#x2F;CUDA，白色主题实在是太丑了，就采用通用的方法换成了黑色主题。结果不管怎么折腾，旁边的Navigator都还是白色的，使得整个界面不白不黑的，简直比VIM还丑。</p>
+<p>最近用Nvidia提供的Nsight来写OpenCV/CUDA，白色主题实在是太丑了，就采用通用的方法换成了黑色主题。结果不管怎么折腾，旁边的Navigator都还是白色的，使得整个界面不白不黑的，简直比VIM还丑。</p>
 <p><img data-src="http://qiniu.s1nh.org/Blog_kali-theme_1.png-QNthin"></p>
           <!--noindex-->
             <div class="post-button">
@@ -2310,7 +2310,7 @@
     
     <div class="post-body" itemprop="articleBody">
           <h2 id="编译OpenCV-with-CUDA"><a href="#编译OpenCV-with-CUDA" class="headerlink" title="编译OpenCV with CUDA"></a>编译OpenCV with CUDA</h2><p>编译方法<a target="_blank" rel="noopener" href="http://docs.opencv.org/3.1.0/d7/d9f/tutorial_linux_install.html">官方文档</a>写的特别清楚。此外，如果要使用python接口，编译完成后需要把<code>opencv/site-packages</code>目录下的<code>cv2.so</code>链接（或复制）到<code>python/site-packages</code>中，我执行的命令为<code>sudo ln -s  /usr/local/opencv3/lib/python2.7/dist-packages/cv2.so /usr/lib/python2.7/dist-packages/cv2.so</code>（如果不清楚可以参照<a target="_blank" rel="noopener" href="http://www.jianshu.com/p/67293b547261">[翻译]Python 2.7 和 Python 3+ 的OpenCV 3.0 安装教程</a>）</p>
-<p>查看Api和Guides推荐使用Zeal&#x2F;Dash，就不用那么麻烦跑去官网搜索了：</p>
+<p>查看Api和Guides推荐使用Zeal/Dash，就不用那么麻烦跑去官网搜索了：</p>
 <p><img data-src="http://qiniu.s1nh.org/Blog_zeal-main.png"></p>
           <!--noindex-->
             <div class="post-button">

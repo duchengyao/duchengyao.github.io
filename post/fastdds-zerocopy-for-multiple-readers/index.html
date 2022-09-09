@@ -321,7 +321,7 @@
 <p>创建 DataWriter 时，Fast DDS 将预先分配 <code>max_samples + extra_samples</code> 个样本池，这些样本位于共享内存映射文件中。当调用 <code>loan_sample()</code> 函数时，该池将用于借出样本。</p>
 <p>如 <a target="_blank" rel="noopener" href="https://fast-dds.docs.eprosima.com/en/latest/fastdds/use_cases/zero_copy/zero_copy.html#datawriter">此文档</a> 所述，在写入 <code>resource_limits().max_samples + resource_limits().extra_samples</code> 次后，样本将被覆盖。</p>
 <p>可以在 DataReader 上使用方法 <code>is_sample_valid</code> 来检查样本是否已被覆盖。</p>
-<p><strong>4. qos.history().depth 与 qos.resource_limits().max_samples&#x2F;extra_samples 什么关系？</strong></p>
+<p><strong>4. qos.history().depth 与 qos.resource_limits().max_samples/extra_samples 什么关系？</strong></p>
 <p><code>history()</code> 的设置会覆盖 <code>resource_limits()</code>，具体的，<code>ResourceLimitsQosPolicy::allocated_samples/max_samples</code> 通过 <code>HistoryQosPolicy::depth</code> 和 <code>ResourceLimitsQosPolicy::max_instances</code> 重新计算，公式如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">max_samples = depth * allocated_samples</span><br><span class="line">initial_samples = min(allocated_samples, max_samples)</span><br></pre></td></tr></table></figure>
 
@@ -329,8 +329,8 @@
 
 <h2 id="0xFF-References"><a href="#0xFF-References" class="headerlink" title="0xFF References"></a>0xFF References</h2><ul>
 <li>[1] <a name="1" href="#r1">^</a> <a target="_blank" rel="noopener" href="https://fast-dds.docs.eprosima.com/en/v2.7.1/fastdds/use_cases/zero_copy/zero_copy.html#getting-started">15.7. Zero-Copy communication</a></li>
-<li>[1] <a name="2" href="#r2">^</a> <a target="_blank" rel="noopener" href="https://github.com/eProsima/Fast-DDS/discussions/2933">discussions&#x2F;2933</a></li>
-<li>[1] <a name="3" href="#r3">^</a> <a target="_blank" rel="noopener" href="https://github.com/eProsima/Fast-DDS/issues/2369#issuecomment-999344740">issues&#x2F;2369#issuecomment-999344740</a></li>
+<li>[1] <a name="2" href="#r2">^</a> <a target="_blank" rel="noopener" href="https://github.com/eProsima/Fast-DDS/discussions/2933">discussions/2933</a></li>
+<li>[1] <a name="3" href="#r3">^</a> <a target="_blank" rel="noopener" href="https://github.com/eProsima/Fast-DDS/issues/2369#issuecomment-999344740">issues/2369#issuecomment-999344740</a></li>
 </ul>
 
     </div>

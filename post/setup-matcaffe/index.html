@@ -308,7 +308,7 @@
 
 <h3 id="0x01-解决方法"><a href="#0x01-解决方法" class="headerlink" title="0x01 解决方法"></a>0x01 解决方法</h3><h4 id="坑1"><a href="#坑1" class="headerlink" title="坑1"></a>坑1</h4><p><code>export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libstdc++.so.6</code></p>
 <h4 id="坑2：-修改软链接"><a href="#坑2：-修改软链接" class="headerlink" title="坑2： 修改软链接"></a>坑2： 修改软链接</h4><p>原因是Caffe用系统的opencv编译，但是运行matcaffe时链接了matlab的opencv版本（<a target="_blank" rel="noopener" href="https://github.com/BVLC/caffe/issues/3934%EF%BC%89">https://github.com/BVLC/caffe/issues/3934）</a></p>
-<p>进入matlab的安装目录&#96;&#96;，修改了如下软链接，问题解决</p>
+<p>进入matlab的安装目录``，修改了如下软链接，问题解决</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bopencv_core.so.2.4 -&gt; /usr/lib/x86_64-linux-gnu/libopencv_core.so.2.4.9</span><br><span class="line">libopencv_highgui.so.2.4 -&gt; /usr/lib/x86_64-linux-gnu/libopencv_highgui.so.2.4.9</span><br><span class="line">libopencv_imgproc.so.2.4 -&gt; /usr/lib/x86_64-linux-gnu/libopencv_imgproc.so.2.4.9</span><br></pre></td></tr></table></figure>
 
 <blockquote>

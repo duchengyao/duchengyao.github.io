@@ -314,16 +314,16 @@
 </blockquote>
 <p>RSA的生成步骤如下：</p>
 <ol>
-<li>随意选择两个大质数<code>p</code> <code>q</code>，并计算$N&#x3D;p*q$</li>
-<li>$r&#x3D;(p-1)(q-1)$ 这是根据欧拉函数$r &#x3D; φ(N) &#x3D; φ(p)\cdotφ(q) &#x3D; (p-1)\cdot(q-1)$获得的</li>
-<li>选择一个小于r并与r互质的整数e（通常取<strong>65537</strong>），求得e关于r的模反元素d（$ed &#x3D; 1(mod r)$，模反元素存在，当且仅当e与r互质）</li>
+<li>随意选择两个大质数<code>p</code> <code>q</code>，并计算$N=p*q$</li>
+<li>$r=(p-1)(q-1)$ 这是根据欧拉函数$r = φ(N) = φ(p)\cdotφ(q) = (p-1)\cdot(q-1)$获得的</li>
+<li>选择一个小于r并与r互质的整数e（通常取<strong>65537</strong>），求得e关于r的模反元素d（$ed = 1(mod r)$，模反元素存在，当且仅当e与r互质）</li>
 <li>销毁p和q</li>
 <li>(N , e)是公钥，(N, d)为私钥</li>
 </ol>
 <p>假设明文内容<code>m</code>，密文内容<code>c</code></p>
 <ul>
-<li>加密过程： $m^e &#x3D; c ,(\mod n ,)$</li>
-<li>解密过程： $c^d &#x3D; m ,(\mod n ,)$</li>
+<li>加密过程： $m^e = c ,(\mod n ,)$</li>
+<li>解密过程： $c^d = m ,(\mod n ,)$</li>
 </ul>
 <h2 id="0x02-KMP算法"><a href="#0x02-KMP算法" class="headerlink" title="0x02 KMP算法"></a>0x02 KMP算法</h2><p>KMP是字符串匹配的算法，由普通的O(MN)缩减到了O(M+N)。KMP 算法的意思是找到目标字符串（模式串）中已经匹配过的前缀，并略去其匹配过程。<br>先看知乎大神的解释</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">from https://www.zhihu.com/question/34623343/answer/59516921</span><br><span class="line">我我是我是傻我不是傻逼我是傻逼我是大傻逼</span><br><span class="line">找出句中的“我是傻逼”</span><br><span class="line">普通的字符串匹配比较傻逼：</span><br><span class="line">我我是我是傻我不是傻逼我是傻逼我是大傻逼</span><br><span class="line">我</span><br><span class="line">对上了</span><br><span class="line">我我是我是傻我不是傻逼我是傻逼我是大傻逼</span><br><span class="line">我是</span><br><span class="line">对不上了，往后移一个，我们再来</span><br><span class="line">我我是我是傻我不是傻逼我是傻逼我是大傻逼</span><br><span class="line">__我</span><br><span class="line">对上了</span><br><span class="line">我我是我是傻我不是傻逼我是傻逼我是大傻逼</span><br><span class="line">__我是</span><br><span class="line">对上了</span><br><span class="line">我我是我是傻我不是傻逼我是傻逼我是大傻逼</span><br><span class="line">__我是傻</span><br><span class="line">对不上了，往后移一下，我们再来</span><br><span class="line">等等，你傻啊，你往后移一个明显不可能对的上嘛，为毛不一下移两个呢？</span><br><span class="line">好好好，我移两个移两个</span><br><span class="line">我我是我是傻我不是傻逼我是傻逼我是大傻逼</span><br><span class="line">_____我对上了</span><br><span class="line">我我是我是傻我不是傻逼我是傻逼我是大傻逼</span><br><span class="line">_____我是对上了</span><br><span class="line">我我是我是傻我不是傻逼我是傻逼我是大傻逼</span><br><span class="line">_____我是傻对上了</span><br><span class="line">我我是我是傻我不是傻逼我是傻逼我是大傻逼</span><br><span class="line">_____我是傻逼对不上了。。。</span><br><span class="line">这次还往后移一个吗？还是……移两个？</span><br><span class="line">啊？你傻啊，你看不出来能一次往后移三个啊！！！</span><br><span class="line"></span><br><span class="line">嗯？怎么看出来的呢？</span><br><span class="line">这个嘛，当然是和我是傻逼这四个字有关系啦。匹配的越多，失配后后移的越多。</span><br><span class="line">那后移多少呢？</span><br><span class="line">那就是next数组啦。。。</span><br></pre></td></tr></table></figure>
@@ -332,7 +332,7 @@
 <ul>
 <li>AVL树：最早的平衡二叉树之一，应用比较少。Windows对进程地址空间的管理用到了AVL树。</li>
 <li>红黑树：广泛应用在C++的STL中，比如map和set都是红黑树实现的</li>
-<li>B&#x2F;B+树：磁盘文件组织，数据库的索引</li>
+<li>B/B+树：磁盘文件组织，数据库的索引</li>
 <li>Trie树：统计排序大量字符串（自动机）</li>
 </ul>
 <h4 id="1-AVL树（平衡二叉树）"><a href="#1-AVL树（平衡二叉树）" class="headerlink" title="1. AVL树（平衡二叉树）"></a>1. AVL树（平衡二叉树）</h4><p><code>AVL树的左子树和右子树的深度之差(平衡因子)的绝对值不超过1，且它的左子树和右子树都是一颗平衡二叉树。</code></p>
@@ -346,7 +346,7 @@
 <li>每个节点不是红色就是黑色的；</li>
 <li>根节点总是黑色的；</li>
 <li>如果节点是红色的，则它的子节点必须是黑色的（反之不一定）；</li>
-<li>从根节点到叶节点或空子节点的每条路径，必须包含相同数目的黑色节点（即相同的黑色高度）。</li>
+<li>从根节点到叶节点或空子节点的每条路径，必须包含相同数目的黑色节点（即相同的黑色高度）。   </li>
 </ol>
 <p>红黑树的规则太复杂了，然而我们从<a target="_blank" rel="noopener" href="http://blog.csdn.net/chen_zhang_yu/article/details/52415077">这篇文章</a>中读懂红黑树的起源<code>2-3-4树</code>，问题就迎刃而解啦。</p>
 <p>我们定义</p>

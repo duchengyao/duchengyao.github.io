@@ -309,12 +309,12 @@
 <ul>
 <li><strong>安装ROS</strong></li>
 <li><strong>配置环境</strong></li>
-<li><strong>文件系统工具</strong> <code>rospack</code> <code>roscd</code> &#96;</li>
-<li><strong>catkin管理工具包</strong> （因为我经常使用 <code>catkin_make_isolate</code> 所以我在 ~&#x2F;.bash_alias 中添加了一行<code>alias make_robot=&#39;cd ~/project/catkin_ws ; catkin_make_isolated --install --use-ninja ; cd -&#39;</code>）</li>
+<li><strong>文件系统工具</strong> <code>rospack</code> <code>roscd</code> `</li>
+<li><strong>catkin管理工具包</strong> （因为我经常使用 <code>catkin_make_isolate</code> 所以我在 ~/.bash_alias 中添加了一行<code>alias make_robot=&#39;cd ~/project/catkin_ws ; catkin_make_isolated --install --use-ninja ; cd -&#39;</code>）</li>
 <li><strong>节点(node)</strong> <code>roscore</code> <code>rosnode list/info/ping</code> <code>rosrun</code></li>
-<li><strong><a target="_blank" rel="noopener" href="http://wiki.ros.org/cn/ROS/Tutorials/UnderstandingTopics">话题(Topic)</a></strong> 键盘&#x2F;代码控制小乌龟到处跑， <code>rqt_graph</code> <code>rqt_plot</code> <code>rostopic echo</code> <code>rostopic list -v</code> <code>rostopic type</code> <code>rosmsg show</code> <code>rostopic pub [topic] [msg_type] [args]</code></li>
-<li><strong>服务&#x2F;参数</strong> <code>rosservice list/type/call</code> <code>rossrv</code> <code>rosparam list/get/set/dump/load</code></li>
-<li><strong>调试&#x2F;运行</strong> <code>rqt_console</code> <code>rqt_logger_level</code> <code>roslaunch</code></li>
+<li><strong><a target="_blank" rel="noopener" href="http://wiki.ros.org/cn/ROS/Tutorials/UnderstandingTopics">话题(Topic)</a></strong> 键盘/代码控制小乌龟到处跑， <code>rqt_graph</code> <code>rqt_plot</code> <code>rostopic echo</code> <code>rostopic list -v</code> <code>rostopic type</code> <code>rosmsg show</code> <code>rostopic pub [topic] [msg_type] [args]</code></li>
+<li><strong>服务/参数</strong> <code>rosservice list/type/call</code> <code>rossrv</code> <code>rosparam list/get/set/dump/load</code></li>
+<li><strong>调试/运行</strong> <code>rqt_console</code> <code>rqt_logger_level</code> <code>roslaunch</code></li>
 </ul>
 <h2 id="0x02-SLAM-Cartographer-ROS-for-TurtleBots"><a href="#0x02-SLAM-Cartographer-ROS-for-TurtleBots" class="headerlink" title="0x02 SLAM: Cartographer ROS for TurtleBots"></a>0x02 SLAM: Cartographer ROS for TurtleBots</h2><p>我按照<a target="_blank" rel="noopener" href="https://google-cartographer-ros-for-turtlebots.readthedocs.io/en/latest/">官方教程</a>没有出错，可能因为我这边原生ipv6翻墙。如果在<code>catkin_make_isolated</code>这一步出问题了，可以看<a target="_blank" rel="noopener" href="http://blog.csdn.net/ywj447/article/details/52922487">这篇</a>。</p>
 <p>装完以后记得运行一下<a target="_blank" rel="noopener" href="https://google-cartographer-ros-for-turtlebots.readthedocs.io/en/latest/#running-the-demo">官方教程</a>的demo。</p>

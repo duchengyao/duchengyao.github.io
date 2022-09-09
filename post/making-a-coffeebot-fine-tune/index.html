@@ -316,7 +316,7 @@
 </blockquote>
 <p>其实看了上面两个帖子，并没有什么太大的卵用，因为我不会越过 <code>Cartographer_ROS Api</code> 直接调用Cartographer的函数。如果在构建地图的时候碰到这种被劫持的情况（特别是搬动到比较远的地方），地图基本就GG了；如果已经构建好整个区域的地图，使用<code>-map_filename</code>调用地图文件进行导航的时候，还是有可能解决的：</p>
 <ul>
-<li><code>TRAJECTORY_BUILDER.pure_localization = true</code> 减少了增长的SLAM数据，使内存使用降低到以前的1&#x2F;10左右</li>
+<li><code>TRAJECTORY_BUILDER.pure_localization = true</code> 减少了增长的SLAM数据，使内存使用降低到以前的1/10左右</li>
 <li><code>SPARSE_POSE_GRAPH.optimize_every_n_scans = 1</code>进行全局校正的时间，每秒钟都会对自己的局部地图与全局地图进行匹配，如果位移不是很大，会看到地图被慢慢的矫正过去。（如果这个值设大了或者设为0，你的地图会乱成一坨屎也矫正不过去）</li>
 </ul>
 <p><img data-src="http://qiniu.s1nh.org/Blog_robot_fine_tune_move_map.gif" title="把机器人搬移一段位置，地图会自动矫正（map视图）"></p>

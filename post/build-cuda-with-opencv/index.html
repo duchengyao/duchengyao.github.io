@@ -302,7 +302,7 @@
     
     <div class="post-body" itemprop="articleBody">
         <h2 id="编译OpenCV-with-CUDA"><a href="#编译OpenCV-with-CUDA" class="headerlink" title="编译OpenCV with CUDA"></a>编译OpenCV with CUDA</h2><p>编译方法<a target="_blank" rel="noopener" href="http://docs.opencv.org/3.1.0/d7/d9f/tutorial_linux_install.html">官方文档</a>写的特别清楚。此外，如果要使用python接口，编译完成后需要把<code>opencv/site-packages</code>目录下的<code>cv2.so</code>链接（或复制）到<code>python/site-packages</code>中，我执行的命令为<code>sudo ln -s  /usr/local/opencv3/lib/python2.7/dist-packages/cv2.so /usr/lib/python2.7/dist-packages/cv2.so</code>（如果不清楚可以参照<a target="_blank" rel="noopener" href="http://www.jianshu.com/p/67293b547261">[翻译]Python 2.7 和 Python 3+ 的OpenCV 3.0 安装教程</a>）</p>
-<p>查看Api和Guides推荐使用Zeal&#x2F;Dash，就不用那么麻烦跑去官网搜索了：</p>
+<p>查看Api和Guides推荐使用Zeal/Dash，就不用那么麻烦跑去官网搜索了：</p>
 <p><img data-src="http://qiniu.s1nh.org/Blog_zeal-main.png"></p>
 <span id="more"></span>
 
@@ -313,7 +313,7 @@
 <ol>
 <li>下载<code>https://github.com/thrust/thrust</code>的<code>cuda-next-release</code>分支</li>
 <li>把<code>CUDA\v8.0\include\thrust\</code> 重命名为 <code>thrust_old</code></li>
-<li>建立软链接&#96;&#96;CUDA\v8.0\include\thrust` 到 <code>...cuda-next-release\thrust</code></li>
+<li>建立软链接``CUDA\v8.0\include\thrust` 到 <code>...cuda-next-release\thrust</code></li>
 </ol>
 <blockquote>
 <p>参考:<br>　　1.<a target="_blank" rel="noopener" href="http://answers.opencv.org/question/95991/opencv-30-build-error-cuda-80/?answer=96837">OpenCV 3.0 Build Error Cuda 8.0</a><br>　　2.<a target="_blank" rel="noopener" href="https://github.com/opencv/opencv/issues/6632">Opencv 3.1. CUDA 8 compatibility issues</a><br>　　3.<a target="_blank" rel="noopener" href="https://github.com/thrust/thrust/issues/800">thrust 1.8.3 exclusive_scan with custom temporary allocation, no default constructor error</a></p>

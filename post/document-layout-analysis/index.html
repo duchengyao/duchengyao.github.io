@@ -339,7 +339,7 @@
 <li><code>B</code> 预处理图像以去除<strong>高斯噪声</strong>和<strong>椒盐噪声</strong>。<em>（某些噪声消除滤波器可能会将逗号和句号视为噪声，因此必须小心谨慎）</em></li>
 <li><code>B</code> 将图像<strong>二值化</strong></li>
 <li><code>B</code> 将图像分割为黑色像素的<strong>连通分量（下文称 Symbol）</strong>。对于每个Symbol，计算边框和质心（bounding box, centroid）。</li>
-<li><code>C</code> 对于每个Symbol，确定其k近邻，且k&gt;&#x3D;4。<em>（ O’Gorman在他的论文中建议将k &#x3D; 5作为鲁棒性和速度之间的良好折衷。使用至少k &#x3D; 4的原因是对于文档中的符号，两个或三个最接近的符号是在相同文本行上紧邻的那些符号。第四最近的符号通常在正上方或下方的一条线上，并且在下面的最近邻居计算中包括这些符号是很重要的。）</em></li>
+<li><code>C</code> 对于每个Symbol，确定其k近邻，且k&gt;=4。<em>（ O’Gorman在他的论文中建议将k = 5作为鲁棒性和速度之间的良好折衷。使用至少k = 4的原因是对于文档中的符号，两个或三个最接近的符号是在相同文本行上紧邻的那些符号。第四最近的符号通常在正上方或下方的一条线上，并且在下面的最近邻居计算中包括这些符号是很重要的。）</em></li>
 <li><code>C</code> 每个Symbol的近邻对与两者质心的向量相关。如果为每对最近邻Symbol绘制这些向量，则可以得到文档的<strong>docstrum</strong>（下图）。通过来自水平的角度θ和两个最近邻居符号之间的距离D，创建<strong>最近邻角</strong>和<strong>最近邻距离直方图</strong>。</li>
 <li><code>D</code> 使用最近邻角度直方图，可以计算文档的歪斜。如果歪斜较小，则继续下一步。如果不是，旋转图像以消除歪斜并返回<em>步骤3</em>。</li>
 <li><code>D</code> 最近邻距离直方图具有若干峰值，并且这些峰值通常表示<strong>字符间间距</strong>，<strong>字间间距</strong>和<strong>行间间隔</strong>（between-character, between-word, between-line）。</li>
@@ -360,17 +360,13 @@
 <li><p><code>60多页</code> Cattoni, Roldano, et al. “Geometric layout analysis techniques for document image understanding: a review.” ITC-irst Technical Report 9703.09 (1998).</p>
 </li>
 <li><p><a target="_blank" rel="noopener" href="https://www.researchgate.net/profile/Faisal_Shafait/publication/226110361_Coupled_snakelets_for_curled_text-line_segmentation_from_warped_document_images/links/542358fe0cf26120b7a6c334.pdf">[IJDAR 2013]</a> Bukhari, S. S., Shafait, F., &amp; Breuel, T. M.  Coupled snakelets for curled text-line segmentation from warped document images</p>
-<img data-src="http://qiniu.s1nh.org/Blog_docstrum_2.png" width="600">
-</li>
+<img data-src="http://qiniu.s1nh.org/Blog_docstrum_2.png" width="600"></li>
 <li><p><a target="_blank" rel="noopener" href="https://www.researchgate.net/profile/Thomas_Breuel/publication/5431819_Performance_Evaluation_and_Benchmarking_of_Six-Page_Segmentation_Algorithms/links/551dd6dd0cf213ef063eb1ee.pdf">[TPAMI 2008]</a> Shafait, F., Keysers, D., &amp; Breuel, T. Performance evaluation and benchmarking of six-page segmentation algorithms </p>
-<img data-src="http://qiniu.s1nh.org/Blog_docstrum_3.png" width="600">
-</li>
+<img data-src="http://qiniu.s1nh.org/Blog_docstrum_3.png" width="600"></li>
 <li><p><a target="_blank" rel="noopener" href="https://pdfs.semanticscholar.org/aa39/21e3a2eda4dd91c89f601ca9ae502f1e65e3.pdf">ICIAR 2014</a> Kassis, M., Kurar, B., Cohen, R., El-Sana, J., &amp; Kedem, K. Using Scale-Space Anisotropic Smoothing for Text Line Extraction in Historical Documents.</p>
-<img data-src="http://qiniu.s1nh.org/Blog_docstrum_6.png" width="700">
-</li>
+<img data-src="http://qiniu.s1nh.org/Blog_docstrum_6.png" width="700"></li>
 <li><p><a target="_blank" rel="noopener" href="http://www.iapr-tc11.org/archive/das2012/attachments/FullPaperProceedings/4661a394.pdf">DAS 2012</a> Afzal, M. Z., Kramer, M., Bukhari, S. S., Shafait, F., &amp; Breuel, T. M.  Improvements to uncalibrated feature-based stereo matching for document images by using text-line segmentation</p>
-<img data-src="http://qiniu.s1nh.org/Blog_docstrum_4.png" width="500">
-</li>
+<img data-src="http://qiniu.s1nh.org/Blog_docstrum_4.png" width="500"></li>
 <li><p><a target="_blank" rel="noopener" href="http://www.dfki.de/~bukhari/data/papers/29-Bukhari-Generic-Textline-Extraction-ICDAR13.pdf">ICDAR 2013</a>Bukhari, S. S., Shafait, F., &amp; Breuel, T. M. (2013, August). Towards generic text-line extraction.</p>
 <img data-src="http://qiniu.s1nh.org/Blog_docstrum_5.png" width="400"></li>
 </ul>

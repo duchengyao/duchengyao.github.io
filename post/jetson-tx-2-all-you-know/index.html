@@ -303,20 +303,20 @@
 <li>OpenCV4Tegra 不支持 -lopencv_nonfree</li>
 <li>OpenCV4Tegra 在TX-2中不支持 GPU 模块</li>
 <li>如何开启被屏蔽的2块CPU并设置为最大频率</li>
-<li>开启Nvidia TX-1&#x2F;2 的VNC</li>
+<li>开启Nvidia TX-1/2 的VNC</li>
 </ul>
 <span id="more"></span>
 
-<h2 id="0x01-OpenCV4Tegra-不支持-lopencv-nonfree"><a href="#0x01-OpenCV4Tegra-不支持-lopencv-nonfree" class="headerlink" title="0x01 OpenCV4Tegra 不支持 -lopencv_nonfree"></a>0x01 OpenCV4Tegra 不支持 -lopencv_nonfree</h2><p>Jetpack 自带的 Opencv 不支持 nonfree 库，因此就不能使用SIFT&#x2F;SURF这种专利算法。要使用nonfree库有两种解决方案<a target="_blank" rel="noopener" href="http://elinux.org/Jetson/Installing_OpenCV#Prebuilt_OpenCV_library_versus_Building_the_OpenCV_library_from_source">[参考]</a>：</p>
+<h2 id="0x01-OpenCV4Tegra-不支持-lopencv-nonfree"><a href="#0x01-OpenCV4Tegra-不支持-lopencv-nonfree" class="headerlink" title="0x01 OpenCV4Tegra 不支持 -lopencv_nonfree"></a>0x01 OpenCV4Tegra 不支持 -lopencv_nonfree</h2><p>Jetpack 自带的 Opencv 不支持 nonfree 库，因此就不能使用SIFT/SURF这种专利算法。要使用nonfree库有两种解决方案<a target="_blank" rel="noopener" href="http://elinux.org/Jetson/Installing_OpenCV#Prebuilt_OpenCV_library_versus_Building_the_OpenCV_library_from_source">[参考]</a>：</p>
 <blockquote>
-<p>Note about SIFT&#x2F;SURF in the nonfree module: OpenCV4Tegra doesn’t include the opencv_nonfree package (containing SIFT &amp; SURF feature detectors) since those algorithms are patented by other companies and therefore anyone using opencv_nonfree is at risk of liability.</p>
+<p>Note about SIFT/SURF in the nonfree module: OpenCV4Tegra doesn’t include the opencv_nonfree package (containing SIFT &amp; SURF feature detectors) since those algorithms are patented by other companies and therefore anyone using opencv_nonfree is at risk of liability.</p>
 </blockquote>
 <blockquote>
 <p>If you need something from the nonfree module, you have 2 options:</p>
 </blockquote>
 <blockquote>
 <ol>
-<li>Analyze the public OpenCV source code then copy&#x2F;paste the parts of the nonfree module that you want (eg: SURF feature detector) from OpenCV into your own project. You will have the CPU optimizations of OpenCV4Tegra for most of your code and will have the GPU module and will have the non-optimized patented code that you need from the nonfree package such as SURF. So this option gives full performance (for everything except the nonfree code) but is tedious.</li>
+<li>Analyze the public OpenCV source code then copy/paste the parts of the nonfree module that you want (eg: SURF feature detector) from OpenCV into your own project. You will have the CPU optimizations of OpenCV4Tegra for most of your code and will have the GPU module and will have the non-optimized patented code that you need from the nonfree package such as SURF. So this option gives full performance (for everything except the nonfree code) but is tedious.</li>
 <li>Ignore OpenCV4Tegra, and instead, download &amp; build public OpenCV (by following the instructions below for natively compiling the OpenCV library from source). You will still have the GPU module but not any CPU optimizations, but you won’t need to spend time ripping out parts of the OpenCV non-free module code. So this option is easiest but produces slower code if you are running most of your code on CPU.</li>
 </ol>
 </blockquote>

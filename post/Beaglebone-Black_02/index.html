@@ -309,7 +309,7 @@
 </ul>
 <p>要注意的是，BBB 现在推出了有4G eMMC 的 Rev C，所以下载之前一定要看好<code>版本号(Rev)</code>；还有要注意的是要主意<code>microSD/Standalone</code>和<code>lxde/console</code>。</p>
 <p>注意，有些网站在天朝被墙了，请参照之前的文章用<a href="/tags/Lantern/">Lantern</a>翻墙。</p>
-<h3 id="安装Image到microSD卡"><a href="#安装Image到microSD卡" class="headerlink" title="安装Image到microSD卡"></a>安装Image到microSD卡</h3><p>分别在插入&#x2F;拔出SD卡的时候输入命令<code>ls /dev</code>，查看SD卡的磁盘名称，我的是<code>disk2</code>。</p>
+<h3 id="安装Image到microSD卡"><a href="#安装Image到microSD卡" class="headerlink" title="安装Image到microSD卡"></a>安装Image到microSD卡</h3><p>分别在插入/拔出SD卡的时候输入命令<code>ls /dev</code>，查看SD卡的磁盘名称，我的是<code>disk2</code>。</p>
 <pre><code>//警告！如果不知道dd命令是干嘛的，或者不知道我上面说的`disk2`是怎么来的
 //在你baidu清楚之前，不要执行下面那行代码。
 
@@ -326,7 +326,7 @@ dd if=BBB-eMMC-flasher-debian-7.9-lxde-armhf-2015-11-03-2gb.img of=/dev/rdisk2 b
 <p>重新启动，就会看到BBB的四个LED灯像流水一样闪烁。刷完以后BBB会自动关机。等它刷新完eMMC以后，记得拔出microSD卡，否则下次开机后会重新刷一遍- -</p>
 <h3 id="安装LXDE"><a href="#安装LXDE" class="headerlink" title="安装LXDE"></a>安装LXDE</h3><p>在官网下载了Debian8.2的Image，安装完毕后发现没有桌面环境。输入以下命令手动安装<a target="_blank" rel="noopener" href="http://wiki.lxde.org/zh/Debian">LXDE桌面环境</a>：</p>
 <pre><code>aptitude install --without-recommends lxde  //安装简化版的LXDE
-apt-get install xorg xserver-xorg           //如果不安装这个，没有startx命令					
+apt-get install xorg xserver-xorg           //如果不安装这个，没有startx命令                    
 </code></pre>
 <p>安装完毕后，执行<code>startx</code>运行桌面环境。启动后的桌面环境会报错<code>no session for pid ****</code>，不知道是什么原因耶。</p>
 <p>因为板载eMMC只有2G，最后我放弃了这种方式，选择了直接使用4G-SD卡的Image。</p>
