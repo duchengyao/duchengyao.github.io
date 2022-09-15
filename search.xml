@@ -475,6 +475,54 @@ n latest
       </tags>
   </entry>
   <entry>
+    <title>CVPR2016目标检测领域</title>
+    <url>/post/CVPR2016/</url>
+    <content><![CDATA[<blockquote>
+<p>转载自<a href="https://zhuanlan.zhihu.com/p/21533724">https://zhuanlan.zhihu.com/p/21533724</a></p>
+</blockquote>
+<p>2016年的CVPR会议目标检测（在这里讨论的是2D的目标检测，如图1所示）的方法主要是基于卷积神经网络的框架，代表性的工作有ResNet[1]（Kaiming He等）、YOLO[5]（Joseph Redmon等）、LocNet[7]（Spyros Gidaris等）、HyperNet[3]（Tao Kong等）、ION[2]（Sean Bell等）、G-CNN[6]（Mahyar Najibi等）。在这里之所以把ResNet也放进来，是因为有效的特征对于目标检测领域是极为重要的。</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_CVPR2016_0.jpg-QNthin" alt="2D目标检测示意图" title="2D目标检测示意图"></p>
+<span id="more"></span>
+
+<p>在目标检测中，以下几个指标非常重要：（a）识别精度；（b）识别效率；（c）定位准确性。以上的几个工作或者侧重识别率和效率，或者通过某种方式提高定位的准确性，下面分别展开进行描述。</p>
+<p>研读了CVPR2016的部分文章，发现会议接收的论文里几乎全都是关于深度学习的内容。重点关注了提高目标检测识别精度的两篇文章ION和HyperNet。</p>
+<p><a href="http://www.cv-foundation.org/openaccess/CVPR2016.py">CVPR文献</a></p>
+<h2 id="1-识别精度"><a href="#1-识别精度" class="headerlink" title="1. 识别精度"></a>1. 识别精度</h2><p>说起识别精度，不得不提目标检测中衡量检测精度的指标mAP(mean average precision)。简单来讲就是在多个类别的检测中，每一个类别都可以根据recall和precision绘制一条曲线，那么AP就是该曲线下的面积，而mAP是多个类别AP的平均值，这个值介于0到1之间，且越大越好。具有代表性的工作是ResNet、ION和HyperNet。</p>
+<h3 id="1-1-ResNet"><a href="#1-1-ResNet" class="headerlink" title="1.1.  ResNet"></a>1.1.  ResNet</h3><p>何凯明的代表作之一，获得了今年的bestpaper。文章不是针对目标检测来做的，但其解决了一个最根本的问题：更有力的特征。检测时基于Faster R-CNN的目标检测框架，使用ResNet替换VGG16网络可以取得更好的检测结果。（实际上，使用ResNet网络代替ZF, VGG, GoogleNet等网络模型无论在图像分类、目标检测还是图像分割等任务上都可以大大提高识别的准确率）</p>
+<h3 id="1-2-ION（inside-outside-network）"><a href="#1-2-ION（inside-outside-network）" class="headerlink" title="1.2. ION（inside-outside-network）"></a>1.2. ION（inside-outside-network）</h3><blockquote>
+<p>文章链接：<a href="http://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Bell_Inside-Outside_Net_Detecting_CVPR_2016_paper.pdf">Inside-Outside Net: Detecting Objects in Context with Skip Pooling and Recurrent Neural Networks</a></p>
+</blockquote>
+<p>这个工作的主要贡献有两个，第一个是skip-connection，将deep ConvNet的多层ROI特征进行提取和融合，利用该特征对每个位置进行分类和回归，也就是inside-network。第二个贡献是如何在Fast R-CNN的基础之上增加context信息，所谓context在目标检测领域是指感兴趣的局部或全局的ROI周围的信息。为此，作者提出了IRNN的概念，也就是outside-network。</p>
+<p>依靠这两个改进，ION可以在Pascal VOC 2007数据集上边提高大约5个百分点。同时也获得了COCO 2015 detection竞赛的best student entry。</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_CVPR2016_ION.jpg-QNthin" alt="ION" title="Inside-Outside Net (ION)"></p>
+<h3 id="1-3-HyperNet："><a href="#1-3-HyperNet：" class="headerlink" title="1.3.HyperNet："></a>1.3.HyperNet：</h3><blockquote>
+<p>文章链接：<a href="http://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Kong_HyperNet_Towards_Accurate_CVPR_2016_paper.pdf">HyperNet: Towards Accurate Region Proposal Generation and Joint Object Detection</a></p>
+</blockquote>
+<p>文章的出发点为一个很重要的观察：神经网络的高层信息体现了更强的语义信息，对于识别问题较为有效；而低层的特征由于分辨率较高，对于目标定位有天然的优势，而检测问题恰恰是识别+定位，因此作者的贡献点在于如何将deep ConvNet的高低层特征进行融合，进而利用融合后的特征进行region proposal提取和进一步目标检测。不同于Faster R-CNN，文章的潜在Anchor是用类似于BING的方法通过扫描窗口的方式生成的，但利用的是CNN的特征，因此取得了更好的性能。</p>
+<p>通过以上的改进策略，HyperNet可以在产生大约100个region proposal的时候保证较高的recall，同时目标检测的mAP相对于Fast R-CNN也提高了大约6个百分点。</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_CVPR2016_HyperNet.jpg-QNthin" alt="HyperNet" title="HyperNet"></p>
+<h2 id="2-识别效率"><a href="#2-识别效率" class="headerlink" title="2. 识别效率"></a>2. 识别效率</h2><h3 id="2-1-YOLO"><a href="#2-1-YOLO" class="headerlink" title="2.1. YOLO"></a>2.1. YOLO</h3><p>这是今年的oral。这个工作在识别效率方面的优势很明显，可以做到每秒钟45帧图像，处理视频是完全没有问题的。YOLO最大贡献是提出了一种全新的检测框架——直接利用CNN的全局特征预测每个位置可能的目标，相比于R-CNN系列的region proposal+CNN 这种两阶段的处理办法可以大大提高检测速度。今年新出来的SSD[11]方法虽然在识别率上边有了很大的提升，但YOLO的先驱作用是显而易见的。</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_CVPR2016_YOLO.jpg-QNthin" alt="YOLO" title="YOLO识别框架"></p>
+<h3 id="2-2-G-CNN"><a href="#2-2-G-CNN" class="headerlink" title="2.2. G-CNN"></a>2.2. G-CNN</h3><p>不管是Fast R-CNN[9]，还是Faster R-CNN，或者像HyperNet这样的变种，都需要考虑数以万计的潜在框来进行目标位置的搜索，这种方式的一个潜在问题是负样本空间非常大，因此需要一定的策略来进行抑制（不管是OHEM[8]还是region proposal方法，其本质上还是一种抑制负样本的工作）。G-CNN从另一个角度来克服这个问题。G-CNN在在初始化的时候不需要那么多框，而是通过对图像进行划分（有交叠），产生少量的框（大约180个），通过一次回归之后得到更接近物体的位置。然后以回归之后的框作为原始窗口，不断进行迭代回归调整，得到最终的检测结果。</p>
+<p>经过五次调整之后，G-CNN可以达到跟Fast R-CNN相当的识别性能，但速度是Fast R-CNN的5倍（3fps）。</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_CVPR2016_G-CNN_1.jpg-QNthin" alt="G-CNN示意图" title="G-CNN示意图"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_CVPR2016_G-CNN_2.jpg-QNthin" alt="G-CNN训练过程" title="G-CNN训练过程"></p>
+<h2 id="3-准确性"><a href="#3-准确性" class="headerlink" title="3. 准确性"></a>3. 准确性</h2><h3 id="3-1-LocNet"><a href="#3-1-LocNet" class="headerlink" title="3.1. LocNet"></a>3.1. LocNet</h3><p>以上提到的工作都是在做整个目标检测的框架，而LocNet在做另一件事情—如何产生更准确的bounding box?</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_CVPR2016_LocNet.jpg-QNthin" alt="LocNet" title="LocNet"></p>
+<p>在目标检测的评价体系中，有一个参数叫做IoU，简单来讲就是模型产生的目标窗口和原来标记窗口的交叠率。在Pascal VOC中，这个值为0.5。而2014年以来出现的MS COCO竞赛规则把这个IoU变成了0.5-1.0之间的综合评价值，也就是说，定位越准确，其得分越高，这也侧面反映了目标检测在评价指标方面的不断进步。</p>
+<p>回到这个话题，如何产生更准确的目标位置呢？LocNet的解决方案是：针对每一个给定的初始框进行适当的放大，然后用一个CNN的网络回归出这个放大后的框包含的那个正确框的位置。为了达到这个目标，需要定义回归方式，网络以及模型，具体的细节参见[7]。</p>
+<p>经过把原始的框（比如selective search生成的）进行再一次回归之后，再放入Fast R-CNN进行检测，在IoU=0.5的情况下，在Pascal VOC 数据集上mAP可以提升大约5个百分点，而IoU=0.7时可以达到13个百分点的提升，效果还是挺惊人的。</p>
+<h2 id="4-结语"><a href="#4-结语" class="headerlink" title="4. 结语"></a>4. 结语</h2><p>目标检测是计算机视觉中基础而且热门的领域，最近两年的由于深度学习的影响产生了巨大的进步，相信在未来的一两年时间有更优秀的工作出现。</p>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+      <tags>
+        <tag>CVPR</tag>
+        <tag>机器视觉</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Beaglebone Black 折腾笔记（二） 搭建环境</title>
     <url>/post/Beaglebone-Black_02/</url>
     <content><![CDATA[<p>听说最近推出了5美元的树莓派，一度被黄牛抢光然后卖到了50美元。</p>
@@ -572,54 +620,6 @@ root@kali:~# depmod -a -v &quot;3.8.13-bone53&quot;
       <tags>
         <tag>Beaglebone Black</tag>
         <tag>Kali Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CVPR2016目标检测领域</title>
-    <url>/post/CVPR2016/</url>
-    <content><![CDATA[<blockquote>
-<p>转载自<a href="https://zhuanlan.zhihu.com/p/21533724">https://zhuanlan.zhihu.com/p/21533724</a></p>
-</blockquote>
-<p>2016年的CVPR会议目标检测（在这里讨论的是2D的目标检测，如图1所示）的方法主要是基于卷积神经网络的框架，代表性的工作有ResNet[1]（Kaiming He等）、YOLO[5]（Joseph Redmon等）、LocNet[7]（Spyros Gidaris等）、HyperNet[3]（Tao Kong等）、ION[2]（Sean Bell等）、G-CNN[6]（Mahyar Najibi等）。在这里之所以把ResNet也放进来，是因为有效的特征对于目标检测领域是极为重要的。</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_CVPR2016_0.jpg-QNthin" alt="2D目标检测示意图" title="2D目标检测示意图"></p>
-<span id="more"></span>
-
-<p>在目标检测中，以下几个指标非常重要：（a）识别精度；（b）识别效率；（c）定位准确性。以上的几个工作或者侧重识别率和效率，或者通过某种方式提高定位的准确性，下面分别展开进行描述。</p>
-<p>研读了CVPR2016的部分文章，发现会议接收的论文里几乎全都是关于深度学习的内容。重点关注了提高目标检测识别精度的两篇文章ION和HyperNet。</p>
-<p><a href="http://www.cv-foundation.org/openaccess/CVPR2016.py">CVPR文献</a></p>
-<h2 id="1-识别精度"><a href="#1-识别精度" class="headerlink" title="1. 识别精度"></a>1. 识别精度</h2><p>说起识别精度，不得不提目标检测中衡量检测精度的指标mAP(mean average precision)。简单来讲就是在多个类别的检测中，每一个类别都可以根据recall和precision绘制一条曲线，那么AP就是该曲线下的面积，而mAP是多个类别AP的平均值，这个值介于0到1之间，且越大越好。具有代表性的工作是ResNet、ION和HyperNet。</p>
-<h3 id="1-1-ResNet"><a href="#1-1-ResNet" class="headerlink" title="1.1.  ResNet"></a>1.1.  ResNet</h3><p>何凯明的代表作之一，获得了今年的bestpaper。文章不是针对目标检测来做的，但其解决了一个最根本的问题：更有力的特征。检测时基于Faster R-CNN的目标检测框架，使用ResNet替换VGG16网络可以取得更好的检测结果。（实际上，使用ResNet网络代替ZF, VGG, GoogleNet等网络模型无论在图像分类、目标检测还是图像分割等任务上都可以大大提高识别的准确率）</p>
-<h3 id="1-2-ION（inside-outside-network）"><a href="#1-2-ION（inside-outside-network）" class="headerlink" title="1.2. ION（inside-outside-network）"></a>1.2. ION（inside-outside-network）</h3><blockquote>
-<p>文章链接：<a href="http://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Bell_Inside-Outside_Net_Detecting_CVPR_2016_paper.pdf">Inside-Outside Net: Detecting Objects in Context with Skip Pooling and Recurrent Neural Networks</a></p>
-</blockquote>
-<p>这个工作的主要贡献有两个，第一个是skip-connection，将deep ConvNet的多层ROI特征进行提取和融合，利用该特征对每个位置进行分类和回归，也就是inside-network。第二个贡献是如何在Fast R-CNN的基础之上增加context信息，所谓context在目标检测领域是指感兴趣的局部或全局的ROI周围的信息。为此，作者提出了IRNN的概念，也就是outside-network。</p>
-<p>依靠这两个改进，ION可以在Pascal VOC 2007数据集上边提高大约5个百分点。同时也获得了COCO 2015 detection竞赛的best student entry。</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_CVPR2016_ION.jpg-QNthin" alt="ION" title="Inside-Outside Net (ION)"></p>
-<h3 id="1-3-HyperNet："><a href="#1-3-HyperNet：" class="headerlink" title="1.3.HyperNet："></a>1.3.HyperNet：</h3><blockquote>
-<p>文章链接：<a href="http://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Kong_HyperNet_Towards_Accurate_CVPR_2016_paper.pdf">HyperNet: Towards Accurate Region Proposal Generation and Joint Object Detection</a></p>
-</blockquote>
-<p>文章的出发点为一个很重要的观察：神经网络的高层信息体现了更强的语义信息，对于识别问题较为有效；而低层的特征由于分辨率较高，对于目标定位有天然的优势，而检测问题恰恰是识别+定位，因此作者的贡献点在于如何将deep ConvNet的高低层特征进行融合，进而利用融合后的特征进行region proposal提取和进一步目标检测。不同于Faster R-CNN，文章的潜在Anchor是用类似于BING的方法通过扫描窗口的方式生成的，但利用的是CNN的特征，因此取得了更好的性能。</p>
-<p>通过以上的改进策略，HyperNet可以在产生大约100个region proposal的时候保证较高的recall，同时目标检测的mAP相对于Fast R-CNN也提高了大约6个百分点。</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_CVPR2016_HyperNet.jpg-QNthin" alt="HyperNet" title="HyperNet"></p>
-<h2 id="2-识别效率"><a href="#2-识别效率" class="headerlink" title="2. 识别效率"></a>2. 识别效率</h2><h3 id="2-1-YOLO"><a href="#2-1-YOLO" class="headerlink" title="2.1. YOLO"></a>2.1. YOLO</h3><p>这是今年的oral。这个工作在识别效率方面的优势很明显，可以做到每秒钟45帧图像，处理视频是完全没有问题的。YOLO最大贡献是提出了一种全新的检测框架——直接利用CNN的全局特征预测每个位置可能的目标，相比于R-CNN系列的region proposal+CNN 这种两阶段的处理办法可以大大提高检测速度。今年新出来的SSD[11]方法虽然在识别率上边有了很大的提升，但YOLO的先驱作用是显而易见的。</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_CVPR2016_YOLO.jpg-QNthin" alt="YOLO" title="YOLO识别框架"></p>
-<h3 id="2-2-G-CNN"><a href="#2-2-G-CNN" class="headerlink" title="2.2. G-CNN"></a>2.2. G-CNN</h3><p>不管是Fast R-CNN[9]，还是Faster R-CNN，或者像HyperNet这样的变种，都需要考虑数以万计的潜在框来进行目标位置的搜索，这种方式的一个潜在问题是负样本空间非常大，因此需要一定的策略来进行抑制（不管是OHEM[8]还是region proposal方法，其本质上还是一种抑制负样本的工作）。G-CNN从另一个角度来克服这个问题。G-CNN在在初始化的时候不需要那么多框，而是通过对图像进行划分（有交叠），产生少量的框（大约180个），通过一次回归之后得到更接近物体的位置。然后以回归之后的框作为原始窗口，不断进行迭代回归调整，得到最终的检测结果。</p>
-<p>经过五次调整之后，G-CNN可以达到跟Fast R-CNN相当的识别性能，但速度是Fast R-CNN的5倍（3fps）。</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_CVPR2016_G-CNN_1.jpg-QNthin" alt="G-CNN示意图" title="G-CNN示意图"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_CVPR2016_G-CNN_2.jpg-QNthin" alt="G-CNN训练过程" title="G-CNN训练过程"></p>
-<h2 id="3-准确性"><a href="#3-准确性" class="headerlink" title="3. 准确性"></a>3. 准确性</h2><h3 id="3-1-LocNet"><a href="#3-1-LocNet" class="headerlink" title="3.1. LocNet"></a>3.1. LocNet</h3><p>以上提到的工作都是在做整个目标检测的框架，而LocNet在做另一件事情—如何产生更准确的bounding box?</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_CVPR2016_LocNet.jpg-QNthin" alt="LocNet" title="LocNet"></p>
-<p>在目标检测的评价体系中，有一个参数叫做IoU，简单来讲就是模型产生的目标窗口和原来标记窗口的交叠率。在Pascal VOC中，这个值为0.5。而2014年以来出现的MS COCO竞赛规则把这个IoU变成了0.5-1.0之间的综合评价值，也就是说，定位越准确，其得分越高，这也侧面反映了目标检测在评价指标方面的不断进步。</p>
-<p>回到这个话题，如何产生更准确的目标位置呢？LocNet的解决方案是：针对每一个给定的初始框进行适当的放大，然后用一个CNN的网络回归出这个放大后的框包含的那个正确框的位置。为了达到这个目标，需要定义回归方式，网络以及模型，具体的细节参见[7]。</p>
-<p>经过把原始的框（比如selective search生成的）进行再一次回归之后，再放入Fast R-CNN进行检测，在IoU=0.5的情况下，在Pascal VOC 数据集上mAP可以提升大约5个百分点，而IoU=0.7时可以达到13个百分点的提升，效果还是挺惊人的。</p>
-<h2 id="4-结语"><a href="#4-结语" class="headerlink" title="4. 结语"></a>4. 结语</h2><p>目标检测是计算机视觉中基础而且热门的领域，最近两年的由于深度学习的影响产生了巨大的进步，相信在未来的一两年时间有更优秀的工作出现。</p>
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
-      </categories>
-      <tags>
-        <tag>CVPR</tag>
-        <tag>机器视觉</tag>
       </tags>
   </entry>
   <entry>
@@ -2566,6 +2566,35 @@ apt-get install libusb-1.0-0-dev
       </categories>
   </entry>
   <entry>
+    <title>Kali linux 主题 与 eclipse 黑色主题冲突</title>
+    <url>/post/eclipse-dark-theme-conflicts-with-gnome-theme-kali/</url>
+    <content><![CDATA[<p><code>2016-09-27 07:49 Fixed in Version 2016.3</code></p>
+<blockquote>
+<p>秉承着以解决问题为乐趣，没有问题创造问题也要解决问题为基本准则。今天发现了一个gnome-theme-kal主题在xfce4下的Bug</p>
+</blockquote>
+<p>最近用Nvidia提供的Nsight来写OpenCV/CUDA，白色主题实在是太丑了，就采用通用的方法换成了黑色主题。结果不管怎么折腾，旁边的Navigator都还是白色的，使得整个界面不白不黑的，简直比VIM还丑。</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_kali-theme_1.png-QNthin"></p>
+<span id="more"></span>
+
+<h2 id="0x00"><a href="#0x00" class="headerlink" title="0x00"></a>0x00</h2><p>本以为是Eclipse配置的问题，昨晚折腾了一宿都没搞定，今天一大早起来换了个主题，问题就解决了。看来是Kali的主题跟Eclipse有冲突。</p>
+<p>主题目录为<code>/usr/share/themes/Kali-X/gtk-2.0/</code>。一顿瞎折腾，定位到冲突的代码为<code>gtkrc</code>文件的如下几行：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">GtkTreeView::odd_row_color	= shade (0.97, @base_color)</span><br><span class="line">GtkTreeView::even_row_color	= @base_color</span><br></pre></td></tr></table></figure>
+
+<p>Bug的原因为Kali已经设置好了GtkTreeView的颜色，Eclipse会使用系统默认的颜色，导致黑色主题无效。注释掉以上代码，问题解决。</p>
+<h2 id="0x01"><a href="#0x01" class="headerlink" title="0x01"></a>0x01</h2><p>同样，按钮的颜色也很丑，是<code>default_button_color = shade (1.12, @bg_color)</code>和<code>bg[PRELIGHT] = shade (1.13, @bg_color)</code>代码导致的。</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_kali-theme_2.png-QNthin"></p>
+<p>我的解决方案为注释前一行，修改后一行，如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># default_button_color = shade (1.12, @bg_color)   ##注释掉这行</span><br><span class="line"></span><br><span class="line">bg[PRELIGHT] = shade (1.13, @selected_bg_color)    ##修改颜色</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>修改后问题解决：</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_kali-theme_3.png-QNthin"></p>
+<p>已经提交<a href="https://bugs.kali.org/view.php?id=3630">Bug Tracker</a>（估计又有人要嫌弃我的英文水平了）</p>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+  </entry>
+  <entry>
     <title>文档布局分析 &amp; 扭曲文档图像恢复 --- Document Layout Analysis &amp; Document Image Dewarping</title>
     <url>/post/document-layout-analysis/</url>
     <content><![CDATA[<!--
@@ -2668,35 +2697,6 @@ apt-get install libusb-1.0-0-dev
         <tag>OCR</tag>
         <tag>docstrum</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Kali linux 主题 与 eclipse 黑色主题冲突</title>
-    <url>/post/eclipse-dark-theme-conflicts-with-gnome-theme-kali/</url>
-    <content><![CDATA[<p><code>2016-09-27 07:49 Fixed in Version 2016.3</code></p>
-<blockquote>
-<p>秉承着以解决问题为乐趣，没有问题创造问题也要解决问题为基本准则。今天发现了一个gnome-theme-kal主题在xfce4下的Bug</p>
-</blockquote>
-<p>最近用Nvidia提供的Nsight来写OpenCV/CUDA，白色主题实在是太丑了，就采用通用的方法换成了黑色主题。结果不管怎么折腾，旁边的Navigator都还是白色的，使得整个界面不白不黑的，简直比VIM还丑。</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_kali-theme_1.png-QNthin"></p>
-<span id="more"></span>
-
-<h2 id="0x00"><a href="#0x00" class="headerlink" title="0x00"></a>0x00</h2><p>本以为是Eclipse配置的问题，昨晚折腾了一宿都没搞定，今天一大早起来换了个主题，问题就解决了。看来是Kali的主题跟Eclipse有冲突。</p>
-<p>主题目录为<code>/usr/share/themes/Kali-X/gtk-2.0/</code>。一顿瞎折腾，定位到冲突的代码为<code>gtkrc</code>文件的如下几行：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">GtkTreeView::odd_row_color	= shade (0.97, @base_color)</span><br><span class="line">GtkTreeView::even_row_color	= @base_color</span><br></pre></td></tr></table></figure>
-
-<p>Bug的原因为Kali已经设置好了GtkTreeView的颜色，Eclipse会使用系统默认的颜色，导致黑色主题无效。注释掉以上代码，问题解决。</p>
-<h2 id="0x01"><a href="#0x01" class="headerlink" title="0x01"></a>0x01</h2><p>同样，按钮的颜色也很丑，是<code>default_button_color = shade (1.12, @bg_color)</code>和<code>bg[PRELIGHT] = shade (1.13, @bg_color)</code>代码导致的。</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_kali-theme_2.png-QNthin"></p>
-<p>我的解决方案为注释前一行，修改后一行，如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># default_button_color = shade (1.12, @bg_color)   ##注释掉这行</span><br><span class="line"></span><br><span class="line">bg[PRELIGHT] = shade (1.13, @selected_bg_color)    ##修改颜色</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>修改后问题解决：</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_kali-theme_3.png-QNthin"></p>
-<p>已经提交<a href="https://bugs.kali.org/view.php?id=3630">Bug Tracker</a>（估计又有人要嫌弃我的英文水平了）</p>
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
-      </categories>
   </entry>
   <entry>
     <title>FastDDS 特定情况下 subscriber 无法重连</title>
@@ -4873,7 +4873,7 @@ Symbols: &#39;.&#39; no key found, &#39;/&#39; A key found, &#39;\&#39; B key fo
 <p>现在要借助 github，在 pull request 页面可以找到详细的 23 个 commit 记录，并定位到引入 bug 的 commit：</p>
 <p><img data-src="https://user-images.githubusercontent.com/7941237/190364653-af9d9efc-3ca0-433c-8343-2f4673db180f.png"></p>
 <p>为了防止这个 commit 不完整，我们需要手动下载引入 bug 的代码，和引入 bug 之前的代码，分别做一次回归测试。（手动下载代码的原因是，这些 commit ID 不在 git repo 里，无法 checkout）</p>
-<p>找到 bug 以后，在 master 里改完别忘了跑回归测试。</p>
+<p>在 master 里改完 bug 以后，为了防止引入新 bug，别忘了跑回归测试。</p>
 ]]></content>
       <categories>
         <category>算法与硬件</category>

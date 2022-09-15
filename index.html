@@ -379,7 +379,7 @@
 <p>现在要借助 github，在 pull request 页面可以找到详细的 23 个 commit 记录，并定位到引入 bug 的 commit：</p>
 <p><img data-src="https://user-images.githubusercontent.com/7941237/190364653-af9d9efc-3ca0-433c-8343-2f4673db180f.png"></p>
 <p>为了防止这个 commit 不完整，我们需要手动下载引入 bug 的代码，和引入 bug 之前的代码，分别做一次回归测试。（手动下载代码的原因是，这些 commit ID 不在 git repo 里，无法 checkout）</p>
-<p>找到 bug 以后，在 master 里改完别忘了跑回归测试。</p>
+<p>在 master 里改完 bug 以后，为了防止引入新 bug，别忘了跑回归测试。</p>
 
       
     </div>
