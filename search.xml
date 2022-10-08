@@ -2100,7 +2100,12 @@ apt-get install libusb-1.0-0-dev
   <entry>
     <title>boost::interprocess 新版本修复了死锁</title>
     <url>/post/boost-robustness-interprocess-mutex-deadlock/</url>
-    <content><![CDATA[<p>boost::interprocess 在 1.78 版本之前如果进程崩溃可能导致死锁。从18年就有人提出这个issue，21年才修复。<br>最简单的复现方法是执行三遍下面的代码：</p>
+    <content><![CDATA[<ul>
+<li><code>Boost</code> 是一个开源 C++ 算法库，是官方认证的对标准 C++ 的扩充（有点类似 python 的 anaconda）。C++ 15 / 17 等新版本有很多特性也会参考 boost 库；</li>
+<li><code>boost:Interprocess</code> 实现了<strong>进程间通信</strong>功能，包括<strong>共享内存</strong>、内存映射文件、信号量、文件锁、消息队列等；</li>
+<li><code>共享内存</code> 指可被多个进程存取的内存，被用作进程间的通信。</li>
+</ul>
+<p>boost::interprocess 在 1.78 版本之前如果进程崩溃可能导致死锁。从18年就有人提出这个issue，21年才修复。<br>最简单的复现方法是执行三遍下面的代码：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &quot;boost/interprocess/managed_shared_memory.hpp&quot;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">  boost::interprocess::managed_shared_memory managed_shm&#123;</span><br><span class="line">      boost::interprocess::open_or_create, &quot;Boost&quot;, 1024</span><br><span class="line">  &#125;;</span><br><span class="line">  int* i = managed_shm.construct&lt;int&gt;(&quot;Int&quot;)(99);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
@@ -2246,6 +2251,89 @@ apt-get install libusb-1.0-0-dev
         <tag>HIKVISION</tag>
         <tag>npapi</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>一些有关 FastDDS 的基本概念</title>
+    <url>/post/concepts-of-fast-dds/</url>
+    <content><![CDATA[<blockquote>
+<p>之前分享过一次关于 FastDDS 的调研，简单来说就是其作为消息中间件，具有很强的实时性、可靠性、灵活性等优点，可以简化开发者对通信层面的关注，可以集中精力专注于业务的研究。这篇分享一下 FastDDS 的一些基本概念。</p>
+</blockquote>
+<p>FastDDS 有两套 API，接近传输层的 <code>RTPS API</code> 和规范的 <code>DDS API</code>。</p>
+<img style="background-color:white" data-src="http://qiniu.s1nh.org/fast-dds-architecture.svg"  width=65% />
+
+<span id="more"></span>
+
+<h3 id="1-1-传输层"><a href="#1-1-传输层" class="headerlink" title="1.1 传输层"></a>1.1 传输层</h3><p>包含了兼容各平台的 TCP / UDP / SHM 协议的实现</p>
+<img style="background-color:white" data-src="http://qiniu.s1nh.org/blog_fast-dds-transport-comparison.svg"  width=65% />
+
+<h3 id="1-2-RTPS-层"><a href="#1-2-RTPS-层" class="headerlink" title="1.2 RTPS 层"></a>1.2 RTPS 层</h3><p>使用 RTPS 层可以直接操作传输层提供的接口，类似直接对内存操作，更加灵活。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int index = 3;</span><br><span class="line">string message = &quot;hello world&quot;;</span><br><span class="line"></span><br><span class="line">ch-&gt;serializedPayload.length = 200;</span><br><span class="line">memcpy(ch-&gt;serializedPayload.data, &amp;index, sizeof(index));</span><br><span class="line">memcpy(ch-&gt;serializedPayload.data + sizeof(index), message.c_str(), 20);</span><br><span class="line">mp_history-&gt;add_change(ch);</span><br><span class="line"></span><br><span class="line">std::cout &lt;&lt; &quot;index = &quot; &lt;&lt; *(int*) ch-&gt;serializedPayload.data</span><br><span class="line">          &lt;&lt; &quot;; message = &quot; &lt;&lt; ch-&gt;serializedPayload.data + sizeof(index)</span><br><span class="line">          &lt;&lt; std::endl;</span><br><span class="line">-----</span><br><span class="line">&gt;&gt; index = 3; message = hello</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="1-3-DDS-层"><a href="#1-3-DDS-层" class="headerlink" title="1.3 DDS 层"></a>1.3 DDS 层</h3><p>DDS 层与 RTPS 层最大的区别是使用 <code>主题 (Topic)</code> 的概念，在主题的基础上包含发布、订阅、消息过滤等功能。</p>
+<p>主题使用<code>接口描述语言 (Interface Description Language, IDL)</code>，将传输的数据结构建模为类型化接口：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// HelloWorld.idl</span><br><span class="line"></span><br><span class="line">struct HelloWorld</span><br><span class="line">&#123;</span><br><span class="line">    unsigned long index;</span><br><span class="line">    string message;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>对类型直接操作：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">HelloWorld hello;</span><br><span class="line">hello.index(3);</span><br><span class="line">hello.message(&quot;hello world&quot;);</span><br><span class="line"></span><br><span class="line">writer-&gt;write(&amp;hello);</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-4-Discovery"><a href="#1-4-Discovery" class="headerlink" title="1.4 Discovery"></a>1.4 Discovery</h3><p>FastDDS 的”发现”机制，用于自动发现新上线的客户端。下图分别为分布式（Simple Discovery）、集中式（Discovery Service）发现机制。</p>
+<p><img data-src="http://qiniu.s1nh.org/blog_ros-discovery-server.svg" alt="image"></p>
+<p><strong>a. Simple Discovery</strong></p>
+<p>RTPS 协议标准的发现机制，通过多播互相发现。</p>
+<p><strong>b. Discovery Server</strong></p>
+<p>使用 Discovery Server 可以减少流量，且不需要多播功能。</p>
+<p><strong>c. Others</strong></p>
+<p>无法使用多播，如 <code>Wi-Fi</code>；或<code>已知拓扑</code>结构，想减少流量。</p>
+<ul>
+<li>Peer-to-Peer Discovery : 配置 peer list，使用单播（metatraffic unicast）</li>
+<li>Static Discovery : 手动配置 user locators，不使用 metatraffic</li>
+</ul>
+<h3 id="1-5-Listening-Locators"><a href="#1-5-Listening-Locators" class="headerlink" title="1.5 Listening Locators"></a>1.5 Listening Locators</h3><p><strong>Locator_t</strong> 代表传输信道，包含 <code>IP</code> <code>端口</code> 等信息。</p>
+<p>Locators 分为两类，<code>Metatraffic locators</code>  <code>User locators</code> 。其中，前者主要用于 Discovery，后者用于传输用户的数据。当用户不手动配置 Locators 时，其端口按特定的规则分配：</p>
+<table>
+<thead>
+<tr>
+<th>Traffic type</th>
+<th>Well-known port expression</th>
+<th>pid = 1</th>
+<th>pId = 2</th>
+<th>pId = 3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Metatraffic multicast</td>
+<td>7400 + 250 * domainId</td>
+<td>7400</td>
+<td>7400</td>
+<td>7400</td>
+</tr>
+<tr>
+<td>Metatraffic unicast</td>
+<td>7400 + 250 * domainId + 10 + 2 * participantId</td>
+<td><strong>7412</strong></td>
+<td><strong>7414</strong></td>
+<td><strong>7416</strong></td>
+</tr>
+<tr>
+<td>User multicast</td>
+<td>7400 + 250 * domainId + 1</td>
+<td>7401</td>
+<td>7401</td>
+<td>7401</td>
+</tr>
+<tr>
+<td>User unicast</td>
+<td>7400 + 250 * domainId + 11 + 2 * participantId</td>
+<td><strong>7413</strong></td>
+<td><strong>7415</strong></td>
+<td><strong>7417</strong></td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
   </entry>
   <entry>
     <title>逆向了 SermoonV1 的 CR-FDM-v2.4.S1.200 主板</title>
@@ -4862,21 +4950,42 @@ Symbols: &#39;.&#39; no key found, &#39;/&#39; A key found, &#39;\&#39; B key fo
   <entry>
     <title>使用 git squash 保持干净的主分支，及相应的调试方法</title>
     <url>/post/use-git-stash/</url>
-    <content><![CDATA[<p><code>今天可以带薪写博客，开心 TODO 把图片移出来</code></p>
-<p>先炫耀一下我已经给 <a href="https://github.com/pulls?q=is:pr+author:duchengyao+archived:false+is:closed+is:public+is:merged">4 个大型项目</a> 贡献过代码，包括<code>深度学习框架</code>、<code>3D 打印机固件</code> 和 <code>FastDDS</code><br><img data-src="https://user-images.githubusercontent.com/7941237/190302343-321dc574-82bb-4ecc-a934-1fad32f73e0b.png"></p>
-<h3 id="1-通过-git-squash-合并分支"><a href="#1-通过-git-squash-合并分支" class="headerlink" title="1. 通过 git squash 合并分支"></a>1. 通过 git squash 合并分支</h3><p>有的项目要求一个 commit 必须包含完整的功能，但在开发时通常会提交很多细粒度的 commit，比如 <code>add test</code> <code>clean code</code> 等。这种情况下可以使用 <code>git squash</code> 将多个 commit 压缩，得到干净的主分支.</p>
+    <content><![CDATA[<p><code>今天可以带薪写博客，开心</code></p>
+<p>先炫耀一下我已经给 <a href="https://github.com/pulls?q=is:pr+author:duchengyao+archived:false+is:closed+is:public+is:merged">4 个</a> 大型项目贡献过代码，包括<code>深度学习框架</code>、<code>3D 打印机固件</code> 和 <code>FastDDS</code><br><img data-src="http://qiniu.s1nh.org/blog_pull-requests.png"></p>
+<h3 id="1-通过-git-squash-合并分支"><a href="#1-通过-git-squash-合并分支" class="headerlink" title="1. 通过 git squash 合并分支"></a>1. 通过 git squash 合并分支</h3><p>有的项目要求一个 commit 必须包含完整的功能，但在开发时通常会提交很多细粒度的 commit，比如 <code>add test</code> <code>clean code</code> 等。这种情况下可以使用 <code>git squash</code> 将多个 commit 压缩，得到干净的主分支。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git merge --squash tmp</span><br><span class="line">git commit -m &quot;squash tmp&quot;</span><br><span class="line"></span><br><span class="line"># In the following graph, G is c--d--e--f--g squashed together</span><br><span class="line"></span><br><span class="line">          X-------------G stable</span><br><span class="line">         /</span><br><span class="line">a---b---c---d---e---f---g tmp</span><br></pre></td></tr></table></figure>
 
 
 <h3 id="2-调试被-squash-后的代码"><a href="#2-调试被-squash-后的代码" class="headerlink" title="2. 调试被 squash 后的代码"></a>2. 调试被 squash 后的代码</h3><p>squash 的优点是可以得到简洁的 commit 记录，但缺失详细的 commit 记录会对后面 debug 造成一些影响。</p>
 <p>比如，使用FastDDS后，我一直在调试<a href="https://github.com/eProsima/Fast-DDS/issues/2811">一个无法重连的bug</a>，通过 log 可以定位到这个 bug 是在一次 <a href="https://github.com/eProsima/Fast-DDS/pull/1187">2000 行的 commit</a> 引入的。如果现在开始读这两千行代码肯定会浪费很多时间。</p>
 <p>现在要借助 github，在 pull request 页面可以找到详细的 23 个 commit 记录，并定位到引入 bug 的 commit：</p>
-<p><img data-src="https://user-images.githubusercontent.com/7941237/190364653-af9d9efc-3ca0-433c-8343-2f4673db180f.png"></p>
+<p><img data-src="http://qiniu.s1nh.org/blog_git-squash.png"></p>
 <p>为了防止这个 commit 不完整，我们需要手动下载引入 bug 的代码，和引入 bug 之前的代码，分别做一次回归测试。（手动下载代码的原因是，这些 commit ID 不在 git repo 里，无法 checkout）</p>
 <p>在 master 里改完 bug 以后，为了防止引入新 bug，别忘了跑回归测试。</p>
 ]]></content>
       <categories>
         <category>算法与硬件</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>鲸落分手演出</title>
+    <url>/post/whale-fall-2018/</url>
+    <content><![CDATA[<p><img data-src="http://qiniu.s1nh.org/whale_fall_2018_4.jpg"></p>
+<span id="more"></span>
+
+
+<video src="http://qiniu.s1nh.org/whale_fall_2018_0.mp4"   width="800" controls="controls">
+Your browser does not support the video tag.
+</video>
+
+<video src="http://qiniu.s1nh.org/whale_fall_2018_1.mp4"   width="800" controls="controls">
+Your browser does not support the video tag.
+</video>
+
+<p><img data-src="http://qiniu.s1nh.org/whale_fall_2018_3.jpg"><br><img data-src="http://qiniu.s1nh.org/whale_fall_2018_2.jpg"></p>
+]]></content>
+      <categories>
+        <category>音乐相关</category>
       </categories>
   </entry>
   <entry>
@@ -5045,27 +5154,6 @@ Symbols: &#39;.&#39; no key found, &#39;/&#39; A key found, &#39;\&#39; B key fo
         <tag>深度学习</tag>
         <tag>VQG</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>鲸落分手演出</title>
-    <url>/post/whale-fall-2018/</url>
-    <content><![CDATA[<p><img data-src="http://qiniu.s1nh.org/whale_fall_2018_4.jpg"></p>
-<span id="more"></span>
-
-
-<video src="http://qiniu.s1nh.org/whale_fall_2018_0.mp4"   width="800" controls="controls">
-Your browser does not support the video tag.
-</video>
-
-<video src="http://qiniu.s1nh.org/whale_fall_2018_1.mp4"   width="800" controls="controls">
-Your browser does not support the video tag.
-</video>
-
-<p><img data-src="http://qiniu.s1nh.org/whale_fall_2018_3.jpg"><br><img data-src="http://qiniu.s1nh.org/whale_fall_2018_2.jpg"></p>
-]]></content>
-      <categories>
-        <category>音乐相关</category>
-      </categories>
   </entry>
   <entry>
     <title>如何挑选适合的电吉他琴弦规格，及关于drop调弦适用琴弦规格的问题</title>

@@ -16,25 +16,25 @@
 
 
 
-<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-xejo6yLi6vGtAjcMIsY8BHdKsLg7QynVlFMzdQgUuy8=" crossorigin="anonymous">
-  <link rel="stylesheet" href="/lib/@fancyapps/fancybox/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha256-xejo6yLi6vGtAjcMIsY8BHdKsLg7QynVlFMzdQgUuy8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="今天可以带薪写博客，开心 TODO 把图片移出来 先炫耀一下我已经给 4 个大型项目 贡献过代码，包括深度学习框架、3D 打印机固件 和 FastDDS 1. 通过 git squash 合并分支有的项目要求一个 commit 必须包含完整的功能，但在开发时通常会提交很多细粒度的 commit，比如 add test clean code 等。这种情况下可以使用 git squash 将多个 co">
+    <meta name="description" content="今天可以带薪写博客，开心 先炫耀一下我已经给 4 个 大型项目贡献过代码，包括深度学习框架、3D 打印机固件 和 FastDDS 1. 通过 git squash 合并分支有的项目要求一个 commit 必须包含完整的功能，但在开发时通常会提交很多细粒度的 commit，比如 add test clean code 等。这种情况下可以使用 git squash 将多个 commit 压缩，得到干净">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用 git squash 保持干净的主分支，及相应的调试方法">
 <meta property="og:url" content="http://s1nh.org/post/use-git-stash/index.html">
 <meta property="og:site_name" content="S1NH">
-<meta property="og:description" content="今天可以带薪写博客，开心 TODO 把图片移出来 先炫耀一下我已经给 4 个大型项目 贡献过代码，包括深度学习框架、3D 打印机固件 和 FastDDS 1. 通过 git squash 合并分支有的项目要求一个 commit 必须包含完整的功能，但在开发时通常会提交很多细粒度的 commit，比如 add test clean code 等。这种情况下可以使用 git squash 将多个 co">
+<meta property="og:description" content="今天可以带薪写博客，开心 先炫耀一下我已经给 4 个 大型项目贡献过代码，包括深度学习框架、3D 打印机固件 和 FastDDS 1. 通过 git squash 合并分支有的项目要求一个 commit 必须包含完整的功能，但在开发时通常会提交很多细粒度的 commit，比如 add test clean code 等。这种情况下可以使用 git squash 将多个 commit 压缩，得到干净">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://user-images.githubusercontent.com/7941237/190302343-321dc574-82bb-4ecc-a934-1fad32f73e0b.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/7941237/190364653-af9d9efc-3ca0-433c-8343-2f4673db180f.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/blog_pull-requests.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/blog_git-squash.png">
 <meta property="article:published_time" content="2022-09-15T09:17:09.000Z">
-<meta property="article:modified_time" content="2022-09-15T09:27:04.020Z">
+<meta property="article:modified_time" content="2022-10-08T06:52:12.126Z">
 <meta property="article:author" content="S1NH">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://user-images.githubusercontent.com/7941237/190302343-321dc574-82bb-4ecc-a934-1fad32f73e0b.png">
+<meta name="twitter:image" content="http://qiniu.s1nh.org/blog_pull-requests.png">
 
 
 <link rel="canonical" href="http://s1nh.org/post/use-git-stash/">
@@ -167,7 +167,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">90</span>
+          <span class="site-state-item-count">91</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -184,7 +184,7 @@
   </nav>
 </div>
   <div class="cc-license site-overview-item animated" itemprop="license">
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/lib/@creativecommons/vocabulary/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
   </div>
 
 
@@ -203,9 +203,7 @@
           <a href="http://s1nh.org/" title="http:&#x2F;&#x2F;s1nh.org&#x2F;">本站国内镜像</a>
         </li>
     </ul>
-  </div>
-
-<div>
+  </div><div>
 <hr>
 <img src="/images/wechatpay-ss.jpg" alt="Buy me a coffe.">
 </div>
@@ -300,16 +298,16 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><code>今天可以带薪写博客，开心 TODO 把图片移出来</code></p>
-<p>先炫耀一下我已经给 <a target="_blank" rel="noopener" href="https://github.com/pulls?q=is:pr+author:duchengyao+archived:false+is:closed+is:public+is:merged">4 个大型项目</a> 贡献过代码，包括<code>深度学习框架</code>、<code>3D 打印机固件</code> 和 <code>FastDDS</code><br><img data-src="https://user-images.githubusercontent.com/7941237/190302343-321dc574-82bb-4ecc-a934-1fad32f73e0b.png"></p>
-<h3 id="1-通过-git-squash-合并分支"><a href="#1-通过-git-squash-合并分支" class="headerlink" title="1. 通过 git squash 合并分支"></a>1. 通过 git squash 合并分支</h3><p>有的项目要求一个 commit 必须包含完整的功能，但在开发时通常会提交很多细粒度的 commit，比如 <code>add test</code> <code>clean code</code> 等。这种情况下可以使用 <code>git squash</code> 将多个 commit 压缩，得到干净的主分支.</p>
+        <p><code>今天可以带薪写博客，开心</code></p>
+<p>先炫耀一下我已经给 <a target="_blank" rel="noopener" href="https://github.com/pulls?q=is:pr+author:duchengyao+archived:false+is:closed+is:public+is:merged">4 个</a> 大型项目贡献过代码，包括<code>深度学习框架</code>、<code>3D 打印机固件</code> 和 <code>FastDDS</code><br><img data-src="http://qiniu.s1nh.org/blog_pull-requests.png"></p>
+<h3 id="1-通过-git-squash-合并分支"><a href="#1-通过-git-squash-合并分支" class="headerlink" title="1. 通过 git squash 合并分支"></a>1. 通过 git squash 合并分支</h3><p>有的项目要求一个 commit 必须包含完整的功能，但在开发时通常会提交很多细粒度的 commit，比如 <code>add test</code> <code>clean code</code> 等。这种情况下可以使用 <code>git squash</code> 将多个 commit 压缩，得到干净的主分支。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">git merge --squash tmp</span><br><span class="line">git commit -m &quot;squash tmp&quot;</span><br><span class="line"></span><br><span class="line"># In the following graph, G is c--d--e--f--g squashed together</span><br><span class="line"></span><br><span class="line">          X-------------G stable</span><br><span class="line">         /</span><br><span class="line">a---b---c---d---e---f---g tmp</span><br></pre></td></tr></table></figure>
 
 
 <h3 id="2-调试被-squash-后的代码"><a href="#2-调试被-squash-后的代码" class="headerlink" title="2. 调试被 squash 后的代码"></a>2. 调试被 squash 后的代码</h3><p>squash 的优点是可以得到简洁的 commit 记录，但缺失详细的 commit 记录会对后面 debug 造成一些影响。</p>
 <p>比如，使用FastDDS后，我一直在调试<a target="_blank" rel="noopener" href="https://github.com/eProsima/Fast-DDS/issues/2811">一个无法重连的bug</a>，通过 log 可以定位到这个 bug 是在一次 <a target="_blank" rel="noopener" href="https://github.com/eProsima/Fast-DDS/pull/1187">2000 行的 commit</a> 引入的。如果现在开始读这两千行代码肯定会浪费很多时间。</p>
 <p>现在要借助 github，在 pull request 页面可以找到详细的 23 个 commit 记录，并定位到引入 bug 的 commit：</p>
-<p><img data-src="https://user-images.githubusercontent.com/7941237/190364653-af9d9efc-3ca0-433c-8343-2f4673db180f.png"></p>
+<p><img data-src="http://qiniu.s1nh.org/blog_git-squash.png"></p>
 <p>为了防止这个 commit 不完整，我们需要手动下载引入 bug 的代码，和引入 bug 之前的代码，分别做一次回归测试。（手动下载代码的原因是，这些 commit ID 不在 git repo 里，无法 checkout）</p>
 <p>在 master 里改完 bug 以后，为了防止引入新 bug，别忘了跑回归测试。</p>
 
@@ -347,8 +345,8 @@
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/post/996-ICU/" rel="next" title="996.ICU">
-                  996.ICU <i class="fa fa-chevron-right"></i>
+                <a href="/post/concepts-of-fast-dds/" rel="next" title="一些有关 FastDDS 的基本概念">
+                  一些有关 FastDDS 的基本概念 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -402,14 +400,14 @@
   </footer>
 
   
-  <script src="/lib/animejs/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-  <script src="/lib/jquery/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-  <script src="/lib/@fancyapps/fancybox/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
-  <script src="/lib/lozad/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
 
   
-<script src="/lib/hexo-generator-searchdb/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
 
@@ -425,7 +423,7 @@
 
   
 
-  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"/lib/mathjax/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
 <script src="/js/third-party/math/mathjax.js"></script>
 
 

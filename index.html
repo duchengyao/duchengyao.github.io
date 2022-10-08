@@ -16,8 +16,8 @@
 
 
 
-<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-xejo6yLi6vGtAjcMIsY8BHdKsLg7QynVlFMzdQgUuy8=" crossorigin="anonymous">
-  <link rel="stylesheet" href="/lib/@fancyapps/fancybox/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha256-xejo6yLi6vGtAjcMIsY8BHdKsLg7QynVlFMzdQgUuy8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
@@ -161,7 +161,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">90</span>
+          <span class="site-state-item-count">91</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -178,7 +178,7 @@
   </nav>
 </div>
   <div class="cc-license site-overview-item animated" itemprop="license">
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/lib/@creativecommons/vocabulary/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
   </div>
 
 
@@ -197,9 +197,7 @@
           <a href="http://s1nh.org/" title="http:&#x2F;&#x2F;s1nh.org&#x2F;">本站国内镜像</a>
         </li>
     </ul>
-  </div>
-
-<div>
+  </div><div>
 <hr>
 <img src="/images/wechatpay-ss.jpg" alt="Buy me a coffe.">
 </div>
@@ -320,6 +318,95 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/concepts-of-fast-dds/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="S1NH">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="S1NH">
+      <meta itemprop="description" content="no other developers required.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | S1NH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/concepts-of-fast-dds/" class="post-title-link" itemprop="url">一些有关 FastDDS 的基本概念</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-09-30 11:16:50" itemprop="dateCreated datePublished" datetime="2022-09-30T11:16:50+08:00">2022-09-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/programming/" itemprop="url" rel="index"><span itemprop="name">算法与硬件</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <blockquote>
+<p>之前分享过一次关于 FastDDS 的调研，简单来说就是其作为消息中间件，具有很强的实时性、可靠性、灵活性等优点，可以简化开发者对通信层面的关注，可以集中精力专注于业务的研究。这篇分享一下 FastDDS 的一些基本概念。</p>
+</blockquote>
+<p>FastDDS 有两套 API，接近传输层的 <code>RTPS API</code> 和规范的 <code>DDS API</code>。</p>
+<img style="background-color:white" data-src="http://qiniu.s1nh.org/fast-dds-architecture.svg"  width=65% />
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/post/concepts-of-fast-dds/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/use-git-stash/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -371,16 +458,16 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><code>今天可以带薪写博客，开心 TODO 把图片移出来</code></p>
-<p>先炫耀一下我已经给 <a target="_blank" rel="noopener" href="https://github.com/pulls?q=is:pr+author:duchengyao+archived:false+is:closed+is:public+is:merged">4 个大型项目</a> 贡献过代码，包括<code>深度学习框架</code>、<code>3D 打印机固件</code> 和 <code>FastDDS</code><br><img data-src="https://user-images.githubusercontent.com/7941237/190302343-321dc574-82bb-4ecc-a934-1fad32f73e0b.png"></p>
-<h3 id="1-通过-git-squash-合并分支"><a href="#1-通过-git-squash-合并分支" class="headerlink" title="1. 通过 git squash 合并分支"></a>1. 通过 git squash 合并分支</h3><p>有的项目要求一个 commit 必须包含完整的功能，但在开发时通常会提交很多细粒度的 commit，比如 <code>add test</code> <code>clean code</code> 等。这种情况下可以使用 <code>git squash</code> 将多个 commit 压缩，得到干净的主分支.</p>
+          <p><code>今天可以带薪写博客，开心</code></p>
+<p>先炫耀一下我已经给 <a target="_blank" rel="noopener" href="https://github.com/pulls?q=is:pr+author:duchengyao+archived:false+is:closed+is:public+is:merged">4 个</a> 大型项目贡献过代码，包括<code>深度学习框架</code>、<code>3D 打印机固件</code> 和 <code>FastDDS</code><br><img data-src="http://qiniu.s1nh.org/blog_pull-requests.png"></p>
+<h3 id="1-通过-git-squash-合并分支"><a href="#1-通过-git-squash-合并分支" class="headerlink" title="1. 通过 git squash 合并分支"></a>1. 通过 git squash 合并分支</h3><p>有的项目要求一个 commit 必须包含完整的功能，但在开发时通常会提交很多细粒度的 commit，比如 <code>add test</code> <code>clean code</code> 等。这种情况下可以使用 <code>git squash</code> 将多个 commit 压缩，得到干净的主分支。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">git merge --squash tmp</span><br><span class="line">git commit -m &quot;squash tmp&quot;</span><br><span class="line"></span><br><span class="line"># In the following graph, G is c--d--e--f--g squashed together</span><br><span class="line"></span><br><span class="line">          X-------------G stable</span><br><span class="line">         /</span><br><span class="line">a---b---c---d---e---f---g tmp</span><br></pre></td></tr></table></figure>
 
 
 <h3 id="2-调试被-squash-后的代码"><a href="#2-调试被-squash-后的代码" class="headerlink" title="2. 调试被 squash 后的代码"></a>2. 调试被 squash 后的代码</h3><p>squash 的优点是可以得到简洁的 commit 记录，但缺失详细的 commit 记录会对后面 debug 造成一些影响。</p>
 <p>比如，使用FastDDS后，我一直在调试<a target="_blank" rel="noopener" href="https://github.com/eProsima/Fast-DDS/issues/2811">一个无法重连的bug</a>，通过 log 可以定位到这个 bug 是在一次 <a target="_blank" rel="noopener" href="https://github.com/eProsima/Fast-DDS/pull/1187">2000 行的 commit</a> 引入的。如果现在开始读这两千行代码肯定会浪费很多时间。</p>
 <p>现在要借助 github，在 pull request 页面可以找到详细的 23 个 commit 记录，并定位到引入 bug 的 commit：</p>
-<p><img data-src="https://user-images.githubusercontent.com/7941237/190364653-af9d9efc-3ca0-433c-8343-2f4673db180f.png"></p>
+<p><img data-src="http://qiniu.s1nh.org/blog_git-squash.png"></p>
 <p>为了防止这个 commit 不完整，我们需要手动下载引入 bug 的代码，和引入 bug 之前的代码，分别做一次回归测试。（手动下载代码的原因是，这些 commit ID 不在 git repo 里，无法 checkout）</p>
 <p>在 master 里改完 bug 以后，为了防止引入新 bug，别忘了跑回归测试。</p>
 
@@ -561,7 +648,12 @@ try to remove and create again
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>boost::interprocess 在 1.78 版本之前如果进程崩溃可能导致死锁。从18年就有人提出这个issue，21年才修复。<br>最简单的复现方法是执行三遍下面的代码：</p>
+          <ul>
+<li><code>Boost</code> 是一个开源 C++ 算法库，是官方认证的对标准 C++ 的扩充（有点类似 python 的 anaconda）。C++ 15 / 17 等新版本有很多特性也会参考 boost 库；</li>
+<li><code>boost:Interprocess</code> 实现了<strong>进程间通信</strong>功能，包括<strong>共享内存</strong>、内存映射文件、信号量、文件锁、消息队列等；</li>
+<li><code>共享内存</code> 指可被多个进程存取的内存，被用作进程间的通信。</li>
+</ul>
+<p>boost::interprocess 在 1.78 版本之前如果进程崩溃可能导致死锁。从18年就有人提出这个issue，21年才修复。<br>最简单的复现方法是执行三遍下面的代码：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;boost/interprocess/managed_shared_memory.hpp&quot;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">  boost::interprocess::managed_shared_memory managed_shm&#123;</span><br><span class="line">      boost::interprocess::open_or_create, &quot;Boost&quot;, 1024</span><br><span class="line">  &#125;;</span><br><span class="line">  int* i = managed_shm.construct&lt;int&gt;(&quot;Int&quot;)(99);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
@@ -2916,93 +3008,8 @@ try to remove and create again
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/whale-fall-2018/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="S1NH">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="S1NH">
-      <meta itemprop="description" content="no other developers required.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | S1NH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/post/whale-fall-2018/" class="post-title-link" itemprop="url">鲸落分手演出</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2018-05-14 02:00:19" itemprop="dateCreated datePublished" datetime="2018-05-14T02:00:19+08:00">2018-05-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/music/" itemprop="url" rel="index"><span itemprop="name">音乐相关</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><img data-src="http://qiniu.s1nh.org/whale_fall_2018_4.jpg"></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/post/whale-fall-2018/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 </div>
@@ -3045,14 +3052,14 @@ try to remove and create again
   </footer>
 
   
-  <script src="/lib/animejs/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-  <script src="/lib/jquery/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-  <script src="/lib/@fancyapps/fancybox/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
-  <script src="/lib/lozad/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
 
   
-<script src="/lib/hexo-generator-searchdb/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
 
@@ -3068,7 +3075,7 @@ try to remove and create again
 
   
 
-  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"/lib/mathjax/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
 <script src="/js/third-party/math/mathjax.js"></script>
 
 
