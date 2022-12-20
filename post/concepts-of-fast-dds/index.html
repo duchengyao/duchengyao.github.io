@@ -21,18 +21,18 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="之前分享过一次关于 FastDDS 的调研，简单来说就是其作为消息中间件，具有很强的实时性、可靠性、灵活性等优点，可以简化开发者对通信层面的关注，可以集中精力专注于业务的研究。这篇分享一下 FastDDS 的一些基本概念。  FastDDS 有两套 API，接近传输层的 RTPS API 和规范的 DDS API。">
+    <meta name="description" content="FastDDS 有两套 API，接近传输层的 RTPS API 和规范的 DDS API。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="一些有关 FastDDS 的基本概念">
 <meta property="og:url" content="http://s1nh.org/post/concepts-of-fast-dds/index.html">
 <meta property="og:site_name" content="S1NH">
-<meta property="og:description" content="之前分享过一次关于 FastDDS 的调研，简单来说就是其作为消息中间件，具有很强的实时性、可靠性、灵活性等优点，可以简化开发者对通信层面的关注，可以集中精力专注于业务的研究。这篇分享一下 FastDDS 的一些基本概念。  FastDDS 有两套 API，接近传输层的 RTPS API 和规范的 DDS API。">
+<meta property="og:description" content="FastDDS 有两套 API，接近传输层的 RTPS API 和规范的 DDS API。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://qiniu.s1nh.org/fast-dds-architecture.svg">
 <meta property="og:image" content="http://qiniu.s1nh.org/blog_fast-dds-transport-comparison.svg">
 <meta property="og:image" content="http://qiniu.s1nh.org/blog_ros-discovery-server.svg">
 <meta property="article:published_time" content="2022-09-30T03:16:50.000Z">
-<meta property="article:modified_time" content="2022-10-08T06:53:58.326Z">
+<meta property="article:modified_time" content="2022-12-20T03:03:57.271Z">
 <meta property="article:author" content="S1NH">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://qiniu.s1nh.org/fast-dds-architecture.svg">
@@ -168,7 +168,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">91</span>
+          <span class="site-state-item-count">92</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -299,10 +299,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <blockquote>
-<p>之前分享过一次关于 FastDDS 的调研，简单来说就是其作为消息中间件，具有很强的实时性、可靠性、灵活性等优点，可以简化开发者对通信层面的关注，可以集中精力专注于业务的研究。这篇分享一下 FastDDS 的一些基本概念。</p>
-</blockquote>
-<p>FastDDS 有两套 API，接近传输层的 <code>RTPS API</code> 和规范的 <code>DDS API</code>。</p>
+        <p>FastDDS 有两套 API，接近传输层的 <code>RTPS API</code> 和规范的 <code>DDS API</code>。</p>
 <img style="background-color:white" data-src="http://qiniu.s1nh.org/fast-dds-architecture.svg"  width=65% />
 
 <span id="more"></span>
@@ -409,8 +406,8 @@
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/post/996-ICU/" rel="next" title="996.ICU">
-                  996.ICU <i class="fa fa-chevron-right"></i>
+                <a href="/post/note_1/" rel="next" title="其它笔记">
+                  其它笔记 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
