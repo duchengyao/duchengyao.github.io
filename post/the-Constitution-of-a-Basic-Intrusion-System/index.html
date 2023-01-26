@@ -23,7 +23,7 @@
 
     <meta name="description" content="可靠性导论的汇报PPT，介绍了我自己搭建的入侵检测平台，其中包含：  Man-in-the-Middle Attack (MITM, 中间人攻击) Lan Tap WiFi Hacking NFC Hacking Software Defined Radio">
 <meta property="og:type" content="article">
-<meta property="og:title" content="几个简单的入侵检测方法">
+<meta property="og:title" content="基于硬件的中间人攻击">
 <meta property="og:url" content="http://s1nh.org/post/the-Constitution-of-a-Basic-Intrusion-System/index.html">
 <meta property="og:site_name" content="S1NH">
 <meta property="og:description" content="可靠性导论的汇报PPT，介绍了我自己搭建的入侵检测平台，其中包含：  Man-in-the-Middle Attack (MITM, 中间人攻击) Lan Tap WiFi Hacking NFC Hacking Software Defined Radio">
@@ -62,7 +62,7 @@
 <meta property="og:image" content="http://qiniu.s1nh.org/Blog_Year-end-summary_31.jpg-QNthin">
 <meta property="og:image" content="http://qiniu.s1nh.org/Blog_Year-end-summary_32.jpg-QNthin">
 <meta property="article:published_time" content="2016-02-06T14:45:07.000Z">
-<meta property="article:modified_time" content="2022-03-07T09:06:21.235Z">
+<meta property="article:modified_time" content="2023-01-26T19:48:17.243Z">
 <meta property="article:author" content="S1NH">
 <meta property="article:tag" content="信息安全">
 <meta name="twitter:card" content="summary">
@@ -73,10 +73,10 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://s1nh.org/post/the-Constitution-of-a-Basic-Intrusion-System/","path":"post/the-Constitution-of-a-Basic-Intrusion-System/","title":"几个简单的入侵检测方法"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://s1nh.org/post/the-Constitution-of-a-Basic-Intrusion-System/","path":"post/the-Constitution-of-a-Basic-Intrusion-System/","title":"基于硬件的中间人攻击"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>几个简单的入侵检测方法 | S1NH</title>
+<title>基于硬件的中间人攻击 | S1NH</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-44KGHGDYG3"></script>
   <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-44KGHGDYG3","only_pageview":false}</script>
@@ -199,13 +199,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">92</span>
+          <span class="site-state-item-count">93</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -285,12 +285,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="几个简单的入侵检测方法 | S1NH">
+      <meta itemprop="name" content="基于硬件的中间人攻击 | S1NH">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          几个简单的入侵检测方法
+          基于硬件的中间人攻击
         </h1>
 
         <div class="post-meta-container">
@@ -437,7 +437,7 @@ Symbols: &#39;.&#39; no key found, &#39;/&#39; A key found, &#39;\&#39; B key fo
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="http://s1nh.org/post/the-Constitution-of-a-Basic-Intrusion-System/" title="几个简单的入侵检测方法">http://s1nh.org/post/the-Constitution-of-a-Basic-Intrusion-System/</a>
+      <a href="http://s1nh.org/post/the-Constitution-of-a-Basic-Intrusion-System/" title="基于硬件的中间人攻击">http://s1nh.org/post/the-Constitution-of-a-Basic-Intrusion-System/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -482,7 +482,7 @@ Symbols: &#39;.&#39; no key found, &#39;/&#39; A key found, &#39;\&#39; B key fo
 
 <div class="copyright">
   &copy; 2015 – 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -524,6 +524,8 @@ Symbols: &#39;.&#39; no key found, &#39;/&#39; A key found, &#39;\&#39; B key fo
 <script src="/js/third-party/search/local-search.js"></script>
 
 
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.1.3/mermaid.min.js","integrity":"sha256-TIYL00Rhw/8WaoUhYTLX9SKIEFdXxg+yMWSLVUbhiLg="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
 
   <script src="/js/third-party/fancybox.js"></script>
 
