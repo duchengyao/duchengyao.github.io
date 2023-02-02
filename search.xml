@@ -882,6 +882,43 @@ root@kali:~# depmod -a -v &quot;3.8.13-bone53&quot;
       </tags>
   </entry>
   <entry>
+    <title>Mental Band</title>
+    <url>/post/MentalLiveInVox_20150908/</url>
+    <content><![CDATA[<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_11.jpg-QNthin" alt="Mental"></p>
+<span id="more"></span>
+<blockquote>
+<p>Mental乐队是我见过最牛逼的后摇乐队了</p>
+</blockquote>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_12.jpg-QNthin" alt="Mental"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_13.jpg-QNthin" alt="Mental"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_14.jpg-QNthin" alt="Mental"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_15.jpg-QNthin" alt="Mental"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_16.jpg-QNthin" alt="Mental"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_18.jpg-QNthin" alt="Mental"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_21.jpg-QNthin" alt="Mental"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_22.jpg-QNthin" alt="Mental"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_23.jpg-QNthin" alt="Mental"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_24.jpg-QNthin" alt="Mental"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_25.jpg-QNthin" alt="Mental"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_33.jpg-QNthin" alt="Mental"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_31.jpg-QNthin" alt="Mental"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_32.jpg-QNthin" alt="Mental"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_41.jpg-QNthin" alt="Mental"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_42.jpg-QNthin" alt="Mental"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_43.jpg-QNthin" alt="Mental"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_44.jpg-QNthin" alt="Mental"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_45.jpg-QNthin" alt="Mental"></p>
+]]></content>
+      <categories>
+        <category>音乐相关</category>
+      </categories>
+      <tags>
+        <tag>Mental</tag>
+        <tag>Live</tag>
+        <tag>Vox</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>通过MNIST熟悉Keras——《TensorFlow 实战》读书笔记</title>
     <url>/post/Keras-MNIST/</url>
     <content><![CDATA[<p>Tensorflow 的使用者虽多，但真的<strong>很难用</strong>。幸亏有基于TF和Theano的高层框架<code>Keras</code>（不幸的是Theano已经停止更新了）。我们通过MNIST来熟悉一下Keras。</p>
@@ -957,43 +994,6 @@ Test accuracy: 0.9828
         <tag>MNIST</tag>
         <tag>Tensorflow</tag>
         <tag>Keras</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Mental Band</title>
-    <url>/post/MentalLiveInVox_20150908/</url>
-    <content><![CDATA[<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_11.jpg-QNthin" alt="Mental"></p>
-<span id="more"></span>
-<blockquote>
-<p>Mental乐队是我见过最牛逼的后摇乐队了</p>
-</blockquote>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_12.jpg-QNthin" alt="Mental"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_13.jpg-QNthin" alt="Mental"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_14.jpg-QNthin" alt="Mental"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_15.jpg-QNthin" alt="Mental"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_16.jpg-QNthin" alt="Mental"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_18.jpg-QNthin" alt="Mental"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_21.jpg-QNthin" alt="Mental"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_22.jpg-QNthin" alt="Mental"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_23.jpg-QNthin" alt="Mental"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_24.jpg-QNthin" alt="Mental"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_25.jpg-QNthin" alt="Mental"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_33.jpg-QNthin" alt="Mental"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_31.jpg-QNthin" alt="Mental"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_32.jpg-QNthin" alt="Mental"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_41.jpg-QNthin" alt="Mental"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_42.jpg-QNthin" alt="Mental"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_43.jpg-QNthin" alt="Mental"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_44.jpg-QNthin" alt="Mental"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_45.jpg-QNthin" alt="Mental"></p>
-]]></content>
-      <categories>
-        <category>音乐相关</category>
-      </categories>
-      <tags>
-        <tag>Mental</tag>
-        <tag>Live</tag>
-        <tag>Vox</tag>
       </tags>
   </entry>
   <entry>
@@ -3663,7 +3663,7 @@ try to remove and create again
 <blockquote>
 <p>那天他看外面阳光很好，于是穿上自己最喜欢的衣服，带上自己觉得最好看的遮阳帽，独自一人悄悄走向了远方，然后再也没回来。</p>
 </blockquote>
-<p>本文总结了常见抗抑郁药的对应靶点，以及相应耙点会产生的精神效果。阅读本文需要了解抗抑郁药的基本原理，可以在b站 <code>药学生Justin</code> <code>底层原理</code> 学习有关知识。</p>
+<p>本文总结了常见抗抑郁药的对应靶点，以及相应耙点会产生的精神效果。阅读本文需要了解抗抑郁药的基本原理，可以在b站 <code>药学生Justin</code> <code>底层原理</code> 中快速了解有关知识。</p>
 <span id="more"></span>
 
 <!--TODO 新theme 加主页，分类介绍。-->
