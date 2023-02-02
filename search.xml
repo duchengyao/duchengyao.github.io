@@ -882,43 +882,6 @@ root@kali:~# depmod -a -v &quot;3.8.13-bone53&quot;
       </tags>
   </entry>
   <entry>
-    <title>Mental Band</title>
-    <url>/post/MentalLiveInVox_20150908/</url>
-    <content><![CDATA[<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_11.jpg-QNthin" alt="Mental"></p>
-<span id="more"></span>
-<blockquote>
-<p>Mental乐队是我见过最牛逼的后摇乐队了</p>
-</blockquote>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_12.jpg-QNthin" alt="Mental"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_13.jpg-QNthin" alt="Mental"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_14.jpg-QNthin" alt="Mental"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_15.jpg-QNthin" alt="Mental"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_16.jpg-QNthin" alt="Mental"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_18.jpg-QNthin" alt="Mental"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_21.jpg-QNthin" alt="Mental"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_22.jpg-QNthin" alt="Mental"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_23.jpg-QNthin" alt="Mental"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_24.jpg-QNthin" alt="Mental"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_25.jpg-QNthin" alt="Mental"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_33.jpg-QNthin" alt="Mental"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_31.jpg-QNthin" alt="Mental"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_32.jpg-QNthin" alt="Mental"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_41.jpg-QNthin" alt="Mental"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_42.jpg-QNthin" alt="Mental"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_43.jpg-QNthin" alt="Mental"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_44.jpg-QNthin" alt="Mental"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_45.jpg-QNthin" alt="Mental"></p>
-]]></content>
-      <categories>
-        <category>音乐相关</category>
-      </categories>
-      <tags>
-        <tag>Mental</tag>
-        <tag>Live</tag>
-        <tag>Vox</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>通过MNIST熟悉Keras——《TensorFlow 实战》读书笔记</title>
     <url>/post/Keras-MNIST/</url>
     <content><![CDATA[<p>Tensorflow 的使用者虽多，但真的<strong>很难用</strong>。幸亏有基于TF和Theano的高层框架<code>Keras</code>（不幸的是Theano已经停止更新了）。我们通过MNIST来熟悉一下Keras。</p>
@@ -994,6 +957,43 @@ Test accuracy: 0.9828
         <tag>MNIST</tag>
         <tag>Tensorflow</tag>
         <tag>Keras</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mental Band</title>
+    <url>/post/MentalLiveInVox_20150908/</url>
+    <content><![CDATA[<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_11.jpg-QNthin" alt="Mental"></p>
+<span id="more"></span>
+<blockquote>
+<p>Mental乐队是我见过最牛逼的后摇乐队了</p>
+</blockquote>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_12.jpg-QNthin" alt="Mental"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_13.jpg-QNthin" alt="Mental"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_14.jpg-QNthin" alt="Mental"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_15.jpg-QNthin" alt="Mental"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_16.jpg-QNthin" alt="Mental"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_18.jpg-QNthin" alt="Mental"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_21.jpg-QNthin" alt="Mental"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_22.jpg-QNthin" alt="Mental"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_23.jpg-QNthin" alt="Mental"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_24.jpg-QNthin" alt="Mental"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_25.jpg-QNthin" alt="Mental"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_33.jpg-QNthin" alt="Mental"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_31.jpg-QNthin" alt="Mental"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_32.jpg-QNthin" alt="Mental"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_41.jpg-QNthin" alt="Mental"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_42.jpg-QNthin" alt="Mental"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_43.jpg-QNthin" alt="Mental"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_44.jpg-QNthin" alt="Mental"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Mental_45.jpg-QNthin" alt="Mental"></p>
+]]></content>
+      <categories>
+        <category>音乐相关</category>
+      </categories>
+      <tags>
+        <tag>Mental</tag>
+        <tag>Live</tag>
+        <tag>Vox</tag>
       </tags>
   </entry>
   <entry>
@@ -2600,6 +2600,763 @@ apt-get install libusb-1.0-0-dev
       </categories>
   </entry>
   <entry>
+    <title>消失的评论</title>
+    <url>/post/disappeared-comments/</url>
+    <content><![CDATA[<p>之前使用的 valine 评论工具有一些漏洞会导致隐私泄漏和XSS攻击，比如[<a href="https://blog.maplesugar.top/valine-prank/">这个</a>]，目前更换为 utteranc ，一个基于 github 的评论工具。之前的评论放弃迁移了，直接贴在本文。</p>
+<span id="more"></span>
+
+<table>
+<thead>
+<tr>
+<th>url</th>
+<th>comment</th>
+<th>nick</th>
+<th>link</th>
+<th>date</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>/about/</td>
+<td>校友你好，真牛👍</td>
+<td>天边风</td>
+<td><a href="https://www.tbfeng.com/">https://www.tbfeng.com/</a></td>
+<td>2019-10-15T01:04:43.446Z</td>
+</tr>
+<tr>
+<td>/about/</td>
+<td><a class="at" href="#5d70a1876e9ba1006922b037">@Anonymous </a> , 哈哈，我也是初学者</td>
+<td>S1NH</td>
+<td></td>
+<td>2019-09-09T14:50:36.536Z</td>
+</tr>
+<tr>
+<td>/about/</td>
+<td>初学SLAM，无意间搜到，膜拜一下。</td>
+<td>Anonymous</td>
+<td></td>
+<td>2019-09-05T05:47:51.926Z</td>
+</tr>
+<tr>
+<td>/about/</td>
+<td><a class="at" href="#5c234f42fb4ffe005f657e2c">@break </a>等青岛互联网公司多起来以后，我们回青岛上班，然后玩乐队吧</td>
+<td>S1NH</td>
+<td></td>
+<td>2019-06-17T08:37:14.574Z</td>
+</tr>
+<tr>
+<td>/about/</td>
+<td>老杜真是一如既往的屌，你去阿里的时候我都还不知道达摩院这个部门，没成想你居然就是在这，真心替你高兴哈哈哈</td>
+<td>break</td>
+<td></td>
+<td>2018-12-26T09:52:02.853Z</td>
+</tr>
+<tr>
+<td>/about/</td>
+<td>膜拜大牛</td>
+<td>gchehe</td>
+<td></td>
+<td>2018-09-30T12:29:13.906Z</td>
+</tr>
+<tr>
+<td>/about/</td>
+<td>太厉害了，我学习的目标。</td>
+<td>handbye</td>
+<td></td>
+<td>2018-09-30T12:28:37.562Z</td>
+</tr>
+<tr>
+<td>2017-summary/</td>
+<td>有点小感动～</td>
+<td>Anonymous</td>
+<td></td>
+<td>2019-03-29T09:33:44.300Z</td>
+</tr>
+<tr>
+<td>996-ICU/</td>
+<td>宅男福利 <a href="https://6wll.com">https://6wll.com</a></td>
+<td>sds</td>
+<td></td>
+<td>2019-08-16T12:00:16.292Z</td>
+</tr>
+<tr>
+<td>A-survey-on-image-mosaicing-techniques/</td>
+<td><a class="at" href="#5f3f7142109075000855b82e">@Anonymous </a> , 没有公开，商业合作可以加微信，在博客的“关于”页面。</td>
+<td>S1NH</td>
+<td></td>
+<td>2021-04-30T02:19:23.134Z</td>
+</tr>
+<tr>
+<td>A-survey-on-image-mosaicing-techniques/</td>
+<td>作者您好，我最近正在做视频图像拼接的研究，请问现在L-ORB算法的代码公开了吗？</td>
+<td>Anonymous</td>
+<td></td>
+<td>2020-08-21T07:01:22.470Z</td>
+</tr>
+<tr>
+<td>A-survey-on-image-mosaicing-techniques/</td>
+<td><a class="at" href="#5e90b9c55c385800081b9767">@S1NH </a> , 万分感谢  本人想研究一下这方面的内容 看了博主的文章大有所获 希望能够按时间线讲述一下融合部分的算法 好人一生平安</td>
+<td>Anonymous</td>
+<td></td>
+<td>2020-04-11T15:10:38.450Z</td>
+</tr>
+<tr>
+<td>A-survey-on-image-mosaicing-techniques/</td>
+<td><a class="at" href="#5e8dea9f5c3858000816918f">@Anonymous </a> , 谢谢关注，我这几天比较闲，准备把之前没写完的博客都更新一下的。^_^</td>
+<td>S1NH</td>
+<td></td>
+<td>2020-04-10T18:24:05.842Z</td>
+</tr>
+<tr>
+<td>A-survey-on-image-mosaicing-techniques/</td>
+<td>请问后续还会有更新吗  想了解一下那个图像融合部分的内容</td>
+<td>Anonymous</td>
+<td></td>
+<td>2020-04-08T15:15:43.936Z</td>
+</tr>
+<tr>
+<td>A-survey-on-image-mosaicing-techniques/</td>
+<td><a class="at" href="#5e54d7c72a6bfd4d10562636">@Anonymous </a> , 刚开始可以直接参考 opencv 的 cuda 代码，给你几个链接：<br><a href="https://github.com/opencv/opencv_contrib/tree/4.2.0/modules/cudaarithm/src/cuda">https://github.com/opencv/opencv_contrib/tree/4.2.0/modules/cudaarithm/src/cuda</a><br><a href="https://github.com/opencv/opencv_contrib/tree/4.2.0/modules/cudafeatures2d/src/cuda">https://github.com/opencv/opencv_contrib/tree/4.2.0/modules/cudafeatures2d/src/cuda</a><br><a href="https://github.com/opencv/opencv_contrib/tree/4.2.0/modules/cudawarping/src/cuda">https://github.com/opencv/opencv_contrib/tree/4.2.0/modules/cudawarping/src/cuda</a> 评论记得填email，会有回复通知^^</td>
+<td>s1nh</td>
+<td></td>
+<td>2020-03-13T09:22:44.179Z</td>
+</tr>
+<tr>
+<td>A-survey-on-image-mosaicing-techniques/</td>
+<td>百忙之中打扰了。期待您的回复！！！</td>
+<td>Anonymous</td>
+<td></td>
+<td>2020-02-25T08:17:23.734Z</td>
+</tr>
+<tr>
+<td>A-survey-on-image-mosaicing-techniques/</td>
+<td>您好，我最近也在做图像拼接方面研究，主要目的是想要将其应用于视频拼接上，所以需要gpu的加速，请问您有cuda这方面的论文源码可供学习吗？如果不方面公开的话，在cuda学习这方面有没有好的推荐啊。我已经安装你的论文把环境搭好了，但是之前只实现了利用opencv做cpu方面的拼接。</td>
+<td>Anonymous</td>
+<td></td>
+<td>2020-02-25T08:16:07.361Z</td>
+</tr>
+<tr>
+<td>A-survey-on-image-mosaicing-techniques/</td>
+<td><a class="at" href="#5bc87e3a9f5454007095f94b">@Anonymous </a>算法很好复现的。<br>不过师弟们还在准备继续发文章，所以源码就暂时不公开了。</td>
+<td>s1nh</td>
+<td></td>
+<td>2018-11-09T06:24:47.413Z</td>
+</tr>
+<tr>
+<td>A-survey-on-image-mosaicing-techniques/</td>
+<td>麻烦问一下，这个您的L-ORB这个论文方法的代码可以分享一下吗？</td>
+<td>Anonymous</td>
+<td></td>
+<td>2018-10-18T12:36:10.621Z</td>
+</tr>
+<tr>
+<td>A-survey-on-image-mosaicing-techniques/</td>
+<td><a class="at" href="#5bb0bc3a0b6160006fe6c7af">@am </a>不好意思，名称写错了。链接是对的。论文名称是A survey on image mosaicing techniques。</br> 如果您对图像拼接感兴趣，可以看一下几篇文章 <a href="https://docs.opencv.org/2.4/modules/stitching/doc/introduction.html">https://docs.opencv.org/2.4/modules/stitching/doc/introduction.html</a></br> 和 M. Brown and D. Lowe. Automatic Panoramic Image Stitching using Invariant Features. International Journal of Computer Vision, 74(1), pages 59-73, 2007. <a href="http://matthewalunbrown.com/papers/ijcv2007.pdf">http://matthewalunbrown.com/papers/ijcv2007.pdf</a></td>
+<td>S1NH</td>
+<td></td>
+<td>2018-09-30T12:47:46.601Z</td>
+</tr>
+<tr>
+<td>A-survey-on-image-mosaicing-techniques/</td>
+<td>译者，您好，文章翻译的很好，但好像《图像拼接算法的综述》此文与提供的《Automatic 3D pulmonary nodule detection in CT images: A survey》原文不一致，是不是名称和链接提供错了</td>
+<td>am</td>
+<td></td>
+<td>2018-09-30T12:07:03.615Z</td>
+</tr>
+<tr>
+<td>calib-velodyne-camera/</td>
+<td><a class="at" href="#5dd4fb6c21b47e00699c3ade">@david </a> , 我也遇到这个问题了，这位兄台解决吗</td>
+<td>xgy</td>
+<td></td>
+<td>2021-04-09T11:03:53.524Z</td>
+</tr>
+<tr>
+<td>calib-velodyne-camera/</td>
+<td><a class="at" href="#60470ef3c83e5e1c334e55eb">@Anonymous </a> , 可以的</td>
+<td>s1nh</td>
+<td></td>
+<td>2021-04-02T08:00:27.617Z</td>
+</tr>
+<tr>
+<td>calib-velodyne-camera/</td>
+<td>大佬，这个激光相机融合能够实时展示吗，不是以bag的数据流</td>
+<td>Anonymous</td>
+<td></td>
+<td>2021-03-09T06:00:19.579Z</td>
+</tr>
+<tr>
+<td>calib-velodyne-camera/</td>
+<td><a class="at" href="#5ed9e1e0ba7dda00094c95f5">@Anonymous </a> , 在git repo里面有的，你慢慢调参数就行。</td>
+<td>S1NH</td>
+<td></td>
+<td>2020-06-29T02:40:01.215Z</td>
+</tr>
+<tr>
+<td>calib-velodyne-camera/</td>
+<td>能提供一下real_laser_pattern和real_camera_pattern的参数文件吗?谢谢!</td>
+<td>Anonymous</td>
+<td></td>
+<td>2020-06-05T06:10:40.611Z</td>
+</tr>
+<tr>
+<td>calib-velodyne-camera/</td>
+<td>你好</td>
+<td>Anonymous</td>
+<td></td>
+<td>2020-06-05T06:09:52.307Z</td>
+</tr>
+<tr>
+<td>calib-velodyne-camera/</td>
+<td><a class="at" href="#5e4662ad21b47e006be00841">@s1nh </a> , 你运行rviz之前source一下auroware的环境应该就行了。</td>
+<td>s1nh</td>
+<td></td>
+<td>2020-02-14T09:14:32.094Z</td>
+</tr>
+<tr>
+<td>calib-velodyne-camera/</td>
+<td><a class="at" href="#5e17000521460d006a721d99">@neon </a> , <a href="https://github.com/autowarefoundation/autoware/issues/1510">https://github.com/autowarefoundation/autoware/issues/1510</a></td>
+<td>s1nh</td>
+<td></td>
+<td>2020-02-14T09:12:39.830Z</td>
+</tr>
+<tr>
+<td>calib-velodyne-camera/</td>
+<td><a class="at" href="#5dd4fb6c21b47e00699c3ade">@david </a> , 不记得了。。。那个软件很难用，一堆bug，估计是有没publish的东西。<br>有心情就看代码吧。</td>
+<td>s1nh</td>
+<td></td>
+<td>2020-02-14T09:09:01.536Z</td>
+</tr>
+<tr>
+<td>calib-velodyne-camera/</td>
+<td><a class="at" href="#5e0758cb43c257006f498743">@Anonymous </a> , 你用官方的gazebo环境，很快就可以出结果了，然后再一步一步用真机。</td>
+<td>s1nh</td>
+<td></td>
+<td>2020-02-14T09:07:32.390Z</td>
+</tr>
+<tr>
+<td>calib-velodyne-camera/</td>
+<td><a class="at" href="#5ddcc1022a6bfd0074d342f0">@Anonymous </a> , 好像没有官方bag，只有官方的一个模拟环境（gazebo）</td>
+<td>s1nh</td>
+<td></td>
+<td>2020-02-14T09:06:29.005Z</td>
+</tr>
+<tr>
+<td>calib-velodyne-camera/</td>
+<td><a class="at" href="#5e155fe521b47e0070ffe025">@小羊 </a> , 是加我微信那位吗，现在搞定了不？</td>
+<td>s1nh</td>
+<td></td>
+<td>2020-02-14T09:05:19.168Z</td>
+</tr>
+<tr>
+<td>calib-velodyne-camera/</td>
+<td><a class="at" href="#5e17000521460d006a721d99">@neon </a> , 哈哈哈，我之前也找不到</td>
+<td>s1nh</td>
+<td></td>
+<td>2020-02-14T09:04:45.457Z</td>
+</tr>
+<tr>
+<td>calib-velodyne-camera/</td>
+<td><a class="at" href="#5e0758cb43c257006f498743">@Anonymous </a> , 有人在youtube发过，你可以去搜一下</td>
+<td>s1nh</td>
+<td></td>
+<td>2020-02-14T09:04:06.584Z</td>
+</tr>
+<tr>
+<td>calib-velodyne-camera/</td>
+<td><a class="at" href="#5dd2852743c257006ab87ab6">@Anonymous </a> , 找官方更新了固件，问题解决。</td>
+<td>s1nh</td>
+<td></td>
+<td>2020-02-14T09:01:12.564Z</td>
+</tr>
+<tr>
+<td>calib-velodyne-camera/</td>
+<td>问一下，rviz找不到ImageViewerPlugin这个插件怎么办，看不了points_image</td>
+<td>neon</td>
+<td></td>
+<td>2020-01-09T10:27:17.394Z</td>
+</tr>
+<tr>
+<td>calib-velodyne-camera/</td>
+<td>您好，我现在想让vlp-16和GPS时间同步。我买了手册推荐的Garmin GPS。我发现PPS可以锁定但是没有位置信息（GPRMC语句）。请问具体您是怎么同步的呢？</td>
+<td>小羊</td>
+<td></td>
+<td>2020-01-08T04:51:49.326Z</td>
+</tr>
+<tr>
+<td>calib-velodyne-camera/</td>
+<td>博主你好，我想问一下你跑velo2cam的结果是什么啊，我想对照下你的结果看看我是否成功了，谢谢啊</td>
+<td>Anonymous</td>
+<td></td>
+<td>2019-12-28T13:29:47.656Z</td>
+</tr>
+<tr>
+<td>calib-velodyne-camera/</td>
+<td>请问,使用veloc2cam进行标定,官方的bag包怎么获取呢?<br>可以直接使用velo2cam进行单目+激光雷达标定吗?</td>
+<td>Anonymous</td>
+<td></td>
+<td>2019-11-26T06:06:58.619Z</td>
+</tr>
+<tr>
+<td>calib-velodyne-camera/</td>
+<td>您好，我在用autoware_camera_lidar_calibrator标定小觅相机和velodyne外参的时候，输入了相应的内参文件，但是/camera_info没有输出，也显示[points2image]Looks like camera_info or projection_matrix are not being published.. Please check that both are running..的报错，这是为什么</td>
+<td>david</td>
+<td></td>
+<td>2019-11-20T08:38:04.112Z</td>
+</tr>
+<tr>
+<td>calib-velodyne-camera/</td>
+<td>请问小觅相机的那两个错误最后你最后解决了吗？</td>
+<td>Anonymous</td>
+<td></td>
+<td>2019-11-18T11:48:55.177Z</td>
+</tr>
+<tr>
+<td>calib-velodyne-camera/</td>
+<td><a class="at" href="#5d550331ba39c80067dcc00d">@XiaoXin </a> , 跟操作系统没关系的，之前默认的ros驱动不会解析gps的时间戳，我用了另一个好像叫timestamp的分支，具体记不清了，不知道现在master分支有没有增加时间戳的功能。你可以试一下这个分支 <a href="https://github.com/ros-drivers/velodyne/tree/gps_imu">https://github.com/ros-drivers/velodyne/tree/gps_imu</a> 我当时同步时间戳的做法是修改了驱动，让它解析数据包的时间戳部分。</td>
+<td>S1NH</td>
+<td></td>
+<td>2019-08-28T17:40:43.146Z</td>
+</tr>
+<tr>
+<td>calib-velodyne-camera/</td>
+<td>请问一下，我这里也实现了VLP-16与GPS的时间同步，但是对激光雷达和相机之间的时间同步还没有思路，您那里是怎么利用Velodyne时间戳的呢，ROS下的/velodyne_points能够解析出雷达原始数据中的时间戳吗，还是说要在Windows下做呢？😀😀😀非常感谢😀😀😀</td>
+<td>XiaoXin</td>
+<td></td>
+<td>2019-08-15T07:01:05.115Z</td>
+</tr>
+<tr>
+<td>calib-velodyne-camera/</td>
+<td><a class="at" href="#5d160f10a673f50069551b4f">@Anonymous </a> , 你连文件路径都没有换，建议你先学习一下ros 和linux的基本用法，加油！</td>
+<td>S1NH</td>
+<td></td>
+<td>2019-07-11T07:20:21.046Z</td>
+</tr>
+<tr>
+<td>calib-velodyne-camera/</td>
+<td>请问我在终端上输入这个 roslaunch /home/s1nh/catkin_ws/src/image_undistort/launch/stereo_undistort.launch 没有反应是怎么回事啊，只输出lload camera parameters?</td>
+<td>Anonymous</td>
+<td></td>
+<td>2019-06-28T12:58:56.887Z</td>
+</tr>
+<tr>
+<td>confused/</td>
+<td>😂</td>
+<td>Anonymous</td>
+<td></td>
+<td>2019-06-15T05:44:58.663Z</td>
+</tr>
+<tr>
+<td>document-layout-analysis/</td>
+<td><a class="at" href="#5ec52526dc1b050006f26b47">@Anonymous </a> , 在这里<br><a href="https://github.com/xellows1305/Document-Image-Dewarping#executable-program">https://github.com/xellows1305/Document-Image-Dewarping#executable-program</a><br>最后面有个链接</td>
+<td>S1NH</td>
+<td></td>
+<td>2020-06-29T02:41:00.342Z</td>
+</tr>
+<tr>
+<td>document-layout-analysis/</td>
+<td>你好，我感觉你总结的真的很好，你提到的Robust Document Image Dewarping Method Using Text-Lines and Line Segments文章的作者提供了二进制文件，请问在哪里可以获取到这个二进制文件呢，谢谢你的解答</td>
+<td>Anonymous</td>
+<td></td>
+<td>2020-05-20T12:40:06.805Z</td>
+</tr>
+<tr>
+<td>document-layout-analysis/</td>
+<td><a class="at" href="#5cad588ba91c93158a487dd7">@S1NH </a> , 这个是收费的软件吧？</td>
+<td>Anonymous</td>
+<td></td>
+<td>2019-10-09T01:05:56.463Z</td>
+</tr>
+<tr>
+<td>document-layout-analysis/</td>
+<td><a class="at" href="#5d883de4ba39c8007322dd4b">@zhouyuangan </a> , 谢谢^_^</td>
+<td>S1NH</td>
+<td></td>
+<td>2019-09-25T06:02:37.226Z</td>
+</tr>
+<tr>
+<td>document-layout-analysis/</td>
+<td>支持，希望能看到更多这样的文章</td>
+<td>zhouyuangan</td>
+<td>github.com/zhouyuangan</td>
+<td>2019-09-23T03:37:08.104Z</td>
+</tr>
+<tr>
+<td>document-layout-analysis/</td>
+<td><a class="at" href="#5cd52739c8959c0068527968">@Anonymous </a> , <a href="https://abbyy.technology/en:features:ocr:document_analysis">https://abbyy.technology/en:features:ocr:document_analysis</a></td>
+<td>S1NH</td>
+<td></td>
+<td>2019-05-10T08:28:05.656Z</td>
+</tr>
+<tr>
+<td>document-layout-analysis/</td>
+<td>你好，你第一张图里的软件是什么啊</td>
+<td>Anonymous</td>
+<td></td>
+<td>2019-05-10T07:24:41.287Z</td>
+</tr>
+<tr>
+<td>document-layout-analysis/</td>
+<td><a class="at" href="#5ca457b3c05a8000737a569c">@Anonymous </a> ,  抱歉更新的这么晚，在这个链接里可以看到 <a href="http://s1nh.comdocument-layout-analysis/">http://s1nh.comdocument-layout-analysis/</a></td>
+<td>S1NH</td>
+<td></td>
+<td>2019-04-10T02:44:56.042Z</td>
+</tr>
+<tr>
+<td>document-layout-analysis/</td>
+<td><a class="at" href="#5c9de4cca91c9300682f628c">@S1NH </a> , 多谢，找到望告知</td>
+<td>Anonymous</td>
+<td></td>
+<td>2019-04-03T06:50:27.974Z</td>
+</tr>
+<tr>
+<td>document-layout-analysis/</td>
+<td><a class="at" href="#5c9dd70ac05a80007476ea56">@Anonymous </a>链接忘记加了，回头我看看。</td>
+<td>S1NH</td>
+<td></td>
+<td>2019-04-01T06:15:36.505Z</td>
+</tr>
+<tr>
+<td>document-layout-analysis/</td>
+<td>你好， 下面的这个句的github链接有吗<br>“有个同学了复现上面两个算法[github]，我暂时跑不通”</td>
+<td>Anonymous</td>
+<td></td>
+<td>2019-03-29T08:27:54.986Z</td>
+</tr>
+<tr>
+<td>document-layout-analysis/</td>
+<td><a class="at" href="#5be3e0b9fb4ffe0069bf9eb9">@sagewang </a>最近比较忙，忙完了再更吧&gt;_&lt;</td>
+<td>s1nh</td>
+<td></td>
+<td>2018-11-12T06:57:11.243Z</td>
+</tr>
+<tr>
+<td>document-layout-analysis/</td>
+<td>老哥，剩下的内容怎么不更了？</td>
+<td>sagewang</td>
+<td></td>
+<td>2018-11-08T07:07:37.218Z</td>
+</tr>
+<tr>
+<td>eclipse-~-gnome-theme-kali/</td>
+<td>多谢 我用的manjaro，在上面装的eclipse也遇到了这个问题，gnome的优化设置修改主题就行了</td>
+<td>Anonymous</td>
+<td></td>
+<td>2018-11-26T14:17:57.824Z</td>
+</tr>
+<tr>
+<td>hackrf-quick-start/</td>
+<td>为什么受到的gps信号不稳定呢？</td>
+<td>Anonymous</td>
+<td></td>
+<td>2020-05-06T14:39:40.668Z</td>
+</tr>
+<tr>
+<td>hackrf-quick-start/</td>
+<td><a class="at" href="#5d24aacea673f50069f5da4b">@tin </a> , 你回复的时候留个邮箱吧</td>
+<td>S1NH</td>
+<td></td>
+<td>2020-02-14T09:17:05.098Z</td>
+</tr>
+<tr>
+<td>hackrf-quick-start/</td>
+<td><a class="at" href="#5deea951546eaa00695b5a0b">@Anonymous </a> , 你猜</td>
+<td>s1nh</td>
+<td></td>
+<td>2020-02-14T09:16:10.506Z</td>
+</tr>
+<tr>
+<td>hackrf-quick-start/</td>
+<td><a class="at" href="#5d26d819c8959c00689992ec">@S1NH </a> , 怎么联系你？</td>
+<td>Anonymous</td>
+<td></td>
+<td>2019-12-09T20:06:41.316Z</td>
+</tr>
+<tr>
+<td>hackrf-quick-start/</td>
+<td>老哥你好，关于hackrf有事情想请教。。。有偿也可。。。。</td>
+<td>(* ￣3)(ε￣ *)</td>
+<td></td>
+<td>2019-08-30T10:43:55.765Z</td>
+</tr>
+<tr>
+<td>hackrf-quick-start/</td>
+<td>老哥你好，关于hackrf有事情想请教。。。有偿也可。。。。</td>
+<td>tin</td>
+<td></td>
+<td>2019-07-09T14:55:10.242Z</td>
+</tr>
+<tr>
+<td>hello-world/</td>
+<td><a class="at" href="#5c2208e167f356005f12e368">@s1nh </a>666</td>
+<td>s1nh</td>
+<td></td>
+<td>2018-12-25T10:42:13.053Z</td>
+</tr>
+<tr>
+<td>hello-world/</td>
+<td>test</td>
+<td>s1nh</td>
+<td></td>
+<td>2018-12-25T10:39:29.064Z</td>
+</tr>
+<tr>
+<td>Image-mosaic-keypoint/</td>
+<td>图像拼接速率上，有什么优化方案</td>
+<td>Anonymous</td>
+<td></td>
+<td>2019-04-14T13:00:27.548Z</td>
+</tr>
+<tr>
+<td>Image-mosaic-keypoint/</td>
+<td><a class="at" href="#5ca421d3a3180b0068aae948">@gary </a> , 加油呀！<br>不过你的Blog竟然 comment section 是空的 &gt;_&lt;</td>
+<td>S1NH</td>
+<td></td>
+<td>2019-04-10T03:07:25.301Z</td>
+</tr>
+<tr>
+<td>Image-mosaic-keypoint/</td>
+<td>从老哥的一篇 octave的文章。。<br>看了老哥很多文章。。。。<br>然后喜欢上了老哥的写作风格。<br>最近在上吴恩达的ml课，<br>好难。</td>
+<td>gary</td>
+<td><a href="https://www.zhongxijia.cn/">https://www.zhongxijia.cn</a></td>
+<td>2019-04-03T03:00:35.299Z</td>
+</tr>
+<tr>
+<td>jetson-tx-2-all-you-know/</td>
+<td><a class="at" href="#5ed20bbce2ae37000637e781">@Anonymous </a> , 之前买了一个载板，可以插6个CSI摄像头<br>跟下面链接的差不多：<br><a href="https://item.taobao.com/item.htm?spm=a230r.1.14.178.6dce7087mga6IZ&amp;id=555255642576&amp;ns=1&amp;abbucket=17#detail">https://item.taobao.com/item.htm?spm=a230r.1.14.178.6dce7087mga6IZ&amp;id=555255642576&amp;ns=1&amp;abbucket=17#detail</a></td>
+<td>S1NH</td>
+<td></td>
+<td>2020-06-29T02:38:05.793Z</td>
+</tr>
+<tr>
+<td>jetson-tx-2-all-you-know/</td>
+<td>你好我想问一下，你当时给TX2扩展了几个摄像头呀？是扩展的CSI还是usb的呀？我现在在做基于TX2的环视系统，也需要用摄像头进行拼接，所以想问问？麻烦啦！</td>
+<td>Anonymous</td>
+<td></td>
+<td>2020-05-30T07:31:08.296Z</td>
+</tr>
+<tr>
+<td>jetson-tx-2-all-you-know/</td>
+<td><a class="at" href="#5c21fd651579a3005f0c02d7">@s1nh </a>多谢指点👍我这比较简单粗暴，直接把ptgui生成的.pts拼接模板输入进去做的remap，然后线性blending输出。我从remap到blender把所有opencv自带的函数都用自己写的kernel换掉了，结果也没提升多少orz….<br>而且remap这个函数实在太费时了，由于是随机访问也没法合并，实在找不到优化的方法…..<br>opencv自带的stream这么坑的嘛，我去试试😹</td>
+<td>田子</td>
+<td></td>
+<td>2018-12-27T03:20:56.507Z</td>
+</tr>
+<tr>
+<td>jetson-tx-2-all-you-know/</td>
+<td><a class="at" href="#5c2050a64773f7173669a20c">@田子 </a>你是用的什么特征和什么blender呀，我好像只用了线性的blender。  年代太久远了记不清了&gt;_&lt; 另外，stream的使用好像有很多坑，可以看看<a href="https://github.com/opencv/opencv/issues/8938">这个</a>，我重写了opencv的部分代码才跑起来的</td>
+<td>s1nh</td>
+<td></td>
+<td>2018-12-25T09:56:40.641Z</td>
+</tr>
+<tr>
+<td>jetson-tx-2-all-you-know/</td>
+<td>看了你的《GPU加速与L-ORB特征提取的全景视频实时拼接》，想问一下博主怎么实现在TX1下三路拼接1500x1112达到每帧10ms的😱….我也在做拼接，三路1280x960输入1920x960输出，三通道BGR图像，用的还是TX2，只做remap+blender，连特征点检测都没有，拼接每帧都要45ms……尝试了分给不同的stream做拼接，效果也并不显著😵😵😵</td>
+<td>田子</td>
+<td></td>
+<td>2018-12-24T03:21:10.740Z</td>
+</tr>
+<tr>
+<td>Keras-MNIST/</td>
+<td><a class="at" href="#5c31f2eb67f356006343237a">@unknown </a>The code comes from the official example: <a href="https://github.com/keras-team/keras/blob/befbdaa076eedb2787ce340b1a5b4accf93d123d/examples/mnist_cnn.py">examples/mnist_cnn.py</a></td>
+<td>s1nh</td>
+<td></td>
+<td>2019-01-07T03:23:20.842Z</td>
+</tr>
+<tr>
+<td>Keras-MNIST/</td>
+<td>do not put test set to validation data, it just not correct</td>
+<td>unknown</td>
+<td></td>
+<td>2019-01-06T12:22:03.511Z</td>
+</tr>
+<tr>
+<td>littlebug/</td>
+<td><a class="at" href="#5d8890d6ba39c8007325c758">@Anonymous </a> , 现在bug已经在新版本修复了，不需要降级了。只需要执行 sudo apt-get update 和 sudo apt-get upgrade 升级即可。如果还有问题，那么可能不是这个bug的原因导致的。</td>
+<td>S1NH</td>
+<td></td>
+<td>2019-09-25T06:01:31.368Z</td>
+</tr>
+<tr>
+<td>littlebug/</td>
+<td><a class="at" href="#5bb0ba060b6160006fe6a68a">@S1NH </a> , 用了你给的指令依然不能降级，请教一下该怎么处理</td>
+<td>Anonymous</td>
+<td></td>
+<td>2019-09-23T09:31:02.741Z</td>
+</tr>
+<tr>
+<td>littlebug/</td>
+<td><a class="at" href="#5d620600eaa3750068c8cb37">@Anonymous </a> , Bug早就修复了，直接升级即可。</td>
+<td>S1NH</td>
+<td></td>
+<td>2019-08-28T17:43:21.756Z</td>
+</tr>
+<tr>
+<td>littlebug/</td>
+<td><a class="at" href="#5bb0b9fffb4ffe0069b5114c">@youbinqiao </a> , 怎么降级呀？</td>
+<td>Anonymous</td>
+<td></td>
+<td>2019-08-25T03:52:32.494Z</td>
+</tr>
+<tr>
+<td>littlebug/</td>
+<td><a class="at" href="#5c8c6e65ac502e00668764b4">@Anonymous </a>是4.4.0-116的bug， 请自行谷歌</td>
+<td>S1NH</td>
+<td></td>
+<td>2019-04-01T06:15:31.541Z</td>
+</tr>
+<tr>
+<td>littlebug/</td>
+<td>这并不是kernel的bug，是因为你更新了内核，新内核里没有把驱动模块打进去。</td>
+<td>Anonymous</td>
+<td></td>
+<td>2019-03-16T03:32:53.252Z</td>
+</tr>
+<tr>
+<td>littlebug/</td>
+<td><a class="at" href="#5bb0b9fffb4ffe0069b5114c">@youbinqiao </a>通过uname -a可以查看自己的内核版本；</br> </br> 降级很简单，你试一下下面3个命令：</br> dpkg -l&#124;grep linux-image-e</br> dpkg -l&#124;grep linux-image-4</br> dpkg -l&#124;grep linux-headers-4</br> </br> 依然不会的话再问我吧</td>
+<td>S1NH</td>
+<td></td>
+<td>2018-09-30T12:47:50.166Z</td>
+</tr>
+<tr>
+<td>littlebug/</td>
+<td><a class="at" href="#5bb08e669f54540070617d8b">@YH </a>我只是个搬运工^_^</td>
+<td>S1NH</td>
+<td></td>
+<td>2018-09-30T12:47:48.808Z</td>
+</tr>
+<tr>
+<td>littlebug/</td>
+<td>血泪史，一上午排查不出bug~~~靠阁下解决了，3Q</td>
+<td>eclipsedu</td>
+<td></td>
+<td>2018-09-30T12:04:08.017Z</td>
+</tr>
+<tr>
+<td>littlebug/</td>
+<td>请问如何降级呢，在网上找了降级的方法，都没成功</td>
+<td>youbinqiao</td>
+<td></td>
+<td>2018-09-30T11:59:30.669Z</td>
+</tr>
+<tr>
+<td>littlebug/</td>
+<td>謝謝你的文，我才解決這個問題 ;</td>
+<td>YH</td>
+<td></td>
+<td>2018-09-30T09:12:03.858Z</td>
+</tr>
+<tr>
+<td>matplotlib-animation/</td>
+<td>博客好漂亮，背景好好玩</td>
+<td>Anonymous</td>
+<td></td>
+<td>2018-12-12T11:46:15.234Z</td>
+</tr>
+<tr>
+<td>microeconomics-note/</td>
+<td>嘿，偶然看到你的博客，还挺喜欢的啊哈。加油噢！</td>
+<td>Anonymous</td>
+<td></td>
+<td>2019-06-15T02:59:46.180Z</td>
+</tr>
+<tr>
+<td>planar-reconstruction/</td>
+<td><a class="at" href="#5cea8d3343e78c00670dff52">@Bert </a> , 膜拜大神！</td>
+<td>S1NH</td>
+<td></td>
+<td>2019-05-31T07:33:41.881Z</td>
+</tr>
+<tr>
+<td>planar-reconstruction/</td>
+<td>👍👍👍</td>
+<td>Bert</td>
+<td><a href="http://bertjiazheng.github.io/">http://bertjiazheng.github.io</a></td>
+<td>2019-05-26T12:57:23.015Z</td>
+</tr>
+<tr>
+<td>project-velodyne/</td>
+<td>师兄您好，请问您的github地址在哪里啊？想看看您的参数是如何设置的，我定制了一个同样比例大小的标定版，但是没有成功，特别急，谢谢啦</td>
+<td>Anonymous</td>
+<td></td>
+<td>2020-11-02T01:58:28.674Z</td>
+</tr>
+<tr>
+<td>project-velodyne/</td>
+<td><a class="at" href="#5d430f7743e78c006e488b02">@DBSGWS </a> , 恩恩，这个之前试过。</td>
+<td>S1NH</td>
+<td></td>
+<td>2019-10-14T11:10:21.536Z</td>
+</tr>
+<tr>
+<td>project-velodyne/</td>
+<td><a class="at" href="#5d89be1f17b54d0068460116">@Jane </a> , 这个没有耶，比较高端。</td>
+<td>S1NH</td>
+<td></td>
+<td>2019-09-25T06:02:09.647Z</td>
+</tr>
+<tr>
+<td>project-velodyne/</td>
+<td>请问博主有自制过3D雷达吗？</td>
+<td>Jane</td>
+<td></td>
+<td>2019-09-24T06:56:31.677Z</td>
+</tr>
+<tr>
+<td>project-velodyne/</td>
+<td>可以试试这个 <a href="https://github.com/ankitdhall/lidar_camera_calibration">https://github.com/ankitdhall/lidar_camera_calibration</a></td>
+<td>DBSGWS</td>
+<td></td>
+<td>2019-08-01T16:12:39.543Z</td>
+</tr>
+<tr>
+<td>RSA-KMP-RB-TREE/</td>
+<td><a class="at" href="#5cf077517b968a007696db1d">@Anonymous </a> , 233333</td>
+<td>S1NH</td>
+<td></td>
+<td>2019-05-31T07:32:17.970Z</td>
+</tr>
+<tr>
+<td>RSA-KMP-RB-TREE/</td>
+<td>fuck,it’s so difficult</td>
+<td>Anonymous</td>
+<td></td>
+<td>2019-05-31T07:31:50.082Z</td>
+</tr>
+<tr>
+<td>Tensorflow-MNIST/</td>
+<td><a class="at" href="#5bf3f293303f3900622422e5">@Anonymous </a>上面的优化器是 Adam 和 梯度下降</td>
+<td>S1NH</td>
+<td></td>
+<td>2018-11-25T17:37:59.335Z</td>
+</tr>
+<tr>
+<td>Tensorflow-MNIST/</td>
+<td>softmax只是最后进行数值缩放的一步，不是作为优化器吧，所有的方法最后都要用softmax</td>
+<td>Anonymous</td>
+<td></td>
+<td>2018-11-20T11:40:03.174Z</td>
+</tr>
+<tr>
+<td>Tor-Browser-Setup/</td>
+<td>通过蓝灯已经等于表明身份了吧？</td>
+<td>kenson</td>
+<td></td>
+<td>2019-07-22T03:17:02.516Z</td>
+</tr>
+<tr>
+<td>tx-1-zero-copy/</td>
+<td>Hi, 从<a href="http://zangcq.me/?p=330">http://zangcq.me/?p=330</a> 看到了对你文章的称赞，我<a href="https://www.findhao.net/easycoding/1697">https://www.findhao.net/easycoding/1697</a> 原文翻译的确有问题，现已纠正。</br> 加个好友如何？如有意向，请email我你的qq or 其他联系方式</td>
+<td>FindHao</td>
+<td></td>
+<td>2018-09-30T12:36:43.774Z</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>其它笔记</category>
+      </categories>
+  </entry>
+  <entry>
     <title>不推荐购买创想三维 Creality Sermoon V1 的几个理由</title>
     <url>/post/do-not-buy-sermoon-v1/</url>
     <content><![CDATA[<blockquote>
@@ -2815,6 +3572,38 @@ try to remove and create again
       </categories>
   </entry>
   <entry>
+    <title>首版复刻的Fender &#39;57 &amp; &#39;62 Strat 拾音器</title>
+    <url>/post/fender-57-62-strat-pickup-first-reissue/</url>
+    <content><![CDATA[<blockquote>
+<p>去年10月份左右从咸鱼买了一把号称93年产原装无修改的Fender vintage 57 stratocaster，拆开看了一下，琴颈的生产日期是1993.05.21，还挺有纪念意义的。但就在我买了新拾音器准备改装它的时候，好像发现了一个天大的秘密。</p>
+</blockquote>
+<p><img data-src="http://qiniu.s1nh.org/Blog_guitars_1.jpg-QNthin" title="上面那把（找不到其它完整的图了）"></p>
+<span id="more"></span>
+
+<!-- ![](http://qiniu.s1nh.org/Blog_vintage_57_neck.jpg-QNthin) -->
+
+
+<p>按理说57/62拾音器相对别的Custom Shop拾音器是比较便宜的，特征是<code>直流电阻5.6K Ohm</code>，六根磁柱都有<code>倒角</code>，黄铜线圈（具体的可以查看<a href="http://shop.fender.com/en/intl/parts/pickups-preamps/fender-original-%E2%80%9957%E2%80%9962-strat-pickups/0992117000.html">fender官网介绍</a>。可是我刚拆开拾音器就看到了里面的<strong>紫铜线圈</strong>，我的第一反应是琴的原主人给换了<code>Texas Special Pickup</code>，这可赚大了，可经我查完资料以后发现这不是 <code>Texas Special</code>，而是首版复刻的<code>57/62</code>。</p>
+<p><em>网上的两篇介绍《<a href="https://planetbotch.blogspot.tw/2012/07/fender-57-62-strat-pickup-first-reissue.html">Fender ‘57 &amp; ‘62 Strat Pickup (First Reissue)</a>》《<a href="https://www.strat-talk.com/threads/poll-about-the-f-57-62-099-2117-000-s.205219/">Poll About the F ‘57/‘62 099-2117-000 s</a>》</em></p>
+<p><strong>—–pre-1998 version of the Fender USA Vintage Stratocaster ’57 &amp; ’62 reissue pickup—–</strong></p>
+<p>拾音器的细节是<code>紫铜线圈</code> <code>电阻6.5K 6.2K 6.5K</code> <code>磁钢没有倒角</code>。除了背面没有红/蓝点，导线都是白/黑（Texas的琴桥为黄/黑）以外，外观跟 <code>Texas Special</code> 一模一样。</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_fender_57_62_pickup.jpg-QNthin"></p>
+<p>Fender 在1992年前的复刻（vintage reissue）吉他中只有这个拾音器，代号为<code>99-2043-000</code>，之后Fender为了复制SRV的声音，以及制作签名款SRV吉他，才开始生产<code>Texas Special</code>拾音器。1998年以后<code>57/62</code>才开始用现在的拾音器<code>099-2117-000</code>（特征是塑料线/有倒角/黄铜线圈/电阻5.6k）</p>
+<p><strong>—–我的93年复刻Vintage 57—–</strong></p>
+<p>这把57除了拾音器不同以外，电容也很独特<code>0.1uf</code>（刚换上新拾音器的时候声音闷的不行，直到我第二次拆开后发现电容那么大）。之前的<code>pre-1998 57/62</code>拾音器加上0.1的电容声音又大又亮（功率介于<code>dimarzio HS-2/3/4</code>与<code>Gibson P90</code>拾音器之间），可见如果换成正常的0.022uf电容功率得多大&gt;_&lt;</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_vintage_57_body.jpg-QNthin"></p>
+<p>我新换的拾音器是我在网上淘到的停产的<code>Lace Sensor Gold domes</code>拾音器（现在只有银色的<code>Crome Domes</code>了，我问了原因，他们给的回复是 *The Gold Dome pickups were simple Chrome Domes with a gold cover. They were produced sometime during the mid-2000’s, but for only a short while. The proved to be difficult to build and not cost effective. Sonically, there was no difference from the Chrome Dome pickups.*），如果有机会的话，我还是准备把那个牛逼的拾音器换回去。</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_vintage_57_after.jpg-QNthin"></p>
+]]></content>
+      <categories>
+        <category>音乐相关</category>
+      </categories>
+      <tags>
+        <tag>Fender</tag>
+        <tag>Pickups</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>FastDDS 零拷贝模式下多个 subscriber 的原理</title>
     <url>/post/fastdds-zerocopy-for-multiple-readers/</url>
     <content><![CDATA[<p>FastDDS 新推出的零拷贝 (Zero Copy) 模式有很多难以理解的地方，在这里会持续做些整理。</p>
@@ -2860,38 +3649,6 @@ try to remove and create again
       </categories>
       <tags>
         <tag>FastDDS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>首版复刻的Fender &#39;57 &amp; &#39;62 Strat 拾音器</title>
-    <url>/post/fender-57-62-strat-pickup-first-reissue/</url>
-    <content><![CDATA[<blockquote>
-<p>去年10月份左右从咸鱼买了一把号称93年产原装无修改的Fender vintage 57 stratocaster，拆开看了一下，琴颈的生产日期是1993.05.21，还挺有纪念意义的。但就在我买了新拾音器准备改装它的时候，好像发现了一个天大的秘密。</p>
-</blockquote>
-<p><img data-src="http://qiniu.s1nh.org/Blog_guitars_1.jpg-QNthin" title="上面那把（找不到其它完整的图了）"></p>
-<span id="more"></span>
-
-<!-- ![](http://qiniu.s1nh.org/Blog_vintage_57_neck.jpg-QNthin) -->
-
-
-<p>按理说57/62拾音器相对别的Custom Shop拾音器是比较便宜的，特征是<code>直流电阻5.6K Ohm</code>，六根磁柱都有<code>倒角</code>，黄铜线圈（具体的可以查看<a href="http://shop.fender.com/en/intl/parts/pickups-preamps/fender-original-%E2%80%9957%E2%80%9962-strat-pickups/0992117000.html">fender官网介绍</a>。可是我刚拆开拾音器就看到了里面的<strong>紫铜线圈</strong>，我的第一反应是琴的原主人给换了<code>Texas Special Pickup</code>，这可赚大了，可经我查完资料以后发现这不是 <code>Texas Special</code>，而是首版复刻的<code>57/62</code>。</p>
-<p><em>网上的两篇介绍《<a href="https://planetbotch.blogspot.tw/2012/07/fender-57-62-strat-pickup-first-reissue.html">Fender ‘57 &amp; ‘62 Strat Pickup (First Reissue)</a>》《<a href="https://www.strat-talk.com/threads/poll-about-the-f-57-62-099-2117-000-s.205219/">Poll About the F ‘57/‘62 099-2117-000 s</a>》</em></p>
-<p><strong>—–pre-1998 version of the Fender USA Vintage Stratocaster ’57 &amp; ’62 reissue pickup—–</strong></p>
-<p>拾音器的细节是<code>紫铜线圈</code> <code>电阻6.5K 6.2K 6.5K</code> <code>磁钢没有倒角</code>。除了背面没有红/蓝点，导线都是白/黑（Texas的琴桥为黄/黑）以外，外观跟 <code>Texas Special</code> 一模一样。</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_fender_57_62_pickup.jpg-QNthin"></p>
-<p>Fender 在1992年前的复刻（vintage reissue）吉他中只有这个拾音器，代号为<code>99-2043-000</code>，之后Fender为了复制SRV的声音，以及制作签名款SRV吉他，才开始生产<code>Texas Special</code>拾音器。1998年以后<code>57/62</code>才开始用现在的拾音器<code>099-2117-000</code>（特征是塑料线/有倒角/黄铜线圈/电阻5.6k）</p>
-<p><strong>—–我的93年复刻Vintage 57—–</strong></p>
-<p>这把57除了拾音器不同以外，电容也很独特<code>0.1uf</code>（刚换上新拾音器的时候声音闷的不行，直到我第二次拆开后发现电容那么大）。之前的<code>pre-1998 57/62</code>拾音器加上0.1的电容声音又大又亮（功率介于<code>dimarzio HS-2/3/4</code>与<code>Gibson P90</code>拾音器之间），可见如果换成正常的0.022uf电容功率得多大&gt;_&lt;</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_vintage_57_body.jpg-QNthin"></p>
-<p>我新换的拾音器是我在网上淘到的停产的<code>Lace Sensor Gold domes</code>拾音器（现在只有银色的<code>Crome Domes</code>了，我问了原因，他们给的回复是 *The Gold Dome pickups were simple Chrome Domes with a gold cover. They were produced sometime during the mid-2000’s, but for only a short while. The proved to be difficult to build and not cost effective. Sonically, there was no difference from the Chrome Dome pickups.*），如果有机会的话，我还是准备把那个牛逼的拾音器换回去。</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_vintage_57_after.jpg-QNthin"></p>
-]]></content>
-      <categories>
-        <category>音乐相关</category>
-      </categories>
-      <tags>
-        <tag>Fender</tag>
-        <tag>Pickups</tag>
       </tags>
   </entry>
   <entry>
@@ -4592,8 +5349,7 @@ H1&lt;---|0.14-1.6|Mirtazapine
   <entry>
     <title>有关 Chatbot 基本原理、开源框架和 Rasa</title>
     <url>/post/review-of-chatbot-framework/</url>
-    <content><![CDATA[<p><code>之前使用的 valine 评论工具有一些漏洞会导致隐私泄漏和XSS攻击，比如</code><a href="https://blog.maplesugar.top/valine-prank/"><code>这个</code></a><code>，目前更换为 utteranc ，一个基于 github 的评论工具，之前的评论内容正在努力迁移中...</code></p>
-<blockquote>
+    <content><![CDATA[<blockquote>
 <p>阅读了几篇关于 Chatbot 的综述、文档，Rasa 的介绍。另外，调研了一些大厂的 Chatbot 框架，包括Google 的 <a href="https://cloud.google.com/dialogflow/pricing">Dialogflow</a>, <a href="https://dev.botframework.com/">Microsoft Bot</a>, <a href="https://aws.amazon.com/lex/pricing/">AWS LEX</a>, <a href="https://www.alixiaomi.com/">阿里小蜜</a>；和开源超过 1k stars 的框架，包括 <a href="https://rasa.com/">Rasa</a>, <a href="https://github.com/oyfml/opennlu">OpenNLU</a>, <a href="https://github.com/facebookresearch/ParlAI">ParlAI</a>, <a href="https://github.com/gunthercox/ChatterBot">ChatterBot</a>, <a href="https://github.com/alfredfrancis/ai-chatbot-framework">ai-chatbot-framework</a>。</p>
 </blockquote>
 <span id="more"></span>
