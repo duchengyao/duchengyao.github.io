@@ -1860,6 +1860,8 @@ apt-get install libusb-1.0-0-dev
     <title>鲸落双城记</title>
     <url>/post/WhaleFallLive_201511/</url>
     <content><![CDATA[<p>新加入鲸落乐队，我当Bass手。弹Bass没什么存在感，可是玩的很开心:-) </p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_1.jpg-QNthin" alt="鲸落"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_2.jpg-QNthin" alt="鲸落"></p>
 <span id="more"></span>
 
 <p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_0.jpg-QNthin" alt="鲸落"></p>
@@ -1891,15 +1893,13 @@ apt-get install libusb-1.0-0-dev
       <categories>
         <category>音乐相关</category>
       </categories>
-      <tags>
-        <tag>Live</tag>
-        <tag>鲸落</tag>
-      </tags>
   </entry>
   <entry>
     <title>《Xcode 江湖录》已经出版</title>
     <url>/post/XcodeJianghu/</url>
     <content><![CDATA[<p>写了半年多，经过无数次修改，这本书终于定稿了。一多半内容是李俊阳编写的，我写了设计篇、版本管理和一些附录，胡雪婷编写了部分故事，卢力画了插图。</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Xcode_Jianghu_1.png-QNthin"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Xcode_Jianghu_2.png-QNthin"></p>
 <span id="more"></span>
 
 <p><img data-src="http://qiniu.s1nh.org/Blog_Xcode_Jianghu_3.jpg-QNthin" alt="S1NH"></p>
@@ -2594,6 +2594,57 @@ apt-get install libusb-1.0-0-dev
 <p>• Xiong, Caiming, Stephen Merity, and Richard Socher. “Dynamic Memory Networks for Visual and Textual Question Answering.” arXiv:1603.01417 (2016).<br>• Mateusz Malinowski, Marcus Rohrbach, Mario Fritz, Ask Your Neurons: A Neural-based Approach to Answering Questions about Images, arXiv:1505.01121.<br>• Stanislaw Antol, Aishwarya Agrawal, Jiasen Lu, Margaret Mitchell, Dhruv Batra, C. Lawrence Zitnick, Devi Parikh, VQA: Visual Question Answering, CVPR, 2015 SUNw:Scene Understanding workshop.<br>• Hauyuan Gao, Junhua Mao, Jie Zhou, Zhiheng Huang, Lei Wang, Wei Xu, Are You Talking to a Machine? Dataset and Methods for Multilingual Image Question Answering, arXiv:1505.05612.<br>• Hyeonwoo Noh, Paul Hongsuck Seo, and Bohyung Han, Image Question Answering using Convolutional Neural Network with Dynamic Parameter Prediction, arXiv:1511.05765<br>• Yang, Z., He, X., Gao, J., Deng, L., &amp; Smola, A. (2015). Stacked Attention Networks for Image Question Answering. arXiv:1511.02274.<br>• Jin-Hwa Kim, Sang-Woo Lee, Dong-Hyun Kwak, Min-Oh Heo, Jeonghee Kim, Jung-Woo Ha, Byoung-Tak Zhang, Multimodal Residual Learning for Visual QA, arXiv:1606:01455<br>• Hyeonwoo Noh and Bohyung Han, Training Recurrent Answering Units with Joint Loss Minimization for VQA, arXiv:1606.03647<br>• Jin-Hwa Kim, Kyoung Woon On, Jeonghee Kim, Jung-Woo Ha, Byoung-Tak Zhang, Hadamard Product for Low-rank Bilinear Pooling, arXiv:1610.04325. </p>
 <h4 id="5-Mask-R-CNN"><a href="#5-Mask-R-CNN" class="headerlink" title="(5) Mask-R-CNN"></a>(5) Mask-R-CNN</h4><p>另外还有一篇是刚刚出来的 Mask RCNN，也是比较火。</p>
 <p>文章在这里 <a href="https://arxiv.org/abs/1703.06870">https://arxiv.org/abs/1703.06870</a><br>具体中文讨论在这里 <a href="https://www.zhihu.com/question/57403701">https://www.zhihu.com/question/57403701</a><br>但是，没有代码，我们组也在复现中 </p>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>不推荐购买创想三维 Creality Sermoon V1 的几个理由</title>
+    <url>/post/do-not-buy-sermoon-v1/</url>
+    <content><![CDATA[<blockquote>
+<p>看过 [<a href="https://www.zhihu.com/zvideo/1457409894764335104">阿文君的视频</a>] 买了 <code>Sermoon V1</code>。体验过后感觉比较玩具、拓展性也比较差，在这里提出几个不该买的理由。</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="0x01-缺少-Linear-Advance-（压力提前-线性推进）-的支持"><a href="#0x01-缺少-Linear-Advance-（压力提前-线性推进）-的支持" class="headerlink" title="0x01 缺少 Linear Advance （压力提前/线性推进） 的支持"></a>0x01 缺少 Linear Advance （压力提前/线性推进） 的支持</h2><p><code>准确的 Linear Advance 的校准是打印一个优秀模型的重要因素</code></p>
+<p>默认情况下，挤出机以线性方式工作。但挤出机不是线性系统，明显会导致在每一步打印后挤出额外材料，并且在下一步开始打印时材料不够。（下图表示了打印机在加速减速的过程，在2处材料挤出不够，且在4、5处产生堆料）</p>
+<p><img data-src="http://qiniu.s1nh.org/sermoon-v1-k-factor_low.png"></p>
+<p>使用 Linear Advance 的优点：</p>
+<ul>
+<li>减少粗糙的边缘，尺寸精度更高。</li>
+<li>可以在不损失任何打印质量的情况下实现更高的打印速度。</li>
+<li>即使在较低的打印速度下，打印质量也会得到提高。</li>
+<li>获得更锋利的边缘。</li>
+</ul>
+<p>网络有很多矫正线性推进的教程，比如：</p>
+<ul>
+<li><a href="https://www.bilibili.com/video/BV1Z94y1U7UL">3D打印机klipper在Voron0.1机器上进行挤出机压力提前测试和校准：新手教程</a></li>
+<li><a href="https://www.bilibili.com/video/BV18541117Yk">【klipper】3D打印机挤出机压力提前测试和校准【3集全】拐角膨胀和起始点分离修正办法</a></li>
+</ul>
+<p>Marlin 官网也提供了详细的<a href="https://marlinfw.org/docs/features/lin_advance.html">调整教程</a></p>
+<p>然而我们的 Sermoon V1 不支持此功能，无法进行调整。我打电话到厂家，给的答复也是“不开源” “没有你想要的固件”</p>
+<h2 id="0x02-糟糕的散热"><a href="#0x02-糟糕的散热" class="headerlink" title="0x02 糟糕的散热"></a>0x02 糟糕的散热</h2><p>此机器的精灵挤出机主体跟 Ender3 S1 的相同，但附件不同。V1挤出机的附件有个致命缺陷散热风扇从底部吸入热空气再给模型降温，缺点是散热很差，在<a href="https://fl.himi3d.cn/d/439-bensermoon-v1">这篇文章</a>有讨论。有几种方式可以改造散热，我做了一版，调试好后会放出来（下图左上。另外：<code>右下黑</code>，原厂；右上黄，<a href="https://fl.himi3d.cn/d/426-bengo10-ender3-s1">S1 风道</a>；左下白，<a href="https://www.crealitycloud.cn/model-detail/626821aac54f1758304dc951">风扇侧装</a>）。</p>
+<p><img data-src="http://qiniu.s1nh.org/sermoon-v1-fan.jpg"></p>
+<p>另外，个人对于挤出机的排线耐久性持怀疑态度，加热棒的大电流不知道会不会导致排线老化。</p>
+<h2 id="0x03-鸡肋的-wifi-功能"><a href="#0x03-鸡肋的-wifi-功能" class="headerlink" title="0x03 鸡肋的 wifi 功能"></a>0x03 鸡肋的 wifi 功能</h2><p>Sermoon V1 自带一个 wifi 板子（下图中间绿色的电路板），功能很弱鸡。比如录像没办法下载，官方给的答复是可以<code>打开手机的录屏功能</code>。</p>
+<p><img data-src="http://qiniu.s1nh.org/sermoon-v1-whole.png"></p>
+<p>我已经把它换成树莓派了，<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2sh1t/mod_octoprint_setup_for_the_creality_sermoon_v1/">有手就能改</a>，可以安装 octoprint 以支持更强大的 <code>wifi</code> <code>远程监控</code> <code>延时摄影</code> 等功能。</p>
+<iframe src="//player.bilibili.com/player.html?aid=342230292&bvid=BV1194y1m7y7&cid=735894030&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+<h2 id="0x04-不开源的主控板"><a href="#0x04-不开源的主控板" class="headerlink" title="0x04 不开源的主控板"></a>0x04 不开源的主控板</h2><p>机器左下角的主板基于开源的 <code>Marlin 1</code> 固件魔改而成，<code>Marlin</code> 固件基于 <code>GPL v3</code> 协议，简单来说就是 <code>你可以免费使用、复制、修改、分发受保护程序，但分发时一定要提供源码</code>。然而此主板不提供源码，后果就是我们只能使用老旧的 Marlin 第一代固件，没办法自行升级到 2.0 以上版本，或者最近流行的<code>klipper</code>固件。</p>
+<ul>
+<li>国外有个哥们请求开源，被直接关闭了issue <a href="https://github.com/CrealityOfficial/Ender-3S1/issues/2">链接</a></li>
+<li>无法校准挤出机<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/ui2u5v/how_to_calibrate_extruder_esteps_z_axis_baby/">链接</a></li>
+<li><a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2stxx/sermoon_v1_and_v1_pro_general_info_thoughts/">这里</a> 有一些讨论</li>
+<li><a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2toy2/marlin_stock_firmware_notes_from_the_sermoon_v1/">这里</a>有一些关于固件的信息</li>
+</ul>
+<h2 id="0x05-无用的-pro-版本"><a href="#0x05-无用的-pro-版本" class="headerlink" title="0x05 无用的 pro 版本"></a>0x05 无用的 pro 版本</h2><p>它的 pro 版本包含开盖暂停和相机功能，然而</p>
+<ul>
+<li>开盖暂停/断料检测只在SD卡打印时有效；</li>
+<li>摄像头会经常断线（国外有人讨论过可能是这种摄像头不支持在高温环境下工作[<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2stxx/sermoon_v1_and_v1_pro_general_info_thoughts/i2r7irn/?utm_source=reddit&utm_medium=web2x&context=3">链接</a>]）。</li>
+</ul>
+<h2 id="0x06-吵"><a href="#0x06-吵" class="headerlink" title="0x06 吵"></a>0x06 吵</h2><p>这款机器主打静音，但你买了以后就知道给主板散热的小风扇有多吵了。我已经拔风扇插头了，目前没出现什么问题（后盖打开，26度空调）。</p>
 ]]></content>
       <categories>
         <category>算法与硬件</category>
@@ -3357,57 +3408,6 @@ apt-get install libusb-1.0-0-dev
       </categories>
   </entry>
   <entry>
-    <title>不推荐购买创想三维 Creality Sermoon V1 的几个理由</title>
-    <url>/post/do-not-buy-sermoon-v1/</url>
-    <content><![CDATA[<blockquote>
-<p>看过 [<a href="https://www.zhihu.com/zvideo/1457409894764335104">阿文君的视频</a>] 买了 <code>Sermoon V1</code>。体验过后感觉比较玩具、拓展性也比较差，在这里提出几个不该买的理由。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="0x01-缺少-Linear-Advance-（压力提前-线性推进）-的支持"><a href="#0x01-缺少-Linear-Advance-（压力提前-线性推进）-的支持" class="headerlink" title="0x01 缺少 Linear Advance （压力提前/线性推进） 的支持"></a>0x01 缺少 Linear Advance （压力提前/线性推进） 的支持</h2><p><code>准确的 Linear Advance 的校准是打印一个优秀模型的重要因素</code></p>
-<p>默认情况下，挤出机以线性方式工作。但挤出机不是线性系统，明显会导致在每一步打印后挤出额外材料，并且在下一步开始打印时材料不够。（下图表示了打印机在加速减速的过程，在2处材料挤出不够，且在4、5处产生堆料）</p>
-<p><img data-src="http://qiniu.s1nh.org/sermoon-v1-k-factor_low.png"></p>
-<p>使用 Linear Advance 的优点：</p>
-<ul>
-<li>减少粗糙的边缘，尺寸精度更高。</li>
-<li>可以在不损失任何打印质量的情况下实现更高的打印速度。</li>
-<li>即使在较低的打印速度下，打印质量也会得到提高。</li>
-<li>获得更锋利的边缘。</li>
-</ul>
-<p>网络有很多矫正线性推进的教程，比如：</p>
-<ul>
-<li><a href="https://www.bilibili.com/video/BV1Z94y1U7UL">3D打印机klipper在Voron0.1机器上进行挤出机压力提前测试和校准：新手教程</a></li>
-<li><a href="https://www.bilibili.com/video/BV18541117Yk">【klipper】3D打印机挤出机压力提前测试和校准【3集全】拐角膨胀和起始点分离修正办法</a></li>
-</ul>
-<p>Marlin 官网也提供了详细的<a href="https://marlinfw.org/docs/features/lin_advance.html">调整教程</a></p>
-<p>然而我们的 Sermoon V1 不支持此功能，无法进行调整。我打电话到厂家，给的答复也是“不开源” “没有你想要的固件”</p>
-<h2 id="0x02-糟糕的散热"><a href="#0x02-糟糕的散热" class="headerlink" title="0x02 糟糕的散热"></a>0x02 糟糕的散热</h2><p>此机器的精灵挤出机主体跟 Ender3 S1 的相同，但附件不同。V1挤出机的附件有个致命缺陷散热风扇从底部吸入热空气再给模型降温，缺点是散热很差，在<a href="https://fl.himi3d.cn/d/439-bensermoon-v1">这篇文章</a>有讨论。有几种方式可以改造散热，我做了一版，调试好后会放出来（下图左上。另外：<code>右下黑</code>，原厂；右上黄，<a href="https://fl.himi3d.cn/d/426-bengo10-ender3-s1">S1 风道</a>；左下白，<a href="https://www.crealitycloud.cn/model-detail/626821aac54f1758304dc951">风扇侧装</a>）。</p>
-<p><img data-src="http://qiniu.s1nh.org/sermoon-v1-fan.jpg"></p>
-<p>另外，个人对于挤出机的排线耐久性持怀疑态度，加热棒的大电流不知道会不会导致排线老化。</p>
-<h2 id="0x03-鸡肋的-wifi-功能"><a href="#0x03-鸡肋的-wifi-功能" class="headerlink" title="0x03 鸡肋的 wifi 功能"></a>0x03 鸡肋的 wifi 功能</h2><p>Sermoon V1 自带一个 wifi 板子（下图中间绿色的电路板），功能很弱鸡。比如录像没办法下载，官方给的答复是可以<code>打开手机的录屏功能</code>。</p>
-<p><img data-src="http://qiniu.s1nh.org/sermoon-v1-whole.png"></p>
-<p>我已经把它换成树莓派了，<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2sh1t/mod_octoprint_setup_for_the_creality_sermoon_v1/">有手就能改</a>，可以安装 octoprint 以支持更强大的 <code>wifi</code> <code>远程监控</code> <code>延时摄影</code> 等功能。</p>
-<iframe src="//player.bilibili.com/player.html?aid=342230292&bvid=BV1194y1m7y7&cid=735894030&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-
-<h2 id="0x04-不开源的主控板"><a href="#0x04-不开源的主控板" class="headerlink" title="0x04 不开源的主控板"></a>0x04 不开源的主控板</h2><p>机器左下角的主板基于开源的 <code>Marlin 1</code> 固件魔改而成，<code>Marlin</code> 固件基于 <code>GPL v3</code> 协议，简单来说就是 <code>你可以免费使用、复制、修改、分发受保护程序，但分发时一定要提供源码</code>。然而此主板不提供源码，后果就是我们只能使用老旧的 Marlin 第一代固件，没办法自行升级到 2.0 以上版本，或者最近流行的<code>klipper</code>固件。</p>
-<ul>
-<li>国外有个哥们请求开源，被直接关闭了issue <a href="https://github.com/CrealityOfficial/Ender-3S1/issues/2">链接</a></li>
-<li>无法校准挤出机<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/ui2u5v/how_to_calibrate_extruder_esteps_z_axis_baby/">链接</a></li>
-<li><a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2stxx/sermoon_v1_and_v1_pro_general_info_thoughts/">这里</a> 有一些讨论</li>
-<li><a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2toy2/marlin_stock_firmware_notes_from_the_sermoon_v1/">这里</a>有一些关于固件的信息</li>
-</ul>
-<h2 id="0x05-无用的-pro-版本"><a href="#0x05-无用的-pro-版本" class="headerlink" title="0x05 无用的 pro 版本"></a>0x05 无用的 pro 版本</h2><p>它的 pro 版本包含开盖暂停和相机功能，然而</p>
-<ul>
-<li>开盖暂停/断料检测只在SD卡打印时有效；</li>
-<li>摄像头会经常断线（国外有人讨论过可能是这种摄像头不支持在高温环境下工作[<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2stxx/sermoon_v1_and_v1_pro_general_info_thoughts/i2r7irn/?utm_source=reddit&utm_medium=web2x&context=3">链接</a>]）。</li>
-</ul>
-<h2 id="0x06-吵"><a href="#0x06-吵" class="headerlink" title="0x06 吵"></a>0x06 吵</h2><p>这款机器主打静音，但你买了以后就知道给主板散热的小风扇有多吵了。我已经拔风扇插头了，目前没出现什么问题（后盖打开，26度空调）。</p>
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
-      </categories>
-  </entry>
-  <entry>
     <title>文档布局分析 &amp; 扭曲文档图像恢复 --- Document Layout Analysis &amp; Document Image Dewarping</title>
     <url>/post/document-layout-analysis/</url>
     <content><![CDATA[<!--
@@ -3572,38 +3572,6 @@ try to remove and create again
       </categories>
   </entry>
   <entry>
-    <title>首版复刻的Fender &#39;57 &amp; &#39;62 Strat 拾音器</title>
-    <url>/post/fender-57-62-strat-pickup-first-reissue/</url>
-    <content><![CDATA[<blockquote>
-<p>去年10月份左右从咸鱼买了一把号称93年产原装无修改的Fender vintage 57 stratocaster，拆开看了一下，琴颈的生产日期是1993.05.21，还挺有纪念意义的。但就在我买了新拾音器准备改装它的时候，好像发现了一个天大的秘密。</p>
-</blockquote>
-<p><img data-src="http://qiniu.s1nh.org/Blog_guitars_1.jpg-QNthin" title="上面那把（找不到其它完整的图了）"></p>
-<span id="more"></span>
-
-<!-- ![](http://qiniu.s1nh.org/Blog_vintage_57_neck.jpg-QNthin) -->
-
-
-<p>按理说57/62拾音器相对别的Custom Shop拾音器是比较便宜的，特征是<code>直流电阻5.6K Ohm</code>，六根磁柱都有<code>倒角</code>，黄铜线圈（具体的可以查看<a href="http://shop.fender.com/en/intl/parts/pickups-preamps/fender-original-%E2%80%9957%E2%80%9962-strat-pickups/0992117000.html">fender官网介绍</a>。可是我刚拆开拾音器就看到了里面的<strong>紫铜线圈</strong>，我的第一反应是琴的原主人给换了<code>Texas Special Pickup</code>，这可赚大了，可经我查完资料以后发现这不是 <code>Texas Special</code>，而是首版复刻的<code>57/62</code>。</p>
-<p><em>网上的两篇介绍《<a href="https://planetbotch.blogspot.tw/2012/07/fender-57-62-strat-pickup-first-reissue.html">Fender ‘57 &amp; ‘62 Strat Pickup (First Reissue)</a>》《<a href="https://www.strat-talk.com/threads/poll-about-the-f-57-62-099-2117-000-s.205219/">Poll About the F ‘57/‘62 099-2117-000 s</a>》</em></p>
-<p><strong>—–pre-1998 version of the Fender USA Vintage Stratocaster ’57 &amp; ’62 reissue pickup—–</strong></p>
-<p>拾音器的细节是<code>紫铜线圈</code> <code>电阻6.5K 6.2K 6.5K</code> <code>磁钢没有倒角</code>。除了背面没有红/蓝点，导线都是白/黑（Texas的琴桥为黄/黑）以外，外观跟 <code>Texas Special</code> 一模一样。</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_fender_57_62_pickup.jpg-QNthin"></p>
-<p>Fender 在1992年前的复刻（vintage reissue）吉他中只有这个拾音器，代号为<code>99-2043-000</code>，之后Fender为了复制SRV的声音，以及制作签名款SRV吉他，才开始生产<code>Texas Special</code>拾音器。1998年以后<code>57/62</code>才开始用现在的拾音器<code>099-2117-000</code>（特征是塑料线/有倒角/黄铜线圈/电阻5.6k）</p>
-<p><strong>—–我的93年复刻Vintage 57—–</strong></p>
-<p>这把57除了拾音器不同以外，电容也很独特<code>0.1uf</code>（刚换上新拾音器的时候声音闷的不行，直到我第二次拆开后发现电容那么大）。之前的<code>pre-1998 57/62</code>拾音器加上0.1的电容声音又大又亮（功率介于<code>dimarzio HS-2/3/4</code>与<code>Gibson P90</code>拾音器之间），可见如果换成正常的0.022uf电容功率得多大&gt;_&lt;</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_vintage_57_body.jpg-QNthin"></p>
-<p>我新换的拾音器是我在网上淘到的停产的<code>Lace Sensor Gold domes</code>拾音器（现在只有银色的<code>Crome Domes</code>了，我问了原因，他们给的回复是 *The Gold Dome pickups were simple Chrome Domes with a gold cover. They were produced sometime during the mid-2000’s, but for only a short while. The proved to be difficult to build and not cost effective. Sonically, there was no difference from the Chrome Dome pickups.*），如果有机会的话，我还是准备把那个牛逼的拾音器换回去。</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_vintage_57_after.jpg-QNthin"></p>
-]]></content>
-      <categories>
-        <category>音乐相关</category>
-      </categories>
-      <tags>
-        <tag>Fender</tag>
-        <tag>Pickups</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>FastDDS 零拷贝模式下多个 subscriber 的原理</title>
     <url>/post/fastdds-zerocopy-for-multiple-readers/</url>
     <content><![CDATA[<p>FastDDS 新推出的零拷贝 (Zero Copy) 模式有很多难以理解的地方，在这里会持续做些整理。</p>
@@ -3649,6 +3617,38 @@ try to remove and create again
       </categories>
       <tags>
         <tag>FastDDS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>首版复刻的Fender &#39;57 &amp; &#39;62 Strat 拾音器</title>
+    <url>/post/fender-57-62-strat-pickup-first-reissue/</url>
+    <content><![CDATA[<blockquote>
+<p>去年10月份左右从咸鱼买了一把号称93年产原装无修改的Fender vintage 57 stratocaster，拆开看了一下，琴颈的生产日期是1993.05.21，还挺有纪念意义的。但就在我买了新拾音器准备改装它的时候，好像发现了一个天大的秘密。</p>
+</blockquote>
+<p><img data-src="http://qiniu.s1nh.org/Blog_guitars_1.jpg-QNthin" title="上面那把（找不到其它完整的图了）"></p>
+<span id="more"></span>
+
+<!-- ![](http://qiniu.s1nh.org/Blog_vintage_57_neck.jpg-QNthin) -->
+
+
+<p>按理说57/62拾音器相对别的Custom Shop拾音器是比较便宜的，特征是<code>直流电阻5.6K Ohm</code>，六根磁柱都有<code>倒角</code>，黄铜线圈（具体的可以查看<a href="http://shop.fender.com/en/intl/parts/pickups-preamps/fender-original-%E2%80%9957%E2%80%9962-strat-pickups/0992117000.html">fender官网介绍</a>。可是我刚拆开拾音器就看到了里面的<strong>紫铜线圈</strong>，我的第一反应是琴的原主人给换了<code>Texas Special Pickup</code>，这可赚大了，可经我查完资料以后发现这不是 <code>Texas Special</code>，而是首版复刻的<code>57/62</code>。</p>
+<p><em>网上的两篇介绍《<a href="https://planetbotch.blogspot.tw/2012/07/fender-57-62-strat-pickup-first-reissue.html">Fender ‘57 &amp; ‘62 Strat Pickup (First Reissue)</a>》《<a href="https://www.strat-talk.com/threads/poll-about-the-f-57-62-099-2117-000-s.205219/">Poll About the F ‘57/‘62 099-2117-000 s</a>》</em></p>
+<p><strong>—–pre-1998 version of the Fender USA Vintage Stratocaster ’57 &amp; ’62 reissue pickup—–</strong></p>
+<p>拾音器的细节是<code>紫铜线圈</code> <code>电阻6.5K 6.2K 6.5K</code> <code>磁钢没有倒角</code>。除了背面没有红/蓝点，导线都是白/黑（Texas的琴桥为黄/黑）以外，外观跟 <code>Texas Special</code> 一模一样。</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_fender_57_62_pickup.jpg-QNthin"></p>
+<p>Fender 在1992年前的复刻（vintage reissue）吉他中只有这个拾音器，代号为<code>99-2043-000</code>，之后Fender为了复制SRV的声音，以及制作签名款SRV吉他，才开始生产<code>Texas Special</code>拾音器。1998年以后<code>57/62</code>才开始用现在的拾音器<code>099-2117-000</code>（特征是塑料线/有倒角/黄铜线圈/电阻5.6k）</p>
+<p><strong>—–我的93年复刻Vintage 57—–</strong></p>
+<p>这把57除了拾音器不同以外，电容也很独特<code>0.1uf</code>（刚换上新拾音器的时候声音闷的不行，直到我第二次拆开后发现电容那么大）。之前的<code>pre-1998 57/62</code>拾音器加上0.1的电容声音又大又亮（功率介于<code>dimarzio HS-2/3/4</code>与<code>Gibson P90</code>拾音器之间），可见如果换成正常的0.022uf电容功率得多大&gt;_&lt;</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_vintage_57_body.jpg-QNthin"></p>
+<p>我新换的拾音器是我在网上淘到的停产的<code>Lace Sensor Gold domes</code>拾音器（现在只有银色的<code>Crome Domes</code>了，我问了原因，他们给的回复是 *The Gold Dome pickups were simple Chrome Domes with a gold cover. They were produced sometime during the mid-2000’s, but for only a short while. The proved to be difficult to build and not cost effective. Sonically, there was no difference from the Chrome Dome pickups.*），如果有机会的话，我还是准备把那个牛逼的拾音器换回去。</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_vintage_57_after.jpg-QNthin"></p>
+]]></content>
+      <categories>
+        <category>音乐相关</category>
+      </categories>
+      <tags>
+        <tag>Fender</tag>
+        <tag>Pickups</tag>
       </tags>
   </entry>
   <entry>
