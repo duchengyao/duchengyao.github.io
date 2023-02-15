@@ -5307,9 +5307,9 @@ H1&lt;---|0.14-1.6|Mirtazapine
     <content><![CDATA[<p>Pro Co Rat 是 Pro Co Sound 公司生产的失真踏板，由 Scott Burnham 和 Steve Kiraly 于 1978 年在密歇根州的卡拉马祖设计。电路和外观在不同版本中发生了一些变化，但音色保持不变。</p>
 <p>由于踏板的成功，Pro Co 设计了多个版本，比如 <code>Juggernaut (1979)</code>, <code>R2DU (1984)</code>, <code>RAT2 (1988)</code>, <code>Turbo RAT (1989)</code>, <code>Vintage RAT (1991)</code>, <code>BRAT (1997)</code>, <code>Deucetone RAT (2002)</code>, <code>Juggernaut Bass RAT (2003)</code>, <code>You Dirty RAT (2004)</code>, <code>&#39;85 Whiteface RAT Reissue (2010)</code>。</p>
 <p><img data-src="http://qiniu.s1nh.org/prc85rat_intro.jpg" alt="ProCo Rat Pedal Intro Image"></p>
-<p>RAT 最初是在 1978 年作为定制产品制造的，1979 年开始批量生产。2008 年生产线转移到中国，现在由 Neutrik 为 Pro Co Sound 制造。</p>
 <span id="more"></span>
 
+<p>RAT 最初是在 1978 年作为定制产品制造的，1979 年开始批量生产。2008 年生产线转移到中国，现在由 Neutrik 为 Pro Co Sound 制造。</p>
 <h2 id="1-Pro-Co-Rat-电路图"><a href="#1-Pro-Co-Rat-电路图" class="headerlink" title="1. Pro Co Rat 电路图"></a>1. Pro Co Rat 电路图</h2><p>Pro Co Rat 电路可以分解为四个子模块：电源（Power Supply）、削波放大器（Clipper Amplifier）、音色控制（Tone Control）和输出（Output）：</p>
 <p><img data-src="http://qiniu.s1nh.org/pro-co-rat-schematic-parts.jpg" alt="Pro Co Rat Schematic Parts"></p>
 <p>该设计基于 LM308 单运算放大器。失真是使用可变增益电路产生的，二极管对波形进行限幅。失真级之后是音色滤波器和输出缓冲级，最后以音色控制结束。</p>
@@ -5539,64 +5539,6 @@ H1&lt;---|0.14-1.6|Mirtazapine
       </categories>
   </entry>
   <entry>
-    <title>是否需要升级强化底盘胶套（机脚/摆臂/连杆）？</title>
-    <url>/post/rubber-engine-mounts-vs-polyurethane-engine-mounts/</url>
-    <content><![CDATA[<p><img data-src="http://qiniu.s1nh.org/blog_suspension_2.jpg-QNthin"></p>
-<blockquote>
-<p>机脚（发动机支架）负责在车架上固定和稳定发动机。为了减少发动机产生的振动，包含一个弹性的缓冲胶（机脚胶），给驾驶员创造一个更平稳，更愉快的旅程。另外，底座在发动机和车身之间起到弹簧的作用，减少了发动机的磨损。此外，发动机的噪音也会降低。随着发动机支座的磨损，通过车辆感觉到的振动量将开始增加。</p>
-</blockquote>
-<p>原厂机脚和底盘摆臂链接件通常是橡胶材料，某些厂家为赛车提供了聚氨酯材料的缓冲胶。橡胶和聚氨酯由于其优异的可逆弹性变形性能和良好的阻尼和能量吸收特性，在许多汽车应用中得到应用。这两种类型的支架各有优缺点，我们将在下面讨论。</p>
-<span id="more"></span>
-
-
-<h2 id="两者的优缺点"><a href="#两者的优缺点" class="headerlink" title="两者的优缺点"></a>两者的优缺点</h2><p><strong>橡胶发动机支座–优点</strong></p>
-<ul>
-<li>降低道路噪音</li>
-<li>阻尼振动</li>
-<li>减弱了刺耳感</li>
-<li>没有吱吱作响的机会</li>
-<li>成本更低</li>
-<li>更好的耐热性</li>
-</ul>
-<p><strong>橡胶发动机支座-缺点</strong></p>
-<ul>
-<li>标准寿命</li>
-<li>典型的道路感觉</li>
-<li>标准性能</li>
-</ul>
-<p>橡胶作为弹簧材料的声誉源于它能够保持寿命、弹性、与金属的结合、耐高温，同时保持低成本。与聚氨酯相比，橡胶的一个显著优点是其耐热性。如果应用包括显著的耐热性，那么橡胶是应该使用的弹性体。在水下也能抗肿胀。工业橡胶发动机支架将提供最大的振动和噪音抑制效果。然而，橡胶式支座也有一些缺点。这种类型的支架可能会过早开裂和撕裂，这取决于添加到橡胶化合物中的臭氧量。这可能会导致发动机在较大负载下过度移动，这反过来意味着从发动机通过动力传动系统传递到后轮的动力减少。</p>
-<p><strong>聚氨酯发动机支架–优点</strong></p>
-<ul>
-<li>聚氨酯比橡胶耐用</li>
-<li>增强了路感</li>
-<li>性能增强</li>
-</ul>
-<p><strong>聚氨酯发动机支座-缺点</strong></p>
-<ul>
-<li>道路噪音增加</li>
-<li>振动增加</li>
-<li>成本更高</li>
-<li>存在轻微的吱吱声机会</li>
-<li>耐热性较低</li>
-</ul>
-<p>聚氨酯发动机支架在橡胶支架和钢制固体支架之间提供了一种折中方案。与橡胶相比，聚氨酯可以用于更高硬度的复合材料，这将比橡胶在更软硬度的复合材料更好地保持发动机的位置。使用较硬的材料时，更多的能量将通过传动系统传输。而聚氨酯由于其刚度增加，会增加驾驶员的振动感。有些振动可能取决于发动机的大小，无论是工业卡车、汽车、船、ATV还是其他类型的车辆。与许多事情一样，驾驶员对振动的一些容忍度可能归结为个人喜好。不过，总的来说，聚氨酯将比橡胶更硬，这使其成为更高级改装车辆的理想选择。</p>
-<p><strong>两者应用在摆臂/连杆的区别</strong></p>
-<!--![](http://qiniu.s1nh.org/blog_suspension_1.jpg-QNthin)-->
-
-<ul>
-<li>两者最大的不同是橡胶作用在摆臂（连杆）中需要扭转的部分时，为软连接，安装摆臂时需要用大剪在轮胎落地后才可以拧紧螺丝。具体方法可以参考<a href="https://club.autohome.com.cn/bbs/thread/a970415ad11d3808/82234492-1.html">这篇文章</a> <a href="http://qiniu.s1nh.org/blog_technology_sharing-zero_stress_treatment_of_suspension_arm_rubber_sleeve.pdf">PDF</a></li>
-<li>聚氨酯胶套在这种情况下起到一个轴承的作用，并且需要在接触面涂抹润滑液，一定周期需要拆下重新涂抹润滑液，否则会出现摩擦异响，有关润滑液的选择可以参考<a href="https://www.suspension.com/blog/the-best-grease-for-polyurethane-bushings/">这篇文章</a></li>
-<li>两者的区别可以参考<a href="https://haokan.baidu.com/v?pd=wisenatural&vid=7565273523948072663">这个视频</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>其它笔记</category>
-      </categories>
-      <tags>
-        <tag>底盘强化</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>有关 Chatbot 基本原理、开源框架和 Rasa</title>
     <url>/post/review-of-chatbot-framework/</url>
     <content><![CDATA[<blockquote>
@@ -5815,6 +5757,64 @@ H1&lt;---|0.14-1.6|Mirtazapine
       <tags>
         <tag>NLP</tag>
         <tag>Rasa</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>是否需要升级强化底盘胶套（机脚/摆臂/连杆）？</title>
+    <url>/post/rubber-engine-mounts-vs-polyurethane-engine-mounts/</url>
+    <content><![CDATA[<p><img data-src="http://qiniu.s1nh.org/blog_suspension_2.jpg-QNthin"></p>
+<blockquote>
+<p>机脚（发动机支架）负责在车架上固定和稳定发动机。为了减少发动机产生的振动，包含一个弹性的缓冲胶（机脚胶），给驾驶员创造一个更平稳，更愉快的旅程。另外，底座在发动机和车身之间起到弹簧的作用，减少了发动机的磨损。此外，发动机的噪音也会降低。随着发动机支座的磨损，通过车辆感觉到的振动量将开始增加。</p>
+</blockquote>
+<p>原厂机脚和底盘摆臂链接件通常是橡胶材料，某些厂家为赛车提供了聚氨酯材料的缓冲胶。橡胶和聚氨酯由于其优异的可逆弹性变形性能和良好的阻尼和能量吸收特性，在许多汽车应用中得到应用。这两种类型的支架各有优缺点，我们将在下面讨论。</p>
+<span id="more"></span>
+
+
+<h2 id="两者的优缺点"><a href="#两者的优缺点" class="headerlink" title="两者的优缺点"></a>两者的优缺点</h2><p><strong>橡胶发动机支座–优点</strong></p>
+<ul>
+<li>降低道路噪音</li>
+<li>阻尼振动</li>
+<li>减弱了刺耳感</li>
+<li>没有吱吱作响的机会</li>
+<li>成本更低</li>
+<li>更好的耐热性</li>
+</ul>
+<p><strong>橡胶发动机支座-缺点</strong></p>
+<ul>
+<li>标准寿命</li>
+<li>典型的道路感觉</li>
+<li>标准性能</li>
+</ul>
+<p>橡胶作为弹簧材料的声誉源于它能够保持寿命、弹性、与金属的结合、耐高温，同时保持低成本。与聚氨酯相比，橡胶的一个显著优点是其耐热性。如果应用包括显著的耐热性，那么橡胶是应该使用的弹性体。在水下也能抗肿胀。工业橡胶发动机支架将提供最大的振动和噪音抑制效果。然而，橡胶式支座也有一些缺点。这种类型的支架可能会过早开裂和撕裂，这取决于添加到橡胶化合物中的臭氧量。这可能会导致发动机在较大负载下过度移动，这反过来意味着从发动机通过动力传动系统传递到后轮的动力减少。</p>
+<p><strong>聚氨酯发动机支架–优点</strong></p>
+<ul>
+<li>聚氨酯比橡胶耐用</li>
+<li>增强了路感</li>
+<li>性能增强</li>
+</ul>
+<p><strong>聚氨酯发动机支座-缺点</strong></p>
+<ul>
+<li>道路噪音增加</li>
+<li>振动增加</li>
+<li>成本更高</li>
+<li>存在轻微的吱吱声机会</li>
+<li>耐热性较低</li>
+</ul>
+<p>聚氨酯发动机支架在橡胶支架和钢制固体支架之间提供了一种折中方案。与橡胶相比，聚氨酯可以用于更高硬度的复合材料，这将比橡胶在更软硬度的复合材料更好地保持发动机的位置。使用较硬的材料时，更多的能量将通过传动系统传输。而聚氨酯由于其刚度增加，会增加驾驶员的振动感。有些振动可能取决于发动机的大小，无论是工业卡车、汽车、船、ATV还是其他类型的车辆。与许多事情一样，驾驶员对振动的一些容忍度可能归结为个人喜好。不过，总的来说，聚氨酯将比橡胶更硬，这使其成为更高级改装车辆的理想选择。</p>
+<p><strong>两者应用在摆臂/连杆的区别</strong></p>
+<!--![](http://qiniu.s1nh.org/blog_suspension_1.jpg-QNthin)-->
+
+<ul>
+<li>两者最大的不同是橡胶作用在摆臂（连杆）中需要扭转的部分时，为软连接，安装摆臂时需要用大剪在轮胎落地后才可以拧紧螺丝。具体方法可以参考<a href="https://club.autohome.com.cn/bbs/thread/a970415ad11d3808/82234492-1.html">这篇文章</a> <a href="http://qiniu.s1nh.org/blog_technology_sharing-zero_stress_treatment_of_suspension_arm_rubber_sleeve.pdf">PDF</a></li>
+<li>聚氨酯胶套在这种情况下起到一个轴承的作用，并且需要在接触面涂抹润滑液，一定周期需要拆下重新涂抹润滑液，否则会出现摩擦异响，有关润滑液的选择可以参考<a href="https://www.suspension.com/blog/the-best-grease-for-polyurethane-bushings/">这篇文章</a></li>
+<li>两者的区别可以参考<a href="https://haokan.baidu.com/v?pd=wisenatural&vid=7565273523948072663">这个视频</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>其它笔记</category>
+      </categories>
+      <tags>
+        <tag>底盘强化</tag>
       </tags>
   </entry>
   <entry>
