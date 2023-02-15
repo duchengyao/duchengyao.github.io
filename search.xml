@@ -2238,21 +2238,6 @@ apt-get install libusb-1.0-0-dev
       </categories>
   </entry>
   <entry>
-    <title>Chrome Linux 不支持npapi</title>
-    <url>/post/chrome-not-support-npapi-in-linux/</url>
-    <content><![CDATA[<p>Hikvision的web摄像头界面需要npapi的支持。<code>Chrome42</code>之前的版本都不支Npapi，<code>Chrome42~45</code>可以通过<code>chrome://flags/#enable-npapi</code>开启支持，<code>Chrome45</code>之后的版本不支持Npapi。</p>
-<p>花了很久的时间找到了低版本的Chrome安装包，安装完以后依然无法执行插件。</p>
-<p>仔细查阅文档后，发现<strong>只有Mac和Windows的Chrome对NPAPI提供支持</strong>。</p>
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
-      </categories>
-      <tags>
-        <tag>HIKVISION</tag>
-        <tag>npapi</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>一些有关 FastDDS 的基本概念</title>
     <url>/post/concepts-of-fast-dds/</url>
     <content><![CDATA[<p>FastDDS 有两套 API，接近传输层的 <code>RTPS API</code> 和规范的 <code>DDS API</code>。</p>
@@ -2360,6 +2345,21 @@ apt-get install libusb-1.0-0-dev
       <categories>
         <category>算法与硬件</category>
       </categories>
+  </entry>
+  <entry>
+    <title>Chrome Linux 不支持npapi</title>
+    <url>/post/chrome-not-support-npapi-in-linux/</url>
+    <content><![CDATA[<p>Hikvision的web摄像头界面需要npapi的支持。<code>Chrome42</code>之前的版本都不支Npapi，<code>Chrome42~45</code>可以通过<code>chrome://flags/#enable-npapi</code>开启支持，<code>Chrome45</code>之后的版本不支持Npapi。</p>
+<p>花了很久的时间找到了低版本的Chrome安装包，安装完以后依然无法执行插件。</p>
+<p>仔细查阅文档后，发现<strong>只有Mac和Windows的Chrome对NPAPI提供支持</strong>。</p>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+      <tags>
+        <tag>HIKVISION</tag>
+        <tag>npapi</tag>
+      </tags>
   </entry>
   <entry>
     <title>什么是卷积神经网络</title>
@@ -2594,6 +2594,57 @@ apt-get install libusb-1.0-0-dev
 <p>• Xiong, Caiming, Stephen Merity, and Richard Socher. “Dynamic Memory Networks for Visual and Textual Question Answering.” arXiv:1603.01417 (2016).<br>• Mateusz Malinowski, Marcus Rohrbach, Mario Fritz, Ask Your Neurons: A Neural-based Approach to Answering Questions about Images, arXiv:1505.01121.<br>• Stanislaw Antol, Aishwarya Agrawal, Jiasen Lu, Margaret Mitchell, Dhruv Batra, C. Lawrence Zitnick, Devi Parikh, VQA: Visual Question Answering, CVPR, 2015 SUNw:Scene Understanding workshop.<br>• Hauyuan Gao, Junhua Mao, Jie Zhou, Zhiheng Huang, Lei Wang, Wei Xu, Are You Talking to a Machine? Dataset and Methods for Multilingual Image Question Answering, arXiv:1505.05612.<br>• Hyeonwoo Noh, Paul Hongsuck Seo, and Bohyung Han, Image Question Answering using Convolutional Neural Network with Dynamic Parameter Prediction, arXiv:1511.05765<br>• Yang, Z., He, X., Gao, J., Deng, L., &amp; Smola, A. (2015). Stacked Attention Networks for Image Question Answering. arXiv:1511.02274.<br>• Jin-Hwa Kim, Sang-Woo Lee, Dong-Hyun Kwak, Min-Oh Heo, Jeonghee Kim, Jung-Woo Ha, Byoung-Tak Zhang, Multimodal Residual Learning for Visual QA, arXiv:1606:01455<br>• Hyeonwoo Noh and Bohyung Han, Training Recurrent Answering Units with Joint Loss Minimization for VQA, arXiv:1606.03647<br>• Jin-Hwa Kim, Kyoung Woon On, Jeonghee Kim, Jung-Woo Ha, Byoung-Tak Zhang, Hadamard Product for Low-rank Bilinear Pooling, arXiv:1610.04325. </p>
 <h4 id="5-Mask-R-CNN"><a href="#5-Mask-R-CNN" class="headerlink" title="(5) Mask-R-CNN"></a>(5) Mask-R-CNN</h4><p>另外还有一篇是刚刚出来的 Mask RCNN，也是比较火。</p>
 <p>文章在这里 <a href="https://arxiv.org/abs/1703.06870">https://arxiv.org/abs/1703.06870</a><br>具体中文讨论在这里 <a href="https://www.zhihu.com/question/57403701">https://www.zhihu.com/question/57403701</a><br>但是，没有代码，我们组也在复现中 </p>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>不推荐购买创想三维 Creality Sermoon V1 的几个理由</title>
+    <url>/post/do-not-buy-sermoon-v1/</url>
+    <content><![CDATA[<blockquote>
+<p>看过 [<a href="https://www.zhihu.com/zvideo/1457409894764335104">阿文君的视频</a>] 买了 <code>Sermoon V1</code>。体验过后感觉比较玩具、拓展性也比较差，在这里提出几个不该买的理由。</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="0x01-缺少-Linear-Advance-（压力提前-线性推进）-的支持"><a href="#0x01-缺少-Linear-Advance-（压力提前-线性推进）-的支持" class="headerlink" title="0x01 缺少 Linear Advance （压力提前/线性推进） 的支持"></a>0x01 缺少 Linear Advance （压力提前/线性推进） 的支持</h2><p><code>准确的 Linear Advance 的校准是打印一个优秀模型的重要因素</code></p>
+<p>默认情况下，挤出机以线性方式工作。但挤出机不是线性系统，明显会导致在每一步打印后挤出额外材料，并且在下一步开始打印时材料不够。（下图表示了打印机在加速减速的过程，在2处材料挤出不够，且在4、5处产生堆料）</p>
+<p><img data-src="http://qiniu.s1nh.org/sermoon-v1-k-factor_low.png"></p>
+<p>使用 Linear Advance 的优点：</p>
+<ul>
+<li>减少粗糙的边缘，尺寸精度更高。</li>
+<li>可以在不损失任何打印质量的情况下实现更高的打印速度。</li>
+<li>即使在较低的打印速度下，打印质量也会得到提高。</li>
+<li>获得更锋利的边缘。</li>
+</ul>
+<p>网络有很多矫正线性推进的教程，比如：</p>
+<ul>
+<li><a href="https://www.bilibili.com/video/BV1Z94y1U7UL">3D打印机klipper在Voron0.1机器上进行挤出机压力提前测试和校准：新手教程</a></li>
+<li><a href="https://www.bilibili.com/video/BV18541117Yk">【klipper】3D打印机挤出机压力提前测试和校准【3集全】拐角膨胀和起始点分离修正办法</a></li>
+</ul>
+<p>Marlin 官网也提供了详细的<a href="https://marlinfw.org/docs/features/lin_advance.html">调整教程</a></p>
+<p>然而我们的 Sermoon V1 不支持此功能，无法进行调整。我打电话到厂家，给的答复也是“不开源” “没有你想要的固件”</p>
+<h2 id="0x02-糟糕的散热"><a href="#0x02-糟糕的散热" class="headerlink" title="0x02 糟糕的散热"></a>0x02 糟糕的散热</h2><p>此机器的精灵挤出机主体跟 Ender3 S1 的相同，但附件不同。V1挤出机的附件有个致命缺陷散热风扇从底部吸入热空气再给模型降温，缺点是散热很差，在<a href="https://fl.himi3d.cn/d/439-bensermoon-v1">这篇文章</a>有讨论。有几种方式可以改造散热，我做了一版，调试好后会放出来（下图左上。另外：<code>右下黑</code>，原厂；右上黄，<a href="https://fl.himi3d.cn/d/426-bengo10-ender3-s1">S1 风道</a>；左下白，<a href="https://www.crealitycloud.cn/model-detail/626821aac54f1758304dc951">风扇侧装</a>）。</p>
+<p><img data-src="http://qiniu.s1nh.org/sermoon-v1-fan.jpg"></p>
+<p>另外，个人对于挤出机的排线耐久性持怀疑态度，加热棒的大电流不知道会不会导致排线老化。</p>
+<h2 id="0x03-鸡肋的-wifi-功能"><a href="#0x03-鸡肋的-wifi-功能" class="headerlink" title="0x03 鸡肋的 wifi 功能"></a>0x03 鸡肋的 wifi 功能</h2><p>Sermoon V1 自带一个 wifi 板子（下图中间绿色的电路板），功能很弱鸡。比如录像没办法下载，官方给的答复是可以<code>打开手机的录屏功能</code>。</p>
+<p><img data-src="http://qiniu.s1nh.org/sermoon-v1-whole.png"></p>
+<p>我已经把它换成树莓派了，<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2sh1t/mod_octoprint_setup_for_the_creality_sermoon_v1/">有手就能改</a>，可以安装 octoprint 以支持更强大的 <code>wifi</code> <code>远程监控</code> <code>延时摄影</code> 等功能。</p>
+<iframe src="//player.bilibili.com/player.html?aid=342230292&bvid=BV1194y1m7y7&cid=735894030&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+<h2 id="0x04-不开源的主控板"><a href="#0x04-不开源的主控板" class="headerlink" title="0x04 不开源的主控板"></a>0x04 不开源的主控板</h2><p>机器左下角的主板基于开源的 <code>Marlin 1</code> 固件魔改而成，<code>Marlin</code> 固件基于 <code>GPL v3</code> 协议，简单来说就是 <code>你可以免费使用、复制、修改、分发受保护程序，但分发时一定要提供源码</code>。然而此主板不提供源码，后果就是我们只能使用老旧的 Marlin 第一代固件，没办法自行升级到 2.0 以上版本，或者最近流行的<code>klipper</code>固件。</p>
+<ul>
+<li>国外有个哥们请求开源，被直接关闭了issue <a href="https://github.com/CrealityOfficial/Ender-3S1/issues/2">链接</a></li>
+<li>无法校准挤出机<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/ui2u5v/how_to_calibrate_extruder_esteps_z_axis_baby/">链接</a></li>
+<li><a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2stxx/sermoon_v1_and_v1_pro_general_info_thoughts/">这里</a> 有一些讨论</li>
+<li><a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2toy2/marlin_stock_firmware_notes_from_the_sermoon_v1/">这里</a>有一些关于固件的信息</li>
+</ul>
+<h2 id="0x05-无用的-pro-版本"><a href="#0x05-无用的-pro-版本" class="headerlink" title="0x05 无用的 pro 版本"></a>0x05 无用的 pro 版本</h2><p>它的 pro 版本包含开盖暂停和相机功能，然而</p>
+<ul>
+<li>开盖暂停/断料检测只在SD卡打印时有效；</li>
+<li>摄像头会经常断线（国外有人讨论过可能是这种摄像头不支持在高温环境下工作[<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2stxx/sermoon_v1_and_v1_pro_general_info_thoughts/i2r7irn/?utm_source=reddit&utm_medium=web2x&context=3">链接</a>]）。</li>
+</ul>
+<h2 id="0x06-吵"><a href="#0x06-吵" class="headerlink" title="0x06 吵"></a>0x06 吵</h2><p>这款机器主打静音，但你买了以后就知道给主板散热的小风扇有多吵了。我已经拔风扇插头了，目前没出现什么问题（后盖打开，26度空调）。</p>
 ]]></content>
       <categories>
         <category>算法与硬件</category>
@@ -3357,57 +3408,6 @@ apt-get install libusb-1.0-0-dev
       </categories>
   </entry>
   <entry>
-    <title>不推荐购买创想三维 Creality Sermoon V1 的几个理由</title>
-    <url>/post/do-not-buy-sermoon-v1/</url>
-    <content><![CDATA[<blockquote>
-<p>看过 [<a href="https://www.zhihu.com/zvideo/1457409894764335104">阿文君的视频</a>] 买了 <code>Sermoon V1</code>。体验过后感觉比较玩具、拓展性也比较差，在这里提出几个不该买的理由。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="0x01-缺少-Linear-Advance-（压力提前-线性推进）-的支持"><a href="#0x01-缺少-Linear-Advance-（压力提前-线性推进）-的支持" class="headerlink" title="0x01 缺少 Linear Advance （压力提前/线性推进） 的支持"></a>0x01 缺少 Linear Advance （压力提前/线性推进） 的支持</h2><p><code>准确的 Linear Advance 的校准是打印一个优秀模型的重要因素</code></p>
-<p>默认情况下，挤出机以线性方式工作。但挤出机不是线性系统，明显会导致在每一步打印后挤出额外材料，并且在下一步开始打印时材料不够。（下图表示了打印机在加速减速的过程，在2处材料挤出不够，且在4、5处产生堆料）</p>
-<p><img data-src="http://qiniu.s1nh.org/sermoon-v1-k-factor_low.png"></p>
-<p>使用 Linear Advance 的优点：</p>
-<ul>
-<li>减少粗糙的边缘，尺寸精度更高。</li>
-<li>可以在不损失任何打印质量的情况下实现更高的打印速度。</li>
-<li>即使在较低的打印速度下，打印质量也会得到提高。</li>
-<li>获得更锋利的边缘。</li>
-</ul>
-<p>网络有很多矫正线性推进的教程，比如：</p>
-<ul>
-<li><a href="https://www.bilibili.com/video/BV1Z94y1U7UL">3D打印机klipper在Voron0.1机器上进行挤出机压力提前测试和校准：新手教程</a></li>
-<li><a href="https://www.bilibili.com/video/BV18541117Yk">【klipper】3D打印机挤出机压力提前测试和校准【3集全】拐角膨胀和起始点分离修正办法</a></li>
-</ul>
-<p>Marlin 官网也提供了详细的<a href="https://marlinfw.org/docs/features/lin_advance.html">调整教程</a></p>
-<p>然而我们的 Sermoon V1 不支持此功能，无法进行调整。我打电话到厂家，给的答复也是“不开源” “没有你想要的固件”</p>
-<h2 id="0x02-糟糕的散热"><a href="#0x02-糟糕的散热" class="headerlink" title="0x02 糟糕的散热"></a>0x02 糟糕的散热</h2><p>此机器的精灵挤出机主体跟 Ender3 S1 的相同，但附件不同。V1挤出机的附件有个致命缺陷散热风扇从底部吸入热空气再给模型降温，缺点是散热很差，在<a href="https://fl.himi3d.cn/d/439-bensermoon-v1">这篇文章</a>有讨论。有几种方式可以改造散热，我做了一版，调试好后会放出来（下图左上。另外：<code>右下黑</code>，原厂；右上黄，<a href="https://fl.himi3d.cn/d/426-bengo10-ender3-s1">S1 风道</a>；左下白，<a href="https://www.crealitycloud.cn/model-detail/626821aac54f1758304dc951">风扇侧装</a>）。</p>
-<p><img data-src="http://qiniu.s1nh.org/sermoon-v1-fan.jpg"></p>
-<p>另外，个人对于挤出机的排线耐久性持怀疑态度，加热棒的大电流不知道会不会导致排线老化。</p>
-<h2 id="0x03-鸡肋的-wifi-功能"><a href="#0x03-鸡肋的-wifi-功能" class="headerlink" title="0x03 鸡肋的 wifi 功能"></a>0x03 鸡肋的 wifi 功能</h2><p>Sermoon V1 自带一个 wifi 板子（下图中间绿色的电路板），功能很弱鸡。比如录像没办法下载，官方给的答复是可以<code>打开手机的录屏功能</code>。</p>
-<p><img data-src="http://qiniu.s1nh.org/sermoon-v1-whole.png"></p>
-<p>我已经把它换成树莓派了，<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2sh1t/mod_octoprint_setup_for_the_creality_sermoon_v1/">有手就能改</a>，可以安装 octoprint 以支持更强大的 <code>wifi</code> <code>远程监控</code> <code>延时摄影</code> 等功能。</p>
-<iframe src="//player.bilibili.com/player.html?aid=342230292&bvid=BV1194y1m7y7&cid=735894030&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-
-<h2 id="0x04-不开源的主控板"><a href="#0x04-不开源的主控板" class="headerlink" title="0x04 不开源的主控板"></a>0x04 不开源的主控板</h2><p>机器左下角的主板基于开源的 <code>Marlin 1</code> 固件魔改而成，<code>Marlin</code> 固件基于 <code>GPL v3</code> 协议，简单来说就是 <code>你可以免费使用、复制、修改、分发受保护程序，但分发时一定要提供源码</code>。然而此主板不提供源码，后果就是我们只能使用老旧的 Marlin 第一代固件，没办法自行升级到 2.0 以上版本，或者最近流行的<code>klipper</code>固件。</p>
-<ul>
-<li>国外有个哥们请求开源，被直接关闭了issue <a href="https://github.com/CrealityOfficial/Ender-3S1/issues/2">链接</a></li>
-<li>无法校准挤出机<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/ui2u5v/how_to_calibrate_extruder_esteps_z_axis_baby/">链接</a></li>
-<li><a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2stxx/sermoon_v1_and_v1_pro_general_info_thoughts/">这里</a> 有一些讨论</li>
-<li><a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2toy2/marlin_stock_firmware_notes_from_the_sermoon_v1/">这里</a>有一些关于固件的信息</li>
-</ul>
-<h2 id="0x05-无用的-pro-版本"><a href="#0x05-无用的-pro-版本" class="headerlink" title="0x05 无用的 pro 版本"></a>0x05 无用的 pro 版本</h2><p>它的 pro 版本包含开盖暂停和相机功能，然而</p>
-<ul>
-<li>开盖暂停/断料检测只在SD卡打印时有效；</li>
-<li>摄像头会经常断线（国外有人讨论过可能是这种摄像头不支持在高温环境下工作[<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2stxx/sermoon_v1_and_v1_pro_general_info_thoughts/i2r7irn/?utm_source=reddit&utm_medium=web2x&context=3">链接</a>]）。</li>
-</ul>
-<h2 id="0x06-吵"><a href="#0x06-吵" class="headerlink" title="0x06 吵"></a>0x06 吵</h2><p>这款机器主打静音，但你买了以后就知道给主板散热的小风扇有多吵了。我已经拔风扇插头了，目前没出现什么问题（后盖打开，26度空调）。</p>
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
-      </categories>
-  </entry>
-  <entry>
     <title>文档布局分析 &amp; 扭曲文档图像恢复 --- Document Layout Analysis &amp; Document Image Dewarping</title>
     <url>/post/document-layout-analysis/</url>
     <content><![CDATA[<!--
@@ -3652,6 +3652,23 @@ try to remove and create again
       </tags>
   </entry>
   <entry>
+    <title>apt mirror DEP-11 64x64@2 Icons 404 Not Found</title>
+    <url>/post/fix-apt-mirror-error/</url>
+    <content><![CDATA[<p>目前使用 apt-mirror 会缺少文件，比如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Err:18 http://mymirror.blah:80/ubuntu bionic/main DEP-11 64x64@2 Icons 404 Not Found [IP: *.*.*.* 80]</span><br><span class="line">Err:64 http://mymirror.blah:80/ubuntu bionic-updates/main DEP-11 64x64@2 Icons 404 Not Found [IP: *.*.*.* 80]</span><br></pre></td></tr></table></figure>
+
+<p>需要使用下面的脚本修复。</p>
+<span id="more"></span>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line"># combined solutions for apt mirror from: https://github.com/apt-mirror/apt-mirror/issues/49,https://github.com/apt-mirror/apt-mirror/issues/102</span><br><span class="line"># I had to create this file, in order to solve the issue of not downloading DEP-11 @2 files</span><br><span class="line"># so all what I&#x27;m doing is running apt mirror manually, then downloading the other icon files every time</span><br><span class="line"># Grep will grep the line starting with &quot;set base_path&quot;</span><br><span class="line"># then we trim all extra white spaces</span><br><span class="line"># then we cut the string by delimiter white space and take third value</span><br><span class="line"></span><br><span class="line">dataFolder=$(grep -F &quot;set base_path&quot; /etc/apt/mirror.list | tr -s &quot; &quot; | cut -d&#x27; &#x27; -f3)</span><br><span class="line">echo &quot;Base Folder path set in /etc/apt/mirror.list is: $dataFolder&quot;</span><br><span class="line">#apt-mirror</span><br><span class="line">echo </span><br><span class="line">echo -n &quot;Do you want to Check MD5 Sum and Download Failed (auto Y in 5 seconds)? [Y/n]&quot;</span><br><span class="line">echo</span><br><span class="line">read -t 5 answer</span><br><span class="line">exit_status=$?</span><br><span class="line">if [ $exit_status -ne 0 ] || [ &quot;$answer&quot; != &quot;$&#123;answer#[Yy]&#125;&quot; ];then</span><br><span class="line">    FAILEDPACKAGES=&quot;&quot;</span><br><span class="line">    echo &quot;Reading and Checking MD5 checksum using file: $dataFolder/var/MD5&quot;</span><br><span class="line">    #cd $dataFolder/mirror</span><br><span class="line">    rm -f FAILED_MD5.txt</span><br><span class="line">    echo &quot;Failed File will be stored in: $(PWD)/FAILED_MD5.txt&quot;</span><br><span class="line">    while IFS=&#x27;&#x27; read -r line || [[ -n &quot;$line&quot; ]]; do</span><br><span class="line">        #echo &quot;Checking: $line&quot;</span><br><span class="line">        sum=$(echo $line | cut -d&#x27; &#x27; -f1)</span><br><span class="line">        filename=$(echo $line | cut -d&#x27; &#x27; -f2)</span><br><span class="line">        echo &quot;$sum $dataFolder/mirror/$filename&quot; | md5sum -c -</span><br><span class="line">        RESULT=$?</span><br><span class="line">        if [ $RESULT -ne 0 ];then</span><br><span class="line">            echo &quot;$dataFolder/mirror/$filename&quot; &gt;&gt; FAILED_MD5.txt</span><br><span class="line">            wget -O $dataFolder/mirror/$filename $filename</span><br><span class="line">            echo &quot;$sum $dataFolder/mirror/$filename&quot; | md5sum -c -</span><br><span class="line">            SUBRESULT=$?</span><br><span class="line">            if [ $SUBRESULT -ne 0 ];then</span><br><span class="line">                echo &quot;Sorry failed checksum again for file: $dataFolder/mirror/$filename&quot;</span><br><span class="line">                $FAILEDPACKAGES+=&quot;$dataFolder/mirror/$filename      Failed again, sorry cannot help&quot;</span><br><span class="line">            fi</span><br><span class="line">        fi</span><br><span class="line">    done &lt; &quot;$dataFolder/var/MD5&quot;</span><br><span class="line">    #md5sum -c $dataFolder/var/MD5 | grep --line-buffered -i &quot;FAILED&quot; | tee FAILED_MD5.txt</span><br><span class="line">    echo $FAILEDPACKAGES</span><br><span class="line">    break</span><br><span class="line">else</span><br><span class="line">    echo &quot;ok I will not check MD5&quot;</span><br><span class="line">fi</span><br><span class="line">echo -n &quot;Do you want Download DEP-11 @ 2 icons (auto Y in 5 seconds)? [Y/n]&quot;</span><br><span class="line">echo</span><br><span class="line">read -t 5 answer</span><br><span class="line">exit_status=$?</span><br><span class="line">ubuserv=$(grep -m1 tsinghua.edu.cn /etc/apt/mirror.list |awk &#x27;&#123;print $2&#125;&#x27; |cut -d &#x27;/&#x27; -f3)</span><br><span class="line">if [ &quot;$answer&quot; != &quot;$&#123;answer#[Yy]&#125;&quot; ] || [ $exit_status -ne 0 ] ;then</span><br><span class="line">    cd $dataFolder/mirror/$&#123;ubuserv&#125;/ubuntu/dists</span><br><span class="line">    for dist in *; do </span><br><span class="line">    dist=$(basename $dist)</span><br><span class="line">               for comp in main  multiverse universe; do</span><br><span class="line">                               mkdir -p $&#123;dist&#125;/$&#123;comp&#125;/dep11</span><br><span class="line">        for size in 48 64 128; do</span><br><span class="line">        wget http://$&#123;ubuserv&#125;/ubuntu/dists/$&#123;dist&#125;/$&#123;comp&#125;/dep11/icons-$&#123;size&#125;x$&#123;size&#125;@2.tar.gz -O $&#123;dist&#125;/$&#123;comp&#125;/dep11/icons-$&#123;size&#125;x$&#123;size&#125;@2.tar.gz;</span><br><span class="line">          done</span><br><span class="line">       done</span><br><span class="line">    done</span><br><span class="line">else</span><br><span class="line">    echo &quot;ok no downloading for icons&quot;</span><br><span class="line">fi</span><br><span class="line">echo -n &quot;Do you want to run Clean Script (auto Y in 5 seconds)? [Y/n]&quot;</span><br><span class="line">echo</span><br><span class="line">read -t 5 answer</span><br><span class="line">exit_status=$?</span><br><span class="line">if [ &quot;$answer&quot; != &quot;$&#123;answer#[Yy]&#125;&quot; ] || [ $exit_status -ne 0 ] ;then</span><br><span class="line">    $dataFolder/var/clean.sh</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+      <tags>
+        <tag>apt-mirror</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>第一印象（First Impressions）人物性格特征预测</title>
     <url>/post/first-impressions/</url>
     <content><![CDATA[<table>
@@ -3777,23 +3794,6 @@ try to remove and create again
       <categories>
         <category>算法与硬件</category>
       </categories>
-  </entry>
-  <entry>
-    <title>apt mirror DEP-11 64x64@2 Icons 404 Not Found</title>
-    <url>/post/fix-apt-mirror-error/</url>
-    <content><![CDATA[<p>目前使用 apt-mirror 会缺少文件，比如：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Err:18 http://mymirror.blah:80/ubuntu bionic/main DEP-11 64x64@2 Icons 404 Not Found [IP: *.*.*.* 80]</span><br><span class="line">Err:64 http://mymirror.blah:80/ubuntu bionic-updates/main DEP-11 64x64@2 Icons 404 Not Found [IP: *.*.*.* 80]</span><br></pre></td></tr></table></figure>
-
-<p>需要使用下面的脚本修复。</p>
-<span id="more"></span>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line"># combined solutions for apt mirror from: https://github.com/apt-mirror/apt-mirror/issues/49,https://github.com/apt-mirror/apt-mirror/issues/102</span><br><span class="line"># I had to create this file, in order to solve the issue of not downloading DEP-11 @2 files</span><br><span class="line"># so all what I&#x27;m doing is running apt mirror manually, then downloading the other icon files every time</span><br><span class="line"># Grep will grep the line starting with &quot;set base_path&quot;</span><br><span class="line"># then we trim all extra white spaces</span><br><span class="line"># then we cut the string by delimiter white space and take third value</span><br><span class="line"></span><br><span class="line">dataFolder=$(grep -F &quot;set base_path&quot; /etc/apt/mirror.list | tr -s &quot; &quot; | cut -d&#x27; &#x27; -f3)</span><br><span class="line">echo &quot;Base Folder path set in /etc/apt/mirror.list is: $dataFolder&quot;</span><br><span class="line">#apt-mirror</span><br><span class="line">echo </span><br><span class="line">echo -n &quot;Do you want to Check MD5 Sum and Download Failed (auto Y in 5 seconds)? [Y/n]&quot;</span><br><span class="line">echo</span><br><span class="line">read -t 5 answer</span><br><span class="line">exit_status=$?</span><br><span class="line">if [ $exit_status -ne 0 ] || [ &quot;$answer&quot; != &quot;$&#123;answer#[Yy]&#125;&quot; ];then</span><br><span class="line">    FAILEDPACKAGES=&quot;&quot;</span><br><span class="line">    echo &quot;Reading and Checking MD5 checksum using file: $dataFolder/var/MD5&quot;</span><br><span class="line">    #cd $dataFolder/mirror</span><br><span class="line">    rm -f FAILED_MD5.txt</span><br><span class="line">    echo &quot;Failed File will be stored in: $(PWD)/FAILED_MD5.txt&quot;</span><br><span class="line">    while IFS=&#x27;&#x27; read -r line || [[ -n &quot;$line&quot; ]]; do</span><br><span class="line">        #echo &quot;Checking: $line&quot;</span><br><span class="line">        sum=$(echo $line | cut -d&#x27; &#x27; -f1)</span><br><span class="line">        filename=$(echo $line | cut -d&#x27; &#x27; -f2)</span><br><span class="line">        echo &quot;$sum $dataFolder/mirror/$filename&quot; | md5sum -c -</span><br><span class="line">        RESULT=$?</span><br><span class="line">        if [ $RESULT -ne 0 ];then</span><br><span class="line">            echo &quot;$dataFolder/mirror/$filename&quot; &gt;&gt; FAILED_MD5.txt</span><br><span class="line">            wget -O $dataFolder/mirror/$filename $filename</span><br><span class="line">            echo &quot;$sum $dataFolder/mirror/$filename&quot; | md5sum -c -</span><br><span class="line">            SUBRESULT=$?</span><br><span class="line">            if [ $SUBRESULT -ne 0 ];then</span><br><span class="line">                echo &quot;Sorry failed checksum again for file: $dataFolder/mirror/$filename&quot;</span><br><span class="line">                $FAILEDPACKAGES+=&quot;$dataFolder/mirror/$filename      Failed again, sorry cannot help&quot;</span><br><span class="line">            fi</span><br><span class="line">        fi</span><br><span class="line">    done &lt; &quot;$dataFolder/var/MD5&quot;</span><br><span class="line">    #md5sum -c $dataFolder/var/MD5 | grep --line-buffered -i &quot;FAILED&quot; | tee FAILED_MD5.txt</span><br><span class="line">    echo $FAILEDPACKAGES</span><br><span class="line">    break</span><br><span class="line">else</span><br><span class="line">    echo &quot;ok I will not check MD5&quot;</span><br><span class="line">fi</span><br><span class="line">echo -n &quot;Do you want Download DEP-11 @ 2 icons (auto Y in 5 seconds)? [Y/n]&quot;</span><br><span class="line">echo</span><br><span class="line">read -t 5 answer</span><br><span class="line">exit_status=$?</span><br><span class="line">ubuserv=$(grep -m1 tsinghua.edu.cn /etc/apt/mirror.list |awk &#x27;&#123;print $2&#125;&#x27; |cut -d &#x27;/&#x27; -f3)</span><br><span class="line">if [ &quot;$answer&quot; != &quot;$&#123;answer#[Yy]&#125;&quot; ] || [ $exit_status -ne 0 ] ;then</span><br><span class="line">    cd $dataFolder/mirror/$&#123;ubuserv&#125;/ubuntu/dists</span><br><span class="line">    for dist in *; do </span><br><span class="line">    dist=$(basename $dist)</span><br><span class="line">               for comp in main  multiverse universe; do</span><br><span class="line">                               mkdir -p $&#123;dist&#125;/$&#123;comp&#125;/dep11</span><br><span class="line">        for size in 48 64 128; do</span><br><span class="line">        wget http://$&#123;ubuserv&#125;/ubuntu/dists/$&#123;dist&#125;/$&#123;comp&#125;/dep11/icons-$&#123;size&#125;x$&#123;size&#125;@2.tar.gz -O $&#123;dist&#125;/$&#123;comp&#125;/dep11/icons-$&#123;size&#125;x$&#123;size&#125;@2.tar.gz;</span><br><span class="line">          done</span><br><span class="line">       done</span><br><span class="line">    done</span><br><span class="line">else</span><br><span class="line">    echo &quot;ok no downloading for icons&quot;</span><br><span class="line">fi</span><br><span class="line">echo -n &quot;Do you want to run Clean Script (auto Y in 5 seconds)? [Y/n]&quot;</span><br><span class="line">echo</span><br><span class="line">read -t 5 answer</span><br><span class="line">exit_status=$?</span><br><span class="line">if [ &quot;$answer&quot; != &quot;$&#123;answer#[Yy]&#125;&quot; ] || [ $exit_status -ne 0 ] ;then</span><br><span class="line">    $dataFolder/var/clean.sh</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>算法与硬件</category>
-      </categories>
-      <tags>
-        <tag>apt-mirror</tag>
-      </tags>
   </entry>
   <entry>
     <title>将吉他恢复为出厂设置 —— 各种型号吉他的出厂参数</title>
@@ -5299,6 +5299,196 @@ H1&lt;---|0.14-1.6|Mirtazapine
 ]]></content>
       <categories>
         <category>算法与硬件</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Pro Co RAT 失真效果器电路分析</title>
+    <url>/post/proco-rat-analysis/</url>
+    <content><![CDATA[<p>Pro Co Rat 是 Pro Co Sound 公司生产的失真踏板，由 Scott Burnham 和 Steve Kiraly 于 1978 年在密歇根州的卡拉马祖设计。电路和外观在不同版本中发生了一些变化，但音色保持不变。</p>
+<p>由于踏板的成功，Pro Co 设计了多个版本，比如 <code>Juggernaut (1979)</code>, <code>R2DU (1984)</code>, <code>RAT2 (1988)</code>, <code>Turbo RAT (1989)</code>, <code>Vintage RAT (1991)</code>, <code>BRAT (1997)</code>, <code>Deucetone RAT (2002)</code>, <code>Juggernaut Bass RAT (2003)</code>, <code>You Dirty RAT (2004)</code>, <code>&#39;85 Whiteface RAT Reissue (2010)</code>。</p>
+<p><img data-src="http://qiniu.s1nh.org/prc85rat_intro.jpg" alt="ProCo Rat Pedal Intro Image"></p>
+<p>RAT 最初是在 1978 年作为定制产品制造的，1979 年开始批量生产。2008 年生产线转移到中国，现在由 Neutrik 为 Pro Co Sound 制造。</p>
+<h2 id="1-Pro-Co-Rat-电路图"><a href="#1-Pro-Co-Rat-电路图" class="headerlink" title="1. Pro Co Rat 电路图"></a>1. Pro Co Rat 电路图</h2><p>Pro Co Rat 电路可以分解为四个子模块：电源（Power Supply）、削波放大器（Clipper Amplifier）、音色控制（Tone Control）和输出（Output）：</p>
+<p><img data-src="http://qiniu.s1nh.org/pro-co-rat-schematic-parts.jpg" alt="Pro Co Rat Schematic Parts"></p>
+<p>该设计基于 LM308 单运算放大器。失真是使用可变增益电路产生的，二极管对波形进行限幅。失真级之后是音色滤波器和输出缓冲级，最后以音色控制结束。</p>
+<p><strong>电路布局</strong></p>
+<p>它使用带有标准通孔组件的单层 PCB，可轻松安装在钢制外壳中。不同的版本/修订版使用不同的基材。</p>
+<p><img data-src="http://qiniu.s1nh.org/proco-rats-pcb.jpg" alt="proco rats pcb"></p>
+<p><strong>物料清单</strong></p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>参数</th>
+<th>序号</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>C<sub>1</sub>, C<sub>9</sub></td>
+<td>22nF</td>
+<td>D<sub>3</sub></td>
+<td>1N4002</td>
+</tr>
+<tr>
+<td>C<sub>2</sub></td>
+<td>1nF</td>
+<td>Q<sub>1</sub></td>
+<td>2N5458</td>
+</tr>
+<tr>
+<td>C<sub>3</sub></td>
+<td>30pF</td>
+<td>R<sub>VOLUME</sub>,R<sub>TONE</sub>,R<sub>DISTORTION</sub></td>
+<td>100K-A</td>
+</tr>
+<tr>
+<td>C<sub>4</sub></td>
+<td>100pF</td>
+<td>R<sub>1</sub>, R<sub>2</sub>, R<sub>8</sub></td>
+<td>1M</td>
+</tr>
+<tr>
+<td>C<sub>5</sub></td>
+<td>2.2uF</td>
+<td>R<sub>3</sub>, R<sub>6</sub></td>
+<td>1K</td>
+</tr>
+<tr>
+<td>C<sub>6</sub>, C<sub>7</sub></td>
+<td>4.7uF</td>
+<td>R<sub>4</sub>, R<sub>10</sub></td>
+<td>47</td>
+</tr>
+<tr>
+<td>C<sub>8</sub></td>
+<td>3.3nF</td>
+<td>R<sub>5</sub></td>
+<td>560</td>
+</tr>
+<tr>
+<td>C<sub>10</sub>, C<sub>13</sub></td>
+<td>1uF</td>
+<td>R<sub>7</sub></td>
+<td>1.5K</td>
+</tr>
+<tr>
+<td>C<sub>11</sub></td>
+<td>100uF</td>
+<td>R<sub>9</sub></td>
+<td>10K</td>
+</tr>
+<tr>
+<td>C<sub>12</sub></td>
+<td>0.1uF</td>
+<td>R<sub>11</sub>, R<sub>12</sub></td>
+<td>100K</td>
+</tr>
+<tr>
+<td>D<sub>1</sub>, D<sub>2</sub></td>
+<td>1N914</td>
+<td>U<sub>1</sub></td>
+<td>LM308</td>
+</tr>
+</tbody></table>
+<h2 id="2-电源"><a href="#2-电源" class="headerlink" title="2. 电源"></a>2. 电源</h2><p>电源级为有源电路（运算放大器和晶体管）提供 9V。使用一个简单的分压器（R<sub>11</sub>、R<sub>12</sub>）产生 4.5 伏电压，用作虚拟接地。</p>
+<p><img data-src="http://qiniu.s1nh.org/pro-co-rat-power-supply.png" alt="Pro Co Rat Power Supply"></p>
+<ul>
+<li>电容 C<sub>11</sub> 和 C<sub>12</sub> 消除 9V 电源的纹波，C<sub>13</sub> 在 4.5V 线路中起到同样的作用。</li>
+<li>R<sub>10</sub> 47Ω 电阻过滤电源线噪声，这个低值电阻与电容 C<sub>11</sub> 和 C<sub>12</sub> 一起构成低通滤波器，衰减高频脉冲噪声。</li>
+<li>二极管 D3 用于反极性保护。</li>
+</ul>
+<h2 id="3-削波放大器"><a href="#3-削波放大器" class="headerlink" title="3. 削波放大器"></a>3. 削波放大器</h2><p>削波放大器是电路的核心，它由一个具有可变电压增益的非反相运算放大器和一些滤波器组成，以形成失真响应。两个二极管 D<sub>1</sub> 和 D<sub>2</sub> 将执行硬限幅操作。</p>
+<p><img data-src="http://qiniu.s1nh.org/pro-co-rat-clipping-stage.png" alt="Pro Co Rat Clipping Stage"></p>
+<ul>
+<li>输入插孔对地旁边的1MΩ输入电阻 R<sub>1</sub> 是下拉电阻，防止踏板打开时爆音。该输入下拉电阻成为踏板的最大输入阻抗。</li>
+<li>22nF 电容 C<sub>1</sub> 可阻断直流电并提供简单的高通滤波。所有有趣的吉他信号都会通过，只有低于 7.2Hz 的谐波会被衰减。截止频率由以下公式定义：</li>
+</ul>
+<p>$$f_{c1}=\frac {1} {2\pi \cdot R_{2} \cdot C_{1}}= \frac{1}{2\pi \cdot 1M \cdot 22nF}=7.2Hz$$</p>
+<ul>
+<li>1K 电阻器 R<sub>3</sub> 保护运算放大器免受输入过电流的影响。 1nF 电容 C<sub>2</sub> 将高频信号分流到地面并输出以减弱信号。</li>
+<li>大 C<sub>7</sub> 只是一个耦合电容器，可去除直流内容并将运算放大器连接到二极管级。电阻器 R<sub>6</sub> 将限制通过二极管的电流量。</li>
+</ul>
+<p><strong>输入阻抗</strong></p>
+<p>输入阻抗可以计算为：</p>
+<p>$$Z_{in}= (R_{1}//R_{2})//(R_{3}+Z_{in LM308})$$<br>$$Z_{in}= (1M//1M) // (1K+40M)= 494K$$</p>
+<p>注意：494KΩ 是一个高输入阻抗，对于失真踏板来说可以认为是相当不错的。无论如何，最好的做法是将输入阻抗至少保持在 1 MΩ，避免吸音。例如，通过将 R<sub>1</sub> 和 R<sub>2</sub> 的值增加到 2MΩ，踏板输入阻抗将增加到 1MΩ，并且踏板将更好地保留所有吉他原始声音特性。</p>
+<h3 id="3-1-电压增益"><a href="#3-1-电压增益" class="headerlink" title="3.1 电压增益"></a>3.1 电压增益</h3><p>电压增益通过失真旋钮进行微调，在非反相拓扑中可以计算为：</p>
+<p>$$G_{v}=1+\frac{R_{DISTORTION}}{R_{4}//R_{5}}$$<br>$$G_{v min}=1+\frac{0}{47//560}=1\: (0dB)$$<br>$$G_{v max}=1+\frac{100K}{47//560}=2305 \: (67dB)$$</p>
+<p>注意：此电压增益对于失真踏板来说可以认为略高，类似于其他失真踏板，如 <strong>Big Muff Pi</strong> (G<sub>vmax</sub>=60dB)、<strong>MXR Distortion +</strong> (G<sub>vmax</sub>=46dB) 或 <strong>Tube Screamer</strong> (G<sub>vmax</sub>=41dB) 然而，电压增益不会达到 67dB 的峰值，因为增益将受到运算放大器特性和限幅二极管作用的限制，这将在二极管限幅部分进行研究。</p>
+<h3 id="3-2-低-高通滤波"><a href="#3-2-低-高通滤波" class="headerlink" title="3.2 低/高通滤波"></a>3.2 低/高通滤波</h3><p>在失真踏板的削波阶段或之前，通常会使用低通和高通滤波器的组合。失真使原始吉他信号的谐波更加复杂，这意味着越多的失真，在乐队中区分为每种声音会更加困难。使用高通和低通滤波器对失真信号人为地进行频带限制，可以防止其频谱扩散到太宽的区域，以助于更好的混音。</p>
+<p><img data-src="http://qiniu.s1nh.org/pro-co-rat-clipping-response.png" alt="pro-co-rat-clipping-response"></p>
+<p>上图显示了限幅放大器的响应。信号在高频和低频中被抑制，在 1KHz 左右的中频波峰有助于使吉他的声音在乐队中更突出。</p>
+<p>低于 1.5 KHz 和 60Hz 的谐波被高通滤波器衰减；由于低通滤波器和运算放大器的增益带宽，高频也会衰减，这两种效应在高增益（蓝线）下更为明显。</p>
+<p><strong>低通滤波器</strong></p>
+<p>反馈电阻两端的 100pF 小电容 C<sub>4</sub> 用作低通滤波器，软化吉他波形的角并在削波前使高频变得柔和。</p>
+<p>滤波器的截止频率由以下公式定义：</p>
+<p>$$f_{c1}=\frac{1}{2\pi \cdot R_{DIST} \cdot C_{4}}$$</p>
+<p>$$f_{c1 min}=\frac{1}{2\pi \cdot 100K \cdot 100pF}= 16 KHz$$</p>
+<p>R<sub>DISTORTION</sub> 电位器控制 f<sub>c1</sub> 频率，当失真控制在 100K 即达到最大值时， 100pF 的作用更加显着，从而使截止最小值频率到可听频率（16 KHz），从而软化失真。当失真旋钮没有达到最大值时，f<sub>c</sub> 变得更高，不太明显。</p>
+<p><strong>高通滤波器</strong></p>
+<p>从（-）输入到接地，有由 R<sub>4</sub>C<sub>5</sub> 和 R<sub>5</sub>C<sub>6</sub> 形成的两个并联 RC 网络。它们是一个有源高通滤波器，放置两个极点并衰减低于截止频率的频率：</p>
+<p>$$f_{c2}=\frac{1}{2\pi \cdot R_{4} \cdot C_{5}} =\frac{1}{2\pi \cdot 47 \cdot 2.2uF}= 1539 Hz$$</p>
+<p>$$f_{c3}=\frac{1}{2\pi \cdot R_{5} \cdot C_{6}} =\frac{1}{2\pi \cdot 560 \cdot 4.7uF}= 60 Hz$$</p>
+<p>低于 1.5KHz 的谐波将具有 20dB/dec 的衰减，而低于 60Hz 的较低谐波将以 40dB/dec 的大程度衰减。这种过滤会导致低音音符在削波动作之前衰减，从而减少低端削波并产生频率选择性失真。</p>
+<h3 id="3-3-运算放大器的选择"><a href="#3-3-运算放大器的选择" class="headerlink" title="3.3 运算放大器的选择"></a>3.3 运算放大器的选择</h3><p>原始 Rat 踏板使用 <code>Motorola LM308N</code> 运算放大器，<code>Texas Instruments OP07DP</code> 是新型号中使用的替代运算放大器。RAT 的部分音色仍然取决于芯片的选择，这取决于转换率(Slew Rate)、增益带宽乘积(Gain-Bandwidth Product)和补偿电容器(Compensation Capacitor)：</p>
+<p><strong>转换率</strong></p>
+<p>它指运算放大器摆动输出的速度。如果要放大的信号_过快_（高频），运算放大器将无法正常工作，只能放大低于转换速率限制的信号。</p>
+<p><img data-src="http://qiniu.s1nh.org/lm308-slew-rate.png" alt="lm308-slew-rate"></p>
+<p>在上图中，TL071（单块效果器中使用的标准运算放大器）转换率为 13V/us，LM308 为 0.3V/us，慢了大约 40 倍，这表明 Rat 运算放大器有多慢。</p>
+<ul>
+<li>转换速率与补偿电容成反比，电容越小，转换速率越快。</li>
+</ul>
+<p>对于吉他信号（近似于正弦信号），运算放大器的转换速率将限制信号的上升速度，如下所示：</p>
+<p>$$Slew\: Rate \geq 2 \pi f\cdot V_{p}$$</p>
+<p>$$f_{max}=\frac{Slew\: Rate}{2\pi \cdot V_{p}}=\frac{300000}{2\pi \cdot 9V}=5.3\: KHz$$</p>
+<p>其中 V<sub>peak</sub> 为 9V，数据表图像中的转换速率为 300000 V/s。</p>
+<p>这意味着运算放大器输出将无法处理高于 5.3KHz 的谐波，因此高频不会通过放大器，从而限制或抑制高次谐波。</p>
+<p><strong>增益带宽乘积 (The Gain-Bandwidth Product)</strong></p>
+<p>与增益设置有关；下面从数据表中提取的_开环频率响应_（增益带宽积）图显示，并非所有频率都可以放大相同的数量。</p>
+<p><img data-src="http://qiniu.s1nh.org/lm308-gain-bandwidth-product.png" alt="lm308-gain-bandwidth-product"></p>
+<p>对于 67dB 的 Rat 最大电压增益，低于 500Hz 的频率将毫无问题地被放大，但频率越高增益越小，如图所示。例如，在 10KHz 时，最大电压增益将不超过 30dB。</p>
+<p>因此，吉他信号的放大是频率相关的，低音谐波将获得最大增益，而较高频率将获得较小的增益。</p>
+<p><strong>补偿电容</strong></p>
+<p>带宽和转换率与 1/C<sub>compensation</sub> 成正比，上限越小，带宽和转换率就越大。数据表中的典型和建议值为 30pF（与 Rat 设计中使用的相同）。</p>
+<p><img data-src="http://qiniu.s1nh.org/pro-co-rat-badwidth.png" alt="pro-co-rat-badwidth"></p>
+<p>上图再次显示了如何使用 30pF 电容衰减高频。使用更大/更小的上限，带宽和转换率将降低/提高。</p>
+<p>总结这 3 种效果，Rat 的标志性声音的一部分本质上是运算放大器产生的失真，以及高频非线性的衰减方式。所有这些的结果最终会在下一步被二极管削波。</p>
+<h3 id="3-4-二极管削波"><a href="#3-4-二极管削波" class="headerlink" title="3.4 二极管削波"></a>3.4 二极管削波</h3><p>硅二极管 D<sub>1</sub> 和 D<sub>2</sub> 对预放大信号进行硬削波，产生类似于 MXR Distortion+ 或 Boss DS-1 的对称失真。当运算放大器输出与地之间的电压差（正或负）大于二极管的正向电压 V<sub>F</sub> 时，二极管将导通。当二极管开启正向偏置时，信号将被削波至 V<sub>F </sub> 值。二极管 D<sub>1</sub> 会将正半周期信号削波至 +V<sub>F</sub> 并且 D<sub>2</sub> 会将负信号半周期削波至 - V<sub>F</sub>。</p>
+<p>Rat 使用 1N914 标准二极管，可以换成其它硅管，如 1N4148、1N4448 或 1N916。</p>
+<p><img data-src="http://qiniu.s1nh.org/pro-co-rat-clipped-waveform.png" alt="pro-co-rat-clipped-waveform"></p>
+<p>在上图中，输入信号以蓝色表示。这个原始信号将被运算放大器放大，直到电源限制（以紫色表示的线）。电压增益后，二极管会将信号削波至 ±V<sub>F</sub>。</p>
+<h2 id="4-音色控制"><a href="#4-音色控制" class="headerlink" title="4. 音色控制"></a>4. 音色控制</h2><p>音色旋钮是一个简单的低通滤波器</p>
+<p><img data-src="http://qiniu.s1nh.org/pro-co-rat-tone-control.png" alt="Pro Co Rat Tone Control"></p>
+<p>截止频率为：</p>
+<p>$$f_{c}=\frac{1}{2\pi \cdot (R_{TONE} + R_{7}) \cdot C_{8}}$$</p>
+<p>$$f_{c min}=\frac{1}{2\pi \cdot (100K + 1.5K) \cdot 3.3n}= 475Hz$$</p>
+<p>$$f_{c max}=\frac{1}{2\pi \cdot (0 + 1.5K) \cdot 3.3n}= 32KHz$$</p>
+<p>所以R<sub>TONE</sub>选择的 fc 以上的高次谐波如下图衰减：</p>
+<p><img data-src="http://qiniu.s1nh.org/pro-co-rat-tone-control-response.png" alt="pro-co-rat-tone-control-response"></p>
+<p>滤波器的范围非常宽，几乎可以扫描从 475Hz 到 32KHz 的所有音频频谱。音色控制与电路的其他滤波器相结合，将产生一个中间驼峰，将在频率响应部分进行分析。</p>
+<p><img data-src="http://qiniu.s1nh.org/pro-co-rat-tone-waveform.png" alt="pro-co-rat-tone-waveform"></p>
+<p>如上所示，削波后的波形将受到低通滤波器的影响，当音色控制达到最大值时，会创建一个_鲨鱼鳍_形状。</p>
+<h2 id="5-输出级"><a href="#5-输出级" class="headerlink" title="5. 输出级"></a>5. 输出级</h2><p>输出级是<a href="http://en.wikipedia.org/wiki/Common_drain">common drain (source follower) configuration</a> 中的 JFET 单一增益放大器。它会产生低输出阻抗，这有利于保持信号链中的音色完整性。它还将音量阶段与音色控制隔离开，以使两个控件独立，否则改变音量会改变音色：</p>
+<p><img data-src="http://qiniu.s1nh.org/pro-co-rat-output-stage.png" alt="Pro Co Rat Output Stage"></p>
+<p>JFET 共漏极电路可以使用少量元件实现高输入阻抗（大约 R<sub>8</sub>=1MΩ）和中低输出阻抗（几百欧姆） .</p>
+<ul>
+<li><strong>音量控制:</strong> 音量控制旋钮是一个标准的 100K 音频电位器，它将部分输入信号接地。</li>
+</ul>
+<h2 id="6-频率响应"><a href="#6-频率响应" class="headerlink" title="6. 频率响应"></a>6. 频率响应</h2><p>Pro Co Rat 将波形通过不同的阶段进行过滤，去除刺耳的高频谐波和过载的低音，实现较高的中频相应。</p>
+<ul>
+<li>在削波放大器级中，有一个双 RC 网络，它放在两级，用来衰减 1.5KHz 以下的谐波。</li>
+<li>有几个高通滤波器，但音色电路和运算放大器带宽限制会衰减高于 1KHz 的谐波</li>
+</ul>
+<p>线性时基的频率响应：</p>
+<p><img data-src="http://qiniu.s1nh.org/pro-co-rat-frequency-response-linear.png" alt="Pro Co Rat Frequency Response Linear"></p>
+<p>对数时基的频率响应：</p>
+<p><img data-src="http://qiniu.s1nh.org/pro-co-rat-frequency-response.png" alt="Pro Co Rat Frequency Response Logarithmic"></p>
+<p>Pro Co Rat 的频率响应与 <a href="https://www.electrosmash.com/tube-screamer-analysis#frequency">Tube Screamer</a> 相似，在 1KHz 左右显示一个中频波峰。</p>
+<h2 id="7-参考资料"><a href="#7-参考资料" class="headerlink" title="7. 参考资料"></a><strong>7. 参考资料</strong></h2><p><a href="http://www.linear.com/docs/1704">LM308 Datasheet.</a><br><a href="http://www.diystompboxes.com/smfforum/index.php?action=printpage;topic=96351.0">DIYStompboxes thread</a> about the Rat op-amp.<br><a href="http://www.soundonsound.com/sos/apr10/articles/distortion.htm">Great article about Distortion</a> in SoundonSound.com<br><a href="http://webpages.charter.net/daosmun/">Pro Co RAT models</a> by Dosum.<br><a href="http://www.effectsdatabase.com/model/proco/rat">Pro Co RAT in</a> by Effects Data Base.<br><a href="http://www.musicgarage.fi/2011/07/01/flea-market-find/">Pro Co RAT</a> in Jaska‘s Music Garage.<br><a href="http://filters.muziq.be/model/proco/rat">Pro Co RAT info</a> by Muziq.be</p>
+]]></content>
+      <categories>
+        <category>音乐相关</category>
       </categories>
   </entry>
   <entry>
