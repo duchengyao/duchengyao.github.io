@@ -45,7 +45,7 @@
 <meta property="og:image" content="http://qiniu.s1nh.org/pro-co-rat-frequency-response-linear.png">
 <meta property="og:image" content="http://qiniu.s1nh.org/pro-co-rat-frequency-response.png">
 <meta property="article:published_time" content="2023-02-14T15:36:58.000Z">
-<meta property="article:modified_time" content="2023-02-15T09:58:16.873Z">
+<meta property="article:modified_time" content="2023-02-16T01:36:31.221Z">
 <meta property="article:author" content="S1NH">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://qiniu.s1nh.org/prc85rat_intro.jpg">
@@ -181,7 +181,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">96</span>
+          <span class="site-state-item-count">99</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -479,7 +479,7 @@
 <p>滤波器的范围非常宽，几乎可以扫描从 475Hz 到 32KHz 的所有音频频谱。音色控制与电路的其他滤波器相结合，将产生一个中间驼峰，将在频率响应部分进行分析。</p>
 <p><img data-src="http://qiniu.s1nh.org/pro-co-rat-tone-waveform.png" alt="pro-co-rat-tone-waveform"></p>
 <p>如上所示，削波后的波形将受到低通滤波器的影响，当音色控制达到最大值时，会创建一个_鲨鱼鳍_形状。</p>
-<h2 id="5-输出级"><a href="#5-输出级" class="headerlink" title="5. 输出级"></a>5. 输出级</h2><p>输出级是<a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Common_drain">common drain (source follower) configuration</a> 中的 JFET 单一增益放大器。它会产生低输出阻抗，这有利于保持信号链中的音色完整性。它还将音量阶段与音色控制隔离开，以使两个控件独立，否则改变音量会改变音色：</p>
+<h2 id="5-输出级"><a href="#5-输出级" class="headerlink" title="5. 输出级"></a>5. 输出级</h2><p>输出级是<a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Common_drain">共漏放大器（也称为源极跟随器）</a> 中的 JFET 单一增益放大器。它会产生低输出阻抗，这有利于保持信号链中的音色完整性。它还将音量阶段与音色控制隔离开，以使两个控件独立，否则改变音量会改变音色：</p>
 <p><img data-src="http://qiniu.s1nh.org/pro-co-rat-output-stage.png" alt="Pro Co Rat Output Stage"></p>
 <p>JFET 共漏极电路可以使用少量元件实现高输入阻抗（大约 R<sub>8</sub>=1MΩ）和中低输出阻抗（几百欧姆） .</p>
 <ul>
@@ -531,8 +531,8 @@
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/post/996-ICU/" rel="next" title="996.ICU">
-                  996.ICU <i class="fa fa-chevron-right"></i>
+                <a href="/post/fuzz-face-analysis/" rel="next" title="Fuzz Face 电路分析">
+                  Fuzz Face 电路分析 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>

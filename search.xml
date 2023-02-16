@@ -2098,6 +2098,155 @@ apt-get install libusb-1.0-0-dev
       </categories>
   </entry>
   <entry>
+    <title>Big Muff Pi 电路分析</title>
+    <url>/post/big-muff-pi-analysis/</url>
+    <content><![CDATA[<p>The Big Muff Pi is a distortion/sustain guitar pedal designed by Bob Myer and Mike Matthews in 1969 and mass produced in 1970. This effect was the first overwhelming success of Electro-Harmonix due to the distinctive sound, price, and reliability. Several versions and reeditions were released over the years.</p>
+<p><img data-src="http://qiniu.s1nh.org/bmp-all-pedals.png" alt="Big Muff Pi All Pedals"></p>
+<span id="more"></span>
+
+<p>Many inspiring guitarists use this stompbox, giving to the Big Muff Pi a leading role in the hard-driving music signature:<br>Tony Peluso of The Carpenters, Carlos Santana, David Gilmour of Pink Floyd, Ronnie Montrose, Mike Mills and Pete Buck of R.E.M., Robin Finck of Nine Inch Nails, Brian Molko of Placebo, Cliff Burton of Metallica, Kurt Kobain of Nirvana, Thom Yorke of Radiohead, Pete Townshend of The Who, Thurston and Lee Renaldo Moore of Sonic Youth, Billy Corgan of Smashing Pumkins, J. Mascis of Dinosaur Jr., Dan Auerbach of Black Keys, Ace Frehley of Kiss, The Edge of U2, Jamie Cook of the Arctic Monkeys, Jack White of White Stripes, John Frusciante of The Red Hot Chili Peppers, Chris Wolstenholme of Muse are some of the B.M.P well known users.</p>
+<h1 id="Table-of-Contents"><a href="#Table-of-Contents" class="headerlink" title="Table of Contents:"></a><strong>Table of Contents:</strong></h1><p><a href="https://www.electrosmash.com/big-muff-pi-analysis#circuit1">1. The Big Muff Pi Circuit.</a><br>    <a href="https://www.electrosmash.com/big-muff-pi-analysis#bom11">1.1 List of Materials / Parts List.</a><br><a href="https://www.electrosmash.com/big-muff-pi-analysis#input2">2. Input Booster Stage.</a><br>    <a href="https://www.electrosmash.com/big-muff-pi-analysis#link21">2.1 Shunt Feedback Common Emitter Stage.</a><br>    <a href="https://www.electrosmash.com/big-muff-pi-analysis#link22">2.2 Input Booster Voltage Gain Calculation.</a><br>    <a href="https://www.electrosmash.com/big-muff-pi-analysis#link23">2.3 Input Impedance Calculation.</a><br>    <a href="https://www.electrosmash.com/big-muff-pi-analysis#link24">2.4 Input Booster Frequency Response.</a><br><a href="https://www.electrosmash.com/big-muff-pi-analysis#link3">3. Big Muff Pi Clipping Stage.</a><br>    <a href="https://www.electrosmash.com/big-muff-pi-analysis#link31">3.1 Sustain Circuit.</a><br>    <a href="https://www.electrosmash.com/big-muff-pi-analysis#link32">3.2 Clipping Amplifier Voltage Gain Calculation</a><br>    <a href="https://www.electrosmash.com/big-muff-pi-analysis#link33">3.3 Clipping Method.</a><br>    <a href="https://www.electrosmash.com/big-muff-pi-analysis#link34">3.4 Clipping Stage Frequency Response.</a><br><a href="https://www.electrosmash.com/big-muff-pi-analysis#link4">4. Passive Tone Control Stage.</a><br>    <a href="https://www.electrosmash.com/big-muff-pi-analysis#link41">4.1 Tone Control Frequency Response.</a><br><a href="https://www.electrosmash.com/big-muff-pi-analysis#link5">5. Output Stage.</a><br>   <a href="https://www.electrosmash.com/big-muff-pi-analysis#link51"> 5.1 Big Muff Pi Output Impedance.</a><br><a href="https://www.electrosmash.com/big-muff-pi-analysis#link6">6. Big Muff Pi Bias and Tone Response.</a><br><a href="https://www.electrosmash.com/big-muff-pi-analysis#link7">7. Resources.</a><br>    <a href="https://www.electrosmash.com/big-muff-pi-analysis#link71">7.1 Datasheets.</a></p>
+<h1 id="1-The-Big-Muff-Pi-Circuit"><a href="#1-The-Big-Muff-Pi-Circuit" class="headerlink" title="1. The Big Muff Pi Circuit."></a><strong>1. The Big Muff Pi Circuit.</strong></h1><p>The Big Muff Pi circuit consists of 4 cascaded common emitter amplifier stages with a passive tone control. The schematic can be broken down into 4 simpler blocks: Input Booster, Clipping Stage, Passive Tone Control and Output Booster.  </p>
+<p><img data-src="http://qiniu.s1nh.org/big-muff-pi-v3-circuit-stages-small.png" alt="Big Muff Pi v3 Circuit Stages"></p>
+<p>The circuit design was inspired by previous Fuzz pedals like the Dallas Arbiter Fuzz-Face, Maestro Fuzz-Tone or Electro-Harmonix Axis Fuzz. In addition, the BMP introduced a double clipping stage, a new tone control and it is able to produce a characteristic sustained distortion sound never heard before.</p>
+<p>There are also several enhancements on the design in order to make the circuit stable and reliable: All components are based in silicon, all transistor stages include an emitter resistance, which makes the gain independent from temperature or transistor intrinsic characteristics. Three out of four stages include feedback resistors and Miller capacitors, which stabilize the behavior and frequency response. It is a big advantage versus the contemporary dodgy pedals based on germanium.</p>
+<p>The components selected for the design are very generic and easy to find: just high gain NPN transistors, simple silicon diodes and standard resistors, caps and three 100K linear pots. Avoiding exotic parts and making the circuit ready for mass production and a shortage of suppliers.</p>
+<p>This study is focused on the American <em>Version 3</em>, associated with the iconic bold red and black design and released in 1976-1977, the analysis can be easily extrapolated to any other version.</p>
+<p><strong>1.1 Big Muff Pi List of Materials / Parts List.</strong></p>
+<p>The components are labeled following the original Electro-Harmonix printed circuit board:</p>
+<p>4 NPN Transistors: BC239 or equivalents 2N5088, 2N5089, BC549C, SE4010, 2N5210, 2N5113: Q<sub>1</sub>, Q<sub>2</sub>, Q<sub>3</sub>, Q<sub>4</sub>.<br>4 Silicon Diodes: 1N914 or equivalent 1N4148: D<sub>1</sub>, D<sub>2</sub>, D<sub>3</sub>, D<sub>4</sub>.</p>
+<p>3 Potentiometers 100K Lin: Sustain, Tone, Volume.<br>5 Resistances 10K: R<sub>13</sub>, R<sub>19</sub>, R<sub>18</sub>, R<sub>11</sub> R<sub>12</sub>.<br>3 Resistances 100K: R<sub>20</sub>, R<sub>16</sub>, R<sub>3</sub>.<br>3 Resistances 470K: R<sub>9</sub>, R<sub>17</sub>, R<sub>15</sub>.<br>2 Resistances 39K: R<sub>2</sub>, R<sub>8</sub>.<br>2 Resistances 150: R<sub>21</sub>, R<sub>10</sub>.<br>2 Resistances 15K: R<sub>6</sub>.<br>1 Resistance 47K: R<sub>14</sub>.<br>1 Resistance 100: R<sub>22</sub>.<br>1 Resistance 3.3K: R<sub>4</sub>.<br>1 Resistance 1K: R<sub>23</sub>.<br>1 Resistance 22K: R<sub>5</sub>.</p>
+<p>4 Capacitors 1uF: C<sub>1</sub>, C<sub>4</sub>, C<sub>6</sub>, C<sub>7</sub>.<br>4 Capacitors 100nF: C<sub>5</sub>, C<sub>13</sub>, C<sub>3</sub>, C<sub>2</sub>.<br>3 Capacitors 470pF: C<sub>10</sub>, C<sub>11</sub>, C<sub>12</sub>.<br>1 Capacitor 4nF: C<sub>9</sub>.<br>1 Capacitor 10nF: C<sub>8</sub>.</p>
+<h1 id="2-Big-Muff-Pi-Input-Booster-Stage"><a href="#2-Big-Muff-Pi-Input-Booster-Stage" class="headerlink" title="2. Big Muff Pi Input Booster Stage."></a><strong>2. Big Muff Pi Input Booster Stage.</strong></h1><p>This clean boost stage is based on a Common Emitter amplifier with Shunt Feedback and some arrangements to enhance the performance.  </p>
+<p><img data-src="http://qiniu.s1nh.org/big-muff-pi-v3-input-buffer.png" alt="Big Muff Pi V3 Input Booster"></p>
+<p>The Input Booster sets the pedal input impedance, shapes the frequency response and adds some gain.</p>
+<h2 id="2-1-Big-Muff-Pi-Shunt-Feedback-Common-Emitter-Stage"><a href="#2-1-Big-Muff-Pi-Shunt-Feedback-Common-Emitter-Stage" class="headerlink" title="2.1 Big Muff Pi Shunt Feedback Common Emitter Stage."></a><strong>2.1 Big Muff Pi Shunt Feedback Common Emitter Stage.</strong></h2><p>In common emitter amps, the approximate voltage gain is collector resistance divided by the emitter resistance (R<sub>C</sub>/R<sub>E</sub>), but the effect of the feedback resistor has to be taken into consideration:<br>The resistor R<sub>9</sub> from collector to base also called <em>Shunt Feedback resistor</em> or R<sub>F</sub> is a method to apply negative feedback to the amplifier. While it results in a reduced overall voltage gain and input impedance, a number of improvements are obtained:</p>
+<ul>
+<li>Better stabilized voltage gain.</li>
+<li>Improved frequency response.</li>
+<li>Reduced Noise.</li>
+<li>More Linear operation.</li>
+<li>More immune against variations in temperature and transistors Beta.</li>
+</ul>
+<p>How it works?: If the emitter current were to increase, the voltage drop across Rc increases, decreasing Vc, reducing Ib feedback to the base. This, in turn, decreases the emitter current, correcting the original increase. The value of R<sub>9&nbsp;</sub> should be selected so that the collector voltage is half of the supply voltage. </p>
+<h2 id="2-2-Input-Booster-Voltage-Gain-Calculation"><a href="#2-2-Input-Booster-Voltage-Gain-Calculation" class="headerlink" title="2.2 Input Booster Voltage Gain Calculation."></a><strong>2.2 Input Booster Voltage Gain Calculation.</strong></h2><p>A <a href="http://www.uotechnology.edu.iq/dep-eee/lectures/2nd/Electronics%201/Part%2004.pdf">simplified analysis method</a> must be used to calculate the voltage gain of the amplifier, otherwise, it turns into an arithmetic nightmare. It consists of 3 steps:</p>
+<ul>
+<li><strong>a) Identify the Amplifier Topology:</strong></li>
+</ul>
+<p>The topology is known as <em>Voltage-Shunt Feedback</em>: voltage refers to connecting the output voltage as the input to the feedback network and Shunt refers to connecting the feedback signal in parallel/shunt with the input current source.  </p>
+<ul>
+<li><strong>b) Draw the equivalent circuit without the feedback network:</strong> The idea is to draw an equivalent amplifier without feedback but taking the loading of it into consideration. In the image below, the resistor values are substituted by generic labels, in order to make the formulas more intuitive:</li>
+</ul>
+<p><img data-src="http://qiniu.s1nh.org/bmp-small-signal1.png" alt="Big Muff Pi V3 Small Signal"></p>
+<p>The equivalent circuit uses Norton’s current source since the feedback signal is current. In the image below, the feedback resistor is grounded in the input and output sections and the resistors grouped:</p>
+<p><img data-src="http://qiniu.s1nh.org/bmp-small-signal2.png" alt="Big Muff Pi Small Signal "></p>
+<p>Where:</p>
+<p>$$R_{B}=R_{S}//R_{A}//R_{F} = 39K//47K//470K = 20.4K$$</p>
+<p>$$R_{L}=R_{sustain}//R_{C}//R_{F} = 101K//10K//470K = 9K “R_{L}=R_{sustain}//R_{C}//R_{F} = 101K//10K//470K = 9K”)$$</p>
+<ul>
+<li><strong>c) T****he voltage gain</strong> can be calculated following the simplified analysis of these equations:</li>
+</ul>
+<p>A<sub style="color: #333333;">Z</sub>: Voltage-Shunt Gain without feedback formula:</p>
+<p>$$A_{z}=\frac{V_{out}}{I_{s}}=\frac{\beta \cdot i_{b} \cdot R_{L}}{i_{b} + (\frac{r\pi \cdot i_{b}}{R_{B}}) + (\frac{R_{E}(\beta +1)i_{b}}{R_{B}})}$$</p>
+<p>$$with (\frac{R_{E}(\beta +1)i_{b}}{R_{B}}) &gt; &gt; i_{b} + (\frac{r\pi \cdot i_{b}}{R_{B}})$$</p>
+<p>$$A_{z}=\frac{V_{out}}{I_{s}}=\frac{R_{B} \cdot R_{L}}{R_{E}}$$</p>
+<p>B<sub>G</sub>: Feedback Voltage-Shunt formula:</p>
+<p>$$B_{G}=\frac{I_{F}}{V_{out}}= \frac{1}{R_{F}}$$</p>
+<p>A<sub>ZF</sub>: Voltage-Shunt Gain with Feedback </p>
+<p>$$A_{ZF}=\frac{A_{Z}}{1+A_{Z}B_{G}}=\frac{\frac{R_{B} \cdot R_{L}}{R_{E}}}{1+\frac{R_{B} \cdot R_{L}}{R_{E}}\cdot\frac{1}{R_{F}}} $$</p>
+<p>GV: Voltage Gain:</p>
+<p>$$G_{V}=\frac{V_{out}}{V_{S}}=\frac{V_{out}}{I_{S}\cdot R_{S}}=\frac{A_{ZF}}{R_{S}}$$</p>
+<p>Replacing the Input Booster circuit values R<sub>B</sub>=20.4K, R<sub>L</sub>=9K, R<sub>E</sub> =100, R<sub>S</sub>=39K and R<sub>F</sub> =470K the results obtained are B<sub>G</sub>=1/470K, A<sub>ZF</sub>=374.2 and the voltage value is G<sub>V</sub>=9.6 (19.6dB) although doing the simulation the G<sub>V</sub> never reaches this value (it is 16.7 dB).</p>
+<h2 id="2-3-Big-Muff-Pi-Input-Impedance-Calculation"><a href="#2-3-Big-Muff-Pi-Input-Impedance-Calculation" class="headerlink" title="2.3 Big Muff Pi Input Impedance Calculation."></a><strong>2.3 Big Muff Pi Input Impedance Calculation.</strong></h2><p>The Big Muff Pi input impedance is R<sub>2</sub> aka <em>R<sub>S</sub> series resistance</em> plus the input impedance of the Input Booster stage:</p>
+<p> Z<sub>in</sub> = R<sub>S</sub> + (R<sub>in input Booster</sub>) </p>
+<p>The input resistance of the Input Booster due to the emitter resistance and the feedback network effect is much smaller than R<sub>2</sub>. So, the value of the input resistor R<sub>2</sub>=39K accounts for almost all of the signal loading at the input. The 39K it is indeed a low input impedance, and the guitar signal might suffer tone sucking (loss of high frequencies), although tone and volume loss is compensated by the rest of the circuit design.</p>
+<p>Increasing the 39k R<sub>2</sub> input resistor, the input impedance is increased but it also forms a voltage divider at the input, reducing the available voltage gain.</p>
+<p>The Emitter Resistance: Adding an emitter resistance R<sub>22</sub> to a common emitter amp, also known as <em>Emitter Degeneration</em>, makes the voltage gain less dependant from BJT parameters, and therefore less vulnerable to temperature and bias current changes. The stability characteristics of the circuit are thus improved at the expense of a reduction in gain.</p>
+<h2 id="2-4-Input-Booster-Frequency-Response"><a href="#2-4-Input-Booster-Frequency-Response" class="headerlink" title="2.4 Input Booster Frequency Response."></a><strong>2.4 Input Booster Frequency Response.</strong></h2><p>The frequency response is tailored by two capacitors: the input decoupling cap C<sub>1</sub> which sets the low-frequency response (roll-off the bass) and the Miller Capacitor C<sub>10</sub> which shapes the high-frequency response (roll-off the highs):<br><img data-src="http://qiniu.s1nh.org/bmp-input-booster-frequency-response.png" alt="Big Muff Pi Input Booster Frequency Response"></p>
+<ul>
+<li>Input Capacitor C<sub>1</sub>: creates a high-pass filter, increasing its value will result in a more bassy response and increasing the signal into the pedal. The cut-off frequency is around 3.8Hz, not disturbing guitar harmonics.</li>
+<li>Collector to Base feedback Capacitor: C<sub>10</sub> is a <em>Lag Capacitor</em> or <em>Miller Capacitor</em> compensation to avoid oscillation which sets the amplifier bandwidth and the dominant pole frequency. The effective value of the C<sub>10</sub> capacitor is increased by the internal collector-base capacitance (base to collector depletion capacitance) of the BJT. </li>
+</ul>
+<p>With a C<sub>10</sub> of 470pF and depending on the internal BJT capacitance, low pass filter cut-off frequency is around 1.2KHz. This operation occurs just before the distortion stage; clipping a low-passed signal usually sounds better, smoother and less harsh.</p>
+<p>The usual values for this cap are decs to some hundreds of pF, lowering the C<sub>10</sub> value will result in a more treble response, rolling-off fewer highs.</p>
+<h1 id="3-Big-Muff-Pi-Clipping-Stage"><a href="#3-Big-Muff-Pi-Clipping-Stage" class="headerlink" title="3. Big Muff Pi Clipping Stage."></a><strong>3. Big Muff Pi Clipping Stage.</strong></h1><p>The clipping Stage is made of a passive voltage divider (sustain potentiometer) and two consecutive common emitter stages. Each of the two consecutive Q<sub>2</sub>/Q<sub>3</sub> clipping stages keeps the same topology as the Input Booster. In addition, the clipping amplifiers include a back to back diodes to create the symmetric clipping.<br><img data-src="http://qiniu.s1nh.org/big-muff-pi-v3-clipping-stage.png" alt="Big Muff Pi Clipping Stage"></p>
+<p>The design idea for the double distortion is that the first transistor <em>softly</em> clips the waveform in the feedback loop: creating the distortion and filtering the signal. After the first clipping transistor, the second one repeats the operation again and refines the distorted signal creating the <em>hard</em> clip.</p>
+<p><img data-src="http://qiniu.s1nh.org/bmp-clipped-signals.png" alt="Big Muff Pi Clipped Signal"></p>
+<h2 id="3-1-Big-Muff-Pi-Sustain-Circuit"><a href="#3-1-Big-Muff-Pi-Sustain-Circuit" class="headerlink" title="3.1 Big Muff Pi Sustain Circuit."></a><strong>3.1 Big Muff Pi Sustain Circuit.</strong></h2><p>The 100K sustain potentiometer controls the level of the signal going into the clipping blocks. If the level is high, the signal will be more clipped and the distortion effect will hold even if the guitar input signal is not strong. The resistor R<sub>23</sub> prevents the signal from coming from the Input Booster from being cut-off when the sustain pot is at the lowest setting.</p>
+<h2 id="3-2-Clipping-Amplifier-Voltage-Gain-Calculation"><a href="#3-2-Clipping-Amplifier-Voltage-Gain-Calculation" class="headerlink" title="3.2 Clipping Amplifier Voltage Gain Calculation."></a><strong>3.2 Clipping Amplifier Voltage Gain Calculation.</strong></h2><p>The voltage gain can be calculated applying the simplified analysis method as in the Input Booster:</p>
+<ul>
+<li>First Clipping Stage, using the formulas of the Input Booster: </li>
+</ul>
+<p>R<sub>B </sub> = R<sub>S</sub>//R<sub>A</sub>//R<sub>F </sub> = 10K//100K//470K = 8.9K<br>R<sub>L </sub> = R<sub>F</sub>//R<sub>C </sub> = 470K//10K = 9.8K<br>R<sub>E</sub> = 150<br>R<sub>S </sub> = 10K<br>R<sub>F</sub> = 470K<br>The results obtained are:<br>B<sub>G </sub> = 1/470K<br>A<sub>ZF </sub> = 260<br>The Voltage Gain is G<sub>V </sub> = A<sub>ZF</sub>/RS = 260/10 = 26 (28dB). In the real circuit is around 23 dB.</p>
+<ul>
+<li>Second Clipping Stage, using the formulas of the Input Booster: </li>
+</ul>
+<p>R<sub>B </sub> = R<sub>S</sub>//R<sub>A</sub>//R<sub>F </sub> = 10K//100K//470K = 8.9K<br>R<sub>L </sub> = R<sub>F</sub>//R<sub>C </sub> = 470K//15K = 14.5K<br>R<sub>E</sub> = 150<br>R<sub>S</sub> = 10K<br>R<sub>F</sub> = 470K<br>The results obtained are:<br>B<sub>G </sub> = 1/470K<br>A<sub>ZF </sub> = 304<br>The Voltage Gain is G<sub>V </sub> = A<sub>ZF</sub>/R<sub>S </sub> = 304/10 = 30 (29dB). In the real circuit is around 25 dB.</p>
+<p><strong>Note:</strong> In the calculation, the diodes feedback network is not taken into consideration because it contains big capacitors C<sub>6</sub> and C<sub>7</sub> which disconnect the path for DC conditions. </p>
+<p>The Gain of the second clipping stage is slightly higher (1 or 2 dBs) than the first one. However, the voltage gain of this stage will not reach such values as 28 or 29dBs. As it will be seen in the next point, the gain is limited by the clipping diodes action. The output signal of the amplifiers will never exceed ±0.6V and all the extra gain will modify the slew rate and the shape of the clipped signal. </p>
+<p><strong>3.3 Big Muff Pi Clipping Method.</strong></p>
+<p>The diodes D<sub>1</sub>-D<sub>2</sub> and D<sub>3</sub>-D<sub>4</sub> in the collector-base feedback loop of the transistors, clip the signal when the voltage difference between the <em>input</em> (transistor base) and the <em>output</em> (transistor collector) is higher than the V<sub>F</sub> of the diode, which is around 0.6V. So they will limit the signal peaks and the output signal will never exceed ± 0.6V.</p>
+<p>The big 1uF series capacitors C<sub>6</sub> and C<sub>7</sub> located next to the feedback diodes, allow the AC signal to pass through it and be clipped and block the DC bias voltage. Keeping the transistor operating point undisturbed. These caps determine the frequency band the unit clips. Enlarging this cap will make it clip more bass harmonics, make it smaller for more high-end clipping and archiving more saturated tone, more sustain, and compression</p>
+<p><strong>3.4 Clipping Stage Frequency Response.</strong></p>
+<p>In each of the clipping amplifiers, the frequency response is similar to the Input Booster, tailored by two capacitors: The input series decoupling caps C<sub>12</sub>-C<sub>19</sub> acting as a high pass filter and rolling-off the bass below some decs of Hz and the C<sub>6</sub>-C<sub>7</sub> Miller Capacitors acting as a low pass filter shaping the high frequency response and rolling-off around 1KHz:</p>
+<p><img data-src="http://qiniu.s1nh.org/bmp-clipping-stage-frequency-response.png" alt="Big Muff Pi Clipping Stage Frequency Response"></p>
+<p>In the image above, the Clipping Stage frequency response is shown. The red curve illustrates the output after the first clipping, with a maximum gain of 23.4 dB and band limited with two poles at 55Hz and 1.78KHz. The blue curve shows the output after the second clipping, with a maximum gain of 25.2 dB (48.6 - 23.4 = 25.2) and band limited with two poles at 94Hz and 1.17KHz.</p>
+<p>The BMP distortion is very narrow bandwidth limited, attenuating harmonics at 40dB/dec outside the pass-band, and taking into consideration the Input Booster similar response which adds another two poles, all frequencies below 90Hz, and over 1.2KHz are attenuated 60dB/dec.</p>
+<p>The basic idea inside the Big Muff Pi is to remove the high harmonics using Miller Capacitors three times: in Q<sub>4</sub>, Q<sub>3</sub> and Q<sub>2</sub> around 1.2 KHzand resulting in a narrow frequency limited response that accentuates the lows and low mids, making it perfect for bass-less bands. It seems that getting rid of its overdriven high end is the trick to increase the <em>sustain</em> of the guitar.</p>
+<p><strong>4. Big Muff Pi Passive Tone Control Stage.</strong></p>
+<p>The Passive Tone Control has a simple and effective design: essentially it is just a combination of high-low pass filters that are mixed together by a single linear 100K <em>Tone</em> potentiometer. The cut-off points are designed so that their interweaving effect introduces a middle-frequency scoop/notch at 1KHz when the potentiometer is set to the middle position. </p>
+<p><img data-src="http://qiniu.s1nh.org/big-muff-pi-v3-tone-control.png" alt="Big Muff Pi Tone Control"></p>
+<h2 id="4-1-Big-Muff-Pi-Tone-Control-Frequency-Response"><a href="#4-1-Big-Muff-Pi-Tone-Control-Frequency-Response" class="headerlink" title="4.1 Big Muff Pi Tone Control Frequency Response."></a><strong>4.1 Big Muff Pi Tone Control Frequency Response.</strong></h2><p>Find below the BMP frequency response, showing from blue to red all values of the tone potentiometer:</p>
+<p><img data-src="http://qiniu.s1nh.org/bmp-tone-control.png" alt="Big Muff Pi Tone Control Frequency Response"></p>
+<ul>
+<li>The green response line has the tone pot set at the midpoint, evidencing the 1KHz scoop. It also shows that the tone control is not able to archive a flat response. There is an overall 7dB loss and at the notch, the loss is about 6.5db (-13.5db total) at 1KHz.</li>
+<li>The blue and red color curves have the tone at full treble/bass respectively.</li>
+</ul>
+<h1 id="5-Output-Stage"><a href="#5-Output-Stage" class="headerlink" title="5. Output Stage."></a><strong>5. Output Stage.</strong></h1><p>The Output Stage is once again a common emitter amplifier amp which recovers the volume loss during the passive tone stack.  </p>
+<p><img data-src="http://qiniu.s1nh.org/big-muff-pi-v3-output-buffer.png" alt="bBig Muff Pi Output Booster"></p>
+<p>The design of this last stage is simpler than the previous ones, not including resistor Shunt Feedback or Miller compensation. The frequency response is then flat across the audio band and the gain is about 13dB, compensating the loss in the passive tone filter.</p>
+<p>The Voltage Gain in this basic common emitter topology is<br>G<sub>V&nbsp;</sub> = R<sub>C</sub>/R<sub>E&nbsp;</sub> = R<sub>6</sub>/R<sub>4</sub> = 15K/3.3K = 4.5 = 13dB</p>
+<p>The Output impedance of the common emitter transistor stage is equal to R<sub>C</sub> = R<sub>6</sub> = 10K.</p>
+<p>The last part of the circuit is a simple 100k volume potentiometer that regulates the output level. </p>
+<h2 id="5-1-Big-Muff-Pi-Output-Impedance"><a href="#5-1-Big-Muff-Pi-Output-Impedance" class="headerlink" title="5.1 Big Muff Pi Output Impedance."></a><strong>5.1 Big Muff Pi Output Impedance.</strong></h2><p>The pedal output impedance also depends on the volume potentiometer position, being always less than 10K:</p>
+<ul>
+<li>Volume Potentiometer at maximum volume: Z<sub>out</sub> = Z<sub>out|Output Stage</sub> // 100K = 9K approx.</li>
+<li>Volume Potentiometer at minimum volume: Z<sub>out</sub> = Z<sub>out|Output Stage</sub> + 99K // 1K = 1K approx.</li>
+</ul>
+<h1 id="6-Big-Muff-Pi-Bias-and-Tone-Response"><a href="#6-Big-Muff-Pi-Bias-and-Tone-Response" class="headerlink" title="6. Big Muff Pi Bias and Tone Response."></a><strong>6. Big Muff Pi Bias and Tone Response.</strong></h1><p>In the image below, the most important DC bias points are shown. It can be useful to trace circuit failures:</p>
+<p><img data-src="http://qiniu.s1nh.org/big-muff-pi-v3-bias.png" alt="Big Muff Pi Bias"></p>
+<p>In the graph below the most important signals at the output of each stage are shown:</p>
+<p><img data-src="http://qiniu.s1nh.org/bmp-waveforms.png" alt="Big Muff Pi Waveforms"></p>
+<ul>
+<li><p><strong>Orange Signal:</strong> It is the input signal, for this test a 1KHz, 200mVpp guitar alike signal is used.</p>
+</li>
+<li><p><strong>Black Signal:</strong> It is the output of the Input Booster, just the input signal inverted and amplified 9.6 times (19.6dB). At this point is important to mention that due to the low-level value of R<sub>14</sub>=47K, the V<sub>C&nbsp;</sub> of the transistor is not at Vcc/2=4.5V but at 7V. It might cause asymmetric clipping if the input signal is bigger than 0.2Vpp. </p>
+</li>
+<li><p><strong>Red Signal:</strong> It is the output of the first Clipping Stage, the previous signal is amplified 23 dBs and the amplitude is clipped to ±0.6V. The Sustain potentiometer is set at maximum value.</p>
+</li>
+<li><p><strong>Blue Signal:</strong>  It is the output of the first Clipping Stage, the previous signal is amplified 25 dBs and the amplitude is clipped to ±0.6V. After two consecutive clipping stages, the shape is more square or hard.</p>
+</li>
+<li><p><strong>Green Signal:</strong> It is the output after the Tone Control, set at mid position. The signal is attenuated around 13dBs because at 1KHz the mid scoop is there and the shape is slightly changed.</p>
+</li>
+<li><p><strong>Pink Signal:</strong> It is the output signal of the Big Muff Pi. The previous signal is amplified 13dBs without changes in frequency. The Volume potentiometer is set at maximum value.</p>
+</li>
+</ul>
+<h1 id="7-Resources"><a href="#7-Resources" class="headerlink" title="7. Resources."></a><strong>7. Resources.</strong></h1><p><a href="http://www.bigmuffpage.com/">The Big Muff Page</a>, the most comprehensive site about BMP by Kitrae.<br><a href="http://www.uotechnology.edu.iq/dep-eee/lectures/2nd/Electronics%201/Part%2004.pdf">Feedback BJT Amplifier Analysis</a> by Dr. Ahmed Saadoon.<br><a href="http://webs.uvigo.es/ario/docencia/ean/FEEDBACK1.pdf">Feedback BTJ Amplifier Analysis</a> by the University of Vigo.<br><a href="http://www.coda-effects.com/2015/11/big-muff-mods-and-tweaks.html">BMP Mods and Tweaks.</a><br><a href="http://www.diyaudio.com/forums/solid-state/144603-what-capacitor-base-collector.html">BMP Questions in DIYaudio</a>.<br><a href="http://www.muzique.com/lab/tone3.htm">BMP tone Control</a> by AMZ.<br><a href="http://www.thatraymond.com/downloads/solidstate_guitar_amplifiers_teemu_kyttala_v1.0.pdf">Teemuk Kyttala Solid State Guitar Amplifiers</a>, the Holy Scripture.</p>
+<p>Our sincere appreciation to B. Toskin for helping us with the article.</p>
+<h2 id="7-1-Datasheets"><a href="#7-1-Datasheets" class="headerlink" title="7.1 Datasheets."></a><strong>7.1 Datasheets.</strong></h2><ul>
+<li> NPN Transistors:</li>
+</ul>
+<p><a href="http://www.datasheetcatalog.org/datasheet/motorola/BC239.pdf">BC239 Datasheet.</a><br><a href="http://w5jgv.com/tree_amplifier/2N5088-89.pdf">2N5088/2N5089 Datasheet.</a><br><a href="http://www.datasheetcatalog.org/datasheet/motorola/BC549C.pdf">BC549C Datasheet.</a><br><a href="http://datasheet.seekic.com/PdfFile/SE4/SE4010.pdf">SE4010 Datasheet.</a><br><a href="http://72.52.208.92/~gbpprorg/mil/cavity/2N5210.pdf">2N5210 Datasheet.</a></p>
+<ul>
+<li>Silicon Diodes:</li>
+</ul>
+<p><a href="http://www.oup.com/us/pdf/microcircuits/students/diode/1N914B_philip.pdf">1N914 Datasheet.</a><br><a href="http://www.nxp.com/documents/data_sheet/1N4148_1N4448.pdf">1N4148 Datasheet.</a></p>
+]]></content>
+      <categories>
+        <category>音乐相关</category>
+      </categories>
+  </entry>
+  <entry>
     <title>boost::interprocess 新版本修复了死锁</title>
     <url>/post/boost-robustness-interprocess-mutex-deadlock/</url>
     <content><![CDATA[<ul>
@@ -2594,6 +2743,57 @@ apt-get install libusb-1.0-0-dev
 <p>• Xiong, Caiming, Stephen Merity, and Richard Socher. “Dynamic Memory Networks for Visual and Textual Question Answering.” arXiv:1603.01417 (2016).<br>• Mateusz Malinowski, Marcus Rohrbach, Mario Fritz, Ask Your Neurons: A Neural-based Approach to Answering Questions about Images, arXiv:1505.01121.<br>• Stanislaw Antol, Aishwarya Agrawal, Jiasen Lu, Margaret Mitchell, Dhruv Batra, C. Lawrence Zitnick, Devi Parikh, VQA: Visual Question Answering, CVPR, 2015 SUNw:Scene Understanding workshop.<br>• Hauyuan Gao, Junhua Mao, Jie Zhou, Zhiheng Huang, Lei Wang, Wei Xu, Are You Talking to a Machine? Dataset and Methods for Multilingual Image Question Answering, arXiv:1505.05612.<br>• Hyeonwoo Noh, Paul Hongsuck Seo, and Bohyung Han, Image Question Answering using Convolutional Neural Network with Dynamic Parameter Prediction, arXiv:1511.05765<br>• Yang, Z., He, X., Gao, J., Deng, L., &amp; Smola, A. (2015). Stacked Attention Networks for Image Question Answering. arXiv:1511.02274.<br>• Jin-Hwa Kim, Sang-Woo Lee, Dong-Hyun Kwak, Min-Oh Heo, Jeonghee Kim, Jung-Woo Ha, Byoung-Tak Zhang, Multimodal Residual Learning for Visual QA, arXiv:1606:01455<br>• Hyeonwoo Noh and Bohyung Han, Training Recurrent Answering Units with Joint Loss Minimization for VQA, arXiv:1606.03647<br>• Jin-Hwa Kim, Kyoung Woon On, Jeonghee Kim, Jung-Woo Ha, Byoung-Tak Zhang, Hadamard Product for Low-rank Bilinear Pooling, arXiv:1610.04325. </p>
 <h4 id="5-Mask-R-CNN"><a href="#5-Mask-R-CNN" class="headerlink" title="(5) Mask-R-CNN"></a>(5) Mask-R-CNN</h4><p>另外还有一篇是刚刚出来的 Mask RCNN，也是比较火。</p>
 <p>文章在这里 <a href="https://arxiv.org/abs/1703.06870">https://arxiv.org/abs/1703.06870</a><br>具体中文讨论在这里 <a href="https://www.zhihu.com/question/57403701">https://www.zhihu.com/question/57403701</a><br>但是，没有代码，我们组也在复现中 </p>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>不推荐购买创想三维 Creality Sermoon V1 的几个理由</title>
+    <url>/post/do-not-buy-sermoon-v1/</url>
+    <content><![CDATA[<blockquote>
+<p>看过 [<a href="https://www.zhihu.com/zvideo/1457409894764335104">阿文君的视频</a>] 买了 <code>Sermoon V1</code>。体验过后感觉比较玩具、拓展性也比较差，在这里提出几个不该买的理由。</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="0x01-缺少-Linear-Advance-（压力提前-线性推进）-的支持"><a href="#0x01-缺少-Linear-Advance-（压力提前-线性推进）-的支持" class="headerlink" title="0x01 缺少 Linear Advance （压力提前/线性推进） 的支持"></a>0x01 缺少 Linear Advance （压力提前/线性推进） 的支持</h2><p><code>准确的 Linear Advance 的校准是打印一个优秀模型的重要因素</code></p>
+<p>默认情况下，挤出机以线性方式工作。但挤出机不是线性系统，明显会导致在每一步打印后挤出额外材料，并且在下一步开始打印时材料不够。（下图表示了打印机在加速减速的过程，在2处材料挤出不够，且在4、5处产生堆料）</p>
+<p><img data-src="http://qiniu.s1nh.org/sermoon-v1-k-factor_low.png"></p>
+<p>使用 Linear Advance 的优点：</p>
+<ul>
+<li>减少粗糙的边缘，尺寸精度更高。</li>
+<li>可以在不损失任何打印质量的情况下实现更高的打印速度。</li>
+<li>即使在较低的打印速度下，打印质量也会得到提高。</li>
+<li>获得更锋利的边缘。</li>
+</ul>
+<p>网络有很多矫正线性推进的教程，比如：</p>
+<ul>
+<li><a href="https://www.bilibili.com/video/BV1Z94y1U7UL">3D打印机klipper在Voron0.1机器上进行挤出机压力提前测试和校准：新手教程</a></li>
+<li><a href="https://www.bilibili.com/video/BV18541117Yk">【klipper】3D打印机挤出机压力提前测试和校准【3集全】拐角膨胀和起始点分离修正办法</a></li>
+</ul>
+<p>Marlin 官网也提供了详细的<a href="https://marlinfw.org/docs/features/lin_advance.html">调整教程</a></p>
+<p>然而我们的 Sermoon V1 不支持此功能，无法进行调整。我打电话到厂家，给的答复也是“不开源” “没有你想要的固件”</p>
+<h2 id="0x02-糟糕的散热"><a href="#0x02-糟糕的散热" class="headerlink" title="0x02 糟糕的散热"></a>0x02 糟糕的散热</h2><p>此机器的精灵挤出机主体跟 Ender3 S1 的相同，但附件不同。V1挤出机的附件有个致命缺陷散热风扇从底部吸入热空气再给模型降温，缺点是散热很差，在<a href="https://fl.himi3d.cn/d/439-bensermoon-v1">这篇文章</a>有讨论。有几种方式可以改造散热，我做了一版，调试好后会放出来（下图左上。另外：<code>右下黑</code>，原厂；右上黄，<a href="https://fl.himi3d.cn/d/426-bengo10-ender3-s1">S1 风道</a>；左下白，<a href="https://www.crealitycloud.cn/model-detail/626821aac54f1758304dc951">风扇侧装</a>）。</p>
+<p><img data-src="http://qiniu.s1nh.org/sermoon-v1-fan.jpg"></p>
+<p>另外，个人对于挤出机的排线耐久性持怀疑态度，加热棒的大电流不知道会不会导致排线老化。</p>
+<h2 id="0x03-鸡肋的-wifi-功能"><a href="#0x03-鸡肋的-wifi-功能" class="headerlink" title="0x03 鸡肋的 wifi 功能"></a>0x03 鸡肋的 wifi 功能</h2><p>Sermoon V1 自带一个 wifi 板子（下图中间绿色的电路板），功能很弱鸡。比如录像没办法下载，官方给的答复是可以<code>打开手机的录屏功能</code>。</p>
+<p><img data-src="http://qiniu.s1nh.org/sermoon-v1-whole.png"></p>
+<p>我已经把它换成树莓派了，<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2sh1t/mod_octoprint_setup_for_the_creality_sermoon_v1/">有手就能改</a>，可以安装 octoprint 以支持更强大的 <code>wifi</code> <code>远程监控</code> <code>延时摄影</code> 等功能。</p>
+<iframe src="//player.bilibili.com/player.html?aid=342230292&bvid=BV1194y1m7y7&cid=735894030&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+<h2 id="0x04-不开源的主控板"><a href="#0x04-不开源的主控板" class="headerlink" title="0x04 不开源的主控板"></a>0x04 不开源的主控板</h2><p>机器左下角的主板基于开源的 <code>Marlin 1</code> 固件魔改而成，<code>Marlin</code> 固件基于 <code>GPL v3</code> 协议，简单来说就是 <code>你可以免费使用、复制、修改、分发受保护程序，但分发时一定要提供源码</code>。然而此主板不提供源码，后果就是我们只能使用老旧的 Marlin 第一代固件，没办法自行升级到 2.0 以上版本，或者最近流行的<code>klipper</code>固件。</p>
+<ul>
+<li>国外有个哥们请求开源，被直接关闭了issue <a href="https://github.com/CrealityOfficial/Ender-3S1/issues/2">链接</a></li>
+<li>无法校准挤出机<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/ui2u5v/how_to_calibrate_extruder_esteps_z_axis_baby/">链接</a></li>
+<li><a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2stxx/sermoon_v1_and_v1_pro_general_info_thoughts/">这里</a> 有一些讨论</li>
+<li><a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2toy2/marlin_stock_firmware_notes_from_the_sermoon_v1/">这里</a>有一些关于固件的信息</li>
+</ul>
+<h2 id="0x05-无用的-pro-版本"><a href="#0x05-无用的-pro-版本" class="headerlink" title="0x05 无用的 pro 版本"></a>0x05 无用的 pro 版本</h2><p>它的 pro 版本包含开盖暂停和相机功能，然而</p>
+<ul>
+<li>开盖暂停/断料检测只在SD卡打印时有效；</li>
+<li>摄像头会经常断线（国外有人讨论过可能是这种摄像头不支持在高温环境下工作[<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2stxx/sermoon_v1_and_v1_pro_general_info_thoughts/i2r7irn/?utm_source=reddit&utm_medium=web2x&context=3">链接</a>]）。</li>
+</ul>
+<h2 id="0x06-吵"><a href="#0x06-吵" class="headerlink" title="0x06 吵"></a>0x06 吵</h2><p>这款机器主打静音，但你买了以后就知道给主板散热的小风扇有多吵了。我已经拔风扇插头了，目前没出现什么问题（后盖打开，26度空调）。</p>
 ]]></content>
       <categories>
         <category>算法与硬件</category>
@@ -3357,57 +3557,6 @@ apt-get install libusb-1.0-0-dev
       </categories>
   </entry>
   <entry>
-    <title>不推荐购买创想三维 Creality Sermoon V1 的几个理由</title>
-    <url>/post/do-not-buy-sermoon-v1/</url>
-    <content><![CDATA[<blockquote>
-<p>看过 [<a href="https://www.zhihu.com/zvideo/1457409894764335104">阿文君的视频</a>] 买了 <code>Sermoon V1</code>。体验过后感觉比较玩具、拓展性也比较差，在这里提出几个不该买的理由。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="0x01-缺少-Linear-Advance-（压力提前-线性推进）-的支持"><a href="#0x01-缺少-Linear-Advance-（压力提前-线性推进）-的支持" class="headerlink" title="0x01 缺少 Linear Advance （压力提前/线性推进） 的支持"></a>0x01 缺少 Linear Advance （压力提前/线性推进） 的支持</h2><p><code>准确的 Linear Advance 的校准是打印一个优秀模型的重要因素</code></p>
-<p>默认情况下，挤出机以线性方式工作。但挤出机不是线性系统，明显会导致在每一步打印后挤出额外材料，并且在下一步开始打印时材料不够。（下图表示了打印机在加速减速的过程，在2处材料挤出不够，且在4、5处产生堆料）</p>
-<p><img data-src="http://qiniu.s1nh.org/sermoon-v1-k-factor_low.png"></p>
-<p>使用 Linear Advance 的优点：</p>
-<ul>
-<li>减少粗糙的边缘，尺寸精度更高。</li>
-<li>可以在不损失任何打印质量的情况下实现更高的打印速度。</li>
-<li>即使在较低的打印速度下，打印质量也会得到提高。</li>
-<li>获得更锋利的边缘。</li>
-</ul>
-<p>网络有很多矫正线性推进的教程，比如：</p>
-<ul>
-<li><a href="https://www.bilibili.com/video/BV1Z94y1U7UL">3D打印机klipper在Voron0.1机器上进行挤出机压力提前测试和校准：新手教程</a></li>
-<li><a href="https://www.bilibili.com/video/BV18541117Yk">【klipper】3D打印机挤出机压力提前测试和校准【3集全】拐角膨胀和起始点分离修正办法</a></li>
-</ul>
-<p>Marlin 官网也提供了详细的<a href="https://marlinfw.org/docs/features/lin_advance.html">调整教程</a></p>
-<p>然而我们的 Sermoon V1 不支持此功能，无法进行调整。我打电话到厂家，给的答复也是“不开源” “没有你想要的固件”</p>
-<h2 id="0x02-糟糕的散热"><a href="#0x02-糟糕的散热" class="headerlink" title="0x02 糟糕的散热"></a>0x02 糟糕的散热</h2><p>此机器的精灵挤出机主体跟 Ender3 S1 的相同，但附件不同。V1挤出机的附件有个致命缺陷散热风扇从底部吸入热空气再给模型降温，缺点是散热很差，在<a href="https://fl.himi3d.cn/d/439-bensermoon-v1">这篇文章</a>有讨论。有几种方式可以改造散热，我做了一版，调试好后会放出来（下图左上。另外：<code>右下黑</code>，原厂；右上黄，<a href="https://fl.himi3d.cn/d/426-bengo10-ender3-s1">S1 风道</a>；左下白，<a href="https://www.crealitycloud.cn/model-detail/626821aac54f1758304dc951">风扇侧装</a>）。</p>
-<p><img data-src="http://qiniu.s1nh.org/sermoon-v1-fan.jpg"></p>
-<p>另外，个人对于挤出机的排线耐久性持怀疑态度，加热棒的大电流不知道会不会导致排线老化。</p>
-<h2 id="0x03-鸡肋的-wifi-功能"><a href="#0x03-鸡肋的-wifi-功能" class="headerlink" title="0x03 鸡肋的 wifi 功能"></a>0x03 鸡肋的 wifi 功能</h2><p>Sermoon V1 自带一个 wifi 板子（下图中间绿色的电路板），功能很弱鸡。比如录像没办法下载，官方给的答复是可以<code>打开手机的录屏功能</code>。</p>
-<p><img data-src="http://qiniu.s1nh.org/sermoon-v1-whole.png"></p>
-<p>我已经把它换成树莓派了，<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2sh1t/mod_octoprint_setup_for_the_creality_sermoon_v1/">有手就能改</a>，可以安装 octoprint 以支持更强大的 <code>wifi</code> <code>远程监控</code> <code>延时摄影</code> 等功能。</p>
-<iframe src="//player.bilibili.com/player.html?aid=342230292&bvid=BV1194y1m7y7&cid=735894030&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-
-<h2 id="0x04-不开源的主控板"><a href="#0x04-不开源的主控板" class="headerlink" title="0x04 不开源的主控板"></a>0x04 不开源的主控板</h2><p>机器左下角的主板基于开源的 <code>Marlin 1</code> 固件魔改而成，<code>Marlin</code> 固件基于 <code>GPL v3</code> 协议，简单来说就是 <code>你可以免费使用、复制、修改、分发受保护程序，但分发时一定要提供源码</code>。然而此主板不提供源码，后果就是我们只能使用老旧的 Marlin 第一代固件，没办法自行升级到 2.0 以上版本，或者最近流行的<code>klipper</code>固件。</p>
-<ul>
-<li>国外有个哥们请求开源，被直接关闭了issue <a href="https://github.com/CrealityOfficial/Ender-3S1/issues/2">链接</a></li>
-<li>无法校准挤出机<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/ui2u5v/how_to_calibrate_extruder_esteps_z_axis_baby/">链接</a></li>
-<li><a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2stxx/sermoon_v1_and_v1_pro_general_info_thoughts/">这里</a> 有一些讨论</li>
-<li><a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2toy2/marlin_stock_firmware_notes_from_the_sermoon_v1/">这里</a>有一些关于固件的信息</li>
-</ul>
-<h2 id="0x05-无用的-pro-版本"><a href="#0x05-无用的-pro-版本" class="headerlink" title="0x05 无用的 pro 版本"></a>0x05 无用的 pro 版本</h2><p>它的 pro 版本包含开盖暂停和相机功能，然而</p>
-<ul>
-<li>开盖暂停/断料检测只在SD卡打印时有效；</li>
-<li>摄像头会经常断线（国外有人讨论过可能是这种摄像头不支持在高温环境下工作[<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2stxx/sermoon_v1_and_v1_pro_general_info_thoughts/i2r7irn/?utm_source=reddit&utm_medium=web2x&context=3">链接</a>]）。</li>
-</ul>
-<h2 id="0x06-吵"><a href="#0x06-吵" class="headerlink" title="0x06 吵"></a>0x06 吵</h2><p>这款机器主打静音，但你买了以后就知道给主板散热的小风扇有多吵了。我已经拔风扇插头了，目前没出现什么问题（后盖打开，26度空调）。</p>
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
-      </categories>
-  </entry>
-  <entry>
     <title>文档布局分析 &amp; 扭曲文档图像恢复 --- Document Layout Analysis &amp; Document Image Dewarping</title>
     <url>/post/document-layout-analysis/</url>
     <content><![CDATA[<!--
@@ -3796,6 +3945,194 @@ try to remove and create again
       </tags>
   </entry>
   <entry>
+    <title>Fuzz Face 电路分析</title>
+    <url>/post/fuzz-face-analysis/</url>
+    <content><![CDATA[<p>The Fuzz Face is a distortion guitar pedal designed in London by Arbitrer Electronics Ltd in the autumn of 1966. It produces a characteristic high distorted sound called <em>fuzz</em>.<br>Ivor Arbiter took the round shaped enclosure idea from a microphone stand and it was the first pedal including a DPDT stomp-switch. The effect became very popular because Jimi Hendrix played it and there were not many distortion pedals around at that time.</p>
+<p><img data-src="http://qiniu.s1nh.org/fuzz-face-pedal-small.jpg" alt="fuzz face pedal" title="fuzz face pedal"></p>
+<span id="more"></span>
+
+<p>The gist of the Fuzz Face remains in the simple circuit that uses eleven components (2 transistors, 4 resistors, 3 caps and 2 pots) and the astonishing tones created with them; delivering a soft asymmetrical clipping that changes to hard clipping in both semi-cycles under the fuzz pot action.</p>
+<p>Arbitrer Electronics manufactured the pedal from 1966 to 1975, Dallas Music Industries did a final batch in 1975-77, after that the production stopped. During its lifetime the pedal went through some minor cosmetic but major sonic changes. The fuzz face was re-issued from 1986 to 2000. In 1993 Dunlop took over the production selling the fuzz face in different flavors. Today, both the <em>Dallas Arbiter</em> and <em>Fuzz Face</em> trademarks are owned by Dunlop Manufacturing Inc.</p>
+<p>This analysis covers the first Arbitrer Fuzz Face model equipped with PNP germanium transistors from the first releases which are considered the best sounding.</p>
+<p><strong>Table of Contents.</strong></p>
+<p><a href="https://www.electrosmash.com/fuzz-face#link1">1. The Fuzz Face Models.</a><br> <a href="https://www.electrosmash.com/fuzz-face#link11">1.1 The transistors.</a><br><a href="https://www.electrosmash.com/fuzz-face#link2">2. Fuzz Face Circuit.</a><br> <a href="https://www.electrosmash.com/fuzz-face#link21">2.1 Fuzz Face Layout.</a><br> <a href="https://www.electrosmash.com/fuzz-face#link22">2.2 Components Part List / Bill of Materials.</a><br> <a href="https://www.electrosmash.com/fuzz-face#link23">2.3 Circuit Bias Points.</a><br><a href="https://www.electrosmash.com/fuzz-face#link3">3. Fuzz Face Input Stage.</a><br> <a href="https://www.electrosmash.com/fuzz-face#link31">3.1 Input Impedance.</a><br> <a href="https://www.electrosmash.com/fuzz-face#link32">3.2 Voltage Gain.</a><br><a href="https://www.electrosmash.com/fuzz-face#link4">4. Fuzz Face Output Stage.</a><br> <a href="https://www.electrosmash.com/fuzz-face#link41">4.1 Output Impedance.</a><br> <a href="https://www.electrosmash.com/fuzz-face#link42">4.2 Voltage Total Gain.</a><br> <a href="https://www.electrosmash.com/fuzz-face#link43">4.3 Power Supply.</a><br><a href="https://www.electrosmash.com/fuzz-face#link5">5. Fuzz Face Global Feedback Network.</a><br><a href="https://www.electrosmash.com/fuzz-face#link6">6. Fuzz Face Frequency Response.</a><br><a href="https://www.electrosmash.com/fuzz-face#building-the-perfect-fuzz">7. Building the Perfect Fuzz Face</a><br><a href="https://www.electrosmash.com/fuzz-face#link7">8. Resources.</a><br> <a href="https://www.electrosmash.com/fuzz-face#link71">8.1 Datasheets.</a>  </p>
+<p><strong>1. The Fuzz Face Models:</strong>  </p>
+<p>The earliest models were covered in red, light or dark gray Hammerite paint with the Fuzz Face logo in white or black, the text in the <em>smile</em> reveals the pedal’s age. The earliest ones were <em>Arbiter-England</em>, then they became <em>Dallas-Arbiter England</em> sometime in 1968 since then there have been a variety of words in the smile.</p>
+<p>These days Dunlop manufactures a number of different finishes and sizes using various transistor flavors:</p>
+<p><img data-src="http://qiniu.s1nh.org/fuzz-face-family-small.jpg" alt="fuzz face pedals family" title="fuzz face pedals family"></p>
+<p><strong>1.1 The Fuzz Face Transistors.</strong></p>
+<p>The transistors are the most sensitive part of the design with a whole mythology that has grown up around them. There are two main possibilities:</p>
+<ul>
+<li>Germanium transistors: are claimed to have a warmer, creamier smoother sound.</li>
+<li>Silicon transistors: with higher gain are a bit harsher with some more high end.</li>
+</ul>
+<p>Germanium transistors are considered to have an overall better sounding to this effect with some drawbacks: germanium manufacturing is not as consistent and controlled as silicon and they have shorter lifespan and more temperature sensitivity.</p>
+<p>Dennis Cornell: <em>“All the transistors worked in a very similar way and all did the job, but they did give a slightly different tone. I think the Arbiter-England one didn’t use the NKT275 germanium transistor; in those days we used the AC128</em>.”</p>
+<p><em>“There were always problems with them, so I’d get involved in testing and repairing because they just didn’t all work right!”</em></p>
+<p><img data-src="http://qiniu.s1nh.org/ac128-small.jpg" alt="ac128-small"></p>
+<p>This last quote from D. Cornell explains why the production switched to the modern, temperature independent, cheaper and stable silicon transistors like the BC183L, BC183KA, BC130C, BC108C, BC109C, BC209C, and BC239C.  </p>
+<p><strong>Germanium Transistor Selection:</strong> It is important to select the right transistor from the whole batch in order to archive the best effect performance. Germanium transistors tend to have high leakage current and an inconsistent gain value. This gain variation is crucial in the design, the best match uses a low gain in the first stage (β=70-80 approx.) and a high gain in the second stage (β=110-130 approx.).<br>However, there are some other options, for a more compressed sound you can use β=90-120 for Q<sub>1</sub> and β=150-190 Q<sub>2</sub>.<br>There are <a href="http://www.geofex.com/article_folders/fuzzface/fftech.htm">some circuits</a> that help to measure the transistor gain.</p>
+<p><strong>2. The Fuzz Face Circuit.</strong></p>
+<p>The circuit is a simple 2 stage amplifier with a feedback network path. It can be broken down into three parts: Input Stage, Output Stage and Feedback Network. The last block (the Feedback Network) will affect the rest of the analysis because it will influence the most important parameters: voltage gain, input impedance, output impedance and frequency response.</p>
+<p><img data-src="http://qiniu.s1nh.org/fuzz-face-original-schematic-parts-small.png" alt="fuzz face original schematic parts" title="fuzz face schematic parts"></p>
+<p>The fuzz face design was inspired in other contemporary fuzz pedals like the Maestro Fuzz Tone (designed by Glen Snotty) and the Sola Sound ToneBender (designed by Gary Hurst) although the Fuzz Face was an easier circuit than the competitors with only 2 transistors instead of 3.</p>
+<p>There is some controversy of when and where the 2-transistor topology appeared: the Tone Bender MK1.5 is similar to the Dick Denney designed Vox Distortion Booster circuit, nearly identical to the Italian made Vox Tone Bender circuit, and the Arbiter Fuzz Face circuit.</p>
+<p><strong>2.1 Fuzz Face Layout.</strong></p>
+<p>The single layer PCB with through-hole components fits without problems inside the oversized cast iron enclosure. In the picture below you can see the original enclosure (left) compared with the new compact Dunlop box (right):  </p>
+<p><img data-src="http://qiniu.s1nh.org/fuzz-face-guts-by-spayne99-small.jpg" alt="fuzz face guts" title="fuzz face guts"></p>
+<p>The original Fuzz Face uses single layer PCB with through-hole components. The right side of the board have all the pads to attach the cables to the battery clip, jacks, potentiometers and the DPDT foot-switch.</p>
+<p><img data-src="http://qiniu.s1nh.org/fuzz-face-pcb-small.jpg" alt="fuzz face pcb layout" title="fuzz face pcb layout"></p>
+<p><strong>2.2 Fuzz Face Components Part List / Bill of Materials:</strong></p>
+<p>This is the reduced list of components needed to build a Fuzz Face:  </p>
+<p>1    C<sub>1</sub>:    2.2 uF<br>1    C<sub>2</sub>:    20 uF<br>1    C<sub>3</sub>:    0.01 uF<br>1    R<sub>1</sub>:    33KΩ<br>1    R<sub>2</sub>:    470Ω<br>1    R<sub>3</sub>:    8.KΩ<br>1    R<sub>4</sub>:    100KΩ<br>1    R<sub>vol</sub>:    500KΩ (Audio tap)<br>1    R<sub>fuzz</sub>:    1KΩ (Linear tap)<br>2    Q<sub>1</sub>, Q<sub>2</sub>:    AC128<br> Jack in, Jack out, battery clip, DPDT foot-switch.  </p>
+<p><strong>2.3 Fuzz Face Circuit Bias:</strong></p>
+<p>These are the most important DC bias points of the circuit.</p>
+<p><img data-src="http://qiniu.s1nh.org/fuzz-face-bias-small.jpg" alt="fuzz face bias circuit" title="fuzz face bias circuit"></p>
+<p><strong>note:</strong></p>
+<ul>
+<li>For the bias values showed above, the fuzz potentiometer is set to the midpoint (500Ω)</li>
+<li>The DC voltages might change due to transistor β variations, in this case, we are using a Q<sub>1</sub> with β=85 and Q<sub>2</sub> with β=120. If you want the see the <a href="https://www.electrosmash.com/fuzz-face#link71">AC128 PSpice simulation model, check the last part of this article</a>.</li>
+<li>The important settings to get the best sound out of a Fuzz Face is to have Q1<sub>VC</sub>=-0.5 to -0.7 and Q2<sub>VC</sub>=-4.5V. For this purpose, some designers include trimmer resistors to substitute R1 and R3 so the VC of the transistors can be easily adjusted. More info on <a href="http://www.physics.mcgill.ca/~grant/Stuff/fuzzface.txt">physics.mcgill.ca/~grant/Stuff/fuzzface.txt</a></li>
+</ul>
+<p><strong>3. Fuzz Face Input Stage.</strong></p>
+<p>The input stage is a Common Emitter (Collector Follower) PNP amplifier, it provides a high voltage gain with low input impedance and high output impedance. It is not the ideal input stage for signal integrity but the best for simplicity and fast high gain.  </p>
+<p><img data-src="http://qiniu.s1nh.org/fuzz-face-input-stage-small.png" alt="fuzz face input stage" title="fuzz face input stage"></p>
+<ul>
+<li>The 2.2uF input capacitor C<sub>1</sub> blocks any DC level, removing hum and protecting the pedal/guitar against dangerous DC levels.</li>
+<li>The 33KΩ R<sub>1</sub> resistor sets the main input stage parameters like the voltage gain, bias points, and maximum collector current.</li>
+</ul>
+<p><strong>3.1 Fuzz Face Input Impedance:</strong></p>
+<p>Is equal to the input impedance of a common emitter stage. It can be calculated as:</p>
+<p>Zin = Zin of PNP Common Emitter = rπ</p>
+<p>$$r_{\pi } = \frac{(\beta +1)\cdot Vt}{I_{EQ}}=\frac{(\beta +1)}{gm}= \frac{(70+1)}{0.0088}= 8K$$</p>
+<p>For this math calculation the feedback network is ignored but in practice, it will lower the input impedance to 5KΩ approx. The Fuzz Face has a very low input impedance that will change with the position of the R<sub>FUZZ</sub> potentiometer (between 5.2KΩ and 8.4KΩ in the simulation). So the feedback network has a negative impact on this parameter.  </p>
+<p>As a rule of thumb, Z<sub>in</sub> should be at least 1 MΩ. In other pedals with <em>similar</em> input stages <a href="https://www.electrosmash.com/big-muff-pi-analysis#link23">like the one in the Big Muff Pi</a> a series resistor is placed at the input in order to higher the impedance (at the cost of creating a voltage divider that reduces the available input signal). </p>
+<p>The Fuzz Face low input impedance will load the guitar pickups. This is the reason why they do not respond well when they are placed after other pedals. A practical advice is to put your Fuzz Face first on the pedal chain, just after the guitar. The germanium transistor needs to see the inductance/impedance from the guitar pickups. If they see a buffer at the input, they tend to sound awful.  </p>
+<p><strong>3.2 Voltage Gain of the Input Stage:</strong></p>
+<p>In a <a href="http://en.wikipedia.org/wiki/Common_emitter">Common Emitter</a> transistor the voltage gain can be calculated following the equation:</p>
+<p>$$A_{V}=-g_{m}\cdot R_{C}= -g_{m}\cdot R_{1}= 0.0088 \cdot 33K = 290\: (49dB)$$</p>
+<p>note: The gm value of a transistor is defined as:</p>
+<p>$$g_{m}=\frac{I_{e}}{V_{T}}= \frac{0.22mA}{25mV}= 0.0088$$</p>
+<p>where:</p>
+<ul>
+<li>I<sub>E</sub> is the DC emitter current, can be calculated looking at the <a href="https://www.electrosmash.com/fuzz-face#link23">bias points</a> of the circuit, in a simplified form I<sub>E</sub>=(V<sub>CC</sub>-V<sub>C</sub>)/R<sub>1</sub>=(9V-1.6V)/33K= 0.22mA</li>
+<li>V<sub>T</sub> is the thermal voltage of a transistor, at room temperature the value is approximately 25mV.</li>
+</ul>
+<p>In the real life, the input stage will not reach 49dB of gain, the feedback network will reduce this levels to 18.6 dB approx. In the image below the voltage gain of the input stage is shown varying the fuzz potentiometer. </p>
+<p><img data-src="http://qiniu.s1nh.org/fuzz-face-input-stage-voltage-gain.png" alt="fuzz face input stage voltage gain" title="fuzz face input stage voltage gain"></p>
+<p>The above graph shows a high pass filter with a cut-off frequency of 14Hz (18.6 -15. 6 = 3dB) all frequencies below 14Hz will suffer an attenuation 6dB/oct. This is due to the RC filter created by C<sub>1</sub> and the input impedance (5KΩ approx.):</p>
+<p>$$fc=\frac{1}{2\pi R C}=\frac{1}{2\pi \cdot Z_{in}\cdot  C_{1}}=\frac{1}{2\pi \cdot 5K \cdot 2.2uF}= 14Hz$$</p>
+<p>note: The <em>hump</em> originated when the fuzz control is set to minimum (the <em>lowest</em> dark green trace) is due to the C<sub>2</sub> bypass capacitor which creates also filter (C<sub>2</sub> - R<sub>FUZZ</sub>). This effect is more noticeable when the gain of the pedal is low because it has more signal feedback coming from the output through R<sub>4</sub>. When the gain goes high the feedback is smaller and the high pass filter influence is less important. The relationship between feedback and gain is explained in the <a href="https://www.electrosmash.com/fuzz-face#link5">Feedback Network Section.</a>  </p>
+<p><strong><em>FF Sound Signature I: Asymmetrical Clipping:</em></strong> For maximum dynamic range Common Emitter amplifiers are usually biased to have a collector voltage (V<sub>C</sub>) equal to V<sub>CC</sub>/2, in this case, it should be -4.5V. In the Fuzz Face the Q<sub>1</sub> collector voltage sits around -1.6V,  so the voltage swing on the positive semi-cycle is much bigger than in the negative semi-cycle.</p>
+<p>For small signals (less than 50mV<sub>pp</sub>), the input stage will first hit soft saturation on the negative semi-cycle of signal like in the image below, this asymmetric clipping distortion is very <em>musical</em>.</p>
+<p><img data-src="http://qiniu.s1nh.org/fuzz-face-input-stage-signals-small.png" alt="fuzz face input stage signals" title="fuzz face input stage signals"></p>
+<p>When the input signal has a higher level, the input stage will soft-saturate in both semi-cycles like in the image below. This feature of giving soft asymmetric distortion to small signals and clipping harder in both semi-cycles on big input signals (strong chords) gives a nice touch sensitivity which enhances the expressive possibilities.  </p>
+<p><img data-src="http://qiniu.s1nh.org/fuzz-face-input-stage-signals.png" alt="fuzz face input stage signals" title="fuzz face input stage signals"></p>
+<p><strong>4. Output Stage.</strong></p>
+<p>The output stage is again a PNP Common Emitter Amplifier, this time with a variable emitter degeneration resistor (R<sub>FUZZ</sub>=1KΩ). </p>
+<p><img data-src="http://qiniu.s1nh.org/fuzz-face-output-stage.png" alt="fuzz face output stage" title="fuzz face output stage"></p>
+<p><strong>4.1 Fuzz Face Output Impedance:</strong></p>
+<p>The value of the output impedance can be calculated using the formula:  </p>
+<p>Z<sub>out </sub> = R<sub>VOL</sub>//470Ω<br>Z<sub>out MAX </sub> = R<sub>VOL</sub>//470Ω=500K//470Ω = 469Ω</p>
+<p>The fuzz face output impedance is affected by the feedback network and has a real value of 15KΩ (measured at 1KHz with R<sub>VOL</sub>=500KΩ). This value varies with the volume control level and the fuzz control position. However, it can be considered as a bad output impedance, it is too high and can carry problems when it is placed in the pedal chain.  </p>
+<p>The output capacitor C<sub>3</sub> blocks the DC level from saturating any device following the Fuzz Face. It creates a high pass filter together with R<sub>VOL</sub> that will determine the lowest frequency that gets out of the pedal. Making this cap bigger will let more low frequencies out. The cut frequency of this HPFilter is:</p>
+<p>$$fc=\frac{1}{2\pi R C}=\frac{1}{2\pi \cdot R_{vol}\cdot  C_{3}}=\frac{1}{2\pi \cdot 500K \cdot 0.01uF}= 31Hz$$</p>
+<p>The minimum cut frequency is 31Hz, it goes higher when R<sub>VOL</sub> goes down. It means that with low volume levels, the amount of bass frequencies of the signal are slightly reduced, making C<sub>3</sub> bigger will let more low harmonics out. You can read more about it in the <a href="https://www.electrosmash.com/fuzz-face#link6">Frequency Response section.</a></p>
+<p> <strong>4.2 Fuzz Face Total Voltage Gain:</strong></p>
+<p>The emitter degeneration resistor R<sub>FUZZ</sub> creates a local negative feedback, making the second amplifier stage more stable and immune to gain variations due to temperature, bias current and transistor intrinsic properties.</p>
+<p>With this emitter resistance added, the Common Emitter PNP major parameters (ignoring by the moment the feedback network) can be determined by the ratio between the collector resistors (R<sub>2</sub> + R<sub>3</sub>) to and the emitter resistor (the portion of R<sub>FUZZ</sub> not <em>shorted</em> to ground through the 20uF cap).</p>
+<p>$$A_{V}=\frac{R_{C}}{R_{E}}= \frac{R_{2}+R_{3}}{R_{pot1}}$$</p>
+<p>$$A_{V}min=\frac{470+8K2}{1K}= 8.2\: (18dB)$$</p>
+<p>The voltage gain (A<sub>V</sub>) can go from 8.2 to as high as the transistor’s basic internal gain (when R<sub>FUZZ</sub> is maxed out).</p>
+<p>If we take into consideration the feedback network, once again the second stage will not reach values as 18dB. In this case, the total voltage gain measured at Q<sub>2</sub> collector is around 19.5dB. Remember that the input stage had a gain of 18.6 dB, that leaves the second stage a total amount of 1dB of gain (19.5-18.6=0.9dB). The general amount of gain is considerably reduced due to the feedback network.</p>
+<p><img data-src="http://qiniu.s1nh.org/fuzz-face-output-stage-voltage-gain-at-collector.png" alt="fuzz-face-output-stage-voltage-gain-at-collector" title="fuzz-face-output-stage-voltage-gain-at-collector"></p>
+<p>In the above image, the output voltage at Q<sub>2</sub> is shown under the action of the R<sub>FUZZ</sub> potentiometer (the volume is set to max). It exhibits an attenuation in the low frequencies (high pass filter) with a f<sub>c</sub>=14Hz inherited from the input stage.</p>
+<p><strong>BUT</strong> the output of the pedal is not directly taken from Q<sub>2</sub> collector, there is a voltage divider created by R<sub>2</sub> and R<sub>3</sub> (the power supply is effectively at AC ground). This divider reduces the gain by a factor of R<sub>2</sub>/(R<sub>2</sub>+R<sub>3</sub>) = 470/(470+8K2) = 0.054 (-25dB), so the real gain of the output stage is:</p>
+<p>G<sub>VTOTAL</sub> = GV<sub>PEDAL</sub> - Attenuation of R2/(R2+R3)= 19.5 - 25 = -5.5dB</p>
+<p>This voltage divider created by R2 and R3 will greatly reduce the output level. The value usually does not get as low as -5.5dB, the series resistor of the battery should be taken into consideration and will raise the output level.</p>
+<p>It might look funny but It has a reason: the output signal is not much larger than the input signal to keep the huge amount of signal available from over-driving the input of the pedal or amplifier following it. The fuzz is not designed to overdrive the following <em>system</em> by level.  </p>
+<p><img data-src="http://qiniu.s1nh.org/fuzz-face-output-stage-voltage-gain.png" alt="fuzz face output stage voltage gain" title="fuzz face output stage voltage gain"></p>
+<p>note: FF sounds different with different batteries and with the same battery as it gets run down. The internal series resistance of the battery is added to the 470Ω R<sub>3</sub> resistor, modifying the value by a significant amount.</p>
+<p><strong>Emitter degeneration capacitor C<sub>2</sub>:</strong><br>Any impedance between C<sub>2</sub> emitter and ground (R<sub>FUZZ</sub>) will reduce the gain of the output stage, it is a form of local negative feedback. Increasing this impedance will reduce the gain. If we are looking for high gain it is a common practice to have part or all of the emitter resistor grounded with a bypass capacitor.</p>
+<p>Capacitors present an impedance that decreases with frequency, the bias (DC) points will remain the same but high guitar (AC) signals will get higher voltage gain. In terms of design, the bypass capacitor C<sub>2</sub> should have a reactance, at the lowest frequency you are interested to amplify, less than the value of R<sub>FUZZ</sub>. We can use the formula:  </p>
+<p>$$f_{c}=\frac{1}{2\pi R C}=\frac{1}{2\pi \cdot R_{pot1}\cdot  C_{2}}=\frac{1}{2\pi \cdot 1K \cdot 20uF}= 7.9Hz$$</p>
+<p>All the frequencies over 8Hz get full amplification. The 20uF is so big that almost all the frequencies get full amplification.  </p>
+<p><em><strong>FF Sound Signature II: Soft Clipping - Hard Clipping:</strong></em> As the second stage is driven harder, it can reach hard clipping in both semi-cycles of the signal. The clipping begins softly for smaller signals (and gains) and then with the fuzz potentiometer action the clipping goes harder with harder playing. The second amplifier stage can make the clipping harder, with sharper <em>squared</em> corners under the fuzz potentiometer action.</p>
+<p><img data-src="http://qiniu.s1nh.org/fuzz-face-output-stage-soft-hard-clipping.png" alt="fuzz face soft hard clippping" title="fuzz face soft hard clippping"></p>
+<p><strong>4.3 Fuzz Face Power Supply.</strong></p>
+<p>For component economy, the power supply does not include any capacitors to remove ripple from the power line which is something common in <em>raw</em> fuzz pedals. The usual solution in guitar pedals is to add some power filtering by placing 47~100uF cap together with a 100nF from the +9v to ground.</p>
+<p><strong>5. Fuzz Face Global Feedback Network.</strong></p>
+<p>Amplifiers use current or voltage as input or outputs, you can check the <a href="http://en.wikipedia.org/wiki/Negative_feedback_amplifier#Two-port_analysis_of_feedback">amplifier classification</a>. The fuzz face has a negative feedback called <a href="http://en.wikipedia.org/wiki/Negative_feedback_amplifier#Two-port_analysis_of_feedback"><em>shunt-series feedback</em></a> (Current Controlled Current Source <strong>CCCS</strong>). Part of the output current is taken from Q<sub>2</sub> emitter and introduced as current in Q<sub>1</sub> base, so the feedback resistor R<sub>4</sub> is shunt connected with the input and in series connected with the output</p>
+<p><img data-src="http://qiniu.s1nh.org/fuzz-face-feedback-network.png" alt="fuzz face feedback network" title="fuzz face feedback network"></p>
+<p>Why using feedback?</p>
+<p>In amplifier design the degenerative (negative) feedback is used to:</p>
+<ul>
+<li>Desensitize the gain: make the gain value less sensitive to transistors (i.e component variation caused by temperature).</li>
+<li>Reduce nonlinear distortion: make the gain constant.</li>
+<li>Reduce the noise: minimizing the contribution to the output of unwanted electrical signals.</li>
+<li>Control the input/output impedance: raising or lowering their values.</li>
+<li>Extend the bandwidth of the amplifier.</li>
+</ul>
+<p>The properties above are obtained at the expense of a reduction of gain. As a rule of thumb with more feedback, there is less global gain, following  the formula:</p>
+<p>$$A_{FB}=\frac{A_{OL}}{1+B_{FB}A_{OL}}$$</p>
+<p>Where</p>
+<ul>
+<li>A<sub>FB </sub> = Total current gain of the amp in the closed loop.</li>
+<li>A<sub>OL </sub> = Current gain of the amp in open loop</li>
+<li>B = Feedback constant (not to be confused with the transistors β parameter).</li>
+</ul>
+<p><strong>How does the feedback work in the Fuzz Face?</strong></p>
+<p>The job of the feedback network is basically to reduce the huge gain of the Fuzz Face stages, making the whole circuit more stable and independent from problematic germanium transistors:</p>
+<ul>
+<li>When the fuzz control (1KΩ pot) is set to minimum, a big amount of signal is sent back to the input, creating a big feedback loop and reducing the total pedal gain (left image below).</li>
+<li>When the fuzz control increases the attack, the 20uF C<sub>2</sub> cap will gradually shunt the negative feedback to the ground, thus letting the circuit operate with more gain (right image below).</li>
+</ul>
+<p><img data-src="http://qiniu.s1nh.org/fuzz-face-feedback-options.png" alt="fuzz face feedback network action"></p>
+<p><strong>6. Fuzz Face Frequency Response.</strong></p>
+<p>The FF frequency response is shaped by the three capacitors C<sub>1</sub>, C<sub>2</sub> and C<sub>3</sub>:</p>
+<ul>
+<li>C<sub>1</sub>: The 2.2uF input cap creates a high pass filter together with the input pedal impedance (5KΩ approx.), removing dangerous DC levels, hum and overloading bass.</li>
+</ul>
+<p>$$f_{c}=\frac{1}{2\pi R C}=\frac{1}{2\pi \cdot Z_{in}\cdot  C_{1}}=\frac{1}{2\pi \cdot 5K \cdot 2.2uF}= 14Hz$$</p>
+<p>All harmonics below 14Hz will have 6dB/oct of attenuation</p>
+<ul>
+<li>C<sub>2</sub>: Shunts part of the signal to ground, but its value is so high (20uF) that in the worst case only signals below 8Hz (and the audio spectrum) will be affected, so the contribution for the general frequency response can be discarded.  </li>
+<li>C<sub>3</sub>: The output cap creates also a high pass filter, removing the excess of bass that the Fuzz Face delivers:  </li>
+</ul>
+<p>$$f_{c}=\frac{1}{2\pi R C}=\frac{1}{2\pi \cdot R_{vol}\cdot  C_{3}}=\frac{1}{2\pi \cdot 500K \cdot 0.01uF}= 31Hz$$</p>
+<p>All harmonics below 31Hz will have 6dB/oct of attenuation. If the level goes down, the 500KΩ resistor will be reduced and the filter will remove more bass.</p>
+<p><a href="http://www.guitarworld.com/interview-eric-johnson-discusses-his-dunlop-signature-fuzz-face-pedal">Eric Johnson</a> seems to prefer a 100KΩ level resistor over the stock 500KΩ. Using a smaller resistor, the filter will cut more lows out (f<sub>c</sub>=160Hz) which will result in a brighter sound.</p>
+<p>The plot below represents the total frequency response of the fuzz face, the different lines show the effect of the volume potentiometer.  As the volume goes lower (blue line), the graph shows a steeper slope with more high content. This is due to the C<sub>3</sub> output high pass filter effect ( C<sub>3</sub> - R<sub>VOL</sub>)</p>
+<p>The graph also shows a general roll off of the bass harmonics under 14Hz, this is due to the high pass filter created by C<sub>2</sub> and Z<sub>in </sub> (input impedance of the pedal).</p>
+<p>Broadly speaking the frequency response of the Fuzz Face is not very innovative, it just removes some bass and keeps all the highs which contribute to have powerful distortion. Other fuzz pedals like the <a href="https://www.electrosmash.com/big-muff-pi-analysis#link41">Big Muff Pi have a more distinctive frequency response</a> that could shape the tone in a more innovative way.</p>
+<p><img data-src="http://qiniu.s1nh.org/fuzz-face-frequency-response.png" alt="fuzz face frequency response" title="fuzz face frequency response"></p>
+<p>This last image below shows in red color the typical output signal, characterized by an asymmetric waveform and a hard-clipping when the fuzz potentiometer is maxed. The big amount of gain will clip the signal easily creating large amounts of higher harmonic content. Note that the output signal is not completely flat when it clips (it is slightly tilted), this feature adds more character to the sound .</p>
+<p><img data-src="http://qiniu.s1nh.org/fuzz-face-output-signal.png" alt="fuzz face output signal" title="fuzz face output signal"></p>
+<p><strong>7. Building the Perfect Fuzz.</strong></p>
+<p>The Fuzz Face circuit has 9 components. Seems like simple stuff, and in principle it is, but the actual implementation of the pedal has plenty of black magic and mystery associated, and it takes a lot of effort to get the things sounding just right.</p>
+<p><a href="https://www.electrosmash.com/germanium-fuzz"><strong>We have created a project</strong></a> so you can build the perfect Fuzz with all the knowledge and experience that we have while keeping the tweaks and character that make this vintage pedal distortion to sound round and harmonically pleasant.</p>
+<p><img data-src="http://qiniu.s1nh.org/perfect-fuzz-face.jpg" alt="the perfect fuzz face" title="the perfect fuzz face"></p>
+<p><strong>8. Resources.</strong></p>
+<p><a href="http://www.geofex.com/article_folders/fuzzface/fftech.htm">The Technology of the Fuzz Face</a> by R.G Keen.<br><a href="http://screaminfx.com/tech/what-is-the-best-fuzz-pedal.htm">Fuzz Face Description</a> by ScreaminFX.<br><a href="https://www.electrosmash.comhttp//qiniu.s1nh.org/fuzz%20face%20overton_william_e_200605_mast.pdf.pdf">Electrical Engineering Thesis by William E. Overton</a> focused on the Fuzz Face.<br><a href="http://www.dingotone.com/wordpress/wp-content/uploads/2012/06/Discussion-about-fuzzface-batteries-V1.pdf">Discussion Paper About Fuzz FAce Batteries</a> by DingoTone.com<br><a href="http://fuzzcentral.ssguitar.com/fuzzface.php">Arbitrer Fuzz Face</a> by Fuzzcentral.  
+ </p>
+<p><strong>8.1 Datasheets.</strong></p>
+<p><a href="https://www.electrosmash.comhttp//qiniu.s1nh.org/ac128_datasheet1.pdf">AC128 Transistor datasheet 1 pdf</a><br><a href="https://www.electrosmash.comhttp//qiniu.s1nh.org/ac128_datasheet2.pdf">AC128 Transistor datasheet 2 pdf</a></p>
+<p>PsPice models used for AC128 Fuzz Face simulation:</p>
+<ul>
+<li>AC128 with β=85</li>
+</ul>
+<p>.MODEL GERPNP_LOWGAIN PNP(IS=85.8N BF=85.000 NF=1.000 VAF=102.207<br>+IKF=9.981M ISE=0.435N NE=1.200 BR=20.000 NR=1.000 VAR=20.000<br>+IKR=1.248M ISC=120.8N NC=1.200 RB=173.312 IRB=5.000U RBM=43.328<br>+RE=20.000 RC=60.000 CJE=6.000P VJE=0.400 MJE=0.400 TF=0.150U<br>+XTF=9.996 VTF=2.000 ITF=9.983M PTF=1.000 CJC=3.750P<br>+VJC=0.600 MJC=0.330 XCJC=0.650 TR=2.865U<br>+CJS=0.0 VJS=0.700 MJS=0.500 XTB=1.000 EG=0.670<br>+XTI=4.000 KF=5.000F AF=1.000 FC=0.750)<br>.END</p>
+<ul>
+<li>AC128 with β=120.</li>
+</ul>
+<p>.MODEL GERPNP_HIGHGAIN PNP(IS=120.8N BF=120.000 NF=1.000 VAF=102.207<br>+IKF=9.981M ISE=0.435N NE=1.200 BR=20.000 NR=1.000 VAR=20.000<br>+IKR=1.248M ISC=120.8N NC=1.200 RB=173.312 IRB=5.000U RBM=43.328<br>+RE=20.000 RC=60.000 CJE=6.000P VJE=0.400 MJE=0.400 TF=0.150U<br>+XTF=9.996 VTF=2.000 ITF=9.983M PTF=1.000 CJC=3.750P<br>+VJC=0.600 MJC=0.330 XCJC=0.650 TR=2.865U<br>+CJS=0.0 VJS=0.700 MJS=0.500 XTB=1.000 EG=0.670<br>+XTI=4.000 KF=5.000F AF=1.000 FC=0.750)<br>.END</p>
+<p> My sincere appreciation for D.Clark support.Thanks for reading, all feedback is appreciated  <a href="mailto:info@electrosmash.com">info@electrosmash.com</a></p>
+]]></content>
+      <categories>
+        <category>音乐相关</category>
+      </categories>
+  </entry>
+  <entry>
     <title>将吉他恢复为出厂设置 —— 各种型号吉他的出厂参数</title>
     <url>/post/guitar-factory-setup-specs/</url>
     <content><![CDATA[<blockquote>
@@ -4177,6 +4514,147 @@ try to remove and create again
       <tags>
         <tag>信息安全</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Klon Centaur 电路分析</title>
+    <url>/post/klon-centaur-analysis/</url>
+    <content><![CDATA[<p><code>全文译自: https://www.electrosmash.com/klon-centaur-analysis</code></p>
+<p>1990 年至 1994 年间，Bill Finnegan 在两位麻省理工学院电子工程师的帮助下，设计了过载效果器 Klon Centaur。最初的想法是改善 TubeScreamer 的瞬态响应和中低音频率，以产生带有电子管效果器的过载音色。</p>
+<p><img data-src="http://qiniu.s1nh.org/Klon-Centaur-intro-small.jpg" alt="Klon Centaur intro small"></p>
+<span id="more"></span>
+
+<p>设计过程花费了 4 年多的时间，结果是一个神话般的 329 美元的手工制作踏板，生产了 15 年。 如今原始版本受到高度赞赏，目前二手价格超过一万人民币。</p>
+<h2 id="1-Klon-Centaur-电路图"><a href="#1-Klon-Centaur-电路图" class="headerlink" title="1. Klon Centaur 电路图"></a>1. Klon Centaur 电路图</h2><p>Klon Centaur 原理图可分为 5 个部分：输入级、运算放大器增益级、求和级（Summing Stage）、音色控制、输出级和电源：</p>
+<p><img data-src="http://qiniu.s1nh.org/Klon-Centaur-Schematic-Big.png" alt="Klon Centaur Schematic Parts"></p>
+<p>该电路非常原创，展示了学术电子设计与纯实验/开箱即用模块的混合。开发过程基于长时间的聆听测试，尝试不同的电阻器和电容值并聆听声音变化，这就是为什么有如此多特殊参数的电子元件。</p>
+<p>使用的运算放大器是简单的 TL072，证明了一个音质出色的吉他踏板不需要奇怪/特殊/昂贵的部件，只需要纯粹和智能的电子设计。</p>
+<h2 id="1-1-电路布局"><a href="#1-1-电路布局" class="headerlink" title="1.1 电路布局"></a>1.1 电路布局</h2><p>该电路使用带有标准通孔元件的单层PCB。在需要交叉的部分，使用有线桥。然而，所有的电位计、插孔和电池都是有线的并手工焊接到 PCB 上，这使得它非常劳动密集。</p>
+<p>该 PCB 以覆盖黑色环氧树脂（牛屎）而闻名，以防止人们复制它。</p>
+<p><img data-src="http://qiniu.s1nh.org/klon-centaur-analysis-small.jpg" alt="klon centaur analysis small"></p>
+<p><strong>Klon Centaur 型号：金色与银色</strong> - 在其 15 年的生产过程中，Klon 外壳和电路在颜色和图形上有一些变化，但理论上，这些年之间的最小变化不会影响声音：</p>
+<p><img data-src="http://qiniu.s1nh.org/klon-centaur-silver-vs-gold-small.jpg" alt="klon centaur silver vs gold small" title="klon centaur silver vs gold small"></p>
+<blockquote>
+<p>“事实上，在电路部分它们基本上都是一样的。 1995 年，我做了三个小改动：我添加了一个电阻器，为电路提供一些保护，防止静电电荷传递到其输入端——这一改动没有声音效果。我还重新设计了带有接地的电路板，同样，除了可能会减少一点嗡嗡声之外，没有任何声音效果。我添加了一个电阻器来为电路提供非常少量的额外中低频响应——我希望它在与 Strat 一起使用时具有更多的圆度，比如将 Strat 在 Fender Super Reverb 的音色。我没有做其他改变。” - Bill Finnegan，Premier Guitar 采访</p>
+</blockquote>
+<h2 id="2-电源"><a href="#2-电源" class="headerlink" title="2. 电源"></a>2. 电源</h2><p>电源使用 MAX1044，这是一种电压转换器，可以对输入电压进行反相、加倍、分压或倍增：</p>
+<p><img data-src="http://qiniu.s1nh.org/klon-centaur-power-supply-small.png" alt="klon centaur power supply"></p>
+<p>电源的关键因素是以非正常的方式使用 IC 芯片；MAX1044 通常用作“简单的负转换器”或“正电压倍增器”，但在来自 9V 电池的 Klon 电路中，TC1044 同时实现所有功能：将电压加倍 (+18V)，将其反相 (-9V)，将其减半（+4.5V，使用电阻分压器）。</p>
+<p><img data-src="http://qiniu.s1nh.org/max1044-configurations.png" alt="max1044 configurations" title="max1044 configurations"></p>
+<p>这种不同的电压对电路至关重要，并用于不同区域以创建踏板的声音特征：</p>
+<ul>
+<li> <strong>9V:</strong> 用于电路的第一阶段（输入缓冲器和运算放大器放大器），这种排列是大多数吉他踏板中使用的标准。这里没什么特别的。</li>
+<li><strong>18V 和 -9V:</strong> 用于踏板的最后阶段，允许双动态余量，并且正如稍后解释的那样，提供更高的转换速率添加声音特性。</li>
+<li><strong>+4.5V</strong>: 在电路的每一级用作虚拟接地。</li>
+</ul>
+<p><strong>2.1 The importance of a BIG FAT power supply.</strong></p>
+<p>第二个运算放大器在 +18V 和 -9V 之间供电，总共提供 27V 的余量 (head room）。</p>
+<p>如果运算放大器具有更高的电源轨，它也将具有更高的转换率，因此它能够以更高的保真度再现更快的吉他信号（瞬变）和更高的谐波。这个因素对于 Klon Centaur 失真声音特征非常重要。</p>
+<p><img data-src="http://qiniu.s1nh.org/op_amp_slew_rate_vs_power_supply.png" alt="op amp slew rate vs power supply" title="op amp slew rate vs power supply"></p>
+<p><strong>注意</strong>：运算放大器的转换率描述了”输出电压对输入电压的响应速度“。转换速率值（以 V/µs 为单位）越高，输出变化越快，就越容易再现高频信号。TL072 的压摆率为 13-V/μs，高于平均水平运算放大器转换率 (10V/us)。</p>
+<p>在失真阶段之后，运算放大器被馈入高电源（+18V，-9V），因此它将能够跟上削波吉他信号的快速率和复杂波形。</p>
+<h2 id="3-输入缓冲"><a href="#3-输入缓冲" class="headerlink" title="3. 输入缓冲"></a>3. 输入缓冲</h2><p>输入级是一个基于 TL072 运算放大器的简单缓冲器。该电路的任务是将效果器电路与外界隔离，并提供高输入阻抗（避免音染）和直流隔离。</p>
+<p><img data-src="http://qiniu.s1nh.org/klon-centaur-input_buffer.png" alt="klon centaur input buffer" title="klon centaur input buffer"></p>
+<ul>
+<li>R1 输入电阻器将限制进入运算放大器的电流量，保护运算放大器免受静电放电（ESD）的影响。</li>
+<li>C1 输入电容器阻止来自吉他的任何 DC ，并与 R2 一起形成高通滤波器（fc=1/2*π*RC = 1/2x3.14x1MΩx0.1uF = 1.5Hz）1.5Hz 完全超出音频频谱，不会影响原始信号或为信号添加任何润色。</li>
+<li>R2 是偏置电阻器，在运算放大器的非反相（+）引脚处添加虚拟接地（+4.5V）。根据经验，该电阻器的值至少是构成虚拟接地的电阻器值的10倍（R27 和 R30 为 27KΩ）。</li>
+</ul>
+<h3 id="3-1-输入阻抗"><a href="#3-1-输入阻抗" class="headerlink" title="3.1 输入阻抗"></a>3.1 输入阻抗</h3><p>输入阻抗计算如下：</p>
+<p>Zin = R1 + ( R2 // TL072<sub>Zin</sub> )</p>
+<p>TL072 是一个 JFET 运算放大器，因此它具有很大的输入阻抗（Zin = 10<sup>12</sup>Ω），Zin 计算如下：</p>
+<p>Zin = R1 + R2 = 10KΩ + 1MΩ = 1MΩ approx.</p>
+<p>1MΩ 是一个很好的高输入阻抗，可以避免吉他拾音吸音现象（随着频率的升高，越来越多的信号在源阻抗中丢失）。</p>
+<h3 id="3-2-运算放大器：TL072"><a href="#3-2-运算放大器：TL072" class="headerlink" title="3.2 运算放大器：TL072"></a>3.2 运算放大器：TL072</h3><p>Klon Centaur 是一项工程练习，旨在展示如何在不使用特殊部件或复古的集成电路的情况下制作出音质出色的效果器。</p>
+<p>TL072 运算放大器是一种 JFET 运算放大器，因此它具有低偏置电流（这将减少电池消耗）和高输入阻抗（保持信号完整性并减小音染）。它也是一种廉价且易于找到的运算放大器，广泛用于各种音频电路。</p>
+<p>关于 TL072 削波行为，当它进入削波状态并且信号达到其负端电压（negative rail）时，运算放大器会立即反转其相位，因此电路要么闩锁（latch-up）要么表现出硬削波行为（甚至进入振荡状态）。相比之下，正共模限制是无故障的。</p>
+<h2 id="4-运算放大器增益级"><a href="#4-运算放大器增益级" class="headerlink" title="4. 运算放大器增益级"></a>4. 运算放大器增益级</h2><p>运算放大器增益级将根据 <code>Gain</code> 电位计的位置提升和限幅输入信号。该阶段还将过滤原始吉他波形以调整频率响应。</p>
+<p><img data-src="http://qiniu.s1nh.org/klon-centaur-op-amp-gain-stage-circuit.png" alt="klon centaur op amp gain stage circuit" title="klon centaur op amp gain stage circuit">  </p>
+<h3 id="4-1-增益计算"><a href="#4-1-增益计算" class="headerlink" title="4.1 增益计算"></a>4.1 增益计算</h3><p>由于 C7 和 C8 电容器与 R11 和 R12 电阻器并联，形成了彼此相互作用的频率响应，这使一个先验简单的非反相拓扑增益计算变得复杂：</p>
+<p><img data-src="http://qiniu.s1nh.org/klon-centaur-op-amp-gain-stage.png" alt="klon centaur op amp gain stage" title="klon centaur op amp gain stage"></p>
+<p>在上图中可以看出，最大增益在 1KHz 附近为 40dB（100 倍）。此最大增益与其他类似踏板 <a href="https://www.electrosmash.com/boss-ds1-analysis#transistor-booster">Boss DS-1 (35dB)</a> 或 <a href="https://www.electrosmash.com/tube-screamer-analysis#clip-stage">Tube Screamer (41dB)</a> 的增益一致</p>
+<p>这个 40dB 的大增益将使 TL072 进入削波状态，当增益设置为高值时，信号将到达电源强度 (power supply rails)。</p>
+<p>1KHz 左右的“中峰”有助于吉他声音在乐队的其余部分中脱颖而出，在之前的一些踏板中也观察到(<a href="https://www.electrosmash.com/tube-screamer-analysis#frequency">Tube Screamer humps at 723Hz</a> 和 <a href="https://www.electrosmash.com/proco-rat#link6">ProCo Rat at 1KHz</a> )。</p>
+<h3 id="4-2-锗限幅二极管"><a href="#4-2-锗限幅二极管" class="headerlink" title="4.2 锗限幅二极管"></a>4.2 锗限幅二极管</h3><p>根据 Bill Finnegan（Klon Centaur 设计师）的说法，运算放大器级中使用的二极管类型对声音有很大影响：</p>
+<blockquote>
+<p>“这些二极管是影响电路在产生失真时如何发声的最重要因素”<br>“我一直使用零件号为 1N34A 的锗二极管，需要注意的是，这个特殊零件自 1950 年代左右以来一直由数百家不同的公司制造，并且听过很多不同的公司，我可以自信地说，它们在我的电路中听起来都有些不同，而且它们通常听起来非常不同。”</p>
+</blockquote>
+<p><img data-src="http://qiniu.s1nh.org/1n34a.jpg" alt="1n34a" title="1n34a"></p>
+<p>限幅二极管定义了失真声音特征，它使用两个背靠背二极管将信号分流到地，这种限幅方法提供了一种<strong>硬削波</strong>的声音，也用于许多其他踏板（如 MXR Distortion+、RAT 和 Boss-DS1） .</p>
+<p><img data-src="http://qiniu.s1nh.org/klon-centaur-clipping-diodes.png" alt="klon centaur clipping diodes" title="klon centaur clipping diodes"></p>
+<p>在上图中，显示了电阻器 R13 之后的信号，随着增益电位器变高，二极管开始压缩信号，首先是软拐点，最后是更激进的信号。</p>
+<p>1N34A 锗二极管的正向电压 VF = 0.35，与通常具有 0.7V 压降的硅二极管相比，它非常低，从而导致信号的压缩更加困难。</p>
+<h3 id="4-3-前馈网络"><a href="#4-3-前馈网络" class="headerlink" title="4.3 前馈网络"></a>4.3 前馈网络</h3><p>与运算放大器增益级并行，有两个前馈网络，它们有不同的任务：</p>
+<p><img data-src="http://qiniu.s1nh.org/klon-centaur-networks.png" alt="klon centaur networks" title="klon centaur networks"></p>
+<ul>
+<li><strong>网络 1：</strong> 由 R7、C16 和 R19 组成。它是一个低通滤波器，可衰减超过 106Hz 的谐波 (fc=1/(2xπxR7xC16))。这个干净且经过过滤的信号被添加到来自运算放大器增益级的失真信号中，为最终声音添加了一些低频。</li>
+<li><strong>网络 2：</strong> 这个比较复杂，它包括增益电位器的二级组。该部分与运算放大器增益级中的主要部分相反，也就是说，随着运算放大器输出信号变大，这个前馈网络信号变得更安静（反之亦然），从而使混音达到平衡。<br>根据 Finnegan 的说法，这个网络“优化了电路的整体音调响应，无论主增益级产生何种电平和失真。</li>
+</ul>
+<h2 id="5-求和运算放大器"><a href="#5-求和运算放大器" class="headerlink" title="5. 求和运算放大器"></a>5. 求和运算放大器</h2><p>该运算放大器会将运算放大器增益级的输出信号和上述两个前馈网络相加。该电路对于声音特征非常重要，它将失真削波信号（来自运算放大器增益级）和干净信号（来自前馈网络）相加。这个总和产生了一个具有动态而不仅仅是纯粹失真的信号。这种声音后来被称为透明过载（transparent overdrive）。</p>
+<p><img data-src="http://qiniu.s1nh.org/klon-centaur-summing-op-amp.png" alt="klon centaur summing op amp" title="klon centaur summing op amp"></p>
+<p>这个运算放大器引入的增益量是巨大的，大约 100dB（见下图），这是因为三个路径（运算放大器增益级、前馈网络 1 和 2）中的每一个较小的增益量都会在该运算放大器的输入中相加：</p>
+<p><img data-src="http://qiniu.s1nh.org/klon-centaur-summing-amplifier.png" alt="klon centaur summing amplifier" title="klon centaur summing amplifier"></p>
+<ul>
+<li>电阻器 R20 和电容 C13 形成一个低通滤波器，衰减 495Hz 以上的频率 (fc=1/(2xπxR20xC13))，从而更加突出中峰提升。</li>
+</ul>
+<h2 id="6-音色旋钮"><a href="#6-音色旋钮" class="headerlink" title="6. 音色旋钮"></a>6. 音色旋钮</h2><p>音调控制是一个有源高通搁置均衡器（Active High Pass Shelving Equalizer）。它通过所有高达 400Hz 的频率，高于该点的频率得到提升或削减：</p>
+<p><img data-src="http://qiniu.s1nh.org/klon-centaur-tone-control-circuit.png" alt="klon centaur tone control circuit" title="klon centaur tone control circuit"></p>
+<ul>
+<li>此模块的默认增益设置为单位增益 (1)。均衡器向信号添加增益（增强）或衰减（衰减）的频率由以下等式确定：</li>
+</ul>
+<p>fc = 1 / (2xπxR22xC14) = 408Hz.</p>
+<p>高于 408Hz 的频率将有提升或削减。</p>
+<ul>
+<li><p>通频带（pass band）增益定义为 R24/R22 = 1（单位增益）</p>
+</li>
+<li><p>提升/削减（boost/cut）频带的增益由以下公式定义：</p>
+</li>
+</ul>
+<p>Gvmax= (RV2+R23)/R21 = (14.7/1.8) = 8.16 (18.24dB)</p>
+<p>Gvmin= R23/(RV2+R21)  = (4.7/11.8) = 0.4 (-8dB)</p>
+<p><strong>Note</strong>: 搁置滤波器（shelving filters）在音频中有很多用途，在 <a href="https://www.electrosmash.com/boss-ce-2-analysis#link6">Boss CE-2 Chorus 吉他踏板用作预加重/去加重滤波器</a> 以降低信号处理过程中的噪声。</p>
+<p>如前所述，该电路将为最终信号添加或删除高频：</p>
+<p><img data-src="http://qiniu.s1nh.org/klon-centaur-tone-control.png" alt="klon centaur tone control" title="klon centaur tone control"></p>
+<ul>
+<li>通频带或增强/截止带上的增益可以按照前面描述的公式进行调整。</li>
+<li>Klon Centaur 中的音色控制被普遍认为设计的很优秀，它能够将几乎任何吉他的声音适配到任何放大器中。</li>
+</ul>
+<h2 id="7-输出级"><a href="#7-输出级" class="headerlink" title="7. 输出级"></a>7. 输出级</h2><p>最后一级将调整信号的输出电平，它是一个简单的 10K 电位器，会将部分信号分流到地：</p>
+<p><img data-src="http://qiniu.s1nh.org/klon-centaur-output-stage.png" alt="klon centaur output stage" title="klon centaur output stage"></p>
+<ul>
+<li>C15 电容器将从输出信号中去除任何直流电。它还与 RV3 一起创建一个高通滤波器。截止频率将取决于电位器值，因此随着音量降低，截止频率会升高，从 fc= 1/(2xπxC15xRV3)= 3.38Hz 开始。</li>
+</ul>
+<p>注意：此截止频移不是问题，因为即使输出音量为 10% (RV=1K)，fc 也将为 33.8Hz，不会为输出信号添加色彩。</p>
+<ul>
+<li>这两个 68KΩ 和 100KΩ 电阻通常称为<strong>防爆电阻</strong>，它们会避免在连接输出插孔时突然发出爆音。该网络并未放置在电路的早期版本中，尽管其目的可能是消除爆裂声，但事实是这些电阻器创建了一个边际求和输出网络：</li>
+</ul>
+<p>当效果打开时，部分干净的信号会通过 R243 流到输出端。同样，当踏板关闭时，部分受脏影响的信号会渗入干净的输出。贡献约为 1dB，很可能听不见。</p>
+<p>输出级的频率响应如下所示：</p>
+<p><img data-src="http://qiniu.s1nh.org/klon-centaur-output-stage-frequency-response.png" alt="klon centaur output stage frequency response" title="klon centaur output stage frequency response"></p>
+<h2 id="8-Bypass-模式"><a href="#8-Bypass-模式" class="headerlink" title="8. Bypass 模式"></a>8. Bypass 模式</h2><p>Klon Centaur 不使用 3PDT（True Bypass）开关，因此当效果器被禁用时，吉他信号仍然通过输入缓冲器和两个由 C1&amp;R2 和 C2&amp;R3 创建的高通滤波器。这些截止频率为 fc=1/(2xπ0.1uFx1M)=1.5Hz 和 fc=1/(2xπ4.7uFx100K)=0.3Hz 的高通滤波器不会修改吉他信号。他们只会从信号中去除直流内容。</p>
+<p><img data-src="http://qiniu.s1nh.org/klon-centaur-bypass-mode.png" alt="klon centaur bypass mode" title="klon centaur bypass mode"></p>
+<p>停用时的频率响应是平坦的，在低频（fc=1.5Hz 和 fc=0.3Hz）上有滚降并且不影响音频频率：</p>
+<p><img data-src="http://qiniu.s1nh.org/klon-centaur-bypass.png" alt="klon centaur bypass mode" title="klon centaur bypass mode"></p>
+<h2 id="9-音色特征"><a href="#9-音色特征" class="headerlink" title="9. 音色特征"></a>9. 音色特征</h2><p>原版 Klon Centaur 价格触目惊心，难道只是炒作？听起来很酷吗？显然，在查看电路后，有一些在其他设计中从未见过的功能。</p>
+<p>Klon Centaur 具有独特的电子设计，混合了您可以在许多其他吉他踏板上看到的经典部分（如输入缓冲器、运算放大器增益级后接地的背靠背二极管）和其他一些创新模块，如电源电源架构、前馈网络和双联增益电位器。</p>
+<p>吉他波形的处理方式也非常新颖：</p>
+<ol>
+<li>输入缓冲器保持信号原始并保护踏板免受外部因素的影响（图 1 - 左）。</li>
+<li>之后，信号被分成 3 条路径：一部分信号通过第二个运算放大器，两部分通过前馈网络 1 和 2。这是关键：此时的波形看起来像鲨鱼牙齿，由于信号在前馈网络上获得的不同相位。当所有信号在求和放大器（图 1 - 中心）之前连接时，信号会弯曲，形成一个有趣的形状。其他著名的踏板，如 <a href="https://www.electrosmash.com/tube-screamer-analysis#myth">Tube Screamer</a> 也能在失真信号上创造出美丽的不平衡形状。</li>
+<li>此外，该信号随后由具有 27V 电源余量的加法放大器放大，这对于吉他踏板来说非常不寻常，它还提供良好的转换率以保持所有动态和丰富的谐波（图 3 - 右） .</li>
+</ol>
+<p><img data-src="http://qiniu.s1nh.org/klon-centaur-sound-signature.png" alt="klon centaur sound signature" title="klon centaur sound signature"></p>
+<p>除了这个基本解释之外，还有许多其他因素使这种效果变得特别，并为吉他失真增添了声音特征；平衡失真的双联增益电位器，有助于与任何类型的吉他或选定的锗削波二极管交互的音调控制，仅举几例。</p>
+<h2 id="10-参考资料"><a href="#10-参考资料" class="headerlink" title="10. 参考资料"></a>10. 参考资料</h2><ul>
+<li><a href="https://www.premierguitar.com/articles/20210-builder-profile-klons-bill-finnegan">PREMIERGuitar Bill Finnegan Interview</a>.</li>
+<li><a href="http://www.interfacebus.com/equalizer-design-opamp-schematic.html">Equalizer Circuits</a> by Electronic Engineering Dictionary.</li>
+<li><a href="http://www.coda-effects.com/p/klon-centaur-circuit-analysis.html">Koln Centaur Study</a> by Coda Effects.</li>
+<li><a href="https://www.eetimes.com/document.asp?doc_id=1278805&print=yes">TL072 Behaviour</a> by Douglas Self. </li>
+</ul>
+<p>我衷心感谢 D. Pereira、Charles.D、P. Babiak 和 A. Hofseth 对本分析的帮助。</p>
+]]></content>
+      <categories>
+        <category>音乐相关</category>
+      </categories>
   </entry>
   <entry>
     <title>最长公共子序列（LCS）到git diff</title>
@@ -5471,7 +5949,7 @@ H1&lt;---|0.14-1.6|Mirtazapine
 <p>滤波器的范围非常宽，几乎可以扫描从 475Hz 到 32KHz 的所有音频频谱。音色控制与电路的其他滤波器相结合，将产生一个中间驼峰，将在频率响应部分进行分析。</p>
 <p><img data-src="http://qiniu.s1nh.org/pro-co-rat-tone-waveform.png" alt="pro-co-rat-tone-waveform"></p>
 <p>如上所示，削波后的波形将受到低通滤波器的影响，当音色控制达到最大值时，会创建一个_鲨鱼鳍_形状。</p>
-<h2 id="5-输出级"><a href="#5-输出级" class="headerlink" title="5. 输出级"></a>5. 输出级</h2><p>输出级是<a href="http://en.wikipedia.org/wiki/Common_drain">common drain (source follower) configuration</a> 中的 JFET 单一增益放大器。它会产生低输出阻抗，这有利于保持信号链中的音色完整性。它还将音量阶段与音色控制隔离开，以使两个控件独立，否则改变音量会改变音色：</p>
+<h2 id="5-输出级"><a href="#5-输出级" class="headerlink" title="5. 输出级"></a>5. 输出级</h2><p>输出级是<a href="http://en.wikipedia.org/wiki/Common_drain">共漏放大器（也称为源极跟随器）</a> 中的 JFET 单一增益放大器。它会产生低输出阻抗，这有利于保持信号链中的音色完整性。它还将音量阶段与音色控制隔离开，以使两个控件独立，否则改变音量会改变音色：</p>
 <p><img data-src="http://qiniu.s1nh.org/pro-co-rat-output-stage.png" alt="Pro Co Rat Output Stage"></p>
 <p>JFET 共漏极电路可以使用少量元件实现高输入阻抗（大约 R<sub>8</sub>=1MΩ）和中低输出阻抗（几百欧姆） .</p>
 <ul>
