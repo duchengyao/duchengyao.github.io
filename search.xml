@@ -1857,6 +1857,25 @@ apt-get install libusb-1.0-0-dev
       </tags>
   </entry>
   <entry>
+    <title>《Xcode 江湖录》已经出版</title>
+    <url>/post/XcodeJianghu/</url>
+    <content><![CDATA[<p>写了半年多，经过无数次修改，这本书终于定稿了。一多半内容是李俊阳编写的，我写了设计篇、版本管理和一些附录，胡雪婷编写了部分故事，卢力画了插图。</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Xcode_Jianghu_1.png-QNthin"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Xcode_Jianghu_2.png-QNthin"></p>
+<span id="more"></span>
+
+<p><img data-src="http://qiniu.s1nh.org/Blog_Xcode_Jianghu_3.jpg-QNthin" alt="S1NH"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Xcode_Jianghu_4.png-QNthin"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Xcode_Jianghu_5.png-QNthin"></p>
+<p>我们和出版社沟通过后，决定将本书的前三章免费放出，并且将随时保持更新~</p>
+<p><a href="https://www.gitbook.com/@xcode-jianghu">在线阅读 @GitBook</a></p>
+<p><a href="https://github.com/Xcode-Jianghu/Xcode-Jianghu">勘误, 代码, etc @GitHub</a></p>
+]]></content>
+      <categories>
+        <category>其它笔记</category>
+      </categories>
+  </entry>
+  <entry>
     <title>鲸落双城记</title>
     <url>/post/WhaleFallLive_201511/</url>
     <content><![CDATA[<p>新加入鲸落乐队，我当Bass手。弹Bass没什么存在感，可是玩的很开心:-) </p>
@@ -1892,25 +1911,6 @@ apt-get install libusb-1.0-0-dev
 ]]></content>
       <categories>
         <category>音乐相关</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>《Xcode 江湖录》已经出版</title>
-    <url>/post/XcodeJianghu/</url>
-    <content><![CDATA[<p>写了半年多，经过无数次修改，这本书终于定稿了。一多半内容是李俊阳编写的，我写了设计篇、版本管理和一些附录，胡雪婷编写了部分故事，卢力画了插图。</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Xcode_Jianghu_1.png-QNthin"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Xcode_Jianghu_2.png-QNthin"></p>
-<span id="more"></span>
-
-<p><img data-src="http://qiniu.s1nh.org/Blog_Xcode_Jianghu_3.jpg-QNthin" alt="S1NH"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Xcode_Jianghu_4.png-QNthin"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Xcode_Jianghu_5.png-QNthin"></p>
-<p>我们和出版社沟通过后，决定将本书的前三章免费放出，并且将随时保持更新~</p>
-<p><a href="https://www.gitbook.com/@xcode-jianghu">在线阅读 @GitBook</a></p>
-<p><a href="https://github.com/Xcode-Jianghu/Xcode-Jianghu">勘误, 代码, etc @GitHub</a></p>
-]]></content>
-      <categories>
-        <category>其它笔记</category>
       </categories>
   </entry>
   <entry>
@@ -4279,18 +4279,6 @@ try to remove and create again
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/post/hello-world/</url>
-    <content><![CDATA[<blockquote>
-<p>博客都是孤芳自赏，分享都是自我陶醉。</p>
-</blockquote>
-<p><img data-src="/about/block-3.png"></p>
-]]></content>
-      <categories>
-        <category>其它笔记</category>
-      </categories>
-  </entry>
-  <entry>
     <title>HackRF 入门 -- GPS欺骗、GSM嗅探</title>
     <url>/post/hackrf-quick-start/</url>
     <content><![CDATA[<p><img data-src="http://qiniu.s1nh.org/Blog_HackRF_00.png-QNthin"></p>
@@ -4352,6 +4340,18 @@ try to remove and create again
 ]]></content>
       <categories>
         <category>算法与硬件</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/post/hello-world/</url>
+    <content><![CDATA[<blockquote>
+<p>博客都是孤芳自赏，分享都是自我陶醉。</p>
+</blockquote>
+<p><img data-src="/about/block-3.png"></p>
+]]></content>
+      <categories>
+        <category>其它笔记</category>
       </categories>
   </entry>
   <entry>
