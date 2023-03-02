@@ -21,15 +21,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="linux 中通过非 root 账户使用 ifconfig 设置 ip 的方法 创建一个 ifconfig 的副本； 通过 setcap 向副本授予 CAP_NET_ADMIN 能力，而不必授予 root（用户 ID 0）的完整权限。  然而，这种方法可以让任何用户使用这个副本来修改网络，甚至执行任意代码，会导致安全隐患。因此，需要给ifconfig副本设置新的权限，仅允许该组的成员执行，比如 r">
+    <meta name="description" content="linux 中通过非 root 账户使用 ifconfig 设置 ip 的方法 创建一个 ifconfig 的副本； 通过 setcap 向副本授予 CAP_NET_ADMIN 能力，而不必授予 root（用户 ID 0）的完整权限； 为了避免非法用户使用这个副本来修改网络，需要给ifconfig副本设置新的权限，仅允许该组的成员执行。  1234cp &#x2F;sbin&#x2F;ifconfig .sudo s">
 <meta property="og:type" content="article">
 <meta property="og:title" content="一些小技巧">
 <meta property="og:url" content="http://s1nh.org/post/network-tips/index.html">
 <meta property="og:site_name" content="S1NH">
-<meta property="og:description" content="linux 中通过非 root 账户使用 ifconfig 设置 ip 的方法 创建一个 ifconfig 的副本； 通过 setcap 向副本授予 CAP_NET_ADMIN 能力，而不必授予 root（用户 ID 0）的完整权限。  然而，这种方法可以让任何用户使用这个副本来修改网络，甚至执行任意代码，会导致安全隐患。因此，需要给ifconfig副本设置新的权限，仅允许该组的成员执行，比如 r">
+<meta property="og:description" content="linux 中通过非 root 账户使用 ifconfig 设置 ip 的方法 创建一个 ifconfig 的副本； 通过 setcap 向副本授予 CAP_NET_ADMIN 能力，而不必授予 root（用户 ID 0）的完整权限； 为了避免非法用户使用这个副本来修改网络，需要给ifconfig副本设置新的权限，仅允许该组的成员执行。  1234cp &#x2F;sbin&#x2F;ifconfig .sudo s">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-02-27T12:03:13.000Z">
-<meta property="article:modified_time" content="2023-02-27T07:46:41.605Z">
+<meta property="article:modified_time" content="2023-03-02T02:05:04.677Z">
 <meta property="article:author" content="S1NH">
 <meta name="twitter:card" content="summary">
 
@@ -194,6 +194,9 @@
           <a href="https://www.92ez.com/" title="https:&#x2F;&#x2F;www.92ez.com&#x2F;" rel="noopener" target="_blank">一只猿</a>
         </li>
         <li class="links-of-blogroll-item">
+          <a href="http://codewithzhangyi.com/about/" title="http:&#x2F;&#x2F;codewithzhangyi.com&#x2F;about&#x2F;" rel="noopener" target="_blank">好奇心狂热分子</a>
+        </li>
+        <li class="links-of-blogroll-item">
           <a href="http://s1nh.com/" title="http:&#x2F;&#x2F;s1nh.com&#x2F;" rel="noopener" target="_blank">本站 github 镜像</a>
         </li>
         <li class="links-of-blogroll-item">
@@ -300,10 +303,10 @@
     <div class="post-body" itemprop="articleBody">
         <h2 id="linux-中通过非-root-账户使用-ifconfig-设置-ip-的方法"><a href="#linux-中通过非-root-账户使用-ifconfig-设置-ip-的方法" class="headerlink" title="linux 中通过非 root 账户使用 ifconfig 设置 ip 的方法"></a>linux 中通过非 root 账户使用 ifconfig 设置 ip 的方法</h2><ol>
 <li>创建一个 ifconfig 的副本；</li>
-<li>通过 setcap 向副本授予 CAP_NET_ADMIN 能力，而不必授予 root（用户 ID 0）的完整权限。</li>
+<li>通过 setcap 向副本授予 CAP_NET_ADMIN 能力，而不必授予 root（用户 ID 0）的完整权限；</li>
+<li>为了避免非法用户使用这个副本来修改网络，需要给ifconfig副本设置新的权限，仅允许该组的成员执行。</li>
 </ol>
-<p>然而，这种方法可以让任何用户使用这个副本来修改网络，甚至执行任意代码，会导致安全隐患。因此，需要给ifconfig副本设置新的权限，仅允许该组的成员执行，比如 <code>rwxr-x--- (0750)</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cp /sbin/ifconfig .</span><br><span class="line">sudo setcap cap_net_admin=eip ./ifconfig</span><br><span class="line">./ifconfig eth0 1.2.3.4    # succeeds</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cp /sbin/ifconfig .</span><br><span class="line">sudo setcap cap_net_admin=eip ./ifconfig</span><br><span class="line">./ifconfig eth0 1.2.3.4    # succeeds</span><br><span class="line">chmod 750 ./ifconfig</span><br></pre></td></tr></table></figure>
 
 
     </div>
