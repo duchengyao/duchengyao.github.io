@@ -2402,35 +2402,6 @@ apt-get install libusb-1.0-0-dev
       </tags>
   </entry>
   <entry>
-    <title>逆向了 SermoonV1 的 CR-FDM-v2.4.S1.200 主板</title>
-    <url>/post/config-for-sermoonv1/</url>
-    <content><![CDATA[<blockquote>
-<p>上一篇文章吐槽了 <code>创想三维 Sermoon V1</code> 的缺点，其中包括不开源的主板。我花了几天时间逆向，得到了主板的配置文件。<br>使用此配置文件可以自行编译固件：开启 Lineradvance、加入 BLTouch 自动调平、降低待机时风扇的噪声。<br>新的配置文件在 <a href="https://github.com/Klipper3d/klipper/pull/5621">Klipper3d/klipper#5621</a><br><strong>官方已经开源了 <a href="https://github.com/CrealityOfficial/Sermoon-V1">CrealityOfficial/Sermoon-V1</a></strong></p>
-<p>另外，文章最后提供一个散热套件的模型。</p>
-</blockquote>
-<p><img data-src="http://qiniu.s1nh.org/sermoon_v1_board_diagram.png-QNthin"></p>
-<span id="more"></span>
-
-<h2 id="0x01-配置文件"><a href="#0x01-配置文件" class="headerlink" title="0x01 配置文件"></a>0x01 配置文件</h2><p><strong>a. 风扇控制</strong></p>
-<p>除挤出机上的两个风扇以外，SermoonV1 还提供 <code>机箱风扇</code> <code>主板风扇</code> <code>电源风扇</code>，其中电源、主板风扇默认连接在<code>常开风扇</code>接口中。<br>机器噪音最大的是主板风扇，在待机的时候没必要开启它。因此，我们可以按照下图把主板风扇插到 <code>PB4</code> 中。</p>
-<p>另外，原厂固件只能手动控制机箱风扇的开关。如果使用Klipper固件，将自动设置为“打印时开启机箱风扇”。</p>
-<p><img data-src="http://qiniu.s1nh.org/sermoon_v1_modify_fan_pin.jpg-QNthin"></p>
-<p><strong>b. 自动调平</strong></p>
-<p>此主板和挤出机扩展板有额外的接口可以添加BLTouch自动调平，虽然没多大必要，但有兴趣的可以自行DIY。</p>
-<p><strong>c. 其它</strong></p>
-<p>目前只添加了Klipper的配置文件，晚些会编写Marlin的代码。</p>
-<h2 id="0x02-其它配置"><a href="#0x02-其它配置" class="headerlink" title="0x02 其它配置"></a>0x02 其它配置</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pressure_advance: 0.04</span><br><span class="line"></span><br><span class="line">[input_shaper]</span><br><span class="line"># 原厂散热风扇</span><br><span class="line">shaper_freq_x: 55.6</span><br><span class="line">shaper_type_x: ei</span><br><span class="line">shaper_freq_y: 65.6</span><br><span class="line">shaper_type_y: 2hump_ei</span><br><span class="line"></span><br><span class="line"># Ben哥散热风扇</span><br><span class="line"># shaper_freq_x: 39.0</span><br><span class="line"># shaper_type_x: mzv</span><br><span class="line"># shaper_freq_y: 44.0</span><br><span class="line"># shaper_type_y: mzv</span><br></pre></td></tr></table></figure>
-
-<h2 id="0x03-Ben-哥散热神器"><a href="#0x03-Ben-哥散热神器" class="headerlink" title="0x03 Ben 哥散热神器"></a>0x03 Ben 哥散热神器</h2><p>原帖在<a href="https://fl.himi3d.cn/d/426-bengo10-ender3-s1">这里</a>，已经改成适合SermoonV1的版本【<a href="http://qiniu.s1nh.org/bengo-sermoon-v1-release.stl">下载</a>】。需要注意的是，散热神器与挤出机支架的部分建议用泡沫胶黏住，减少Y轴噪声。（这破机器Y轴噪声在不加散热器的情况下可以达到 <code>500 mm/sec^2</code>，用<a href="https://www.klipper3d.org/Measuring_Resonances.html#measuring-the-resonances">这种方法</a>测出来的）</p>
-<p>注意，固定风扇的孔位比原作者的大，用于嵌入<code>M3*4*3双通花母</code>。</p>
-<p>另外，最好支持一下原作者，在他的淘宝店购买钩爪和风扇。</p>
-<p><img data-src="http://qiniu.s1nh.org/bengo-sermoon-v1.png"></p>
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
-      </categories>
-  </entry>
-  <entry>
     <title>一些有关 FastDDS 的基本概念</title>
     <url>/post/concepts-of-fast-dds/</url>
     <content><![CDATA[<p>FastDDS 有两套 API，接近传输层的 <code>RTPS API</code> 和规范的 <code>DDS API</code>。</p>
@@ -2505,6 +2476,35 @@ apt-get install libusb-1.0-0-dev
 <td><strong>7417</strong></td>
 </tr>
 </tbody></table>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>逆向了 SermoonV1 的 CR-FDM-v2.4.S1.200 主板</title>
+    <url>/post/config-for-sermoonv1/</url>
+    <content><![CDATA[<blockquote>
+<p>上一篇文章吐槽了 <code>创想三维 Sermoon V1</code> 的缺点，其中包括不开源的主板。我花了几天时间逆向，得到了主板的配置文件。<br>使用此配置文件可以自行编译固件：开启 Lineradvance、加入 BLTouch 自动调平、降低待机时风扇的噪声。<br>新的配置文件在 <a href="https://github.com/Klipper3d/klipper/pull/5621">Klipper3d/klipper#5621</a><br><strong>官方已经开源了 <a href="https://github.com/CrealityOfficial/Sermoon-V1">CrealityOfficial/Sermoon-V1</a></strong></p>
+<p>另外，文章最后提供一个散热套件的模型。</p>
+</blockquote>
+<p><img data-src="http://qiniu.s1nh.org/sermoon_v1_board_diagram.png-QNthin"></p>
+<span id="more"></span>
+
+<h2 id="0x01-配置文件"><a href="#0x01-配置文件" class="headerlink" title="0x01 配置文件"></a>0x01 配置文件</h2><p><strong>a. 风扇控制</strong></p>
+<p>除挤出机上的两个风扇以外，SermoonV1 还提供 <code>机箱风扇</code> <code>主板风扇</code> <code>电源风扇</code>，其中电源、主板风扇默认连接在<code>常开风扇</code>接口中。<br>机器噪音最大的是主板风扇，在待机的时候没必要开启它。因此，我们可以按照下图把主板风扇插到 <code>PB4</code> 中。</p>
+<p>另外，原厂固件只能手动控制机箱风扇的开关。如果使用Klipper固件，将自动设置为“打印时开启机箱风扇”。</p>
+<p><img data-src="http://qiniu.s1nh.org/sermoon_v1_modify_fan_pin.jpg-QNthin"></p>
+<p><strong>b. 自动调平</strong></p>
+<p>此主板和挤出机扩展板有额外的接口可以添加BLTouch自动调平，虽然没多大必要，但有兴趣的可以自行DIY。</p>
+<p><strong>c. 其它</strong></p>
+<p>目前只添加了Klipper的配置文件，晚些会编写Marlin的代码。</p>
+<h2 id="0x02-其它配置"><a href="#0x02-其它配置" class="headerlink" title="0x02 其它配置"></a>0x02 其它配置</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pressure_advance: 0.04</span><br><span class="line"></span><br><span class="line">[input_shaper]</span><br><span class="line"># 原厂散热风扇</span><br><span class="line">shaper_freq_x: 55.6</span><br><span class="line">shaper_type_x: ei</span><br><span class="line">shaper_freq_y: 65.6</span><br><span class="line">shaper_type_y: 2hump_ei</span><br><span class="line"></span><br><span class="line"># Ben哥散热风扇</span><br><span class="line"># shaper_freq_x: 39.0</span><br><span class="line"># shaper_type_x: mzv</span><br><span class="line"># shaper_freq_y: 44.0</span><br><span class="line"># shaper_type_y: mzv</span><br></pre></td></tr></table></figure>
+
+<h2 id="0x03-Ben-哥散热神器"><a href="#0x03-Ben-哥散热神器" class="headerlink" title="0x03 Ben 哥散热神器"></a>0x03 Ben 哥散热神器</h2><p>原帖在<a href="https://fl.himi3d.cn/d/426-bengo10-ender3-s1">这里</a>，已经改成适合SermoonV1的版本【<a href="http://qiniu.s1nh.org/bengo-sermoon-v1-release.stl">下载</a>】。需要注意的是，散热神器与挤出机支架的部分建议用泡沫胶黏住，减少Y轴噪声。（这破机器Y轴噪声在不加散热器的情况下可以达到 <code>500 mm/sec^2</code>，用<a href="https://www.klipper3d.org/Measuring_Resonances.html#measuring-the-resonances">这种方法</a>测出来的）</p>
+<p>注意，固定风扇的孔位比原作者的大，用于嵌入<code>M3*4*3双通花母</code>。</p>
+<p>另外，最好支持一下原作者，在他的淘宝店购买钩爪和风扇。</p>
+<p><img data-src="http://qiniu.s1nh.org/bengo-sermoon-v1.png"></p>
 ]]></content>
       <categories>
         <category>算法与硬件</category>
@@ -3945,6 +3945,122 @@ try to remove and create again
       </tags>
   </entry>
   <entry>
+    <title>将吉他恢复为出厂设置 —— 各种型号吉他的出厂参数</title>
+    <url>/post/guitar-factory-setup-specs/</url>
+    <content><![CDATA[<blockquote>
+<p>调整吉他之前请换一套新琴弦，并在每一步调整完毕后给吉他重新调音。</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="0x01-调节方法"><a href="#0x01-调节方法" class="headerlink" title="0x01 调节方法"></a>0x01 调节方法</h2><p>所有的数值均为品丝顶端到琴弦底端的距离</p>
+<p><strong>调节琴颈钢筋</strong></p>
+<ol>
+<li>螺丝连接的琴颈（如fender）：压住一品和最后一品；胶水黏贴的琴颈（如Gibson、木吉他）：压住1品和连接处的品丝，通常为16品。</li>
+<li>检查 6 弦在第 8 品丝的距离</li>
+</ol>
+<p><strong>调节琴枕</strong></p>
+<ul>
+<li>测量琴弦在一品的高度，一弦为0.4mm (1/64”)，6弦为 0.6mm (1.5/64”)</li>
+<li>通常情况下不建议新手自行调节琴枕高度</li>
+<li><em>调节弦高</em>*</li>
+</ul>
+<ol>
+<li>压住一品</li>
+<li>检查琴弦与 17 品(原声吉他为 14 品）的距离</li>
+<li>其中，PRS 和 Gibson 要求不压住一品，测量12品的高度。**</li>
+</ol>
+<p><strong>调节拾音器的高度</strong></p>
+<ol>
+<li>压住最后一品</li>
+<li>检查琴弦与拾音器的距离</li>
+</ol>
+<h2 id="0x02-出场设置"><a href="#0x02-出场设置" class="headerlink" title="0x02 出场设置"></a>0x02 出场设置</h2><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>琴颈弧度</th>
+<th>钢筋 mm</th>
+<th>6 弦高度 mm (inch)</th>
+<th>1 弦高度 mm (inch)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>电吉他</td>
+<td>7.25″</td>
+<td>0.3</td>
+<td>2 (5/64)</td>
+<td>1.6 (4/64)</td>
+</tr>
+<tr>
+<td>电吉他</td>
+<td>9.5″ ~ 12″</td>
+<td>0.25</td>
+<td>1.6 (4/64)</td>
+<td>1.6 (4/64)</td>
+</tr>
+<tr>
+<td>电吉他</td>
+<td>15″ ~ 17″</td>
+<td>0.2</td>
+<td>1.6 (4/64)</td>
+<td>1.2 (3/64)</td>
+</tr>
+<tr>
+<td>电吉他</td>
+<td>PRS** (10”)</td>
+<td>0.2</td>
+<td>1.7 (4.2/64)</td>
+<td>1.6 (4/64)</td>
+</tr>
+<tr>
+<td>电吉他</td>
+<td>Gibson** (12”)</td>
+<td>0.1</td>
+<td>2 (5/64)</td>
+<td>1.2 (3/64)</td>
+</tr>
+<tr>
+<td>原声吉他</td>
+<td>9.5″ ~ 12″</td>
+<td>0.25</td>
+<td>2.4 (6/64)</td>
+<td>2 (5/64)</td>
+</tr>
+<tr>
+<td>原声吉他</td>
+<td>15″ ~ 17″</td>
+<td>0.2</td>
+<td>2.4 (6/64)</td>
+<td>2 (5/64)</td>
+</tr>
+<tr>
+<td>Bass</td>
+<td>7.25″</td>
+<td>0.35</td>
+<td>2.8 (7/64)</td>
+<td>2.4 (6/64)</td>
+</tr>
+<tr>
+<td>Bass</td>
+<td>9.5″ ~ 12″</td>
+<td>0.3</td>
+<td>2.4 (6/64)</td>
+<td>2 (5/64)</td>
+</tr>
+<tr>
+<td>Bass</td>
+<td>15″ ~ 17″</td>
+<td>0.25</td>
+<td>2.4 (6/64)</td>
+<td>2 (5/64)</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>音乐相关</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Fuzz Face 电路分析</title>
     <url>/post/fuzz-face-analysis/</url>
     <content><![CDATA[<p>The Fuzz Face is a distortion guitar pedal designed in London by Arbitrer Electronics Ltd in the autumn of 1966. It produces a characteristic high distorted sound called <em>fuzz</em>.<br>Ivor Arbiter took the round shaped enclosure idea from a microphone stand and it was the first pedal including a DPDT stomp-switch. The effect became very popular because Jimi Hendrix played it and there were not many distortion pedals around at that time.</p>
@@ -4127,122 +4243,6 @@ try to remove and create again
 </ul>
 <p>.MODEL GERPNP_HIGHGAIN PNP(IS=120.8N BF=120.000 NF=1.000 VAF=102.207<br>+IKF=9.981M ISE=0.435N NE=1.200 BR=20.000 NR=1.000 VAR=20.000<br>+IKR=1.248M ISC=120.8N NC=1.200 RB=173.312 IRB=5.000U RBM=43.328<br>+RE=20.000 RC=60.000 CJE=6.000P VJE=0.400 MJE=0.400 TF=0.150U<br>+XTF=9.996 VTF=2.000 ITF=9.983M PTF=1.000 CJC=3.750P<br>+VJC=0.600 MJC=0.330 XCJC=0.650 TR=2.865U<br>+CJS=0.0 VJS=0.700 MJS=0.500 XTB=1.000 EG=0.670<br>+XTI=4.000 KF=5.000F AF=1.000 FC=0.750)<br>.END</p>
 <p> My sincere appreciation for D.Clark support.Thanks for reading, all feedback is appreciated  <a href="mailto:info@electrosmash.com">info@electrosmash.com</a></p>
-]]></content>
-      <categories>
-        <category>音乐相关</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>将吉他恢复为出厂设置 —— 各种型号吉他的出厂参数</title>
-    <url>/post/guitar-factory-setup-specs/</url>
-    <content><![CDATA[<blockquote>
-<p>调整吉他之前请换一套新琴弦，并在每一步调整完毕后给吉他重新调音。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="0x01-调节方法"><a href="#0x01-调节方法" class="headerlink" title="0x01 调节方法"></a>0x01 调节方法</h2><p>所有的数值均为品丝顶端到琴弦底端的距离</p>
-<p><strong>调节琴颈钢筋</strong></p>
-<ol>
-<li>螺丝连接的琴颈（如fender）：压住一品和最后一品；胶水黏贴的琴颈（如Gibson、木吉他）：压住1品和连接处的品丝，通常为16品。</li>
-<li>检查 6 弦在第 8 品丝的距离</li>
-</ol>
-<p><strong>调节琴枕</strong></p>
-<ul>
-<li>测量琴弦在一品的高度，一弦为0.4mm (1/64”)，6弦为 0.6mm (1.5/64”)</li>
-<li>通常情况下不建议新手自行调节琴枕高度</li>
-<li><em>调节弦高</em>*</li>
-</ul>
-<ol>
-<li>压住一品</li>
-<li>检查琴弦与 17 品(原声吉他为 14 品）的距离</li>
-<li>其中，PRS 和 Gibson 要求不压住一品，测量12品的高度。**</li>
-</ol>
-<p><strong>调节拾音器的高度</strong></p>
-<ol>
-<li>压住最后一品</li>
-<li>检查琴弦与拾音器的距离</li>
-</ol>
-<h2 id="0x02-出场设置"><a href="#0x02-出场设置" class="headerlink" title="0x02 出场设置"></a>0x02 出场设置</h2><table>
-<thead>
-<tr>
-<th>类型</th>
-<th>琴颈弧度</th>
-<th>钢筋 mm</th>
-<th>6 弦高度 mm (inch)</th>
-<th>1 弦高度 mm (inch)</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>电吉他</td>
-<td>7.25″</td>
-<td>0.3</td>
-<td>2 (5/64)</td>
-<td>1.6 (4/64)</td>
-</tr>
-<tr>
-<td>电吉他</td>
-<td>9.5″ ~ 12″</td>
-<td>0.25</td>
-<td>1.6 (4/64)</td>
-<td>1.6 (4/64)</td>
-</tr>
-<tr>
-<td>电吉他</td>
-<td>15″ ~ 17″</td>
-<td>0.2</td>
-<td>1.6 (4/64)</td>
-<td>1.2 (3/64)</td>
-</tr>
-<tr>
-<td>电吉他</td>
-<td>PRS** (10”)</td>
-<td>0.2</td>
-<td>1.7 (4.2/64)</td>
-<td>1.6 (4/64)</td>
-</tr>
-<tr>
-<td>电吉他</td>
-<td>Gibson** (12”)</td>
-<td>0.1</td>
-<td>2 (5/64)</td>
-<td>1.2 (3/64)</td>
-</tr>
-<tr>
-<td>原声吉他</td>
-<td>9.5″ ~ 12″</td>
-<td>0.25</td>
-<td>2.4 (6/64)</td>
-<td>2 (5/64)</td>
-</tr>
-<tr>
-<td>原声吉他</td>
-<td>15″ ~ 17″</td>
-<td>0.2</td>
-<td>2.4 (6/64)</td>
-<td>2 (5/64)</td>
-</tr>
-<tr>
-<td>Bass</td>
-<td>7.25″</td>
-<td>0.35</td>
-<td>2.8 (7/64)</td>
-<td>2.4 (6/64)</td>
-</tr>
-<tr>
-<td>Bass</td>
-<td>9.5″ ~ 12″</td>
-<td>0.3</td>
-<td>2.4 (6/64)</td>
-<td>2 (5/64)</td>
-</tr>
-<tr>
-<td>Bass</td>
-<td>15″ ~ 17″</td>
-<td>0.25</td>
-<td>2.4 (6/64)</td>
-<td>2 (5/64)</td>
-</tr>
-</tbody></table>
 ]]></content>
       <categories>
         <category>音乐相关</category>
@@ -5492,6 +5492,38 @@ H1&lt;---|0.14-1.6|Mirtazapine
       </tags>
   </entry>
   <entry>
+    <title>光流(Optical Flow)介绍</title>
+    <url>/post/optical-flow-intro/</url>
+    <content><![CDATA[<blockquote>
+<p>绝大部分摘自<a href="http://blog.csdn.net/zouxy09/article/details/8683859">光流Optical Flow介绍与OpenCV实现</a>，<a href="http://ice1020502.blog.163.com/blog/static/50118553200832583036790/">光流法介绍</a></p>
+</blockquote>
+<p>光流是空间运动物体在观察成像平面上的像素运动的瞬时速度，是利用图像序列中像素在时间域上的变化以及相邻帧之间的相关性来找到上一帧跟当前帧之间存在的对应关系，从而计算出相邻帧之间物体的运动信息的一种方法。</p>
+<span id="more"></span>
+
+<p>1981年，Horn和Schunck创造性地将二维速度场与灰度相联系，引入光流约束方程，得到光流计算的基本算法。人们基于不同的理论基础提出各种光流计算方法，算法性能各有不同。Barron等人对多种光流计算技术进行了总结，按照理论基础与数学方法的区别把它们分成四种：基于梯度的方法、基于匹配的方法、基于能量的方法、基于相位的方法。近年来神经动力学方法也颇受学者重视。</p>
+<p>在比较理想的情况下，它能够检测独立运动的对象，不需要预先知道场景的任何信息，可以很精确地计算出运动物体的速度，并且可用于摄像机运动的情况。</p>
+<p>但光流法存在下面的缺点：有时即使没有发生运动，在外部照明发生变化时，也可以观测到光流；另外，在缺乏足够的灰度等级变化的区域，实际运动也往往观测不到。三维物体的运动投影到二维图像的亮度变化，本身由于部分信息的丢失而使光流法存在孔径问题和遮挡问题，用光流法估算二维运动场是不确定的，需要附加的假设模型来模拟二维运动场的结构；在准确分割时，光流法还需要利用颜色、灰度、边缘等空域特征来提高分割精度；同时由于光流法采用迭代的方法，计算复杂耗时，如果没有特殊的硬件支持，很难应用于视频序列的实时检测。</p>
+<h3 id="光流方程"><a href="#光流方程" class="headerlink" title="光流方程"></a>光流方程</h3><p>假设$E(x,y,t)$为$(x,y)$点在时刻t的灰度（照度）。设$t+dt$时刻该点运动到$(x+dx,y+dy)$点，他的照度为$E(x+dx,y+dy,t+dt)$。我们认为，由于对应同一个点，所以<br>$$E(x,y,t) = E(x+dx,y+dy,t+dt) ,,,,,,,（光流约束方程）$$<br>将上式右边做泰勒展开，并令$dt-&gt;0$，则得到 $Exu+Eyv+Et = 0$，其中：<br>$$Ex =  \dfrac{dE}{dx} ,,,, Ey =  \dfrac{dE}{dy} ,,,, Et = \dfrac{dE}{dt} ,,,, u = \dfrac{dx}{dt} ,,,, v = \dfrac{dy}{dt} $$<br>上面的Ex,Ey,Et的计算都很简单，用离散的差分代替导数就可以了。光流法的主要任务就是通过求解光流约束方程求出u,v。如果用于摄像机固定的这一特定情况，问题可以大大简化。</p>
+<h3 id="摄像机固定的情形"><a href="#摄像机固定的情形" class="headerlink" title="摄像机固定的情形"></a>摄像机固定的情形</h3><p>在摄像机固定的情形下，运动物体的检测其实就是分离前景和背景的问题。对于背景，理想情况下，其光流应当为0，只有前景才有光流。所以并不要求通过求解光流约束方程求出u,v。只要求出亮度梯度方向的速率$sqrt(u*u+v*v)$即可。<br>由光流约束方程得到到梯度方向的光流速率为 $V = abs(\dfrac{Et}{sqrt(Ex*Ex+Ey*Ey)})$。<br>设定一个阈值T，若$V(x,y) &gt; T$ 则$(x,y)$是前景 ，反之是背景。</p>
+<h3 id="Munsell颜色系统"><a href="#Munsell颜色系统" class="headerlink" title="Munsell颜色系统"></a>Munsell颜色系统</h3><p>光流场是图片中每个像素都有一个x方向和y方向的位移，所以在上面那些光流计算结束后得到的光流flow是个和原来图像大小相等的双通道图像。可以用Munsell颜色系统来显示。</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_optical_flow-01.jpg-QNthin"></p>
+<p>孟塞尔颜色系统的空间大致成一个圆柱形：</p>
+<blockquote>
+<p>南北轴=明度（value），从全黑（1）到全白（10）。<br>经度=色相（hue）。把一周均分成五种主色调和五种中间色：红(R)、红黄(YR)、黄(Y)、黄绿(GY)、绿(G)、绿蓝(BG)、蓝(B)、蓝紫(PB)、紫(P)、紫红(RP)。相邻的两个位置之间再均分10份，共100份。<br>距轴的距离=色度（chroma），表示色调的纯度。其数值从中间（0）向外随着色调的纯度增加，没有理论上的上限（普通的颜色实际上限为10左右，反光、荧光等材料可高达30）。由于人眼对各种颜色的的敏感度不同，色度不一定与每个色调和明度组合相匹配。</p>
+</blockquote>
+<p>具体颜色的标识形式为：色相+明度+色度。</p>
+<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><p>[1]Pyramidal Implementation of the Lucas Kanade Feature TrackerDescription of the algorithm<br>通过金字塔Lucas-Kanade 光流方法计算某些点集的光流（稀疏光流）。</p>
+<p>[2]Two-Frame Motion Estimation Based on PolynomialExpansion”<br>用Gunnar Farneback 的算法计算稠密光流（即图像上所有像素点的光流都计算出来）。</p>
+<p>[3]通过块匹配的方法来计算光流。</p>
+<p>[4]Determining Optical Flow<br>用Horn-Schunck 的算法计算稠密光流。</p>
+<p><a href="http://graphics.berkeley.edu/papers/Tao-SAN-2012-05/">SimpleFlow: A Non-iterative, Sublinear Optical FlowAlgorithm</a><br>这一个是2012年欧洲视觉会议的一篇文章的实现</p>
+<p>IJCV2011有一篇文章，《<a href="http://vision.middlebury.edu/flow/">A Database and Evaluation Methodology for Optical Flow</a>》里面对主流的光流算法做了简要的介绍和对不同算法进行了评估。</p>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+  </entry>
+  <entry>
     <title>其它笔记</title>
     <url>/post/note_1/</url>
     <content><![CDATA[<p>懂王附体，很神奇的强行全面放开了</p>
@@ -5525,38 +5557,6 @@ H1&lt;---|0.14-1.6|Mirtazapine
 ]]></content>
       <categories>
         <category>其它笔记</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>光流(Optical Flow)介绍</title>
-    <url>/post/optical-flow-intro/</url>
-    <content><![CDATA[<blockquote>
-<p>绝大部分摘自<a href="http://blog.csdn.net/zouxy09/article/details/8683859">光流Optical Flow介绍与OpenCV实现</a>，<a href="http://ice1020502.blog.163.com/blog/static/50118553200832583036790/">光流法介绍</a></p>
-</blockquote>
-<p>光流是空间运动物体在观察成像平面上的像素运动的瞬时速度，是利用图像序列中像素在时间域上的变化以及相邻帧之间的相关性来找到上一帧跟当前帧之间存在的对应关系，从而计算出相邻帧之间物体的运动信息的一种方法。</p>
-<span id="more"></span>
-
-<p>1981年，Horn和Schunck创造性地将二维速度场与灰度相联系，引入光流约束方程，得到光流计算的基本算法。人们基于不同的理论基础提出各种光流计算方法，算法性能各有不同。Barron等人对多种光流计算技术进行了总结，按照理论基础与数学方法的区别把它们分成四种：基于梯度的方法、基于匹配的方法、基于能量的方法、基于相位的方法。近年来神经动力学方法也颇受学者重视。</p>
-<p>在比较理想的情况下，它能够检测独立运动的对象，不需要预先知道场景的任何信息，可以很精确地计算出运动物体的速度，并且可用于摄像机运动的情况。</p>
-<p>但光流法存在下面的缺点：有时即使没有发生运动，在外部照明发生变化时，也可以观测到光流；另外，在缺乏足够的灰度等级变化的区域，实际运动也往往观测不到。三维物体的运动投影到二维图像的亮度变化，本身由于部分信息的丢失而使光流法存在孔径问题和遮挡问题，用光流法估算二维运动场是不确定的，需要附加的假设模型来模拟二维运动场的结构；在准确分割时，光流法还需要利用颜色、灰度、边缘等空域特征来提高分割精度；同时由于光流法采用迭代的方法，计算复杂耗时，如果没有特殊的硬件支持，很难应用于视频序列的实时检测。</p>
-<h3 id="光流方程"><a href="#光流方程" class="headerlink" title="光流方程"></a>光流方程</h3><p>假设$E(x,y,t)$为$(x,y)$点在时刻t的灰度（照度）。设$t+dt$时刻该点运动到$(x+dx,y+dy)$点，他的照度为$E(x+dx,y+dy,t+dt)$。我们认为，由于对应同一个点，所以<br>$$E(x,y,t) = E(x+dx,y+dy,t+dt) ,,,,,,,（光流约束方程）$$<br>将上式右边做泰勒展开，并令$dt-&gt;0$，则得到 $Exu+Eyv+Et = 0$，其中：<br>$$Ex =  \dfrac{dE}{dx} ,,,, Ey =  \dfrac{dE}{dy} ,,,, Et = \dfrac{dE}{dt} ,,,, u = \dfrac{dx}{dt} ,,,, v = \dfrac{dy}{dt} $$<br>上面的Ex,Ey,Et的计算都很简单，用离散的差分代替导数就可以了。光流法的主要任务就是通过求解光流约束方程求出u,v。如果用于摄像机固定的这一特定情况，问题可以大大简化。</p>
-<h3 id="摄像机固定的情形"><a href="#摄像机固定的情形" class="headerlink" title="摄像机固定的情形"></a>摄像机固定的情形</h3><p>在摄像机固定的情形下，运动物体的检测其实就是分离前景和背景的问题。对于背景，理想情况下，其光流应当为0，只有前景才有光流。所以并不要求通过求解光流约束方程求出u,v。只要求出亮度梯度方向的速率$sqrt(u*u+v*v)$即可。<br>由光流约束方程得到到梯度方向的光流速率为 $V = abs(\dfrac{Et}{sqrt(Ex*Ex+Ey*Ey)})$。<br>设定一个阈值T，若$V(x,y) &gt; T$ 则$(x,y)$是前景 ，反之是背景。</p>
-<h3 id="Munsell颜色系统"><a href="#Munsell颜色系统" class="headerlink" title="Munsell颜色系统"></a>Munsell颜色系统</h3><p>光流场是图片中每个像素都有一个x方向和y方向的位移，所以在上面那些光流计算结束后得到的光流flow是个和原来图像大小相等的双通道图像。可以用Munsell颜色系统来显示。</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_optical_flow-01.jpg-QNthin"></p>
-<p>孟塞尔颜色系统的空间大致成一个圆柱形：</p>
-<blockquote>
-<p>南北轴=明度（value），从全黑（1）到全白（10）。<br>经度=色相（hue）。把一周均分成五种主色调和五种中间色：红(R)、红黄(YR)、黄(Y)、黄绿(GY)、绿(G)、绿蓝(BG)、蓝(B)、蓝紫(PB)、紫(P)、紫红(RP)。相邻的两个位置之间再均分10份，共100份。<br>距轴的距离=色度（chroma），表示色调的纯度。其数值从中间（0）向外随着色调的纯度增加，没有理论上的上限（普通的颜色实际上限为10左右，反光、荧光等材料可高达30）。由于人眼对各种颜色的的敏感度不同，色度不一定与每个色调和明度组合相匹配。</p>
-</blockquote>
-<p>具体颜色的标识形式为：色相+明度+色度。</p>
-<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><p>[1]Pyramidal Implementation of the Lucas Kanade Feature TrackerDescription of the algorithm<br>通过金字塔Lucas-Kanade 光流方法计算某些点集的光流（稀疏光流）。</p>
-<p>[2]Two-Frame Motion Estimation Based on PolynomialExpansion”<br>用Gunnar Farneback 的算法计算稠密光流（即图像上所有像素点的光流都计算出来）。</p>
-<p>[3]通过块匹配的方法来计算光流。</p>
-<p>[4]Determining Optical Flow<br>用Horn-Schunck 的算法计算稠密光流。</p>
-<p><a href="http://graphics.berkeley.edu/papers/Tao-SAN-2012-05/">SimpleFlow: A Non-iterative, Sublinear Optical FlowAlgorithm</a><br>这一个是2012年欧洲视觉会议的一篇文章的实现</p>
-<p>IJCV2011有一篇文章，《<a href="http://vision.middlebury.edu/flow/">A Database and Evaluation Methodology for Optical Flow</a>》里面对主流的光流算法做了简要的介绍和对不同算法进行了评估。</p>
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
       </categories>
   </entry>
   <entry>
@@ -6097,64 +6097,6 @@ H1&lt;---|0.14-1.6|Mirtazapine
       </categories>
   </entry>
   <entry>
-    <title>是否需要升级强化底盘胶套（机脚/摆臂/连杆）？</title>
-    <url>/post/rubber-engine-mounts-vs-polyurethane-engine-mounts/</url>
-    <content><![CDATA[<p><img data-src="http://qiniu.s1nh.org/blog_suspension_2.jpg-QNthin"></p>
-<blockquote>
-<p>机脚（发动机支架）负责在车架上固定和稳定发动机。为了减少发动机产生的振动，包含一个弹性的缓冲胶（机脚胶），给驾驶员创造一个更平稳，更愉快的旅程。另外，底座在发动机和车身之间起到弹簧的作用，减少了发动机的磨损。此外，发动机的噪音也会降低。随着发动机支座的磨损，通过车辆感觉到的振动量将开始增加。</p>
-</blockquote>
-<p>原厂机脚和底盘摆臂链接件通常是橡胶材料，某些厂家为赛车提供了聚氨酯材料的缓冲胶。橡胶和聚氨酯由于其优异的可逆弹性变形性能和良好的阻尼和能量吸收特性，在许多汽车应用中得到应用。这两种类型的支架各有优缺点，我们将在下面讨论。</p>
-<span id="more"></span>
-
-
-<h2 id="两者的优缺点"><a href="#两者的优缺点" class="headerlink" title="两者的优缺点"></a>两者的优缺点</h2><p><strong>橡胶发动机支座–优点</strong></p>
-<ul>
-<li>降低道路噪音</li>
-<li>阻尼振动</li>
-<li>减弱了刺耳感</li>
-<li>没有吱吱作响的机会</li>
-<li>成本更低</li>
-<li>更好的耐热性</li>
-</ul>
-<p><strong>橡胶发动机支座-缺点</strong></p>
-<ul>
-<li>标准寿命</li>
-<li>典型的道路感觉</li>
-<li>标准性能</li>
-</ul>
-<p>橡胶作为弹簧材料的声誉源于它能够保持寿命、弹性、与金属的结合、耐高温，同时保持低成本。与聚氨酯相比，橡胶的一个显著优点是其耐热性。如果应用包括显著的耐热性，那么橡胶是应该使用的弹性体。在水下也能抗肿胀。工业橡胶发动机支架将提供最大的振动和噪音抑制效果。然而，橡胶式支座也有一些缺点。这种类型的支架可能会过早开裂和撕裂，这取决于添加到橡胶化合物中的臭氧量。这可能会导致发动机在较大负载下过度移动，这反过来意味着从发动机通过动力传动系统传递到后轮的动力减少。</p>
-<p><strong>聚氨酯发动机支架–优点</strong></p>
-<ul>
-<li>聚氨酯比橡胶耐用</li>
-<li>增强了路感</li>
-<li>性能增强</li>
-</ul>
-<p><strong>聚氨酯发动机支座-缺点</strong></p>
-<ul>
-<li>道路噪音增加</li>
-<li>振动增加</li>
-<li>成本更高</li>
-<li>存在轻微的吱吱声机会</li>
-<li>耐热性较低</li>
-</ul>
-<p>聚氨酯发动机支架在橡胶支架和钢制固体支架之间提供了一种折中方案。与橡胶相比，聚氨酯可以用于更高硬度的复合材料，这将比橡胶在更软硬度的复合材料更好地保持发动机的位置。使用较硬的材料时，更多的能量将通过传动系统传输。而聚氨酯由于其刚度增加，会增加驾驶员的振动感。有些振动可能取决于发动机的大小，无论是工业卡车、汽车、船、ATV还是其他类型的车辆。与许多事情一样，驾驶员对振动的一些容忍度可能归结为个人喜好。不过，总的来说，聚氨酯将比橡胶更硬，这使其成为更高级改装车辆的理想选择。</p>
-<p><strong>两者应用在摆臂/连杆的区别</strong></p>
-<!--![](http://qiniu.s1nh.org/blog_suspension_1.jpg-QNthin)-->
-
-<ul>
-<li>两者最大的不同是橡胶作用在摆臂（连杆）中需要扭转的部分时，为软连接，安装摆臂时需要用大剪在轮胎落地后才可以拧紧螺丝。具体方法可以参考<a href="https://club.autohome.com.cn/bbs/thread/a970415ad11d3808/82234492-1.html">这篇文章</a> <a href="http://qiniu.s1nh.org/blog_technology_sharing-zero_stress_treatment_of_suspension_arm_rubber_sleeve.pdf">PDF</a></li>
-<li>聚氨酯胶套在这种情况下起到一个轴承的作用，并且需要在接触面涂抹润滑液，一定周期需要拆下重新涂抹润滑液，否则会出现摩擦异响，有关润滑液的选择可以参考<a href="https://www.suspension.com/blog/the-best-grease-for-polyurethane-bushings/">这篇文章</a></li>
-<li>两者的区别可以参考<a href="https://haokan.baidu.com/v?pd=wisenatural&vid=7565273523948072663">这个视频</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>其它笔记</category>
-      </categories>
-      <tags>
-        <tag>底盘强化</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>有关 Chatbot 基本原理、开源框架和 Rasa</title>
     <url>/post/review-of-chatbot-framework/</url>
     <content><![CDATA[<blockquote>
@@ -6373,6 +6315,64 @@ H1&lt;---|0.14-1.6|Mirtazapine
       <tags>
         <tag>NLP</tag>
         <tag>Rasa</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>是否需要升级强化底盘胶套（机脚/摆臂/连杆）？</title>
+    <url>/post/rubber-engine-mounts-vs-polyurethane-engine-mounts/</url>
+    <content><![CDATA[<p><img data-src="http://qiniu.s1nh.org/blog_suspension_2.jpg-QNthin"></p>
+<blockquote>
+<p>机脚（发动机支架）负责在车架上固定和稳定发动机。为了减少发动机产生的振动，包含一个弹性的缓冲胶（机脚胶），给驾驶员创造一个更平稳，更愉快的旅程。另外，底座在发动机和车身之间起到弹簧的作用，减少了发动机的磨损。此外，发动机的噪音也会降低。随着发动机支座的磨损，通过车辆感觉到的振动量将开始增加。</p>
+</blockquote>
+<p>原厂机脚和底盘摆臂链接件通常是橡胶材料，某些厂家为赛车提供了聚氨酯材料的缓冲胶。橡胶和聚氨酯由于其优异的可逆弹性变形性能和良好的阻尼和能量吸收特性，在许多汽车应用中得到应用。这两种类型的支架各有优缺点，我们将在下面讨论。</p>
+<span id="more"></span>
+
+
+<h2 id="两者的优缺点"><a href="#两者的优缺点" class="headerlink" title="两者的优缺点"></a>两者的优缺点</h2><p><strong>橡胶发动机支座–优点</strong></p>
+<ul>
+<li>降低道路噪音</li>
+<li>阻尼振动</li>
+<li>减弱了刺耳感</li>
+<li>没有吱吱作响的机会</li>
+<li>成本更低</li>
+<li>更好的耐热性</li>
+</ul>
+<p><strong>橡胶发动机支座-缺点</strong></p>
+<ul>
+<li>标准寿命</li>
+<li>典型的道路感觉</li>
+<li>标准性能</li>
+</ul>
+<p>橡胶作为弹簧材料的声誉源于它能够保持寿命、弹性、与金属的结合、耐高温，同时保持低成本。与聚氨酯相比，橡胶的一个显著优点是其耐热性。如果应用包括显著的耐热性，那么橡胶是应该使用的弹性体。在水下也能抗肿胀。工业橡胶发动机支架将提供最大的振动和噪音抑制效果。然而，橡胶式支座也有一些缺点。这种类型的支架可能会过早开裂和撕裂，这取决于添加到橡胶化合物中的臭氧量。这可能会导致发动机在较大负载下过度移动，这反过来意味着从发动机通过动力传动系统传递到后轮的动力减少。</p>
+<p><strong>聚氨酯发动机支架–优点</strong></p>
+<ul>
+<li>聚氨酯比橡胶耐用</li>
+<li>增强了路感</li>
+<li>性能增强</li>
+</ul>
+<p><strong>聚氨酯发动机支座-缺点</strong></p>
+<ul>
+<li>道路噪音增加</li>
+<li>振动增加</li>
+<li>成本更高</li>
+<li>存在轻微的吱吱声机会</li>
+<li>耐热性较低</li>
+</ul>
+<p>聚氨酯发动机支架在橡胶支架和钢制固体支架之间提供了一种折中方案。与橡胶相比，聚氨酯可以用于更高硬度的复合材料，这将比橡胶在更软硬度的复合材料更好地保持发动机的位置。使用较硬的材料时，更多的能量将通过传动系统传输。而聚氨酯由于其刚度增加，会增加驾驶员的振动感。有些振动可能取决于发动机的大小，无论是工业卡车、汽车、船、ATV还是其他类型的车辆。与许多事情一样，驾驶员对振动的一些容忍度可能归结为个人喜好。不过，总的来说，聚氨酯将比橡胶更硬，这使其成为更高级改装车辆的理想选择。</p>
+<p><strong>两者应用在摆臂/连杆的区别</strong></p>
+<!--![](http://qiniu.s1nh.org/blog_suspension_1.jpg-QNthin)-->
+
+<ul>
+<li>两者最大的不同是橡胶作用在摆臂（连杆）中需要扭转的部分时，为软连接，安装摆臂时需要用大剪在轮胎落地后才可以拧紧螺丝。具体方法可以参考<a href="https://club.autohome.com.cn/bbs/thread/a970415ad11d3808/82234492-1.html">这篇文章</a> <a href="http://qiniu.s1nh.org/blog_technology_sharing-zero_stress_treatment_of_suspension_arm_rubber_sleeve.pdf">PDF</a></li>
+<li>聚氨酯胶套在这种情况下起到一个轴承的作用，并且需要在接触面涂抹润滑液，一定周期需要拆下重新涂抹润滑液，否则会出现摩擦异响，有关润滑液的选择可以参考<a href="https://www.suspension.com/blog/the-best-grease-for-polyurethane-bushings/">这篇文章</a></li>
+<li>两者的区别可以参考<a href="https://haokan.baidu.com/v?pd=wisenatural&vid=7565273523948072663">这个视频</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>其它笔记</category>
+      </categories>
+      <tags>
+        <tag>底盘强化</tag>
       </tags>
   </entry>
   <entry>
