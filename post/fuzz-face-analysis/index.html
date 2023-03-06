@@ -49,7 +49,7 @@
 <meta property="og:image" content="http://qiniu.s1nh.org/fuzz-face-output-signal.png">
 <meta property="og:image" content="http://qiniu.s1nh.org/perfect-fuzz-face.jpg">
 <meta property="article:published_time" content="2023-02-16T12:37:07.000Z">
-<meta property="article:modified_time" content="2023-03-06T07:49:27.689Z">
+<meta property="article:modified_time" content="2023-03-06T09:18:10.607Z">
 <meta property="article:author" content="S1NH">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://qiniu.s1nh.org/fuzz-face-pedal-small.jpg">
@@ -385,7 +385,7 @@
 <p>$$A_{V}=-g_{m}\cdot R_{C}= -g_{m}\cdot R_{1}= 0.0088 \cdot 33K = 290\: (49dB)$$</p>
 <p>注意：晶体管的 gm 值定义为：</p>
 <p>$$g_{m}=\frac{I_{e}}{V_{T}}= \frac{0.22mA}{25mV}= 0.0088$$</p>
-<p>where:</p>
+<p>其中:</p>
 <ul>
 <li>I<sub>E</sub> 是直流发射极电流，可以通过查看电路的<a target="_blank" rel="noopener" href="https://www.electrosmash.com/fuzz-face#link23">偏置点</a> 以简化形式计算I<sub>E</sub>=(V<sub>CC</sub>-V<sub>C</sub>)/R<sub>1</sub>=(9V-1.6V )/33K= 0.22毫安</li>
 <li>V<sub>T</sub> 是晶体管的热电压，在室温下该值约为 25mV。</li>
@@ -429,8 +429,7 @@
 <p>所有超过 8Hz 的频率都会得到充分放大。 20uF 太大了，几乎所有的频率都得到了充分的放大。</p>
 <p><strong>声音特征II：软削波-硬削波:</strong> 当第二级被充分驱动时，它可使信号的两个半周期均达到硬削波。对于较小的信号（和增益），削波开始时很柔和，然后随着 FUZZ 电位器增加，削波会随着演奏的加剧而变得更硬。第二个放大器级可以增大削波的程度，使输出呈现更尖锐的方波。</p>
 <p><img data-src="http://qiniu.s1nh.org/fuzz-face-output-stage-soft-hard-clipping.png" alt="fuzz face soft hard clippping" title="fuzz face soft hard clippping"></p>
-<h3 id="4-3-电源"><a href="#4-3-电源" class="headerlink" title="4.3 电源"></a>4.3 电源</h3><p>For component economy, the power supply does not include any capacitors to remove ripple from the power line which is something common in raw fuzz pedals. The usual solution in guitar pedals is to add some power filtering by placing 47~100uF cap together with a 100nF from the +9v to ground.</p>
-<p>为了节省组件，电源不包含任何电容器来滤波，这在原始法兹踏板中很常见。吉他踏板中通常的解决方案是通过将 47~100uF 电容与从 +9v 接地的 100nF 电容放在一起来添加一些电源滤波。</p>
+<h3 id="4-3-电源"><a href="#4-3-电源" class="headerlink" title="4.3 电源"></a>4.3 电源</h3><p>为了节省组件，电源不包含任何电容器来滤波，这在原始法兹踏板中很常见。吉他踏板中通常的解决方案是通过将 47~100uF 电容与从 +9v 接地的 100nF 电容放在一起来添加一些电源滤波。</p>
 <h2 id="5-全局反馈网络"><a href="#5-全局反馈网络" class="headerlink" title="5. 全局反馈网络"></a>5. 全局反馈网络</h2><p>放大器使用电流或电压作为输入或输出，您可以查看<a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Negative_feedback_amplifier#Two-port_analysis_of_feedback">放大器分类</a>。fuzz face 有一个称为 <a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Negative_feedback_amplifier#Two-port_analysis_of_feedback">分流系列反馈</a> 的负反馈（电流控制电流源 <strong>CCCS</strong>）。部分输出电流取自Q<sub>2</sub>发射极，作为电流引入Q<sub>1</sub>基极，故并联反馈电阻R<sub>4</sub>与输入串联并与输出串联。</p>
 <p><img data-src="http://qiniu.s1nh.org/fuzz-face-feedback-network.png" alt="fuzz face feedback network" title="fuzz face feedback network"></p>
 <p>为什么要使用反馈？</p>
@@ -438,7 +437,7 @@
 <p>-降低增益灵敏度：使增益值对晶体管不太敏感（即温度引起的组件变化）。<br>-减少非线性失真：使增益恒定。<br>-降低噪声：最小化对不需要的电信号输出的影响。<br>-控制输入/输出阻抗：提高或降低其值。<br>-扩展放大器的带宽。</p>
 <p>上述特性是以减少增益为代价获得的。根据经验，反馈越多，全局增益越小，遵循以下公式：</p>
 <p>$$A_{FB}=\frac{A_{OL}}{1+B_{FB}A_{OL}}$$</p>
-<p>Where</p>
+<p>其中：</p>
 <ul>
 <li>A<sub>FB </sub> : 放大器在闭环中的总电流增益。</li>
 <li>A<sub>OL </sub> : 开环放大器的当前增益</li>

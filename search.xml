@@ -2749,57 +2749,6 @@ apt-get install libusb-1.0-0-dev
       </categories>
   </entry>
   <entry>
-    <title>不推荐购买创想三维 Creality Sermoon V1 的几个理由</title>
-    <url>/post/do-not-buy-sermoon-v1/</url>
-    <content><![CDATA[<blockquote>
-<p>看过 [<a href="https://www.zhihu.com/zvideo/1457409894764335104">阿文君的视频</a>] 买了 <code>Sermoon V1</code>。体验过后感觉比较玩具、拓展性也比较差，在这里提出几个不该买的理由。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="0x01-缺少-Linear-Advance-（压力提前-线性推进）-的支持"><a href="#0x01-缺少-Linear-Advance-（压力提前-线性推进）-的支持" class="headerlink" title="0x01 缺少 Linear Advance （压力提前/线性推进） 的支持"></a>0x01 缺少 Linear Advance （压力提前/线性推进） 的支持</h2><p><code>准确的 Linear Advance 的校准是打印一个优秀模型的重要因素</code></p>
-<p>默认情况下，挤出机以线性方式工作。但挤出机不是线性系统，明显会导致在每一步打印后挤出额外材料，并且在下一步开始打印时材料不够。（下图表示了打印机在加速减速的过程，在2处材料挤出不够，且在4、5处产生堆料）</p>
-<p><img data-src="http://qiniu.s1nh.org/sermoon-v1-k-factor_low.png"></p>
-<p>使用 Linear Advance 的优点：</p>
-<ul>
-<li>减少粗糙的边缘，尺寸精度更高。</li>
-<li>可以在不损失任何打印质量的情况下实现更高的打印速度。</li>
-<li>即使在较低的打印速度下，打印质量也会得到提高。</li>
-<li>获得更锋利的边缘。</li>
-</ul>
-<p>网络有很多矫正线性推进的教程，比如：</p>
-<ul>
-<li><a href="https://www.bilibili.com/video/BV1Z94y1U7UL">3D打印机klipper在Voron0.1机器上进行挤出机压力提前测试和校准：新手教程</a></li>
-<li><a href="https://www.bilibili.com/video/BV18541117Yk">【klipper】3D打印机挤出机压力提前测试和校准【3集全】拐角膨胀和起始点分离修正办法</a></li>
-</ul>
-<p>Marlin 官网也提供了详细的<a href="https://marlinfw.org/docs/features/lin_advance.html">调整教程</a></p>
-<p>然而我们的 Sermoon V1 不支持此功能，无法进行调整。我打电话到厂家，给的答复也是“不开源” “没有你想要的固件”</p>
-<h2 id="0x02-糟糕的散热"><a href="#0x02-糟糕的散热" class="headerlink" title="0x02 糟糕的散热"></a>0x02 糟糕的散热</h2><p>此机器的精灵挤出机主体跟 Ender3 S1 的相同，但附件不同。V1挤出机的附件有个致命缺陷散热风扇从底部吸入热空气再给模型降温，缺点是散热很差，在<a href="https://fl.himi3d.cn/d/439-bensermoon-v1">这篇文章</a>有讨论。有几种方式可以改造散热，我做了一版，调试好后会放出来（下图左上。另外：<code>右下黑</code>，原厂；右上黄，<a href="https://fl.himi3d.cn/d/426-bengo10-ender3-s1">S1 风道</a>；左下白，<a href="https://www.crealitycloud.cn/model-detail/626821aac54f1758304dc951">风扇侧装</a>）。</p>
-<p><img data-src="http://qiniu.s1nh.org/sermoon-v1-fan.jpg"></p>
-<p>另外，个人对于挤出机的排线耐久性持怀疑态度，加热棒的大电流不知道会不会导致排线老化。</p>
-<h2 id="0x03-鸡肋的-wifi-功能"><a href="#0x03-鸡肋的-wifi-功能" class="headerlink" title="0x03 鸡肋的 wifi 功能"></a>0x03 鸡肋的 wifi 功能</h2><p>Sermoon V1 自带一个 wifi 板子（下图中间绿色的电路板），功能很弱鸡。比如录像没办法下载，官方给的答复是可以<code>打开手机的录屏功能</code>。</p>
-<p><img data-src="http://qiniu.s1nh.org/sermoon-v1-whole.png"></p>
-<p>我已经把它换成树莓派了，<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2sh1t/mod_octoprint_setup_for_the_creality_sermoon_v1/">有手就能改</a>，可以安装 octoprint 以支持更强大的 <code>wifi</code> <code>远程监控</code> <code>延时摄影</code> 等功能。</p>
-<iframe src="//player.bilibili.com/player.html?aid=342230292&bvid=BV1194y1m7y7&cid=735894030&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-
-<h2 id="0x04-不开源的主控板"><a href="#0x04-不开源的主控板" class="headerlink" title="0x04 不开源的主控板"></a>0x04 不开源的主控板</h2><p>机器左下角的主板基于开源的 <code>Marlin 1</code> 固件魔改而成，<code>Marlin</code> 固件基于 <code>GPL v3</code> 协议，简单来说就是 <code>你可以免费使用、复制、修改、分发受保护程序，但分发时一定要提供源码</code>。然而此主板不提供源码，后果就是我们只能使用老旧的 Marlin 第一代固件，没办法自行升级到 2.0 以上版本，或者最近流行的<code>klipper</code>固件。</p>
-<ul>
-<li>国外有个哥们请求开源，被直接关闭了issue <a href="https://github.com/CrealityOfficial/Ender-3S1/issues/2">链接</a></li>
-<li>无法校准挤出机<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/ui2u5v/how_to_calibrate_extruder_esteps_z_axis_baby/">链接</a></li>
-<li><a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2stxx/sermoon_v1_and_v1_pro_general_info_thoughts/">这里</a> 有一些讨论</li>
-<li><a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2toy2/marlin_stock_firmware_notes_from_the_sermoon_v1/">这里</a>有一些关于固件的信息</li>
-</ul>
-<h2 id="0x05-无用的-pro-版本"><a href="#0x05-无用的-pro-版本" class="headerlink" title="0x05 无用的 pro 版本"></a>0x05 无用的 pro 版本</h2><p>它的 pro 版本包含开盖暂停和相机功能，然而</p>
-<ul>
-<li>开盖暂停/断料检测只在SD卡打印时有效；</li>
-<li>摄像头会经常断线（国外有人讨论过可能是这种摄像头不支持在高温环境下工作[<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2stxx/sermoon_v1_and_v1_pro_general_info_thoughts/i2r7irn/?utm_source=reddit&utm_medium=web2x&context=3">链接</a>]）。</li>
-</ul>
-<h2 id="0x06-吵"><a href="#0x06-吵" class="headerlink" title="0x06 吵"></a>0x06 吵</h2><p>这款机器主打静音，但你买了以后就知道给主板散热的小风扇有多吵了。我已经拔风扇插头了，目前没出现什么问题（后盖打开，26度空调）。</p>
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
-      </categories>
-  </entry>
-  <entry>
     <title>消失的评论</title>
     <url>/post/disappeared-comments/</url>
     <content><![CDATA[<p>之前使用的 valine 评论工具有一些漏洞会导致隐私泄漏和XSS攻击，比如[<a href="https://blog.maplesugar.top/valine-prank/">这个</a>]，目前更换为 utteranc ，一个基于 github 的评论工具。之前的评论放弃迁移了，直接贴在本文。</p>
@@ -3557,6 +3506,57 @@ apt-get install libusb-1.0-0-dev
       </categories>
   </entry>
   <entry>
+    <title>不推荐购买创想三维 Creality Sermoon V1 的几个理由</title>
+    <url>/post/do-not-buy-sermoon-v1/</url>
+    <content><![CDATA[<blockquote>
+<p>看过 [<a href="https://www.zhihu.com/zvideo/1457409894764335104">阿文君的视频</a>] 买了 <code>Sermoon V1</code>。体验过后感觉比较玩具、拓展性也比较差，在这里提出几个不该买的理由。</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="0x01-缺少-Linear-Advance-（压力提前-线性推进）-的支持"><a href="#0x01-缺少-Linear-Advance-（压力提前-线性推进）-的支持" class="headerlink" title="0x01 缺少 Linear Advance （压力提前/线性推进） 的支持"></a>0x01 缺少 Linear Advance （压力提前/线性推进） 的支持</h2><p><code>准确的 Linear Advance 的校准是打印一个优秀模型的重要因素</code></p>
+<p>默认情况下，挤出机以线性方式工作。但挤出机不是线性系统，明显会导致在每一步打印后挤出额外材料，并且在下一步开始打印时材料不够。（下图表示了打印机在加速减速的过程，在2处材料挤出不够，且在4、5处产生堆料）</p>
+<p><img data-src="http://qiniu.s1nh.org/sermoon-v1-k-factor_low.png"></p>
+<p>使用 Linear Advance 的优点：</p>
+<ul>
+<li>减少粗糙的边缘，尺寸精度更高。</li>
+<li>可以在不损失任何打印质量的情况下实现更高的打印速度。</li>
+<li>即使在较低的打印速度下，打印质量也会得到提高。</li>
+<li>获得更锋利的边缘。</li>
+</ul>
+<p>网络有很多矫正线性推进的教程，比如：</p>
+<ul>
+<li><a href="https://www.bilibili.com/video/BV1Z94y1U7UL">3D打印机klipper在Voron0.1机器上进行挤出机压力提前测试和校准：新手教程</a></li>
+<li><a href="https://www.bilibili.com/video/BV18541117Yk">【klipper】3D打印机挤出机压力提前测试和校准【3集全】拐角膨胀和起始点分离修正办法</a></li>
+</ul>
+<p>Marlin 官网也提供了详细的<a href="https://marlinfw.org/docs/features/lin_advance.html">调整教程</a></p>
+<p>然而我们的 Sermoon V1 不支持此功能，无法进行调整。我打电话到厂家，给的答复也是“不开源” “没有你想要的固件”</p>
+<h2 id="0x02-糟糕的散热"><a href="#0x02-糟糕的散热" class="headerlink" title="0x02 糟糕的散热"></a>0x02 糟糕的散热</h2><p>此机器的精灵挤出机主体跟 Ender3 S1 的相同，但附件不同。V1挤出机的附件有个致命缺陷散热风扇从底部吸入热空气再给模型降温，缺点是散热很差，在<a href="https://fl.himi3d.cn/d/439-bensermoon-v1">这篇文章</a>有讨论。有几种方式可以改造散热，我做了一版，调试好后会放出来（下图左上。另外：<code>右下黑</code>，原厂；右上黄，<a href="https://fl.himi3d.cn/d/426-bengo10-ender3-s1">S1 风道</a>；左下白，<a href="https://www.crealitycloud.cn/model-detail/626821aac54f1758304dc951">风扇侧装</a>）。</p>
+<p><img data-src="http://qiniu.s1nh.org/sermoon-v1-fan.jpg"></p>
+<p>另外，个人对于挤出机的排线耐久性持怀疑态度，加热棒的大电流不知道会不会导致排线老化。</p>
+<h2 id="0x03-鸡肋的-wifi-功能"><a href="#0x03-鸡肋的-wifi-功能" class="headerlink" title="0x03 鸡肋的 wifi 功能"></a>0x03 鸡肋的 wifi 功能</h2><p>Sermoon V1 自带一个 wifi 板子（下图中间绿色的电路板），功能很弱鸡。比如录像没办法下载，官方给的答复是可以<code>打开手机的录屏功能</code>。</p>
+<p><img data-src="http://qiniu.s1nh.org/sermoon-v1-whole.png"></p>
+<p>我已经把它换成树莓派了，<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2sh1t/mod_octoprint_setup_for_the_creality_sermoon_v1/">有手就能改</a>，可以安装 octoprint 以支持更强大的 <code>wifi</code> <code>远程监控</code> <code>延时摄影</code> 等功能。</p>
+<iframe src="//player.bilibili.com/player.html?aid=342230292&bvid=BV1194y1m7y7&cid=735894030&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+<h2 id="0x04-不开源的主控板"><a href="#0x04-不开源的主控板" class="headerlink" title="0x04 不开源的主控板"></a>0x04 不开源的主控板</h2><p>机器左下角的主板基于开源的 <code>Marlin 1</code> 固件魔改而成，<code>Marlin</code> 固件基于 <code>GPL v3</code> 协议，简单来说就是 <code>你可以免费使用、复制、修改、分发受保护程序，但分发时一定要提供源码</code>。然而此主板不提供源码，后果就是我们只能使用老旧的 Marlin 第一代固件，没办法自行升级到 2.0 以上版本，或者最近流行的<code>klipper</code>固件。</p>
+<ul>
+<li>国外有个哥们请求开源，被直接关闭了issue <a href="https://github.com/CrealityOfficial/Ender-3S1/issues/2">链接</a></li>
+<li>无法校准挤出机<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/ui2u5v/how_to_calibrate_extruder_esteps_z_axis_baby/">链接</a></li>
+<li><a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2stxx/sermoon_v1_and_v1_pro_general_info_thoughts/">这里</a> 有一些讨论</li>
+<li><a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2toy2/marlin_stock_firmware_notes_from_the_sermoon_v1/">这里</a>有一些关于固件的信息</li>
+</ul>
+<h2 id="0x05-无用的-pro-版本"><a href="#0x05-无用的-pro-版本" class="headerlink" title="0x05 无用的 pro 版本"></a>0x05 无用的 pro 版本</h2><p>它的 pro 版本包含开盖暂停和相机功能，然而</p>
+<ul>
+<li>开盖暂停/断料检测只在SD卡打印时有效；</li>
+<li>摄像头会经常断线（国外有人讨论过可能是这种摄像头不支持在高温环境下工作[<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2stxx/sermoon_v1_and_v1_pro_general_info_thoughts/i2r7irn/?utm_source=reddit&utm_medium=web2x&context=3">链接</a>]）。</li>
+</ul>
+<h2 id="0x06-吵"><a href="#0x06-吵" class="headerlink" title="0x06 吵"></a>0x06 吵</h2><p>这款机器主打静音，但你买了以后就知道给主板散热的小风扇有多吵了。我已经拔风扇插头了，目前没出现什么问题（后盖打开，26度空调）。</p>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+  </entry>
+  <entry>
     <title>文档布局分析 &amp; 扭曲文档图像恢复 --- Document Layout Analysis &amp; Document Image Dewarping</title>
     <url>/post/document-layout-analysis/</url>
     <content><![CDATA[<!--
@@ -4006,7 +4006,7 @@ try to remove and create again
 <p>$$A_{V}=-g_{m}\cdot R_{C}= -g_{m}\cdot R_{1}= 0.0088 \cdot 33K = 290\: (49dB)$$</p>
 <p>注意：晶体管的 gm 值定义为：</p>
 <p>$$g_{m}=\frac{I_{e}}{V_{T}}= \frac{0.22mA}{25mV}= 0.0088$$</p>
-<p>where:</p>
+<p>其中:</p>
 <ul>
 <li>I<sub>E</sub> 是直流发射极电流，可以通过查看电路的<a href="https://www.electrosmash.com/fuzz-face#link23">偏置点</a> 以简化形式计算I<sub>E</sub>=(V<sub>CC</sub>-V<sub>C</sub>)/R<sub>1</sub>=(9V-1.6V )/33K= 0.22毫安</li>
 <li>V<sub>T</sub> 是晶体管的热电压，在室温下该值约为 25mV。</li>
@@ -4050,8 +4050,7 @@ try to remove and create again
 <p>所有超过 8Hz 的频率都会得到充分放大。 20uF 太大了，几乎所有的频率都得到了充分的放大。</p>
 <p><strong>声音特征II：软削波-硬削波:</strong> 当第二级被充分驱动时，它可使信号的两个半周期均达到硬削波。对于较小的信号（和增益），削波开始时很柔和，然后随着 FUZZ 电位器增加，削波会随着演奏的加剧而变得更硬。第二个放大器级可以增大削波的程度，使输出呈现更尖锐的方波。</p>
 <p><img data-src="http://qiniu.s1nh.org/fuzz-face-output-stage-soft-hard-clipping.png" alt="fuzz face soft hard clippping" title="fuzz face soft hard clippping"></p>
-<h3 id="4-3-电源"><a href="#4-3-电源" class="headerlink" title="4.3 电源"></a>4.3 电源</h3><p>For component economy, the power supply does not include any capacitors to remove ripple from the power line which is something common in raw fuzz pedals. The usual solution in guitar pedals is to add some power filtering by placing 47~100uF cap together with a 100nF from the +9v to ground.</p>
-<p>为了节省组件，电源不包含任何电容器来滤波，这在原始法兹踏板中很常见。吉他踏板中通常的解决方案是通过将 47~100uF 电容与从 +9v 接地的 100nF 电容放在一起来添加一些电源滤波。</p>
+<h3 id="4-3-电源"><a href="#4-3-电源" class="headerlink" title="4.3 电源"></a>4.3 电源</h3><p>为了节省组件，电源不包含任何电容器来滤波，这在原始法兹踏板中很常见。吉他踏板中通常的解决方案是通过将 47~100uF 电容与从 +9v 接地的 100nF 电容放在一起来添加一些电源滤波。</p>
 <h2 id="5-全局反馈网络"><a href="#5-全局反馈网络" class="headerlink" title="5. 全局反馈网络"></a>5. 全局反馈网络</h2><p>放大器使用电流或电压作为输入或输出，您可以查看<a href="http://en.wikipedia.org/wiki/Negative_feedback_amplifier#Two-port_analysis_of_feedback">放大器分类</a>。fuzz face 有一个称为 <a href="http://en.wikipedia.org/wiki/Negative_feedback_amplifier#Two-port_analysis_of_feedback">分流系列反馈</a> 的负反馈（电流控制电流源 <strong>CCCS</strong>）。部分输出电流取自Q<sub>2</sub>发射极，作为电流引入Q<sub>1</sub>基极，故并联反馈电阻R<sub>4</sub>与输入串联并与输出串联。</p>
 <p><img data-src="http://qiniu.s1nh.org/fuzz-face-feedback-network.png" alt="fuzz face feedback network" title="fuzz face feedback network"></p>
 <p>为什么要使用反馈？</p>
@@ -4059,7 +4058,7 @@ try to remove and create again
 <p>-降低增益灵敏度：使增益值对晶体管不太敏感（即温度引起的组件变化）。<br>-减少非线性失真：使增益恒定。<br>-降低噪声：最小化对不需要的电信号输出的影响。<br>-控制输入/输出阻抗：提高或降低其值。<br>-扩展放大器的带宽。</p>
 <p>上述特性是以减少增益为代价获得的。根据经验，反馈越多，全局增益越小，遵循以下公式：</p>
 <p>$$A_{FB}=\frac{A_{OL}}{1+B_{FB}A_{OL}}$$</p>
-<p>Where</p>
+<p>其中：</p>
 <ul>
 <li>A<sub>FB </sub> : 放大器在闭环中的总电流增益。</li>
 <li>A<sub>OL </sub> : 开环放大器的当前增益</li>
@@ -6565,29 +6564,6 @@ H1&lt;---|0.14-1.6|Mirtazapine
       </tags>
   </entry>
   <entry>
-    <title>在anaconda下安装caffe失败</title>
-    <url>/post/setup-caffe-without-anaconda/</url>
-    <content><![CDATA[<blockquote>
-<p>Python 跟 Python3 完全就是两种语言</p>
-</blockquote>
-<h3 id="0x00-import-caffe-FAILED"><a href="#0x00-import-caffe-FAILED" class="headerlink" title="0x00 import caffe FAILED"></a>0x00 import caffe FAILED</h3><p>环境为 <code>Ubuntu 16</code> <code>cuda 8.0</code> <code>NVIDIA 361.77</code> <code>Anaconda2</code>。昨天莫名其妙Caffe不能用了：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; import caffe</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">  File &quot;/home/duchengyao/project/caffe/python/caffe/__init__.py&quot;, line 1, in &lt;module&gt;</span><br><span class="line">    from .pycaffe import Net, SGDSolver, NesterovSolver, AdaGradSolver, RMSPropSolver, AdaDeltaSolver, AdamSolver</span><br><span class="line">  File &quot;/home/duchengyao/project/caffe/python/caffe/pycaffe.py&quot;, line 13, in &lt;module&gt;</span><br><span class="line">    from ._caffe import Net, SGDSolver, NesterovSolver, AdaGradSolver, \</span><br><span class="line">ImportError: /home/duchengyao/project/caffe/python/caffe/../../build/lib/libcaffe.so.1.0.0-rc3: undefined symbol: _ZN2cv8imencodeERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS_11_InputArrayERSt6vectorIhSaIhEERKSB_IiSaIiEE</span><br></pre></td></tr></table></figure>
-
-<p>各种折腾都无效，重装Anaconda以后错误消失，<code>import caffe</code> 成功。</p>
-<h3 id="0x01-import-FAILED-again-after-“-conda-install-opencv”"><a href="#0x01-import-FAILED-again-after-“-conda-install-opencv”" class="headerlink" title="0x01 import FAILED again after “$conda install opencv”"></a>0x01 import FAILED again after “$conda install opencv”</h3><p>用 <code>conda install opencv</code> 安装完Opencv后，又出现了同样的错误提示，卸载后错误消失。</p>
-<p>Conda 安装后的Opencv 版本为<code>2.4.10</code>，而系统apt安装的版本为<code>2.4.9.1</code>。我尝试从conda 安装2.4.9版，可是需要处理很多conflict。</p>
-<p>最后实在走投无路了准备换成Anaconda3，环境搭建完成后运行程序的时候简直尴尬了，各种库不兼容。终于知道为啥老鸟们调侃Python 跟Python3完全是两种语言了</p>
-<h3 id="0x02-解决方案"><a href="#0x02-解决方案" class="headerlink" title="0x02 解决方案"></a>0x02 解决方案</h3><p>暂时的解决方案为<strong>放弃anaconda</strong>，全部用apt安装软件包，使用系统默认的Opencv，运行成功。</p>
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
-      </categories>
-      <tags>
-        <tag>caffe</tag>
-        <tag>anaconda</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>配置Matcaffe</title>
     <url>/post/setup-matcaffe/</url>
     <content><![CDATA[<p>配置Matcaffe的时候碰到了两个小坑，记录一下：</p>
@@ -6623,6 +6599,29 @@ H1&lt;---|0.14-1.6|Mirtazapine
       <tags>
         <tag>matlab</tag>
         <tag>matcaffe</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>在anaconda下安装caffe失败</title>
+    <url>/post/setup-caffe-without-anaconda/</url>
+    <content><![CDATA[<blockquote>
+<p>Python 跟 Python3 完全就是两种语言</p>
+</blockquote>
+<h3 id="0x00-import-caffe-FAILED"><a href="#0x00-import-caffe-FAILED" class="headerlink" title="0x00 import caffe FAILED"></a>0x00 import caffe FAILED</h3><p>环境为 <code>Ubuntu 16</code> <code>cuda 8.0</code> <code>NVIDIA 361.77</code> <code>Anaconda2</code>。昨天莫名其妙Caffe不能用了：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; import caffe</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">  File &quot;/home/duchengyao/project/caffe/python/caffe/__init__.py&quot;, line 1, in &lt;module&gt;</span><br><span class="line">    from .pycaffe import Net, SGDSolver, NesterovSolver, AdaGradSolver, RMSPropSolver, AdaDeltaSolver, AdamSolver</span><br><span class="line">  File &quot;/home/duchengyao/project/caffe/python/caffe/pycaffe.py&quot;, line 13, in &lt;module&gt;</span><br><span class="line">    from ._caffe import Net, SGDSolver, NesterovSolver, AdaGradSolver, \</span><br><span class="line">ImportError: /home/duchengyao/project/caffe/python/caffe/../../build/lib/libcaffe.so.1.0.0-rc3: undefined symbol: _ZN2cv8imencodeERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS_11_InputArrayERSt6vectorIhSaIhEERKSB_IiSaIiEE</span><br></pre></td></tr></table></figure>
+
+<p>各种折腾都无效，重装Anaconda以后错误消失，<code>import caffe</code> 成功。</p>
+<h3 id="0x01-import-FAILED-again-after-“-conda-install-opencv”"><a href="#0x01-import-FAILED-again-after-“-conda-install-opencv”" class="headerlink" title="0x01 import FAILED again after “$conda install opencv”"></a>0x01 import FAILED again after “$conda install opencv”</h3><p>用 <code>conda install opencv</code> 安装完Opencv后，又出现了同样的错误提示，卸载后错误消失。</p>
+<p>Conda 安装后的Opencv 版本为<code>2.4.10</code>，而系统apt安装的版本为<code>2.4.9.1</code>。我尝试从conda 安装2.4.9版，可是需要处理很多conflict。</p>
+<p>最后实在走投无路了准备换成Anaconda3，环境搭建完成后运行程序的时候简直尴尬了，各种库不兼容。终于知道为啥老鸟们调侃Python 跟Python3完全是两种语言了</p>
+<h3 id="0x02-解决方案"><a href="#0x02-解决方案" class="headerlink" title="0x02 解决方案"></a>0x02 解决方案</h3><p>暂时的解决方案为<strong>放弃anaconda</strong>，全部用apt安装软件包，使用系统默认的Opencv，运行成功。</p>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+      <tags>
+        <tag>caffe</tag>
+        <tag>anaconda</tag>
       </tags>
   </entry>
   <entry>
