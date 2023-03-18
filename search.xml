@@ -2084,6 +2084,9 @@ apt-get install libusb-1.0-0-dev
 </blockquote>
 <p>Alfa Romeo Stelvio 的大灯开关无法保持关闭，具体表现为开关拧到最左边大灯关闭，松手后开关自动复位到开启模式。搜了一下国内外都没有改装教程，就自己写了一个发出来。</p>
 <img data-src="http://qiniu.s1nh.org/light-switch-01.jpeg" width="50%" alt="1. 从后面捅掉盖子">
+
+<span id="more"></span>
+
 <img data-src="http://qiniu.s1nh.org/light-switch-02.jpeg" width="50%" alt="2. 拆掉旋钮，旋钮的卡扣在这里">
 <img data-src="http://qiniu.s1nh.org/light-switch-03.jpeg" width="50%" alt="2. 拆掉旋钮">
 <img data-src="http://qiniu.s1nh.org/light-switch-04.jpeg" width="50%" alt="3. 拆掉面板">
@@ -4694,20 +4697,6 @@ try to remove and create again
       </categories>
   </entry>
   <entry>
-    <title>linux kernel bug 导致无法载入 nvidia 驱动</title>
-    <url>/post/littlebug/</url>
-    <content><![CDATA[<p>执行 <code>nvidia-smi</code> 显示：  NVIDIA-SMI has failed because it couldn’t communicate with the NVIDIA driver. Make sure that the latest NVIDIA driver is installed and running.</p>
-<span id="more"></span>
-
-<p>执行 <code>sudo modprobe nvidia</code> 显示 modprobe: ERROR: could not insert ‘nvidia_384’: Exec format error</p>
-<p>执行 <code>dmesg</code> 最后几行显示一坨红色字（不记得了）</p>
-<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>这是<code>linux kernel 4.4.0-116-generic</code> 的一个小bug，降级到<code>linux kernel 4.4.0-112-generic</code>，再重装一下driver（不用重装cuda）问题就解决了</p>
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
-      </categories>
-  </entry>
-  <entry>
     <title>新工作：制作一个送咖啡机器人——第一周</title>
     <url>/post/making-a-coffeebot-1/</url>
     <content><![CDATA[<blockquote>
@@ -4800,6 +4789,20 @@ try to remove and create again
         <tag>Turtlebot</tag>
         <tag>ORB SLAM</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>linux kernel bug 导致无法载入 nvidia 驱动</title>
+    <url>/post/littlebug/</url>
+    <content><![CDATA[<p>执行 <code>nvidia-smi</code> 显示：  NVIDIA-SMI has failed because it couldn’t communicate with the NVIDIA driver. Make sure that the latest NVIDIA driver is installed and running.</p>
+<span id="more"></span>
+
+<p>执行 <code>sudo modprobe nvidia</code> 显示 modprobe: ERROR: could not insert ‘nvidia_384’: Exec format error</p>
+<p>执行 <code>dmesg</code> 最后几行显示一坨红色字（不记得了）</p>
+<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>这是<code>linux kernel 4.4.0-116-generic</code> 的一个小bug，降级到<code>linux kernel 4.4.0-112-generic</code>，再重装一下driver（不用重装cuda）问题就解决了</p>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
   </entry>
   <entry>
     <title>新工作：制作一个送咖啡机器人——调参</title>
@@ -6849,6 +6852,33 @@ Symbols: &#39;.&#39; no key found, &#39;/&#39; A key found, &#39;\&#39; B key fo
       </tags>
   </entry>
   <entry>
+    <title>使用 git squash 保持干净的主分支，及相应的调试方法</title>
+    <url>/post/use-git-stash/</url>
+    <content><![CDATA[<!--
+
+`今天可以带薪写博客，开心`
+
+先炫耀一下我已经给 [4 个](https://github.com/pulls?q=is%3Apr+author%3Aduchengyao+archived%3Afalse+is%3Aclosed+is%3Apublic+is%3Amerged) 大型项目贡献过代码，包括`深度学习框架`、`3D 打印机固件` 和 `FastDDS`
+![](http://qiniu.s1nh.org/blog_pull-requests.png)
+
+-->
+
+<h3 id="1-通过-git-squash-合并分支"><a href="#1-通过-git-squash-合并分支" class="headerlink" title="1. 通过 git squash 合并分支"></a>1. 通过 git squash 合并分支</h3><p>有的项目要求一个 commit 必须包含完整的功能，但在开发时通常会提交很多细粒度的 commit，比如 <code>add test</code> <code>clean code</code> 等。这种情况下可以使用 <code>git squash</code> 将多个 commit 压缩，得到干净的主分支。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git merge --squash tmp</span><br><span class="line">git commit -m &quot;squash tmp&quot;</span><br><span class="line"></span><br><span class="line"># In the following graph, G is c--d--e--f--g squashed together</span><br><span class="line"></span><br><span class="line">          X-------------G stable</span><br><span class="line">         /</span><br><span class="line">a---b---c---d---e---f---g tmp</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="2-调试被-squash-后的代码"><a href="#2-调试被-squash-后的代码" class="headerlink" title="2. 调试被 squash 后的代码"></a>2. 调试被 squash 后的代码</h3><p>squash 的优点是可以得到简洁的 commit 记录，但缺失详细的 commit 记录会对后面 debug 造成一些影响。</p>
+<p>比如，使用FastDDS后，我一直在调试<a href="https://github.com/eProsima/Fast-DDS/issues/2811">一个无法重连的bug</a>，通过 log 可以定位到这个 bug 是在一次 <a href="https://github.com/eProsima/Fast-DDS/pull/1187">2000 行的 commit</a> 引入的。如果现在开始读这两千行代码肯定会浪费很多时间。</p>
+<p>现在要借助 github，在 pull request 页面可以找到详细的 23 个 commit 记录，并定位到引入 bug 的 commit：</p>
+<p><img data-src="http://qiniu.s1nh.org/blog_git-squash.png"></p>
+<p>为了防止这个 commit 不完整，我们需要手动下载引入 bug 的代码，和引入 bug 之前的代码，分别做一次回归测试。（手动下载代码的原因是，这些 commit ID 不在 git repo 里，无法 checkout）</p>
+<p>在 master 里改完 bug 以后，为了防止引入新 bug，别忘了跑回归测试。</p>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+  </entry>
+  <entry>
     <title>NVIDIA TX-1 的零拷贝(Zero Copy)和分页锁定内存(Pinned Memory)</title>
     <url>/post/tx-1-zero-copy/</url>
     <content><![CDATA[<blockquote>
@@ -6891,33 +6921,6 @@ Symbols: &#39;.&#39; no key found, &#39;/&#39; A key found, &#39;\&#39; B key fo
       <tags>
         <tag>TX-1</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>使用 git squash 保持干净的主分支，及相应的调试方法</title>
-    <url>/post/use-git-stash/</url>
-    <content><![CDATA[<!--
-
-`今天可以带薪写博客，开心`
-
-先炫耀一下我已经给 [4 个](https://github.com/pulls?q=is%3Apr+author%3Aduchengyao+archived%3Afalse+is%3Aclosed+is%3Apublic+is%3Amerged) 大型项目贡献过代码，包括`深度学习框架`、`3D 打印机固件` 和 `FastDDS`
-![](http://qiniu.s1nh.org/blog_pull-requests.png)
-
--->
-
-<h3 id="1-通过-git-squash-合并分支"><a href="#1-通过-git-squash-合并分支" class="headerlink" title="1. 通过 git squash 合并分支"></a>1. 通过 git squash 合并分支</h3><p>有的项目要求一个 commit 必须包含完整的功能，但在开发时通常会提交很多细粒度的 commit，比如 <code>add test</code> <code>clean code</code> 等。这种情况下可以使用 <code>git squash</code> 将多个 commit 压缩，得到干净的主分支。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git merge --squash tmp</span><br><span class="line">git commit -m &quot;squash tmp&quot;</span><br><span class="line"></span><br><span class="line"># In the following graph, G is c--d--e--f--g squashed together</span><br><span class="line"></span><br><span class="line">          X-------------G stable</span><br><span class="line">         /</span><br><span class="line">a---b---c---d---e---f---g tmp</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="2-调试被-squash-后的代码"><a href="#2-调试被-squash-后的代码" class="headerlink" title="2. 调试被 squash 后的代码"></a>2. 调试被 squash 后的代码</h3><p>squash 的优点是可以得到简洁的 commit 记录，但缺失详细的 commit 记录会对后面 debug 造成一些影响。</p>
-<p>比如，使用FastDDS后，我一直在调试<a href="https://github.com/eProsima/Fast-DDS/issues/2811">一个无法重连的bug</a>，通过 log 可以定位到这个 bug 是在一次 <a href="https://github.com/eProsima/Fast-DDS/pull/1187">2000 行的 commit</a> 引入的。如果现在开始读这两千行代码肯定会浪费很多时间。</p>
-<p>现在要借助 github，在 pull request 页面可以找到详细的 23 个 commit 记录，并定位到引入 bug 的 commit：</p>
-<p><img data-src="http://qiniu.s1nh.org/blog_git-squash.png"></p>
-<p>为了防止这个 commit 不完整，我们需要手动下载引入 bug 的代码，和引入 bug 之前的代码，分别做一次回归测试。（手动下载代码的原因是，这些 commit ID 不在 git repo 里，无法 checkout）</p>
-<p>在 master 里改完 bug 以后，为了防止引入新 bug，别忘了跑回归测试。</p>
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
-      </categories>
   </entry>
   <entry>
     <title>A Survey of Visual Question Generation</title>
