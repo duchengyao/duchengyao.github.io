@@ -161,7 +161,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">101</span>
+          <span class="site-state-item-count">102</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -234,6 +234,94 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/tx-1-zero-copy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="S1NH">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="S1NH">
+      <meta itemprop="description" content="no other developers required.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | S1NH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/tx-1-zero-copy/" class="post-title-link" itemprop="url">NVIDIA TX-1 的零拷贝(Zero Copy)和分页锁定内存(Pinned Memory)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2016-12-23 15:22:21" itemprop="dateCreated datePublished" datetime="2016-12-23T15:22:21+08:00">2016-12-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/programming/" itemprop="url" rel="index"><span itemprop="name">算法与硬件</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <blockquote>
+<p>公司发的圣诞礼物被一个自以为是的胖女人拿走了，不开心</p>
+</blockquote>
+<p>众所周知GPGPU的性能瓶颈为PCI-E传输速度，数据传输时会导致运算资源闲置。因此NVIDIA发明了一个很牛逼的技术<code>Zero Copy</code>，它把主机内存直接映射到GPU内存上，在GPU需要数据时直接从主机内存寻找，隐式的传输到GPU中。还有另一个技术叫<code>Pinned Memory</code>，会在产生一个不会被分页的内存，这块内存不会被交换到磁盘的虚拟内存上，内存地址也不会被重新定位，因此，相比普通的<code>Pageable Memory</code>有更高的速度。使用Pinned Memory是一定会提高性能的，不过也需要适当使用，否则太多Pinned Memory会把Host Memory给挤爆了（因为它不会分页到虚拟内存去）。<br><img data-src="http://qiniu.s1nh.org/Blog_pageable_pinned_memory.png-QNthin" alt="图1 Pageable 和 Pinned 的区别" title="图1 Pageanbe 和 Pinned 的区别"></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/post/tx-1-zero-copy/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -2746,93 +2834,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/WENT_Zero/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/XcodeJianghu/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="S1NH">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="S1NH">
-      <meta itemprop="description" content="no other developers required.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | S1NH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/post/XcodeJianghu/" class="post-title-link" itemprop="url">《Xcode 江湖录》已经出版</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2015-11-03 18:33:45" itemprop="dateCreated datePublished" datetime="2015-11-03T18:33:45+08:00">2015-11-03</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/other/" itemprop="url" rel="index"><span itemprop="name">其它笔记</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>写了半年多，经过无数次修改，这本书终于定稿了。一多半内容是李俊阳编写的，我写了设计篇、版本管理和一些附录，胡雪婷编写了部分故事，卢力画了插图。</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Xcode_Jianghu_1.png-QNthin"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Xcode_Jianghu_2.png-QNthin"></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/post/XcodeJianghu/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>

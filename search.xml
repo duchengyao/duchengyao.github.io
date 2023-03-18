@@ -2077,6 +2077,30 @@ apt-get install libusb-1.0-0-dev
       </tags>
   </entry>
   <entry>
+    <title>Alfa Romeo Stelvio 灯光开关拆解，允许大灯保持关闭</title>
+    <url>/post/alfa-romeo-stelvio-highlight-disassembly/</url>
+    <content><![CDATA[<blockquote>
+<p>Alfa Romeo Stelvio headlight switch disassembly, allowing headlights to stay off.<br>The headlight switch of the Alfa Romeo Stelvio cannot be kept off. The specific performance is that the switch is turned to the far left to turn off the headlight, and the switch automatically resets to the on mode after letting go.</p>
+</blockquote>
+<p>Alfa Romeo Stelvio 的大灯开关无法保持关闭，具体表现为开关拧到最左边大灯关闭，松手后开关自动复位到开启模式。搜了一下国内外都没有改装教程，就自己写了一个发出来。</p>
+<img data-src="http://qiniu.s1nh.org/light-switch-01.jpeg" width="50%" alt="1. 从后面捅掉盖子">
+<img data-src="http://qiniu.s1nh.org/light-switch-02.jpeg" width="50%" alt="2. 拆掉旋钮，旋钮的卡扣在这里">
+<img data-src="http://qiniu.s1nh.org/light-switch-03.jpeg" width="50%" alt="2. 拆掉旋钮">
+<img data-src="http://qiniu.s1nh.org/light-switch-04.jpeg" width="50%" alt="3. 拆掉面板">
+<img data-src="http://qiniu.s1nh.org/light-switch-05.jpeg" width="50%" alt="3. 拆掉面板">
+<img data-src="http://qiniu.s1nh.org/light-switch-06.jpeg" width="50%" alt="4. 拆掉绿圈">
+<img data-src="http://qiniu.s1nh.org/light-switch-07.jpeg" width="50%" alt="5. 打磨绿圈">
+<img data-src="http://qiniu.s1nh.org/light-switch-08.jpeg" width="50%" alt="5. 打磨绿圈，用电烙铁烫更快一些">
+<img data-src="http://qiniu.s1nh.org/light-switch-09.jpeg" width="50%" alt="6. 组装">
+<img data-src="http://qiniu.s1nh.org/light-switch-10.jpeg" width="50%" alt="6. 组装，注意这两个小东西的位置">
+
+<p><video src="http://qiniu.s1nh.org/light-switch-00.mp4" width="50%" preload="metadata" controlslist="nodownload" controls="" playsinline="" poster=""></video></p>
+]]></content>
+      <categories>
+        <category>赛车</category>
+      </categories>
+  </entry>
+  <entry>
     <title>安装NVIDIA Jetpack/DriveInstall后，apt-get 报错无arm64源</title>
     <url>/post/arm64-after-jetpack/</url>
     <content><![CDATA[<blockquote>
@@ -4887,7 +4911,10 @@ try to remove and create again
 
 <!--TODO 新theme 加主页，分类介绍。-->
 
-<h2 id="说在前面"><a href="#说在前面" class="headerlink" title="说在前面"></a>说在前面</h2><p>抗抑郁药可能会重塑人格，让自己变成另一个人。所造成的过于乐观、自信增加、行动力增加，可能不利于日常生活。风险：</p>
+<h2 id="说在前面"><a href="#说在前面" class="headerlink" title="说在前面"></a>说在前面</h2><blockquote>
+<p>已经证实了抗抑郁药是有效的，但仍有一些问题没有得到解答。<br>我们仍然不知道现在接受抗抑郁药治疗的患者是否从抗抑郁药中获益，因为许多试验都非常古老并且是出于监管目的而进行的，并且实验仅为最长八周的短期结果。<br>我们仍然不知道抗抑郁药的长期益处（或危害），但还需要进一步研究。<br>– Glyn Lewis，伦敦大学学院精神病学系精神病学流行病学教授 [<a href="https://evidence.nihr.ac.uk/alert/the-most-effective-antidepressants-for-adults-revealed-in-major-review/">原文</a>]</p>
+</blockquote>
+<p>另外，抗抑郁药可能会重塑人格，让自己变成另一个人。所造成的过于乐观、自信增加、行动力增加，可能不利于日常生活。风险包括但不限于：</p>
 <ol>
 <li>吃药可能会让已经麻烦的问题变得更麻烦。</li>
 <li>无论什么类型的抗抑郁药，都有损伤认知的风险。</li>
@@ -6564,6 +6591,29 @@ H1&lt;---|0.14-1.6|Mirtazapine
       </tags>
   </entry>
   <entry>
+    <title>在anaconda下安装caffe失败</title>
+    <url>/post/setup-caffe-without-anaconda/</url>
+    <content><![CDATA[<blockquote>
+<p>Python 跟 Python3 完全就是两种语言</p>
+</blockquote>
+<h3 id="0x00-import-caffe-FAILED"><a href="#0x00-import-caffe-FAILED" class="headerlink" title="0x00 import caffe FAILED"></a>0x00 import caffe FAILED</h3><p>环境为 <code>Ubuntu 16</code> <code>cuda 8.0</code> <code>NVIDIA 361.77</code> <code>Anaconda2</code>。昨天莫名其妙Caffe不能用了：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; import caffe</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">  File &quot;/home/duchengyao/project/caffe/python/caffe/__init__.py&quot;, line 1, in &lt;module&gt;</span><br><span class="line">    from .pycaffe import Net, SGDSolver, NesterovSolver, AdaGradSolver, RMSPropSolver, AdaDeltaSolver, AdamSolver</span><br><span class="line">  File &quot;/home/duchengyao/project/caffe/python/caffe/pycaffe.py&quot;, line 13, in &lt;module&gt;</span><br><span class="line">    from ._caffe import Net, SGDSolver, NesterovSolver, AdaGradSolver, \</span><br><span class="line">ImportError: /home/duchengyao/project/caffe/python/caffe/../../build/lib/libcaffe.so.1.0.0-rc3: undefined symbol: _ZN2cv8imencodeERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS_11_InputArrayERSt6vectorIhSaIhEERKSB_IiSaIiEE</span><br></pre></td></tr></table></figure>
+
+<p>各种折腾都无效，重装Anaconda以后错误消失，<code>import caffe</code> 成功。</p>
+<h3 id="0x01-import-FAILED-again-after-“-conda-install-opencv”"><a href="#0x01-import-FAILED-again-after-“-conda-install-opencv”" class="headerlink" title="0x01 import FAILED again after “$conda install opencv”"></a>0x01 import FAILED again after “$conda install opencv”</h3><p>用 <code>conda install opencv</code> 安装完Opencv后，又出现了同样的错误提示，卸载后错误消失。</p>
+<p>Conda 安装后的Opencv 版本为<code>2.4.10</code>，而系统apt安装的版本为<code>2.4.9.1</code>。我尝试从conda 安装2.4.9版，可是需要处理很多conflict。</p>
+<p>最后实在走投无路了准备换成Anaconda3，环境搭建完成后运行程序的时候简直尴尬了，各种库不兼容。终于知道为啥老鸟们调侃Python 跟Python3完全是两种语言了</p>
+<h3 id="0x02-解决方案"><a href="#0x02-解决方案" class="headerlink" title="0x02 解决方案"></a>0x02 解决方案</h3><p>暂时的解决方案为<strong>放弃anaconda</strong>，全部用apt安装软件包，使用系统默认的Opencv，运行成功。</p>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+      <tags>
+        <tag>caffe</tag>
+        <tag>anaconda</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>配置Matcaffe</title>
     <url>/post/setup-matcaffe/</url>
     <content><![CDATA[<p>配置Matcaffe的时候碰到了两个小坑，记录一下：</p>
@@ -6599,29 +6649,6 @@ H1&lt;---|0.14-1.6|Mirtazapine
       <tags>
         <tag>matlab</tag>
         <tag>matcaffe</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>在anaconda下安装caffe失败</title>
-    <url>/post/setup-caffe-without-anaconda/</url>
-    <content><![CDATA[<blockquote>
-<p>Python 跟 Python3 完全就是两种语言</p>
-</blockquote>
-<h3 id="0x00-import-caffe-FAILED"><a href="#0x00-import-caffe-FAILED" class="headerlink" title="0x00 import caffe FAILED"></a>0x00 import caffe FAILED</h3><p>环境为 <code>Ubuntu 16</code> <code>cuda 8.0</code> <code>NVIDIA 361.77</code> <code>Anaconda2</code>。昨天莫名其妙Caffe不能用了：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; import caffe</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">  File &quot;/home/duchengyao/project/caffe/python/caffe/__init__.py&quot;, line 1, in &lt;module&gt;</span><br><span class="line">    from .pycaffe import Net, SGDSolver, NesterovSolver, AdaGradSolver, RMSPropSolver, AdaDeltaSolver, AdamSolver</span><br><span class="line">  File &quot;/home/duchengyao/project/caffe/python/caffe/pycaffe.py&quot;, line 13, in &lt;module&gt;</span><br><span class="line">    from ._caffe import Net, SGDSolver, NesterovSolver, AdaGradSolver, \</span><br><span class="line">ImportError: /home/duchengyao/project/caffe/python/caffe/../../build/lib/libcaffe.so.1.0.0-rc3: undefined symbol: _ZN2cv8imencodeERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS_11_InputArrayERSt6vectorIhSaIhEERKSB_IiSaIiEE</span><br></pre></td></tr></table></figure>
-
-<p>各种折腾都无效，重装Anaconda以后错误消失，<code>import caffe</code> 成功。</p>
-<h3 id="0x01-import-FAILED-again-after-“-conda-install-opencv”"><a href="#0x01-import-FAILED-again-after-“-conda-install-opencv”" class="headerlink" title="0x01 import FAILED again after “$conda install opencv”"></a>0x01 import FAILED again after “$conda install opencv”</h3><p>用 <code>conda install opencv</code> 安装完Opencv后，又出现了同样的错误提示，卸载后错误消失。</p>
-<p>Conda 安装后的Opencv 版本为<code>2.4.10</code>，而系统apt安装的版本为<code>2.4.9.1</code>。我尝试从conda 安装2.4.9版，可是需要处理很多conflict。</p>
-<p>最后实在走投无路了准备换成Anaconda3，环境搭建完成后运行程序的时候简直尴尬了，各种库不兼容。终于知道为啥老鸟们调侃Python 跟Python3完全是两种语言了</p>
-<h3 id="0x02-解决方案"><a href="#0x02-解决方案" class="headerlink" title="0x02 解决方案"></a>0x02 解决方案</h3><p>暂时的解决方案为<strong>放弃anaconda</strong>，全部用apt安装软件包，使用系统默认的Opencv，运行成功。</p>
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
-      </categories>
-      <tags>
-        <tag>caffe</tag>
-        <tag>anaconda</tag>
       </tags>
   </entry>
   <entry>
