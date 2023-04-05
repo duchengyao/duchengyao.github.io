@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="The Big Muff Pi is a distortion&#x2F;sustain guitar pedal designed by Bob Myer and Mike Matthews in 1969 and mass produced in 1970. This effect was the first overwhelming success of Electro-Harmonix due to">
+    <meta name="description" content="Big Muff Pi 是由 Bob Myer 和 Mike Matthews 在 1969 年设计的失真&#x2F;延音吉他踏板，并在1970年大规模生产。由于其独特的声音、价格和可靠性，该效果器是 Electro-Harmonix 的第一个压倒性的成功。多年来，有几个版本和重制版被发布。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Big Muff Pi 电路分析">
 <meta property="og:url" content="http://s1nh.org/post/big-muff-pi-analysis/index.html">
 <meta property="og:site_name" content="S1NH">
-<meta property="og:description" content="The Big Muff Pi is a distortion&#x2F;sustain guitar pedal designed by Bob Myer and Mike Matthews in 1969 and mass produced in 1970. This effect was the first overwhelming success of Electro-Harmonix due to">
+<meta property="og:description" content="Big Muff Pi 是由 Bob Myer 和 Mike Matthews 在 1969 年设计的失真&#x2F;延音吉他踏板，并在1970年大规模生产。由于其独特的声音、价格和可靠性，该效果器是 Electro-Harmonix 的第一个压倒性的成功。多年来，有几个版本和重制版被发布。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://qiniu.s1nh.org/bmp-all-pedals.png">
 <meta property="og:image" content="http://qiniu.s1nh.org/big-muff-pi-v3-circuit-stages-small.png">
@@ -43,7 +43,7 @@
 <meta property="og:image" content="http://qiniu.s1nh.org/big-muff-pi-v3-bias.png">
 <meta property="og:image" content="http://qiniu.s1nh.org/bmp-waveforms.png">
 <meta property="article:published_time" content="2023-02-16T12:39:08.000Z">
-<meta property="article:modified_time" content="2023-02-16T08:46:38.303Z">
+<meta property="article:modified_time" content="2023-04-01T12:11:53.167Z">
 <meta property="article:author" content="S1NH">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://qiniu.s1nh.org/bmp-all-pedals.png">
@@ -179,7 +179,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">102</span>
+          <span class="site-state-item-count">103</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -320,11 +320,12 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>The Big Muff Pi is a distortion/sustain guitar pedal designed by Bob Myer and Mike Matthews in 1969 and mass produced in 1970. This effect was the first overwhelming success of Electro-Harmonix due to the distinctive sound, price, and reliability. Several versions and reeditions were released over the years.</p>
+        <p>Big Muff Pi 是由 Bob Myer 和 Mike Matthews 在 1969 年设计的失真/延音吉他踏板，并在1970年大规模生产。由于其独特的声音、价格和可靠性，该效果器是 Electro-Harmonix 的第一个压倒性的成功。多年来，有几个版本和重制版被发布。</p>
 <p><img data-src="http://qiniu.s1nh.org/bmp-all-pedals.png" alt="Big Muff Pi All Pedals"></p>
 <span id="more"></span>
 
-<p>Many inspiring guitarists use this stompbox, giving to the Big Muff Pi a leading role in the hard-driving music signature:<br>Tony Peluso of The Carpenters, Carlos Santana, David Gilmour of Pink Floyd, Ronnie Montrose, Mike Mills and Pete Buck of R.E.M., Robin Finck of Nine Inch Nails, Brian Molko of Placebo, Cliff Burton of Metallica, Kurt Kobain of Nirvana, Thom Yorke of Radiohead, Pete Townshend of The Who, Thurston and Lee Renaldo Moore of Sonic Youth, Billy Corgan of Smashing Pumkins, J. Mascis of Dinosaur Jr., Dan Auerbach of Black Keys, Ace Frehley of Kiss, The Edge of U2, Jamie Cook of the Arctic Monkeys, Jack White of White Stripes, John Frusciante of The Red Hot Chili Peppers, Chris Wolstenholme of Muse are some of the B.M.P well known users.</p>
+<p>许多鼓舞人心的吉他手都使用这个单块，使 Big Muff Pi 在硬摇（hard-driving）的音乐风格中发挥了主导作用：</p>
+<p>Tony Peluso of The Carpenters, Carlos Santana, David Gilmour of Pink Floyd, Ronnie Montrose, Mike Mills and Pete Buck of R.E.M., Robin Finck of Nine Inch Nails, Brian Molko of Placebo, Cliff Burton of Metallica, Kurt Kobain of Nirvana, Thom Yorke of Radiohead, Pete Townshend of The Who, Thurston and Lee Renaldo Moore of Sonic Youth, Billy Corgan of Smashing Pumkins, J. Mascis of Dinosaur Jr., Dan Auerbach of Black Keys, Ace Frehley of Kiss, The Edge of U2, Jamie Cook of the Arctic Monkeys, Jack White of White Stripes, John Frusciante of The Red Hot Chili Peppers, Chris Wolstenholme of Muse are some of the B.M.P well known users.</p>
 <h1 id="Table-of-Contents"><a href="#Table-of-Contents" class="headerlink" title="Table of Contents:"></a><strong>Table of Contents:</strong></h1><p><a target="_blank" rel="noopener" href="https://www.electrosmash.com/big-muff-pi-analysis#circuit1">1. The Big Muff Pi Circuit.</a><br>    <a target="_blank" rel="noopener" href="https://www.electrosmash.com/big-muff-pi-analysis#bom11">1.1 List of Materials / Parts List.</a><br><a target="_blank" rel="noopener" href="https://www.electrosmash.com/big-muff-pi-analysis#input2">2. Input Booster Stage.</a><br>    <a target="_blank" rel="noopener" href="https://www.electrosmash.com/big-muff-pi-analysis#link21">2.1 Shunt Feedback Common Emitter Stage.</a><br>    <a target="_blank" rel="noopener" href="https://www.electrosmash.com/big-muff-pi-analysis#link22">2.2 Input Booster Voltage Gain Calculation.</a><br>    <a target="_blank" rel="noopener" href="https://www.electrosmash.com/big-muff-pi-analysis#link23">2.3 Input Impedance Calculation.</a><br>    <a target="_blank" rel="noopener" href="https://www.electrosmash.com/big-muff-pi-analysis#link24">2.4 Input Booster Frequency Response.</a><br><a target="_blank" rel="noopener" href="https://www.electrosmash.com/big-muff-pi-analysis#link3">3. Big Muff Pi Clipping Stage.</a><br>    <a target="_blank" rel="noopener" href="https://www.electrosmash.com/big-muff-pi-analysis#link31">3.1 Sustain Circuit.</a><br>    <a target="_blank" rel="noopener" href="https://www.electrosmash.com/big-muff-pi-analysis#link32">3.2 Clipping Amplifier Voltage Gain Calculation</a><br>    <a target="_blank" rel="noopener" href="https://www.electrosmash.com/big-muff-pi-analysis#link33">3.3 Clipping Method.</a><br>    <a target="_blank" rel="noopener" href="https://www.electrosmash.com/big-muff-pi-analysis#link34">3.4 Clipping Stage Frequency Response.</a><br><a target="_blank" rel="noopener" href="https://www.electrosmash.com/big-muff-pi-analysis#link4">4. Passive Tone Control Stage.</a><br>    <a target="_blank" rel="noopener" href="https://www.electrosmash.com/big-muff-pi-analysis#link41">4.1 Tone Control Frequency Response.</a><br><a target="_blank" rel="noopener" href="https://www.electrosmash.com/big-muff-pi-analysis#link5">5. Output Stage.</a><br>   <a target="_blank" rel="noopener" href="https://www.electrosmash.com/big-muff-pi-analysis#link51"> 5.1 Big Muff Pi Output Impedance.</a><br><a target="_blank" rel="noopener" href="https://www.electrosmash.com/big-muff-pi-analysis#link6">6. Big Muff Pi Bias and Tone Response.</a><br><a target="_blank" rel="noopener" href="https://www.electrosmash.com/big-muff-pi-analysis#link7">7. Resources.</a><br>    <a target="_blank" rel="noopener" href="https://www.electrosmash.com/big-muff-pi-analysis#link71">7.1 Datasheets.</a></p>
 <h1 id="1-The-Big-Muff-Pi-Circuit"><a href="#1-The-Big-Muff-Pi-Circuit" class="headerlink" title="1. The Big Muff Pi Circuit."></a><strong>1. The Big Muff Pi Circuit.</strong></h1><p>The Big Muff Pi circuit consists of 4 cascaded common emitter amplifier stages with a passive tone control. The schematic can be broken down into 4 simpler blocks: Input Booster, Clipping Stage, Passive Tone Control and Output Booster.  </p>
 <p><img data-src="http://qiniu.s1nh.org/big-muff-pi-v3-circuit-stages-small.png" alt="Big Muff Pi v3 Circuit Stages"></p>
