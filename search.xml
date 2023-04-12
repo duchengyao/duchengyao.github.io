@@ -870,6 +870,51 @@ root@kali:~# depmod -a -v &quot;3.8.13-bone53&quot;
       </tags>
   </entry>
   <entry>
+    <title>红外光学材料均匀性检测仪</title>
+    <url>/post/Infrared_optical_material_detector/</url>
+    <content><![CDATA[<blockquote>
+<p>这是一个用红外显微镜来检测红外材料（硅玻璃、硫系玻璃）的设备。</p>
+</blockquote>
+<p><a href="http://qiniu.s1nh.org/Blog_%E3%80%8A%E7%8E%BB%E7%92%83%E6%A3%80%E6%B5%8B%E3%80%8B%E9%A1%B9%E7%9B%AE%E7%AD%94%E8%BE%A9.pdf">中期答辩PPT</a></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Glass_Device_5.jpg-QNthin"></p>
+<span id="more"></span>
+
+<p><img data-src="http://qiniu.s1nh.org/Blog_Glass_Device_6.jpg-QNthin"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Glass_Device_3.jpg-QNthin"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Glass_Device_4.jpg-QNthin"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Glass_Device_%E6%A3%80%E9%AA%8C%E6%8A%A5%E5%91%8A.png-QNthin"></p>
+<h2 id="系统"><a href="#系统" class="headerlink" title="系统"></a>系统</h2><p>大四的时候，项目正式立项。直接用LabView做的开发。以下是效果图</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Glass_Device_1.png-QNthin" title="图像阈值化"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Glass_Device_2.png-QNthin" title="图像阈值化"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Glass_Device_%E5%8E%9F%E5%A7%8B.jpeg" title="原始图像"><br><img data-src="http://qiniu.s1nh.org/Blog_Glass_Device_%E5%9B%BE%E5%83%8F%E5%A2%9E%E5%BC%BA.jpeg" title="图像增强"><br><img data-src="http://qiniu.s1nh.org/Blog_Glass_Device_%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B.jpeg" title="边缘检测"><br><img data-src="http://qiniu.s1nh.org/Blog_Glass_Device_3D%E8%A7%86%E5%9B%BE.jpeg" title="3D试图"></p>
+<hr>
+<blockquote>
+<p>以下是前期做的调查和研究</p>
+</blockquote>
+<h3 id="算法：LSD——一个线性时间复杂度的直线检测算法"><a href="#算法：LSD——一个线性时间复杂度的直线检测算法" class="headerlink" title="算法：LSD——一个线性时间复杂度的直线检测算法"></a>算法：LSD——一个线性时间复杂度的直线检测算法</h3><p>源于一篇IPOL的文章*<a href="http://www.ipol.im/pub/art/2012/gjmr-lsd/">LSD: a Line Segment Detector</a>*；几个大神的学习日志：<a href="http://blog.csdn.net/polly_yang/article/details/10085401">论文回顾之一 一种新的直线段检测算法—LSD：a Line Segment Detector</a>，<a href="http://blog.csdn.net/tianwaifeimao/article/details/17678669">基于LSD的直线提取算法</a></p>
+<p>当时三土才大二，所以并没有看懂其中的原理，只知道这是一种新的直线检测算法。它可以快速的检测图像中的直线段，然后根据目标的几何特征设计快速算法，以快速确定疑似目标区域。</p>
+<p>作者提供了C语言的代码及样例。</p>
+<p>现在这个算法已经加入OpenCV了。最后我们做产品也没用这个算法&gt;_&lt;</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_LSD_1.jpeg"></p>
+<!--more-->
+
+<p><img data-src="http://qiniu.s1nh.org/Blog_LSD_2.jpeg"></p>
+<h3 id="直线检测Demo"><a href="#直线检测Demo" class="headerlink" title="直线检测Demo"></a>直线检测Demo</h3><p>当时选用了.Net Framework，调用LSD.c生成的Dll进行混合编程。第一版的Demo效果还挺不错的</p>
+<p>下图分别为玻璃内部杂质的条纹图，经过直线检测后生成的图片，对另外一张玻璃杂质进行检测的图片。</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Glass_LSD_1.png-QNthin" alt="原始图片"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Glass_LSD_2.png-QNthin" alt="直线检测玻璃杂质"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Glass_1.png-QNthin"></p>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+      <tags>
+        <tag>红外光学材料均匀性检测仪</tag>
+        <tag>Labview</tag>
+        <tag>LSD</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>通过MNIST熟悉Keras——《TensorFlow 实战》读书笔记</title>
     <url>/post/Keras-MNIST/</url>
     <content><![CDATA[<p>Tensorflow 的使用者虽多，但真的<strong>很难用</strong>。幸亏有基于TF和Theano的高层框架<code>Keras</code>（不幸的是Theano已经停止更新了）。我们通过MNIST来熟悉一下Keras。</p>
@@ -945,51 +990,6 @@ Test accuracy: 0.9828
         <tag>MNIST</tag>
         <tag>Tensorflow</tag>
         <tag>Keras</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>红外光学材料均匀性检测仪</title>
-    <url>/post/Infrared_optical_material_detector/</url>
-    <content><![CDATA[<blockquote>
-<p>这是一个用红外显微镜来检测红外材料（硅玻璃、硫系玻璃）的设备。</p>
-</blockquote>
-<p><a href="http://qiniu.s1nh.org/Blog_%E3%80%8A%E7%8E%BB%E7%92%83%E6%A3%80%E6%B5%8B%E3%80%8B%E9%A1%B9%E7%9B%AE%E7%AD%94%E8%BE%A9.pdf">中期答辩PPT</a></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Glass_Device_5.jpg-QNthin"></p>
-<span id="more"></span>
-
-<p><img data-src="http://qiniu.s1nh.org/Blog_Glass_Device_6.jpg-QNthin"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Glass_Device_3.jpg-QNthin"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Glass_Device_4.jpg-QNthin"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Glass_Device_%E6%A3%80%E9%AA%8C%E6%8A%A5%E5%91%8A.png-QNthin"></p>
-<h2 id="系统"><a href="#系统" class="headerlink" title="系统"></a>系统</h2><p>大四的时候，项目正式立项。直接用LabView做的开发。以下是效果图</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Glass_Device_1.png-QNthin" title="图像阈值化"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Glass_Device_2.png-QNthin" title="图像阈值化"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Glass_Device_%E5%8E%9F%E5%A7%8B.jpeg" title="原始图像"><br><img data-src="http://qiniu.s1nh.org/Blog_Glass_Device_%E5%9B%BE%E5%83%8F%E5%A2%9E%E5%BC%BA.jpeg" title="图像增强"><br><img data-src="http://qiniu.s1nh.org/Blog_Glass_Device_%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B.jpeg" title="边缘检测"><br><img data-src="http://qiniu.s1nh.org/Blog_Glass_Device_3D%E8%A7%86%E5%9B%BE.jpeg" title="3D试图"></p>
-<hr>
-<blockquote>
-<p>以下是前期做的调查和研究</p>
-</blockquote>
-<h3 id="算法：LSD——一个线性时间复杂度的直线检测算法"><a href="#算法：LSD——一个线性时间复杂度的直线检测算法" class="headerlink" title="算法：LSD——一个线性时间复杂度的直线检测算法"></a>算法：LSD——一个线性时间复杂度的直线检测算法</h3><p>源于一篇IPOL的文章*<a href="http://www.ipol.im/pub/art/2012/gjmr-lsd/">LSD: a Line Segment Detector</a>*；几个大神的学习日志：<a href="http://blog.csdn.net/polly_yang/article/details/10085401">论文回顾之一 一种新的直线段检测算法—LSD：a Line Segment Detector</a>，<a href="http://blog.csdn.net/tianwaifeimao/article/details/17678669">基于LSD的直线提取算法</a></p>
-<p>当时三土才大二，所以并没有看懂其中的原理，只知道这是一种新的直线检测算法。它可以快速的检测图像中的直线段，然后根据目标的几何特征设计快速算法，以快速确定疑似目标区域。</p>
-<p>作者提供了C语言的代码及样例。</p>
-<p>现在这个算法已经加入OpenCV了。最后我们做产品也没用这个算法&gt;_&lt;</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_LSD_1.jpeg"></p>
-<!--more-->
-
-<p><img data-src="http://qiniu.s1nh.org/Blog_LSD_2.jpeg"></p>
-<h3 id="直线检测Demo"><a href="#直线检测Demo" class="headerlink" title="直线检测Demo"></a>直线检测Demo</h3><p>当时选用了.Net Framework，调用LSD.c生成的Dll进行混合编程。第一版的Demo效果还挺不错的</p>
-<p>下图分别为玻璃内部杂质的条纹图，经过直线检测后生成的图片，对另外一张玻璃杂质进行检测的图片。</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Glass_LSD_1.png-QNthin" alt="原始图片"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Glass_LSD_2.png-QNthin" alt="直线检测玻璃杂质"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Glass_1.png-QNthin"></p>
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
-      </categories>
-      <tags>
-        <tag>红外光学材料均匀性检测仪</tag>
-        <tag>Labview</tag>
-        <tag>LSD</tag>
       </tags>
   </entry>
   <entry>
