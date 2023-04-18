@@ -22,8 +22,9 @@ if (CONFIG.matomo.enable) {
       _paq.push(['setSiteId', '4']);
     }
     
-    // Will also collect the website data into Website ID = 2,3
+    // Will also collect the website data into Website ID = 1
     _paq.push(['addTracker', u+'matomo.php', 1]);
+    
     var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
     g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
   })();

@@ -2110,6 +2110,27 @@ apt-get install libusb-1.0-0-dev
       </tags>
   </entry>
   <entry>
+    <title>安装NVIDIA Jetpack/DriveInstall后，apt-get 报错无arm64源</title>
+    <url>/post/arm64-after-jetpack/</url>
+    <content><![CDATA[<blockquote>
+<p>网上的解决方案大多是<code>删除已经安装的arm64包，然后执行dpkg --remove-architecture arm64</code>，但是错误在下次刷机后依然会出现</p>
+</blockquote>
+<span id="more"></span>
+
+<p>使用NVIDIA Jetson TX1/TX2，Drive PX2 的同学在刷完机以后，宿主机的apt-get无法正确使用。原因是自带的刷机包（Jetpack/DriveInstall）给系统安装了arm64的软件包，报错如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> Err:29 http://archive.ubuntu.com/ubuntu xenial/main arm64 Packages</span><br><span class="line">  404  Not Found [IP: 91.189.88.161 80]</span><br><span class="line">Ign:37 http://archive.ubuntu.com/ubuntu xenial/universe arm64 Packages</span><br><span class="line">Ign:40 http://archive.ubuntu.com/ubuntu xenial/multiverse arm64 Packages</span><br><span class="line">Err:46 http://archive.ubuntu.com/ubuntu xenial-updates/main arm64 Packages</span><br><span class="line">  404  Not Found [IP: 91.189.88.161 80]</span><br><span class="line">Ign:56 http://archive.ubuntu.com/ubuntu xenial-updates/universe arm64 Packages</span><br><span class="line">Ign:62 http://archive.ubuntu.com/ubuntu xenial-updates/multiverse arm64 Packages</span><br><span class="line">Err:68 http://archive.ubuntu.com/ubuntu xenial-backports/main arm64 Packages</span><br><span class="line">  404  Not Found [IP: 91.189.88.161 80]</span><br><span class="line">Ign:75 http://archive.ubuntu.com/ubuntu xenial-backports/universe arm64 Packages</span><br><span class="line">Err:83 http://archive.ubuntu.com/ubuntu xenial-security/main arm64 Packages</span><br><span class="line">  404  Not Found [IP: 91.189.88.161 80]</span><br><span class="line">Ign:93 http://archive.ubuntu.com/ubuntu xenial-security/universe arm64 Packages</span><br><span class="line">Ign:99 http://archive.ubuntu.com/ubuntu xenial-security/multiverse arm64 Packages</span><br></pre></td></tr></table></figure>
+
+<p>正确的解决方案为，修改<code>/etc/apt/source.list</code>在每一行的<code>deb</code>和<code>http://×××</code>中间加入<code>[arch=amd64,i386]</code>，修改后的<code>source.list</code>文件如下（仅供参考，请按需修改）：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># deb cdrom:[Xubuntu 16.04.4 LTS _Xenial Xerus_ - Release amd64 (20180228)]/ xenial main multiverse restricted universe</span><br><span class="line"></span><br><span class="line"># See http://help.ubuntu.com/community/UpgradeNotes for how to upgrade to</span><br><span class="line"># newer versions of the distribution.</span><br><span class="line">deb [arch=amd64,i386] http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial main restricted</span><br><span class="line"># deb-src http://cn.archive.ubuntu.com/ubuntu/ xenial main restricted</span><br><span class="line"></span><br><span class="line">## Major bug fix updates produced after the final release of the</span><br><span class="line">## distribution.</span><br><span class="line">deb [arch=amd64,i386] http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-updates main restricted</span><br><span class="line"># deb-src http://cn.archive.ubuntu.com/ubuntu/ xenial-updates main restricted</span><br><span class="line"></span><br><span class="line">## N.B. software from this repository is ENTIRELY UNSUPPORTED by the Ubuntu</span><br><span class="line">## team. Also, please note that software in universe WILL NOT receive any</span><br><span class="line">## review or updates from the Ubuntu security team.</span><br><span class="line">deb [arch=amd64,i386] http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial universe</span><br><span class="line"># deb-src http://cn.archive.ubuntu.com/ubuntu/ xenial universe</span><br><span class="line">deb [arch=amd64,i386] http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-updates universe</span><br><span class="line"># deb-src http://cn.archive.ubuntu.com/ubuntu/ xenial-updates universe</span><br><span class="line"></span><br><span class="line">## N.B. software from this repository is ENTIRELY UNSUPPORTED by the Ubuntu </span><br><span class="line">## team, and may not be under a free licence. Please satisfy yourself as to </span><br><span class="line">## your rights to use the software. Also, please note that software in </span><br><span class="line">## multiverse WILL NOT receive any review or updates from the Ubuntu</span><br><span class="line">## security team.</span><br><span class="line">deb [arch=amd64,i386] http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial multiverse</span><br><span class="line"># deb-src http://cn.archive.ubuntu.com/ubuntu/ xenial multiverse</span><br><span class="line">deb [arch=amd64,i386] http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-updates multiverse</span><br><span class="line"># deb-src http://cn.archive.ubuntu.com/ubuntu/ xenial-updates multiverse</span><br><span class="line"></span><br><span class="line">## N.B. software from this repository may not have been tested as</span><br><span class="line">## extensively as that contained in the main release, although it includes</span><br><span class="line">## newer versions of some applications which may provide useful features.</span><br><span class="line">## Also, please note that software in backports WILL NOT receive any review</span><br><span class="line">## or updates from the Ubuntu security team.</span><br><span class="line">deb [arch=amd64,i386] http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-backports main restricted universe multiverse</span><br><span class="line"># deb-src http://cn.archive.ubuntu.com/ubuntu/ xenial-backports main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">## Uncomment the following two lines to add software from Canonical&#x27;s</span><br><span class="line">## &#x27;partner&#x27; repository.</span><br><span class="line">## This software is not part of Ubuntu, but is offered by Canonical and the</span><br><span class="line">## respective vendors as a service to Ubuntu users.</span><br><span class="line"># deb http://archive.canonical.com/ubuntu xenial partner</span><br><span class="line"># deb-src http://archive.canonical.com/ubuntu xenial partner</span><br><span class="line"></span><br><span class="line">deb [arch=amd64,i386] http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-security main restricted</span><br><span class="line"># deb-src http://security.ubuntu.com/ubuntu xenial-security main restricted</span><br><span class="line">deb [arch=amd64,i386] http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-security universe</span><br><span class="line"># deb-src http://security.ubuntu.com/ubuntu xenial-security universe</span><br><span class="line">deb [arch=amd64,i386] http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-security multiverse</span><br><span class="line"># deb-src http://security.ubuntu.com/ubuntu xenial-security multiverse</span><br><span class="line"># deb-src http://archive.ubuntu.com/ubuntu xenial universe</span><br><span class="line">deb  [arch=amd64,i386]  http://archive.ubuntu.com/ubuntu xenial universe</span><br><span class="line"># deb-src http://archive.ubuntu.com/ubuntu xenial universe</span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Alfa Romeo Stelvio 灯光开关拆解，允许大灯保持关闭</title>
     <url>/post/alfa-romeo-stelvio-highlight-disassembly/</url>
     <content><![CDATA[<blockquote>
@@ -2134,27 +2155,6 @@ apt-get install libusb-1.0-0-dev
 ]]></content>
       <categories>
         <category>赛车</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>安装NVIDIA Jetpack/DriveInstall后，apt-get 报错无arm64源</title>
-    <url>/post/arm64-after-jetpack/</url>
-    <content><![CDATA[<blockquote>
-<p>网上的解决方案大多是<code>删除已经安装的arm64包，然后执行dpkg --remove-architecture arm64</code>，但是错误在下次刷机后依然会出现</p>
-</blockquote>
-<span id="more"></span>
-
-<p>使用NVIDIA Jetson TX1/TX2，Drive PX2 的同学在刷完机以后，宿主机的apt-get无法正确使用。原因是自带的刷机包（Jetpack/DriveInstall）给系统安装了arm64的软件包，报错如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> Err:29 http://archive.ubuntu.com/ubuntu xenial/main arm64 Packages</span><br><span class="line">  404  Not Found [IP: 91.189.88.161 80]</span><br><span class="line">Ign:37 http://archive.ubuntu.com/ubuntu xenial/universe arm64 Packages</span><br><span class="line">Ign:40 http://archive.ubuntu.com/ubuntu xenial/multiverse arm64 Packages</span><br><span class="line">Err:46 http://archive.ubuntu.com/ubuntu xenial-updates/main arm64 Packages</span><br><span class="line">  404  Not Found [IP: 91.189.88.161 80]</span><br><span class="line">Ign:56 http://archive.ubuntu.com/ubuntu xenial-updates/universe arm64 Packages</span><br><span class="line">Ign:62 http://archive.ubuntu.com/ubuntu xenial-updates/multiverse arm64 Packages</span><br><span class="line">Err:68 http://archive.ubuntu.com/ubuntu xenial-backports/main arm64 Packages</span><br><span class="line">  404  Not Found [IP: 91.189.88.161 80]</span><br><span class="line">Ign:75 http://archive.ubuntu.com/ubuntu xenial-backports/universe arm64 Packages</span><br><span class="line">Err:83 http://archive.ubuntu.com/ubuntu xenial-security/main arm64 Packages</span><br><span class="line">  404  Not Found [IP: 91.189.88.161 80]</span><br><span class="line">Ign:93 http://archive.ubuntu.com/ubuntu xenial-security/universe arm64 Packages</span><br><span class="line">Ign:99 http://archive.ubuntu.com/ubuntu xenial-security/multiverse arm64 Packages</span><br></pre></td></tr></table></figure>
-
-<p>正确的解决方案为，修改<code>/etc/apt/source.list</code>在每一行的<code>deb</code>和<code>http://×××</code>中间加入<code>[arch=amd64,i386]</code>，修改后的<code>source.list</code>文件如下（仅供参考，请按需修改）：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># deb cdrom:[Xubuntu 16.04.4 LTS _Xenial Xerus_ - Release amd64 (20180228)]/ xenial main multiverse restricted universe</span><br><span class="line"></span><br><span class="line"># See http://help.ubuntu.com/community/UpgradeNotes for how to upgrade to</span><br><span class="line"># newer versions of the distribution.</span><br><span class="line">deb [arch=amd64,i386] http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial main restricted</span><br><span class="line"># deb-src http://cn.archive.ubuntu.com/ubuntu/ xenial main restricted</span><br><span class="line"></span><br><span class="line">## Major bug fix updates produced after the final release of the</span><br><span class="line">## distribution.</span><br><span class="line">deb [arch=amd64,i386] http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-updates main restricted</span><br><span class="line"># deb-src http://cn.archive.ubuntu.com/ubuntu/ xenial-updates main restricted</span><br><span class="line"></span><br><span class="line">## N.B. software from this repository is ENTIRELY UNSUPPORTED by the Ubuntu</span><br><span class="line">## team. Also, please note that software in universe WILL NOT receive any</span><br><span class="line">## review or updates from the Ubuntu security team.</span><br><span class="line">deb [arch=amd64,i386] http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial universe</span><br><span class="line"># deb-src http://cn.archive.ubuntu.com/ubuntu/ xenial universe</span><br><span class="line">deb [arch=amd64,i386] http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-updates universe</span><br><span class="line"># deb-src http://cn.archive.ubuntu.com/ubuntu/ xenial-updates universe</span><br><span class="line"></span><br><span class="line">## N.B. software from this repository is ENTIRELY UNSUPPORTED by the Ubuntu </span><br><span class="line">## team, and may not be under a free licence. Please satisfy yourself as to </span><br><span class="line">## your rights to use the software. Also, please note that software in </span><br><span class="line">## multiverse WILL NOT receive any review or updates from the Ubuntu</span><br><span class="line">## security team.</span><br><span class="line">deb [arch=amd64,i386] http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial multiverse</span><br><span class="line"># deb-src http://cn.archive.ubuntu.com/ubuntu/ xenial multiverse</span><br><span class="line">deb [arch=amd64,i386] http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-updates multiverse</span><br><span class="line"># deb-src http://cn.archive.ubuntu.com/ubuntu/ xenial-updates multiverse</span><br><span class="line"></span><br><span class="line">## N.B. software from this repository may not have been tested as</span><br><span class="line">## extensively as that contained in the main release, although it includes</span><br><span class="line">## newer versions of some applications which may provide useful features.</span><br><span class="line">## Also, please note that software in backports WILL NOT receive any review</span><br><span class="line">## or updates from the Ubuntu security team.</span><br><span class="line">deb [arch=amd64,i386] http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-backports main restricted universe multiverse</span><br><span class="line"># deb-src http://cn.archive.ubuntu.com/ubuntu/ xenial-backports main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">## Uncomment the following two lines to add software from Canonical&#x27;s</span><br><span class="line">## &#x27;partner&#x27; repository.</span><br><span class="line">## This software is not part of Ubuntu, but is offered by Canonical and the</span><br><span class="line">## respective vendors as a service to Ubuntu users.</span><br><span class="line"># deb http://archive.canonical.com/ubuntu xenial partner</span><br><span class="line"># deb-src http://archive.canonical.com/ubuntu xenial partner</span><br><span class="line"></span><br><span class="line">deb [arch=amd64,i386] http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-security main restricted</span><br><span class="line"># deb-src http://security.ubuntu.com/ubuntu xenial-security main restricted</span><br><span class="line">deb [arch=amd64,i386] http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-security universe</span><br><span class="line"># deb-src http://security.ubuntu.com/ubuntu xenial-security universe</span><br><span class="line">deb [arch=amd64,i386] http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-security multiverse</span><br><span class="line"># deb-src http://security.ubuntu.com/ubuntu xenial-security multiverse</span><br><span class="line"># deb-src http://archive.ubuntu.com/ubuntu xenial universe</span><br><span class="line">deb  [arch=amd64,i386]  http://archive.ubuntu.com/ubuntu xenial universe</span><br><span class="line"># deb-src http://archive.ubuntu.com/ubuntu xenial universe</span><br></pre></td></tr></table></figure>
-
-
-
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
       </categories>
   </entry>
   <entry>
@@ -2804,57 +2804,6 @@ apt-get install libusb-1.0-0-dev
 <p>• Xiong, Caiming, Stephen Merity, and Richard Socher. “Dynamic Memory Networks for Visual and Textual Question Answering.” arXiv:1603.01417 (2016).<br>• Mateusz Malinowski, Marcus Rohrbach, Mario Fritz, Ask Your Neurons: A Neural-based Approach to Answering Questions about Images, arXiv:1505.01121.<br>• Stanislaw Antol, Aishwarya Agrawal, Jiasen Lu, Margaret Mitchell, Dhruv Batra, C. Lawrence Zitnick, Devi Parikh, VQA: Visual Question Answering, CVPR, 2015 SUNw:Scene Understanding workshop.<br>• Hauyuan Gao, Junhua Mao, Jie Zhou, Zhiheng Huang, Lei Wang, Wei Xu, Are You Talking to a Machine? Dataset and Methods for Multilingual Image Question Answering, arXiv:1505.05612.<br>• Hyeonwoo Noh, Paul Hongsuck Seo, and Bohyung Han, Image Question Answering using Convolutional Neural Network with Dynamic Parameter Prediction, arXiv:1511.05765<br>• Yang, Z., He, X., Gao, J., Deng, L., &amp; Smola, A. (2015). Stacked Attention Networks for Image Question Answering. arXiv:1511.02274.<br>• Jin-Hwa Kim, Sang-Woo Lee, Dong-Hyun Kwak, Min-Oh Heo, Jeonghee Kim, Jung-Woo Ha, Byoung-Tak Zhang, Multimodal Residual Learning for Visual QA, arXiv:1606:01455<br>• Hyeonwoo Noh and Bohyung Han, Training Recurrent Answering Units with Joint Loss Minimization for VQA, arXiv:1606.03647<br>• Jin-Hwa Kim, Kyoung Woon On, Jeonghee Kim, Jung-Woo Ha, Byoung-Tak Zhang, Hadamard Product for Low-rank Bilinear Pooling, arXiv:1610.04325. </p>
 <h4 id="5-Mask-R-CNN"><a href="#5-Mask-R-CNN" class="headerlink" title="(5) Mask-R-CNN"></a>(5) Mask-R-CNN</h4><p>另外还有一篇是刚刚出来的 Mask RCNN，也是比较火。</p>
 <p>文章在这里 <a href="https://arxiv.org/abs/1703.06870">https://arxiv.org/abs/1703.06870</a><br>具体中文讨论在这里 <a href="https://www.zhihu.com/question/57403701">https://www.zhihu.com/question/57403701</a><br>但是，没有代码，我们组也在复现中 </p>
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>不推荐购买创想三维 Creality Sermoon V1 的几个理由</title>
-    <url>/post/do-not-buy-sermoon-v1/</url>
-    <content><![CDATA[<blockquote>
-<p>看过 [<a href="https://www.zhihu.com/zvideo/1457409894764335104">阿文君的视频</a>] 买了 <code>Sermoon V1</code>。体验过后感觉比较玩具、拓展性也比较差，在这里提出几个不该买的理由。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="0x01-缺少-Linear-Advance-（压力提前-线性推进）-的支持"><a href="#0x01-缺少-Linear-Advance-（压力提前-线性推进）-的支持" class="headerlink" title="0x01 缺少 Linear Advance （压力提前/线性推进） 的支持"></a>0x01 缺少 Linear Advance （压力提前/线性推进） 的支持</h2><p><code>准确的 Linear Advance 的校准是打印一个优秀模型的重要因素</code></p>
-<p>默认情况下，挤出机以线性方式工作。但挤出机不是线性系统，明显会导致在每一步打印后挤出额外材料，并且在下一步开始打印时材料不够。（下图表示了打印机在加速减速的过程，在2处材料挤出不够，且在4、5处产生堆料）</p>
-<p><img data-src="http://qiniu.s1nh.org/sermoon-v1-k-factor_low.png"></p>
-<p>使用 Linear Advance 的优点：</p>
-<ul>
-<li>减少粗糙的边缘，尺寸精度更高。</li>
-<li>可以在不损失任何打印质量的情况下实现更高的打印速度。</li>
-<li>即使在较低的打印速度下，打印质量也会得到提高。</li>
-<li>获得更锋利的边缘。</li>
-</ul>
-<p>网络有很多矫正线性推进的教程，比如：</p>
-<ul>
-<li><a href="https://www.bilibili.com/video/BV1Z94y1U7UL">3D打印机klipper在Voron0.1机器上进行挤出机压力提前测试和校准：新手教程</a></li>
-<li><a href="https://www.bilibili.com/video/BV18541117Yk">【klipper】3D打印机挤出机压力提前测试和校准【3集全】拐角膨胀和起始点分离修正办法</a></li>
-</ul>
-<p>Marlin 官网也提供了详细的<a href="https://marlinfw.org/docs/features/lin_advance.html">调整教程</a></p>
-<p>然而我们的 Sermoon V1 不支持此功能，无法进行调整。我打电话到厂家，给的答复也是“不开源” “没有你想要的固件”</p>
-<h2 id="0x02-糟糕的散热"><a href="#0x02-糟糕的散热" class="headerlink" title="0x02 糟糕的散热"></a>0x02 糟糕的散热</h2><p>此机器的精灵挤出机主体跟 Ender3 S1 的相同，但附件不同。V1挤出机的附件有个致命缺陷散热风扇从底部吸入热空气再给模型降温，缺点是散热很差，在<a href="https://fl.himi3d.cn/d/439-bensermoon-v1">这篇文章</a>有讨论。有几种方式可以改造散热，我做了一版，调试好后会放出来（下图左上。另外：<code>右下黑</code>，原厂；右上黄，<a href="https://fl.himi3d.cn/d/426-bengo10-ender3-s1">S1 风道</a>；左下白，<a href="https://www.crealitycloud.cn/model-detail/626821aac54f1758304dc951">风扇侧装</a>）。</p>
-<p><img data-src="http://qiniu.s1nh.org/sermoon-v1-fan.jpg"></p>
-<p>另外，个人对于挤出机的排线耐久性持怀疑态度，加热棒的大电流不知道会不会导致排线老化。</p>
-<h2 id="0x03-鸡肋的-wifi-功能"><a href="#0x03-鸡肋的-wifi-功能" class="headerlink" title="0x03 鸡肋的 wifi 功能"></a>0x03 鸡肋的 wifi 功能</h2><p>Sermoon V1 自带一个 wifi 板子（下图中间绿色的电路板），功能很弱鸡。比如录像没办法下载，官方给的答复是可以<code>打开手机的录屏功能</code>。</p>
-<p><img data-src="http://qiniu.s1nh.org/sermoon-v1-whole.png"></p>
-<p>我已经把它换成树莓派了，<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2sh1t/mod_octoprint_setup_for_the_creality_sermoon_v1/">有手就能改</a>，可以安装 octoprint 以支持更强大的 <code>wifi</code> <code>远程监控</code> <code>延时摄影</code> 等功能。</p>
-<iframe src="//player.bilibili.com/player.html?aid=342230292&bvid=BV1194y1m7y7&cid=735894030&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-
-<h2 id="0x04-不开源的主控板"><a href="#0x04-不开源的主控板" class="headerlink" title="0x04 不开源的主控板"></a>0x04 不开源的主控板</h2><p>机器左下角的主板基于开源的 <code>Marlin 1</code> 固件魔改而成，<code>Marlin</code> 固件基于 <code>GPL v3</code> 协议，简单来说就是 <code>你可以免费使用、复制、修改、分发受保护程序，但分发时一定要提供源码</code>。然而此主板不提供源码，后果就是我们只能使用老旧的 Marlin 第一代固件，没办法自行升级到 2.0 以上版本，或者最近流行的<code>klipper</code>固件。</p>
-<ul>
-<li>国外有个哥们请求开源，被直接关闭了issue <a href="https://github.com/CrealityOfficial/Ender-3S1/issues/2">链接</a></li>
-<li>无法校准挤出机<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/ui2u5v/how_to_calibrate_extruder_esteps_z_axis_baby/">链接</a></li>
-<li><a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2stxx/sermoon_v1_and_v1_pro_general_info_thoughts/">这里</a> 有一些讨论</li>
-<li><a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2toy2/marlin_stock_firmware_notes_from_the_sermoon_v1/">这里</a>有一些关于固件的信息</li>
-</ul>
-<h2 id="0x05-无用的-pro-版本"><a href="#0x05-无用的-pro-版本" class="headerlink" title="0x05 无用的 pro 版本"></a>0x05 无用的 pro 版本</h2><p>它的 pro 版本包含开盖暂停和相机功能，然而</p>
-<ul>
-<li>开盖暂停/断料检测只在SD卡打印时有效；</li>
-<li>摄像头会经常断线（国外有人讨论过可能是这种摄像头不支持在高温环境下工作[<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2stxx/sermoon_v1_and_v1_pro_general_info_thoughts/i2r7irn/?utm_source=reddit&utm_medium=web2x&context=3">链接</a>]）。</li>
-</ul>
-<h2 id="0x06-吵"><a href="#0x06-吵" class="headerlink" title="0x06 吵"></a>0x06 吵</h2><p>这款机器主打静音，但你买了以后就知道给主板散热的小风扇有多吵了。我已经拔风扇插头了，目前没出现什么问题（后盖打开，26度空调）。</p>
 ]]></content>
       <categories>
         <category>算法与硬件</category>
@@ -3615,6 +3564,57 @@ apt-get install libusb-1.0-0-dev
 ]]></content>
       <categories>
         <category>其它笔记</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>不推荐购买创想三维 Creality Sermoon V1 的几个理由</title>
+    <url>/post/do-not-buy-sermoon-v1/</url>
+    <content><![CDATA[<blockquote>
+<p>看过 [<a href="https://www.zhihu.com/zvideo/1457409894764335104">阿文君的视频</a>] 买了 <code>Sermoon V1</code>。体验过后感觉比较玩具、拓展性也比较差，在这里提出几个不该买的理由。</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="0x01-缺少-Linear-Advance-（压力提前-线性推进）-的支持"><a href="#0x01-缺少-Linear-Advance-（压力提前-线性推进）-的支持" class="headerlink" title="0x01 缺少 Linear Advance （压力提前/线性推进） 的支持"></a>0x01 缺少 Linear Advance （压力提前/线性推进） 的支持</h2><p><code>准确的 Linear Advance 的校准是打印一个优秀模型的重要因素</code></p>
+<p>默认情况下，挤出机以线性方式工作。但挤出机不是线性系统，明显会导致在每一步打印后挤出额外材料，并且在下一步开始打印时材料不够。（下图表示了打印机在加速减速的过程，在2处材料挤出不够，且在4、5处产生堆料）</p>
+<p><img data-src="http://qiniu.s1nh.org/sermoon-v1-k-factor_low.png"></p>
+<p>使用 Linear Advance 的优点：</p>
+<ul>
+<li>减少粗糙的边缘，尺寸精度更高。</li>
+<li>可以在不损失任何打印质量的情况下实现更高的打印速度。</li>
+<li>即使在较低的打印速度下，打印质量也会得到提高。</li>
+<li>获得更锋利的边缘。</li>
+</ul>
+<p>网络有很多矫正线性推进的教程，比如：</p>
+<ul>
+<li><a href="https://www.bilibili.com/video/BV1Z94y1U7UL">3D打印机klipper在Voron0.1机器上进行挤出机压力提前测试和校准：新手教程</a></li>
+<li><a href="https://www.bilibili.com/video/BV18541117Yk">【klipper】3D打印机挤出机压力提前测试和校准【3集全】拐角膨胀和起始点分离修正办法</a></li>
+</ul>
+<p>Marlin 官网也提供了详细的<a href="https://marlinfw.org/docs/features/lin_advance.html">调整教程</a></p>
+<p>然而我们的 Sermoon V1 不支持此功能，无法进行调整。我打电话到厂家，给的答复也是“不开源” “没有你想要的固件”</p>
+<h2 id="0x02-糟糕的散热"><a href="#0x02-糟糕的散热" class="headerlink" title="0x02 糟糕的散热"></a>0x02 糟糕的散热</h2><p>此机器的精灵挤出机主体跟 Ender3 S1 的相同，但附件不同。V1挤出机的附件有个致命缺陷散热风扇从底部吸入热空气再给模型降温，缺点是散热很差，在<a href="https://fl.himi3d.cn/d/439-bensermoon-v1">这篇文章</a>有讨论。有几种方式可以改造散热，我做了一版，调试好后会放出来（下图左上。另外：<code>右下黑</code>，原厂；右上黄，<a href="https://fl.himi3d.cn/d/426-bengo10-ender3-s1">S1 风道</a>；左下白，<a href="https://www.crealitycloud.cn/model-detail/626821aac54f1758304dc951">风扇侧装</a>）。</p>
+<p><img data-src="http://qiniu.s1nh.org/sermoon-v1-fan.jpg"></p>
+<p>另外，个人对于挤出机的排线耐久性持怀疑态度，加热棒的大电流不知道会不会导致排线老化。</p>
+<h2 id="0x03-鸡肋的-wifi-功能"><a href="#0x03-鸡肋的-wifi-功能" class="headerlink" title="0x03 鸡肋的 wifi 功能"></a>0x03 鸡肋的 wifi 功能</h2><p>Sermoon V1 自带一个 wifi 板子（下图中间绿色的电路板），功能很弱鸡。比如录像没办法下载，官方给的答复是可以<code>打开手机的录屏功能</code>。</p>
+<p><img data-src="http://qiniu.s1nh.org/sermoon-v1-whole.png"></p>
+<p>我已经把它换成树莓派了，<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2sh1t/mod_octoprint_setup_for_the_creality_sermoon_v1/">有手就能改</a>，可以安装 octoprint 以支持更强大的 <code>wifi</code> <code>远程监控</code> <code>延时摄影</code> 等功能。</p>
+<iframe src="//player.bilibili.com/player.html?aid=342230292&bvid=BV1194y1m7y7&cid=735894030&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+<h2 id="0x04-不开源的主控板"><a href="#0x04-不开源的主控板" class="headerlink" title="0x04 不开源的主控板"></a>0x04 不开源的主控板</h2><p>机器左下角的主板基于开源的 <code>Marlin 1</code> 固件魔改而成，<code>Marlin</code> 固件基于 <code>GPL v3</code> 协议，简单来说就是 <code>你可以免费使用、复制、修改、分发受保护程序，但分发时一定要提供源码</code>。然而此主板不提供源码，后果就是我们只能使用老旧的 Marlin 第一代固件，没办法自行升级到 2.0 以上版本，或者最近流行的<code>klipper</code>固件。</p>
+<ul>
+<li>国外有个哥们请求开源，被直接关闭了issue <a href="https://github.com/CrealityOfficial/Ender-3S1/issues/2">链接</a></li>
+<li>无法校准挤出机<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/ui2u5v/how_to_calibrate_extruder_esteps_z_axis_baby/">链接</a></li>
+<li><a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2stxx/sermoon_v1_and_v1_pro_general_info_thoughts/">这里</a> 有一些讨论</li>
+<li><a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2toy2/marlin_stock_firmware_notes_from_the_sermoon_v1/">这里</a>有一些关于固件的信息</li>
+</ul>
+<h2 id="0x05-无用的-pro-版本"><a href="#0x05-无用的-pro-版本" class="headerlink" title="0x05 无用的 pro 版本"></a>0x05 无用的 pro 版本</h2><p>它的 pro 版本包含开盖暂停和相机功能，然而</p>
+<ul>
+<li>开盖暂停/断料检测只在SD卡打印时有效；</li>
+<li>摄像头会经常断线（国外有人讨论过可能是这种摄像头不支持在高温环境下工作[<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2stxx/sermoon_v1_and_v1_pro_general_info_thoughts/i2r7irn/?utm_source=reddit&utm_medium=web2x&context=3">链接</a>]）。</li>
+</ul>
+<h2 id="0x06-吵"><a href="#0x06-吵" class="headerlink" title="0x06 吵"></a>0x06 吵</h2><p>这款机器主打静音，但你买了以后就知道给主板散热的小风扇有多吵了。我已经拔风扇插头了，目前没出现什么问题（后盖打开，26度空调）。</p>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
       </categories>
   </entry>
   <entry>
@@ -4400,6 +4400,30 @@ try to remove and create again
       </categories>
   </entry>
   <entry>
+    <title>「Jetson Nano」 Reduce Memory Usage</title>
+    <url>/post/jetson-nano-reduce-memory-usage/</url>
+    <content><![CDATA[<blockquote>
+<p>Nano 的4G内存太小了（最近还出来一个2G版nano &gt;_&lt;），模型跑不动的患者可以通过以下几个步骤减少内存消耗。</p>
+</blockquote>
+<p><strong>1. 关闭用户图形界面</strong><br>sudo systemctl set-default multi-user.target<br>sudo reboot</p>
+<p>开启用户图形界面<br>sudo systemctl set-default graphical.target<br>sudo reboot</p>
+<p><strong>2. 切换图形界面</strong><br>默认图形界面为Unity，Ubuntu 18 系统自带Gnome3，可切换到 lxde 以节约内存。</p>
+<ul>
+<li>GNOME3 :1047M</li>
+<li>Unity: 517M</li>
+<li>xfce: 247M</li>
+<li>lxde: 214M</li>
+</ul>
+<p><strong>3. 关闭 dockerd 节约 49M</strong></p>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+      <tags>
+        <tag>Jetson</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Inference using TensorRT Backend.</title>
     <url>/post/inference-using-tensorrt-backend/</url>
     <content><![CDATA[<h2 id="0x01-Tensorflow-2-0"><a href="#0x01-Tensorflow-2-0" class="headerlink" title="0x01 Tensorflow 2.0"></a>0x01 Tensorflow 2.0</h2><h3 id="1-1-Convert"><a href="#1-1-Convert" class="headerlink" title="1.1. Convert"></a>1.1. Convert</h3><p><strong>keras hdf5 –&gt; .pb</strong></p>
@@ -4428,30 +4452,6 @@ try to remove and create again
       </categories>
       <tags>
         <tag>边缘计算</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>「Jetson Nano」 Reduce Memory Usage</title>
-    <url>/post/jetson-nano-reduce-memory-usage/</url>
-    <content><![CDATA[<blockquote>
-<p>Nano 的4G内存太小了（最近还出来一个2G版nano &gt;_&lt;），模型跑不动的患者可以通过以下几个步骤减少内存消耗。</p>
-</blockquote>
-<p><strong>1. 关闭用户图形界面</strong><br>sudo systemctl set-default multi-user.target<br>sudo reboot</p>
-<p>开启用户图形界面<br>sudo systemctl set-default graphical.target<br>sudo reboot</p>
-<p><strong>2. 切换图形界面</strong><br>默认图形界面为Unity，Ubuntu 18 系统自带Gnome3，可切换到 lxde 以节约内存。</p>
-<ul>
-<li>GNOME3 :1047M</li>
-<li>Unity: 517M</li>
-<li>xfce: 247M</li>
-<li>lxde: 214M</li>
-</ul>
-<p><strong>3. 关闭 dockerd 节约 49M</strong></p>
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
-      </categories>
-      <tags>
-        <tag>Jetson</tag>
       </tags>
   </entry>
   <entry>
