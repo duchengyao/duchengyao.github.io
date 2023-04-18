@@ -2080,7 +2080,7 @@ apt-get install libusb-1.0-0-dev
 <p>d. 打磨外壳的一个限位槽，使得旋钮可以拧出超过D的位置。（这一步没拍图）</p>
 <p>e. 重新装回组件。</p>
 <h2 id="0x02-MultiEcuScan"><a href="#0x02-MultiEcuScan" class="headerlink" title="0x02 MultiEcuScan"></a>0x02 MultiEcuScan</h2><blockquote>
-<p>购买 Multiecuscan 需要 <code>50欧</code> ，或联系我给你个破解版 <code>wx:hbyls_</code> </p>
+<p>购买 Multiecuscan 需要 <code>50欧</code> ，或打赏我然后加我微信<code>s1nh_com</code> 给你个破解版 </p>
 <p><a href="https://www.multiecuscan.net/">Multiecuscan</a> 是一个支持 <code>Alfa Romeo</code> <code>Fiat</code> <code>Lancia</code> <code>Chrysler</code> <code>Dodge</code> <code>Jeep</code> <code>Suzuki</code> 的 OBD 诊断软件，类似修理厂的诊断电脑。</p>
 </blockquote>
 <p>使用此软件需要 ELM 327 OBD 接口，和 OBD 跳线，参考我的购买截图。（更便宜的ELM327接口应该也可以使用，但可能需要<a href="http://forum.multiecuscan.net/viewtopic.php?f=5&t=1493">参考这篇文章</a>去掉一个电阻）</p>
