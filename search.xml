@@ -697,33 +697,6 @@ root@kali:~# depmod -a -v &quot;3.8.13-bone53&quot;
       </categories>
   </entry>
   <entry>
-    <title>Fender S-1 开关的接法</title>
-    <url>/post/Fender_S-1_WiringDiagram/</url>
-    <content><![CDATA[<p>最近在改造吉他的电路，搜集了一些关于拾音器电路的网站：</p>
-<span id="more"></span>
-
-<ul>
-<li><a href="http://www.seymourduncan.com/support/wiring-diagrams/">Seymour Duncan wiring-diagrams/</a>：Seymour Duncan 官方的电路参考，在这里可以找到各种配置的电路，特别强大。这个网站刚刚改版，看起来比之前人性化许多。</li>
-<li><a href="http://www.deluxeguitar.com/">Deluxe Guitar</a>：包含了美豪的电路、琴颈形状、旋钮、音色试听等各种信息。</li>
-<li><a href="http://guitarwiring.blogspot.jp/">The Guitar Wiring Blog</a>：各种各样奇奇怪怪的吉他电路图。</li>
-<li><a href="http://www.premierguitar.com/articles/Mod_Garage_The_Fender_S_1_Switching_System">Mod Garage The Fender S-1 Switching System</a>：这个帖子是介绍S-1开关的</li>
-</ul>
-<p>下面是从fender官网搜集的4个不同型号的Fender Deluxe St电路图：</p>
-<p><a href="http://qiniu.s1nh.org/Blog_011-8102A_SISD.pdf">011-8102A_SISD.pdf</a></p>
-<p><a href="http://qiniu.s1nh.org/Blog_011-9000B_SISD.pdf">011-9000B_SISD.pdf</a></p>
-<p><a href="http://qiniu.s1nh.org/Blog_011-9100A_SISD.pdf">011-9100A_SISD.pdf</a></p>
-<p><a href="http://qiniu.s1nh.org/Blog_Fender_Am_Dlx_Stratocaster_HSS_Shawbucker_011911XXXX_Service_Manual.pdf">Fender_011911XXXX_Service_Manual.pdf</a></p>
-]]></content>
-      <categories>
-        <category>音乐相关</category>
-      </categories>
-      <tags>
-        <tag>fender</tag>
-        <tag>wiring diagram</tag>
-        <tag>S1</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Github 支持除代码以外的文件格式</title>
     <url>/post/Github-non-code-files/</url>
     <content><![CDATA[<p>Github 支持图片, geoJSON, 3D模型, 表格, PDF等格式的查看和版本对比。</p>
@@ -762,6 +735,33 @@ root@kali:~# depmod -a -v &quot;3.8.13-bone53&quot;
       </categories>
       <tags>
         <tag>Github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Fender S-1 开关的接法</title>
+    <url>/post/Fender_S-1_WiringDiagram/</url>
+    <content><![CDATA[<p>最近在改造吉他的电路，搜集了一些关于拾音器电路的网站：</p>
+<span id="more"></span>
+
+<ul>
+<li><a href="http://www.seymourduncan.com/support/wiring-diagrams/">Seymour Duncan wiring-diagrams/</a>：Seymour Duncan 官方的电路参考，在这里可以找到各种配置的电路，特别强大。这个网站刚刚改版，看起来比之前人性化许多。</li>
+<li><a href="http://www.deluxeguitar.com/">Deluxe Guitar</a>：包含了美豪的电路、琴颈形状、旋钮、音色试听等各种信息。</li>
+<li><a href="http://guitarwiring.blogspot.jp/">The Guitar Wiring Blog</a>：各种各样奇奇怪怪的吉他电路图。</li>
+<li><a href="http://www.premierguitar.com/articles/Mod_Garage_The_Fender_S_1_Switching_System">Mod Garage The Fender S-1 Switching System</a>：这个帖子是介绍S-1开关的</li>
+</ul>
+<p>下面是从fender官网搜集的4个不同型号的Fender Deluxe St电路图：</p>
+<p><a href="http://qiniu.s1nh.org/Blog_011-8102A_SISD.pdf">011-8102A_SISD.pdf</a></p>
+<p><a href="http://qiniu.s1nh.org/Blog_011-9000B_SISD.pdf">011-9000B_SISD.pdf</a></p>
+<p><a href="http://qiniu.s1nh.org/Blog_011-9100A_SISD.pdf">011-9100A_SISD.pdf</a></p>
+<p><a href="http://qiniu.s1nh.org/Blog_Fender_Am_Dlx_Stratocaster_HSS_Shawbucker_011911XXXX_Service_Manual.pdf">Fender_011911XXXX_Service_Manual.pdf</a></p>
+]]></content>
+      <categories>
+        <category>音乐相关</category>
+      </categories>
+      <tags>
+        <tag>fender</tag>
+        <tag>wiring diagram</tag>
+        <tag>S1</tag>
       </tags>
   </entry>
   <entry>
@@ -2110,27 +2110,6 @@ apt-get install libusb-1.0-0-dev
       </tags>
   </entry>
   <entry>
-    <title>安装NVIDIA Jetpack/DriveInstall后，apt-get 报错无arm64源</title>
-    <url>/post/arm64-after-jetpack/</url>
-    <content><![CDATA[<blockquote>
-<p>网上的解决方案大多是<code>删除已经安装的arm64包，然后执行dpkg --remove-architecture arm64</code>，但是错误在下次刷机后依然会出现</p>
-</blockquote>
-<span id="more"></span>
-
-<p>使用NVIDIA Jetson TX1/TX2，Drive PX2 的同学在刷完机以后，宿主机的apt-get无法正确使用。原因是自带的刷机包（Jetpack/DriveInstall）给系统安装了arm64的软件包，报错如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> Err:29 http://archive.ubuntu.com/ubuntu xenial/main arm64 Packages</span><br><span class="line">  404  Not Found [IP: 91.189.88.161 80]</span><br><span class="line">Ign:37 http://archive.ubuntu.com/ubuntu xenial/universe arm64 Packages</span><br><span class="line">Ign:40 http://archive.ubuntu.com/ubuntu xenial/multiverse arm64 Packages</span><br><span class="line">Err:46 http://archive.ubuntu.com/ubuntu xenial-updates/main arm64 Packages</span><br><span class="line">  404  Not Found [IP: 91.189.88.161 80]</span><br><span class="line">Ign:56 http://archive.ubuntu.com/ubuntu xenial-updates/universe arm64 Packages</span><br><span class="line">Ign:62 http://archive.ubuntu.com/ubuntu xenial-updates/multiverse arm64 Packages</span><br><span class="line">Err:68 http://archive.ubuntu.com/ubuntu xenial-backports/main arm64 Packages</span><br><span class="line">  404  Not Found [IP: 91.189.88.161 80]</span><br><span class="line">Ign:75 http://archive.ubuntu.com/ubuntu xenial-backports/universe arm64 Packages</span><br><span class="line">Err:83 http://archive.ubuntu.com/ubuntu xenial-security/main arm64 Packages</span><br><span class="line">  404  Not Found [IP: 91.189.88.161 80]</span><br><span class="line">Ign:93 http://archive.ubuntu.com/ubuntu xenial-security/universe arm64 Packages</span><br><span class="line">Ign:99 http://archive.ubuntu.com/ubuntu xenial-security/multiverse arm64 Packages</span><br></pre></td></tr></table></figure>
-
-<p>正确的解决方案为，修改<code>/etc/apt/source.list</code>在每一行的<code>deb</code>和<code>http://×××</code>中间加入<code>[arch=amd64,i386]</code>，修改后的<code>source.list</code>文件如下（仅供参考，请按需修改）：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># deb cdrom:[Xubuntu 16.04.4 LTS _Xenial Xerus_ - Release amd64 (20180228)]/ xenial main multiverse restricted universe</span><br><span class="line"></span><br><span class="line"># See http://help.ubuntu.com/community/UpgradeNotes for how to upgrade to</span><br><span class="line"># newer versions of the distribution.</span><br><span class="line">deb [arch=amd64,i386] http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial main restricted</span><br><span class="line"># deb-src http://cn.archive.ubuntu.com/ubuntu/ xenial main restricted</span><br><span class="line"></span><br><span class="line">## Major bug fix updates produced after the final release of the</span><br><span class="line">## distribution.</span><br><span class="line">deb [arch=amd64,i386] http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-updates main restricted</span><br><span class="line"># deb-src http://cn.archive.ubuntu.com/ubuntu/ xenial-updates main restricted</span><br><span class="line"></span><br><span class="line">## N.B. software from this repository is ENTIRELY UNSUPPORTED by the Ubuntu</span><br><span class="line">## team. Also, please note that software in universe WILL NOT receive any</span><br><span class="line">## review or updates from the Ubuntu security team.</span><br><span class="line">deb [arch=amd64,i386] http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial universe</span><br><span class="line"># deb-src http://cn.archive.ubuntu.com/ubuntu/ xenial universe</span><br><span class="line">deb [arch=amd64,i386] http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-updates universe</span><br><span class="line"># deb-src http://cn.archive.ubuntu.com/ubuntu/ xenial-updates universe</span><br><span class="line"></span><br><span class="line">## N.B. software from this repository is ENTIRELY UNSUPPORTED by the Ubuntu </span><br><span class="line">## team, and may not be under a free licence. Please satisfy yourself as to </span><br><span class="line">## your rights to use the software. Also, please note that software in </span><br><span class="line">## multiverse WILL NOT receive any review or updates from the Ubuntu</span><br><span class="line">## security team.</span><br><span class="line">deb [arch=amd64,i386] http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial multiverse</span><br><span class="line"># deb-src http://cn.archive.ubuntu.com/ubuntu/ xenial multiverse</span><br><span class="line">deb [arch=amd64,i386] http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-updates multiverse</span><br><span class="line"># deb-src http://cn.archive.ubuntu.com/ubuntu/ xenial-updates multiverse</span><br><span class="line"></span><br><span class="line">## N.B. software from this repository may not have been tested as</span><br><span class="line">## extensively as that contained in the main release, although it includes</span><br><span class="line">## newer versions of some applications which may provide useful features.</span><br><span class="line">## Also, please note that software in backports WILL NOT receive any review</span><br><span class="line">## or updates from the Ubuntu security team.</span><br><span class="line">deb [arch=amd64,i386] http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-backports main restricted universe multiverse</span><br><span class="line"># deb-src http://cn.archive.ubuntu.com/ubuntu/ xenial-backports main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">## Uncomment the following two lines to add software from Canonical&#x27;s</span><br><span class="line">## &#x27;partner&#x27; repository.</span><br><span class="line">## This software is not part of Ubuntu, but is offered by Canonical and the</span><br><span class="line">## respective vendors as a service to Ubuntu users.</span><br><span class="line"># deb http://archive.canonical.com/ubuntu xenial partner</span><br><span class="line"># deb-src http://archive.canonical.com/ubuntu xenial partner</span><br><span class="line"></span><br><span class="line">deb [arch=amd64,i386] http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-security main restricted</span><br><span class="line"># deb-src http://security.ubuntu.com/ubuntu xenial-security main restricted</span><br><span class="line">deb [arch=amd64,i386] http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-security universe</span><br><span class="line"># deb-src http://security.ubuntu.com/ubuntu xenial-security universe</span><br><span class="line">deb [arch=amd64,i386] http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-security multiverse</span><br><span class="line"># deb-src http://security.ubuntu.com/ubuntu xenial-security multiverse</span><br><span class="line"># deb-src http://archive.ubuntu.com/ubuntu xenial universe</span><br><span class="line">deb  [arch=amd64,i386]  http://archive.ubuntu.com/ubuntu xenial universe</span><br><span class="line"># deb-src http://archive.ubuntu.com/ubuntu xenial universe</span><br></pre></td></tr></table></figure>
-
-
-
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Alfa Romeo Stelvio 灯光开关拆解，允许大灯保持关闭</title>
     <url>/post/alfa-romeo-stelvio-highlight-disassembly/</url>
     <content><![CDATA[<blockquote>
@@ -2155,6 +2134,27 @@ apt-get install libusb-1.0-0-dev
 ]]></content>
       <categories>
         <category>赛车</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>安装NVIDIA Jetpack/DriveInstall后，apt-get 报错无arm64源</title>
+    <url>/post/arm64-after-jetpack/</url>
+    <content><![CDATA[<blockquote>
+<p>网上的解决方案大多是<code>删除已经安装的arm64包，然后执行dpkg --remove-architecture arm64</code>，但是错误在下次刷机后依然会出现</p>
+</blockquote>
+<span id="more"></span>
+
+<p>使用NVIDIA Jetson TX1/TX2，Drive PX2 的同学在刷完机以后，宿主机的apt-get无法正确使用。原因是自带的刷机包（Jetpack/DriveInstall）给系统安装了arm64的软件包，报错如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> Err:29 http://archive.ubuntu.com/ubuntu xenial/main arm64 Packages</span><br><span class="line">  404  Not Found [IP: 91.189.88.161 80]</span><br><span class="line">Ign:37 http://archive.ubuntu.com/ubuntu xenial/universe arm64 Packages</span><br><span class="line">Ign:40 http://archive.ubuntu.com/ubuntu xenial/multiverse arm64 Packages</span><br><span class="line">Err:46 http://archive.ubuntu.com/ubuntu xenial-updates/main arm64 Packages</span><br><span class="line">  404  Not Found [IP: 91.189.88.161 80]</span><br><span class="line">Ign:56 http://archive.ubuntu.com/ubuntu xenial-updates/universe arm64 Packages</span><br><span class="line">Ign:62 http://archive.ubuntu.com/ubuntu xenial-updates/multiverse arm64 Packages</span><br><span class="line">Err:68 http://archive.ubuntu.com/ubuntu xenial-backports/main arm64 Packages</span><br><span class="line">  404  Not Found [IP: 91.189.88.161 80]</span><br><span class="line">Ign:75 http://archive.ubuntu.com/ubuntu xenial-backports/universe arm64 Packages</span><br><span class="line">Err:83 http://archive.ubuntu.com/ubuntu xenial-security/main arm64 Packages</span><br><span class="line">  404  Not Found [IP: 91.189.88.161 80]</span><br><span class="line">Ign:93 http://archive.ubuntu.com/ubuntu xenial-security/universe arm64 Packages</span><br><span class="line">Ign:99 http://archive.ubuntu.com/ubuntu xenial-security/multiverse arm64 Packages</span><br></pre></td></tr></table></figure>
+
+<p>正确的解决方案为，修改<code>/etc/apt/source.list</code>在每一行的<code>deb</code>和<code>http://×××</code>中间加入<code>[arch=amd64,i386]</code>，修改后的<code>source.list</code>文件如下（仅供参考，请按需修改）：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># deb cdrom:[Xubuntu 16.04.4 LTS _Xenial Xerus_ - Release amd64 (20180228)]/ xenial main multiverse restricted universe</span><br><span class="line"></span><br><span class="line"># See http://help.ubuntu.com/community/UpgradeNotes for how to upgrade to</span><br><span class="line"># newer versions of the distribution.</span><br><span class="line">deb [arch=amd64,i386] http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial main restricted</span><br><span class="line"># deb-src http://cn.archive.ubuntu.com/ubuntu/ xenial main restricted</span><br><span class="line"></span><br><span class="line">## Major bug fix updates produced after the final release of the</span><br><span class="line">## distribution.</span><br><span class="line">deb [arch=amd64,i386] http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-updates main restricted</span><br><span class="line"># deb-src http://cn.archive.ubuntu.com/ubuntu/ xenial-updates main restricted</span><br><span class="line"></span><br><span class="line">## N.B. software from this repository is ENTIRELY UNSUPPORTED by the Ubuntu</span><br><span class="line">## team. Also, please note that software in universe WILL NOT receive any</span><br><span class="line">## review or updates from the Ubuntu security team.</span><br><span class="line">deb [arch=amd64,i386] http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial universe</span><br><span class="line"># deb-src http://cn.archive.ubuntu.com/ubuntu/ xenial universe</span><br><span class="line">deb [arch=amd64,i386] http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-updates universe</span><br><span class="line"># deb-src http://cn.archive.ubuntu.com/ubuntu/ xenial-updates universe</span><br><span class="line"></span><br><span class="line">## N.B. software from this repository is ENTIRELY UNSUPPORTED by the Ubuntu </span><br><span class="line">## team, and may not be under a free licence. Please satisfy yourself as to </span><br><span class="line">## your rights to use the software. Also, please note that software in </span><br><span class="line">## multiverse WILL NOT receive any review or updates from the Ubuntu</span><br><span class="line">## security team.</span><br><span class="line">deb [arch=amd64,i386] http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial multiverse</span><br><span class="line"># deb-src http://cn.archive.ubuntu.com/ubuntu/ xenial multiverse</span><br><span class="line">deb [arch=amd64,i386] http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-updates multiverse</span><br><span class="line"># deb-src http://cn.archive.ubuntu.com/ubuntu/ xenial-updates multiverse</span><br><span class="line"></span><br><span class="line">## N.B. software from this repository may not have been tested as</span><br><span class="line">## extensively as that contained in the main release, although it includes</span><br><span class="line">## newer versions of some applications which may provide useful features.</span><br><span class="line">## Also, please note that software in backports WILL NOT receive any review</span><br><span class="line">## or updates from the Ubuntu security team.</span><br><span class="line">deb [arch=amd64,i386] http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-backports main restricted universe multiverse</span><br><span class="line"># deb-src http://cn.archive.ubuntu.com/ubuntu/ xenial-backports main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">## Uncomment the following two lines to add software from Canonical&#x27;s</span><br><span class="line">## &#x27;partner&#x27; repository.</span><br><span class="line">## This software is not part of Ubuntu, but is offered by Canonical and the</span><br><span class="line">## respective vendors as a service to Ubuntu users.</span><br><span class="line"># deb http://archive.canonical.com/ubuntu xenial partner</span><br><span class="line"># deb-src http://archive.canonical.com/ubuntu xenial partner</span><br><span class="line"></span><br><span class="line">deb [arch=amd64,i386] http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-security main restricted</span><br><span class="line"># deb-src http://security.ubuntu.com/ubuntu xenial-security main restricted</span><br><span class="line">deb [arch=amd64,i386] http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-security universe</span><br><span class="line"># deb-src http://security.ubuntu.com/ubuntu xenial-security universe</span><br><span class="line">deb [arch=amd64,i386] http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-security multiverse</span><br><span class="line"># deb-src http://security.ubuntu.com/ubuntu xenial-security multiverse</span><br><span class="line"># deb-src http://archive.ubuntu.com/ubuntu xenial universe</span><br><span class="line">deb  [arch=amd64,i386]  http://archive.ubuntu.com/ubuntu xenial universe</span><br><span class="line"># deb-src http://archive.ubuntu.com/ubuntu xenial universe</span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
       </categories>
   </entry>
   <entry>
@@ -4400,30 +4400,6 @@ try to remove and create again
       </categories>
   </entry>
   <entry>
-    <title>「Jetson Nano」 Reduce Memory Usage</title>
-    <url>/post/jetson-nano-reduce-memory-usage/</url>
-    <content><![CDATA[<blockquote>
-<p>Nano 的4G内存太小了（最近还出来一个2G版nano &gt;_&lt;），模型跑不动的患者可以通过以下几个步骤减少内存消耗。</p>
-</blockquote>
-<p><strong>1. 关闭用户图形界面</strong><br>sudo systemctl set-default multi-user.target<br>sudo reboot</p>
-<p>开启用户图形界面<br>sudo systemctl set-default graphical.target<br>sudo reboot</p>
-<p><strong>2. 切换图形界面</strong><br>默认图形界面为Unity，Ubuntu 18 系统自带Gnome3，可切换到 lxde 以节约内存。</p>
-<ul>
-<li>GNOME3 :1047M</li>
-<li>Unity: 517M</li>
-<li>xfce: 247M</li>
-<li>lxde: 214M</li>
-</ul>
-<p><strong>3. 关闭 dockerd 节约 49M</strong></p>
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
-      </categories>
-      <tags>
-        <tag>Jetson</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Inference using TensorRT Backend.</title>
     <url>/post/inference-using-tensorrt-backend/</url>
     <content><![CDATA[<h2 id="0x01-Tensorflow-2-0"><a href="#0x01-Tensorflow-2-0" class="headerlink" title="0x01 Tensorflow 2.0"></a>0x01 Tensorflow 2.0</h2><h3 id="1-1-Convert"><a href="#1-1-Convert" class="headerlink" title="1.1. Convert"></a>1.1. Convert</h3><p><strong>keras hdf5 –&gt; .pb</strong></p>
@@ -4452,6 +4428,30 @@ try to remove and create again
       </categories>
       <tags>
         <tag>边缘计算</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>「Jetson Nano」 Reduce Memory Usage</title>
+    <url>/post/jetson-nano-reduce-memory-usage/</url>
+    <content><![CDATA[<blockquote>
+<p>Nano 的4G内存太小了（最近还出来一个2G版nano &gt;_&lt;），模型跑不动的患者可以通过以下几个步骤减少内存消耗。</p>
+</blockquote>
+<p><strong>1. 关闭用户图形界面</strong><br>sudo systemctl set-default multi-user.target<br>sudo reboot</p>
+<p>开启用户图形界面<br>sudo systemctl set-default graphical.target<br>sudo reboot</p>
+<p><strong>2. 切换图形界面</strong><br>默认图形界面为Unity，Ubuntu 18 系统自带Gnome3，可切换到 lxde 以节约内存。</p>
+<ul>
+<li>GNOME3 :1047M</li>
+<li>Unity: 517M</li>
+<li>xfce: 247M</li>
+<li>lxde: 214M</li>
+</ul>
+<p><strong>3. 关闭 dockerd 节约 49M</strong></p>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+      <tags>
+        <tag>Jetson</tag>
       </tags>
   </entry>
   <entry>

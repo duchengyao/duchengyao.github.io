@@ -17,9 +17,9 @@ if (CONFIG.matomo.enable) {
     _paq.push(['setTrackerUrl', u+'matomo.php']);
     
     if (document.domain.indexOf('com') != -1){
-      _paq.push(['setSiteId', '3']);
+      _paq.push(['setSiteId', '2']);
     } else if(document.domain.indexOf('org') != -1){
-      _paq.push(['setSiteId', '4']);
+      _paq.push(['setSiteId', '3']);
     }
     
     // Will also collect the website data into Website ID = 1
