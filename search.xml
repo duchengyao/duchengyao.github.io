@@ -697,6 +697,33 @@ root@kali:~# depmod -a -v &quot;3.8.13-bone53&quot;
       </categories>
   </entry>
   <entry>
+    <title>Fender S-1 开关的接法</title>
+    <url>/post/Fender_S-1_WiringDiagram/</url>
+    <content><![CDATA[<p>最近在改造吉他的电路，搜集了一些关于拾音器电路的网站：</p>
+<span id="more"></span>
+
+<ul>
+<li><a href="http://www.seymourduncan.com/support/wiring-diagrams/">Seymour Duncan wiring-diagrams/</a>：Seymour Duncan 官方的电路参考，在这里可以找到各种配置的电路，特别强大。这个网站刚刚改版，看起来比之前人性化许多。</li>
+<li><a href="http://www.deluxeguitar.com/">Deluxe Guitar</a>：包含了美豪的电路、琴颈形状、旋钮、音色试听等各种信息。</li>
+<li><a href="http://guitarwiring.blogspot.jp/">The Guitar Wiring Blog</a>：各种各样奇奇怪怪的吉他电路图。</li>
+<li><a href="http://www.premierguitar.com/articles/Mod_Garage_The_Fender_S_1_Switching_System">Mod Garage The Fender S-1 Switching System</a>：这个帖子是介绍S-1开关的</li>
+</ul>
+<p>下面是从fender官网搜集的4个不同型号的Fender Deluxe St电路图：</p>
+<p><a href="http://qiniu.s1nh.org/Blog_011-8102A_SISD.pdf">011-8102A_SISD.pdf</a></p>
+<p><a href="http://qiniu.s1nh.org/Blog_011-9000B_SISD.pdf">011-9000B_SISD.pdf</a></p>
+<p><a href="http://qiniu.s1nh.org/Blog_011-9100A_SISD.pdf">011-9100A_SISD.pdf</a></p>
+<p><a href="http://qiniu.s1nh.org/Blog_Fender_Am_Dlx_Stratocaster_HSS_Shawbucker_011911XXXX_Service_Manual.pdf">Fender_011911XXXX_Service_Manual.pdf</a></p>
+]]></content>
+      <categories>
+        <category>音乐相关</category>
+      </categories>
+      <tags>
+        <tag>fender</tag>
+        <tag>wiring diagram</tag>
+        <tag>S1</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Github 支持除代码以外的文件格式</title>
     <url>/post/Github-non-code-files/</url>
     <content><![CDATA[<p>Github 支持图片, geoJSON, 3D模型, 表格, PDF等格式的查看和版本对比。</p>
@@ -735,33 +762,6 @@ root@kali:~# depmod -a -v &quot;3.8.13-bone53&quot;
       </categories>
       <tags>
         <tag>Github</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Fender S-1 开关的接法</title>
-    <url>/post/Fender_S-1_WiringDiagram/</url>
-    <content><![CDATA[<p>最近在改造吉他的电路，搜集了一些关于拾音器电路的网站：</p>
-<span id="more"></span>
-
-<ul>
-<li><a href="http://www.seymourduncan.com/support/wiring-diagrams/">Seymour Duncan wiring-diagrams/</a>：Seymour Duncan 官方的电路参考，在这里可以找到各种配置的电路，特别强大。这个网站刚刚改版，看起来比之前人性化许多。</li>
-<li><a href="http://www.deluxeguitar.com/">Deluxe Guitar</a>：包含了美豪的电路、琴颈形状、旋钮、音色试听等各种信息。</li>
-<li><a href="http://guitarwiring.blogspot.jp/">The Guitar Wiring Blog</a>：各种各样奇奇怪怪的吉他电路图。</li>
-<li><a href="http://www.premierguitar.com/articles/Mod_Garage_The_Fender_S_1_Switching_System">Mod Garage The Fender S-1 Switching System</a>：这个帖子是介绍S-1开关的</li>
-</ul>
-<p>下面是从fender官网搜集的4个不同型号的Fender Deluxe St电路图：</p>
-<p><a href="http://qiniu.s1nh.org/Blog_011-8102A_SISD.pdf">011-8102A_SISD.pdf</a></p>
-<p><a href="http://qiniu.s1nh.org/Blog_011-9000B_SISD.pdf">011-9000B_SISD.pdf</a></p>
-<p><a href="http://qiniu.s1nh.org/Blog_011-9100A_SISD.pdf">011-9100A_SISD.pdf</a></p>
-<p><a href="http://qiniu.s1nh.org/Blog_Fender_Am_Dlx_Stratocaster_HSS_Shawbucker_011911XXXX_Service_Manual.pdf">Fender_011911XXXX_Service_Manual.pdf</a></p>
-]]></content>
-      <categories>
-        <category>音乐相关</category>
-      </categories>
-      <tags>
-        <tag>fender</tag>
-        <tag>wiring diagram</tag>
-        <tag>S1</tag>
       </tags>
   </entry>
   <entry>
