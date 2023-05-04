@@ -4330,6 +4330,36 @@ try to remove and create again
       </categories>
   </entry>
   <entry>
+    <title>更新 HackRF one 到最新的 2017.02.1 固件</title>
+    <url>/post/hackrf-firmware-upgrade/</url>
+    <content><![CDATA[<p>HackRF已经吃灰一年多了，官方的上一个版本还是2015.07，最新的2017.02.1版增加了<code>Sweep mode</code>，<code>Hardware synchronization</code>，<code>hackrf_debug</code>，降低了功耗以及修复了Bug. 在<a href="https://github.com/mossmann/hackrf/releases">mossmann/hackrf/releases</a>有编译好的固件<a href="https://github.com/mossmann/hackrf/releases/download/v2017.02.1/hackrf-2017.02.1.tar.xz">hackrf-2017.02.1.tar.xz</a>下载</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_HackRF_01.jpeg-QNthin"></p>
+<span id="more"></span>
+
+<p>要注意的是Kali Linux用apt-get安装的hackrf还停留在2015.07版本，只更新固件会导致莫名其妙的错误。升级固件的同时需要更新主机上的Host软件<code>libhackrf</code>和<code>hackrf-tools</code></p>
+<h2 id="0x01-HackRF-host-软件更新"><a href="#0x01-HackRF-host-软件更新" class="headerlink" title="0x01 HackRF host 软件更新"></a>0x01 HackRF host 软件更新</h2><p>解压<code>hackrf-2017.02.1.tar.xz</code>，执行以下命令更新Host软件（host目录下有README.md可以参考）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd host</span><br><span class="line">mkdir build</span><br><span class="line">cmake ../ -DINSTALL_UDEV_RULES=ON</span><br><span class="line">make</span><br><span class="line">sudo make install</span><br><span class="line">sudo ldconfig</span><br></pre></td></tr></table></figure>
+<h2 id="0x02-HackRF-固件更新"><a href="#0x02-HackRF-固件更新" class="headerlink" title="0x02 HackRF 固件更新"></a>0x02 HackRF 固件更新</h2><p>进入<code>firmware-bin</code>目录，执行以下步骤</p>
+<ul>
+<li><code>hackrf_spiflash -Rw hackrf_one_usb.bin</code> 更新SPI</li>
+<li><code>hackrf_cpldjtag -x hackrf_cpld_default.xsvf</code> 更新CPLD</li>
+</ul>
+<p>此时可以用hackrf_info查看更新后的版本</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">(anaconda3-4.3.0) root@kali:~/Downloads# hackrf_info </span><br><span class="line">hackrf_info version: 2017.02.1</span><br><span class="line">libhackrf version: 2017.02.1 (0.5)</span><br><span class="line">Found HackRF</span><br><span class="line">Index: 0</span><br><span class="line">Serial number: 0000000000000000909864c8283593cf</span><br><span class="line">Board ID Number: 2 (HackRF One)</span><br><span class="line">Firmware Version: 2017.02.1 (API:1.02)</span><br><span class="line">Part ID Number: 0xa000cb3c 0x005e4745</span><br></pre></td></tr></table></figure>
+
+<h2 id="0x03-更新DFU（可选）"><a href="#0x03-更新DFU（可选）" class="headerlink" title="0x03 更新DFU（可选）"></a>0x03 更新DFU（可选）</h2><p>只有在HackRF固件损坏的情况下才需要刷新DFU。</p>
+<p>首先按住RESET键和DFU键，然后依次松开RESET键和DFU键，引导板子进入DFU模式。然后执行<code>dfu-util --device 1fc9:000c --alt 0 --download hackrf_one_usb.dfu</code>刷新DFU</p>
+<h2 id="0x04-自己编译固件"><a href="#0x04-自己编译固件" class="headerlink" title="0x04 自己编译固件"></a>0x04 自己编译固件</h2><p>可以参考<a href="http://scateu.me/2015/08/06/hackrf-how-to-compile-firmware.html">HackRF固件更新及编译环境搭建</a></p>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+      <tags>
+        <tag>信息安全</tag>
+        <tag>HackRF</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>HackRF 入门 -- GPS欺骗、GSM嗅探</title>
     <url>/post/hackrf-quick-start/</url>
     <content><![CDATA[<p><img data-src="http://qiniu.s1nh.org/Blog_HackRF_00.png-QNthin"></p>
@@ -4361,36 +4391,6 @@ try to remove and create again
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">root staff        12 Mar 15 02:31 airprobe_decode.py -&gt; grgsm_decode*</span><br><span class="line">root staff        16 Mar 15 02:31 airprobe_rtlsdr_capture.py -&gt; grgsm_capture.py*</span><br><span class="line">root staff        13 Mar 15 02:31 airprobe_rtlsdr.py -&gt; grgsm_livemon*</span><br><span class="line">root staff        13 Mar 15 02:31 airprobe_rtlsdr_scanner.py -&gt; grgsm_scanner*</span><br><span class="line">root staff     10870 Mar 15 02:30 grgsm_capture.py*</span><br><span class="line">root staff      7449 Mar 15 02:30 grgsm_channelize.py*</span><br><span class="line">root staff     19209 Mar 15 02:30 grgsm_decode*</span><br><span class="line">root staff     13354 Mar 15 02:30 grgsm_livemon*</span><br><span class="line">root staff     15654 Mar 15 02:30 grgsm_scanner*</span><br></pre></td></tr></table></figure>
 
 <h2 id="0x03-未完待续"><a href="#0x03-未完待续" class="headerlink" title="0x03 未完待续"></a>0x03 未完待续</h2><p>接下来的工作主要是解密收到的GSM信号，解密LTE信号，以及搭建伪基站。<br><a href="http://www.freebuf.com/articles/wireless/105324.html">GSM Hacking：如何对GSM/GPRS网络测试进行测试？</a><br><a href="http://www.freebuf.com/articles/wireless/111577.html">GSM Hacking Part ② ：使用SDR捕获GSM网络数据并解密</a><br><a href="http://www.freebuf.com/articles/wireless/32331.html"> 使用HackRF解调TDD-LTE信号 </a></p>
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
-      </categories>
-      <tags>
-        <tag>信息安全</tag>
-        <tag>HackRF</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>更新 HackRF one 到最新的 2017.02.1 固件</title>
-    <url>/post/hackrf-firmware-upgrade/</url>
-    <content><![CDATA[<p>HackRF已经吃灰一年多了，官方的上一个版本还是2015.07，最新的2017.02.1版增加了<code>Sweep mode</code>，<code>Hardware synchronization</code>，<code>hackrf_debug</code>，降低了功耗以及修复了Bug. 在<a href="https://github.com/mossmann/hackrf/releases">mossmann/hackrf/releases</a>有编译好的固件<a href="https://github.com/mossmann/hackrf/releases/download/v2017.02.1/hackrf-2017.02.1.tar.xz">hackrf-2017.02.1.tar.xz</a>下载</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_HackRF_01.jpeg-QNthin"></p>
-<span id="more"></span>
-
-<p>要注意的是Kali Linux用apt-get安装的hackrf还停留在2015.07版本，只更新固件会导致莫名其妙的错误。升级固件的同时需要更新主机上的Host软件<code>libhackrf</code>和<code>hackrf-tools</code></p>
-<h2 id="0x01-HackRF-host-软件更新"><a href="#0x01-HackRF-host-软件更新" class="headerlink" title="0x01 HackRF host 软件更新"></a>0x01 HackRF host 软件更新</h2><p>解压<code>hackrf-2017.02.1.tar.xz</code>，执行以下命令更新Host软件（host目录下有README.md可以参考）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd host</span><br><span class="line">mkdir build</span><br><span class="line">cmake ../ -DINSTALL_UDEV_RULES=ON</span><br><span class="line">make</span><br><span class="line">sudo make install</span><br><span class="line">sudo ldconfig</span><br></pre></td></tr></table></figure>
-<h2 id="0x02-HackRF-固件更新"><a href="#0x02-HackRF-固件更新" class="headerlink" title="0x02 HackRF 固件更新"></a>0x02 HackRF 固件更新</h2><p>进入<code>firmware-bin</code>目录，执行以下步骤</p>
-<ul>
-<li><code>hackrf_spiflash -Rw hackrf_one_usb.bin</code> 更新SPI</li>
-<li><code>hackrf_cpldjtag -x hackrf_cpld_default.xsvf</code> 更新CPLD</li>
-</ul>
-<p>此时可以用hackrf_info查看更新后的版本</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">(anaconda3-4.3.0) root@kali:~/Downloads# hackrf_info </span><br><span class="line">hackrf_info version: 2017.02.1</span><br><span class="line">libhackrf version: 2017.02.1 (0.5)</span><br><span class="line">Found HackRF</span><br><span class="line">Index: 0</span><br><span class="line">Serial number: 0000000000000000909864c8283593cf</span><br><span class="line">Board ID Number: 2 (HackRF One)</span><br><span class="line">Firmware Version: 2017.02.1 (API:1.02)</span><br><span class="line">Part ID Number: 0xa000cb3c 0x005e4745</span><br></pre></td></tr></table></figure>
-
-<h2 id="0x03-更新DFU（可选）"><a href="#0x03-更新DFU（可选）" class="headerlink" title="0x03 更新DFU（可选）"></a>0x03 更新DFU（可选）</h2><p>只有在HackRF固件损坏的情况下才需要刷新DFU。</p>
-<p>首先按住RESET键和DFU键，然后依次松开RESET键和DFU键，引导板子进入DFU模式。然后执行<code>dfu-util --device 1fc9:000c --alt 0 --download hackrf_one_usb.dfu</code>刷新DFU</p>
-<h2 id="0x04-自己编译固件"><a href="#0x04-自己编译固件" class="headerlink" title="0x04 自己编译固件"></a>0x04 自己编译固件</h2><p>可以参考<a href="http://scateu.me/2015/08/06/hackrf-how-to-compile-firmware.html">HackRF固件更新及编译环境搭建</a></p>
 ]]></content>
       <categories>
         <category>算法与硬件</category>
@@ -5535,7 +5535,7 @@ H1&lt;---|0.14-1.6|Mirtazapine
       </tags>
   </entry>
   <entry>
-    <title>Multiecuscan (MES) 中文用户手册，使用说明</title>
+    <title>Multiecuscan (MES) 中文用户手册</title>
     <url>/post/multiecuscan-user-guide/</url>
     <content><![CDATA[<p>Multiecuscan 是意大利车辆的诊断软件。 它允许您对支持的车辆/模块执行各种诊断任务。</p>
 <span id="more"></span>
@@ -5670,7 +5670,7 @@ H1&lt;---|0.14-1.6|Mirtazapine
 <li><p>您将收到一封包含新许可证密钥的电子邮件。</p>
 </li>
 </ol>
-<p>如果您对许可证转移功能有任何疑问，可以将新的硬件密钥通过电子邮件发送至 <a href="mailto:&#115;&#117;&#112;&#x70;&#111;&#x72;&#116;&#x40;&#109;&#117;&#108;&#116;&#x69;&#101;&#x63;&#117;&#115;&#x63;&#97;&#x6e;&#46;&#110;&#x65;&#x74;">&#115;&#117;&#112;&#x70;&#111;&#x72;&#116;&#x40;&#109;&#117;&#108;&#116;&#x69;&#101;&#x63;&#117;&#115;&#x63;&#97;&#x6e;&#46;&#110;&#x65;&#x74;</a>。</p>
+<p>如果您对许可证转移功能有任何疑问，可以将新的硬件密钥通过电子邮件发送至 <a href="mailto:&#x73;&#117;&#x70;&#x70;&#x6f;&#x72;&#116;&#64;&#x6d;&#117;&#x6c;&#116;&#105;&#x65;&#99;&#117;&#115;&#x63;&#x61;&#x6e;&#x2e;&#110;&#x65;&#x74;">&#x73;&#117;&#x70;&#x70;&#x6f;&#x72;&#116;&#64;&#x6d;&#117;&#x6c;&#116;&#105;&#x65;&#99;&#117;&#115;&#x63;&#x61;&#x6e;&#x2e;&#110;&#x65;&#x74;</a>。</p>
 <p>请注意，许可证转移功能对转移次数有限制。</p>
 <p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image10.png-QNthin"></p>
 <h2 id="2-用户界面"><a href="#2-用户界面" class="headerlink" title="2. 用户界面"></a>2. 用户界面</h2><h3 id="2-1-Multiecuscan-主屏幕"><a href="#2-1-Multiecuscan-主屏幕" class="headerlink" title="2.1. Multiecuscan 主屏幕"></a>2.1. Multiecuscan 主屏幕</h3><p>当您启动 Multiecuscan 时，它会显示以下屏幕：</p>
@@ -6168,6 +6168,12 @@ H1&lt;---|0.14-1.6|Mirtazapine
       <categories>
         <category>赛车</category>
       </categories>
+      <tags>
+        <tag>说明书</tag>
+        <tag>使用说明</tag>
+        <tag>用户手册</tag>
+        <tag>user-guide</tag>
+      </tags>
   </entry>
   <entry>
     <title>一些小技巧</title>
