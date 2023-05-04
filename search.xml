@@ -363,6 +363,60 @@
       </tags>
   </entry>
   <entry>
+    <title>Beaglebone Black 折腾笔记（一） 折腾些没用的</title>
+    <url>/post/Beaglebone-Black_01/</url>
+    <content><![CDATA[<p><img data-src="http://qiniu.s1nh.org/Blog_BBB-setup_1.jpg-QNthin"></p>
+<p>最近没有什么特别紧急的工作，终于有时间做点喜欢的事情了。</p>
+<span id="more"></span>
+
+<h2 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h2><p>从仓库里面挑了几个还能用的显示器，找出了好久之前买的Beaglebone Black (BBB)，买了micro HDMI -&gt; DVI , Display Port -&gt; DVI , Mini Display Port -&gt; DVI 转接线，准备搭建一个新的工作平台。</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_BBB-setup_2.jpg-QNthin"></p>
+<h3 id="杜邦线"><a href="#杜邦线" class="headerlink" title="杜邦线"></a>杜邦线</h3><p>之前串口调试线太短了，并且容易插错，就去广埠屯买了这种线（老板说叫杜邦线），并且买了4/7的插头各一个。以后就不用纠结哪根线插在哪个针上了。</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_BBB-setup_3.jpg-QNthin"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_BBB-setup_4.jpg-QNthin"></p>
+<h3 id="TP-Link-交换机指示灯全亮修复"><a href="#TP-Link-交换机指示灯全亮修复" class="headerlink" title="TP-Link 交换机指示灯全亮修复"></a>TP-Link 交换机指示灯全亮修复</h3><p>实验室有两台服务器、一个工作站、Mac Mini和BBB，想把它们组建成局域网。</p>
+<p>从办公室里翻出来了一个坏的交换机，通电后发现所有的灯常亮。百度了一下好多这种现象，可能是TP-link的通病。拆开以后可以看到3个电容爆了，去电子市场买了3个3300uF/16V的电容，问题解决。</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_BBB-setup_5.jpg-QNthin"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_BBB-setup_6.jpg-QNthin"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_BBB-setup_8.jpg-QNthin"></p>
+<p>在换电容的时候发现了一个奇怪的问题，为什么电路板上会有下面这种一条一条的焊锡线（下图）</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_BBB-setup_7.jpg-QNthin"></p>
+<h3 id="在局域网中使用代理共享LANTERN来翻墙"><a href="#在局域网中使用代理共享LANTERN来翻墙" class="headerlink" title="在局域网中使用代理共享LANTERN来翻墙"></a>在局域网中使用代理共享LANTERN来翻墙</h3><p>给BBB下载了最新版的Debian 8.X，安装后执行apt-get时出现了问题，<code>rcn-ee.com/repos</code>源被墙了。因为是armhf架构，所以找了半天都找不到合适的源。最后就决定用Latern共享代理服务器来翻墙。(Lantarn简直太好用了，<a href="/post/Lantern/">安装方式点这里</a>)</p>
+<p>具体实现方式参考了：<a href="https://github.com/getlantern/lantern/issues/2940">《如何在局域网中共享LANTERN来翻墙？》</a>、<a href="https://xiaolan.me/lantern2.html">《Lantern 2.x翻墙教程》</a></p>
+<p>实施方案如下：</p>
+<ul>
+<li>运行Win+R，打开<code>%AppData%/Lantern/</code></li>
+<li>修改lantern-2.0.10.yaml的<code>addr: 127.0.0.1:8787</code>为<code>addr: 0.0.0.0:8787</code></li>
+<li>重启Lantern</li>
+<li>在BBB中输入<code>export http_proxy=http://192.168.1.100:8787/</code>，<code>export https_proxy=http://192.168.1.100:8787/</code>（192.168.1.100为运行Latern电脑的ip）为其设置代理</li>
+</ul>
+<p>设置完以后，用Wget随便下载个东西，如果提示connected，就设置好啦（如下图）</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_BBB-setup_9.jpg-QNthin"></p>
+<p>设置完以后我的BBB就已经可以愉快的更新内核了。</p>
+<p>可是！最后发现了两个问题：</p>
+<pre><code>1. 修改完 lantern-2.0.10.yaml 后，本机电脑无法翻墙；
+2. 重新启动 Lantern 后，lantern-2.0.10.yaml 被自动恢复到了初始状态。
+</code></pre>
+<p>也就是说，设置的代理只能用一次，重启Lantern就失效了；并且设置完代理以后，开启Lantern的电脑是无法翻墙的（这个好像可以通过把0.0.0.0改成本机ip:192.168.1.100来解决）</p>
+<h3 id="更新node-js"><a href="#更新node-js" class="headerlink" title="更新node.js"></a>更新node.js</h3><p>执行apt-get更新软件的时候又报错了&gt;_&lt; 说什么node版本太旧了</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_BBB-setup_10.jpg-QNthin"></p>
+<p>找了一下更新node的办法：</p>
+<pre><code>npm install -g n //居然有名字叫&quot;n&quot;的软件
+n latest
+</code></pre>
+<p>再看一下版本，瞬间从0.10.40变成了5.1.1（我觉得这步肯定出问题了，版本怎么变化这么大 0_0）</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_BBB-setup_11.jpg-QNthin"></p>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+      <tags>
+        <tag>Beaglebone Black</tag>
+        <tag>Lantern</tag>
+        <tag>node.js</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>《数据结构与算法分析》复习笔记</title>
     <url>/post/Algorithm-Review/</url>
     <content><![CDATA[<blockquote>
@@ -475,60 +529,6 @@
       <categories>
         <category>算法与硬件</category>
       </categories>
-  </entry>
-  <entry>
-    <title>Beaglebone Black 折腾笔记（一） 折腾些没用的</title>
-    <url>/post/Beaglebone-Black_01/</url>
-    <content><![CDATA[<p><img data-src="http://qiniu.s1nh.org/Blog_BBB-setup_1.jpg-QNthin"></p>
-<p>最近没有什么特别紧急的工作，终于有时间做点喜欢的事情了。</p>
-<span id="more"></span>
-
-<h2 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h2><p>从仓库里面挑了几个还能用的显示器，找出了好久之前买的Beaglebone Black (BBB)，买了micro HDMI -&gt; DVI , Display Port -&gt; DVI , Mini Display Port -&gt; DVI 转接线，准备搭建一个新的工作平台。</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_BBB-setup_2.jpg-QNthin"></p>
-<h3 id="杜邦线"><a href="#杜邦线" class="headerlink" title="杜邦线"></a>杜邦线</h3><p>之前串口调试线太短了，并且容易插错，就去广埠屯买了这种线（老板说叫杜邦线），并且买了4/7的插头各一个。以后就不用纠结哪根线插在哪个针上了。</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_BBB-setup_3.jpg-QNthin"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_BBB-setup_4.jpg-QNthin"></p>
-<h3 id="TP-Link-交换机指示灯全亮修复"><a href="#TP-Link-交换机指示灯全亮修复" class="headerlink" title="TP-Link 交换机指示灯全亮修复"></a>TP-Link 交换机指示灯全亮修复</h3><p>实验室有两台服务器、一个工作站、Mac Mini和BBB，想把它们组建成局域网。</p>
-<p>从办公室里翻出来了一个坏的交换机，通电后发现所有的灯常亮。百度了一下好多这种现象，可能是TP-link的通病。拆开以后可以看到3个电容爆了，去电子市场买了3个3300uF/16V的电容，问题解决。</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_BBB-setup_5.jpg-QNthin"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_BBB-setup_6.jpg-QNthin"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_BBB-setup_8.jpg-QNthin"></p>
-<p>在换电容的时候发现了一个奇怪的问题，为什么电路板上会有下面这种一条一条的焊锡线（下图）</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_BBB-setup_7.jpg-QNthin"></p>
-<h3 id="在局域网中使用代理共享LANTERN来翻墙"><a href="#在局域网中使用代理共享LANTERN来翻墙" class="headerlink" title="在局域网中使用代理共享LANTERN来翻墙"></a>在局域网中使用代理共享LANTERN来翻墙</h3><p>给BBB下载了最新版的Debian 8.X，安装后执行apt-get时出现了问题，<code>rcn-ee.com/repos</code>源被墙了。因为是armhf架构，所以找了半天都找不到合适的源。最后就决定用Latern共享代理服务器来翻墙。(Lantarn简直太好用了，<a href="/post/Lantern/">安装方式点这里</a>)</p>
-<p>具体实现方式参考了：<a href="https://github.com/getlantern/lantern/issues/2940">《如何在局域网中共享LANTERN来翻墙？》</a>、<a href="https://xiaolan.me/lantern2.html">《Lantern 2.x翻墙教程》</a></p>
-<p>实施方案如下：</p>
-<ul>
-<li>运行Win+R，打开<code>%AppData%/Lantern/</code></li>
-<li>修改lantern-2.0.10.yaml的<code>addr: 127.0.0.1:8787</code>为<code>addr: 0.0.0.0:8787</code></li>
-<li>重启Lantern</li>
-<li>在BBB中输入<code>export http_proxy=http://192.168.1.100:8787/</code>，<code>export https_proxy=http://192.168.1.100:8787/</code>（192.168.1.100为运行Latern电脑的ip）为其设置代理</li>
-</ul>
-<p>设置完以后，用Wget随便下载个东西，如果提示connected，就设置好啦（如下图）</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_BBB-setup_9.jpg-QNthin"></p>
-<p>设置完以后我的BBB就已经可以愉快的更新内核了。</p>
-<p>可是！最后发现了两个问题：</p>
-<pre><code>1. 修改完 lantern-2.0.10.yaml 后，本机电脑无法翻墙；
-2. 重新启动 Lantern 后，lantern-2.0.10.yaml 被自动恢复到了初始状态。
-</code></pre>
-<p>也就是说，设置的代理只能用一次，重启Lantern就失效了；并且设置完代理以后，开启Lantern的电脑是无法翻墙的（这个好像可以通过把0.0.0.0改成本机ip:192.168.1.100来解决）</p>
-<h3 id="更新node-js"><a href="#更新node-js" class="headerlink" title="更新node.js"></a>更新node.js</h3><p>执行apt-get更新软件的时候又报错了&gt;_&lt; 说什么node版本太旧了</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_BBB-setup_10.jpg-QNthin"></p>
-<p>找了一下更新node的办法：</p>
-<pre><code>npm install -g n //居然有名字叫&quot;n&quot;的软件
-n latest
-</code></pre>
-<p>再看一下版本，瞬间从0.10.40变成了5.1.1（我觉得这步肯定出问题了，版本怎么变化这么大 0_0）</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_BBB-setup_11.jpg-QNthin"></p>
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
-      </categories>
-      <tags>
-        <tag>Beaglebone Black</tag>
-        <tag>Lantern</tag>
-        <tag>node.js</tag>
-      </tags>
   </entry>
   <entry>
     <title>Beaglebone Black 折腾笔记（二） 搭建环境</title>
@@ -5670,7 +5670,7 @@ H1&lt;---|0.14-1.6|Mirtazapine
 <li><p>您将收到一封包含新许可证密钥的电子邮件。</p>
 </li>
 </ol>
-<p>如果您对许可证转移功能有任何疑问，可以将新的硬件密钥通过电子邮件发送至 <a href="mailto:&#x73;&#117;&#x70;&#x70;&#x6f;&#x72;&#116;&#64;&#x6d;&#117;&#x6c;&#116;&#105;&#x65;&#99;&#117;&#115;&#x63;&#x61;&#x6e;&#x2e;&#110;&#x65;&#x74;">&#x73;&#117;&#x70;&#x70;&#x6f;&#x72;&#116;&#64;&#x6d;&#117;&#x6c;&#116;&#105;&#x65;&#99;&#117;&#115;&#x63;&#x61;&#x6e;&#x2e;&#110;&#x65;&#x74;</a>。</p>
+<p>如果您对许可证转移功能有任何疑问，可以将新的硬件密钥通过电子邮件发送至 <a href="mailto:&#x73;&#117;&#112;&#x70;&#x6f;&#x72;&#x74;&#64;&#x6d;&#117;&#x6c;&#x74;&#105;&#101;&#x63;&#x75;&#x73;&#99;&#97;&#x6e;&#46;&#110;&#101;&#116;">&#x73;&#117;&#112;&#x70;&#x6f;&#x72;&#x74;&#64;&#x6d;&#117;&#x6c;&#x74;&#105;&#101;&#x63;&#x75;&#x73;&#99;&#97;&#x6e;&#46;&#110;&#101;&#116;</a>。</p>
 <p>请注意，许可证转移功能对转移次数有限制。</p>
 <p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image10.png-QNthin"></p>
 <h2 id="2-用户界面"><a href="#2-用户界面" class="headerlink" title="2. 用户界面"></a>2. 用户界面</h2><h3 id="2-1-Multiecuscan-主屏幕"><a href="#2-1-Multiecuscan-主屏幕" class="headerlink" title="2.1. Multiecuscan 主屏幕"></a>2.1. Multiecuscan 主屏幕</h3><p>当您启动 Multiecuscan 时，它会显示以下屏幕：</p>
