@@ -1913,44 +1913,6 @@ apt-get install libusb-1.0-0-dev
       </tags>
   </entry>
   <entry>
-    <title>鲸落双城记</title>
-    <url>/post/WhaleFallLive_201511/</url>
-    <content><![CDATA[<p>新加入鲸落乐队，我当Bass手。弹Bass没什么存在感，可是玩的很开心:-) </p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_1.jpg-QNthin" alt="鲸落"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_2.jpg-QNthin" alt="鲸落"></p>
-<span id="more"></span>
-
-<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_0.jpg-QNthin" alt="鲸落"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_3.jpg-QNthin" alt="鲸落"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_4.jpg-QNthin" alt="鲸落"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_5.jpg-QNthin" alt="鲸落"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_6.jpg-QNthin" alt="鲸落"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_7.jpg-QNthin" alt="鲸落"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_8.jpg-QNthin" alt="鲸落"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_9.jpg-QNthin" alt="鲸落"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_10.jpg-QNthin" alt="鲸落"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_11.jpg-QNthin" alt="鲸落"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_12.jpg-QNthin" alt="鲸落"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_13.jpg-QNthin" alt="鲸落"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_14.jpg-QNthin" alt="鲸落"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_15.jpg-QNthin" alt="鲸落"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_16.jpg-QNthin" alt="鲸落"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_17.jpg-QNthin" alt="鲸落"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_18.jpg-QNthin" alt="鲸落"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_19.jpg-QNthin" alt="鲸落"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_20.jpg-QNthin" alt="鲸落"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_21.jpg-QNthin" alt="鲸落"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_22.jpg-QNthin" alt="鲸落"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_23.jpg-QNthin" alt="鲸落"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_24.jpg-QNthin" alt="鲸落"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_25.jpg-QNthin" alt="鲸落"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_26.jpg-QNthin" alt="鲸落"></p>
-]]></content>
-      <categories>
-        <category>音乐相关</category>
-      </categories>
-  </entry>
-  <entry>
     <title>《Xcode 江湖录》已经出版</title>
     <url>/post/XcodeJianghu/</url>
     <content><![CDATA[<p>写了半年多，经过无数次修改，这本书终于定稿了。一多半内容是李俊阳编写的，我写了设计篇、版本管理和一些附录，胡雪婷编写了部分故事，卢力画了插图。</p>
@@ -2006,6 +1968,95 @@ apt-get install libusb-1.0-0-dev
       <categories>
         <category>其它笔记</category>
       </categories>
+  </entry>
+  <entry>
+    <title>鲸落双城记</title>
+    <url>/post/WhaleFallLive_201511/</url>
+    <content><![CDATA[<p>新加入鲸落乐队，我当Bass手。弹Bass没什么存在感，可是玩的很开心:-) </p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_1.jpg-QNthin" alt="鲸落"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_2.jpg-QNthin" alt="鲸落"></p>
+<span id="more"></span>
+
+<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_0.jpg-QNthin" alt="鲸落"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_3.jpg-QNthin" alt="鲸落"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_4.jpg-QNthin" alt="鲸落"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_5.jpg-QNthin" alt="鲸落"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_6.jpg-QNthin" alt="鲸落"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_7.jpg-QNthin" alt="鲸落"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_8.jpg-QNthin" alt="鲸落"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_9.jpg-QNthin" alt="鲸落"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_10.jpg-QNthin" alt="鲸落"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_11.jpg-QNthin" alt="鲸落"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_12.jpg-QNthin" alt="鲸落"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_13.jpg-QNthin" alt="鲸落"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_14.jpg-QNthin" alt="鲸落"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_15.jpg-QNthin" alt="鲸落"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_16.jpg-QNthin" alt="鲸落"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_17.jpg-QNthin" alt="鲸落"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_18.jpg-QNthin" alt="鲸落"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_19.jpg-QNthin" alt="鲸落"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_20.jpg-QNthin" alt="鲸落"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_21.jpg-QNthin" alt="鲸落"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_22.jpg-QNthin" alt="鲸落"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_23.jpg-QNthin" alt="鲸落"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_24.jpg-QNthin" alt="鲸落"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_25.jpg-QNthin" alt="鲸落"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_FallingWhaleLive_201511_26.jpg-QNthin" alt="鲸落"></p>
+]]></content>
+      <categories>
+        <category>音乐相关</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>阿尔法罗密欧零成本自制 Race 模式开关，关闭牵引力控制和 ESP</title>
+    <url>/post/alfa-romeo-enable-race-mode/</url>
+    <content><![CDATA[<iframe src="//player.bilibili.com/player.html?aid=768548375&bvid=BV1jr4y1n7eE&cid=587367830&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+<p>阿尔法罗密欧的四叶草（Quadrifoglio）版本具有 Race 模式，在此模式下打开双模式排气，停用 ESC 稳定控制系统，同时提高油门、变速箱、制动和转向响应。</p>
+<p>在普通版本的阿尔法罗密欧中，可以通过修改 Body Control Module(BCM) 的配置文件来启动隐藏的 Race 模式。</p>
+<p>通常，改装 Race 模式的方法是去闲鱼购买一个四叶草版本的 DNA 开关（￥1100），远程开启隐藏功能（￥500）。这篇文章教你零成本开启此功能。</p>
+<span id="more"></span>
+
+<h2 id="0x01-DIY-DNA-开关"><a href="#0x01-DIY-DNA-开关" class="headerlink" title="0x01 DIY DNA 开关"></a>0x01 DIY DNA 开关</h2><p><code>此方法适用与 2017-2019 年的 giulia / stelvio 各个版本。</code><br><code>带有单稳态 DNA 选择器（始终恢复为 N）的 2020+ 不需要更换 DNA+R 拨盘。所需要的只是 SGW 旁路、MES</code></p>
+<p>a. 参考 <a href="https://www.bilibili.com/video/BV19a4y1W7z1">B站搬运的视频</a> 拆下原厂的开关。</p>
+<p>b. 参考 <a href="https://www.giuliaforums.com/threads/how-to-enable-race-mode-on-non-qv-2017-2019.46258/">giuliaforums</a> 拆开此开关。</p>
+<p><img data-src="http://qiniu.s1nh.org/alfa-romeo-race-mode-4.jpg"></p>
+<p>c. 焊接电阻和微动开关。（注意，上面箭头的引脚需要掰断，不要焊接）</p>
+<p><img data-src="http://qiniu.s1nh.org/alfa-romeo-race-mode-3.jpg"></p>
+<p>e. 在国内可以参考我购买的链接。</p>
+<img style="background-color:white" data-src="http://qiniu.s1nh.org/alfa-romeo-race-mode-5.jpg"  width=40% />
+
+<p>d. 打磨外壳的一个限位槽，使得旋钮可以拧出超过D的位置。（这一步没拍图）</p>
+<p>e. 重新装回组件。</p>
+<h2 id="0x02-MultiEcuScan"><a href="#0x02-MultiEcuScan" class="headerlink" title="0x02 MultiEcuScan"></a>0x02 MultiEcuScan</h2><blockquote>
+<p>购买 Multiecuscan 需要 <code>50欧</code> ，或打赏我然后加我微信<code>s1nh_com</code> 给你个破解版 </p>
+<p><a href="https://www.multiecuscan.net/">Multiecuscan</a> 是一个支持 <code>Alfa Romeo</code> <code>Fiat</code> <code>Lancia</code> <code>Chrysler</code> <code>Dodge</code> <code>Jeep</code> <code>Suzuki</code> 的 OBD 诊断软件，类似修理厂的诊断电脑。</p>
+</blockquote>
+<p>使用此软件需要 ELM 327 OBD 接口，和 OBD 跳线，参考我的购买截图。（更便宜的ELM327接口应该也可以使用，但可能需要<a href="http://forum.multiecuscan.net/viewtopic.php?f=5&t=1493">参考这篇文章</a>去掉一个电阻）</p>
+<p>按文章开头的视频链接修改参数，并进行三次标定，Race 模块就可以使用了。</p>
+<img style="background-color:white" data-src="http://qiniu.s1nh.org/alfa-romeo-race-mode-6.jpg"  width=40% />
+
+<h2 id="0x02-三种-DNA-模式"><a href="#0x02-三种-DNA-模式" class="headerlink" title="0x02 三种 DNA 模式"></a>0x02 三种 DNA 模式</h2><p>在设置DNA模式时，有三种可选项，分别是<code>Stock</code> <code>Type 2/DNA</code> <code>Type 3/DNA/Sport</code>，三种模式的原理是将配置文件的第88字节设置为 AC(1<strong>01</strong>0 1100)、CC(1<strong>10</strong>0 1100)、EC(1<strong>11</strong>0 1100)。</p>
+<p>修改为非Stock模式后，不但拥有了Race模式，其它模式的映射也会相应改变。最明显的感觉是<strong>在所有模式中，油门踏板都为线性映射</strong>，不再存在之前在D档一碰油门就乱窜的奇怪映射了。</p>
+<h2 id="0xFE-已知问题"><a href="#0xFE-已知问题" class="headerlink" title="0xFE 已知问题"></a>0xFE 已知问题</h2><p>2017 年初或更早产的 Giulia/Stelvio DTCM 版本过低，PROXI 时会出现以下错误。虽然可以启动 Race 模式，但无法在此模式下使用拨片。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Error: WRITING PROXI DATA Drive Train Control Node (DTCM)... FAILED! - Request out of range error</span><br><span class="line">Error: Drive Train Control Module (DTCM) EOL Failed</span><br></pre></td></tr></table></figure>
+
+<p>解决方法：</p>
+<ol>
+<li>去经销商升级 DTCM 的版本（附近有4s店的可以去试试）</li>
+<li>找第三方升级 DTCM 版本（￥2500）</li>
+<li>去闲鱼收一块新版的电脑板（价格不明）</li>
+<li>放弃 Race 模式，使用 <a href="https://squadra-tuning.com/obd-tools/traction-controller/">Squadra Tuning</a> 关闭 ESP。</li>
+</ol>
+<h2 id="0xFF-SGW-旁路"><a href="#0xFF-SGW-旁路" class="headerlink" title="0xFF SGW 旁路"></a>0xFF SGW 旁路</h2><p>对于 2018+ 的 Giulia/Stelvio（生产日期大约在 2018 年 2 月之后），您的车里很可能有一个称为安全网关模块 (SGW / SGM) 的设备。</p>
+<p>需要购买一个 SGW Bypass 设备，才能修改配置。</p>
+]]></content>
+      <categories>
+        <category>赛车</category>
+      </categories>
+      <tags>
+        <tag>阿尔法罗密欧 (Alfa Romeo)</tag>
+      </tags>
   </entry>
   <entry>
     <title>百度阿波罗 和 ROS 2.0 采用的消息中间件</title>
@@ -2079,57 +2130,6 @@ apt-get install libusb-1.0-0-dev
       </categories>
       <tags>
         <tag>FastDDS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>阿尔法罗密欧零成本自制 Race 模式开关，关闭牵引力控制和 ESP</title>
-    <url>/post/alfa-romeo-enable-race-mode/</url>
-    <content><![CDATA[<iframe src="//player.bilibili.com/player.html?aid=768548375&bvid=BV1jr4y1n7eE&cid=587367830&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-
-<p>阿尔法罗密欧的四叶草（Quadrifoglio）版本具有 Race 模式，在此模式下打开双模式排气，停用 ESC 稳定控制系统，同时提高油门、变速箱、制动和转向响应。</p>
-<p>在普通版本的阿尔法罗密欧中，可以通过修改 Body Control Module(BCM) 的配置文件来启动隐藏的 Race 模式。</p>
-<p>通常，改装 Race 模式的方法是去闲鱼购买一个四叶草版本的 DNA 开关（￥1100），远程开启隐藏功能（￥500）。这篇文章教你零成本开启此功能。</p>
-<span id="more"></span>
-
-<h2 id="0x01-DIY-DNA-开关"><a href="#0x01-DIY-DNA-开关" class="headerlink" title="0x01 DIY DNA 开关"></a>0x01 DIY DNA 开关</h2><p><code>此方法适用与 2017-2019 年的 giulia / stelvio 各个版本。</code><br><code>带有单稳态 DNA 选择器（始终恢复为 N）的 2020+ 不需要更换 DNA+R 拨盘。所需要的只是 SGW 旁路、MES</code></p>
-<p>a. 参考 <a href="https://www.bilibili.com/video/BV19a4y1W7z1">B站搬运的视频</a> 拆下原厂的开关。</p>
-<p>b. 参考 <a href="https://www.giuliaforums.com/threads/how-to-enable-race-mode-on-non-qv-2017-2019.46258/">giuliaforums</a> 拆开此开关。</p>
-<p><img data-src="http://qiniu.s1nh.org/alfa-romeo-race-mode-4.jpg"></p>
-<p>c. 焊接电阻和微动开关。（注意，上面箭头的引脚需要掰断，不要焊接）</p>
-<p><img data-src="http://qiniu.s1nh.org/alfa-romeo-race-mode-3.jpg"></p>
-<p>e. 在国内可以参考我购买的链接。</p>
-<img style="background-color:white" data-src="http://qiniu.s1nh.org/alfa-romeo-race-mode-5.jpg"  width=40% />
-
-<p>d. 打磨外壳的一个限位槽，使得旋钮可以拧出超过D的位置。（这一步没拍图）</p>
-<p>e. 重新装回组件。</p>
-<h2 id="0x02-MultiEcuScan"><a href="#0x02-MultiEcuScan" class="headerlink" title="0x02 MultiEcuScan"></a>0x02 MultiEcuScan</h2><blockquote>
-<p>购买 Multiecuscan 需要 <code>50欧</code> ，或打赏我然后加我微信<code>s1nh_com</code> 给你个破解版 </p>
-<p><a href="https://www.multiecuscan.net/">Multiecuscan</a> 是一个支持 <code>Alfa Romeo</code> <code>Fiat</code> <code>Lancia</code> <code>Chrysler</code> <code>Dodge</code> <code>Jeep</code> <code>Suzuki</code> 的 OBD 诊断软件，类似修理厂的诊断电脑。</p>
-</blockquote>
-<p>使用此软件需要 ELM 327 OBD 接口，和 OBD 跳线，参考我的购买截图。（更便宜的ELM327接口应该也可以使用，但可能需要<a href="http://forum.multiecuscan.net/viewtopic.php?f=5&t=1493">参考这篇文章</a>去掉一个电阻）</p>
-<p>按文章开头的视频链接修改参数，并进行三次标定，Race 模块就可以使用了。</p>
-<img style="background-color:white" data-src="http://qiniu.s1nh.org/alfa-romeo-race-mode-6.jpg"  width=40% />
-
-<h2 id="0x02-三种-DNA-模式"><a href="#0x02-三种-DNA-模式" class="headerlink" title="0x02 三种 DNA 模式"></a>0x02 三种 DNA 模式</h2><p>在设置DNA模式时，有三种可选项，分别是<code>Stock</code> <code>Type 2/DNA</code> <code>Type 3/DNA/Sport</code>，三种模式的原理是将配置文件的第88字节设置为 AC(1<strong>01</strong>0 1100)、CC(1<strong>10</strong>0 1100)、EC(1<strong>11</strong>0 1100)。</p>
-<p>修改为非Stock模式后，不但拥有了Race模式，其它模式的映射也会相应改变。最明显的感觉是<strong>在所有模式中，油门踏板都为线性映射</strong>，不再存在之前在D档一碰油门就乱窜的奇怪映射了。</p>
-<h2 id="0xFE-已知问题"><a href="#0xFE-已知问题" class="headerlink" title="0xFE 已知问题"></a>0xFE 已知问题</h2><p>2017 年初或更早产的 Giulia/Stelvio DTCM 版本过低，PROXI 时会出现以下错误。虽然可以启动 Race 模式，但无法在此模式下使用拨片。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Error: WRITING PROXI DATA Drive Train Control Node (DTCM)... FAILED! - Request out of range error</span><br><span class="line">Error: Drive Train Control Module (DTCM) EOL Failed</span><br></pre></td></tr></table></figure>
-
-<p>解决方法：</p>
-<ol>
-<li>去经销商升级 DTCM 的版本（附近有4s店的可以去试试）</li>
-<li>找第三方升级 DTCM 版本（￥2500）</li>
-<li>去闲鱼收一块新版的电脑板（价格不明）</li>
-<li>放弃 Race 模式，使用 <a href="https://squadra-tuning.com/obd-tools/traction-controller/">Squadra Tuning</a> 关闭 ESP。</li>
-</ol>
-<h2 id="0xFF-SGW-旁路"><a href="#0xFF-SGW-旁路" class="headerlink" title="0xFF SGW 旁路"></a>0xFF SGW 旁路</h2><p>对于 2018+ 的 Giulia/Stelvio（生产日期大约在 2018 年 2 月之后），您的车里很可能有一个称为安全网关模块 (SGW / SGM) 的设备。</p>
-<p>需要购买一个 SGW Bypass 设备，才能修改配置。</p>
-]]></content>
-      <categories>
-        <category>赛车</category>
-      </categories>
-      <tags>
-        <tag>阿尔法罗密欧 (Alfa Romeo)</tag>
       </tags>
   </entry>
   <entry>
@@ -2359,31 +2359,6 @@ apt-get install libusb-1.0-0-dev
       </categories>
   </entry>
   <entry>
-    <title>boost::interprocess 新版本修复了死锁</title>
-    <url>/post/boost-robustness-interprocess-mutex-deadlock/</url>
-    <content><![CDATA[<ul>
-<li><code>Boost</code> 是一个开源 C++ 算法库，是官方认证的对标准 C++ 的扩充（有点类似 python 的 anaconda）。C++ 15 / 17 等新版本有很多特性也会参考 boost 库；</li>
-<li><code>boost:Interprocess</code> 实现了<strong>进程间通信</strong>功能，包括<strong>共享内存</strong>、内存映射文件、信号量、文件锁、消息队列等；</li>
-<li><code>共享内存</code> 指可被多个进程存取的内存，被用作进程间的通信。</li>
-</ul>
-<p>boost::interprocess 在 1.78 版本之前如果进程崩溃可能导致死锁。从18年就有人提出这个issue，21年才修复。<br>最简单的复现方法是执行三遍下面的代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &quot;boost/interprocess/managed_shared_memory.hpp&quot;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">  boost::interprocess::managed_shared_memory managed_shm&#123;</span><br><span class="line">      boost::interprocess::open_or_create, &quot;Boost&quot;, 1024</span><br><span class="line">  &#125;;</span><br><span class="line">  int* i = managed_shm.construct&lt;int&gt;(&quot;Int&quot;)(99);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>第一遍在共享内存中创建 Boost 文件，并写入一个 Key 为 Int 的变量 99；</li>
-<li>第二遍尝试再次写入时发现已经有这个Key了，写不进去。程序崩溃，并抛出异常：<br><code>terminate called after throwing an instance of &#39;boost::interprocess::interprocess_exception&#39;</code><br><code>what():  boost::interprocess_exception::library_error</code></li>
-<li>第三遍因为上次的崩溃时没有释放锁，程序死锁；</li>
-<li>新版本的 boost 在第三次执行程序的时候会不会死锁，抛出异常 ：<br><code>terminate called after throwing an instance of &#39;boost::interprocess::lock_exception&#39;</code><br><code>what():  boost::interprocess::lock_exception</code></li>
-</ul>
-<p>原因在<a href="https://github.com/boostorg/interprocess/commit/7c8893788d3823615d6ddbfd125d2ad153817111#diff-334412084c0f3abf945468528eb917ebe6a4ae50c59d7ae3c672f1e402c96bd4R44-R49">这几行</a>，如果不想更新boost，改那几行也可以。</p>
-<p>如果编译器支持 <code>_POSIX_C_SOURCE &gt;= 200809L</code>，在构造锁的时候判断 <code>pthread_mutexattr_setrobust(&amp;m_attr, PTHREAD_MUTEX_ROBUST) != 0</code>。</p>
-<p>pthread_mutexattr_setrobust 的说明在<a href="https://man7.org/linux/man-pages/man3/pthread_mutexattr_setrobust.3.html">这里</a></p>
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
-      </categories>
-  </entry>
-  <entry>
     <title>OpenCV 编译安装笔记</title>
     <url>/post/build-cuda-with-opencv/</url>
     <content><![CDATA[<h2 id="编译OpenCV-with-CUDA"><a href="#编译OpenCV-with-CUDA" class="headerlink" title="编译OpenCV with CUDA"></a>编译OpenCV with CUDA</h2><p>编译方法<a href="http://docs.opencv.org/3.1.0/d7/d9f/tutorial_linux_install.html">官方文档</a>写的特别清楚。此外，如果要使用python接口，编译完成后需要把<code>opencv/site-packages</code>目录下的<code>cv2.so</code>链接（或复制）到<code>python/site-packages</code>中，我执行的命令为<code>sudo ln -s  /usr/local/opencv3/lib/python2.7/dist-packages/cv2.so /usr/lib/python2.7/dist-packages/cv2.so</code>（如果不清楚可以参照<a href="http://www.jianshu.com/p/67293b547261">[翻译]Python 2.7 和 Python 3+ 的OpenCV 3.0 安装教程</a>）</p>
@@ -2431,6 +2406,31 @@ apt-get install libusb-1.0-0-dev
         <tag>opencv</tag>
         <tag>python</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>boost::interprocess 新版本修复了死锁</title>
+    <url>/post/boost-robustness-interprocess-mutex-deadlock/</url>
+    <content><![CDATA[<ul>
+<li><code>Boost</code> 是一个开源 C++ 算法库，是官方认证的对标准 C++ 的扩充（有点类似 python 的 anaconda）。C++ 15 / 17 等新版本有很多特性也会参考 boost 库；</li>
+<li><code>boost:Interprocess</code> 实现了<strong>进程间通信</strong>功能，包括<strong>共享内存</strong>、内存映射文件、信号量、文件锁、消息队列等；</li>
+<li><code>共享内存</code> 指可被多个进程存取的内存，被用作进程间的通信。</li>
+</ul>
+<p>boost::interprocess 在 1.78 版本之前如果进程崩溃可能导致死锁。从18年就有人提出这个issue，21年才修复。<br>最简单的复现方法是执行三遍下面的代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &quot;boost/interprocess/managed_shared_memory.hpp&quot;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">  boost::interprocess::managed_shared_memory managed_shm&#123;</span><br><span class="line">      boost::interprocess::open_or_create, &quot;Boost&quot;, 1024</span><br><span class="line">  &#125;;</span><br><span class="line">  int* i = managed_shm.construct&lt;int&gt;(&quot;Int&quot;)(99);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>第一遍在共享内存中创建 Boost 文件，并写入一个 Key 为 Int 的变量 99；</li>
+<li>第二遍尝试再次写入时发现已经有这个Key了，写不进去。程序崩溃，并抛出异常：<br><code>terminate called after throwing an instance of &#39;boost::interprocess::interprocess_exception&#39;</code><br><code>what():  boost::interprocess_exception::library_error</code></li>
+<li>第三遍因为上次的崩溃时没有释放锁，程序死锁；</li>
+<li>新版本的 boost 在第三次执行程序的时候会不会死锁，抛出异常 ：<br><code>terminate called after throwing an instance of &#39;boost::interprocess::lock_exception&#39;</code><br><code>what():  boost::interprocess::lock_exception</code></li>
+</ul>
+<p>原因在<a href="https://github.com/boostorg/interprocess/commit/7c8893788d3823615d6ddbfd125d2ad153817111#diff-334412084c0f3abf945468528eb917ebe6a4ae50c59d7ae3c672f1e402c96bd4R44-R49">这几行</a>，如果不想更新boost，改那几行也可以。</p>
+<p>如果编译器支持 <code>_POSIX_C_SOURCE &gt;= 200809L</code>，在构造锁的时候判断 <code>pthread_mutexattr_setrobust(&amp;m_attr, PTHREAD_MUTEX_ROBUST) != 0</code>。</p>
+<p>pthread_mutexattr_setrobust 的说明在<a href="https://man7.org/linux/man-pages/man3/pthread_mutexattr_setrobust.3.html">这里</a></p>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
   </entry>
   <entry>
     <title>多目相机、Velodyne标定那些破事</title>
@@ -2601,35 +2601,6 @@ apt-get install libusb-1.0-0-dev
 <td><strong>7417</strong></td>
 </tr>
 </tbody></table>
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>逆向了 SermoonV1 的 CR-FDM-v2.4.S1.200 主板</title>
-    <url>/post/config-for-sermoonv1/</url>
-    <content><![CDATA[<blockquote>
-<p>上一篇文章吐槽了 <code>创想三维 Sermoon V1</code> 的缺点，其中包括不开源的主板。我花了几天时间逆向，得到了主板的配置文件。<br>使用此配置文件可以自行编译固件：开启 Lineradvance、加入 BLTouch 自动调平、降低待机时风扇的噪声。<br>新的配置文件在 <a href="https://github.com/Klipper3d/klipper/pull/5621">Klipper3d/klipper#5621</a><br><strong>官方已经开源了 <a href="https://github.com/CrealityOfficial/Sermoon-V1">CrealityOfficial/Sermoon-V1</a></strong></p>
-<p>另外，文章最后提供一个散热套件的模型。</p>
-</blockquote>
-<p><img data-src="http://qiniu.s1nh.org/sermoon_v1_board_diagram.png-QNthin"></p>
-<span id="more"></span>
-
-<h2 id="0x01-配置文件"><a href="#0x01-配置文件" class="headerlink" title="0x01 配置文件"></a>0x01 配置文件</h2><p><strong>a. 风扇控制</strong></p>
-<p>除挤出机上的两个风扇以外，SermoonV1 还提供 <code>机箱风扇</code> <code>主板风扇</code> <code>电源风扇</code>，其中电源、主板风扇默认连接在<code>常开风扇</code>接口中。<br>机器噪音最大的是主板风扇，在待机的时候没必要开启它。因此，我们可以按照下图把主板风扇插到 <code>PB4</code> 中。</p>
-<p>另外，原厂固件只能手动控制机箱风扇的开关。如果使用Klipper固件，将自动设置为“打印时开启机箱风扇”。</p>
-<p><img data-src="http://qiniu.s1nh.org/sermoon_v1_modify_fan_pin.jpg-QNthin"></p>
-<p><strong>b. 自动调平</strong></p>
-<p>此主板和挤出机扩展板有额外的接口可以添加BLTouch自动调平，虽然没多大必要，但有兴趣的可以自行DIY。</p>
-<p><strong>c. 其它</strong></p>
-<p>目前只添加了Klipper的配置文件，晚些会编写Marlin的代码。</p>
-<h2 id="0x02-其它配置"><a href="#0x02-其它配置" class="headerlink" title="0x02 其它配置"></a>0x02 其它配置</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pressure_advance: 0.04</span><br><span class="line"></span><br><span class="line">[input_shaper]</span><br><span class="line"># 原厂散热风扇</span><br><span class="line">shaper_freq_x: 55.6</span><br><span class="line">shaper_type_x: ei</span><br><span class="line">shaper_freq_y: 65.6</span><br><span class="line">shaper_type_y: 2hump_ei</span><br><span class="line"></span><br><span class="line"># Ben哥散热风扇</span><br><span class="line"># shaper_freq_x: 39.0</span><br><span class="line"># shaper_type_x: mzv</span><br><span class="line"># shaper_freq_y: 44.0</span><br><span class="line"># shaper_type_y: mzv</span><br></pre></td></tr></table></figure>
-
-<h2 id="0x03-Ben-哥散热神器"><a href="#0x03-Ben-哥散热神器" class="headerlink" title="0x03 Ben 哥散热神器"></a>0x03 Ben 哥散热神器</h2><p>原帖在<a href="https://fl.himi3d.cn/d/426-bengo10-ender3-s1">这里</a>，已经改成适合SermoonV1的版本【<a href="http://qiniu.s1nh.org/bengo-sermoon-v1-release.stl">下载</a>】。需要注意的是，散热神器与挤出机支架的部分建议用泡沫胶黏住，减少Y轴噪声。（这破机器Y轴噪声在不加散热器的情况下可以达到 <code>500 mm/sec^2</code>，用<a href="https://www.klipper3d.org/Measuring_Resonances.html#measuring-the-resonances">这种方法</a>测出来的）</p>
-<p>注意，固定风扇的孔位比原作者的大，用于嵌入<code>M3*4*3双通花母</code>。</p>
-<p>另外，最好支持一下原作者，在他的淘宝店购买钩爪和风扇。</p>
-<p><img data-src="http://qiniu.s1nh.org/bengo-sermoon-v1.png"></p>
 ]]></content>
       <categories>
         <category>算法与硬件</category>
@@ -2868,6 +2839,35 @@ apt-get install libusb-1.0-0-dev
 <p>• Xiong, Caiming, Stephen Merity, and Richard Socher. “Dynamic Memory Networks for Visual and Textual Question Answering.” arXiv:1603.01417 (2016).<br>• Mateusz Malinowski, Marcus Rohrbach, Mario Fritz, Ask Your Neurons: A Neural-based Approach to Answering Questions about Images, arXiv:1505.01121.<br>• Stanislaw Antol, Aishwarya Agrawal, Jiasen Lu, Margaret Mitchell, Dhruv Batra, C. Lawrence Zitnick, Devi Parikh, VQA: Visual Question Answering, CVPR, 2015 SUNw:Scene Understanding workshop.<br>• Hauyuan Gao, Junhua Mao, Jie Zhou, Zhiheng Huang, Lei Wang, Wei Xu, Are You Talking to a Machine? Dataset and Methods for Multilingual Image Question Answering, arXiv:1505.05612.<br>• Hyeonwoo Noh, Paul Hongsuck Seo, and Bohyung Han, Image Question Answering using Convolutional Neural Network with Dynamic Parameter Prediction, arXiv:1511.05765<br>• Yang, Z., He, X., Gao, J., Deng, L., &amp; Smola, A. (2015). Stacked Attention Networks for Image Question Answering. arXiv:1511.02274.<br>• Jin-Hwa Kim, Sang-Woo Lee, Dong-Hyun Kwak, Min-Oh Heo, Jeonghee Kim, Jung-Woo Ha, Byoung-Tak Zhang, Multimodal Residual Learning for Visual QA, arXiv:1606:01455<br>• Hyeonwoo Noh and Bohyung Han, Training Recurrent Answering Units with Joint Loss Minimization for VQA, arXiv:1606.03647<br>• Jin-Hwa Kim, Kyoung Woon On, Jeonghee Kim, Jung-Woo Ha, Byoung-Tak Zhang, Hadamard Product for Low-rank Bilinear Pooling, arXiv:1610.04325. </p>
 <h4 id="5-Mask-R-CNN"><a href="#5-Mask-R-CNN" class="headerlink" title="(5) Mask-R-CNN"></a>(5) Mask-R-CNN</h4><p>另外还有一篇是刚刚出来的 Mask RCNN，也是比较火。</p>
 <p>文章在这里 <a href="https://arxiv.org/abs/1703.06870">https://arxiv.org/abs/1703.06870</a><br>具体中文讨论在这里 <a href="https://www.zhihu.com/question/57403701">https://www.zhihu.com/question/57403701</a><br>但是，没有代码，我们组也在复现中 </p>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>逆向了 SermoonV1 的 CR-FDM-v2.4.S1.200 主板</title>
+    <url>/post/config-for-sermoonv1/</url>
+    <content><![CDATA[<blockquote>
+<p>上一篇文章吐槽了 <code>创想三维 Sermoon V1</code> 的缺点，其中包括不开源的主板。我花了几天时间逆向，得到了主板的配置文件。<br>使用此配置文件可以自行编译固件：开启 Lineradvance、加入 BLTouch 自动调平、降低待机时风扇的噪声。<br>新的配置文件在 <a href="https://github.com/Klipper3d/klipper/pull/5621">Klipper3d/klipper#5621</a><br><strong>官方已经开源了 <a href="https://github.com/CrealityOfficial/Sermoon-V1">CrealityOfficial/Sermoon-V1</a></strong></p>
+<p>另外，文章最后提供一个散热套件的模型。</p>
+</blockquote>
+<p><img data-src="http://qiniu.s1nh.org/sermoon_v1_board_diagram.png-QNthin"></p>
+<span id="more"></span>
+
+<h2 id="0x01-配置文件"><a href="#0x01-配置文件" class="headerlink" title="0x01 配置文件"></a>0x01 配置文件</h2><p><strong>a. 风扇控制</strong></p>
+<p>除挤出机上的两个风扇以外，SermoonV1 还提供 <code>机箱风扇</code> <code>主板风扇</code> <code>电源风扇</code>，其中电源、主板风扇默认连接在<code>常开风扇</code>接口中。<br>机器噪音最大的是主板风扇，在待机的时候没必要开启它。因此，我们可以按照下图把主板风扇插到 <code>PB4</code> 中。</p>
+<p>另外，原厂固件只能手动控制机箱风扇的开关。如果使用Klipper固件，将自动设置为“打印时开启机箱风扇”。</p>
+<p><img data-src="http://qiniu.s1nh.org/sermoon_v1_modify_fan_pin.jpg-QNthin"></p>
+<p><strong>b. 自动调平</strong></p>
+<p>此主板和挤出机扩展板有额外的接口可以添加BLTouch自动调平，虽然没多大必要，但有兴趣的可以自行DIY。</p>
+<p><strong>c. 其它</strong></p>
+<p>目前只添加了Klipper的配置文件，晚些会编写Marlin的代码。</p>
+<h2 id="0x02-其它配置"><a href="#0x02-其它配置" class="headerlink" title="0x02 其它配置"></a>0x02 其它配置</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pressure_advance: 0.04</span><br><span class="line"></span><br><span class="line">[input_shaper]</span><br><span class="line"># 原厂散热风扇</span><br><span class="line">shaper_freq_x: 55.6</span><br><span class="line">shaper_type_x: ei</span><br><span class="line">shaper_freq_y: 65.6</span><br><span class="line">shaper_type_y: 2hump_ei</span><br><span class="line"></span><br><span class="line"># Ben哥散热风扇</span><br><span class="line"># shaper_freq_x: 39.0</span><br><span class="line"># shaper_type_x: mzv</span><br><span class="line"># shaper_freq_y: 44.0</span><br><span class="line"># shaper_type_y: mzv</span><br></pre></td></tr></table></figure>
+
+<h2 id="0x03-Ben-哥散热神器"><a href="#0x03-Ben-哥散热神器" class="headerlink" title="0x03 Ben 哥散热神器"></a>0x03 Ben 哥散热神器</h2><p>原帖在<a href="https://fl.himi3d.cn/d/426-bengo10-ender3-s1">这里</a>，已经改成适合SermoonV1的版本【<a href="http://qiniu.s1nh.org/bengo-sermoon-v1-release.stl">下载</a>】。需要注意的是，散热神器与挤出机支架的部分建议用泡沫胶黏住，减少Y轴噪声。（这破机器Y轴噪声在不加散热器的情况下可以达到 <code>500 mm/sec^2</code>，用<a href="https://www.klipper3d.org/Measuring_Resonances.html#measuring-the-resonances">这种方法</a>测出来的）</p>
+<p>注意，固定风扇的孔位比原作者的大，用于嵌入<code>M3*4*3双通花母</code>。</p>
+<p>另外，最好支持一下原作者，在他的淘宝店购买钩爪和风扇。</p>
+<p><img data-src="http://qiniu.s1nh.org/bengo-sermoon-v1.png"></p>
 ]]></content>
       <categories>
         <category>算法与硬件</category>
@@ -4242,6 +4242,36 @@ try to remove and create again
       </categories>
   </entry>
   <entry>
+    <title>更新 HackRF one 到最新的 2017.02.1 固件</title>
+    <url>/post/hackrf-firmware-upgrade/</url>
+    <content><![CDATA[<p>HackRF已经吃灰一年多了，官方的上一个版本还是2015.07，最新的2017.02.1版增加了<code>Sweep mode</code>，<code>Hardware synchronization</code>，<code>hackrf_debug</code>，降低了功耗以及修复了Bug. 在<a href="https://github.com/mossmann/hackrf/releases">mossmann/hackrf/releases</a>有编译好的固件<a href="https://github.com/mossmann/hackrf/releases/download/v2017.02.1/hackrf-2017.02.1.tar.xz">hackrf-2017.02.1.tar.xz</a>下载</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_HackRF_01.jpeg-QNthin"></p>
+<span id="more"></span>
+
+<p>要注意的是Kali Linux用apt-get安装的hackrf还停留在2015.07版本，只更新固件会导致莫名其妙的错误。升级固件的同时需要更新主机上的Host软件<code>libhackrf</code>和<code>hackrf-tools</code></p>
+<h2 id="0x01-HackRF-host-软件更新"><a href="#0x01-HackRF-host-软件更新" class="headerlink" title="0x01 HackRF host 软件更新"></a>0x01 HackRF host 软件更新</h2><p>解压<code>hackrf-2017.02.1.tar.xz</code>，执行以下命令更新Host软件（host目录下有README.md可以参考）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd host</span><br><span class="line">mkdir build</span><br><span class="line">cmake ../ -DINSTALL_UDEV_RULES=ON</span><br><span class="line">make</span><br><span class="line">sudo make install</span><br><span class="line">sudo ldconfig</span><br></pre></td></tr></table></figure>
+<h2 id="0x02-HackRF-固件更新"><a href="#0x02-HackRF-固件更新" class="headerlink" title="0x02 HackRF 固件更新"></a>0x02 HackRF 固件更新</h2><p>进入<code>firmware-bin</code>目录，执行以下步骤</p>
+<ul>
+<li><code>hackrf_spiflash -Rw hackrf_one_usb.bin</code> 更新SPI</li>
+<li><code>hackrf_cpldjtag -x hackrf_cpld_default.xsvf</code> 更新CPLD</li>
+</ul>
+<p>此时可以用hackrf_info查看更新后的版本</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">(anaconda3-4.3.0) root@kali:~/Downloads# hackrf_info </span><br><span class="line">hackrf_info version: 2017.02.1</span><br><span class="line">libhackrf version: 2017.02.1 (0.5)</span><br><span class="line">Found HackRF</span><br><span class="line">Index: 0</span><br><span class="line">Serial number: 0000000000000000909864c8283593cf</span><br><span class="line">Board ID Number: 2 (HackRF One)</span><br><span class="line">Firmware Version: 2017.02.1 (API:1.02)</span><br><span class="line">Part ID Number: 0xa000cb3c 0x005e4745</span><br></pre></td></tr></table></figure>
+
+<h2 id="0x03-更新DFU（可选）"><a href="#0x03-更新DFU（可选）" class="headerlink" title="0x03 更新DFU（可选）"></a>0x03 更新DFU（可选）</h2><p>只有在HackRF固件损坏的情况下才需要刷新DFU。</p>
+<p>首先按住RESET键和DFU键，然后依次松开RESET键和DFU键，引导板子进入DFU模式。然后执行<code>dfu-util --device 1fc9:000c --alt 0 --download hackrf_one_usb.dfu</code>刷新DFU</p>
+<h2 id="0x04-自己编译固件"><a href="#0x04-自己编译固件" class="headerlink" title="0x04 自己编译固件"></a>0x04 自己编译固件</h2><p>可以参考<a href="http://scateu.me/2015/08/06/hackrf-how-to-compile-firmware.html">HackRF固件更新及编译环境搭建</a></p>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+      <tags>
+        <tag>信息安全</tag>
+        <tag>HackRF</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>将吉他恢复为出厂设置 —— 各种型号吉他的出厂参数</title>
     <url>/post/guitar-factory-setup-specs/</url>
     <content><![CDATA[<blockquote>
@@ -4356,36 +4386,6 @@ try to remove and create again
       <categories>
         <category>音乐相关</category>
       </categories>
-  </entry>
-  <entry>
-    <title>更新 HackRF one 到最新的 2017.02.1 固件</title>
-    <url>/post/hackrf-firmware-upgrade/</url>
-    <content><![CDATA[<p>HackRF已经吃灰一年多了，官方的上一个版本还是2015.07，最新的2017.02.1版增加了<code>Sweep mode</code>，<code>Hardware synchronization</code>，<code>hackrf_debug</code>，降低了功耗以及修复了Bug. 在<a href="https://github.com/mossmann/hackrf/releases">mossmann/hackrf/releases</a>有编译好的固件<a href="https://github.com/mossmann/hackrf/releases/download/v2017.02.1/hackrf-2017.02.1.tar.xz">hackrf-2017.02.1.tar.xz</a>下载</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_HackRF_01.jpeg-QNthin"></p>
-<span id="more"></span>
-
-<p>要注意的是Kali Linux用apt-get安装的hackrf还停留在2015.07版本，只更新固件会导致莫名其妙的错误。升级固件的同时需要更新主机上的Host软件<code>libhackrf</code>和<code>hackrf-tools</code></p>
-<h2 id="0x01-HackRF-host-软件更新"><a href="#0x01-HackRF-host-软件更新" class="headerlink" title="0x01 HackRF host 软件更新"></a>0x01 HackRF host 软件更新</h2><p>解压<code>hackrf-2017.02.1.tar.xz</code>，执行以下命令更新Host软件（host目录下有README.md可以参考）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd host</span><br><span class="line">mkdir build</span><br><span class="line">cmake ../ -DINSTALL_UDEV_RULES=ON</span><br><span class="line">make</span><br><span class="line">sudo make install</span><br><span class="line">sudo ldconfig</span><br></pre></td></tr></table></figure>
-<h2 id="0x02-HackRF-固件更新"><a href="#0x02-HackRF-固件更新" class="headerlink" title="0x02 HackRF 固件更新"></a>0x02 HackRF 固件更新</h2><p>进入<code>firmware-bin</code>目录，执行以下步骤</p>
-<ul>
-<li><code>hackrf_spiflash -Rw hackrf_one_usb.bin</code> 更新SPI</li>
-<li><code>hackrf_cpldjtag -x hackrf_cpld_default.xsvf</code> 更新CPLD</li>
-</ul>
-<p>此时可以用hackrf_info查看更新后的版本</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">(anaconda3-4.3.0) root@kali:~/Downloads# hackrf_info </span><br><span class="line">hackrf_info version: 2017.02.1</span><br><span class="line">libhackrf version: 2017.02.1 (0.5)</span><br><span class="line">Found HackRF</span><br><span class="line">Index: 0</span><br><span class="line">Serial number: 0000000000000000909864c8283593cf</span><br><span class="line">Board ID Number: 2 (HackRF One)</span><br><span class="line">Firmware Version: 2017.02.1 (API:1.02)</span><br><span class="line">Part ID Number: 0xa000cb3c 0x005e4745</span><br></pre></td></tr></table></figure>
-
-<h2 id="0x03-更新DFU（可选）"><a href="#0x03-更新DFU（可选）" class="headerlink" title="0x03 更新DFU（可选）"></a>0x03 更新DFU（可选）</h2><p>只有在HackRF固件损坏的情况下才需要刷新DFU。</p>
-<p>首先按住RESET键和DFU键，然后依次松开RESET键和DFU键，引导板子进入DFU模式。然后执行<code>dfu-util --device 1fc9:000c --alt 0 --download hackrf_one_usb.dfu</code>刷新DFU</p>
-<h2 id="0x04-自己编译固件"><a href="#0x04-自己编译固件" class="headerlink" title="0x04 自己编译固件"></a>0x04 自己编译固件</h2><p>可以参考<a href="http://scateu.me/2015/08/06/hackrf-how-to-compile-firmware.html">HackRF固件更新及编译环境搭建</a></p>
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
-      </categories>
-      <tags>
-        <tag>信息安全</tag>
-        <tag>HackRF</tag>
-      </tags>
   </entry>
   <entry>
     <title>HackRF 入门 -- GPS欺骗、GSM嗅探</title>
@@ -5698,7 +5698,7 @@ H1&lt;---|0.14-1.6|Mirtazapine
 <li><p>您将收到一封包含新许可证密钥的电子邮件。</p>
 </li>
 </ol>
-<p>如果您对许可证转移功能有任何疑问，可以将新的硬件密钥通过电子邮件发送至 <a href="mailto:&#115;&#x75;&#x70;&#112;&#x6f;&#114;&#x74;&#64;&#x6d;&#117;&#108;&#116;&#x69;&#x65;&#x63;&#x75;&#115;&#x63;&#97;&#x6e;&#x2e;&#110;&#x65;&#x74;">&#115;&#x75;&#x70;&#112;&#x6f;&#114;&#x74;&#64;&#x6d;&#117;&#108;&#116;&#x69;&#x65;&#x63;&#x75;&#115;&#x63;&#97;&#x6e;&#x2e;&#110;&#x65;&#x74;</a>。</p>
+<p>如果您对许可证转移功能有任何疑问，可以将新的硬件密钥通过电子邮件发送至 <a href="mailto:&#115;&#117;&#x70;&#x70;&#x6f;&#x72;&#x74;&#64;&#x6d;&#x75;&#x6c;&#116;&#x69;&#x65;&#x63;&#117;&#115;&#99;&#97;&#110;&#x2e;&#x6e;&#x65;&#116;">&#115;&#117;&#x70;&#x70;&#x6f;&#x72;&#x74;&#64;&#x6d;&#x75;&#x6c;&#116;&#x69;&#x65;&#x63;&#117;&#115;&#99;&#97;&#110;&#x2e;&#x6e;&#x65;&#116;</a>。</p>
 <p>请注意，许可证转移功能对转移次数有限制。</p>
 <p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image10.png-QNthin"></p>
 <h2 id="2-用户界面"><a href="#2-用户界面" class="headerlink" title="2. 用户界面"></a>2. 用户界面</h2><h3 id="2-1-Multiecuscan-主屏幕"><a href="#2-1-Multiecuscan-主屏幕" class="headerlink" title="2.1. Multiecuscan 主屏幕"></a>2.1. Multiecuscan 主屏幕</h3><p>当您启动 Multiecuscan 时，它会显示以下屏幕：</p>
