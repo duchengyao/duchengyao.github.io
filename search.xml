@@ -625,47 +625,6 @@ root@kali:~# depmod -a -v &quot;3.8.13-bone53&quot;
       </tags>
   </entry>
   <entry>
-    <title>深度改造墨标 013-4602</title>
-    <url>/post/FenderModification/</url>
-    <content><![CDATA[<p>也许是审美疲劳了，暑假的时候深度改造了我的琴.</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_FenderOrigional.jpg-QNthin"></p>
-<span id="more"></span>
-
-<h2 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h2><h3 id="Gotoh旋钮"><a href="#Gotoh旋钮" class="headerlink" title="Gotoh旋钮"></a>Gotoh旋钮</h3><p>更换的旋钮型号是 SG381 H.A.P-M，<em>H.A.P-M</em>的全称是<em>Height Adjustable Post with Magnum Lock</em>。这个旋钮既可以调节高度，又可以锁弦，应该是Gotoh科技含量最高的旋钮了。</p>
-<p>比起510系列，SG381又有它不到一半的价格，特别亲民。</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Gotoh_DSL.png-QNthin"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Gotoh_MG.png-QNthin"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Gotoh_HAPM.png-QNthin"></p>
-<p><a href="http://www.g-gotoh.com/dl/files/Catalog2014-en.pdf">Gotoh 2014 产品目录</a></p>
-<p><a href="http://www.g-gotoh.com/international/?btp_product=sg381">Gotoh SG381 官方页面</a></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_FenderGotoh.jpg-QNthin"></p>
-<h3 id="油浸电容"><a href="#油浸电容" class="headerlink" title="油浸电容"></a>油浸电容</h3><p>这个没什么好说的，心理作用。</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Fender20150806Wiring.jpg-QNthin"></p>
-<h3 id="Kahler琴桥"><a href="#Kahler琴桥" class="headerlink" title="Kahler琴桥"></a>Kahler琴桥</h3><p>Kahler X-trem 4300 少数派琴桥，还挺稳定的，做工一般。比起Floyd Rose，它可以调节每跟琴弦的高度，来适应9.5弧度的琴颈。</p>
-<p>网上也找不到它的资料，可能国产的X-trem系列已经被放弃，或者停产了。只找到这一个页面：</p>
-<p><a href="http://www.trevornewhouse.com/scripts/prodView.asp?idproduct=66">Kahler 4300</a></p>
-<p><a href="http://www.wammiworld.com/kahlerparts.php">这个好像是Kahler官网</a></p>
-<p><a href="http://homerecording.com/bbs/equipment-forums/guitars-and-basses/anyone-here-use-kahler-336909/">Kahler 的已知问题1</a></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Fender20150806Side.jpg-QNthin"></p>
-<h3 id="成型后就是这样了"><a href="#成型后就是这样了" class="headerlink" title="成型后就是这样了"></a>成型后就是这样了</h3><p><img data-src="http://qiniu.s1nh.org/Blog_Fender20150806Main.jpg-QNthin"></p>
-<h2 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h2><p>当然，上面仅仅是刚刚开始。</p>
-<p>然后，我又上网淘了一块儿蓝色硝基漆的AllParts的单块岑木(ASH)琴体；Wilkinson VS100琴桥；含有S1开关的Fender N3 Noiseless 拾音器套装。</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Allparts_ASH_Body.jpg-QNthin"></p>
-<h3 id="Wilkinson-琴桥"><a href="#Wilkinson-琴桥" class="headerlink" title="Wilkinson 琴桥"></a>Wilkinson 琴桥</h3><p>琴桥的型号是Wilkinson by GOTOH VS100G，在官网上找不到资料，可能是已经停产了。目前只能找到VS100N的资料</p>
-<p><a href="http://www.g-gotoh.com/international/?btp_product=vs100n">VS 100N 官方页面</a></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_VS100N-3.jpg-QNthin"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Wilkinson_VS100_Bridge.jpg-QNthin"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_WilkinsonMod_1.jpg-QNthin"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_WilkinsonMod_2.jpg-QNthin"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_WilkinsonMod_finished.jpg-QNthin"></p>
-<h3 id="Fender-N3-Noiseless-With-S1-System"><a href="#Fender-N3-Noiseless-With-S1-System" class="headerlink" title="Fender N3 Noiseless With S1 System"></a>Fender N3 Noiseless With S1 System</h3><p>之前还特意研究了一下各种S1的接法</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_N3_Noiseless_With_S1_Switch.jpg-QNthin"></p>
-]]></content>
-      <categories>
-        <category>音乐相关</category>
-      </categories>
-  </entry>
-  <entry>
     <title>CVPR2016目标检测领域</title>
     <url>/post/CVPR2016/</url>
     <content><![CDATA[<blockquote>
@@ -712,6 +671,47 @@ root@kali:~# depmod -a -v &quot;3.8.13-bone53&quot;
         <tag>CVPR</tag>
         <tag>机器视觉</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>深度改造墨标 013-4602</title>
+    <url>/post/FenderModification/</url>
+    <content><![CDATA[<p>也许是审美疲劳了，暑假的时候深度改造了我的琴.</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_FenderOrigional.jpg-QNthin"></p>
+<span id="more"></span>
+
+<h2 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h2><h3 id="Gotoh旋钮"><a href="#Gotoh旋钮" class="headerlink" title="Gotoh旋钮"></a>Gotoh旋钮</h3><p>更换的旋钮型号是 SG381 H.A.P-M，<em>H.A.P-M</em>的全称是<em>Height Adjustable Post with Magnum Lock</em>。这个旋钮既可以调节高度，又可以锁弦，应该是Gotoh科技含量最高的旋钮了。</p>
+<p>比起510系列，SG381又有它不到一半的价格，特别亲民。</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Gotoh_DSL.png-QNthin"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Gotoh_MG.png-QNthin"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Gotoh_HAPM.png-QNthin"></p>
+<p><a href="http://www.g-gotoh.com/dl/files/Catalog2014-en.pdf">Gotoh 2014 产品目录</a></p>
+<p><a href="http://www.g-gotoh.com/international/?btp_product=sg381">Gotoh SG381 官方页面</a></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_FenderGotoh.jpg-QNthin"></p>
+<h3 id="油浸电容"><a href="#油浸电容" class="headerlink" title="油浸电容"></a>油浸电容</h3><p>这个没什么好说的，心理作用。</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Fender20150806Wiring.jpg-QNthin"></p>
+<h3 id="Kahler琴桥"><a href="#Kahler琴桥" class="headerlink" title="Kahler琴桥"></a>Kahler琴桥</h3><p>Kahler X-trem 4300 少数派琴桥，还挺稳定的，做工一般。比起Floyd Rose，它可以调节每跟琴弦的高度，来适应9.5弧度的琴颈。</p>
+<p>网上也找不到它的资料，可能国产的X-trem系列已经被放弃，或者停产了。只找到这一个页面：</p>
+<p><a href="http://www.trevornewhouse.com/scripts/prodView.asp?idproduct=66">Kahler 4300</a></p>
+<p><a href="http://www.wammiworld.com/kahlerparts.php">这个好像是Kahler官网</a></p>
+<p><a href="http://homerecording.com/bbs/equipment-forums/guitars-and-basses/anyone-here-use-kahler-336909/">Kahler 的已知问题1</a></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Fender20150806Side.jpg-QNthin"></p>
+<h3 id="成型后就是这样了"><a href="#成型后就是这样了" class="headerlink" title="成型后就是这样了"></a>成型后就是这样了</h3><p><img data-src="http://qiniu.s1nh.org/Blog_Fender20150806Main.jpg-QNthin"></p>
+<h2 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h2><p>当然，上面仅仅是刚刚开始。</p>
+<p>然后，我又上网淘了一块儿蓝色硝基漆的AllParts的单块岑木(ASH)琴体；Wilkinson VS100琴桥；含有S1开关的Fender N3 Noiseless 拾音器套装。</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Allparts_ASH_Body.jpg-QNthin"></p>
+<h3 id="Wilkinson-琴桥"><a href="#Wilkinson-琴桥" class="headerlink" title="Wilkinson 琴桥"></a>Wilkinson 琴桥</h3><p>琴桥的型号是Wilkinson by GOTOH VS100G，在官网上找不到资料，可能是已经停产了。目前只能找到VS100N的资料</p>
+<p><a href="http://www.g-gotoh.com/international/?btp_product=vs100n">VS 100N 官方页面</a></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_VS100N-3.jpg-QNthin"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_Wilkinson_VS100_Bridge.jpg-QNthin"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_WilkinsonMod_1.jpg-QNthin"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_WilkinsonMod_2.jpg-QNthin"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_WilkinsonMod_finished.jpg-QNthin"></p>
+<h3 id="Fender-N3-Noiseless-With-S1-System"><a href="#Fender-N3-Noiseless-With-S1-System" class="headerlink" title="Fender N3 Noiseless With S1 System"></a>Fender N3 Noiseless With S1 System</h3><p>之前还特意研究了一下各种S1的接法</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_N3_Noiseless_With_S1_Switch.jpg-QNthin"></p>
+]]></content>
+      <categories>
+        <category>音乐相关</category>
+      </categories>
   </entry>
   <entry>
     <title>Fender S-1 开关的接法</title>
@@ -5692,7 +5692,7 @@ H1&lt;---|0.14-1.6|Mirtazapine
 <li><p>您将收到一封包含新许可证密钥的电子邮件。</p>
 </li>
 </ol>
-<p>如果您对许可证转移功能有任何疑问，可以将新的硬件密钥通过电子邮件发送至 <a href="mailto:&#x73;&#x75;&#x70;&#x70;&#x6f;&#x72;&#116;&#64;&#x6d;&#x75;&#x6c;&#x74;&#105;&#101;&#99;&#117;&#x73;&#x63;&#x61;&#110;&#46;&#110;&#x65;&#116;">&#x73;&#x75;&#x70;&#x70;&#x6f;&#x72;&#116;&#64;&#x6d;&#x75;&#x6c;&#x74;&#105;&#101;&#99;&#117;&#x73;&#x63;&#x61;&#110;&#46;&#110;&#x65;&#116;</a>。</p>
+<p>如果您对许可证转移功能有任何疑问，可以将新的硬件密钥通过电子邮件发送至 <a href="mailto:&#x73;&#x75;&#x70;&#112;&#111;&#114;&#x74;&#x40;&#x6d;&#x75;&#108;&#116;&#x69;&#x65;&#99;&#117;&#115;&#99;&#x61;&#x6e;&#46;&#110;&#x65;&#116;">&#x73;&#x75;&#x70;&#112;&#111;&#114;&#x74;&#x40;&#x6d;&#x75;&#108;&#116;&#x69;&#x65;&#99;&#117;&#115;&#99;&#x61;&#x6e;&#46;&#110;&#x65;&#116;</a>。</p>
 <p>请注意，许可证转移功能对转移次数有限制。</p>
 <p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image10.png-QNthin"></p>
 <h2 id="2-用户界面"><a href="#2-用户界面" class="headerlink" title="2. 用户界面"></a>2. 用户界面</h2><h3 id="2-1-Multiecuscan-主屏幕"><a href="#2-1-Multiecuscan-主屏幕" class="headerlink" title="2.1. Multiecuscan 主屏幕"></a>2.1. Multiecuscan 主屏幕</h3><p>当您启动 Multiecuscan 时，它会显示以下屏幕：</p>
@@ -6773,6 +6773,20 @@ H1&lt;---|0.14-1.6|Mirtazapine
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">points_img = np.matmul(projection_matrix, points_cam_front)</span><br><span class="line">points_img[0:2,:] /= points_img[2,:]</span><br><span class="line">points_img = np.array(points_img.T)</span><br></pre></td></tr></table></figure>
 
 <p><img data-src="http://qiniu.s1nh.org/project_velodyne_4.png-QNthin"></p>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Google Logging (glog) 格式的 Promtail 配置</title>
+    <url>/post/promtail-config-glog/</url>
+    <content><![CDATA[<p>使用 promtail 提取 glog 的时间戳、文件名等信息。</p>
+<p><img data-src="http://qiniu.s1nh.org/promtail-config-glog-regex.png"></p>
+<span id="more"></span>
+
+<p><img data-src="http://qiniu.s1nh.org/promtail-config-glog-grafana.png"></p>
+<p>配置文件在 <a href="https://github.com/duchengyao/promtail-config-glog">https://github.com/duchengyao/promtail-config-glog</a></p>
 ]]></content>
       <categories>
         <category>算法与硬件</category>
