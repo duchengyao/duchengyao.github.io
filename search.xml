@@ -5692,7 +5692,7 @@ H1&lt;---|0.14-1.6|Mirtazapine
 <li><p>您将收到一封包含新许可证密钥的电子邮件。</p>
 </li>
 </ol>
-<p>如果您对许可证转移功能有任何疑问，可以将新的硬件密钥通过电子邮件发送至 <a href="mailto:&#115;&#x75;&#112;&#112;&#x6f;&#114;&#116;&#x40;&#x6d;&#x75;&#x6c;&#116;&#105;&#x65;&#99;&#117;&#115;&#99;&#x61;&#110;&#46;&#110;&#101;&#116;">&#115;&#x75;&#112;&#112;&#x6f;&#114;&#116;&#x40;&#x6d;&#x75;&#x6c;&#116;&#105;&#x65;&#99;&#117;&#115;&#99;&#x61;&#110;&#46;&#110;&#101;&#116;</a>。</p>
+<p>如果您对许可证转移功能有任何疑问，可以将新的硬件密钥通过电子邮件发送至 <a href="mailto:&#115;&#117;&#112;&#112;&#111;&#x72;&#116;&#x40;&#109;&#117;&#x6c;&#x74;&#105;&#101;&#x63;&#117;&#x73;&#x63;&#x61;&#110;&#x2e;&#110;&#x65;&#116;">&#115;&#117;&#112;&#112;&#111;&#x72;&#116;&#x40;&#109;&#117;&#x6c;&#x74;&#105;&#101;&#x63;&#117;&#x73;&#x63;&#x61;&#110;&#x2e;&#110;&#x65;&#116;</a>。</p>
 <p>请注意，许可证转移功能对转移次数有限制。</p>
 <p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image10.png-QNthin"></p>
 <h2 id="2-用户界面"><a href="#2-用户界面" class="headerlink" title="2. 用户界面"></a>2. 用户界面</h2><h3 id="2-1-Multiecuscan-主屏幕"><a href="#2-1-Multiecuscan-主屏幕" class="headerlink" title="2.1. Multiecuscan 主屏幕"></a>2.1. Multiecuscan 主屏幕</h3><p>当您启动 Multiecuscan 时，它会显示以下屏幕：</p>
@@ -6207,10 +6207,38 @@ H1&lt;---|0.14-1.6|Mirtazapine
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cp /sbin/ifconfig .</span><br><span class="line">sudo setcap cap_net_admin=eip ./ifconfig</span><br><span class="line">./ifconfig eth0 1.2.3.4    # succeeds</span><br><span class="line">chmod 750 ./ifconfig</span><br></pre></td></tr></table></figure>
 
+<h2 id="FastDDS-无法发送超过-255-string"><a href="#FastDDS-无法发送超过-255-string" class="headerlink" title="FastDDS 无法发送超过 255 string"></a>FastDDS 无法发送超过 255 string</h2><p>可能会有 log <code>[RTPS_READER_HISTORY Error] Change payload size of &#39;xxx&#39; bytes is larger than the history payload size of &#39;271&#39; bytes and cannot be resized. -&gt; Function can_change_be_added_nts</code></p>
+<p>在 subscriber 加 <code>rqos.endpoints().history_memory_policy = eprosima::fastrtps::rtps::DYNAMIC_RESERVE_MEMORY_MODE;</code></p>
 ]]></content>
       <categories>
         <category>算法与硬件</category>
       </categories>
+  </entry>
+  <entry>
+    <title>2016-06-12 OpenCV学习笔记</title>
+    <url>/post/note-2016-06-12/</url>
+    <content><![CDATA[<p>本周基于OpenCV进行了一次完整的图像拼接测试，和移动物体探测实验</p>
+<h2 id="图像拼接测试"><a href="#图像拼接测试" class="headerlink" title="图像拼接测试"></a>图像拼接测试</h2><p>测试采用<code>Python2.7</code>, <code>OpenCV3</code>, 对26张<code>12Mp(4000×3000)</code>进行SIFT角点检测，每张图片缩放为之前的0.12倍，利用CPU（8线程i7-6700HQ）进行完整拼接的时间为30秒。（代码链接：<a href="https://github.com/duchengyao/mosaic">https://github.com/duchengyao/mosaic</a> ）</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_mosaic-CPU-1.gif" title="拼接过程（点击可查看大图）"></p>
+<span id="more"></span>
+
+<p><img data-src="http://qiniu.s1nh.org/Blog_mosaic-sources.png-QNthin" title="拼接资源"></p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_mosaic-final_output.png-QNthin" title="拼接结果"></p>
+<h2 id="移动物体探测"><a href="#移动物体探测" class="headerlink" title="移动物体探测"></a>移动物体探测</h2><p>实验算法的思路为，取视频的前一帧和当前帧进行对比，如果发生了显著变化，那么就可以认为图像中有移动物体。（程序在<code>OpenCV 2.4.11-nppy27_0</code>运行通过，代码链接：<a href="https://github.com/duchengyao/pycv/blob/master/motion-detector.py">https://github.com/duchengyao/pycv/blob/master/motion-detector.py</a> ）</p>
+<p><img data-src="http://qiniu.s1nh.org/Blog_motion-detector.gif" title="移动物体探测"></p>
+<blockquote>
+<p>参考：<br>[1] KaewTraKulPong 等人发表的《<a href="http://www.ee.surrey.ac.uk/CVSSP/Publications/papers/KaewTraKulPong-AVBS01.pdf">An improved adaptive background mixture model for real-time tracking with shadow detection</a>》。这个方法可以通过cv2.BackgroundSubtractorMOG来使用。<br>[2] Zivkovic 提出的《<a href="http://www.zoranz.net/Publications/zivkovic2004ICPR.pdf">Improved adaptive Gaussian mixture model for background subtraction</a>》和《<a href="http://www.zoranz.net/Publications/zivkovicPRL2006.pdf">Efficient Adaptive Density Estimation per Image Pixel for the Task of Background Subtraction</a>》。可以通过 cv2.BackgroundSubtractorMOG2 来使用。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+      <tags>
+        <tag>图像拼接</tag>
+        <tag>移动物体探测</tag>
+        <tag>OpenCV</tag>
+        <tag>Python</tag>
+      </tags>
   </entry>
   <entry>
     <title>其它笔记</title>
@@ -6247,32 +6275,6 @@ H1&lt;---|0.14-1.6|Mirtazapine
       <categories>
         <category>其它笔记</category>
       </categories>
-  </entry>
-  <entry>
-    <title>2016-06-12 OpenCV学习笔记</title>
-    <url>/post/note-2016-06-12/</url>
-    <content><![CDATA[<p>本周基于OpenCV进行了一次完整的图像拼接测试，和移动物体探测实验</p>
-<h2 id="图像拼接测试"><a href="#图像拼接测试" class="headerlink" title="图像拼接测试"></a>图像拼接测试</h2><p>测试采用<code>Python2.7</code>, <code>OpenCV3</code>, 对26张<code>12Mp(4000×3000)</code>进行SIFT角点检测，每张图片缩放为之前的0.12倍，利用CPU（8线程i7-6700HQ）进行完整拼接的时间为30秒。（代码链接：<a href="https://github.com/duchengyao/mosaic">https://github.com/duchengyao/mosaic</a> ）</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_mosaic-CPU-1.gif" title="拼接过程（点击可查看大图）"></p>
-<span id="more"></span>
-
-<p><img data-src="http://qiniu.s1nh.org/Blog_mosaic-sources.png-QNthin" title="拼接资源"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_mosaic-final_output.png-QNthin" title="拼接结果"></p>
-<h2 id="移动物体探测"><a href="#移动物体探测" class="headerlink" title="移动物体探测"></a>移动物体探测</h2><p>实验算法的思路为，取视频的前一帧和当前帧进行对比，如果发生了显著变化，那么就可以认为图像中有移动物体。（程序在<code>OpenCV 2.4.11-nppy27_0</code>运行通过，代码链接：<a href="https://github.com/duchengyao/pycv/blob/master/motion-detector.py">https://github.com/duchengyao/pycv/blob/master/motion-detector.py</a> ）</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_motion-detector.gif" title="移动物体探测"></p>
-<blockquote>
-<p>参考：<br>[1] KaewTraKulPong 等人发表的《<a href="http://www.ee.surrey.ac.uk/CVSSP/Publications/papers/KaewTraKulPong-AVBS01.pdf">An improved adaptive background mixture model for real-time tracking with shadow detection</a>》。这个方法可以通过cv2.BackgroundSubtractorMOG来使用。<br>[2] Zivkovic 提出的《<a href="http://www.zoranz.net/Publications/zivkovic2004ICPR.pdf">Improved adaptive Gaussian mixture model for background subtraction</a>》和《<a href="http://www.zoranz.net/Publications/zivkovicPRL2006.pdf">Efficient Adaptive Density Estimation per Image Pixel for the Task of Background Subtraction</a>》。可以通过 cv2.BackgroundSubtractorMOG2 来使用。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
-      </categories>
-      <tags>
-        <tag>图像拼接</tag>
-        <tag>移动物体探测</tag>
-        <tag>OpenCV</tag>
-        <tag>Python</tag>
-      </tags>
   </entry>
   <entry>
     <title>光流(Optical Flow)介绍</title>

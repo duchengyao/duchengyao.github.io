@@ -833,6 +833,8 @@
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cp /sbin/ifconfig .</span><br><span class="line">sudo setcap cap_net_admin=eip ./ifconfig</span><br><span class="line">./ifconfig eth0 1.2.3.4    # succeeds</span><br><span class="line">chmod 750 ./ifconfig</span><br></pre></td></tr></table></figure>
 
+<h2 id="FastDDS-无法发送超过-255-string"><a href="#FastDDS-无法发送超过-255-string" class="headerlink" title="FastDDS 无法发送超过 255 string"></a>FastDDS 无法发送超过 255 string</h2><p>可能会有 log <code>[RTPS_READER_HISTORY Error] Change payload size of &#39;xxx&#39; bytes is larger than the history payload size of &#39;271&#39; bytes and cannot be resized. -&gt; Function can_change_be_added_nts</code></p>
+<p>在 subscriber 加 <code>rqos.endpoints().history_memory_policy = eprosima::fastrtps::rtps::DYNAMIC_RESERVE_MEMORY_MODE;</code></p>
 
       
     </div>

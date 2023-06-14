@@ -19,27 +19,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.15.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="linux 中通过非 root 账户使用 ifconfig 设置 ip 的方法 创建一个 ifconfig 的副本； 通过 setcap 向副本授予 CAP_NET_ADMIN 能力，而不必授予 root（用户 ID 0）的完整权限； 为了避免非法用户使用这个副本来修改网络，需要给ifconfig副本设置新的权限，仅允许该组的成员执行。  1234cp &#x2F;sbin&#x2F;ifconfig .sudo s">
-<meta property="og:type" content="article">
-<meta property="og:title" content="一些小技巧">
-<meta property="og:url" content="http://s1nh.org/post/network-tips/index.html">
+    <meta name="description" content="我有一个朋友，自杀以后翻他的日记，截取了一些内容  一个走出重度抑郁的朋友告诉我，克服抑郁的一个方法是要有救世主心态请告诉我什么是救世主心态，我看是大冤种心态吧  她孕妇糖尿病，晚上9点吃了一堆东西。 我说少吃点，她说吃的很少； 我说你喝了剩下的粥，吃了剩下的菜，吃了三瓣西瓜少吗； 她说，都是早上饿的； 我说，你说的都对，都是成年人了，你觉得应该吃就吃，对自己行为负责就行； 她说，孩子不是你的吗，">
+<meta property="og:type" content="website">
+<meta property="og:title" content="救世主心态">
+<meta property="og:url" content="http://s1nh.org/sober/savior-mentality.html">
 <meta property="og:site_name" content="S1NH">
-<meta property="og:description" content="linux 中通过非 root 账户使用 ifconfig 设置 ip 的方法 创建一个 ifconfig 的副本； 通过 setcap 向副本授予 CAP_NET_ADMIN 能力，而不必授予 root（用户 ID 0）的完整权限； 为了避免非法用户使用这个副本来修改网络，需要给ifconfig副本设置新的权限，仅允许该组的成员执行。  1234cp &#x2F;sbin&#x2F;ifconfig .sudo s">
+<meta property="og:description" content="我有一个朋友，自杀以后翻他的日记，截取了一些内容  一个走出重度抑郁的朋友告诉我，克服抑郁的一个方法是要有救世主心态请告诉我什么是救世主心态，我看是大冤种心态吧  她孕妇糖尿病，晚上9点吃了一堆东西。 我说少吃点，她说吃的很少； 我说你喝了剩下的粥，吃了剩下的菜，吃了三瓣西瓜少吗； 她说，都是早上饿的； 我说，你说的都对，都是成年人了，你觉得应该吃就吃，对自己行为负责就行； 她说，孩子不是你的吗，">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-02-27T12:03:13.000Z">
-<meta property="article:modified_time" content="2023-06-07T02:12:07.424Z">
+<meta property="article:published_time" content="2023-06-14T17:15:00.000Z">
+<meta property="article:modified_time" content="2023-06-14T17:46:40.216Z">
 <meta property="article:author" content="S1NH">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://s1nh.org/post/network-tips/">
+<link rel="canonical" href="http://s1nh.org/sober/savior-mentality">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://s1nh.org/post/network-tips/","path":"post/network-tips/","title":"一些小技巧"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":true,"permalink":"http://s1nh.org/sober/savior-mentality.html","path":"sober/savior-mentality.html","title":"救世主心态"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>一些小技巧 | S1NH</title>
+<title>救世主心态 | S1NH
+</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-44KGHGDYG3"></script>
   <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-44KGHGDYG3","only_pageview":false}</script>
@@ -132,7 +133,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <div class="sidebar-inner sidebar-overview-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -145,7 +146,6 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#linux-%E4%B8%AD%E9%80%9A%E8%BF%87%E9%9D%9E-root-%E8%B4%A6%E6%88%B7%E4%BD%BF%E7%94%A8-ifconfig-%E8%AE%BE%E7%BD%AE-ip-%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-text">linux 中通过非 root 账户使用 ifconfig 设置 ip 的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FastDDS-%E6%97%A0%E6%B3%95%E5%8F%91%E9%80%81%E8%B6%85%E8%BF%87-255-string"><span class="nav-text">FastDDS 无法发送超过 255 string</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -251,145 +251,203 @@
 
     </div>
 
-    <div class="main-inner post posts-expand">
+    <div class="main-inner page posts-expand">
 
 
-  
+    
+    
+    
+    <div class="post-block" lang="zh-CN"><header class="post-header">
 
+<h1 class="post-title" itemprop="name headline">救世主心态
+</h1>
 
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/network-tips/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="S1NH">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="S1NH">
-      <meta itemprop="description" content="no other developers required.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="一些小技巧 | S1NH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          一些小技巧
-        </h1>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-02-27 20:03:13" itemprop="dateCreated datePublished" datetime="2023-02-27T20:03:13+08:00">2023-02-27</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/programming/" itemprop="url" rel="index"><span itemprop="name">算法与硬件</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span id="busuanzi_value_page_pv"></span>
-    </span>
+<div class="post-meta-container">
 </div>
 
-        </div>
-      </header>
+</header>
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-        <h2 id="linux-中通过非-root-账户使用-ifconfig-设置-ip-的方法"><a href="#linux-中通过非-root-账户使用-ifconfig-设置-ip-的方法" class="headerlink" title="linux 中通过非 root 账户使用 ifconfig 设置 ip 的方法"></a>linux 中通过非 root 账户使用 ifconfig 设置 ip 的方法</h2><ol>
-<li>创建一个 ifconfig 的副本；</li>
-<li>通过 setcap 向副本授予 CAP_NET_ADMIN 能力，而不必授予 root（用户 ID 0）的完整权限；</li>
-<li>为了避免非法用户使用这个副本来修改网络，需要给ifconfig副本设置新的权限，仅允许该组的成员执行。</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cp /sbin/ifconfig .</span><br><span class="line">sudo setcap cap_net_admin=eip ./ifconfig</span><br><span class="line">./ifconfig eth0 1.2.3.4    # succeeds</span><br><span class="line">chmod 750 ./ifconfig</span><br></pre></td></tr></table></figure>
+      
+      
+      <div class="post-body">
+          <p><code>我有一个朋友，自杀以后翻他的日记，截取了一些内容</code></p>
+<blockquote>
+<p>一个走出重度抑郁的朋友告诉我，克服抑郁的一个方法是要有救世主心态<br>请告诉我什么是救世主心态，我看是大冤种心态吧</p>
+</blockquote>
+<p>她孕妇糖尿病，晚上9点吃了一堆东西。</p>
+<p>我说少吃点，她说吃的很少；</p>
+<p>我说你喝了剩下的粥，吃了剩下的菜，吃了三瓣西瓜少吗；</p>
+<p>她说，都是早上饿的；</p>
+<p>我说，你说的都对，都是成年人了，你觉得应该吃就吃，对自己行为负责就行；</p>
+<p>她说，孩子不是你的吗，我不是你老婆吗，你不用对我负责吗；</p>
+<p>我说，那你听我的以后别吃那么多了；她说她吃的很少。</p>
+<p>我说你明天晚上买血糖仪后天才能发货；</p>
+<p>她说那就下周五去看医生；</p>
+<p>我说不是什么时间看医生的问题，现在早买一天早用一天，再晚几天就生了。</p>
+<p>我说完坐下喝咖啡，她说菜谱都给你拿起来了，你都不想看。</p>
+<p>我去她手里拿来菜谱，说，你就是想找事，就是想让我站起来，过去从你手里拿，否则就说我不关心你；</p>
+<p>她说我没让你从我手里拿；</p>
+<p>我说，我都没看到你拿起来菜谱，怎么知道我不想看，你怎么不送过来；</p>
+<p>她说，这不是我生气了吗，你整天生气；</p>
+<p>我说，我生气还是你生气；</p>
+<p>她说，我说一句你反驳一句；</p>
+<p>我说，那我说一句，是不是你也反驳一句；</p>
+<p>她说，我说一句你反驳十句；</p>
+<p>我说，那我们现在开始闭嘴，看谁先说话；</p>
+<p>她说，你先说话了。</p>
+<p>我不说话。</p>
+<p>然后她摔门走了。</p>
+<p>—————</p>
+<p>我做咖啡，她说晚上还喝咖啡，不怕睡不着觉啊；</p>
+<p>她在玩游戏，我打开游戏，她说你别玩了，我们要睡了</p>
+<p>我要录歌，他说你别录了，陪陪我明天再录</p>
+<p>我说今天不洗澡了，她说不行必须要洗</p>
+<p>我不管想做什么，只要跟他说，她都有理由说不。</p>
+<p>我不理他，她说我没耐心。</p>
+<p>没理可讲了就说我凶她。</p>
+<p>——————</p>
+<p>哦对了，有一次他一边接水一边跟我说话</p>
+<p>瓶口没对准</p>
+<p>洒了</p>
+<p>我大声说洒了洒了</p>
+<p>她说我凶她</p>
+<p>然后就生气了</p>
+<p>哄她没用</p>
+<p>然后我跟她说，那以后我就眼睁睁的看着开水洒你身上？</p>
+<p>她说，你可以小点声，注意说话方式</p>
+<p>傻逼</p>
+<p>——————</p>
+<p>我说别吵了我已经吃药了赶紧睡吧。</p>
+<p>她说你吃什么药了。</p>
+<p>我说安眠药</p>
+<p>我不记得她说什么了，反正就是不让我睡</p>
+<p>我道歉，安慰，哄好了，她才同意躺下睡</p>
+<p>我睡着了，她把我踢醒了</p>
+<p>我又睡着了，她又把我踢醒了</p>
+<p>我问她为啥踢我</p>
+<p>她说我没踢你</p>
+<p>我闭着眼假装睡</p>
+<p>她踢了我一脚</p>
+<p>我说操你妈你能不能让我睡觉</p>
+<p>她说你凶什么我都睡着了</p>
+<p>我说你踢我</p>
+<p>她说我没踢你，是睡着了自然抖了一下</p>
+<p>（我已经习惯她睁眼说瞎话了</p>
+<p>我都贴床边了她抖一下还能抖那么准？</p>
+<p>我要去另一个屋睡）</p>
+<p>她说你要去哪</p>
+<p>我说去那边睡</p>
+<p>她说你敢？</p>
+<p>我不说话直接过去</p>
+<p>她拽我，我把她推开</p>
+<p>她说你动手</p>
+<p>她拦住我，我把她拽一边去</p>
+<p>她说你打我</p>
+<p>我真的很想睡觉。道歉，认错，就是为了睡觉。</p>
+<p>我不知道我结婚是图什么。</p>
+<p>哪怕有一丁点可图。</p>
+<p>之前爸爸说我结婚，岳父不反对，我就可以留长头发了。这句话我理解成，结婚就可以独立掌握自己的人生了</p>
+<p>结果从一个人的掌控，落入另一个人的掌控</p>
+<p>更可悲的是，爸爸在我结婚以后，不承认他说的话了</p>
+<p>就像我小时候</p>
+<p>去我姑姑家，她家有个门铃，我以前没见过门铃，按一下叮咚很好听，我想要</p>
+<p>爸爸说下次来姑姑家就拆下来给你</p>
+<p>期盼，</p>
+<p>终于又有一次去姑姑家了，在她家玩了很久，快走了，我问爸爸，什么时候可以拆门铃</p>
+<p>破口大骂</p>
+<p>没教养，不懂事。</p>
+<p>————</p>
+<p>我分享演出视频给爸爸，打来电话，说老杜家没有艺术家，赶紧把头发剪了</p>
+<p>我分享我拍的运动会照片给妈妈，她说要好好学习，别弄些没用的，怎么没有你的照片</p>
+<p>我说我发烧了，他说都跟你说了要多穿衣服</p>
+<p>他们问我，为什么不愿意跟我们说话，跟我们聊聊天，说说发生了什么</p>
+<p>我说什么都挺好的</p>
+<p>————</p>
+<p>我很穷</p>
+<p>她比我更穷</p>
+<p>我能凑合</p>
+<p>她什么都想要最好的</p>
+<p>冰箱我的预算5000，她想买一万二的</p>
+<p>我说没钱了</p>
+<p>她说你的钱都去哪了</p>
+<p>我说高端床垫都是智商税</p>
+<p>高端家具也没有必要</p>
+<p>最后好像床垫一万多，床一万多，沙发一万多，冰箱一万多，洗衣机加烘干机快一万</p>
+<p>我说我没钱了</p>
+<p>他说你钱去哪了</p>
+<p>也不能说我是大冤种吧</p>
+<p>只能说我跟我爸妈都是大冤种</p>
+<p>——————</p>
+<p>生孩子必须住vip病房，一晚两万，原因是普通病房没尊严</p>
+<p>我们共同的两个朋友都看不下去了，他们两个主动找我说需不需要帮我劝劝我老婆</p>
+<p>我说别折腾了，我想睡个好觉</p>
+<p>生完孩子，要去独立的月子中心，不能要酒店式的，4.5w</p>
+<p>住完月子中心，要请月嫂，</p>
+<p>——————</p>
+<p>她要我工资卡，我不给</p>
+<p>不知道让我多少晚没睡觉</p>
+<p>她说要开个公共账户</p>
+<p>开了</p>
+<p>攒了10万了</p>
+<p>她说这个月我转了三千，我们什么时候能攒够15万啊</p>
+<p>我转了三万</p>
+<p>她问我你哪来这么多钱</p>
+<p>我说最近没怎么花，上个月也没转钱，我爸爸还给了我一万</p>
+<p>我好像一个月最大的支出就是抗抑郁药了</p>
+<p>一盒500吃一周</p>
+<p>现在吃的少了</p>
+<p>5mg 艾司西酞普兰</p>
+<p>所以这不又犯病了</p>
+<p>喔还有油费</p>
+<p>算上接她下班，一天100公里</p>
+<p>她不能打车</p>
+<p>打车恶心，晕车，司机抽烟，总偷看她，打车贵。</p>
+<p>—————</p>
+<p>我问她你怎么</p>
+<p>在别人面前看起来真懂事</p>
+<p>那么会体谅别人</p>
+<p>怎么在家里就这样</p>
+<p>她说她窝里横</p>
+<p>—————</p>
+<p>她妈来我们家</p>
+<p>一进门就说这种冰箱不好，放不了多少东西</p>
+<p>出门打车，下车的时候，她妈从左边下</p>
+<p>司机急了，说不能从左边下，要看车</p>
+<p>她妈下车以后，又打开车门，扯着嗓门跟司机吵，说看车了看车了，我还能不会看车</p>
+<p>司机要生气了</p>
+<p>我用比她妈不知道小多少分贝的话说，赶紧走，别吵吵了</p>
+<p>她妈说扯着嗓门对我喊，我没吵吵</p>
+<p>她说我能不能对我妈有点耐心，你凶我就算了，还凶我妈</p>
+<p>我说我没凶，只是让你妈别吵了赶紧走</p>
+<p>你就凶了</p>
+<p>我说，我不这样说他们就打起来了，并且我比你妈说话声音小</p>
+<p>她说她妈天生就嗓门大，能不能有点耐心</p>
+<p>—————</p>
+<p>她说她妈跟别人吵架</p>
+<p>别人把她嘴都扇出血了</p>
+<p>之前我还生气</p>
+<p>现在知道了，活该</p>
+<p>—————</p>
+<p>我不能开心</p>
+<p>就算开心也要假装不开心</p>
+<p>否则她总会找到理由找我麻烦</p>
+<p>还经常跟我说，你别不开心了</p>
+<p>还说，看到你开心我真高兴</p>
+<p>傻逼</p>
+<p>—————</p>
+<p>傻逼非要吃西葫芦馅的包子</p>
+<p>做不了不会买吗</p>
+<p>不会带我出去吃吗</p>
+<p>弄不明白你把我搞死对你有什么好处</p>
 
-<h2 id="FastDDS-无法发送超过-255-string"><a href="#FastDDS-无法发送超过-255-string" class="headerlink" title="FastDDS 无法发送超过 255 string"></a>FastDDS 无法发送超过 255 string</h2><p>可能会有 log <code>[RTPS_READER_HISTORY Error] Change payload size of &#39;xxx&#39; bytes is larger than the history payload size of &#39;271&#39; bytes and cannot be resized. -&gt; Function can_change_be_added_nts</code></p>
-<p>在 subscriber 加 <code>rqos.endpoints().history_memory_policy = eprosima::fastrtps::rtps::DYNAMIC_RESERVE_MEMORY_MODE;</code></p>
-
+      </div>
+      
+      
+      
     </div>
 
     
     
-    
-
-    <footer class="post-footer">
-          <div class="reward-container">
-  <div>请我一杯咖啡吧！</div>
-  <button>
-    赞赏
-  </button>
-  <div class="post-reward">
-      <div>
-        <img src="/images/wechatpay-ssss.jpg" alt="S1NH 微信">
-        <span>微信</span>
-      </div>
-
-  </div>
-</div>
-
-          
-
-<div class="post-copyright">
-<ul>
-  <li class="post-copyright-author">
-      <strong>本文作者： </strong>S1NH
-  </li>
-  <li class="post-copyright-link">
-      <strong>本文链接：</strong>
-      <a href="http://s1nh.org/post/network-tips/" title="一些小技巧">http://s1nh.org/post/network-tips/</a>
-  </li>
-  <li class="post-copyright-license">
-      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
-  </li>
-</ul>
-</div>
-
-
-        
-
-          <div class="post-nav">
-            <div class="post-nav-item">
-                <a href="/post/python-different-ways-to-kill-a-thread/" rel="prev" title="Python 中杀死线程的几个方法">
-                  <i class="fa fa-chevron-left"></i> Python 中杀死线程的几个方法
-                </a>
-            </div>
-            <div class="post-nav-item">
-                <a href="/post/alfa-romeo-stelvio-highlight-disassembly/" rel="next" title="Alfa Romeo Stelvio 灯光开关拆解，允许大灯保持关闭">
-                  Alfa Romeo Stelvio 灯光开关拆解，允许大灯保持关闭 <i class="fa fa-chevron-right"></i>
-                </a>
-            </div>
-          </div>
-    </footer>
-  </article>
-</div>
-
-
-
-
 
 
     <div class="comments utterances-container"></div>
