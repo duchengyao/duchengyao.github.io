@@ -32,7 +32,7 @@
 <meta property="og:image" content="http://qiniu.s1nh.org/Blog_cuda_05.png-QNthin">
 <meta property="og:image" content="http://qiniu.s1nh.org/Blog_cuda_04.jpg-QNthin">
 <meta property="article:published_time" content="2016-08-20T02:07:40.000Z">
-<meta property="article:modified_time" content="2022-03-07T09:02:07.091Z">
+<meta property="article:modified_time" content="2023-06-17T13:46:08.921Z">
 <meta property="article:author" content="S1NH">
 <meta property="article:tag" content="Cuda">
 <meta name="twitter:card" content="summary">
@@ -330,13 +330,13 @@
         <blockquote>
 <p>本文其实就是为了炫耀一下我买的新玩具，地球人X411</p>
 </blockquote>
-<p><img data-src="http://qiniu.s1nh.org/Blog_cuda_01.jpg-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_cuda_01.jpg-QNthin"></p>
 <span id="more"></span>
 
 <p>为了更方便的用cuda，买了一台新笔电，配置i7-6700HQ+GTX970M。</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_cuda_02.jpg-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_cuda_02.jpg-QNthin"></p>
 <h2 id="莫名其妙的原因不支持-4-0-以上内核"><a href="#莫名其妙的原因不支持-4-0-以上内核" class="headerlink" title="莫名其妙的原因不支持 4.0 以上内核"></a>莫名其妙的原因不支持 4.0 以上内核</h2><p>之前我一直用一个移动固态硬盘装了<code>Ubuntu-14.04</code>，<code>cuda7.5</code>的工作环境。很单纯的以为像以前一样插到USB3.0开机就可以用了，结果<code>kernel 3.13</code>识别不了<strong>无线网卡</strong>（Mac Mini的无线网卡也无法识别，可是之前一直用有线就没在意）。<code>apt-get</code> 升级到 <code>kernel 4.2/4.4</code>都无法开机，grub引导后识别不到硬盘的<code>UUID</code>（废寝忘食的折腾了很久，最后还是失败了）。</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_cuda_04.jpg-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_cuda_04.jpg-QNthin"></p>
 <p>好吧，重装系统（大坑开始了）</p>
 <h2 id="显卡太牛逼，nouveu驱动不兼容"><a href="#显卡太牛逼，nouveu驱动不兼容" class="headerlink" title="显卡太牛逼，nouveu驱动不兼容"></a>显卡太牛逼，nouveu驱动不兼容</h2><p>像以前一样装完<strong>ubuntu 14.04</strong>，无法开机（第一次碰到装完系统无法开机的情况）。又下了个<strong>ubuntu 16.04</strong>和<strong>Debian 8.5</strong> 依、然、无、法、开机😂😂😂……点亮以后，卡在开机画面不动，风扇呼呼响😂😂</p>
 <p>查了一下debug，发现nouveu什么什么鬼载入不了（不记得具体内容了），就百度了一下，好像nouveu是个开源的驱动，可是对新设备兼容性不好。教程都说先把N卡拔下来，然后开机装好驱动再插上。可是笔记本并不能拔下来，BIOS里面也没有设置选项😂😂😂😂。我是通过以下方法禁用nouveu的：</p>
@@ -346,9 +346,9 @@
 </ol>
 <h2 id="Cuda-版本对内核的兼容性"><a href="#Cuda-版本对内核的兼容性" class="headerlink" title="Cuda 版本对内核的兼容性"></a>Cuda 版本对内核的兼容性</h2><p>我是用官方的deb包装的cuda，顺利的装完以后，预料之中的<strong>又无法开机了</strong>，这下直接懵逼了，都不知道昨晚是怎么过来的。（开机以后卡在Ubuntu那不动，按啥键都不管用，风扇也不狂吹了，感觉是挂了。可是系统能响应<code>Ctr+Alt+Del</code>，按后过一会能重新启动😂😂）</p>
 <p>去官网喵了一眼，发现<code>Cuda8.0</code>居然发布了，支持<code>Ubuntu16</code>。发布页面最后跟着一行小字“For further information, see the <a target="_blank" rel="noopener" href="https://developer.nvidia.com/compute/cuda/8.0/rc/docs/sidebar/CUDA_Installation_Guide_Linux-pdf">Installation Guide for Linux</a>”。卧槽，我一直为官网的安装说明就下面这三行字：</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_cuda_05.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_cuda_05.png-QNthin"></p>
 <p>点开<strong>Installation Guide</strong>后，一切问题原来都不需要瞎百度、瞎折腾。安装说明写得很清楚什么时候需要<code>Disable Nouveau</code>，还有Cuda对各个Kernel依赖库的兼容性，并且<code>cuda 7.5</code>只支持<code>Kernel 3.13</code>😂😂😂</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_cuda_04.jpg-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_cuda_04.jpg-QNthin"></p>
 <p>这个故事告诉我们，遇到问题之前要<strong>先-去-看-官-方-文-档</strong></p>
 
     </div>

@@ -50,7 +50,7 @@
 <meta property="og:image" content="http://qiniu.s1nh.org/Blog_Convolution_b5.png-QNthin">
 <meta property="og:image" content="http://qiniu.s1nh.org/Blog_Convolution_b6.jpg-QNthin">
 <meta property="article:published_time" content="2016-08-02T23:06:35.000Z">
-<meta property="article:modified_time" content="2022-03-07T09:02:07.867Z">
+<meta property="article:modified_time" content="2023-06-17T13:46:08.953Z">
 <meta property="article:author" content="S1NH">
 <meta property="article:tag" content="卷积">
 <meta property="article:tag" content="神经网络">
@@ -347,13 +347,13 @@
     
     <div class="post-body" itemprop="articleBody">
         <p>学到卷积神经网络，搜索到的资料一般都是这样的</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Convolution_a1.png-QNthin" alt="神经网络"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_Convolution_a1.png-QNthin" alt="神经网络"></p>
 <span id="more"></span>
 
 <p>或是这样的</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Convolution_a2.jpg-QNthin" alt="神经网络"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_Convolution_a2.jpg-QNthin" alt="神经网络"></p>
 <p>这尼玛什么鬼，故弄玄虚忽悠投资人的吧。。再搜一下什么BP神经网络，深度神经网络，所有的教材都像下图一样，一大堆圈圈，无数跟线连起来，显得那么装逼，可菜鸟们就是看不懂到底是啥。</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Convolution_a3.png-QNthin" alt="神经网络"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_Convolution_a3.png-QNthin" alt="神经网络"></p>
 <!-- 有关其它神经网络的介绍请异步另一篇文章： -->
 
 
@@ -365,27 +365,27 @@
 <h4 id="1-给卷积一个通俗的解释——关于卷积的一个血腥的讲解"><a href="#1-给卷积一个通俗的解释——关于卷积的一个血腥的讲解" class="headerlink" title="1. 给卷积一个通俗的解释——关于卷积的一个血腥的讲解"></a>1. 给卷积一个通俗的解释——关于卷积的一个血腥的讲解</h4><p><code>因为关于卷积的内容太血腥，于是我把它移到了附录里面。按几下空格或者PageDown即可观看</code></p>
 <h2 id="0x01-什么是神经网络"><a href="#0x01-什么是神经网络" class="headerlink" title="0x01 什么是神经网络"></a>0x01 什么是神经网络</h2><p>神经网络形象的可以表示成本文开始的那张图，一堆圈圈分成一层一层的被一些线连接起来。那么每一部分是什么意思呢，让我们从神经元开始讲起。</p>
 <h3 id="1-神经元（感知机）"><a href="#1-神经元（感知机）" class="headerlink" title="1. 神经元（感知机）"></a>1. 神经元（感知机）</h3><p>学过高中生物的都知道，神经元分为<code>树突（dendrite）</code>、<code>轴突（axon）</code>和<code>胞体</code>。其中，树突具有接受刺激并将冲动传入细胞体的功能，细胞体对输入的刺激进行计算，最后由轴突的分枝把神经冲动传给其他神经元或效应器。上个世纪六十年代（1958年）<code>感知机</code>模型被提出，如下图所示。感知机的左边是的树突，可以接受传入信号（x1,x2,x3）；右边是轴突，负责输出信号。那么如何处理输入信号呢，为了简化模型，我们先认为<code>如果输入的都是1,那么输出1,否则输出0</code>。</p>
-<p><img data-src="http://qiniu.s1nh.org/CNN_perceptron_1.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/CNN_perceptron_1.png-QNthin"></p>
 <p>简化的感知机模型未免也太弱智了，必须所有的传入神经同时刺激胞体才能使此神经元有响应（激活）。于是科学家们把弱智的神经元胞体改造了一下，成为下面这样子（图片来自网络，所以下图的y对应于上图的output）</p>
-<p><img data-src="http://qiniu.s1nh.org/CNN_perceptron_2.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/CNN_perceptron_2.png-QNthin"></p>
 <p>这就有点高级了，首先，每个传入信号$x_i$都被标注了权重$w_i$，还增加了偏置<code>b</code>（bias)。其中c是组合函数（通常情况是求和），a为激活函数（这个有点复杂，有兴趣的自行google）。<strong>别被上面的图搞糊涂，其实神经元（感知机）就是一个数学公式：$y=(x_1 * w_1+x_2 * w_2+…+x_n * w_n+b)*a$ 即首先对所有的输入数据乘以对应的权重并求和，最后与激活函数相乘。</strong></p>
 <p>也许你会发现_卧槽这么简单，小学乘法呀，那有什么卵用_。感知机能（且一定能）将线性可分的数据集分开，想不明白的可以看<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/27224109">这篇文章</a>的第一节<code>感知机能做什么？</code>。除了区分线性可分数据集以外，缺失没什么卵用了，连异或（XOR）问题都解决不了。</p>
 <h3 id="2-我们把神经元连接起来（多层感知机）"><a href="#2-我们把神经元连接起来（多层感知机）" class="headerlink" title="2. 我们把神经元连接起来（多层感知机）"></a>2. 我们把神经元连接起来（多层感知机）</h3><p>自从发现感知机对除了线性可分的数据外没什么卵用以后，感知机的研究进入了寒冬，直到有个大神把几个感知机链接起来成下面的样子：</p>
-<p><img data-src="http://qiniu.s1nh.org/CNN_perceptron_3.jpg-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/CNN_perceptron_3.jpg-QNthin"></p>
 <p>对于异或（XOR）问题，只要像上图一样，把三个神经元连接成两层，第一层神经元分别激活<code>x+y&gt;0</code> <code>x+y&lt;2</code>，第二层的神经元像刚开始的弱智神经元一样，如果第一层神经元的输出都为1，那么输出为1即可。</p>
 <p><strong>这么简单的思路，为什么还会进入那么久的寒冬？</strong>其实不是上个世纪的人智商太低，而是因为这种多层网络无法训练。也就是说，以当时的技术无法确定神经元中w的值，所以对于输入信号多层感知机就不知道怎么激活了。直到BP算法的出现（BP算法请自行google）。<em>其实1968年BP算法就被作者认识到了，并在1974年写在了毕业论文中，只是因为寒蝉效应没人理他。直到1986年这种方法才流行开来。</em></p>
 <p>可以证明，<a target="_blank" rel="noopener" href="http://neuralnetworksanddeeplearning.com/chap4.html">多层神经元可以表达所有连续函数</a>。因此，理论上讲，只要网络足够大，层数足够多，神经网络是可以拟合各种问题的！（当然网络太大就过拟合了- -）</p>
 <h2 id="0x02-卷积神经网络历史"><a href="#0x02-卷积神经网络历史" class="headerlink" title="0x02 卷积神经网络历史"></a>0x02 卷积神经网络历史</h2><p>假设我们要对100×100像素的图片进行分类，如果用上面的多层感知机来做（现在叫全连接层），那么输入数据就是10000个，如果再来几十层网络，每层几千个节点，那么估计也只有朝鲜的计算机才能算出来了吧&gt;_&lt;</p>
 <h3 id="1-图像的卷积"><a href="#1-图像的卷积" class="headerlink" title="1. 图像的卷积"></a>1. 图像的卷积</h3><p>之前接触过图像算法的同鞋们对卷积一定很熟悉，什么<code>Laplacian</code>，<code>soble</code>算子之类的讲的就是卷积核。图像卷积的计算方法其实就是<strong>滑动窗口和加权平均</strong>（如下图所示）。对于原始图片，用一个固定的卷积核在图片上滑动，每滑动一个像素就计算对应位置的加权和并记录下来。</p>
-<p><img data-src="http://qiniu.s1nh.org/CNN_conv_0.gif"></p>
-<p><img data-src="http://qiniu.s1nh.org/CNN_conv_1.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/CNN_conv_0.gif"></p>
+<p><img data-src="//qiniu.s1nh.org/CNN_conv_1.png-QNthin"></p>
 <p>图像经过不同的卷积核后产生的新图像是不同的，比如下图的原始图片分别用了低通和高通卷积核后的结果。</p>
-<p><img data-src="http://qiniu.s1nh.org/CNN_conv_2.jpg-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/CNN_conv_2.jpg-QNthin"></p>
 <p>再比如下图（原始图片分别用之前说的Laplacian，soble卷积核卷一下）：</p>
-<p><img data-src="http://qiniu.s1nh.org/CNN_conv_3.jpg-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/CNN_conv_3.jpg-QNthin"></p>
 <p>经过观察以后，不难明白卷积对于图像的意义是<strong>提取图像不同频段的特征</strong></p>
 <h3 id="2-LeNet"><a href="#2-LeNet" class="headerlink" title="2. LeNet"></a>2. LeNet</h3><p>上一章讲了1986年BP算法开始流行，证明了多层网络可以训练以后，Yann LeCun大牛像我一样意识到不能用全连接层进行图片分类后就开始了卷及神经网络的研究，并解决了应用在书信邮编中的手写数字的分类问题。其实只用模板匹配（只有10个神经元的单层感知机）的方法也能进行识别，但是效果只能达到92%（多层感知机为98%）。模板匹配的方法跟卷积一模一样，只是卷积核的大小等于输入图片的大小，我训练的模板如下图，代码见之前的博文：</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Tensorflow_MNIST_3.png"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_Tensorflow_MNIST_3.png"></p>
 <p>LeNet的基本原理就是对输入图像一层一层的卷积，最后接一个softmax把结果分为10类。<a target="_blank" rel="noopener" href="http://yann.lecun.com/exdb/publis/pdf/lecun-01a.pdf">论文</a>实在是太长了，有兴趣的同鞋可以看看。</p>
 <h3 id="3-AlexNet"><a href="#3-AlexNet" class="headerlink" title="3. AlexNet"></a>3. AlexNet</h3><p>上个世纪的计算机硬件实在太差了，卷积网络又是个耗资源的方法，所以没被广泛应用。（同等资源下<code>传统特征+SVM</code>也可以取得相当的效果，看过上个世纪<code>Andrew Ng</code>机器学习课的应该都知道，神经网络的讲解几乎是一带而过，重点都是SVM、AdaBoost、随机森林、GBDT、LR、FTRL这些概念）</p>
 <p>到了2012年，Alex借助GPGPU技术，使用了两个NVIDIA GPU进行并行训练（话说作者确实牛逼，用GPU就算了，还来了个多GPU并行），使得top5错误率一下子降低到了17.0%</p>
@@ -393,17 +393,17 @@
 <h3 id="4-VGG"><a href="#4-VGG" class="headerlink" title="4. VGG"></a>4. VGG</h3><p><strong>没有什么问题是多层卷积网络解决不了的，如果有，那就再加10层</strong>。于是<code>Karen Simonyan</code>就把AlexNet的网络由8层加深到19层，取名叫VGG，夺得了当年比赛的第二名。（其实也有新技术啦，比如把卷积核变小- -）</p>
 <h3 id="5-GoogLeNet"><a href="#5-GoogLeNet" class="headerlink" title="5. GoogLeNet"></a>5. GoogLeNet</h3><p><code>当年VGG运气不好，碰到了GoogLeNet，否则就是比赛第一名了。</code></p>
 <p>为什么GoogLeNet排名第一呢，是的，因为比VGG还要深十几层。但是，巨量参数容易产生过拟合也会增加计算量，说白了就是网络<code>无法训练</code>。因此GoogLeNet提出了一个叫做Inception的子结构，如下图：</p>
-<p><img data-src="http://qiniu.s1nh.org/CNN_inception_1.jpg-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/CNN_inception_1.jpg-QNthin"></p>
 <p>Inception将一个图像分别用不同大小的卷积核卷一下，然后连接起来，据说让参数量降低了好几倍。其中Inception其实有好多好多版本，有兴趣的同鞋可以自定Google。完整的GoogLeNet如下图。</p>
-<p><img data-src="http://qiniu.s1nh.org/CNN_inception_2.jpg-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/CNN_inception_2.jpg-QNthin"></p>
 <h3 id="6-ResNet"><a href="#6-ResNet" class="headerlink" title="6. ResNet"></a>6. ResNet</h3><p>GoogLeNet在某种程度上可以看作把网络加宽了，而ResNet不一样，依然坚信着<strong>没有最深只有更深</strong>。何凯明一口气把网络加深到了一百多层，然后在当年的ImageNet比赛中拿了第一。</p>
 <p>然而其实并没有这么简单（据说朝鲜早就在研究1000层的神经网络了，也没见他们得奖）。大神设计了一个叫做残差的模块（如下图），一层网络不仅仅连接着下一层，还通过飞线跨过几层走到了后边。</p>
-<p><img data-src="http://qiniu.s1nh.org/CNN_resnet_1.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/CNN_resnet_1.png-QNthin"></p>
 <h3 id="7-DenseNet"><a href="#7-DenseNet" class="headerlink" title="7. DenseNet"></a>7. DenseNet</h3><p>ResNet 虽然效果了不得，但速度确实有点慢。ResNet的思想是把一层的输出跨几层传递到后面，DenseNet的思路更简单粗暴，把所有的层都连接起来了（在连接处的区别为ResNet是求和，DenseNet是concat）,实验效果超好。</p>
-<p><img data-src="http://qiniu.s1nh.org/CNN_densenet_1.png-QNthin"></p>
-<h3 id="8-总结"><a href="#8-总结" class="headerlink" title="8. 总结"></a>8. 总结</h3><p><img data-src="http://qiniu.s1nh.org/CNN_conclu_2.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/CNN_densenet_1.png-QNthin"></p>
+<h3 id="8-总结"><a href="#8-总结" class="headerlink" title="8. 总结"></a>8. 总结</h3><p><img data-src="//qiniu.s1nh.org/CNN_conclu_2.png-QNthin"></p>
 <p>做目标检测（YOLO）的官网有个<a target="_blank" rel="noopener" href="https://pjreddie.com/darknet/imagenet/#alexnet">统计</a>，我贴出来供参考：</p>
-<p><img data-src="http://qiniu.s1nh.org/CNN_conclu_1.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/CNN_conclu_1.png-QNthin"></p>
 <ul>
 <li><p><code>AlexNet</code>: The model that started a revolution! The original model was crazy with the split GPU thing so this is the model from some follow-up work.</p>
 </li>
@@ -434,16 +434,16 @@
 </ul>
 <h4 id="2-物理意义"><a href="#2-物理意义" class="headerlink" title="2. 物理意义"></a>2. 物理意义</h4><p>我们先画几个简单的函数图像，理解“卷积”的<strong>物理意义</strong>，暂时不管它为什么要对称，为什么要反转。</p>
 <p>已知f(t)为老板在t时刻打了你f(t)巴掌。如下图，老板分别在第0秒时打了2巴掌，第1秒打了1巴掌，第2秒打了3巴掌；g(t)为打完巴掌后的t时刻肿胀的程度，下图刚打完时肿胀程度为2，等了1秒后变大为3，2秒后变成1，3秒后完全消肿。</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Convolution_b1.png-QNthin" title="左图是f(t)＝[2, 1, 3]，右图是g(t)=[2, 3, 1]"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_Convolution_b1.png-QNthin" title="左图是f(t)＝[2, 1, 3]，右图是g(t)=[2, 3, 1]"></p>
 <p>下面三个图$h_0(t)$，$h_1(t)$，$h_2(t)$，分别是f(0),f(1),f(2)单独作用时的h(x)值，也就是分别为第0秒打了f(0)=2巴掌，第1秒打f(1)=1巴掌，第2秒打了f(2)=3巴掌的肿胀曲线。</p>
 <p>计算方法为：$h_0(t) = f(0) * g(t) = 2 * [2, 3, 1] = [4, 6, 2]$</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Convolution_b2.png-QNthin" title="$h0(t)$"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_Convolution_b2.png-QNthin" title="$h0(t)$"></p>
 <p>$h_1(t) = f(1) * g(t) = 1 * [2, 3, 1] $ 然后向右平移1个单位</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Convolution_b3.png-QNthin" title="$h_1(t)$"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_Convolution_b3.png-QNthin" title="$h_1(t)$"></p>
 <p>$h_2(t) = f(2) * g(t) = = 3 * [2, 3, 1] = [6, 9, 3]$ 然后向右平移2个单位</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Convolution_b4.png-QNthin" title="$h2(t)$"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_Convolution_b4.png-QNthin" title="$h2(t)$"></p>
 <p>很明显，要求t时间的作用程度h(t)，就是把上面三个函数加起来$h(t)=h_0(t)+h_1(t)+h_2(t)$ </p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Convolution_b5.png-QNthin" title="$h(t)$"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_Convolution_b5.png-QNthin" title="$h(t)$"></p>
 <ul>
 <li>说白了，卷积就是<strong>平移、叠加</strong>。（从这里，可以看到卷积的重要的物理意义是：一个函数（如：单位响应）在另一个函数（如：输入信号）上的<strong>加权叠加</strong>。）</li>
 </ul>
@@ -461,7 +461,7 @@
 <li>相乘：竖直对齐的项分别相乘</li>
 <li>求和：相乘的结果相加</li>
 </ol>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Convolution_b6.jpg-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_Convolution_b6.jpg-QNthin"></p>
 <p><strong>反褶，平移，相乘，求和</strong>，这就是卷积的计算过程。（我们在求$x^3$的系数时，只需要进行<strong>1次平移运算，2次乘法，1次加法运算</strong>）</p>
 <h4 id="4-结论"><a href="#4-结论" class="headerlink" title="4. 结论"></a>4. 结论</h4><p>不知道有没有人注意到，我们刚才计算的<strong>方法1</strong>其实就是前面用那一大堆图描述的方法，注意看公式X的指数就是图像的横坐标，系数为纵坐标的值。（上题x^3的系数为10，第3秒时肿胀程度也恰好为10。）</p>
 <p>运用在连续函数中，只需把最后一步的求和改成求积分即可。</p>

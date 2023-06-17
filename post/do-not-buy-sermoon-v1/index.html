@@ -30,7 +30,7 @@
 <meta property="og:image" content="http://qiniu.s1nh.org/sermoon-v1-fan.jpg">
 <meta property="og:image" content="http://qiniu.s1nh.org/sermoon-v1-whole.png">
 <meta property="article:published_time" content="2022-05-30T13:07:14.000Z">
-<meta property="article:modified_time" content="2022-06-15T15:58:03.150Z">
+<meta property="article:modified_time" content="2023-06-17T13:46:08.961Z">
 <meta property="article:author" content="S1NH">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://qiniu.s1nh.org/sermoon-v1-k-factor_low.png">
@@ -331,7 +331,7 @@
 
 <h2 id="0x01-缺少-Linear-Advance-（压力提前-线性推进）-的支持"><a href="#0x01-缺少-Linear-Advance-（压力提前-线性推进）-的支持" class="headerlink" title="0x01 缺少 Linear Advance （压力提前/线性推进） 的支持"></a>0x01 缺少 Linear Advance （压力提前/线性推进） 的支持</h2><p><code>准确的 Linear Advance 的校准是打印一个优秀模型的重要因素</code></p>
 <p>默认情况下，挤出机以线性方式工作。但挤出机不是线性系统，明显会导致在每一步打印后挤出额外材料，并且在下一步开始打印时材料不够。（下图表示了打印机在加速减速的过程，在2处材料挤出不够，且在4、5处产生堆料）</p>
-<p><img data-src="http://qiniu.s1nh.org/sermoon-v1-k-factor_low.png"></p>
+<p><img data-src="//qiniu.s1nh.org/sermoon-v1-k-factor_low.png"></p>
 <p>使用 Linear Advance 的优点：</p>
 <ul>
 <li>减少粗糙的边缘，尺寸精度更高。</li>
@@ -347,10 +347,10 @@
 <p>Marlin 官网也提供了详细的<a target="_blank" rel="noopener" href="https://marlinfw.org/docs/features/lin_advance.html">调整教程</a></p>
 <p>然而我们的 Sermoon V1 不支持此功能，无法进行调整。我打电话到厂家，给的答复也是“不开源” “没有你想要的固件”</p>
 <h2 id="0x02-糟糕的散热"><a href="#0x02-糟糕的散热" class="headerlink" title="0x02 糟糕的散热"></a>0x02 糟糕的散热</h2><p>此机器的精灵挤出机主体跟 Ender3 S1 的相同，但附件不同。V1挤出机的附件有个致命缺陷散热风扇从底部吸入热空气再给模型降温，缺点是散热很差，在<a target="_blank" rel="noopener" href="https://fl.himi3d.cn/d/439-bensermoon-v1">这篇文章</a>有讨论。有几种方式可以改造散热，我做了一版，调试好后会放出来（下图左上。另外：<code>右下黑</code>，原厂；右上黄，<a target="_blank" rel="noopener" href="https://fl.himi3d.cn/d/426-bengo10-ender3-s1">S1 风道</a>；左下白，<a target="_blank" rel="noopener" href="https://www.crealitycloud.cn/model-detail/626821aac54f1758304dc951">风扇侧装</a>）。</p>
-<p><img data-src="http://qiniu.s1nh.org/sermoon-v1-fan.jpg"></p>
+<p><img data-src="//qiniu.s1nh.org/sermoon-v1-fan.jpg"></p>
 <p>另外，个人对于挤出机的排线耐久性持怀疑态度，加热棒的大电流不知道会不会导致排线老化。</p>
 <h2 id="0x03-鸡肋的-wifi-功能"><a href="#0x03-鸡肋的-wifi-功能" class="headerlink" title="0x03 鸡肋的 wifi 功能"></a>0x03 鸡肋的 wifi 功能</h2><p>Sermoon V1 自带一个 wifi 板子（下图中间绿色的电路板），功能很弱鸡。比如录像没办法下载，官方给的答复是可以<code>打开手机的录屏功能</code>。</p>
-<p><img data-src="http://qiniu.s1nh.org/sermoon-v1-whole.png"></p>
+<p><img data-src="//qiniu.s1nh.org/sermoon-v1-whole.png"></p>
 <p>我已经把它换成树莓派了，<a target="_blank" rel="noopener" href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2sh1t/mod_octoprint_setup_for_the_creality_sermoon_v1/">有手就能改</a>，可以安装 octoprint 以支持更强大的 <code>wifi</code> <code>远程监控</code> <code>延时摄影</code> 等功能。</p>
 <iframe src="//player.bilibili.com/player.html?aid=342230292&bvid=BV1194y1m7y7&cid=735894030&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 

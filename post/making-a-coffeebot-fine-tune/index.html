@@ -31,7 +31,7 @@
 <meta property="og:image" content="http://qiniu.s1nh.org/Blog_robot_fine_tune_move_submap.gif">
 <meta property="og:image" content="http://qiniu.s1nh.org/Blog_robot_fine_tune_move_unable.png-QNthin">
 <meta property="article:published_time" content="2017-09-01T07:00:36.000Z">
-<meta property="article:modified_time" content="2022-03-07T09:08:39.972Z">
+<meta property="article:modified_time" content="2023-06-17T13:46:08.953Z">
 <meta property="article:author" content="S1NH">
 <meta property="article:tag" content="Turtlebot">
 <meta property="article:tag" content="ROS">
@@ -332,7 +332,7 @@
         <blockquote>
 <p>调了一下午参数调到怀疑人生，最后发现是参数配置文件没有同步 - -<br>晚上遗留的一大堆Bug，第二天都自动消失了<br>肯定是有会写代码的海螺姑娘偷偷入侵了我的电脑 &gt;_&lt;</p>
 </blockquote>
-<p><img data-src="http://qiniu.s1nh.org/Blog_fine_tune_joke.jpg-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_fine_tune_joke.jpg-QNthin"></p>
 <span id="more"></span>
 
 <p><a target="_blank" rel="noopener" href="http://s1nh.com/post/making-a-coffeebot-1/">上一节</a>中，机器人已经勉强能跑起来了，现在的任务是通过<strong>调参</strong>让机器人越来越稳定、好用。引用<code>Cartographer Docs</code>的一句话 <em>Tuning Cartographer is unfortunately really difficult.</em> 不过折腾半天最后的效果还是挺不错的。</p>
@@ -345,13 +345,13 @@
 <li><code>TRAJECTORY_BUILDER.pure_localization = true</code> 减少了增长的SLAM数据，使内存使用降低到以前的1/10左右</li>
 <li><code>SPARSE_POSE_GRAPH.optimize_every_n_scans = 1</code>进行全局校正的时间，每秒钟都会对自己的局部地图与全局地图进行匹配，如果位移不是很大，会看到地图被慢慢的矫正过去。（如果这个值设大了或者设为0，你的地图会乱成一坨屎也矫正不过去）</li>
 </ul>
-<p><img data-src="http://qiniu.s1nh.org/Blog_robot_fine_tune_move_map.gif" title="把机器人搬移一段位置，地图会自动矫正（map视图）"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_robot_fine_tune_move_map.gif" title="把机器人搬移一段位置，地图会自动矫正（map视图）"></p>
 <p>虽然矫正后的map会有点乱，但submap还是很好看的。</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_robot_fine_tune_move_submap.gif" title="自动矫正的submap视图"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_robot_fine_tune_move_submap.gif" title="自动矫正的submap视图"></p>
 <p>所以<code>TRAJECTORY_BUILDER.pure_localization = true</code> <code>SPARSE_POSE_GRAPH.optimize_every_n_scans = 1</code> 这两个参数基本是在<strong>定位</strong>的时候成对出现的。而在<strong>建立地图</strong>的时候<code>TRAJECTORY_BUILDER.pure_localization</code>不能开启，并且<code>SPARSE_POSE_GRAPH.optimize_every_n_scans</code>最好设置大一点（200左右）。</p>
 <p><strong>矫正失败的情况</strong></p>
 <p>我把机器人搬到一个很相似的空间里，基本就失败了，控制机器人在屋里转来转去也没矫正成功。</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_robot_fine_tune_move_unable.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_robot_fine_tune_move_unable.png-QNthin"></p>
 <h3 id="2-为什么要使用cartographer-turtlebot，而不是直接用cartographer-ROS"><a href="#2-为什么要使用cartographer-turtlebot，而不是直接用cartographer-ROS" class="headerlink" title="(2) 为什么要使用cartographer_turtlebot，而不是直接用cartographer_ROS"></a>(2) 为什么要使用cartographer_turtlebot，而不是直接用cartographer_ROS</h3><p>除了多出几个turtlebot的配置文件省去你调参的麻烦以外，<code>cartographer_turtlebot</code>还多了<a target="_blank" rel="noopener" href="https://github.com/googlecartographer/cartographer_turtlebot/blob/master/cartographer_turtlebot/cartographer_turtlebot/flat_world_imu_node_main.cc">flat_world_imu_node</a>这个函数，官方的解释是<code>&#39;imu_data_raw&#39; topic</code>传递的Kobuki的IMU信息因为驱动的问题会导致乱顺序，这个函数去掉了乱序的信息。</p>
 <p>有个开关叫<code>TRAJECTORY_BUILDER_2D.use_imu_data</code>，如果不用imu的话，构图的时候一定要移动的很慢、很慢，使用了imu就可以让小车飞快的跑。在cartographer_turtlebot中能找到使用方法</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;node name=&quot;flat_world_imu_node&quot; pkg=&quot;cartographer_turtlebot&quot;</span><br><span class="line">    type=&quot;cartographer_flat_world_imu_node&quot; output=&quot;screen&quot;&gt;</span><br><span class="line">  &lt;remap from=&quot;imu_in&quot; to=&quot;/mobile_base/sensors/imu_data_raw&quot; /&gt;</span><br><span class="line">  &lt;remap from=Navigation&quot;imu_out&quot; to=&quot;/imu&quot; /&gt;</span><br><span class="line">&lt;/node&gt;</span><br></pre></td></tr></table></figure>

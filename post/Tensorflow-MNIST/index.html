@@ -31,7 +31,7 @@
 <meta property="og:image" content="http://qiniu.s1nh.org/Blog_Tensorflow_MNIST_2.png">
 <meta property="og:image" content="http://qiniu.s1nh.org/Blog_Tensorflow_MNIST_3.png">
 <meta property="article:published_time" content="2017-04-01T11:06:56.000Z">
-<meta property="article:modified_time" content="2022-03-07T09:06:18.959Z">
+<meta property="article:modified_time" content="2023-06-17T13:46:08.965Z">
 <meta property="article:author" content="S1NH">
 <meta property="article:tag" content="MNIST">
 <meta property="article:tag" content="Tensorflow">
@@ -359,10 +359,10 @@ Extracting MNIST_data/t10k-labels-idx1-ubyte.gz
 <h3 id="2-训练"><a href="#2-训练" class="headerlink" title="2. 训练"></a>2. 训练</h3><p>每次训练抽取100个样本作为<code>mini-batch</code>，并传给<code>placeholder(x,y_)</code>进行训练，并每隔250输出一次权重。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">tf.global_variables_initializer().run()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1000</span>):</span><br><span class="line">    batch_xs, batch_ys = mnist.train.next_batch(<span class="number">100</span>)</span><br><span class="line">    sess.run(train_step, feed_dict=&#123;x: batch_xs, y_: batch_ys&#125;)</span><br><span class="line">    <span class="keyword">if</span> (i-<span class="number">1</span>)%<span class="number">250</span> == <span class="number">0</span>:</span><br><span class="line">        fig2,ax2 = plt.subplots(nrows=<span class="number">1</span>, ncols=<span class="number">10</span>, figsize=(<span class="number">20</span>,<span class="number">2</span>))</span><br><span class="line">        WW=np.transpose(sess.run(tf.reshape(W,[<span class="number">784</span>,<span class="number">10</span>])))</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,<span class="number">10</span>):</span><br><span class="line">            ax2[i].imshow(np.reshape(WW[i]+np.ones(<span class="number">784</span>), (<span class="number">28</span>, <span class="number">28</span>)))</span><br><span class="line">        plt.show()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p><img data-src="http://qiniu.s1nh.org/Blog_Tensorflow_MNIST_0.png" alt="png"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Tensorflow_MNIST_1.png" alt="png"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Tensorflow_MNIST_2.png" alt="png"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Tensorflow_MNIST_3.png" alt="png"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_Tensorflow_MNIST_0.png" alt="png"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_Tensorflow_MNIST_1.png" alt="png"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_Tensorflow_MNIST_2.png" alt="png"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_Tensorflow_MNIST_3.png" alt="png"></p>
 <h3 id="3-计算正确率"><a href="#3-计算正确率" class="headerlink" title="3. 计算正确率"></a>3. 计算正确率</h3><p>accuracy 与 train_step 的区别官方给出了如下解释: “<em>Note: the Tensor class will be replaced by Output in the future. Currently these two are aliases for each other.</em>“</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">correct_prediction = tf.equal(tf.arg_max(y,<span class="number">1</span>),tf.arg_max(y_,<span class="number">1</span>))</span><br><span class="line">accuracy = tf.reduce_mean(tf.cast(correct_prediction,tf.float32))</span><br><span class="line"><span class="built_in">print</span>(sess.run(accuracy, feed_dict=&#123;x: mnist.test.images, y_: mnist.test.labels&#125;))</span><br><span class="line"></span><br><span class="line">summary_writer = tf.summary.FileWriter(<span class="string">&#x27;Softmax&#x27;</span>, sess.graph)</span><br></pre></td></tr></table></figure>
 

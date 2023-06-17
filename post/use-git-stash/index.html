@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://qiniu.s1nh.org/blog_git-squash.png">
 <meta property="article:published_time" content="2022-09-15T09:17:09.000Z">
-<meta property="article:modified_time" content="2023-01-26T21:48:21.078Z">
+<meta property="article:modified_time" content="2023-06-17T13:46:08.921Z">
 <meta property="article:author" content="S1NH">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://qiniu.s1nh.org/blog_git-squash.png">
@@ -327,7 +327,7 @@
 `今天可以带薪写博客，开心`
 
 先炫耀一下我已经给 [4 个](https://github.com/pulls?q=is%3Apr+author%3Aduchengyao+archived%3Afalse+is%3Aclosed+is%3Apublic+is%3Amerged) 大型项目贡献过代码，包括`深度学习框架`、`3D 打印机固件` 和 `FastDDS`
-![](http://qiniu.s1nh.org/blog_pull-requests.png)
+![](//qiniu.s1nh.org/blog_pull-requests.png)
 
 -->
 
@@ -338,7 +338,7 @@
 <h3 id="2-调试被-squash-后的代码"><a href="#2-调试被-squash-后的代码" class="headerlink" title="2. 调试被 squash 后的代码"></a>2. 调试被 squash 后的代码</h3><p>squash 的优点是可以得到简洁的 commit 记录，但缺失详细的 commit 记录会对后面 debug 造成一些影响。</p>
 <p>比如，使用FastDDS后，我一直在调试<a target="_blank" rel="noopener" href="https://github.com/eProsima/Fast-DDS/issues/2811">一个无法重连的bug</a>，通过 log 可以定位到这个 bug 是在一次 <a target="_blank" rel="noopener" href="https://github.com/eProsima/Fast-DDS/pull/1187">2000 行的 commit</a> 引入的。如果现在开始读这两千行代码肯定会浪费很多时间。</p>
 <p>现在要借助 github，在 pull request 页面可以找到详细的 23 个 commit 记录，并定位到引入 bug 的 commit：</p>
-<p><img data-src="http://qiniu.s1nh.org/blog_git-squash.png"></p>
+<p><img data-src="//qiniu.s1nh.org/blog_git-squash.png"></p>
 <p>为了防止这个 commit 不完整，我们需要手动下载引入 bug 的代码，和引入 bug 之前的代码，分别做一次回归测试。（手动下载代码的原因是，这些 commit ID 不在 git repo 里，无法 checkout）</p>
 <p>在 master 里改完 bug 以后，为了防止引入新 bug，别忘了跑回归测试。</p>
 

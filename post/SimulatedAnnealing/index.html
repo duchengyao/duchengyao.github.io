@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://qiniu.s1nh.org/Blog_HillClimbing_1.png-QNthin">
 <meta property="article:published_time" content="2015-11-27T14:53:14.000Z">
-<meta property="article:modified_time" content="2022-03-07T09:06:17.807Z">
+<meta property="article:modified_time" content="2023-06-17T13:46:08.925Z">
 <meta property="article:author" content="S1NH">
 <meta property="article:tag" content="爬山算法">
 <meta property="article:tag" content="模拟退火算法">
@@ -328,7 +328,7 @@
 <p>本文为整理的介绍爬山算法、模拟退火算法的资料。部分来源网络。</p>
 </blockquote>
 <h2 id="爬山算法-Hill-Climbing"><a href="#爬山算法-Hill-Climbing" class="headerlink" title="爬山算法(Hill Climbing)"></a>爬山算法(Hill Climbing)</h2><p>介绍模拟退火前，先介绍爬山算法。爬山算法是一种简单的贪心搜索算法，该算法每次从当前解的临近解空间中选择一个最优解作为当前解，直到达到一个局部最优解。</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_HillClimbing_1.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_HillClimbing_1.png-QNthin"></p>
 <span id="more"></span>
 
 <p>爬山算法实现很简单，其主要缺点是会陷入局部最优解，而不一定能搜索到全局最优解。如图1所示：假设C点为当前解，爬山算法搜索到A点这个局部最优解就会停止搜索，因为在A点无论向那个方向小幅度移动都不能得到更优的解。</p>

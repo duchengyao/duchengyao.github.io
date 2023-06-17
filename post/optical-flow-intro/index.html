@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://qiniu.s1nh.org/Blog_optical_flow-01.jpg-QNthin">
 <meta property="article:published_time" content="2016-10-24T17:47:22.000Z">
-<meta property="article:modified_time" content="2022-03-07T09:09:51.018Z">
+<meta property="article:modified_time" content="2023-06-17T13:46:08.965Z">
 <meta property="article:author" content="S1NH">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://qiniu.s1nh.org/Blog_optical_flow-01.jpg-QNthin">
@@ -334,7 +334,7 @@
 <h3 id="光流方程"><a href="#光流方程" class="headerlink" title="光流方程"></a>光流方程</h3><p>假设$E(x,y,t)$为$(x,y)$点在时刻t的灰度（照度）。设$t+dt$时刻该点运动到$(x+dx,y+dy)$点，他的照度为$E(x+dx,y+dy,t+dt)$。我们认为，由于对应同一个点，所以<br>$$E(x,y,t) = E(x+dx,y+dy,t+dt) ,,,,,,,（光流约束方程）$$<br>将上式右边做泰勒展开，并令$dt-&gt;0$，则得到 $Exu+Eyv+Et = 0$，其中：<br>$$Ex =  \dfrac{dE}{dx} ,,,, Ey =  \dfrac{dE}{dy} ,,,, Et = \dfrac{dE}{dt} ,,,, u = \dfrac{dx}{dt} ,,,, v = \dfrac{dy}{dt} $$<br>上面的Ex,Ey,Et的计算都很简单，用离散的差分代替导数就可以了。光流法的主要任务就是通过求解光流约束方程求出u,v。如果用于摄像机固定的这一特定情况，问题可以大大简化。</p>
 <h3 id="摄像机固定的情形"><a href="#摄像机固定的情形" class="headerlink" title="摄像机固定的情形"></a>摄像机固定的情形</h3><p>在摄像机固定的情形下，运动物体的检测其实就是分离前景和背景的问题。对于背景，理想情况下，其光流应当为0，只有前景才有光流。所以并不要求通过求解光流约束方程求出u,v。只要求出亮度梯度方向的速率$sqrt(u*u+v*v)$即可。<br>由光流约束方程得到到梯度方向的光流速率为 $V = abs(\dfrac{Et}{sqrt(Ex*Ex+Ey*Ey)})$。<br>设定一个阈值T，若$V(x,y) &gt; T$ 则$(x,y)$是前景 ，反之是背景。</p>
 <h3 id="Munsell颜色系统"><a href="#Munsell颜色系统" class="headerlink" title="Munsell颜色系统"></a>Munsell颜色系统</h3><p>光流场是图片中每个像素都有一个x方向和y方向的位移，所以在上面那些光流计算结束后得到的光流flow是个和原来图像大小相等的双通道图像。可以用Munsell颜色系统来显示。</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_optical_flow-01.jpg-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_optical_flow-01.jpg-QNthin"></p>
 <p>孟塞尔颜色系统的空间大致成一个圆柱形：</p>
 <blockquote>
 <p>南北轴=明度（value），从全黑（1）到全白（10）。<br>经度=色相（hue）。把一周均分成五种主色调和五种中间色：红(R)、红黄(YR)、黄(Y)、黄绿(GY)、绿(G)、绿蓝(BG)、蓝(B)、蓝紫(PB)、紫(P)、紫红(RP)。相邻的两个位置之间再均分10份，共100份。<br>距轴的距离=色度（chroma），表示色调的纯度。其数值从中间（0）向外随着色调的纯度增加，没有理论上的上限（普通的颜色实际上限为10左右，反光、荧光等材料可高达30）。由于人眼对各种颜色的的敏感度不同，色度不一定与每个色调和明度组合相匹配。</p>

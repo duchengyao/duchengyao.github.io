@@ -47,7 +47,7 @@
 <meta property="og:image" content="http://qiniu.s1nh.org/fuzz-face-output-signal.png">
 <meta property="og:image" content="http://qiniu.s1nh.org/perfect-fuzz-face.jpg">
 <meta property="article:published_time" content="2023-02-16T12:37:07.000Z">
-<meta property="article:modified_time" content="2023-03-06T09:18:10.607Z">
+<meta property="article:modified_time" content="2023-06-17T13:46:08.961Z">
 <meta property="article:author" content="S1NH">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://qiniu.s1nh.org/fuzz-face-pedal-small.jpg">
@@ -344,7 +344,7 @@
         <p><code>全文译自: https://www.electrosmash.com/fuzz-face</code></p>
 <p>Fuzz Face 是一种失真吉他踏板，由 Arbitrer Electronics Ltd 于 1966 年秋天在伦敦设计。它产生一种称为<strong>fuzz</strong>的特有的高失真声音。</p>
 <p>Ivor Arbiter 从麦克风支架中汲取了圆形外壳的想法。另外，它是第一个使用 DPDT 单块开关的 TrueBypass 踏板。由于 Jimi Hendrix 演奏了这种效果器，因此该效果器变得非常流行，而且当时还没有很多失真效果器。</p>
-<p><img data-src="http://qiniu.s1nh.org/fuzz-face-pedal-small.jpg" alt="fuzz face pedal" title="fuzz face pedal"></p>
+<p><img data-src="//qiniu.s1nh.org/fuzz-face-pedal-small.jpg" alt="fuzz face pedal" title="fuzz face pedal"></p>
 <span id="more"></span>
 
 <p>Fuzz Face 的特点是使用 11 个组件（2 个晶体管、4 个电阻器、3 个电容和 2 个电位器）的简单电路以及由它们产生的惊人音色；通过调节fuzz旋钮，使波形从<code>不对称软削波(soft asymmetrical clipping)</code>到<code>硬削波(hard clipping)</code>调整。</p>
@@ -352,7 +352,7 @@
 <p>本文涵盖了第一款配备 PNP 锗晶体管的 Arbitrer Fuzz Face 版本，是自始至终被认为是音质最好的版本。</p>
 <h2 id="1-版本"><a href="#1-版本" class="headerlink" title="1. 版本"></a>1. 版本</h2><p>最早的版本覆盖着红色、浅色或深灰色的 Hammerite 油漆，带有白色或黑色的 Fuzz Face 标志，在笑脸部分的文字揭示了踏板的年龄。最早的是 <code>Arbiter-England</code>，1968 年变成了<code>Dallas-Arbiter England</code>，从那以后，微笑中出现了各种各样的词。</p>
 <p>如今，Dunlop 使用不同的漆面和尺寸区分不同晶体管：</p>
-<p><img data-src="http://qiniu.s1nh.org/fuzz-face-family-small.jpg" alt="fuzz face pedals family" title="fuzz face pedals family"></p>
+<p><img data-src="//qiniu.s1nh.org/fuzz-face-family-small.jpg" alt="fuzz face pedals family" title="fuzz face pedals family"></p>
 <h3 id="1-1-晶体管"><a href="#1-1-晶体管" class="headerlink" title="1.1 晶体管"></a>1.1 晶体管</h3><p>晶体管是设计中最敏感的部分，围绕着它们形成了一个一些很玄学的内容。主要有两种可能性：</p>
 <ul>
 <li>锗晶体管：据称具有更温暖、更细腻、更平滑的声音</li>
@@ -361,23 +361,23 @@
 <p>锗晶体管被认为在这种效果方面具有整体更好的声音，但有一些缺点：锗制造不像硅那样一致和受控，而且它们的寿命更短，温度敏感性更高。</p>
 <p>Dennis Cornell：“<strong>所有的晶体管都以非常相似的方式工作并且都完成了工作，但它们确实给出了稍微不同的音色。我认为 Arbiter-England 使用 AC128 而不是 NKT275 锗晶体管。</strong>”</p>
 <p>“<strong>它们总是有问题，所以我会参与测试和维修，因为它们不能正常工作！</strong>”</p>
-<p><img data-src="http://qiniu.s1nh.org/ac128-small.jpg" alt="AC128 锗晶体管"></p>
+<p><img data-src="//qiniu.s1nh.org/ac128-small.jpg" alt="AC128 锗晶体管"></p>
 <p>D. Cornell 的最后一句话解释了为什么生产转向现代、温度无关、更便宜和稳定的硅晶体管，如 BC183L、BC183KA、BC130C、BC108C、BC109C、BC209C 和 BC239C。</p>
 <p><strong>锗管选择：</strong> 为了达到最佳效果，从整批中选择合适的晶体管非常重要。锗晶体管往往具有高漏电流和不一致的增益值。这种增益变化在设计中至关重要，最佳匹配在第一级使用低增益（约 β=70-80），在第二级使用高增益（约 β=110-130）。</p>
 <p>但是，还有一些其他选择，对于压缩程度更高的声音，您可以对 Q<sub>1</sub> 使用 β=90-120，对 Q<sub>2</sub> 使用 β=150-190。</p>
 <p>有<a target="_blank" rel="noopener" href="http://www.geofex.com/article_folders/fuzzface/fftech.htm">一些电路</a> 有助于测量晶体管增益。</p>
 <h2 id="2-电路"><a href="#2-电路" class="headerlink" title="2. 电路"></a>2. 电路</h2><p>该电路是一个带有反馈网络的简单 2 级放大器。它可以分为三个部分：输入级、输出级和反馈网络。反馈网络会影响最重要的参数：电压增益、输入阻抗、输出阻抗和频率响应。</p>
-<p><img data-src="http://qiniu.s1nh.org/fuzz-face-original-schematic-parts-small.png" alt="fuzz face original schematic parts" title="fuzz face schematic parts"></p>
+<p><img data-src="//qiniu.s1nh.org/fuzz-face-original-schematic-parts-small.png" alt="fuzz face original schematic parts" title="fuzz face schematic parts"></p>
 <p>Fuzz Face 设计的灵感来自其他现代 Fuzz 踏板，如 Maestro Fuzz Tone（由 Glen Snotty 设计）和 Sola Sound ToneBender（由 Gary Hurst 设计），尽管 Fuzz Face 比竞争对手更简单，只有 2 个而不是 3 个晶体管.</p>
 <p>关于 2 晶体管电路出现的时间和地点存在一些争议：Tone Bender MK1.5 类似于 Dick Denney 设计的 Vox Distortion Booster 电路，几乎与意大利制造的 Vox Tone Bender 电路和 Arbiter Fuzz Face 电路相同.</p>
 <h3 id="2-1-布局"><a href="#2-1-布局" class="headerlink" title="2.1 布局"></a>2.1 布局</h3><p>带有通孔组件的单层 PCB 安装在超大铸铁外壳内。在下图中，您可以看到原始外壳（左）与新的紧凑型 Dunlop 盒子（右）的对比：</p>
-<p><img data-src="http://qiniu.s1nh.org/fuzz-face-guts-by-spayne99-small.jpg" alt="fuzz face guts" title="fuzz face guts"></p>
+<p><img data-src="//qiniu.s1nh.org/fuzz-face-guts-by-spayne99-small.jpg" alt="fuzz face guts" title="fuzz face guts"></p>
 <p>原始的 Fuzz Face 使用带有通孔组件的单层 PCB。电路板的右侧通过电缆连接到电池夹、插孔、电位计和 DPDT 脚踏开关。</p>
-<p><img data-src="http://qiniu.s1nh.org/fuzz-face-pcb-small.jpg" alt="fuzz face pcb layout" title="fuzz face pcb layout"></p>
+<p><img data-src="//qiniu.s1nh.org/fuzz-face-pcb-small.jpg" alt="fuzz face pcb layout" title="fuzz face pcb layout"></p>
 <h3 id="2-2-组件零件清单-物料清单"><a href="#2-2-组件零件清单-物料清单" class="headerlink" title="2.2 组件零件清单/物料清单:"></a>2.2 组件零件清单/物料清单:</h3><p>这是构建 Fuzz Face 所需的简化组件列表：</p>
 <p>1    C<sub>1</sub>:    2.2 uF<br>1    C<sub>2</sub>:    20 uF<br>1    C<sub>3</sub>:    0.01 uF<br>1    R<sub>1</sub>:    33KΩ<br>1    R<sub>2</sub>:    470Ω<br>1    R<sub>3</sub>:    8.KΩ<br>1    R<sub>4</sub>:    100KΩ<br>1    R<sub>vol</sub>:    500KΩ (Audio tap)<br>1    R<sub>fuzz</sub>:    1KΩ (Linear tap)<br>2    Q<sub>1</sub>, Q<sub>2</sub>:    AC128<br>输入插孔、输出插孔、电池夹、DPDT 脚踏开关。</p>
 <h3 id="2-3-电路偏置"><a href="#2-3-电路偏置" class="headerlink" title="2.3 电路偏置:"></a>2.3 电路偏置:</h3><p>下图展示了电路中最重要的直流偏置点。</p>
-<p><img data-src="http://qiniu.s1nh.org/fuzz-face-bias-small.jpg" alt="fuzz face bias circuit" title="fuzz face bias circuit"></p>
+<p><img data-src="//qiniu.s1nh.org/fuzz-face-bias-small.jpg" alt="fuzz face bias circuit" title="fuzz face bias circuit"></p>
 <p><strong>注意:</strong></p>
 <ul>
 <li>对于上面显示的偏置值，fuzz 电位器设置为中点 (500Ω)</li>
@@ -385,7 +385,7 @@
 <li>从 Fuzz Face 获得最佳声音的重要设置是 Q1<sub>VC</sub>=-0.5 ~ -0.7 和 Q2<sub>VC</sub>=-4.5V。为此，一些设计人员使用微调电阻来替代 R1 和 R3，以便轻松调整晶体管的 VC。的更多信息可参考<a target="_blank" rel="noopener" href="http://www.physics.mcgill.ca/~grant/Stuff/fuzzface.txt">physics.mcgill.ca/~grant/Stuff/fuzzface.txt</a> </li>
 </ul>
 <h2 id="3-输入级"><a href="#3-输入级" class="headerlink" title="3. 输入级"></a>3. 输入级</h2><p>输入级是一个共发射极（集电极跟随器, Common Emitter, Collector Follower）PNP 放大器，它提供具有低输入阻抗和高输出阻抗的高电压增益。对于信号完整性来说，它不是理想输入级；但却是最佳的简单和快速高增益的输入级。</p>
-<p><img data-src="http://qiniu.s1nh.org/fuzz-face-input-stage-small.png" alt="fuzz face input stage" title="fuzz face input stage"></p>
+<p><img data-src="//qiniu.s1nh.org/fuzz-face-input-stage-small.png" alt="fuzz face input stage" title="fuzz face input stage"></p>
 <ul>
 <li>2.2uF 输入电容器 C<sub>1</sub> 可阻止任何直流电平，消除嗡嗡声并保护踏板/吉他免受危险直流电平的影响。</li>
 <li>33KΩ R<sub>1</sub> 电阻设置主要的输入级参数，如电压增益、偏置点和最大集电极电流。</li>
@@ -406,17 +406,17 @@
 <li>V<sub>T</sub> 是晶体管的热电压，在室温下该值约为 25mV。</li>
 </ul>
 <p>实际使用时，输入级不会达到 49dB 的增益，反馈网络会将电平降低到大约 18.6dB。下图展示了改变fuzz电位器时，输入级的电压增益。</p>
-<p><img data-src="http://qiniu.s1nh.org/fuzz-face-input-stage-voltage-gain.png" alt="fuzz face input stage voltage gain" title="fuzz face input stage voltage gain"></p>
+<p><img data-src="//qiniu.s1nh.org/fuzz-face-input-stage-voltage-gain.png" alt="fuzz face input stage voltage gain" title="fuzz face input stage voltage gain"></p>
 <p>上图显示了一个由 C<sub>1</sub> 和输入阻抗（约 5KΩ）创建的，截止频率为 14Hz (18.6 - 15. 6 = 3dB) 的高通滤波器，所有低于 14Hz 的频率都会衰减 6dB/oct。</p>
 <p>$$fc=\frac{1}{2\pi R C}=\frac{1}{2\pi \cdot Z_{in}\cdot  C_{1}}=\frac{1}{2\pi \cdot 5K \cdot 2.2uF}= 14Hz$$</p>
 <p>注意：当模糊控制设置为最小值（最低的深绿色迹线）时出现的驼峰是由于 C2 旁路电容器也构成了滤波器 (C<sub>2</sub> - R<sub>FUZZ</sub>)。当踏板的增益较低时，这种效果会更加明显，因为它有更多的信号反馈来自通过 R<sub>4</sub> 的输出。当增益变高时，反馈变小，高通滤波器的影响就不那么重要了。 <strong>反馈网络部分</strong>中解释了反馈和增益之间的关系。</p>
 <p><strong>声音特征 I：不对称削波：</strong> 对于最大动态范围，普通发射极放大器通常偏置为集电极电压 (V<sub>C</sub>) = V<sub>CC</sub> /2，在这种情况下，它应该是-4.5V。在 Fuzz Face 中，Q<sub>1</sub> 集电极电压位于 -1.6V 左右，因此正半周期的电压摆幅比负半周期的电压摆幅 (voltage swing) 大得多。</p>
 <p>对于小信号（小于 50mV<sub>pp</sub>），输入级首先会在信号的负半周期达到软饱和，如下图所示，这种不对称削波失真非常悦耳。</p>
-<p><img data-src="http://qiniu.s1nh.org/fuzz-face-input-stage-signals-small.png" alt="fuzz face input stage signals" title="fuzz face input stage signals"></p>
+<p><img data-src="//qiniu.s1nh.org/fuzz-face-input-stage-signals-small.png" alt="fuzz face input stage signals" title="fuzz face input stage signals"></p>
 <p>当输入信号具有较高电平时，输入级将在两个半周期内软饱和，如下图所示。这种为小信号提供柔和的不对称失真并在大输入信号（强和弦）的两个半周期中进行更硬削波的功能提供了很好的触感 (touch sensitivity)，增强了表现力。</p>
-<p><img data-src="http://qiniu.s1nh.org/fuzz-face-input-stage-signals.png" alt="fuzz face input stage signals" title="fuzz face input stage signals"></p>
+<p><img data-src="//qiniu.s1nh.org/fuzz-face-input-stage-signals.png" alt="fuzz face input stage signals" title="fuzz face input stage signals"></p>
 <h2 id="4-输出级"><a href="#4-输出级" class="headerlink" title="4. 输出级"></a>4. 输出级</h2><p>输出级也是一个 PNP 共发射极放大器，并带有可变发射极退化电阻 (variable emitter degeneration resistor, R<sub>FUZZ</sub>=1KΩ)。</p>
-<p><img data-src="http://qiniu.s1nh.org/fuzz-face-output-stage.png" alt="fuzz face output stage" title="fuzz face output stage"></p>
+<p><img data-src="//qiniu.s1nh.org/fuzz-face-output-stage.png" alt="fuzz face output stage" title="fuzz face output stage"></p>
 <h3 id="4-1-输出阻抗"><a href="#4-1-输出阻抗" class="headerlink" title="4.1 输出阻抗"></a>4.1 输出阻抗</h3><p>输出阻抗的值可以使用以下公式计算：</p>
 <p>Z<sub>out </sub> = R<sub>VOL</sub>//470Ω<br>Z<sub>out MAX </sub> = R<sub>VOL</sub>//470Ω=500K//470Ω = 469Ω</p>
 <p>fuzz face 输出阻抗受反馈网络的影响，实际值为 15KΩ（在 1KHz 下测量，R<sub>VOL</sub>=500KΩ）。该值随音量控制级别和模糊控制位置而变化。然而，它可以被认为是一个糟糕的输出阻抗，它太高并且当它被放置在踏板链中时会带来问题。</p>
@@ -429,13 +429,13 @@
 <p>$$A_{V}min=\frac{470+8K2}{1K}= 8.2\: (18dB)$$</p>
 <p>电压增益 (A<sub>V</sub>) 可以从 8.2 到与晶体管的基本内部增益一样高（当 R<sub>FUZZ</sub> 达到最大值时）。</p>
 <p>如果我们考虑反馈网络，第二级将再次达到 18dB 的值。在这种情况下，在 Q<sub>2</sub> 集电极测得的总电压增益约为 19.5dB。请记住，输入级的增益为 18.6 dB，第二级的增益总量为 1dB (19.5-18.6=0.9dB)。由于反馈网络，一般增益量会大大减少。</p>
-<p><img data-src="http://qiniu.s1nh.org/fuzz-face-output-stage-voltage-gain-at-collector.png" alt="fuzz-face-output-stage-voltage-gain-at-collector" title="fuzz-face-output-stage-voltage-gain-at-collector"></p>
+<p><img data-src="//qiniu.s1nh.org/fuzz-face-output-stage-voltage-gain-at-collector.png" alt="fuzz-face-output-stage-voltage-gain-at-collector" title="fuzz-face-output-stage-voltage-gain-at-collector"></p>
 <p>上图中展示了音量调到最大时， Q<sub>2</sub> 的输出电压与 R<sub>FUZZ</sub> 电位器关系。它表现出低频衰减（高通滤波器），其中 f<sub>c</sub>=14Hz 继承自输入级。</p>
 <p><strong>但是</strong>踏板的输出并非直接取自Q<sub>2</sub>集电极，有一个由R<sub>2</sub>和R<sub>3</sub>创建的分压器（电源有效地位于交流接地）。该分频器将增益降低了R<sub>2</sub>/（R<sub>2</sub>+R<sub>3</sub>）=470/（470+8K2）=0.054（-25dB），因此输出级的实际增益为：</p>
 <p>G<sub>VTOTAL</sub> = GV<sub>PEDAL</sub> - Attenuation of R2/(R2+R3)= 19.5 - 25 = -5.5dB</p>
 <p>这个由 R2 和 R3 创建的分压器将大大降低输出电平。该值通常不会低至-5.5dB，应考虑电池的串联电阻，这会提高输出电平。</p>
 <p>它可能看起来很有趣，但它有一个原因：输出信号不会比输入信号大很多，以防止大量信号过度驱动跟随它的踏板或放大器的输入。 fuzz 的设计目的不是按级别过载后面的效果器。</p>
-<p><img data-src="http://qiniu.s1nh.org/fuzz-face-output-stage-voltage-gain.png" alt="fuzz face output stage voltage gain" title="fuzz face output stage voltage gain"></p>
+<p><img data-src="//qiniu.s1nh.org/fuzz-face-output-stage-voltage-gain.png" alt="fuzz face output stage voltage gain" title="fuzz face output stage voltage gain"></p>
 <p>注意：fuzz face 在不同电池和电池不同电量时听起来不同。因为电池的内部串联电阻被添加到 470Ω R<sub>3</sub> 电阻器，大幅影响了该值。</p>
 <p><strong>发射极退化电容C<sub>2</sub>:</strong></p>
 <p>C<sub>2</sub>发射极与地（R<sub>FUZZ</sub>）之间的任何阻抗都会降低输出级的增益，这是一种局部负反馈。增加此阻抗会降低增益。如果我们正在寻找高增益，通常的做法是将部分或全部发射极电阻器与旁路电容器接地。</p>
@@ -443,10 +443,10 @@
 <p>$$f_{c}=\frac{1}{2\pi R C}=\frac{1}{2\pi \cdot R_{pot1}\cdot  C_{2}}=\frac{1}{2\pi \cdot 1K \cdot 20uF}= 7.9Hz$$</p>
 <p>所有超过 8Hz 的频率都会得到充分放大。 20uF 太大了，几乎所有的频率都得到了充分的放大。</p>
 <p><strong>声音特征II：软削波-硬削波:</strong> 当第二级被充分驱动时，它可使信号的两个半周期均达到硬削波。对于较小的信号（和增益），削波开始时很柔和，然后随着 FUZZ 电位器增加，削波会随着演奏的加剧而变得更硬。第二个放大器级可以增大削波的程度，使输出呈现更尖锐的方波。</p>
-<p><img data-src="http://qiniu.s1nh.org/fuzz-face-output-stage-soft-hard-clipping.png" alt="fuzz face soft hard clippping" title="fuzz face soft hard clippping"></p>
+<p><img data-src="//qiniu.s1nh.org/fuzz-face-output-stage-soft-hard-clipping.png" alt="fuzz face soft hard clippping" title="fuzz face soft hard clippping"></p>
 <h3 id="4-3-电源"><a href="#4-3-电源" class="headerlink" title="4.3 电源"></a>4.3 电源</h3><p>为了节省组件，电源不包含任何电容器来滤波，这在原始法兹踏板中很常见。吉他踏板中通常的解决方案是通过将 47~100uF 电容与从 +9v 接地的 100nF 电容放在一起来添加一些电源滤波。</p>
 <h2 id="5-全局反馈网络"><a href="#5-全局反馈网络" class="headerlink" title="5. 全局反馈网络"></a>5. 全局反馈网络</h2><p>放大器使用电流或电压作为输入或输出，您可以查看<a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Negative_feedback_amplifier#Two-port_analysis_of_feedback">放大器分类</a>。fuzz face 有一个称为 <a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Negative_feedback_amplifier#Two-port_analysis_of_feedback">分流系列反馈</a> 的负反馈（电流控制电流源 <strong>CCCS</strong>）。部分输出电流取自Q<sub>2</sub>发射极，作为电流引入Q<sub>1</sub>基极，故并联反馈电阻R<sub>4</sub>与输入串联并与输出串联。</p>
-<p><img data-src="http://qiniu.s1nh.org/fuzz-face-feedback-network.png" alt="fuzz face feedback network" title="fuzz face feedback network"></p>
+<p><img data-src="//qiniu.s1nh.org/fuzz-face-feedback-network.png" alt="fuzz face feedback network" title="fuzz face feedback network"></p>
 <p>为什么要使用反馈？</p>
 <p>在放大器设计中，负反馈用于：</p>
 <p>-降低增益灵敏度：使增益值对晶体管不太敏感（即温度引起的组件变化）。<br>-减少非线性失真：使增益恒定。<br>-降低噪声：最小化对不需要的电信号输出的影响。<br>-控制输入/输出阻抗：提高或降低其值。<br>-扩展放大器的带宽。</p>
@@ -466,7 +466,7 @@
 <li><p>当fuzz 旋钮增加时，20uF C<sub>2</sub> 电容会逐渐将负反馈分流到地面，从而让电路以更大的增益运行（下右图）。</p>
 </li>
 </ul>
-<p><img data-src="http://qiniu.s1nh.org/fuzz-face-feedback-options.png" alt="fuzz face feedback network action"></p>
+<p><img data-src="//qiniu.s1nh.org/fuzz-face-feedback-options.png" alt="fuzz face feedback network action"></p>
 <h2 id="6-频率响应"><a href="#6-频率响应" class="headerlink" title="6. 频率响应"></a>6. 频率响应</h2><p>FF 频率响应由三个电容器 C<sub>1</sub>、C<sub>2</sub> 和 C<sub>3</sub> 形成：</p>
 <ul>
 <li>C<sub>1</sub>：2.2uF 输入电容与输入踏板阻抗（约 5KΩ）一起形成的高通滤波器，消除危险的直流电平、嗡嗡声和过载低音。</li>
@@ -485,15 +485,15 @@
 <p>下图代表了 fuzz face 的总频率响应，不同的线条显示了不同音量电位器的效果。随着音量变低（蓝线），高频部分会更陡。这是由于 C<sub>3</sub> 输出的高通滤波器的作用（C<sub>3</sub> - R<sub>VOL</sub>）</p>
 <p>该图还显示了 14Hz 以下低音谐波的一般衰减，这是由于 C<sub>2</sub> 和 Z<sub>in</sub>（踏板的输入阻抗）创建的高通滤波器.</p>
 <p>从广义上讲，Fuzz Face 的频率响应并不是很创新，它只是去除了一些低音并保留了所有有助于产生强大失真的高音。 Big Muff Pi 等其他法兹踏板具有更独特的频率响应，可以以更具创新性的方式塑造音色。</p>
-<p><img data-src="http://qiniu.s1nh.org/fuzz-face-frequency-response.png" alt="fuzz face frequency response" title="fuzz face frequency response"></p>
+<p><img data-src="//qiniu.s1nh.org/fuzz-face-frequency-response.png" alt="fuzz face frequency response" title="fuzz face frequency response"></p>
 <p>下面的最后一张图片以红色显示了典型的输出信号，当 fuzz 电位器达到最大值时，其特征是波形不对称和硬削波。大量的增益将很容易地削波信号，产生大量的高次谐波含量。请注意，输出信号在削波时并不完全平坦（略微倾斜），此功能为声音增加了更多特征。</p>
-<p><img data-src="http://qiniu.s1nh.org/fuzz-face-output-signal.png" alt="fuzz face output signal" title="fuzz face output signal"></p>
+<p><img data-src="//qiniu.s1nh.org/fuzz-face-output-signal.png" alt="fuzz face output signal" title="fuzz face output signal"></p>
 <h2 id="7-打造完美Fuzz"><a href="#7-打造完美Fuzz" class="headerlink" title="7. 打造完美Fuzz"></a>7. 打造完美Fuzz</h2><p>Fuzz Face 电路有 9 个组件。看起来很简单，原则上确实如此，但踏板的实际实现有很多相关的黑魔法和神秘，需要付出很多努力才能让声音听起来恰到好处。</p>
 <p><a target="_blank" rel="noopener" href="https://www.electrosmash.com/germanium-fuzz"><strong>我们创建了一个项目</strong></a>，因此您可以利用我们拥有的所有知识和经验构建完美的 Fuzz，同时保持调整和特性这种复古踏板失真听起来圆润和谐悦耳。</p>
-<p><img data-src="http://qiniu.s1nh.org/perfect-fuzz-face.jpg" alt="the perfect fuzz face" title="the perfect fuzz face"></p>
-<h2 id="8-Resources"><a href="#8-Resources" class="headerlink" title="8. Resources"></a>8. Resources</h2><p><a target="_blank" rel="noopener" href="http://www.geofex.com/article_folders/fuzzface/fftech.htm">The Technology of the Fuzz Face</a> by R.G Keen.<br><a target="_blank" rel="noopener" href="http://screaminfx.com/tech/what-is-the-best-fuzz-pedal.htm">Fuzz Face Description</a> by ScreaminFX.<br><a target="_blank" rel="noopener" href="https://www.electrosmash.comhttp//qiniu.s1nh.org/fuzz%20face%20overton_william_e_200605_mast.pdf.pdf">Electrical Engineering Thesis by William E. Overton</a> focused on the Fuzz Face.<br><a target="_blank" rel="noopener" href="http://www.dingotone.com/wordpress/wp-content/uploads/2012/06/Discussion-about-fuzzface-batteries-V1.pdf">Discussion Paper About Fuzz FAce Batteries</a> by DingoTone.com<br><a target="_blank" rel="noopener" href="http://fuzzcentral.ssguitar.com/fuzzface.php">Arbitrer Fuzz Face</a> by Fuzzcentral.  
+<p><img data-src="//qiniu.s1nh.org/perfect-fuzz-face.jpg" alt="the perfect fuzz face" title="the perfect fuzz face"></p>
+<h2 id="8-Resources"><a href="#8-Resources" class="headerlink" title="8. Resources"></a>8. Resources</h2><p><a target="_blank" rel="noopener" href="http://www.geofex.com/article_folders/fuzzface/fftech.htm">The Technology of the Fuzz Face</a> by R.G Keen.<br><a target="_blank" rel="noopener" href="http://screaminfx.com/tech/what-is-the-best-fuzz-pedal.htm">Fuzz Face Description</a> by ScreaminFX.<br><a target="_blank" rel="noopener" href="https://www.electrosmash.com//qiniu.s1nh.org/fuzz%20face%20overton_william_e_200605_mast.pdf.pdf">Electrical Engineering Thesis by William E. Overton</a> focused on the Fuzz Face.<br><a target="_blank" rel="noopener" href="http://www.dingotone.com/wordpress/wp-content/uploads/2012/06/Discussion-about-fuzzface-batteries-V1.pdf">Discussion Paper About Fuzz FAce Batteries</a> by DingoTone.com<br><a target="_blank" rel="noopener" href="http://fuzzcentral.ssguitar.com/fuzzface.php">Arbitrer Fuzz Face</a> by Fuzzcentral.  
  </p>
-<h3 id="8-1-Datasheets"><a href="#8-1-Datasheets" class="headerlink" title="8.1 Datasheets"></a>8.1 Datasheets</h3><p><a target="_blank" rel="noopener" href="https://www.electrosmash.comhttp//qiniu.s1nh.org/ac128_datasheet1.pdf">AC128 Transistor datasheet 1 pdf</a><br><a target="_blank" rel="noopener" href="https://www.electrosmash.comhttp//qiniu.s1nh.org/ac128_datasheet2.pdf">AC128 Transistor datasheet 2 pdf</a></p>
+<h3 id="8-1-Datasheets"><a href="#8-1-Datasheets" class="headerlink" title="8.1 Datasheets"></a>8.1 Datasheets</h3><p><a target="_blank" rel="noopener" href="https://www.electrosmash.com//qiniu.s1nh.org/ac128_datasheet1.pdf">AC128 Transistor datasheet 1 pdf</a><br><a target="_blank" rel="noopener" href="https://www.electrosmash.com//qiniu.s1nh.org/ac128_datasheet2.pdf">AC128 Transistor datasheet 2 pdf</a></p>
 <p>用于 AC128 Fuzz Face 模拟的 PsPice 模型：</p>
 <ul>
 <li>AC128 with β=85</li>

@@ -38,7 +38,7 @@
 <meta property="og:image" content="http://qiniu.s1nh.org/Blog_BBB-setup_10.jpg-QNthin">
 <meta property="og:image" content="http://qiniu.s1nh.org/Blog_BBB-setup_11.jpg-QNthin">
 <meta property="article:published_time" content="2015-12-04T11:23:27.000Z">
-<meta property="article:modified_time" content="2022-03-07T09:02:01.227Z">
+<meta property="article:modified_time" content="2023-06-17T13:46:08.961Z">
 <meta property="article:author" content="S1NH">
 <meta property="article:tag" content="Beaglebone Black">
 <meta property="article:tag" content="Lantern">
@@ -335,22 +335,22 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><img data-src="http://qiniu.s1nh.org/Blog_BBB-setup_1.jpg-QNthin"></p>
+        <p><img data-src="//qiniu.s1nh.org/Blog_BBB-setup_1.jpg-QNthin"></p>
 <p>最近没有什么特别紧急的工作，终于有时间做点喜欢的事情了。</p>
 <span id="more"></span>
 
 <h2 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h2><p>从仓库里面挑了几个还能用的显示器，找出了好久之前买的Beaglebone Black (BBB)，买了micro HDMI -&gt; DVI , Display Port -&gt; DVI , Mini Display Port -&gt; DVI 转接线，准备搭建一个新的工作平台。</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_BBB-setup_2.jpg-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_BBB-setup_2.jpg-QNthin"></p>
 <h3 id="杜邦线"><a href="#杜邦线" class="headerlink" title="杜邦线"></a>杜邦线</h3><p>之前串口调试线太短了，并且容易插错，就去广埠屯买了这种线（老板说叫杜邦线），并且买了4/7的插头各一个。以后就不用纠结哪根线插在哪个针上了。</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_BBB-setup_3.jpg-QNthin"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_BBB-setup_4.jpg-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_BBB-setup_3.jpg-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_BBB-setup_4.jpg-QNthin"></p>
 <h3 id="TP-Link-交换机指示灯全亮修复"><a href="#TP-Link-交换机指示灯全亮修复" class="headerlink" title="TP-Link 交换机指示灯全亮修复"></a>TP-Link 交换机指示灯全亮修复</h3><p>实验室有两台服务器、一个工作站、Mac Mini和BBB，想把它们组建成局域网。</p>
 <p>从办公室里翻出来了一个坏的交换机，通电后发现所有的灯常亮。百度了一下好多这种现象，可能是TP-link的通病。拆开以后可以看到3个电容爆了，去电子市场买了3个3300uF/16V的电容，问题解决。</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_BBB-setup_5.jpg-QNthin"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_BBB-setup_6.jpg-QNthin"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_BBB-setup_8.jpg-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_BBB-setup_5.jpg-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_BBB-setup_6.jpg-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_BBB-setup_8.jpg-QNthin"></p>
 <p>在换电容的时候发现了一个奇怪的问题，为什么电路板上会有下面这种一条一条的焊锡线（下图）</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_BBB-setup_7.jpg-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_BBB-setup_7.jpg-QNthin"></p>
 <h3 id="在局域网中使用代理共享LANTERN来翻墙"><a href="#在局域网中使用代理共享LANTERN来翻墙" class="headerlink" title="在局域网中使用代理共享LANTERN来翻墙"></a>在局域网中使用代理共享LANTERN来翻墙</h3><p>给BBB下载了最新版的Debian 8.X，安装后执行apt-get时出现了问题，<code>rcn-ee.com/repos</code>源被墙了。因为是armhf架构，所以找了半天都找不到合适的源。最后就决定用Latern共享代理服务器来翻墙。(Lantarn简直太好用了，<a href="/post/Lantern/">安装方式点这里</a>)</p>
 <p>具体实现方式参考了：<a target="_blank" rel="noopener" href="https://github.com/getlantern/lantern/issues/2940">《如何在局域网中共享LANTERN来翻墙？》</a>、<a target="_blank" rel="noopener" href="https://xiaolan.me/lantern2.html">《Lantern 2.x翻墙教程》</a></p>
 <p>实施方案如下：</p>
@@ -361,7 +361,7 @@
 <li>在BBB中输入<code>export http_proxy=http://192.168.1.100:8787/</code>，<code>export https_proxy=http://192.168.1.100:8787/</code>（192.168.1.100为运行Latern电脑的ip）为其设置代理</li>
 </ul>
 <p>设置完以后，用Wget随便下载个东西，如果提示connected，就设置好啦（如下图）</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_BBB-setup_9.jpg-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_BBB-setup_9.jpg-QNthin"></p>
 <p>设置完以后我的BBB就已经可以愉快的更新内核了。</p>
 <p>可是！最后发现了两个问题：</p>
 <pre><code>1. 修改完 lantern-2.0.10.yaml 后，本机电脑无法翻墙；
@@ -369,13 +369,13 @@
 </code></pre>
 <p>也就是说，设置的代理只能用一次，重启Lantern就失效了；并且设置完代理以后，开启Lantern的电脑是无法翻墙的（这个好像可以通过把0.0.0.0改成本机ip:192.168.1.100来解决）</p>
 <h3 id="更新node-js"><a href="#更新node-js" class="headerlink" title="更新node.js"></a>更新node.js</h3><p>执行apt-get更新软件的时候又报错了&gt;_&lt; 说什么node版本太旧了</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_BBB-setup_10.jpg-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_BBB-setup_10.jpg-QNthin"></p>
 <p>找了一下更新node的办法：</p>
 <pre><code>npm install -g n //居然有名字叫&quot;n&quot;的软件
 n latest
 </code></pre>
 <p>再看一下版本，瞬间从0.10.40变成了5.1.1（我觉得这步肯定出问题了，版本怎么变化这么大 0_0）</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_BBB-setup_11.jpg-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_BBB-setup_11.jpg-QNthin"></p>
 
     </div>
 

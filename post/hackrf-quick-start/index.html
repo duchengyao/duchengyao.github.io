@@ -29,7 +29,7 @@
 <meta property="og:image" content="http://qiniu.s1nh.org/Blog_HackRF_00.png-QNthin">
 <meta property="og:image" content="http://qiniu.s1nh.org/Blog_HackRF_GSM.gif">
 <meta property="article:published_time" content="2017-03-16T16:19:18.000Z">
-<meta property="article:modified_time" content="2022-03-07T09:08:37.480Z">
+<meta property="article:modified_time" content="2023-06-17T13:46:08.953Z">
 <meta property="article:author" content="S1NH">
 <meta property="article:tag" content="信息安全">
 <meta property="article:tag" content="HackRF">
@@ -325,7 +325,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><img data-src="http://qiniu.s1nh.org/Blog_HackRF_00.png-QNthin"></p>
+        <p><img data-src="//qiniu.s1nh.org/Blog_HackRF_00.png-QNthin"></p>
 <p><a href="/post/hackrf-firmware-upgrade">上一节</a>已经对HackRF升级了最新的固件，今天我们利用它做一些简单的实验。因为本人也是小白，所以本文并没有任何复杂的理论知识，只要会用Linux按照顺序一步一步操作都可以实验成功。</p>
 <span id="more"></span>
 
@@ -344,7 +344,7 @@
 <p>HackRF 在发送完100秒GPS信号后会自动停止，如果想重复循环发送信号，可以在后面加上<code>-R</code>参数<br>运行后第53秒手机被成功欺骗^_^</p>
 <h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>[1] <a target="_blank" rel="noopener" href="http://blog.csdn.net/opensourcesdr/article/details/51968678">使用HackRF和外部时钟实现GPS欺骗实验</a><br>[2] <a target="_blank" rel="noopener" href="http://www.cnblogs.com/k1two2/p/5164172.html">HackRF实现GPS欺骗教程</a></p>
 <h2 id="0x02-利用hackRF嗅探GSM网络流量"><a href="#0x02-利用hackRF嗅探GSM网络流量" class="headerlink" title="0x02 利用hackRF嗅探GSM网络流量"></a>0x02 利用hackRF嗅探GSM网络流量</h2><h3 id="一篇参考"><a href="#一篇参考" class="headerlink" title="一篇参考"></a>一篇参考</h3><p>可以直接转到这篇文章《<a target="_blank" rel="noopener" href="http://www.freebuf.com/articles/wireless/68736.html">利用hackRF嗅探GSM网络流量</a>》，一步一步照做就行了。下面是我在嗅探时的截图：</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_HackRF_GSM.gif" title="grgsm_livemon 嗅探GSM信号"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_HackRF_GSM.gif" title="grgsm_livemon 嗅探GSM信号"></p>
 <p>如果编译安装过程出问题，可以参照官方文档的编译方法：<a target="_blank" rel="noopener" href="https://github.com/ptrkrysik/gr-gsm/wiki/Manual-compilation-and-installation">Manual compilation and installation</a></p>
 <h3 id="另一篇参考"><a href="#另一篇参考" class="headerlink" title="另一篇参考"></a>另一篇参考</h3><p>还有另一篇<a target="_blank" rel="noopener" href="http://www.freebuf.com/articles/wireless/110773.html">GSM Hacking Part ① ：使用SDR扫描嗅探GSM网络</a>写的也很好，不过里面有一个错误，在运行<code>grgsm_livemon -f 937.4</code>嗅探的时候会报错</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">    return _osmosdr_swig.source_sptr_set_center_freq(self, freq, chan)</span><br><span class="line">RuntimeError: hackrf_set_freq(-399063) has failed (-1000) Pipe error</span><br></pre></td></tr></table></figure>

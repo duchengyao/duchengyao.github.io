@@ -32,7 +32,7 @@
 <meta property="og:image" content="http://qiniu.s1nh.org/fast-dds-zero-copy-performance.svg">
 <meta property="og:image" content="http://qiniu.s1nh.org/fast-dds-monitor-statistics.png">
 <meta property="article:published_time" content="2022-04-24T11:49:12.000Z">
-<meta property="article:modified_time" content="2022-07-28T02:03:02.289Z">
+<meta property="article:modified_time" content="2023-06-17T13:46:08.961Z">
 <meta property="article:author" content="S1NH">
 <meta property="article:tag" content="FastDDS">
 <meta name="twitter:card" content="summary">
@@ -336,7 +336,7 @@
 <h2 id="0x01-Data-Distribution-Servic-DDS"><a href="#0x01-Data-Distribution-Servic-DDS" class="headerlink" title="0x01 Data Distribution Servic, DDS"></a>0x01 Data Distribution Servic, DDS</h2><p>DDS解决了通信层面的问题，这使操作系统的开发者、应用的开发者得以集中精力专注于业务的研究。 DDS 已经广泛用于 <strong>战列舰</strong>、<strong>大坝等大型公用设施</strong>、<strong>金融系统</strong>、<strong>空间系统</strong>、<strong>飞行系统</strong>、<strong>火车总机系统</strong> 中。</p>
 <p>DDS 通过 <code>可靠传输策略 (Quality of Service, QoS)</code>，控制与底层通信机制的方方面面，主要从时限、可靠性、连续性、历史等方面来满足不同场景的用户数据需求。</p>
 <p>DDS 是一个 DCPS (Data-Centric Publish Subscribe) 模型，其中包括Participant, Publisher, Subscriber, DataWriter, DataReader, Topic等概念。具体通信机制如下图：</p>
-<p><img data-src="http://qiniu.s1nh.org/DDS-communication-model.png" alt="DDS-communication-model"></p>
+<p><img data-src="//qiniu.s1nh.org/DDS-communication-model.png" alt="DDS-communication-model"></p>
 <p>使用DDS与传统通信的优势：</p>
 <ul>
 <li>实时性：DDS通过优化的内核机制，实现微秒级的数据传输；纯分布式的系统结构，保证系统内不存在影响实时性的瓶颈节点。DDS 实体被建模为类或类型化接口，<strong>允许提前分配内存</strong>而不是动态分配内存,可以更有效的对资源处理。</li>
@@ -349,7 +349,7 @@
 <h2 id="0x02-Fast-DDS"><a href="#0x02-Fast-DDS" class="headerlink" title="0x02 Fast DDS"></a>0x02 Fast DDS</h2><h3 id="2-1-简介"><a href="#2-1-简介" class="headerlink" title="2.1 简介"></a>2.1 简介</h3><p>ROS 2 的大多数版本使用 <code>Fast DDS</code> 作为中间件。ROS 团队提供了一个很完善的报告<a name="r4" href="#4"><sup>[4]</sup></a> 详细对比了各个主流 DDS 中间件在压力测试中的 <code>CPU/内存占用率</code> <code>延时</code> <code>丢包</code>，以及<code>代码质量</code> <code>社区评价</code> 等指标，以及阐述了使用 <code>FastDDS</code> 作为默认中间件的理由。</p>
 <p><strong>a. 架构</strong></p>
 <p>Fast DDS 的架构如下图 ，包括 <code>应用层</code> <code>FastDDS层</code> <code>RTPS层</code> 和 <code>传输层</code> 。其中，<code>传输层</code> 可以选择<code>UDP</code> <code>TCP</code> 或 <code>共享内存(SHM)</code>。<br>具体每个实体和接口的介绍可参考<a name="r5" href="#5">[FASTDDS: Library Overview]</a>。</p>
-<img style="background-color:white" data-src="http://qiniu.s1nh.org/fast-dds-architecture.svg"  width=40% />
+<img style="background-color:white" data-src="//qiniu.s1nh.org/fast-dds-architecture.svg"  width=40% />
 
 <p><strong>b. 并发</strong></p>
 <p>Fast DDS 是多线程且线程安全的，包括由应用程序管理的<strong>主线程</strong>，Domain管理的多个<strong>事件线程</strong>，一个<strong>异步写入线程</strong>和多个<strong>接收线程</strong></p>
@@ -371,13 +371,13 @@
 <p><strong>b. 零拷贝</strong></p>
 <p>传统的共享内存方式避免了传输层中涉及的开销，节省内存的占用（左图）。</p>
 <p>FastDDS不仅提供共享内存，还提供类似 NVIDIA Jetson 的零拷贝模式 <a name="r8" href="#8"><sup>[8]</sup></a>（右图，后者基于GPU/CPU使用同一块内存）。应用程序获取接收到的数据作为引用，这可以防止将数据从共享内存复制到应用程序。</p>
-<p><img data-src="http://qiniu.s1nh.org/fast-dds-data-sharing-zoro-copy.png" alt="DDS-communication-model"></p>
+<p><img data-src="//qiniu.s1nh.org/fast-dds-data-sharing-zoro-copy.png" alt="DDS-communication-model"></p>
 <p>使用零拷贝可以显著加速进程间的通信速度 <a name="r9" href="#9"><sup>[9]</sup></a>，吞吐量测试结果如下：</p>
-<img style="background-color:white" data-src="http://qiniu.s1nh.org/fast-dds-zero-copy-performance.svg" />
+<img style="background-color:white" data-src="//qiniu.s1nh.org/fast-dds-zero-copy-performance.svg" />
 
 <p><strong>z. DDS Monitor</strong></p>
 <p>Fast DDS 提供一个GUI应用，可以实时监控 DDS 实体之间的发布/订阅状态，物理架构和统计数据。</p>
-<img data-src="http://qiniu.s1nh.org/fast-dds-monitor-statistics.png"  width=70% />
+<img data-src="//qiniu.s1nh.org/fast-dds-monitor-statistics.png"  width=70% />
 
 <h2 id="0xFF-Reference"><a href="#0xFF-Reference" class="headerlink" title="0xFF Reference"></a>0xFF Reference</h2><ul>
 <li>[1] <a name="1" href="#r1">^</a> <a target="_blank" rel="noopener" href="https://design.ros2.org/articles/ros_middleware_interface.html">ROS 2 middleware interface</a></li>

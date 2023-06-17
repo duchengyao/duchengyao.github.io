@@ -34,7 +34,7 @@
 <meta property="og:image" content="http://qiniu.s1nh.org/Blog_CVPR2016_G-CNN_2.jpg-QNthin">
 <meta property="og:image" content="http://qiniu.s1nh.org/Blog_CVPR2016_LocNet.jpg-QNthin">
 <meta property="article:published_time" content="2016-08-12T16:26:43.000Z">
-<meta property="article:modified_time" content="2022-03-07T09:02:05.163Z">
+<meta property="article:modified_time" content="2023-06-17T13:46:08.961Z">
 <meta property="article:author" content="S1NH">
 <meta property="article:tag" content="CVPR">
 <meta property="article:tag" content="机器视觉">
@@ -334,7 +334,7 @@
 <p>转载自<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/21533724">https://zhuanlan.zhihu.com/p/21533724</a></p>
 </blockquote>
 <p>2016年的CVPR会议目标检测（在这里讨论的是2D的目标检测，如图1所示）的方法主要是基于卷积神经网络的框架，代表性的工作有ResNet[1]（Kaiming He等）、YOLO[5]（Joseph Redmon等）、LocNet[7]（Spyros Gidaris等）、HyperNet[3]（Tao Kong等）、ION[2]（Sean Bell等）、G-CNN[6]（Mahyar Najibi等）。在这里之所以把ResNet也放进来，是因为有效的特征对于目标检测领域是极为重要的。</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_CVPR2016_0.jpg-QNthin" alt="2D目标检测示意图" title="2D目标检测示意图"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_CVPR2016_0.jpg-QNthin" alt="2D目标检测示意图" title="2D目标检测示意图"></p>
 <span id="more"></span>
 
 <p>在目标检测中，以下几个指标非常重要：（a）识别精度；（b）识别效率；（c）定位准确性。以上的几个工作或者侧重识别率和效率，或者通过某种方式提高定位的准确性，下面分别展开进行描述。</p>
@@ -347,21 +347,21 @@
 </blockquote>
 <p>这个工作的主要贡献有两个，第一个是skip-connection，将deep ConvNet的多层ROI特征进行提取和融合，利用该特征对每个位置进行分类和回归，也就是inside-network。第二个贡献是如何在Fast R-CNN的基础之上增加context信息，所谓context在目标检测领域是指感兴趣的局部或全局的ROI周围的信息。为此，作者提出了IRNN的概念，也就是outside-network。</p>
 <p>依靠这两个改进，ION可以在Pascal VOC 2007数据集上边提高大约5个百分点。同时也获得了COCO 2015 detection竞赛的best student entry。</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_CVPR2016_ION.jpg-QNthin" alt="ION" title="Inside-Outside Net (ION)"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_CVPR2016_ION.jpg-QNthin" alt="ION" title="Inside-Outside Net (ION)"></p>
 <h3 id="1-3-HyperNet："><a href="#1-3-HyperNet：" class="headerlink" title="1.3.HyperNet："></a>1.3.HyperNet：</h3><blockquote>
 <p>文章链接：<a target="_blank" rel="noopener" href="http://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Kong_HyperNet_Towards_Accurate_CVPR_2016_paper.pdf">HyperNet: Towards Accurate Region Proposal Generation and Joint Object Detection</a></p>
 </blockquote>
 <p>文章的出发点为一个很重要的观察：神经网络的高层信息体现了更强的语义信息，对于识别问题较为有效；而低层的特征由于分辨率较高，对于目标定位有天然的优势，而检测问题恰恰是识别+定位，因此作者的贡献点在于如何将deep ConvNet的高低层特征进行融合，进而利用融合后的特征进行region proposal提取和进一步目标检测。不同于Faster R-CNN，文章的潜在Anchor是用类似于BING的方法通过扫描窗口的方式生成的，但利用的是CNN的特征，因此取得了更好的性能。</p>
 <p>通过以上的改进策略，HyperNet可以在产生大约100个region proposal的时候保证较高的recall，同时目标检测的mAP相对于Fast R-CNN也提高了大约6个百分点。</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_CVPR2016_HyperNet.jpg-QNthin" alt="HyperNet" title="HyperNet"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_CVPR2016_HyperNet.jpg-QNthin" alt="HyperNet" title="HyperNet"></p>
 <h2 id="2-识别效率"><a href="#2-识别效率" class="headerlink" title="2. 识别效率"></a>2. 识别效率</h2><h3 id="2-1-YOLO"><a href="#2-1-YOLO" class="headerlink" title="2.1. YOLO"></a>2.1. YOLO</h3><p>这是今年的oral。这个工作在识别效率方面的优势很明显，可以做到每秒钟45帧图像，处理视频是完全没有问题的。YOLO最大贡献是提出了一种全新的检测框架——直接利用CNN的全局特征预测每个位置可能的目标，相比于R-CNN系列的region proposal+CNN 这种两阶段的处理办法可以大大提高检测速度。今年新出来的SSD[11]方法虽然在识别率上边有了很大的提升，但YOLO的先驱作用是显而易见的。</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_CVPR2016_YOLO.jpg-QNthin" alt="YOLO" title="YOLO识别框架"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_CVPR2016_YOLO.jpg-QNthin" alt="YOLO" title="YOLO识别框架"></p>
 <h3 id="2-2-G-CNN"><a href="#2-2-G-CNN" class="headerlink" title="2.2. G-CNN"></a>2.2. G-CNN</h3><p>不管是Fast R-CNN[9]，还是Faster R-CNN，或者像HyperNet这样的变种，都需要考虑数以万计的潜在框来进行目标位置的搜索，这种方式的一个潜在问题是负样本空间非常大，因此需要一定的策略来进行抑制（不管是OHEM[8]还是region proposal方法，其本质上还是一种抑制负样本的工作）。G-CNN从另一个角度来克服这个问题。G-CNN在在初始化的时候不需要那么多框，而是通过对图像进行划分（有交叠），产生少量的框（大约180个），通过一次回归之后得到更接近物体的位置。然后以回归之后的框作为原始窗口，不断进行迭代回归调整，得到最终的检测结果。</p>
 <p>经过五次调整之后，G-CNN可以达到跟Fast R-CNN相当的识别性能，但速度是Fast R-CNN的5倍（3fps）。</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_CVPR2016_G-CNN_1.jpg-QNthin" alt="G-CNN示意图" title="G-CNN示意图"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_CVPR2016_G-CNN_2.jpg-QNthin" alt="G-CNN训练过程" title="G-CNN训练过程"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_CVPR2016_G-CNN_1.jpg-QNthin" alt="G-CNN示意图" title="G-CNN示意图"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_CVPR2016_G-CNN_2.jpg-QNthin" alt="G-CNN训练过程" title="G-CNN训练过程"></p>
 <h2 id="3-准确性"><a href="#3-准确性" class="headerlink" title="3. 准确性"></a>3. 准确性</h2><h3 id="3-1-LocNet"><a href="#3-1-LocNet" class="headerlink" title="3.1. LocNet"></a>3.1. LocNet</h3><p>以上提到的工作都是在做整个目标检测的框架，而LocNet在做另一件事情—如何产生更准确的bounding box?</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_CVPR2016_LocNet.jpg-QNthin" alt="LocNet" title="LocNet"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_CVPR2016_LocNet.jpg-QNthin" alt="LocNet" title="LocNet"></p>
 <p>在目标检测的评价体系中，有一个参数叫做IoU，简单来讲就是模型产生的目标窗口和原来标记窗口的交叠率。在Pascal VOC中，这个值为0.5。而2014年以来出现的MS COCO竞赛规则把这个IoU变成了0.5-1.0之间的综合评价值，也就是说，定位越准确，其得分越高，这也侧面反映了目标检测在评价指标方面的不断进步。</p>
 <p>回到这个话题，如何产生更准确的目标位置呢？LocNet的解决方案是：针对每一个给定的初始框进行适当的放大，然后用一个CNN的网络回归出这个放大后的框包含的那个正确框的位置。为了达到这个目标，需要定义回归方式，网络以及模型，具体的细节参见[7]。</p>
 <p>经过把原始的框（比如selective search生成的）进行再一次回归之后，再放入Fast R-CNN进行检测，在IoU=0.5的情况下，在Pascal VOC 数据集上mAP可以提升大约5个百分点，而IoU=0.7时可以达到13个百分点的提升，效果还是挺惊人的。</p>

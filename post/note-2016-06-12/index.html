@@ -31,7 +31,7 @@
 <meta property="og:image" content="http://qiniu.s1nh.org/Blog_mosaic-final_output.png-QNthin">
 <meta property="og:image" content="http://qiniu.s1nh.org/Blog_motion-detector.gif">
 <meta property="article:published_time" content="2016-09-12T05:50:32.000Z">
-<meta property="article:modified_time" content="2022-03-07T09:10:40.008Z">
+<meta property="article:modified_time" content="2023-06-17T13:46:08.961Z">
 <meta property="article:author" content="S1NH">
 <meta property="article:tag" content="图像拼接">
 <meta property="article:tag" content="移动物体探测">
@@ -331,13 +331,13 @@
     <div class="post-body" itemprop="articleBody">
         <p>本周基于OpenCV进行了一次完整的图像拼接测试，和移动物体探测实验</p>
 <h2 id="图像拼接测试"><a href="#图像拼接测试" class="headerlink" title="图像拼接测试"></a>图像拼接测试</h2><p>测试采用<code>Python2.7</code>, <code>OpenCV3</code>, 对26张<code>12Mp(4000×3000)</code>进行SIFT角点检测，每张图片缩放为之前的0.12倍，利用CPU（8线程i7-6700HQ）进行完整拼接的时间为30秒。（代码链接：<a target="_blank" rel="noopener" href="https://github.com/duchengyao/mosaic">https://github.com/duchengyao/mosaic</a> ）</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_mosaic-CPU-1.gif" title="拼接过程（点击可查看大图）"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_mosaic-CPU-1.gif" title="拼接过程（点击可查看大图）"></p>
 <span id="more"></span>
 
-<p><img data-src="http://qiniu.s1nh.org/Blog_mosaic-sources.png-QNthin" title="拼接资源"></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_mosaic-final_output.png-QNthin" title="拼接结果"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_mosaic-sources.png-QNthin" title="拼接资源"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_mosaic-final_output.png-QNthin" title="拼接结果"></p>
 <h2 id="移动物体探测"><a href="#移动物体探测" class="headerlink" title="移动物体探测"></a>移动物体探测</h2><p>实验算法的思路为，取视频的前一帧和当前帧进行对比，如果发生了显著变化，那么就可以认为图像中有移动物体。（程序在<code>OpenCV 2.4.11-nppy27_0</code>运行通过，代码链接：<a target="_blank" rel="noopener" href="https://github.com/duchengyao/pycv/blob/master/motion-detector.py">https://github.com/duchengyao/pycv/blob/master/motion-detector.py</a> ）</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_motion-detector.gif" title="移动物体探测"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_motion-detector.gif" title="移动物体探测"></p>
 <blockquote>
 <p>参考：<br>[1] KaewTraKulPong 等人发表的《<a target="_blank" rel="noopener" href="http://www.ee.surrey.ac.uk/CVSSP/Publications/papers/KaewTraKulPong-AVBS01.pdf">An improved adaptive background mixture model for real-time tracking with shadow detection</a>》。这个方法可以通过cv2.BackgroundSubtractorMOG来使用。<br>[2] Zivkovic 提出的《<a target="_blank" rel="noopener" href="http://www.zoranz.net/Publications/zivkovic2004ICPR.pdf">Improved adaptive Gaussian mixture model for background subtraction</a>》和《<a target="_blank" rel="noopener" href="http://www.zoranz.net/Publications/zivkovicPRL2006.pdf">Efficient Adaptive Density Estimation per Image Pixel for the Task of Background Subtraction</a>》。可以通过 cv2.BackgroundSubtractorMOG2 来使用。</p>
 </blockquote>

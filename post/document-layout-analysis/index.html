@@ -40,7 +40,7 @@
 <meta property="og:image" content="http://qiniu.s1nh.org/Blog_docstrum_10.png">
 <meta property="og:image" content="http://qiniu.s1nh.org/Blog_docstrum_11.png">
 <meta property="article:published_time" content="2018-09-19T18:01:58.000Z">
-<meta property="article:modified_time" content="2022-03-07T09:02:04.287Z">
+<meta property="article:modified_time" content="2023-06-17T13:46:08.957Z">
 <meta property="article:author" content="S1NH">
 <meta property="article:tag" content="OCR">
 <meta property="article:tag" content="docstrum">
@@ -344,7 +344,7 @@
 <h2 id="0x00"><a href="#0x00" class="headerlink" title="0x00"></a>0x00</h2><p>对文本进行OCR前，必须分析和定义文档的逻辑结构。 例如文本块、段落、行的位置；是否有应该重建的表格；是否有“图像”“条形码等”。</p>
 <p>文档布局分析 (Document Layout Analysis) 是识别和分类文本文档的扫描图像中的感兴趣区域（RoI, Regions of Interest) 的过程。阅读系统需要从非文本区域分割文本区域，并按正确的阅读顺序排列。将文本正文，插图，数学符号和嵌入文档中的表格等不同区域（或块）的检测和标记称为<strong>几何布局分析</strong>。但文本区域在文档中扮演不同的逻辑角色（标题，标题，脚注等），这种语义标记是<strong>逻辑布局分析</strong>的范围。</p>
 <p>文档布局分析是几何和逻辑标签的结合。它通常在将文档图像发送到OCR引擎之前执行，但也可用于检测大型存档中同一文档的重复副本，或者通过其结构或图示内容索引文档。</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_fr-editable-copy-result.png" title="Document Layout Analysis"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_fr-editable-copy-result.png" title="Document Layout Analysis"></p>
 <span id="more"></span>
 
 <h2 id="0x01-最早的算法实现-docstrum"><a href="#0x01-最早的算法实现-docstrum" class="headerlink" title="0x01 最早的算法实现 docstrum"></a>0x01 最早的算法实现 docstrum</h2><p>1993年，<strong>O’ Gorman</strong> 在<strong>TPAMI</strong>中发表了自下而上的文档布局分析算法<code>docstrum</code>，首先将文档解析为黑白连接区域，然后将这些区域分组为单词，然后分为文本行，最后分组为文本块。</p>
@@ -372,13 +372,13 @@
 <li><code>D</code> 标记每个Symbol较远的邻居，该距离在<strong>between-character</strong>或<strong>between-word</strong>的某个容差内。对于标记的每个最近邻居符号，绘制连接其质心的线段。</li>
 <li><code>E</code> 通过线段连接到其邻居的符号形成<strong>文本行</strong>。对于文本行中的所有质心，可以使用线性回归计算表示文本行的<strong>实际线段</strong>。（使用<strong>线性回归</strong>，是因为文本行中Symbol的所有质心都不太可能是共线的。）</li>
 <li><code>F</code> 对于每对文本行，可以计算它们对应的线段之间的最小距离。如果该距离在步骤7中计算的行间间隔的某个容差内，则将两个文本行分组到相同的<strong>文本块</strong>中。</li>
-<li>最后，可以为每个文本块计算<strong>边界框</strong>，并完成文档布局分析。<br><img data-src="http://qiniu.s1nh.org/Blog_docstrum_00.png" alt="docstrum"></li>
+<li>最后，可以为每个文本块计算<strong>边界框</strong>，并完成文档布局分析。<br><img data-src="//qiniu.s1nh.org/Blog_docstrum_00.png" alt="docstrum"></li>
 </ol>
 <h2 id="0x02-实验"><a href="#0x02-实验" class="headerlink" title="0x02 实验"></a>0x02 实验</h2><h3 id="1-两个开源代码"><a href="#1-两个开源代码" class="headerlink" title="1. 两个开源代码"></a>1. 两个开源代码</h3><p><a target="_blank" rel="noopener" href="https://github.com/chadoliver/cosc428-structor">https://github.com/chadoliver/cosc428-structor</a> 复现了docstrum<br><a target="_blank" rel="noopener" href="https://github.com/chulwoopack/docstrum">https://github.com/chulwoopack/docstrum</a> 对前一个开源代码进行了优化</p>
 <h3 id="2-复现"><a href="#2-复现" class="headerlink" title="2. 复现"></a>2. 复现</h3><blockquote>
 <p>上面两段开源代码比较古老且有点乱，基于最新的opencv应该可以很快的复现docstrum</p>
 </blockquote>
-<p><img data-src="http://qiniu.s1nh.org/Blog_docstrum_1.png" alt="image.png"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_docstrum_1.png" alt="image.png"></p>
 <h2 id="0x03-进展"><a href="#0x03-进展" class="headerlink" title="0x03 进展"></a>0x03 进展</h2><blockquote>
 <p>没来得及看的一些文章</p>
 </blockquote>
@@ -386,15 +386,15 @@
 <li><p><code>60多页</code> Cattoni, Roldano, et al. “Geometric layout analysis techniques for document image understanding: a review.” ITC-irst Technical Report 9703.09 (1998).</p>
 </li>
 <li><p><a target="_blank" rel="noopener" href="https://www.researchgate.net/profile/Faisal_Shafait/publication/226110361_Coupled_snakelets_for_curled_text-line_segmentation_from_warped_document_images/links/542358fe0cf26120b7a6c334.pdf">[IJDAR 2013]</a> Bukhari, S. S., Shafait, F., &amp; Breuel, T. M.  Coupled snakelets for curled text-line segmentation from warped document images</p>
-<img data-src="http://qiniu.s1nh.org/Blog_docstrum_2.png" width="600"></li>
+<img data-src="//qiniu.s1nh.org/Blog_docstrum_2.png" width="600"></li>
 <li><p><a target="_blank" rel="noopener" href="https://www.researchgate.net/profile/Thomas_Breuel/publication/5431819_Performance_Evaluation_and_Benchmarking_of_Six-Page_Segmentation_Algorithms/links/551dd6dd0cf213ef063eb1ee.pdf">[TPAMI 2008]</a> Shafait, F., Keysers, D., &amp; Breuel, T. Performance evaluation and benchmarking of six-page segmentation algorithms </p>
-<img data-src="http://qiniu.s1nh.org/Blog_docstrum_3.png" width="600"></li>
+<img data-src="//qiniu.s1nh.org/Blog_docstrum_3.png" width="600"></li>
 <li><p><a target="_blank" rel="noopener" href="https://pdfs.semanticscholar.org/aa39/21e3a2eda4dd91c89f601ca9ae502f1e65e3.pdf">ICIAR 2014</a> Kassis, M., Kurar, B., Cohen, R., El-Sana, J., &amp; Kedem, K. Using Scale-Space Anisotropic Smoothing for Text Line Extraction in Historical Documents.</p>
-<img data-src="http://qiniu.s1nh.org/Blog_docstrum_6.png" width="700"></li>
+<img data-src="//qiniu.s1nh.org/Blog_docstrum_6.png" width="700"></li>
 <li><p><a target="_blank" rel="noopener" href="http://www.iapr-tc11.org/archive/das2012/attachments/FullPaperProceedings/4661a394.pdf">DAS 2012</a> Afzal, M. Z., Kramer, M., Bukhari, S. S., Shafait, F., &amp; Breuel, T. M.  Improvements to uncalibrated feature-based stereo matching for document images by using text-line segmentation</p>
-<img data-src="http://qiniu.s1nh.org/Blog_docstrum_4.png" width="500"></li>
+<img data-src="//qiniu.s1nh.org/Blog_docstrum_4.png" width="500"></li>
 <li><p><a target="_blank" rel="noopener" href="http://www.dfki.de/~bukhari/data/papers/29-Bukhari-Generic-Textline-Extraction-ICDAR13.pdf">ICDAR 2013</a>Bukhari, S. S., Shafait, F., &amp; Breuel, T. M. (2013, August). Towards generic text-line extraction.</p>
-<img data-src="http://qiniu.s1nh.org/Blog_docstrum_5.png" width="400"></li>
+<img data-src="//qiniu.s1nh.org/Blog_docstrum_5.png" width="400"></li>
 </ul>
 <h2 id="0x04-Document-Dewarping"><a href="#0x04-Document-Dewarping" class="headerlink" title="0x04 Document Dewarping"></a>0x04 Document Dewarping</h2><ul>
 <li>数据集[<a target="_blank" rel="noopener" href="http://staffhome.ecm.uwa.edu.au/~00082689/downloads.html">CBDAR 2007 dataset</a>]</li>
@@ -409,18 +409,18 @@
 <h2 id="0xFF-开源框架"><a href="#0xFF-开源框架" class="headerlink" title="0xFF 开源框架"></a>0xFF 开源框架</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://github.com/scantailor/scantailor">scantailor</a> <code>比较古老</code> 可以将拍照的书页自动转换为无卷曲的扫描书页</li>
 </ul>
-<img data-src="http://qiniu.s1nh.org/Blog_docstrum_7.png" width="600">
+<img data-src="//qiniu.s1nh.org/Blog_docstrum_7.png" width="600">
 
-<img data-src="http://qiniu.s1nh.org/Blog_docstrum_8.png" width="500">
+<img data-src="//qiniu.s1nh.org/Blog_docstrum_8.png" width="500">
 
 <ul>
 <li><a target="_blank" rel="noopener" href="http://www.leptonica.com/line-removal.html">leptonica</a>  一个古老又顽强的库<code>被Tesseract、OpenCV、jbig2enc依赖</code>，官方有很多例子演示它好玩的算法</li>
 </ul>
-<img data-src="http://qiniu.s1nh.org/Blog_docstrum_9.png" width="700">
+<img data-src="//qiniu.s1nh.org/Blog_docstrum_9.png" width="700">
 
-<img data-src="http://qiniu.s1nh.org/Blog_docstrum_10.png" width="600">
+<img data-src="//qiniu.s1nh.org/Blog_docstrum_10.png" width="600">
 
-<img data-src="http://qiniu.s1nh.org/Blog_docstrum_11.png" width="600">
+<img data-src="//qiniu.s1nh.org/Blog_docstrum_11.png" width="600">
 
 <ul>
 <li><p>OCRopus – A free document layout analysis and OCR system, implemented in C++ and Python and for FreeBSD, Linux, and Mac OS X. This software supports a plug-in architecture which allows the user to select from a variety of different document layout analysis and OCR algorithms.</p>

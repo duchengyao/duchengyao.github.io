@@ -103,7 +103,7 @@
 <meta property="og:image" content="http://qiniu.s1nh.org/multiecuscan-user-guide/image70.png-QNthin">
 <meta property="og:image" content="http://qiniu.s1nh.org/multiecuscan-user-guide/image71.png-QNthin">
 <meta property="article:published_time" content="2023-04-25T13:36:19.000Z">
-<meta property="article:modified_time" content="2023-05-04T03:16:35.629Z">
+<meta property="article:modified_time" content="2023-06-17T13:46:08.957Z">
 <meta property="article:author" content="S1NH">
 <meta property="article:tag" content="说明书">
 <meta property="article:tag" content="使用说明">
@@ -453,13 +453,13 @@
 <p>首先需要安装接口的串口驱动。 驱动程序通常随您的接口一起提供。 如果您没有驱动程序，那么您可以尝试从 FTDI 站点下载并安装驱动程序。</p>
 <p><a target="_blank" rel="noopener" href="http://www.ftdichip.com/Drivers/CDM/CDM20814_Setup.exe">http://www.ftdichip.com/Drivers/CDM/CDM20814_Setup.exe</a></p>
 <p>成功安装驱动程序后，您必须更改已安装串口的默认配置才能使其正常工作。 转到 Windows 的设备管理器并双击 USB 串行端口（或右键单击并选择属性）。</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image1.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image1.png-QNthin"></p>
 <p>转到端口设置并单击高级</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image2.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image2.png-QNthin"></p>
 <p>在下一个屏幕上，为“延迟计时器”选择可能的最低值</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image3.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image3.png-QNthin"></p>
 <p>如果您有内置串行端口或 PL2303 USB 串行端口，您需要将缓冲区降低到最小值，如下一个屏幕截图所示。 请注意，对于 PL2303 USB 串行端口，您需要修改一些注册表设置以使其支持 10400 bps。</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image4.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image4.png-QNthin"></p>
 <p>现在，更改这些设置后，您必须在 Multiecuscan 的设置窗口中将接口类型设置为 K-Line/VAGCOM。 您还必须设置正确的串行端口。</p>
 <p><strong>ELM 327 接口</strong></p>
 <p>这是一种更高级的接口类型，支持多种协议。 连接到车辆的 CAN 网络需要 ELM 327 版本 1.3 和更新版本。</p>
@@ -498,21 +498,21 @@
 <p>首先需要安装接口的驱动程序。 为了安装驱动程序，您需要将 CANtieCAR 接口连接到计算机上的 USB 端口。 请注意，接口不应连接到汽车，它只能连接到 USB 端口！</p>
 <p>然后 Windows 将开始搜索驱动程序。 它实际上会检测到 2 个不同的设备——一个 USB 驱动器和一个串行端口接口。 USB 驱动器应该会自动安装，因为它使用的是标准 Windows 驱动程序。 串行接口的驱动程序位于 USB 驱动器上。 因此，一旦系统询问您串行设备驱动程序的位置，您必须将其指向 USB 驱动器。</p>
 <p>Windows 可能会警告您驱动程序未签名，只需选择“无论如何安装此设备驱动程序”选项即可。 然后 Windows 将安装驱动程序，如下面的屏幕截图所示。</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image5.png-QNthin"></p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image6.png-QNthin"></p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image7.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image5.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image6.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image7.png-QNthin"></p>
 <p>CANtieCAR 接口现已安装。</p>
 <p>在 USB 驱动器上，您可以找到用于 CANtieCAR 接口配置和固件升级的附加软件。</p>
 <p>Multiecuscan MULTIPLEXED 的安装文件也位于 USB 驱动器上。</p>
 <h3 id="1-3-Multiecuscan-许可证"><a href="#1-3-Multiecuscan-许可证" class="headerlink" title="1.3. Multiecuscan 许可证"></a>1.3. Multiecuscan 许可证</h3><p>为了使用 Multiecuscan 的全部功能，您需要购买许可证。 许可证以许可证密钥的形式出现，您必须在 Multiecuscan 的注册窗口中输入该密钥。</p>
 <p>首先，您必须下载并安装 Multiecuscan。</p>
 <p>然后你必须启动程序并打开注册窗口。 要打开注册窗口，您必须单击蓝色的注册按钮，如下面的屏幕截图所示。</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image8.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image8.png-QNthin"></p>
 <p>在注册屏幕上，您可以看到计算机的硬件密钥。 您将需要此密钥才能购买许可证。</p>
 <p>注意：硬件密钥对于 Multiecuscan MULTIPLEXED 捆绑包的所有者来说并不重要。</p>
 <p>有了您的许可证，您将收到一个许可证密钥，您必须在此处输入该密钥，然后单击激活按钮。 如果许可证密钥正确，程序将关闭。 然后你必须重新启动它，它就会被激活。</p>
 <p>注意：如果您拥有 Multiecuscan MULTIPLEXED 许可证，则在激活期间必须将 CANtieCAR 接口（随捆绑包提供）连接到计算机上的 USB 端口！</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image9.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image9.png-QNthin"></p>
 <p><strong>许可证转移功能</strong></p>
 <p>如果您需要更改或重新安装您的计算机，您可以使用 Multiecuscan 的许可证转移功能将许可证转移到新系统。</p>
 <p>以下是如何使用许可证转移功能：</p>
@@ -534,11 +534,11 @@
 <li><p>您将收到一封包含新许可证密钥的电子邮件。</p>
 </li>
 </ol>
-<p>如果您对许可证转移功能有任何疑问，可以将新的硬件密钥通过电子邮件发送至 <a href="mailto:&#115;&#x75;&#112;&#x70;&#x6f;&#114;&#x74;&#64;&#109;&#117;&#108;&#x74;&#105;&#101;&#99;&#117;&#115;&#99;&#97;&#110;&#46;&#x6e;&#x65;&#x74;">&#115;&#x75;&#112;&#x70;&#x6f;&#114;&#x74;&#64;&#109;&#117;&#108;&#x74;&#105;&#101;&#99;&#117;&#115;&#99;&#97;&#110;&#46;&#x6e;&#x65;&#x74;</a>。</p>
+<p>如果您对许可证转移功能有任何疑问，可以将新的硬件密钥通过电子邮件发送至 <a href="mailto:&#x73;&#x75;&#112;&#112;&#x6f;&#114;&#x74;&#x40;&#x6d;&#117;&#108;&#116;&#105;&#101;&#99;&#117;&#x73;&#99;&#x61;&#110;&#x2e;&#x6e;&#x65;&#x74;">&#x73;&#x75;&#112;&#112;&#x6f;&#114;&#x74;&#x40;&#x6d;&#117;&#108;&#116;&#105;&#101;&#99;&#117;&#x73;&#99;&#x61;&#110;&#x2e;&#x6e;&#x65;&#x74;</a>。</p>
 <p>请注意，许可证转移功能对转移次数有限制。</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image10.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image10.png-QNthin"></p>
 <h2 id="2-用户界面"><a href="#2-用户界面" class="headerlink" title="2. 用户界面"></a>2. 用户界面</h2><h3 id="2-1-Multiecuscan-主屏幕"><a href="#2-1-Multiecuscan-主屏幕" class="headerlink" title="2.1. Multiecuscan 主屏幕"></a>2.1. Multiecuscan 主屏幕</h3><p>当您启动 Multiecuscan 时，它会显示以下屏幕：</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image11.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image11.png-QNthin"></p>
 <p>Multiecuscan 的主屏幕分为 4 个部分。 您可以使用 TAB 按钮或鼠标从一个部分转到另一个部分。 您还可以使用箭头键在列表中上移/下移。</p>
 <ol>
 <li>在这里您可以选择您车辆的“品牌”。</li>
@@ -584,12 +584,12 @@
 <li>车辆钥匙已打开（位置 MAR）。</li>
 </ul>
 <p>结果如下所示：</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image12.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image12.png-QNthin"></p>
 <ol start="7">
 <li>单击此按钮（或按键盘上的 F12）以扫描您的车辆以查找支持的控制模块并检查每个模块是否存在错误。 此功能与“SCAN”功能的工作方式相同，但它还会检查每个发现的模块是否有错误并显示错误代码。</li>
 </ol>
 <p>结果如下所示：</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image13.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image13.png-QNthin"></p>
 <ol start="8">
 <li><p>单击此按钮（或按键盘上的 F9）打开 Multiecuscan 设置。 有关设置屏幕的详细说明，请参见下文。</p>
 </li>
@@ -600,7 +600,7 @@
 </ol>
 <p>请注意，此按钮会在您与控制模块断开连接或连接失败后出现。</p>
 <h3 id="2-2-Multiecuscan-设置屏幕"><a href="#2-2-Multiecuscan-设置屏幕" class="headerlink" title="2.2. Multiecuscan 设置屏幕"></a>2.2. Multiecuscan 设置屏幕</h3><p>当您单击 Multiecuscan 主屏幕上的“设置”按钮（或按键盘上的 F9）时，程序将打开 Multiecuscan 设置窗口。 设置窗口分为 3 个部分——常规、接口和图形。 有关每个选项的详细说明，请参见下文。</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image14.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image14.png-QNthin"></p>
 <ol>
 <li><p>在这里您可以选择 Multiecuscan 用户界面的语言。 这是程序显示的所有按钮、列表、帮助文本和各种消息的语言。</p>
 </li>
@@ -636,7 +636,7 @@
 </ol>
 <p>例如你可以输入：</p>
 <p><code>C:\Multiecuscan_LOGS</code></p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image15.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image15.png-QNthin"></p>
 <p>在这里您可以配置您的接口。 该程序允许您配置最多 4 个接口。 每次当您尝试连接到汽车时，程序将检查哪个已配置接口连接到计算机并尝试使用它。 在大多数情况下，您可以简单地使用“扫描接口”功能，它会自动配置您的接口。 但是，有时您需要手动配置接口。</p>
 <ol>
 <li>这里可以选择接口类型。 当前版本的 Multiecuscan 可识别 5 种类型的接口——K-Line/VagCom、ELM 327 1.3+、OBDKey、OBDLink 和 CANtieCAR。</li>
@@ -676,11 +676,11 @@
 <p>如果测试窗口显示类似于“COM 端口 X 不存在”的错误消息，那么您设置的 COM 端口号不正确！</p>
 <p>如果测试窗口显示类似于“超时”的错误消息，则端口速度很可能不正确。 尝试不同的速度。</p>
 <p>测试 K-Line/VagCom 接口的结果如下所示：</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image16.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image16.png-QNthin"></p>
 <p>“延迟”值应尽可能低。 通常低于 10。</p>
 <p>计时器测试应与参考值匹配。 最多 5% 的差异对于正确操作应该不是问题。</p>
 <p>ELM 接口的测试结果如下图所示：</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image17.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image17.png-QNthin"></p>
 <p>所有命令的结果都应该没问题。 如果任何命令有不同的结果，那么很可能是 ELM 界面内的软件与 ELM 1.3 不兼容。</p>
 <p>在 ELM 测试结束时，如果接口与 ELM 1.3 或 ELM 1.4 兼容，程序会显示一条消息。</p>
 <p>如果您看到接口与 ELM 1.3 或 ELM 1.4 不兼容的消息，则您的接口可能无法连接到 CAN 控制模块。</p>
@@ -707,10 +707,10 @@
 </ul>
 <p>该程序将开始搜索连接的接口并显示结果。 扫描可能需要几分钟！</p>
 <p>结果如下图所示：</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image18.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image18.png-QNthin"></p>
 <p>扫描完成后，您可以单击“确定”按钮，接口（已找到）将保存在 Multiecuscan 设置中。</p>
 <h3 id="2-3-信息屏幕"><a href="#2-3-信息屏幕" class="headerlink" title="2.3. 信息屏幕"></a>2.3. 信息屏幕</h3><p>成功连接到模块后，程序将带您进入“信息”屏幕。 在这里您可以看到有关控制单元的基本信息。</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image19.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image19.png-QNthin"></p>
 <ol>
 <li>使用这些按钮，您可以在 Multiecuscan 的诊断窗口之间切换。 您可以单击按钮或按键盘上的相应键：</li>
 </ol>
@@ -733,12 +733,12 @@
 </ol>
 <p>注意：您可以随时按键盘上的 F11（即使您在参数、错误、执行器等屏幕上）以断开与模块的连接。</p>
 <p>请注意连接后屏幕上可能出现的以下消息！</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image20.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image20.png-QNthin"></p>
 <p>“无效的 ISO 代码”消息表示从车辆获得的 ISO 代码未被 Multiecuscan 识别为所选控制模块的正确代码。 在大多数情况下，这仅仅意味着您从 Multiecuscan 主屏幕中选择了错误的控制模块。 因此，您只需断开连接，然后从 Multiecuscan 主屏幕选择不同的控制模块并尝试再次连接。</p>
 <p><em>例如，如果您尝试通过从 Multiecuscan 主屏幕选择“Bosch EDC 15C7 CF3 Diesel Injection”连接到您的汽车，但您的汽车实际上有一个“Bosch EDC16C39 Diesel Injection”控制单元，您可能会看到此消息。</em></p>
 <p>您可以忽略此消息并继续，但很可能错误代码和参数值不正确并且调整将无法正确执行。 实际上，不建议在无法识别 ISO 代码时执行执行器和调整。</p>
 <h3 id="2-4-错误屏幕"><a href="#2-4-错误屏幕" class="headerlink" title="2.4. 错误屏幕"></a>2.4. 错误屏幕</h3><p>在此屏幕上，您可以读取和清除控制模块的故障代码。</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image21.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image21.png-QNthin"></p>
 <ol>
 <li><p>在屏幕的这一部分，您可以看到检测到的错误代码列表。 当您选择错误代码时，您可以在屏幕底部看到有关它的一些详细信息。 您可以使用键盘上的向上/向下箭头键或使用鼠标在列表中向上/向下移动。</p>
 </li>
@@ -754,7 +754,7 @@
 </ol>
 <p>注意：如果某些错误在“清除”后仍然存在，这意味着您尚未解决导致这些错误的问题（传感器故障、开路等）</p>
 <h3 id="2-5-参数屏幕"><a href="#2-5-参数屏幕" class="headerlink" title="2.5. 参数屏幕"></a>2.5. 参数屏幕</h3><p>在此屏幕上，您可以监控来自控制模块的实时数据。</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image22.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image22.png-QNthin"></p>
 <ol>
 <li>屏幕的这一部分列出了模块的所有可用参数。 您可以使用键盘上的向上/向下箭头键或使用鼠标在列表中向上/向下移动。</li>
 </ol>
@@ -799,12 +799,12 @@
 </ol>
 <p>您可以通过按 CTRL-X 来存储模板，其中 X 是 0 到 9 之间的键。您可以通过简单地按下 0 到 9 之间的键来加载模板。您可以通过单击“模板”按钮（ 或按 T）。</p>
 <p>以下是预定义模板的示例：</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image23.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image23.png-QNthin"></p>
 <h3 id="2-6-图形屏幕"><a href="#2-6-图形屏幕" class="headerlink" title="2.6. 图形屏幕"></a>2.6. 图形屏幕</h3><p>在此屏幕上，您可以创建来自控制模块的实时数据的图形表示。 您还可以将数据记录在 CSV 文件中。</p>
 <p>您必须在参数屏幕上选择参数！</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image24.png-QNthin"></p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image25.png-QNthin"></p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image26.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image24.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image25.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image26.png-QNthin"></p>
 <ol>
 <li>在这部分屏幕上，您可以从控制模块实时观看。 该程序还监控参数的最小值/最大值。</li>
 </ol>
@@ -852,7 +852,7 @@
 <li>此面板显示标记消息。 您可以在此处编辑这些消息。 当您在键盘上按 T 时，程序会显示或隐藏此面板。</li>
 </ol>
 <h3 id="2-7-执行器屏幕"><a href="#2-7-执行器屏幕" class="headerlink" title="2.7. 执行器屏幕"></a>2.7. 执行器屏幕</h3><p>在此屏幕上，您可以运行各种执行器测试。</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image27.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image27.png-QNthin"></p>
 <ol>
 <li>屏幕的这一部分列出了模块的所有可用执行器测试。 您可以在此处选择要执行的测试。</li>
 </ol>
@@ -871,7 +871,7 @@
 <p>执行完成后，程序将提供结果反馈。</p>
 <p>您可能会收到一条“测试失败”消息，其中包含额外的原因说明。 请注意，并非所有版本的控制模块都支持某些测试，其他测试需要特定条件才能正确执行（其中大多数需要关闭引擎）。</p>
 <h3 id="2-8-调整屏幕"><a href="#2-8-调整屏幕" class="headerlink" title="2.8. 调整屏幕"></a>2.8. 调整屏幕</h3><p>在此屏幕上，您可以运行各种校准或配置例程。</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image28.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image28.png-QNthin"></p>
 <ol>
 <li>屏幕的这一部分列出了模块的所有可用校准/配置程序。 您可以在此处选择要执行的程序。</li>
 </ol>
@@ -887,7 +887,7 @@
 <p>该程序将在测试执行期间显示“请稍候”消息。 执行完成后，程序将为程序的结果提供反馈。 您还可能会收到一条“测试失败”消息，其中包含额外的原因说明。</p>
 <p>请注意，并非所有版本的控制模块都支持某些程序，其他程序需要特定条件才能正确执行。</p>
 <p>有些程序需要用户输入一些数据才能执行。 该程序将显示以下数据输入表单，您可以在其中输入此数据：</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image29.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image29.png-QNthin"></p>
 <p>您可以用鼠标单击每个字符/数字，然后从可能值的下拉列表中选择值。</p>
 <p>您也可以从键盘输入字母/数字。 在上面的例子中，我们简单地输入：<strong>bv742dv5u</strong></p>
 <p>输入值后，您可以单击“确定”按钮（或按键盘上的 Enter 键）继续该过程。 您也可以单击取消按钮（或按键盘上的 ESC 键）中止执行。</p>
@@ -902,132 +902,132 @@
 <li>车辆钥匙已打开（位置 MAR）。</li>
 </ul>
 <p>结果包含有关每个已发现模块的基本信息——类型、描述、ISO 代码。 ISO 代码是每个控制模块修改的唯一标识符。 结果如下所示：</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image12.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image12.png-QNthin"></p>
 <h3 id="3-2-扫描故障码功能"><a href="#3-2-扫描故障码功能" class="headerlink" title="3.2. 扫描故障码功能"></a>3.2. 扫描故障码功能</h3><p>SCAN DTC 功能类似于 SCAN 功能，但它允许您扫描汽车的控制模块并检查每个发现的模块是否有错误。 单击 Multiecuscan 主屏幕上的“扫描 DTC”按钮（或按键盘上的 F12）开始扫描您的车辆。 该程序将开始扫描您的车辆并显示发现的控制模块和错误代码的结果。</p>
 <p>结果如下所示：</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image13.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image13.png-QNthin"></p>
 <h3 id="3-3-连接到发动机控制模块"><a href="#3-3-连接到发动机控制模块" class="headerlink" title="3.3. 连接到发动机控制模块"></a>3.3. 连接到发动机控制模块</h3><p>在这个例子中，我们将连接到 Fiat Stilo 1.9 JTD 的引擎控制模块，然后检查错误并检查一些实时数据。</p>
 <p><strong>[第 1 步：]</strong> 将接口连接到计算机和车辆的 OBD 端口。</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image30.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image30.png-QNthin"></p>
 <p><strong>[第 2 步：]</strong> 选择品牌、型号、版本和控制模块。</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image31.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image31.png-QNthin"></p>
 <p><strong>[第 3 步：]</strong> 单击“连接”按钮（或按键盘上的 F10）。 Multiecuscan 将开始连接到您的汽车。</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image32.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image32.png-QNthin"></p>
 <p><strong>[步骤 4:]</strong> 成功连接后，Multiecuscan 将显示信息屏幕。</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image33.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image33.png-QNthin"></p>
 <p><strong>[第 5 步：]</strong> 现在我们可以进入错误屏幕并检查存储的故障代码。</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image34.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image34.png-QNthin"></p>
 <p>如您所见，该控制模块报告了 2 个错误。 实际上，我在引擎工作时通过拔下 MAF 连接器故意制造了这两个错误。</p>
 <p>在左下方的窗口中，您可以查看有关检测到错误代码时的情况的详细信息。</p>
 <p>不管怎样，既然我们知道我们已经修复了错误的原因（我把连接器插回去），我们就可以清除错误。</p>
 <p>只需单击“清除错误”按钮（或按键盘上的 F10），Multiecuscan 就会清除这些错误。</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image35.png-QNthin"></p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image36.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image35.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image36.png-QNthin"></p>
 <p><strong>[第 6 步：]</strong> 现在我们可以进入参数屏幕并检查一些实时数据。</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image37.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image37.png-QNthin"></p>
 <p>这里我们选择了 3 个参数——发动机转速、总燃油量和喷射时间。</p>
 <p>Multiecuscan 将所选参数标记为红色，并开始显示这 3 个参数的实时数据。</p>
 <p><strong>[第 7 步：]</strong> 现在我们可以转到“图形”屏幕并对实时数据进行 CSV 记录。</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image38.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image38.png-QNthin"></p>
 <p>在这个屏幕上，我们可以看到我们已经在参数屏幕上选择的参数。</p>
 <p>屏幕左侧显示我们参数的实时数据。 它还在数据记录期间监控最小/最大值。</p>
 <p>您可以单击“开始/停止”按钮来创建录音。</p>
 <p><strong>[第 8 步：]</strong> 现在我们可以转到执行器屏幕并进行一些测试。</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image39.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image39.png-QNthin"></p>
 <p>我们看到了可用于此控制模块的所有测试。 我们将选择“Fan 1st speed”并执行它。</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image40.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image40.png-QNthin"></p>
 <p>我们按 F10，Multiecuscan 将开始执行此测试。 发动机冷却风扇开始低速工作几秒钟。</p>
-<p>测试完成后，Multiecuscan 将显示消息“已完成”。<br><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image41.png-QNthin"></p>
+<p>测试完成后，Multiecuscan 将显示消息“已完成”。<br><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image41.png-QNthin"></p>
 <p><strong>[第 9 步：]</strong> 断开与发动机控制模块的连接。 您可以随时通过按 F11 断开与控制模块的连接并返回到 Multiecuscan。</p>
 <h3 id="3-4-服务间隔重置"><a href="#3-4-服务间隔重置" class="headerlink" title="3.4. 服务间隔重置"></a>3.4. 服务间隔重置</h3><p>在这个例子中，我们将连接到菲亚特 Stilo 的仪表盘控制模块，并重置服务距离。 换油后通常需要进行此操作。</p>
 <p><strong>[第 1 步：]</strong> 将接口连接到计算机和车辆的 OBD 端口。</p>
 <p><strong>[第 2 步：]</strong> 选择品牌、型号、版本和控制模块。</p>
 <p>然后单击“连接”按钮（或按键盘上的 F10）。 Multiecuscan 将开始连接到您的汽车。</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image42.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image42.png-QNthin"></p>
 <p><strong>[步骤 3:]</strong> 成功连接后，Multiecuscan 将显示信息屏幕。</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image43.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image43.png-QNthin"></p>
 <p><strong>[第 4 步：]</strong> 现在我们可以进入参数屏幕并检查当前的“服务距离”和“距离下一次服务的天数”。</p>
 <p>正如我们在下面的屏幕截图中看到的那样，最后一次“服务重置”是在 113,104 公里处执行的，现在里程表是 124,219 公里。 此外，最后一次“服务重置”是在 15/06/2011 执行的。 我们还可以看到距离汽车必须进行维修还有 1245 公里或 126 天。</p>
 <p>我们还可以看到还剩下 7 张“服务优惠券”（当此值为 0 时，仪表板上的服务到期消息将被禁用）。</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image44.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image44.png-QNthin"></p>
 <p><strong>[第 4 步：]</strong> 现在我们可以进入“调整”屏幕并执行服务重置程序。</p>
 <p>正如您在下面的屏幕上看到的，也可以运行其他程序（例如直接设置下一次服务的日期和距离），但“服务重置”程序是推荐的方法。 此外，不能保证其他程序适用于每辆车。</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image45.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image45.png-QNthin"></p>
 <p><strong>[第 5 步：]</strong> 现在我们选择“NEXT SERVICE KM RESER”并按 F10。 然后系统会要求我们确认我们已经阅读了所有笔记。</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image46.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image46.png-QNthin"></p>
 <p><strong>[步骤 6:]</strong> 系统会开始执行程序，然后显示结果。</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image47.png-QNthin"></p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image48.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image47.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image48.png-QNthin"></p>
 <p><strong>[第 7 步：]</strong> 现在我们可以转到参数并检查更新的值…</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image49.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image49.png-QNthin"></p>
 <p><strong>[第 8 步：]</strong> 断开与控制模块的连接。 您可以通过按 F11 断开与控制模块的连接并返回到 Multiecuscan 主屏幕。</p>
 <p><strong>请注意，对于配备 DPF 的车辆，您还需要重置发动机控制模块中的换油指示器。 您必须连接到发动机控制模块，然后转到调整并执行“换油”程序。</strong></p>
 <h3 id="3-5-连接到引擎并更改喷油器-IMA-代码"><a href="#3-5-连接到引擎并更改喷油器-IMA-代码" class="headerlink" title="3.5. 连接到引擎并更改喷油器 IMA 代码"></a>3.5. 连接到引擎并更改喷油器 IMA 代码</h3><p>在此示例中，我们将连接到 Fiat Grande Punto 1.3 Multijet 的发动机控制模块，并将更改喷油器的 IMA 代码。</p>
 <p><strong>[第 1 步：]</strong> 将接口连接到计算机和车辆的 OBD 端口。 </p>
 <p><strong>[第 2 步：]</strong> 选择品牌、型号、版本和控制模块。</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image50.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image50.png-QNthin"></p>
 <p><strong>[第 3 步：]</strong> 单击“连接”按钮（或按键盘上的 F10）。 Multiecuscan 将开始连接到您的汽车。</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image51.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image51.png-QNthin"></p>
 <p><strong>[步骤 4:]</strong> 成功连接后，Multiecuscan 将显示信息屏幕。</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image52.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image52.png-QNthin"></p>
 <p><strong>[第 5 步：]</strong> 现在我们按 F7 进入“调整”屏幕。</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image53.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image53.png-QNthin"></p>
 <p><strong>[第 6 步：]</strong> 现在我们选择“Injector code Cyl. 3”并按 F10。 然后系统会要求我们确认我们已经阅读了所有笔记。</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image54.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image54.png-QNthin"></p>
 <p><strong>[第 7 步：]</strong> 我们通过按 Y 确认我们已经阅读了注释。然后系统将显示一个数据输入窗口，其中包含当前 IMA 代码（从发动机控制模块获得）。</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image55.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image55.png-QNthin"></p>
 <p><strong>[第 8 步：]</strong> 现在我们可以输入新的注入器代码。 我们只需从键盘键入 <strong>bv742dv5u</strong>（或者我们可以使用鼠标并更改每个字符）。</p>
 <p>然后我们按“Enter”键进入下一步（或者我们点击OK按钮）。 我们也可以按取消按钮并中止程序。</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image56.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image56.png-QNthin"></p>
 <p>**[第8步：]**现在系统会要求您确认您输入的数据是否正确。</p>
 <p>您可以按 Y 进入下一步并将新代码写入引擎控制模块。</p>
 <p>您也可以按 N 中止该过程。</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image57.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image57.png-QNthin"></p>
 <p>按 Y 后，系统将开始将新代码写入发动机控制模块。</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image58.png-QNthin"></p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image59.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image58.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image59.png-QNthin"></p>
 <p>如果新代码不正确，程序可能会在这里失败。</p>
 <p><strong>[第 9 步：]</strong> 现在您可以转到参数并检查“Injector code Cyl. 3”的值。</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image60.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image60.png-QNthin"></p>
 <p><strong>[第 10 步：]</strong> 断开与发动机控制模块的连接。 您可以通过按 F11 断开与控制模块的连接并返回到 Multiecuscan 主屏幕。</p>
 <h3 id="3-6-连接到-PROXI-Alignment-并激活-Fiat-Stilo-上的巡航控制灯"><a href="#3-6-连接到-PROXI-Alignment-并激活-Fiat-Stilo-上的巡航控制灯" class="headerlink" title="3.6. 连接到 PROXI Alignment 并激活 Fiat Stilo 上的巡航控制灯"></a>3.6. 连接到 PROXI Alignment 并激活 Fiat Stilo 上的巡航控制灯</h3><p>在这个例子中，我们将连接到 Fiat Stilo 并使用 PROXI Alignment 程序设置来启用仪表板上的巡航控制灯。</p>
 <p><strong>[第 1 步：]</strong> 将接口连接到计算机和车辆的 OBD 端口。</p>
 <p><strong>[第 2 步：]</strong> 选择品牌、型号、版本和控制模块。</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image61.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image61.png-QNthin"></p>
 <p><strong>[第 3 步：]</strong> 单击“连接”按钮（或按键盘上的 F10）。 Multiecuscan 将开始连接到您的汽车。</p>
 <p>成功连接后，Multiecuscan 将显示信息屏幕。</p>
 <p>在这个例子中，汽车配置正确，不需要对齐。 因此，系统会警告我们不需要 PROXI Alignment。</p>
 <p>我们可以按 Y 继续。</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image62.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image62.png-QNthin"></p>
 <p><strong>[第 4 步：]</strong> 按 F7 进入“调整”屏幕。</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image63.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image63.png-QNthin"></p>
 <p><strong>[第 5 步：]</strong> 选择“巡航控制灯”并按 F10 执行此调整。 系统将显示设置的当前值。</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image64.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image64.png-QNthin"></p>
 <p><strong>[第 6 步：]</strong> 将值更改为“已启用”并按 Enter（或单击“确定”）。</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image65.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image65.png-QNthin"></p>
 <p>**[第7步：]**系统会确认操作完成。</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image66.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image66.png-QNthin"></p>
 <p><strong>[第 8 步：]</strong> 现在我们必须执行 PROXI 对齐程序，将新设置写入汽车。</p>
 <p>所以，我们选择“PROXI ALIGNMENT PROCEDURE”并按F10。 系统会要求您确认是否要继续。</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image67.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image67.png-QNthin"></p>
 <p><strong>[第 9 步：]</strong> 在我们确认要继续后，按 Y Multiecuscan 将启动程序。</p>
 <p>当流程完成时，系统将显示状态（成功或失败）。</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image68.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image68.png-QNthin"></p>
 <p><strong>[第 10 步：]</strong> 成功执行后，系统会要求您将汽车钥匙转到 OFF 位置。</p>
 <p>就这些。 现在，当您打开巡航控制时，巡航控制灯应该已启用并正常工作。</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image69.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image69.png-QNthin"></p>
 <h3 id="3-7-向-Multiecuscan-服务器发送诊断报告"><a href="#3-7-向-Multiecuscan-服务器发送诊断报告" class="headerlink" title="3.7. 向 Multiecuscan 服务器发送诊断报告"></a>3.7. 向 Multiecuscan 服务器发送诊断报告</h3><p>诊断报告帮助我们发现并修复 Multiecuscan 中的问题。 该报告包含有关您上次连接的信息（发送/接收到您的汽车的数据）。 它不包含任何个人信息或有关您的计算机的任何信息。</p>
 <p>Multiecuscan 在 Multiecuscan 主窗口的右下角显示一个红色的小按钮“发送报告”。 该按钮在您断开与控制模块的连接或连接失败后出现。</p>
 <p><strong>[第 1 步：]</strong> 连接到控制模块。</p>
 <p><strong>[第 2 步：]</strong> 转到错误、参数等。</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image33.png-QNthin"></p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image34.png-QNthin"></p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image37.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image33.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image34.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image37.png-QNthin"></p>
 <p><strong>[第 3 步：]</strong> 按 F11 断开与控制模块的连接。</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image70.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image70.png-QNthin"></p>
 <p><strong>[第 4 步：]</strong> 点击红色的“发送报告”按钮。 执行此操作时，您的计算机必须连接到互联网。</p>
 <p>系统会要求您确认。 按 Y 确认。</p>
-<p><img data-src="http://qiniu.s1nh.org/multiecuscan-user-guide/image71.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image71.png-QNthin"></p>
 
     </div>
 

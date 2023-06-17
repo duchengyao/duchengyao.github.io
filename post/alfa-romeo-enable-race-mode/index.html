@@ -31,7 +31,7 @@
 <meta property="og:image" content="http://qiniu.s1nh.org/alfa-romeo-race-mode-5.jpg">
 <meta property="og:image" content="http://qiniu.s1nh.org/alfa-romeo-race-mode-6.jpg">
 <meta property="article:published_time" content="2022-05-03T07:44:45.000Z">
-<meta property="article:modified_time" content="2023-04-18T01:27:29.867Z">
+<meta property="article:modified_time" content="2023-06-17T13:46:08.961Z">
 <meta property="article:author" content="S1NH">
 <meta property="article:tag" content="阿尔法罗密欧 (Alfa Romeo)">
 <meta name="twitter:card" content="summary">
@@ -336,11 +336,11 @@
 <h2 id="0x01-DIY-DNA-开关"><a href="#0x01-DIY-DNA-开关" class="headerlink" title="0x01 DIY DNA 开关"></a>0x01 DIY DNA 开关</h2><p><code>此方法适用与 2017-2019 年的 giulia / stelvio 各个版本。</code><br><code>带有单稳态 DNA 选择器（始终恢复为 N）的 2020+ 不需要更换 DNA+R 拨盘。所需要的只是 SGW 旁路、MES</code></p>
 <p>a. 参考 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV19a4y1W7z1">B站搬运的视频</a> 拆下原厂的开关。</p>
 <p>b. 参考 <a target="_blank" rel="noopener" href="https://www.giuliaforums.com/threads/how-to-enable-race-mode-on-non-qv-2017-2019.46258/">giuliaforums</a> 拆开此开关。</p>
-<p><img data-src="http://qiniu.s1nh.org/alfa-romeo-race-mode-4.jpg"></p>
+<p><img data-src="//qiniu.s1nh.org/alfa-romeo-race-mode-4.jpg"></p>
 <p>c. 焊接电阻和微动开关。（注意，上面箭头的引脚需要掰断，不要焊接）</p>
-<p><img data-src="http://qiniu.s1nh.org/alfa-romeo-race-mode-3.jpg"></p>
+<p><img data-src="//qiniu.s1nh.org/alfa-romeo-race-mode-3.jpg"></p>
 <p>e. 在国内可以参考我购买的链接。</p>
-<img style="background-color:white" data-src="http://qiniu.s1nh.org/alfa-romeo-race-mode-5.jpg"  width=40% />
+<img style="background-color:white" data-src="//qiniu.s1nh.org/alfa-romeo-race-mode-5.jpg"  width=40% />
 
 <p>d. 打磨外壳的一个限位槽，使得旋钮可以拧出超过D的位置。（这一步没拍图）</p>
 <p>e. 重新装回组件。</p>
@@ -350,7 +350,7 @@
 </blockquote>
 <p>使用此软件需要 ELM 327 OBD 接口，和 OBD 跳线，参考我的购买截图。（更便宜的ELM327接口应该也可以使用，但可能需要<a target="_blank" rel="noopener" href="http://forum.multiecuscan.net/viewtopic.php?f=5&t=1493">参考这篇文章</a>去掉一个电阻）</p>
 <p>按文章开头的视频链接修改参数，并进行三次标定，Race 模块就可以使用了。</p>
-<img style="background-color:white" data-src="http://qiniu.s1nh.org/alfa-romeo-race-mode-6.jpg"  width=40% />
+<img style="background-color:white" data-src="//qiniu.s1nh.org/alfa-romeo-race-mode-6.jpg"  width=40% />
 
 <h2 id="0x02-三种-DNA-模式"><a href="#0x02-三种-DNA-模式" class="headerlink" title="0x02 三种 DNA 模式"></a>0x02 三种 DNA 模式</h2><p>在设置DNA模式时，有三种可选项，分别是<code>Stock</code> <code>Type 2/DNA</code> <code>Type 3/DNA/Sport</code>，三种模式的原理是将配置文件的第88字节设置为 AC(1<strong>01</strong>0 1100)、CC(1<strong>10</strong>0 1100)、EC(1<strong>11</strong>0 1100)。</p>
 <p>修改为非Stock模式后，不但拥有了Race模式，其它模式的映射也会相应改变。最明显的感觉是<strong>在所有模式中，油门踏板都为线性映射</strong>，不再存在之前在D档一碰油门就乱窜的奇怪映射了。</p>

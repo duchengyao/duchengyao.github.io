@@ -401,7 +401,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><img data-src="http://qiniu.s1nh.org/Blog_HackRF_00.png-QNthin"></p>
+          <p><img data-src="//qiniu.s1nh.org/Blog_HackRF_00.png-QNthin"></p>
 <p><a href="/post/hackrf-firmware-upgrade">上一节</a>已经对HackRF升级了最新的固件，今天我们利用它做一些简单的实验。因为本人也是小白，所以本文并没有任何复杂的理论知识，只要会用Linux按照顺序一步一步操作都可以实验成功。</p>
           <!--noindex-->
             <div class="post-button">
@@ -488,7 +488,7 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>HackRF已经吃灰一年多了，官方的上一个版本还是2015.07，最新的2017.02.1版增加了<code>Sweep mode</code>，<code>Hardware synchronization</code>，<code>hackrf_debug</code>，降低了功耗以及修复了Bug. 在<a target="_blank" rel="noopener" href="https://github.com/mossmann/hackrf/releases">mossmann/hackrf/releases</a>有编译好的固件<a target="_blank" rel="noopener" href="https://github.com/mossmann/hackrf/releases/download/v2017.02.1/hackrf-2017.02.1.tar.xz">hackrf-2017.02.1.tar.xz</a>下载</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_HackRF_01.jpeg-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_HackRF_01.jpeg-QNthin"></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/hackrf-firmware-upgrade/#more" rel="contents">
@@ -658,7 +658,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><img data-src="http://qiniu.s1nh.org/Blog_2016_summary_08.png-index"></p>
+          <p><img data-src="//qiniu.s1nh.org/Blog_2016_summary_08.png-index"></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/2016-summary/#more" rel="contents">
@@ -746,7 +746,7 @@
           <blockquote>
 <p>公司发的圣诞礼物被一个自以为是的胖女人拿走了，不开心</p>
 </blockquote>
-<p>众所周知GPGPU的性能瓶颈为PCI-E传输速度，数据传输时会导致运算资源闲置。因此NVIDIA发明了一个很牛逼的技术<code>Zero Copy</code>，它把主机内存直接映射到GPU内存上，在GPU需要数据时直接从主机内存寻找，隐式的传输到GPU中。还有另一个技术叫<code>Pinned Memory</code>，会在产生一个不会被分页的内存，这块内存不会被交换到磁盘的虚拟内存上，内存地址也不会被重新定位，因此，相比普通的<code>Pageable Memory</code>有更高的速度。使用Pinned Memory是一定会提高性能的，不过也需要适当使用，否则太多Pinned Memory会把Host Memory给挤爆了（因为它不会分页到虚拟内存去）。<br><img data-src="http://qiniu.s1nh.org/Blog_pageable_pinned_memory.png-QNthin" alt="图1 Pageable 和 Pinned 的区别" title="图1 Pageanbe 和 Pinned 的区别"></p>
+<p>众所周知GPGPU的性能瓶颈为PCI-E传输速度，数据传输时会导致运算资源闲置。因此NVIDIA发明了一个很牛逼的技术<code>Zero Copy</code>，它把主机内存直接映射到GPU内存上，在GPU需要数据时直接从主机内存寻找，隐式的传输到GPU中。还有另一个技术叫<code>Pinned Memory</code>，会在产生一个不会被分页的内存，这块内存不会被交换到磁盘的虚拟内存上，内存地址也不会被重新定位，因此，相比普通的<code>Pageable Memory</code>有更高的速度。使用Pinned Memory是一定会提高性能的，不过也需要适当使用，否则太多Pinned Memory会把Host Memory给挤爆了（因为它不会分页到虚拟内存去）。<br><img data-src="//qiniu.s1nh.org/Blog_pageable_pinned_memory.png-QNthin" alt="图1 Pageable 和 Pinned 的区别" title="图1 Pageanbe 和 Pinned 的区别"></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/tx-1-zero-copy/#more" rel="contents">
@@ -924,7 +924,7 @@
 <blockquote>
 <p>最近忙着写论文，没有时间写博客了。（说得就像会有人看一样）<br>现在的学术水平已经基本脱离“科学靠脑补、大力出奇迹”的民科状态了</p>
 </blockquote>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Image_keypoint_FlowChart_1.png" title="完整的图片拼接步骤，翻译自OpenCV Stitching Pipeline"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_Image_keypoint_FlowChart_1.png" title="完整的图片拼接步骤，翻译自OpenCV Stitching Pipeline"></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/Image-mosaic-keypoint/#more" rel="contents">
@@ -1014,7 +1014,7 @@
 <p>秉承着以解决问题为乐趣，没有问题创造问题也要解决问题为基本准则。今天发现了一个gnome-theme-kal主题在xfce4下的Bug</p>
 </blockquote>
 <p>最近用Nvidia提供的Nsight来写OpenCV/CUDA，白色主题实在是太丑了，就采用通用的方法换成了黑色主题。结果不管怎么折腾，旁边的Navigator都还是白色的，使得整个界面不白不黑的，简直比VIM还丑。</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_kali-theme_1.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_kali-theme_1.png-QNthin"></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/eclipse-dark-theme-conflicts-with-gnome-theme-kali/#more" rel="contents">
@@ -1188,7 +1188,7 @@
     <div class="post-body" itemprop="articleBody">
           <p>本周基于OpenCV进行了一次完整的图像拼接测试，和移动物体探测实验</p>
 <h2 id="图像拼接测试"><a href="#图像拼接测试" class="headerlink" title="图像拼接测试"></a>图像拼接测试</h2><p>测试采用<code>Python2.7</code>, <code>OpenCV3</code>, 对26张<code>12Mp(4000×3000)</code>进行SIFT角点检测，每张图片缩放为之前的0.12倍，利用CPU（8线程i7-6700HQ）进行完整拼接的时间为30秒。（代码链接：<a target="_blank" rel="noopener" href="https://github.com/duchengyao/mosaic">https://github.com/duchengyao/mosaic</a> ）</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_mosaic-CPU-1.gif" title="拼接过程（点击可查看大图）"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_mosaic-CPU-1.gif" title="拼接过程（点击可查看大图）"></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/note-2016-06-12/#more" rel="contents">
@@ -1275,7 +1275,7 @@
     <div class="post-body" itemprop="articleBody">
           <h2 id="编译OpenCV-with-CUDA"><a href="#编译OpenCV-with-CUDA" class="headerlink" title="编译OpenCV with CUDA"></a>编译OpenCV with CUDA</h2><p>编译方法<a target="_blank" rel="noopener" href="http://docs.opencv.org/3.1.0/d7/d9f/tutorial_linux_install.html">官方文档</a>写的特别清楚。此外，如果要使用python接口，编译完成后需要把<code>opencv/site-packages</code>目录下的<code>cv2.so</code>链接（或复制）到<code>python/site-packages</code>中，我执行的命令为<code>sudo ln -s  /usr/local/opencv3/lib/python2.7/dist-packages/cv2.so /usr/lib/python2.7/dist-packages/cv2.so</code>（如果不清楚可以参照<a target="_blank" rel="noopener" href="http://www.jianshu.com/p/67293b547261">[翻译]Python 2.7 和 Python 3+ 的OpenCV 3.0 安装教程</a>）</p>
 <p>查看Api和Guides推荐使用Zeal/Dash，就不用那么麻烦跑去官网搜索了：</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_zeal-main.png"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_zeal-main.png"></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/build-cuda-with-opencv/#more" rel="contents">
@@ -1620,7 +1620,7 @@
           <blockquote>
 <p>本文其实就是为了炫耀一下我买的新玩具，地球人X411</p>
 </blockquote>
-<p><img data-src="http://qiniu.s1nh.org/Blog_cuda_01.jpg-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_cuda_01.jpg-QNthin"></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/cuda-reinstall/#more" rel="contents">
@@ -1708,7 +1708,7 @@
           <blockquote>
 <p>为什么计算机系的学生也应该学经济学？因为，从经营一家公司的角度来看，比起那些不懂的程序员，一个理解基本商业规则的程序员将会更有价值。就是这么简单。我无法告诉你有多少次我是那样地充满挫折感，因为我看到了太多提出一些疯狂的想法的程序员，这些想法在代码上也许可行，但在资本主义世界中毫无意义。如果你懂得商业规则，你就是一个更有价值的程序员，你会因此得到回报的，但是前提是你要去学习微观经济学。——《软件随想录》</p>
 </blockquote>
-<p><img data-src="http://qiniu.s1nh.org/Blog_microeconomics-note_1_0.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_microeconomics-note_1_0.png-QNthin"></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/microeconomics-note/#more" rel="contents">
@@ -1882,7 +1882,7 @@
 <p>今天的朋友圈都被王宝强和她出轨的老婆刷屏了<br>想起了一句话：“他们自以为美貌是自己人生的武器，却被自己的美貌支配着走进了困顿。”</p>
 </blockquote>
 <h2 id="Nvidia-TX1"><a href="#Nvidia-TX1" class="headerlink" title="Nvidia TX1"></a>Nvidia TX1</h2><p>信用卡大小的 NVIDIA Jetson TX1 有内置ARM64 CPU，256 cores CUDA GPU，还内置了4G内存、16G emmc、Wi-Fi、蓝牙，集成度超级高，用来做机器人，嵌入式图像处理特别方便。 <a target="_blank" rel="noopener" href="https://devblogs.nvidia.com/parallelforall/nvidia-jetson-tx1-supercomputer-on-module-drives-next-wave-of-autonomous-machines/"><strong>比较详细的一个介绍</strong></a></p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_TX1_block.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_TX1_block.png-QNthin"></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/NVIDIA-Jetson-TX1-note/#more" rel="contents">
@@ -1971,7 +1971,7 @@
 <p>转载自<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/21533724">https://zhuanlan.zhihu.com/p/21533724</a></p>
 </blockquote>
 <p>2016年的CVPR会议目标检测（在这里讨论的是2D的目标检测，如图1所示）的方法主要是基于卷积神经网络的框架，代表性的工作有ResNet[1]（Kaiming He等）、YOLO[5]（Joseph Redmon等）、LocNet[7]（Spyros Gidaris等）、HyperNet[3]（Tao Kong等）、ION[2]（Sean Bell等）、G-CNN[6]（Mahyar Najibi等）。在这里之所以把ResNet也放进来，是因为有效的特征对于目标检测领域是极为重要的。</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_CVPR2016_0.jpg-QNthin" alt="2D目标检测示意图" title="2D目标检测示意图"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_CVPR2016_0.jpg-QNthin" alt="2D目标检测示意图" title="2D目标检测示意图"></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/CVPR2016/#more" rel="contents">
@@ -2144,7 +2144,7 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>翻出了去年工程管理那边十二五结题时，帮他们画的图。百度了一下午，照猫画虎，闭门造车而成（不得不吐槽一下他们搞些课题，几个博士论文一凑，并没有什么研究，也没有什么价值，感觉纯属骗钱。）</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_PM_%E7%BB%93%E6%9E%84%E5%9B%BE.png-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_PM_%E7%BB%93%E6%9E%84%E5%9B%BE.png-QNthin"></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/to-be-a-PM/#more" rel="contents">
@@ -2230,7 +2230,7 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>学到卷积神经网络，搜索到的资料一般都是这样的</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Convolution_a1.png-QNthin" alt="神经网络"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_Convolution_a1.png-QNthin" alt="神经网络"></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/convolutional-neural-network-introduction/#more" rel="contents">
@@ -2494,7 +2494,7 @@
 <p>本文翻译自：<a target="_blank" rel="noopener" href="http://www.academia.edu/download/46115290/JVCI_1_Debabrata.pdf">Ghosh, Debabrata, and Naima Kaabouch. “A survey on image mosaicing techniques.” Journal of Visual Communication and Image Representation 34 (2016): 1-11.</a>. 如有错误请指正。</p>
 </blockquote>
 <h2 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h2><p>图像拼接在运动检测和跟踪、增强现实、分辨率增强、视频压缩和图像稳定等机器视觉领域有很大的应用。</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_Image_keypoint_8.png"> </p>
+<p><img data-src="//qiniu.s1nh.org/Blog_Image_keypoint_8.png"> </p>
 <p>如图所示，图像拼接分为四个步骤：图像匹配（registration）、重投影（reprojection）、缝合（stitching）和融合（blending）。</p>
           <!--noindex-->
             <div class="post-button">
@@ -2580,7 +2580,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><a target="_blank" rel="noopener" href="http://qiniu.s1nh.org/Blog_the_Constitution_of_a_Basic_Intrusion_System.pdf"><img data-src="http://qiniu.s1nh.org/Blog_the_Constitution_of_a_Basic_Intrusion_System.png-QNthin" title="点击图片下载PPT，点击“阅读全文”查看文字版草稿"></a></p>
+          <p><a target="_blank" rel="noopener" href="//qiniu.s1nh.org/Blog_the_Constitution_of_a_Basic_Intrusion_System.pdf"><img data-src="//qiniu.s1nh.org/Blog_the_Constitution_of_a_Basic_Intrusion_System.png-QNthin" title="点击图片下载PPT，点击“阅读全文”查看文字版草稿"></a></p>
 <p>可靠性导论的汇报PPT，介绍了我自己搭建的入侵检测平台，其中包含：</p>
 <ul>
 <li>Man-in-the-Middle Attack (MITM, 中间人攻击)</li>
@@ -2673,7 +2673,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><img data-src="http://qiniu.s1nh.org/Blog_Track_Civil_Aircraft_3.png-QNthin"></p>
+          <p><img data-src="//qiniu.s1nh.org/Blog_Track_Civil_Aircraft_3.png-QNthin"></p>
 <p>我国民航飞机的通讯频率为1090MHz，淘宝45块钱买的电视棒（RTL2832U+R820T）接收的频率范围为 24 ~ 1766 MHz. 所以，你应该懂得。</p>
           <!--noindex-->
             <div class="post-button">

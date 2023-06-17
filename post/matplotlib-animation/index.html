@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://qiniu.s1nh.org/Blog_python-genetic_1.png-QNthin">
 <meta property="article:published_time" content="2016-07-30T23:12:36.000Z">
-<meta property="article:modified_time" content="2022-03-07T09:08:38.624Z">
+<meta property="article:modified_time" content="2023-06-17T13:46:08.957Z">
 <meta property="article:author" content="S1NH">
 <meta property="article:tag" content="python">
 <meta property="article:tag" content="科学计算">
@@ -346,7 +346,7 @@
 </ul>
 <h2 id="matplotlib"><a href="#matplotlib" class="headerlink" title="matplotlib"></a>matplotlib</h2><p>刚开始用了<a target="_blank" rel="noopener" href="http://old.sebug.net/paper/books/scipydoc/mlab_and_mayavi.html">mayavi库</a>，画出来的图像很漂亮，不过apt源下载的是4.4.3版本（pip是4.4.4），总提示版本不对要我重新编译，最后折腾折腾就崩溃了。不用mayavi的另一个原因是，我不会把画的图统一到一个参考系里面，画的图忽大忽小的。最后选择了用<code>matplotlib</code>来重写。（改写的时候碰到一个坑：mayavi 用 <code>np.ogrid</code> 生成的X,Y向量；而matplotlib需要用  <code>np.mgrid</code> 生成X,Y矩阵。没有深究）</p>
 <p>使用matplotlib绘制3D图很简单，按照 [ <a target="_blank" rel="noopener" href="http://blog.csdn.net/ikerpeng/article/details/20523679?utm_source=tuicool&utm_medium=referral">教程1</a>，<a target="_blank" rel="noopener" href="http://blog.csdn.net/jasonding1354/article/details/42125555?utm_source=tuicool&utm_medium=referral">教程2</a>，<a target="_blank" rel="noopener" href="http://chuansong.me/n/1860572">教程3</a>，<a target="_blank" rel="noopener" href="http://matplotlib.org/mpl_toolkits/mplot3d/tutorial.html">文档1</a> ] 很快就可以画出像样的图(如下图)，并且可以修改颜色和样式。（感觉比mayavi丑一点，并且移动视角的时候比mayavi卡）</p>
-<p><img data-src="http://qiniu.s1nh.org/Blog_python-genetic_1.png-QNthin" alt="z=y sin(x)+x cos(y)" title="Z = Y sin(X) + X cos(Y)"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_python-genetic_1.png-QNthin" alt="z=y sin(x)+x cos(y)" title="Z = Y sin(X) + X cos(Y)"></p>
 <h2 id="给matplotlib制作动画"><a href="#给matplotlib制作动画" class="headerlink" title="给matplotlib制作动画"></a>给matplotlib制作动画</h2><p>对于我这种小白，matplotlib 也是个大坑。用<code>plt.show()</code>画完图以后，程序就卡那不动了，并不能通过计算一步步的显示动画。然后发现了<code>pyplot.ion()</code>这个方法，可以在类似ipython的交互式shell中显示图表 [ <a target="_blank" rel="noopener" href="http://blog.sciencenet.cn/blog-1408284-850983.html">教程1</a> ] ，并且不会发生阻塞；可是采用非shell的方式并不能够显示图表&gt;_&lt;</p>
 <p>这个问题纠结了好久，直到遇见这篇<a target="_blank" rel="noopener" href="http://www.tuicool.com/articles/iMN7veq">讲解matplotlib画动态多图</a>的教程，然后找到了官方的<a target="_blank" rel="noopener" href="http://matplotlib.org/examples/animation/simple_3danim.html">3D 动态图 example </a>和这个<a target="_blank" rel="noopener" href="http://matplotlib.org/examples/animation/unchained.html">看起来很牛逼的 example </a>，还有这个《<a target="_blank" rel="noopener" href="http://mytrix.me/2013/08/matplotlib-animation-tutorial/">MATPLOTLIB动画指南</a>》得知，我们需要调用<a target="_blank" rel="noopener" href="http://matplotlib.org/api/animation_api.html?highlight=animation#matplotlib.animation.FuncAnimation">animation API</a>：</p>
 <pre><code>class matplotlib.animation.FuncAnimation(fig, func, frames=None, init_func=None, fargs=None, save_count=None, **kwargs)
