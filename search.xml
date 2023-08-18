@@ -127,6 +127,10 @@
     <title>996.ICU</title>
     <url>/post/996-ICU/</url>
     <content><![CDATA[<p><strong>一位保守党政客讲得再清楚不过，穷人全都“必须要不断地吃，不断地喝，不断地工作，不断地死去”。</strong></p>
+<video autoplay loop playsinline>
+  <source src="//qiniu.s1nh.org/relive.mp4" type="video/mp4">
+</video>
+
 <span id="more"></span>
 
 <ul>
@@ -357,6 +361,60 @@
       </tags>
   </entry>
   <entry>
+    <title>Beaglebone Black 折腾笔记（一） 折腾些没用的</title>
+    <url>/post/Beaglebone-Black_01/</url>
+    <content><![CDATA[<p><img data-src="//qiniu.s1nh.org/Blog_BBB-setup_1.jpg-QNthin"></p>
+<p>最近没有什么特别紧急的工作，终于有时间做点喜欢的事情了。</p>
+<span id="more"></span>
+
+<h2 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h2><p>从仓库里面挑了几个还能用的显示器，找出了好久之前买的Beaglebone Black (BBB)，买了micro HDMI -&gt; DVI , Display Port -&gt; DVI , Mini Display Port -&gt; DVI 转接线，准备搭建一个新的工作平台。</p>
+<p><img data-src="//qiniu.s1nh.org/Blog_BBB-setup_2.jpg-QNthin"></p>
+<h3 id="杜邦线"><a href="#杜邦线" class="headerlink" title="杜邦线"></a>杜邦线</h3><p>之前串口调试线太短了，并且容易插错，就去广埠屯买了这种线（老板说叫杜邦线），并且买了4/7的插头各一个。以后就不用纠结哪根线插在哪个针上了。</p>
+<p><img data-src="//qiniu.s1nh.org/Blog_BBB-setup_3.jpg-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_BBB-setup_4.jpg-QNthin"></p>
+<h3 id="TP-Link-交换机指示灯全亮修复"><a href="#TP-Link-交换机指示灯全亮修复" class="headerlink" title="TP-Link 交换机指示灯全亮修复"></a>TP-Link 交换机指示灯全亮修复</h3><p>实验室有两台服务器、一个工作站、Mac Mini和BBB，想把它们组建成局域网。</p>
+<p>从办公室里翻出来了一个坏的交换机，通电后发现所有的灯常亮。百度了一下好多这种现象，可能是TP-link的通病。拆开以后可以看到3个电容爆了，去电子市场买了3个3300uF/16V的电容，问题解决。</p>
+<p><img data-src="//qiniu.s1nh.org/Blog_BBB-setup_5.jpg-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_BBB-setup_6.jpg-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_BBB-setup_8.jpg-QNthin"></p>
+<p>在换电容的时候发现了一个奇怪的问题，为什么电路板上会有下面这种一条一条的焊锡线（下图）</p>
+<p><img data-src="//qiniu.s1nh.org/Blog_BBB-setup_7.jpg-QNthin"></p>
+<h3 id="在局域网中使用代理共享LANTERN来翻墙"><a href="#在局域网中使用代理共享LANTERN来翻墙" class="headerlink" title="在局域网中使用代理共享LANTERN来翻墙"></a>在局域网中使用代理共享LANTERN来翻墙</h3><p>给BBB下载了最新版的Debian 8.X，安装后执行apt-get时出现了问题，<code>rcn-ee.com/repos</code>源被墙了。因为是armhf架构，所以找了半天都找不到合适的源。最后就决定用Latern共享代理服务器来翻墙。(Lantarn简直太好用了，<a href="/post/Lantern/">安装方式点这里</a>)</p>
+<p>具体实现方式参考了：<a href="https://github.com/getlantern/lantern/issues/2940">《如何在局域网中共享LANTERN来翻墙？》</a>、<a href="https://xiaolan.me/lantern2.html">《Lantern 2.x翻墙教程》</a></p>
+<p>实施方案如下：</p>
+<ul>
+<li>运行Win+R，打开<code>%AppData%/Lantern/</code></li>
+<li>修改lantern-2.0.10.yaml的<code>addr: 127.0.0.1:8787</code>为<code>addr: 0.0.0.0:8787</code></li>
+<li>重启Lantern</li>
+<li>在BBB中输入<code>export http_proxy=http://192.168.1.100:8787/</code>，<code>export https_proxy=http://192.168.1.100:8787/</code>（192.168.1.100为运行Latern电脑的ip）为其设置代理</li>
+</ul>
+<p>设置完以后，用Wget随便下载个东西，如果提示connected，就设置好啦（如下图）</p>
+<p><img data-src="//qiniu.s1nh.org/Blog_BBB-setup_9.jpg-QNthin"></p>
+<p>设置完以后我的BBB就已经可以愉快的更新内核了。</p>
+<p>可是！最后发现了两个问题：</p>
+<pre><code>1. 修改完 lantern-2.0.10.yaml 后，本机电脑无法翻墙；
+2. 重新启动 Lantern 后，lantern-2.0.10.yaml 被自动恢复到了初始状态。
+</code></pre>
+<p>也就是说，设置的代理只能用一次，重启Lantern就失效了；并且设置完代理以后，开启Lantern的电脑是无法翻墙的（这个好像可以通过把0.0.0.0改成本机ip:192.168.1.100来解决）</p>
+<h3 id="更新node-js"><a href="#更新node-js" class="headerlink" title="更新node.js"></a>更新node.js</h3><p>执行apt-get更新软件的时候又报错了&gt;_&lt; 说什么node版本太旧了</p>
+<p><img data-src="//qiniu.s1nh.org/Blog_BBB-setup_10.jpg-QNthin"></p>
+<p>找了一下更新node的办法：</p>
+<pre><code>npm install -g n //居然有名字叫&quot;n&quot;的软件
+n latest
+</code></pre>
+<p>再看一下版本，瞬间从0.10.40变成了5.1.1（我觉得这步肯定出问题了，版本怎么变化这么大 0_0）</p>
+<p><img data-src="//qiniu.s1nh.org/Blog_BBB-setup_11.jpg-QNthin"></p>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+      <tags>
+        <tag>Beaglebone Black</tag>
+        <tag>Lantern</tag>
+        <tag>node.js</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>《数据结构与算法分析》复习笔记</title>
     <url>/post/Algorithm-Review/</url>
     <content><![CDATA[<blockquote>
@@ -469,60 +527,6 @@
       <categories>
         <category>算法与硬件</category>
       </categories>
-  </entry>
-  <entry>
-    <title>Beaglebone Black 折腾笔记（一） 折腾些没用的</title>
-    <url>/post/Beaglebone-Black_01/</url>
-    <content><![CDATA[<p><img data-src="//qiniu.s1nh.org/Blog_BBB-setup_1.jpg-QNthin"></p>
-<p>最近没有什么特别紧急的工作，终于有时间做点喜欢的事情了。</p>
-<span id="more"></span>
-
-<h2 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h2><p>从仓库里面挑了几个还能用的显示器，找出了好久之前买的Beaglebone Black (BBB)，买了micro HDMI -&gt; DVI , Display Port -&gt; DVI , Mini Display Port -&gt; DVI 转接线，准备搭建一个新的工作平台。</p>
-<p><img data-src="//qiniu.s1nh.org/Blog_BBB-setup_2.jpg-QNthin"></p>
-<h3 id="杜邦线"><a href="#杜邦线" class="headerlink" title="杜邦线"></a>杜邦线</h3><p>之前串口调试线太短了，并且容易插错，就去广埠屯买了这种线（老板说叫杜邦线），并且买了4/7的插头各一个。以后就不用纠结哪根线插在哪个针上了。</p>
-<p><img data-src="//qiniu.s1nh.org/Blog_BBB-setup_3.jpg-QNthin"></p>
-<p><img data-src="//qiniu.s1nh.org/Blog_BBB-setup_4.jpg-QNthin"></p>
-<h3 id="TP-Link-交换机指示灯全亮修复"><a href="#TP-Link-交换机指示灯全亮修复" class="headerlink" title="TP-Link 交换机指示灯全亮修复"></a>TP-Link 交换机指示灯全亮修复</h3><p>实验室有两台服务器、一个工作站、Mac Mini和BBB，想把它们组建成局域网。</p>
-<p>从办公室里翻出来了一个坏的交换机，通电后发现所有的灯常亮。百度了一下好多这种现象，可能是TP-link的通病。拆开以后可以看到3个电容爆了，去电子市场买了3个3300uF/16V的电容，问题解决。</p>
-<p><img data-src="//qiniu.s1nh.org/Blog_BBB-setup_5.jpg-QNthin"></p>
-<p><img data-src="//qiniu.s1nh.org/Blog_BBB-setup_6.jpg-QNthin"></p>
-<p><img data-src="//qiniu.s1nh.org/Blog_BBB-setup_8.jpg-QNthin"></p>
-<p>在换电容的时候发现了一个奇怪的问题，为什么电路板上会有下面这种一条一条的焊锡线（下图）</p>
-<p><img data-src="//qiniu.s1nh.org/Blog_BBB-setup_7.jpg-QNthin"></p>
-<h3 id="在局域网中使用代理共享LANTERN来翻墙"><a href="#在局域网中使用代理共享LANTERN来翻墙" class="headerlink" title="在局域网中使用代理共享LANTERN来翻墙"></a>在局域网中使用代理共享LANTERN来翻墙</h3><p>给BBB下载了最新版的Debian 8.X，安装后执行apt-get时出现了问题，<code>rcn-ee.com/repos</code>源被墙了。因为是armhf架构，所以找了半天都找不到合适的源。最后就决定用Latern共享代理服务器来翻墙。(Lantarn简直太好用了，<a href="/post/Lantern/">安装方式点这里</a>)</p>
-<p>具体实现方式参考了：<a href="https://github.com/getlantern/lantern/issues/2940">《如何在局域网中共享LANTERN来翻墙？》</a>、<a href="https://xiaolan.me/lantern2.html">《Lantern 2.x翻墙教程》</a></p>
-<p>实施方案如下：</p>
-<ul>
-<li>运行Win+R，打开<code>%AppData%/Lantern/</code></li>
-<li>修改lantern-2.0.10.yaml的<code>addr: 127.0.0.1:8787</code>为<code>addr: 0.0.0.0:8787</code></li>
-<li>重启Lantern</li>
-<li>在BBB中输入<code>export http_proxy=http://192.168.1.100:8787/</code>，<code>export https_proxy=http://192.168.1.100:8787/</code>（192.168.1.100为运行Latern电脑的ip）为其设置代理</li>
-</ul>
-<p>设置完以后，用Wget随便下载个东西，如果提示connected，就设置好啦（如下图）</p>
-<p><img data-src="//qiniu.s1nh.org/Blog_BBB-setup_9.jpg-QNthin"></p>
-<p>设置完以后我的BBB就已经可以愉快的更新内核了。</p>
-<p>可是！最后发现了两个问题：</p>
-<pre><code>1. 修改完 lantern-2.0.10.yaml 后，本机电脑无法翻墙；
-2. 重新启动 Lantern 后，lantern-2.0.10.yaml 被自动恢复到了初始状态。
-</code></pre>
-<p>也就是说，设置的代理只能用一次，重启Lantern就失效了；并且设置完代理以后，开启Lantern的电脑是无法翻墙的（这个好像可以通过把0.0.0.0改成本机ip:192.168.1.100来解决）</p>
-<h3 id="更新node-js"><a href="#更新node-js" class="headerlink" title="更新node.js"></a>更新node.js</h3><p>执行apt-get更新软件的时候又报错了&gt;_&lt; 说什么node版本太旧了</p>
-<p><img data-src="//qiniu.s1nh.org/Blog_BBB-setup_10.jpg-QNthin"></p>
-<p>找了一下更新node的办法：</p>
-<pre><code>npm install -g n //居然有名字叫&quot;n&quot;的软件
-n latest
-</code></pre>
-<p>再看一下版本，瞬间从0.10.40变成了5.1.1（我觉得这步肯定出问题了，版本怎么变化这么大 0_0）</p>
-<p><img data-src="//qiniu.s1nh.org/Blog_BBB-setup_11.jpg-QNthin"></p>
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
-      </categories>
-      <tags>
-        <tag>Beaglebone Black</tag>
-        <tag>Lantern</tag>
-        <tag>node.js</tag>
-      </tags>
   </entry>
   <entry>
     <title>Beaglebone Black 折腾笔记（二） 搭建环境</title>
@@ -2076,9 +2080,36 @@ apt-get install libusb-1.0-0-dev
       </tags>
   </entry>
   <entry>
+    <title>Alfa Romeo Stelvio 灯光开关拆解，允许大灯保持关闭</title>
+    <url>/post/alfa-romeo-stelvio-highlight-disassembly/</url>
+    <content><![CDATA[<blockquote>
+<p>Alfa Romeo Stelvio headlight switch disassembly, allowing headlights to stay off.<br>The headlight switch of the Alfa Romeo Stelvio cannot be kept off. The specific performance is that the switch is turned to the far left to turn off the headlight, and the switch automatically resets to the on mode after letting go.</p>
+</blockquote>
+<p>Alfa Romeo Stelvio 的大灯开关无法保持关闭，具体表现为开关拧到最左边大灯关闭，松手后开关自动复位到开启模式。搜了一下国内外都没有改装教程，就自己写了一个发出来。</p>
+<img data-src="//qiniu.s1nh.org/light-switch-01.jpeg" width="50%" alt="1. 从后面捅掉盖子">
+
+<span id="more"></span>
+
+<img data-src="//qiniu.s1nh.org/light-switch-02.jpeg" width="50%" alt="2. 拆掉旋钮，旋钮的卡扣在这里">
+<img data-src="//qiniu.s1nh.org/light-switch-03.jpeg" width="50%" alt="2. 拆掉旋钮">
+<img data-src="//qiniu.s1nh.org/light-switch-04.jpeg" width="50%" alt="3. 拆掉面板">
+<img data-src="//qiniu.s1nh.org/light-switch-05.jpeg" width="50%" alt="3. 拆掉面板">
+<img data-src="//qiniu.s1nh.org/light-switch-06.jpeg" width="50%" alt="4. 拆掉绿圈">
+<img data-src="//qiniu.s1nh.org/light-switch-07.jpeg" width="50%" alt="5. 打磨绿圈">
+<img data-src="//qiniu.s1nh.org/light-switch-08.jpeg" width="50%" alt="5. 打磨绿圈，用电烙铁烫更快一些">
+<img data-src="//qiniu.s1nh.org/light-switch-09.jpeg" width="50%" alt="6. 组装">
+<img data-src="//qiniu.s1nh.org/light-switch-10.jpeg" width="50%" alt="6. 组装，注意这两个小东西的位置">
+
+<p><video src="//qiniu.s1nh.org/light-switch-00.mp4" width="50%" preload="metadata" controlslist="nodownload" controls="" playsinline="" poster=""></video></p>
+]]></content>
+      <categories>
+        <category>赛车</category>
+      </categories>
+  </entry>
+  <entry>
     <title>阿尔法罗密欧零成本自制 Race 模式开关，关闭牵引力控制和 ESP</title>
     <url>/post/alfa-romeo-enable-race-mode/</url>
-    <content><![CDATA[<iframe src="//player.bilibili.com/player.html?aid=768548375&bvid=BV1jr4y1n7eE&cid=587367830&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+    <content><![CDATA[<!-- <iframe src="//player.bilibili.com/player.html?aid=768548375&bvid=BV1jr4y1n7eE&cid=587367830&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe> -->
 
 <p>阿尔法罗密欧的四叶草（Quadrifoglio）版本具有 Race 模式，在此模式下打开双模式排气，停用 ESC 稳定控制系统，同时提高油门、变速箱、制动和转向响应。</p>
 <p>在普通版本的阿尔法罗密欧中，可以通过修改 Body Control Module(BCM) 的配置文件来启动隐藏的 Race 模式。</p>
@@ -2125,33 +2156,6 @@ apt-get install libusb-1.0-0-dev
       <tags>
         <tag>阿尔法罗密欧 (Alfa Romeo)</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Alfa Romeo Stelvio 灯光开关拆解，允许大灯保持关闭</title>
-    <url>/post/alfa-romeo-stelvio-highlight-disassembly/</url>
-    <content><![CDATA[<blockquote>
-<p>Alfa Romeo Stelvio headlight switch disassembly, allowing headlights to stay off.<br>The headlight switch of the Alfa Romeo Stelvio cannot be kept off. The specific performance is that the switch is turned to the far left to turn off the headlight, and the switch automatically resets to the on mode after letting go.</p>
-</blockquote>
-<p>Alfa Romeo Stelvio 的大灯开关无法保持关闭，具体表现为开关拧到最左边大灯关闭，松手后开关自动复位到开启模式。搜了一下国内外都没有改装教程，就自己写了一个发出来。</p>
-<img data-src="//qiniu.s1nh.org/light-switch-01.jpeg" width="50%" alt="1. 从后面捅掉盖子">
-
-<span id="more"></span>
-
-<img data-src="//qiniu.s1nh.org/light-switch-02.jpeg" width="50%" alt="2. 拆掉旋钮，旋钮的卡扣在这里">
-<img data-src="//qiniu.s1nh.org/light-switch-03.jpeg" width="50%" alt="2. 拆掉旋钮">
-<img data-src="//qiniu.s1nh.org/light-switch-04.jpeg" width="50%" alt="3. 拆掉面板">
-<img data-src="//qiniu.s1nh.org/light-switch-05.jpeg" width="50%" alt="3. 拆掉面板">
-<img data-src="//qiniu.s1nh.org/light-switch-06.jpeg" width="50%" alt="4. 拆掉绿圈">
-<img data-src="//qiniu.s1nh.org/light-switch-07.jpeg" width="50%" alt="5. 打磨绿圈">
-<img data-src="//qiniu.s1nh.org/light-switch-08.jpeg" width="50%" alt="5. 打磨绿圈，用电烙铁烫更快一些">
-<img data-src="//qiniu.s1nh.org/light-switch-09.jpeg" width="50%" alt="6. 组装">
-<img data-src="//qiniu.s1nh.org/light-switch-10.jpeg" width="50%" alt="6. 组装，注意这两个小东西的位置">
-
-<p><video src="//qiniu.s1nh.org/light-switch-00.mp4" width="50%" preload="metadata" controlslist="nodownload" controls="" playsinline="" poster=""></video></p>
-]]></content>
-      <categories>
-        <category>赛车</category>
-      </categories>
   </entry>
   <entry>
     <title>阿尔法罗密欧无线充电3D打印模型</title>
@@ -2427,34 +2431,6 @@ apt-get install libusb-1.0-0-dev
       </tags>
   </entry>
   <entry>
-    <title>纪念一下卖掉的小车车</title>
-    <url>/post/cars/</url>
-    <content><![CDATA[<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="//qiniu.s1nh.org/car_12.jpg"></div><div class="group-picture-column"><img data-src="//qiniu.s1nh.org/car_7.jpg"></div></div></div>
-
-<span id="more"></span>
-
-<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="//qiniu.s1nh.org/car_8.jpg"></div><div class="group-picture-column"><img data-src="//qiniu.s1nh.org/car_9.jpg"></div><div class="group-picture-column"><img data-src="//qiniu.s1nh.org/car_1.jpg"></div></div><div class="group-picture-row"><div class="group-picture-column"><img data-src="//qiniu.s1nh.org/car_2.jpg"></div><div class="group-picture-column"><img data-src="//qiniu.s1nh.org/car_3.jpg"></div><div class="group-picture-column"><img data-src="//qiniu.s1nh.org/car_4.jpg"></div></div><div class="group-picture-row"><div class="group-picture-column"><img data-src="//qiniu.s1nh.org/car_5.jpg"></div><div class="group-picture-column"><img data-src="//qiniu.s1nh.org/car_6.jpg"></div><div class="group-picture-column"><img data-src="//qiniu.s1nh.org/car_10.jpg"></div></div><div class="group-picture-row"><div class="group-picture-column"><img data-src="//qiniu.s1nh.org/car_11.jpg"></div></div></div>
-]]></content>
-      <categories>
-        <category>赛车</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Chrome Linux 不支持npapi</title>
-    <url>/post/chrome-not-support-npapi-in-linux/</url>
-    <content><![CDATA[<p>Hikvision的web摄像头界面需要npapi的支持。<code>Chrome42</code>之前的版本都不支Npapi，<code>Chrome42~45</code>可以通过<code>chrome://flags/#enable-npapi</code>开启支持，<code>Chrome45</code>之后的版本不支持Npapi。</p>
-<p>花了很久的时间找到了低版本的Chrome安装包，安装完以后依然无法执行插件。</p>
-<p>仔细查阅文档后，发现<strong>只有Mac和Windows的Chrome对NPAPI提供支持</strong>。</p>
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
-      </categories>
-      <tags>
-        <tag>HIKVISION</tag>
-        <tag>npapi</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>多目相机、Velodyne标定那些破事</title>
     <url>/post/calib-velodyne-camera/</url>
     <content><![CDATA[<h2 id="0x01-制作标定板"><a href="#0x01-制作标定板" class="headerlink" title="0x01 制作标定板"></a>0x01 制作标定板</h2><ul>
@@ -2519,6 +2495,34 @@ apt-get install libusb-1.0-0-dev
       <categories>
         <category>算法与硬件</category>
       </categories>
+  </entry>
+  <entry>
+    <title>纪念一下卖掉的小车车</title>
+    <url>/post/cars/</url>
+    <content><![CDATA[<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="//qiniu.s1nh.org/car_12.jpg"></div><div class="group-picture-column"><img data-src="//qiniu.s1nh.org/car_7.jpg"></div></div></div>
+
+<span id="more"></span>
+
+<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="//qiniu.s1nh.org/car_8.jpg"></div><div class="group-picture-column"><img data-src="//qiniu.s1nh.org/car_9.jpg"></div><div class="group-picture-column"><img data-src="//qiniu.s1nh.org/car_1.jpg"></div></div><div class="group-picture-row"><div class="group-picture-column"><img data-src="//qiniu.s1nh.org/car_2.jpg"></div><div class="group-picture-column"><img data-src="//qiniu.s1nh.org/car_3.jpg"></div><div class="group-picture-column"><img data-src="//qiniu.s1nh.org/car_4.jpg"></div></div><div class="group-picture-row"><div class="group-picture-column"><img data-src="//qiniu.s1nh.org/car_5.jpg"></div><div class="group-picture-column"><img data-src="//qiniu.s1nh.org/car_6.jpg"></div><div class="group-picture-column"><img data-src="//qiniu.s1nh.org/car_10.jpg"></div></div><div class="group-picture-row"><div class="group-picture-column"><img data-src="//qiniu.s1nh.org/car_11.jpg"></div></div></div>
+]]></content>
+      <categories>
+        <category>赛车</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Chrome Linux 不支持npapi</title>
+    <url>/post/chrome-not-support-npapi-in-linux/</url>
+    <content><![CDATA[<p>Hikvision的web摄像头界面需要npapi的支持。<code>Chrome42</code>之前的版本都不支Npapi，<code>Chrome42~45</code>可以通过<code>chrome://flags/#enable-npapi</code>开启支持，<code>Chrome45</code>之后的版本不支持Npapi。</p>
+<p>花了很久的时间找到了低版本的Chrome安装包，安装完以后依然无法执行插件。</p>
+<p>仔细查阅文档后，发现<strong>只有Mac和Windows的Chrome对NPAPI提供支持</strong>。</p>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+      <tags>
+        <tag>HIKVISION</tag>
+        <tag>npapi</tag>
+      </tags>
   </entry>
   <entry>
     <title>一些有关 FastDDS 的基本概念</title>
@@ -2862,6 +2866,57 @@ apt-get install libusb-1.0-0-dev
 <p>• Xiong, Caiming, Stephen Merity, and Richard Socher. “Dynamic Memory Networks for Visual and Textual Question Answering.” arXiv:1603.01417 (2016).<br>• Mateusz Malinowski, Marcus Rohrbach, Mario Fritz, Ask Your Neurons: A Neural-based Approach to Answering Questions about Images, arXiv:1505.01121.<br>• Stanislaw Antol, Aishwarya Agrawal, Jiasen Lu, Margaret Mitchell, Dhruv Batra, C. Lawrence Zitnick, Devi Parikh, VQA: Visual Question Answering, CVPR, 2015 SUNw:Scene Understanding workshop.<br>• Hauyuan Gao, Junhua Mao, Jie Zhou, Zhiheng Huang, Lei Wang, Wei Xu, Are You Talking to a Machine? Dataset and Methods for Multilingual Image Question Answering, arXiv:1505.05612.<br>• Hyeonwoo Noh, Paul Hongsuck Seo, and Bohyung Han, Image Question Answering using Convolutional Neural Network with Dynamic Parameter Prediction, arXiv:1511.05765<br>• Yang, Z., He, X., Gao, J., Deng, L., &amp; Smola, A. (2015). Stacked Attention Networks for Image Question Answering. arXiv:1511.02274.<br>• Jin-Hwa Kim, Sang-Woo Lee, Dong-Hyun Kwak, Min-Oh Heo, Jeonghee Kim, Jung-Woo Ha, Byoung-Tak Zhang, Multimodal Residual Learning for Visual QA, arXiv:1606:01455<br>• Hyeonwoo Noh and Bohyung Han, Training Recurrent Answering Units with Joint Loss Minimization for VQA, arXiv:1606.03647<br>• Jin-Hwa Kim, Kyoung Woon On, Jeonghee Kim, Jung-Woo Ha, Byoung-Tak Zhang, Hadamard Product for Low-rank Bilinear Pooling, arXiv:1610.04325. </p>
 <h4 id="5-Mask-R-CNN"><a href="#5-Mask-R-CNN" class="headerlink" title="(5) Mask-R-CNN"></a>(5) Mask-R-CNN</h4><p>另外还有一篇是刚刚出来的 Mask RCNN，也是比较火。</p>
 <p>文章在这里 <a href="https://arxiv.org/abs/1703.06870">https://arxiv.org/abs/1703.06870</a><br>具体中文讨论在这里 <a href="https://www.zhihu.com/question/57403701">https://www.zhihu.com/question/57403701</a><br>但是，没有代码，我们组也在复现中 </p>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>不推荐购买创想三维 Creality Sermoon V1 的几个理由</title>
+    <url>/post/do-not-buy-sermoon-v1/</url>
+    <content><![CDATA[<blockquote>
+<p>看过 [<a href="https://www.zhihu.com/zvideo/1457409894764335104">阿文君的视频</a>] 买了 <code>Sermoon V1</code>。体验过后感觉比较玩具、拓展性也比较差，在这里提出几个不该买的理由。</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="0x01-缺少-Linear-Advance-（压力提前-线性推进）-的支持"><a href="#0x01-缺少-Linear-Advance-（压力提前-线性推进）-的支持" class="headerlink" title="0x01 缺少 Linear Advance （压力提前/线性推进） 的支持"></a>0x01 缺少 Linear Advance （压力提前/线性推进） 的支持</h2><p><code>准确的 Linear Advance 的校准是打印一个优秀模型的重要因素</code></p>
+<p>默认情况下，挤出机以线性方式工作。但挤出机不是线性系统，明显会导致在每一步打印后挤出额外材料，并且在下一步开始打印时材料不够。（下图表示了打印机在加速减速的过程，在2处材料挤出不够，且在4、5处产生堆料）</p>
+<p><img data-src="//qiniu.s1nh.org/sermoon-v1-k-factor_low.png"></p>
+<p>使用 Linear Advance 的优点：</p>
+<ul>
+<li>减少粗糙的边缘，尺寸精度更高。</li>
+<li>可以在不损失任何打印质量的情况下实现更高的打印速度。</li>
+<li>即使在较低的打印速度下，打印质量也会得到提高。</li>
+<li>获得更锋利的边缘。</li>
+</ul>
+<p>网络有很多矫正线性推进的教程，比如：</p>
+<ul>
+<li><a href="https://www.bilibili.com/video/BV1Z94y1U7UL">3D打印机klipper在Voron0.1机器上进行挤出机压力提前测试和校准：新手教程</a></li>
+<li><a href="https://www.bilibili.com/video/BV18541117Yk">【klipper】3D打印机挤出机压力提前测试和校准【3集全】拐角膨胀和起始点分离修正办法</a></li>
+</ul>
+<p>Marlin 官网也提供了详细的<a href="https://marlinfw.org/docs/features/lin_advance.html">调整教程</a></p>
+<p>然而我们的 Sermoon V1 不支持此功能，无法进行调整。我打电话到厂家，给的答复也是“不开源” “没有你想要的固件”</p>
+<h2 id="0x02-糟糕的散热"><a href="#0x02-糟糕的散热" class="headerlink" title="0x02 糟糕的散热"></a>0x02 糟糕的散热</h2><p>此机器的精灵挤出机主体跟 Ender3 S1 的相同，但附件不同。V1挤出机的附件有个致命缺陷散热风扇从底部吸入热空气再给模型降温，缺点是散热很差，在<a href="https://fl.himi3d.cn/d/439-bensermoon-v1">这篇文章</a>有讨论。有几种方式可以改造散热，我做了一版，调试好后会放出来（下图左上。另外：<code>右下黑</code>，原厂；右上黄，<a href="https://fl.himi3d.cn/d/426-bengo10-ender3-s1">S1 风道</a>；左下白，<a href="https://www.crealitycloud.cn/model-detail/626821aac54f1758304dc951">风扇侧装</a>）。</p>
+<p><img data-src="//qiniu.s1nh.org/sermoon-v1-fan.jpg"></p>
+<p>另外，个人对于挤出机的排线耐久性持怀疑态度，加热棒的大电流不知道会不会导致排线老化。</p>
+<h2 id="0x03-鸡肋的-wifi-功能"><a href="#0x03-鸡肋的-wifi-功能" class="headerlink" title="0x03 鸡肋的 wifi 功能"></a>0x03 鸡肋的 wifi 功能</h2><p>Sermoon V1 自带一个 wifi 板子（下图中间绿色的电路板），功能很弱鸡。比如录像没办法下载，官方给的答复是可以<code>打开手机的录屏功能</code>。</p>
+<p><img data-src="//qiniu.s1nh.org/sermoon-v1-whole.png"></p>
+<p>我已经把它换成树莓派了，<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2sh1t/mod_octoprint_setup_for_the_creality_sermoon_v1/">有手就能改</a>，可以安装 octoprint 以支持更强大的 <code>wifi</code> <code>远程监控</code> <code>延时摄影</code> 等功能。</p>
+<iframe src="//player.bilibili.com/player.html?aid=342230292&bvid=BV1194y1m7y7&cid=735894030&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+<h2 id="0x04-不开源的主控板"><a href="#0x04-不开源的主控板" class="headerlink" title="0x04 不开源的主控板"></a>0x04 不开源的主控板</h2><p>机器左下角的主板基于开源的 <code>Marlin 1</code> 固件魔改而成，<code>Marlin</code> 固件基于 <code>GPL v3</code> 协议，简单来说就是 <code>你可以免费使用、复制、修改、分发受保护程序，但分发时一定要提供源码</code>。然而此主板不提供源码，后果就是我们只能使用老旧的 Marlin 第一代固件，没办法自行升级到 2.0 以上版本，或者最近流行的<code>klipper</code>固件。</p>
+<ul>
+<li>国外有个哥们请求开源，被直接关闭了issue <a href="https://github.com/CrealityOfficial/Ender-3S1/issues/2">链接</a></li>
+<li>无法校准挤出机<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/ui2u5v/how_to_calibrate_extruder_esteps_z_axis_baby/">链接</a></li>
+<li><a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2stxx/sermoon_v1_and_v1_pro_general_info_thoughts/">这里</a> 有一些讨论</li>
+<li><a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2toy2/marlin_stock_firmware_notes_from_the_sermoon_v1/">这里</a>有一些关于固件的信息</li>
+</ul>
+<h2 id="0x05-无用的-pro-版本"><a href="#0x05-无用的-pro-版本" class="headerlink" title="0x05 无用的 pro 版本"></a>0x05 无用的 pro 版本</h2><p>它的 pro 版本包含开盖暂停和相机功能，然而</p>
+<ul>
+<li>开盖暂停/断料检测只在SD卡打印时有效；</li>
+<li>摄像头会经常断线（国外有人讨论过可能是这种摄像头不支持在高温环境下工作[<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2stxx/sermoon_v1_and_v1_pro_general_info_thoughts/i2r7irn/?utm_source=reddit&utm_medium=web2x&context=3">链接</a>]）。</li>
+</ul>
+<h2 id="0x06-吵"><a href="#0x06-吵" class="headerlink" title="0x06 吵"></a>0x06 吵</h2><p>这款机器主打静音，但你买了以后就知道给主板散热的小风扇有多吵了。我已经拔风扇插头了，目前没出现什么问题（后盖打开，26度空调）。</p>
 ]]></content>
       <categories>
         <category>算法与硬件</category>
@@ -3622,57 +3677,6 @@ apt-get install libusb-1.0-0-dev
 ]]></content>
       <categories>
         <category>其它笔记</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>不推荐购买创想三维 Creality Sermoon V1 的几个理由</title>
-    <url>/post/do-not-buy-sermoon-v1/</url>
-    <content><![CDATA[<blockquote>
-<p>看过 [<a href="https://www.zhihu.com/zvideo/1457409894764335104">阿文君的视频</a>] 买了 <code>Sermoon V1</code>。体验过后感觉比较玩具、拓展性也比较差，在这里提出几个不该买的理由。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="0x01-缺少-Linear-Advance-（压力提前-线性推进）-的支持"><a href="#0x01-缺少-Linear-Advance-（压力提前-线性推进）-的支持" class="headerlink" title="0x01 缺少 Linear Advance （压力提前/线性推进） 的支持"></a>0x01 缺少 Linear Advance （压力提前/线性推进） 的支持</h2><p><code>准确的 Linear Advance 的校准是打印一个优秀模型的重要因素</code></p>
-<p>默认情况下，挤出机以线性方式工作。但挤出机不是线性系统，明显会导致在每一步打印后挤出额外材料，并且在下一步开始打印时材料不够。（下图表示了打印机在加速减速的过程，在2处材料挤出不够，且在4、5处产生堆料）</p>
-<p><img data-src="//qiniu.s1nh.org/sermoon-v1-k-factor_low.png"></p>
-<p>使用 Linear Advance 的优点：</p>
-<ul>
-<li>减少粗糙的边缘，尺寸精度更高。</li>
-<li>可以在不损失任何打印质量的情况下实现更高的打印速度。</li>
-<li>即使在较低的打印速度下，打印质量也会得到提高。</li>
-<li>获得更锋利的边缘。</li>
-</ul>
-<p>网络有很多矫正线性推进的教程，比如：</p>
-<ul>
-<li><a href="https://www.bilibili.com/video/BV1Z94y1U7UL">3D打印机klipper在Voron0.1机器上进行挤出机压力提前测试和校准：新手教程</a></li>
-<li><a href="https://www.bilibili.com/video/BV18541117Yk">【klipper】3D打印机挤出机压力提前测试和校准【3集全】拐角膨胀和起始点分离修正办法</a></li>
-</ul>
-<p>Marlin 官网也提供了详细的<a href="https://marlinfw.org/docs/features/lin_advance.html">调整教程</a></p>
-<p>然而我们的 Sermoon V1 不支持此功能，无法进行调整。我打电话到厂家，给的答复也是“不开源” “没有你想要的固件”</p>
-<h2 id="0x02-糟糕的散热"><a href="#0x02-糟糕的散热" class="headerlink" title="0x02 糟糕的散热"></a>0x02 糟糕的散热</h2><p>此机器的精灵挤出机主体跟 Ender3 S1 的相同，但附件不同。V1挤出机的附件有个致命缺陷散热风扇从底部吸入热空气再给模型降温，缺点是散热很差，在<a href="https://fl.himi3d.cn/d/439-bensermoon-v1">这篇文章</a>有讨论。有几种方式可以改造散热，我做了一版，调试好后会放出来（下图左上。另外：<code>右下黑</code>，原厂；右上黄，<a href="https://fl.himi3d.cn/d/426-bengo10-ender3-s1">S1 风道</a>；左下白，<a href="https://www.crealitycloud.cn/model-detail/626821aac54f1758304dc951">风扇侧装</a>）。</p>
-<p><img data-src="//qiniu.s1nh.org/sermoon-v1-fan.jpg"></p>
-<p>另外，个人对于挤出机的排线耐久性持怀疑态度，加热棒的大电流不知道会不会导致排线老化。</p>
-<h2 id="0x03-鸡肋的-wifi-功能"><a href="#0x03-鸡肋的-wifi-功能" class="headerlink" title="0x03 鸡肋的 wifi 功能"></a>0x03 鸡肋的 wifi 功能</h2><p>Sermoon V1 自带一个 wifi 板子（下图中间绿色的电路板），功能很弱鸡。比如录像没办法下载，官方给的答复是可以<code>打开手机的录屏功能</code>。</p>
-<p><img data-src="//qiniu.s1nh.org/sermoon-v1-whole.png"></p>
-<p>我已经把它换成树莓派了，<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2sh1t/mod_octoprint_setup_for_the_creality_sermoon_v1/">有手就能改</a>，可以安装 octoprint 以支持更强大的 <code>wifi</code> <code>远程监控</code> <code>延时摄影</code> 等功能。</p>
-<iframe src="//player.bilibili.com/player.html?aid=342230292&bvid=BV1194y1m7y7&cid=735894030&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-
-<h2 id="0x04-不开源的主控板"><a href="#0x04-不开源的主控板" class="headerlink" title="0x04 不开源的主控板"></a>0x04 不开源的主控板</h2><p>机器左下角的主板基于开源的 <code>Marlin 1</code> 固件魔改而成，<code>Marlin</code> 固件基于 <code>GPL v3</code> 协议，简单来说就是 <code>你可以免费使用、复制、修改、分发受保护程序，但分发时一定要提供源码</code>。然而此主板不提供源码，后果就是我们只能使用老旧的 Marlin 第一代固件，没办法自行升级到 2.0 以上版本，或者最近流行的<code>klipper</code>固件。</p>
-<ul>
-<li>国外有个哥们请求开源，被直接关闭了issue <a href="https://github.com/CrealityOfficial/Ender-3S1/issues/2">链接</a></li>
-<li>无法校准挤出机<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/ui2u5v/how_to_calibrate_extruder_esteps_z_axis_baby/">链接</a></li>
-<li><a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2stxx/sermoon_v1_and_v1_pro_general_info_thoughts/">这里</a> 有一些讨论</li>
-<li><a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2toy2/marlin_stock_firmware_notes_from_the_sermoon_v1/">这里</a>有一些关于固件的信息</li>
-</ul>
-<h2 id="0x05-无用的-pro-版本"><a href="#0x05-无用的-pro-版本" class="headerlink" title="0x05 无用的 pro 版本"></a>0x05 无用的 pro 版本</h2><p>它的 pro 版本包含开盖暂停和相机功能，然而</p>
-<ul>
-<li>开盖暂停/断料检测只在SD卡打印时有效；</li>
-<li>摄像头会经常断线（国外有人讨论过可能是这种摄像头不支持在高温环境下工作[<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2stxx/sermoon_v1_and_v1_pro_general_info_thoughts/i2r7irn/?utm_source=reddit&utm_medium=web2x&context=3">链接</a>]）。</li>
-</ul>
-<h2 id="0x06-吵"><a href="#0x06-吵" class="headerlink" title="0x06 吵"></a>0x06 吵</h2><p>这款机器主打静音，但你买了以后就知道给主板散热的小风扇有多吵了。我已经拔风扇插头了，目前没出现什么问题（后盖打开，26度空调）。</p>
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
       </categories>
   </entry>
   <entry>
@@ -4803,6 +4807,43 @@ try to remove and create again
       </categories>
   </entry>
   <entry>
+    <title>制作一个送咖啡机器人 -- ORB SLAM2</title>
+    <url>/post/making-a-coffeebot-ORB_SLAM/</url>
+    <content><![CDATA[<blockquote>
+<p>几个月前在计算所用rplidar做过一个送咖啡机器人。可是运用到室外场景Lidar成本太高，于是转战视觉SLAM。<br>花了几天时间用gazebo仿真，跑通了ORB SLAM2框架。</p>
+</blockquote>
+<p><img data-src="//qiniu.s1nh.org/orb_slam_simulation-loop.gif" title="解决闭环"></p>
+<span id="more"></span>
+
+<hr>
+<p>解决闭环（上面那个gif图）：<br><video src="//qiniu.s1nh.org/orb_slam_simulation-loop.mp4"   width="800" controls="controls"><br>Your browser does not support the video tag.<br></video></p>
+<p>Localization mode（拖拽机器人到新位置，ORB SLAM可以实现定位）:<br><video src="//qiniu.s1nh.org/orb_slam_simulation-localization.mp4"  width="800"  controls="controls"><br>Your browser does not support the video tag.<br></video></p>
+<p>完整SLAM过程：<br><video src="//qiniu.s1nh.org/orb_slam_simulation-0.mp4"   width="800" controls="controls"><br>Your browser does not support the video tag.<br></video></p>
+<hr>
+<h2 id="0x01-Quick-Start"><a href="#0x01-Quick-Start" class="headerlink" title="0x01 Quick Start"></a>0x01 Quick Start</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 安装 ROS</span><br><span class="line">sudo sh -c &#x27;echo &quot;deb https://mirrors.tuna.tsinghua.edu.cn/ros/ubuntu $(lsb_release -sc) main&quot; &gt; /etc/apt/sources.list.d/ros-latest.list&#x27;</span><br><span class="line">sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install ros-kinetic-desktop-full</span><br><span class="line">sudo rosdep init</span><br><span class="line">rosdep update</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 创建ROS工作空间</span><br><span class="line">mkdir -p ~/catkin_ws/src</span><br><span class="line">cd ~/catkin_ws/</span><br><span class="line">catkin_make</span><br><span class="line"></span><br><span class="line"># 安装turtlebot</span><br><span class="line">sudo apt-get install ros-kinetic-turtlebot-*</span><br><span class="line"></span><br><span class="line"># 使用ROS工作空间</span><br><span class="line">source ~/catkin_ws/devel/setup.bash</span><br></pre></td></tr></table></figure>
+
+<h2 id="0x02-运行demo"><a href="#0x02-运行demo" class="headerlink" title="0x02 运行demo"></a>0x02 运行demo</h2><ul>
+<li>仿真(gazebo) <code>roslaunch turtlebot_gazebo turtlebot_world.launch</code></li>
+<li>遥控 <code>roslaunch turtlebot_teleop keyboard_teleop.launch</code></li>
+<li>查看摄像头 <code>rosrun image_view image_view image:=/camera/rgb/image_raw</code></li>
+<li>ORB_SLAM <code>rosrun ORB_SLAM2 Mono /home/s1nh/Project/ORB_SLAM2/Vocabulary/ORBvoc.txt /home/s1nh/Workspace/turtlebot/cam_orb_slam.yaml</code></li>
+</ul>
+<h2 id="0x03-相机相关"><a href="#0x03-相机相关" class="headerlink" title="0x03 相机相关"></a>0x03 相机相关</h2><ul>
+<li>标定 <code>rosrun camera_calibration cameracalibrator.py --size 8x6 --square 0.108 image:=/camera/image_raw camera:=/camera</code></li>
+<li>相机位置 <code>/opt/ros/kinetic/share/turtlebot_description/urdf/turtlebot_properties.urdf.xacro</code></li>
+<li>相机 fov <code>/opt/ros/kinetic/share/turtlebot_description/urdf/turtlebot_gazebo.urdf.xacro</code></li>
+</ul>
+<h2 id="参考教程："><a href="#参考教程：" class="headerlink" title="参考教程："></a>参考教程：</h2><p><code>http://wiki.ros.org/cn/ROS/Tutorials</code><br><code>https://www.ncnynl.com/archives/201609/799.html</code></p>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+      <tags>
+        <tag>ORB SLAM</tag>
+        <tag>Turtlebot</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>新工作：制作一个送咖啡机器人——第一周</title>
     <url>/post/making-a-coffeebot-1/</url>
     <content><![CDATA[<blockquote>
@@ -4857,43 +4898,6 @@ try to remove and create again
         <tag>Turtlebot</tag>
         <tag>ROS</tag>
         <tag>Cartographer</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>制作一个送咖啡机器人 -- ORB SLAM2</title>
-    <url>/post/making-a-coffeebot-ORB_SLAM/</url>
-    <content><![CDATA[<blockquote>
-<p>几个月前在计算所用rplidar做过一个送咖啡机器人。可是运用到室外场景Lidar成本太高，于是转战视觉SLAM。<br>花了几天时间用gazebo仿真，跑通了ORB SLAM2框架。</p>
-</blockquote>
-<p><img data-src="//qiniu.s1nh.org/orb_slam_simulation-loop.gif" title="解决闭环"></p>
-<span id="more"></span>
-
-<hr>
-<p>解决闭环（上面那个gif图）：<br><video src="//qiniu.s1nh.org/orb_slam_simulation-loop.mp4"   width="800" controls="controls"><br>Your browser does not support the video tag.<br></video></p>
-<p>Localization mode（拖拽机器人到新位置，ORB SLAM可以实现定位）:<br><video src="//qiniu.s1nh.org/orb_slam_simulation-localization.mp4"  width="800"  controls="controls"><br>Your browser does not support the video tag.<br></video></p>
-<p>完整SLAM过程：<br><video src="//qiniu.s1nh.org/orb_slam_simulation-0.mp4"   width="800" controls="controls"><br>Your browser does not support the video tag.<br></video></p>
-<hr>
-<h2 id="0x01-Quick-Start"><a href="#0x01-Quick-Start" class="headerlink" title="0x01 Quick Start"></a>0x01 Quick Start</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 安装 ROS</span><br><span class="line">sudo sh -c &#x27;echo &quot;deb https://mirrors.tuna.tsinghua.edu.cn/ros/ubuntu $(lsb_release -sc) main&quot; &gt; /etc/apt/sources.list.d/ros-latest.list&#x27;</span><br><span class="line">sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install ros-kinetic-desktop-full</span><br><span class="line">sudo rosdep init</span><br><span class="line">rosdep update</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 创建ROS工作空间</span><br><span class="line">mkdir -p ~/catkin_ws/src</span><br><span class="line">cd ~/catkin_ws/</span><br><span class="line">catkin_make</span><br><span class="line"></span><br><span class="line"># 安装turtlebot</span><br><span class="line">sudo apt-get install ros-kinetic-turtlebot-*</span><br><span class="line"></span><br><span class="line"># 使用ROS工作空间</span><br><span class="line">source ~/catkin_ws/devel/setup.bash</span><br></pre></td></tr></table></figure>
-
-<h2 id="0x02-运行demo"><a href="#0x02-运行demo" class="headerlink" title="0x02 运行demo"></a>0x02 运行demo</h2><ul>
-<li>仿真(gazebo) <code>roslaunch turtlebot_gazebo turtlebot_world.launch</code></li>
-<li>遥控 <code>roslaunch turtlebot_teleop keyboard_teleop.launch</code></li>
-<li>查看摄像头 <code>rosrun image_view image_view image:=/camera/rgb/image_raw</code></li>
-<li>ORB_SLAM <code>rosrun ORB_SLAM2 Mono /home/s1nh/Project/ORB_SLAM2/Vocabulary/ORBvoc.txt /home/s1nh/Workspace/turtlebot/cam_orb_slam.yaml</code></li>
-</ul>
-<h2 id="0x03-相机相关"><a href="#0x03-相机相关" class="headerlink" title="0x03 相机相关"></a>0x03 相机相关</h2><ul>
-<li>标定 <code>rosrun camera_calibration cameracalibrator.py --size 8x6 --square 0.108 image:=/camera/image_raw camera:=/camera</code></li>
-<li>相机位置 <code>/opt/ros/kinetic/share/turtlebot_description/urdf/turtlebot_properties.urdf.xacro</code></li>
-<li>相机 fov <code>/opt/ros/kinetic/share/turtlebot_description/urdf/turtlebot_gazebo.urdf.xacro</code></li>
-</ul>
-<h2 id="参考教程："><a href="#参考教程：" class="headerlink" title="参考教程："></a>参考教程：</h2><p><code>http://wiki.ros.org/cn/ROS/Tutorials</code><br><code>https://www.ncnynl.com/archives/201609/799.html</code></p>
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
-      </categories>
-      <tags>
-        <tag>Turtlebot</tag>
-        <tag>ORB SLAM</tag>
       </tags>
   </entry>
   <entry>
@@ -5692,7 +5696,7 @@ H1&lt;---|0.14-1.6|Mirtazapine
 <li><p>您将收到一封包含新许可证密钥的电子邮件。</p>
 </li>
 </ol>
-<p>如果您对许可证转移功能有任何疑问，可以将新的硬件密钥通过电子邮件发送至 <a href="mailto:&#x73;&#x75;&#112;&#112;&#x6f;&#114;&#x74;&#x40;&#x6d;&#117;&#108;&#116;&#105;&#101;&#99;&#117;&#x73;&#99;&#x61;&#110;&#x2e;&#x6e;&#x65;&#x74;">&#x73;&#x75;&#112;&#112;&#x6f;&#114;&#x74;&#x40;&#x6d;&#117;&#108;&#116;&#105;&#101;&#99;&#117;&#x73;&#99;&#x61;&#110;&#x2e;&#x6e;&#x65;&#x74;</a>。</p>
+<p>如果您对许可证转移功能有任何疑问，可以将新的硬件密钥通过电子邮件发送至 <a href="mailto:&#115;&#x75;&#x70;&#112;&#111;&#x72;&#116;&#x40;&#x6d;&#x75;&#108;&#x74;&#105;&#x65;&#99;&#x75;&#115;&#99;&#x61;&#110;&#46;&#x6e;&#101;&#x74;">&#115;&#x75;&#x70;&#112;&#111;&#x72;&#116;&#x40;&#x6d;&#x75;&#108;&#x74;&#105;&#x65;&#99;&#x75;&#115;&#99;&#x61;&#110;&#46;&#x6e;&#101;&#x74;</a>。</p>
 <p>请注意，许可证转移功能对转移次数有限制。</p>
 <p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image10.png-QNthin"></p>
 <h2 id="2-用户界面"><a href="#2-用户界面" class="headerlink" title="2. 用户界面"></a>2. 用户界面</h2><h3 id="2-1-Multiecuscan-主屏幕"><a href="#2-1-Multiecuscan-主屏幕" class="headerlink" title="2.1. Multiecuscan 主屏幕"></a>2.1. Multiecuscan 主屏幕</h3><p>当您启动 Multiecuscan 时，它会显示以下屏幕：</p>
@@ -6307,6 +6311,21 @@ H1&lt;---|0.14-1.6|Mirtazapine
       <categories>
         <category>算法与硬件</category>
       </categories>
+  </entry>
+  <entry>
+    <title>p100-fan</title>
+    <url>/post/p100-fan/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>其它笔记</category>
+        <category>算法与硬件</category>
+        <category>赛车</category>
+        <category>音乐相关</category>
+      </categories>
+      <tags>
+        <tag>a</tag>
+        <tag>b</tag>
+      </tags>
   </entry>
   <entry>
     <title>Planar Reconstruction - 深度学习之平面重建</title>
@@ -7369,38 +7388,6 @@ H1&lt;---|0.14-1.6|Mirtazapine
       </tags>
   </entry>
   <entry>
-    <title>在 Macbook 中美美的运行 Ubuntu</title>
-    <url>/post/setup-ubuntu-in-macbook/</url>
-    <content><![CDATA[<p><img data-src="//qiniu.s1nh.org/mbp-2016-linux-device-status.png-QNthin"></p>
-<span id="more"></span>
-
-<h2 id="Mac-的启动菜单不支持-USB-HUB"><a href="#Mac-的启动菜单不支持-USB-HUB" class="headerlink" title="Mac 的启动菜单不支持 USB HUB"></a>Mac 的启动菜单不支持 USB HUB</h2><p>之前一直把ubuntu安装在U盘里，这样无论如何换电脑，都可以马上工作。然而新款的macbook只有type-c接口，在使用type-c转USB的Hub之后，启动菜单（包括rEFInd）无法识别U盘（我的Sandisk Extreme PRO不能用；另外一个 USB2.0 的U盘使用正常）。据说使用hootoo的usb hub可以解决这个问题（有待考证）</p>
-<p><strong>尝试1</strong><br>第一次尝试的方案是将笔记本硬盘分为三个驱，分别放置<code>OS X</code>，<code>Ubuntu Live CD</code>, <code>待安装的 Ubuntu 系统</code>。通过启动第二个磁盘的Live CD 将Ubuntu安装到第3个分区。然而在安装时会报错：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Your installation CD-ROM couldn&#x27;t be mounted. This probably means that the CD-ROM was not in the drive. If so you can insert it and try again.</span><br></pre></td></tr></table></figure>
-
-<p><strong>尝试2</strong></p>
-<p>最后我用虚拟机把 Ubuntu 安装在U盘里，然后dd到Macbook的一个分区，就可以通过<a href="http://www.rodsbooks.com/refind/">rEFInd</a>来启动了。<br>不过启动后因为找不到EFI和SWAP分区，会自动进入单用户模式。这时需要注释掉/etc/fstab中关于EFI和SWAP的两行。</p>
-<h2 id="驱动问题"><a href="#驱动问题" class="headerlink" title="驱动问题"></a>驱动问题</h2><p>安装好Ubuntu以后，触摸板、键盘、Wi-Fi都不好用。要先准备一个外接网卡、外接键盘鼠标；查看自己的Mac版本；然后跟着mbp-2016-linux项目配置好驱动。</p>
-<p>即使安装好了驱动，一眼有些功能无法使用。已知的问题有：</p>
-<ol>
-<li>内置音箱、音频插孔无声音（可以通过外接声卡或HDMI获取声音）</li>
-<li>休眠后无法唤醒（配置不好的话，盖上盖子以后再打开就GG了）</li>
-<li>TouchID无法使用（我的本本没有这么高档的功能）</li>
-<li>内建 Wi-Fi 只有 Macbook Pro 13.1 可以使用</li>
-</ol>
-<h2 id="高分屏下使用-XFCE"><a href="#高分屏下使用-XFCE" class="headerlink" title="高分屏下使用 XFCE"></a>高分屏下使用 XFCE</h2><p>可以直接按照<a href="https://wiki.archlinux.org/index.php/HiDPI#Xfce">这个链接</a>来配置。</p>
-<h2 id="增加-XFCE4-的窗口边界大小"><a href="#增加-XFCE4-的窗口边界大小" class="headerlink" title="增加 XFCE4 的窗口边界大小"></a>增加 XFCE4 的窗口边界大小</h2><p><img data-src="https://xubuntu.org/wp-content/uploads/2012/04/resize_method_4.png"></p>
-<p>XFCE4 的默认皮肤 Greybird 超级牛逼 —— 窗口的边界只有1个像素，如果你要调整窗口大小，必须用鼠标瞄准窗口边界的那一个像素，并且还要期待按下左键的时候手不能抖。</p>
-<p><a href="http://sevkeifert.blogspot.com/2014/12/increase-window-border-size-in-xubuntu.html">解决方案 1</a> : 这个方案会让window的边界大一点，感觉可能有点丑；</p>
-<p><a href="http://xubuntu.org/news/window-resizing-in-xubuntu-and-xfce/">解决方案 2</a>: 设置一个修改窗口大小的快捷键。</p>
-<p>XFCE4 支持三指拖拽<br>无论是 synaptics 还是 libinput 都不支持三指拖拽，之前只能使用非官方的mtrack或<a href="https://github.com/daveriedstra/libinput-gestures">libinput-gesture</a>来解决问题，然而就在前些日子，有位大牛写了段脚本（mod libinput-gesture 的三指拖拽功能也是他写的）</p>
-<p>请使用这个很牛逼的脚本：<a href="https://github.com/daveriedstra/draggy">draggy</a></p>
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
-      </categories>
-  </entry>
-  <entry>
     <title>配置Matcaffe</title>
     <url>/post/setup-matcaffe/</url>
     <content><![CDATA[<p>配置Matcaffe的时候碰到了两个小坑，记录一下：</p>
@@ -7437,6 +7424,38 @@ H1&lt;---|0.14-1.6|Mirtazapine
         <tag>matlab</tag>
         <tag>matcaffe</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>在 Macbook 中美美的运行 Ubuntu</title>
+    <url>/post/setup-ubuntu-in-macbook/</url>
+    <content><![CDATA[<p><img data-src="//qiniu.s1nh.org/mbp-2016-linux-device-status.png-QNthin"></p>
+<span id="more"></span>
+
+<h2 id="Mac-的启动菜单不支持-USB-HUB"><a href="#Mac-的启动菜单不支持-USB-HUB" class="headerlink" title="Mac 的启动菜单不支持 USB HUB"></a>Mac 的启动菜单不支持 USB HUB</h2><p>之前一直把ubuntu安装在U盘里，这样无论如何换电脑，都可以马上工作。然而新款的macbook只有type-c接口，在使用type-c转USB的Hub之后，启动菜单（包括rEFInd）无法识别U盘（我的Sandisk Extreme PRO不能用；另外一个 USB2.0 的U盘使用正常）。据说使用hootoo的usb hub可以解决这个问题（有待考证）</p>
+<p><strong>尝试1</strong><br>第一次尝试的方案是将笔记本硬盘分为三个驱，分别放置<code>OS X</code>，<code>Ubuntu Live CD</code>, <code>待安装的 Ubuntu 系统</code>。通过启动第二个磁盘的Live CD 将Ubuntu安装到第3个分区。然而在安装时会报错：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Your installation CD-ROM couldn&#x27;t be mounted. This probably means that the CD-ROM was not in the drive. If so you can insert it and try again.</span><br></pre></td></tr></table></figure>
+
+<p><strong>尝试2</strong></p>
+<p>最后我用虚拟机把 Ubuntu 安装在U盘里，然后dd到Macbook的一个分区，就可以通过<a href="http://www.rodsbooks.com/refind/">rEFInd</a>来启动了。<br>不过启动后因为找不到EFI和SWAP分区，会自动进入单用户模式。这时需要注释掉/etc/fstab中关于EFI和SWAP的两行。</p>
+<h2 id="驱动问题"><a href="#驱动问题" class="headerlink" title="驱动问题"></a>驱动问题</h2><p>安装好Ubuntu以后，触摸板、键盘、Wi-Fi都不好用。要先准备一个外接网卡、外接键盘鼠标；查看自己的Mac版本；然后跟着mbp-2016-linux项目配置好驱动。</p>
+<p>即使安装好了驱动，一眼有些功能无法使用。已知的问题有：</p>
+<ol>
+<li>内置音箱、音频插孔无声音（可以通过外接声卡或HDMI获取声音）</li>
+<li>休眠后无法唤醒（配置不好的话，盖上盖子以后再打开就GG了）</li>
+<li>TouchID无法使用（我的本本没有这么高档的功能）</li>
+<li>内建 Wi-Fi 只有 Macbook Pro 13.1 可以使用</li>
+</ol>
+<h2 id="高分屏下使用-XFCE"><a href="#高分屏下使用-XFCE" class="headerlink" title="高分屏下使用 XFCE"></a>高分屏下使用 XFCE</h2><p>可以直接按照<a href="https://wiki.archlinux.org/index.php/HiDPI#Xfce">这个链接</a>来配置。</p>
+<h2 id="增加-XFCE4-的窗口边界大小"><a href="#增加-XFCE4-的窗口边界大小" class="headerlink" title="增加 XFCE4 的窗口边界大小"></a>增加 XFCE4 的窗口边界大小</h2><p><img data-src="https://xubuntu.org/wp-content/uploads/2012/04/resize_method_4.png"></p>
+<p>XFCE4 的默认皮肤 Greybird 超级牛逼 —— 窗口的边界只有1个像素，如果你要调整窗口大小，必须用鼠标瞄准窗口边界的那一个像素，并且还要期待按下左键的时候手不能抖。</p>
+<p><a href="http://sevkeifert.blogspot.com/2014/12/increase-window-border-size-in-xubuntu.html">解决方案 1</a> : 这个方案会让window的边界大一点，感觉可能有点丑；</p>
+<p><a href="http://xubuntu.org/news/window-resizing-in-xubuntu-and-xfce/">解决方案 2</a>: 设置一个修改窗口大小的快捷键。</p>
+<p>XFCE4 支持三指拖拽<br>无论是 synaptics 还是 libinput 都不支持三指拖拽，之前只能使用非官方的mtrack或<a href="https://github.com/daveriedstra/libinput-gestures">libinput-gesture</a>来解决问题，然而就在前些日子，有位大牛写了段脚本（mod libinput-gesture 的三指拖拽功能也是他写的）</p>
+<p>请使用这个很牛逼的脚本：<a href="https://github.com/daveriedstra/draggy">draggy</a></p>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
   </entry>
   <entry>
     <title>「tensorflow」 Variable was uninitialized</title>
