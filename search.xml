@@ -4675,7 +4675,7 @@ try to remove and create again
     <url>/post/ke-chuang-road/</url>
     <content><![CDATA[<p>Intro</p>
 <audio controls>
-<source "//qiniu.s1nh.org/Intro.mp3" type="audio/mpeg">
+<source src="//qiniu.s1nh.org/Intro.mp3" type="audio/mpeg">
 </audio>
 
 
@@ -4687,18 +4687,18 @@ try to remove and create again
 
 <p>在失去意识的最后一瞬，我想起了当年那个穿着白色连衣裙的女孩</p>
 <audio controls>
-<source "//qiniu.s1nh.org/%E5%9C%A8%E5%A4%B1%E5%8E%BB%E6%84%8F%E8%AF%86%E7%9A%84%E6%9C%80%E5%90%8E%E4%B8%80%E7%9E%AC%EF%BC%8C%E6%88%91%E6%83%B3%E8%B5%B7%E4%BA%86%E5%BD%93%E5%B9%B4%E9%82%A3%E4%B8%AA%E7%A9%BF%E7%9D%80%E7%99%BD%E8%89%B2%E8%BF%9E%E8%A1%A3%E8%A3%99%E7%9A%84%E5%A5%B3%E5%AD%A9.mp3" type="audio/mpeg">
+<source src="//qiniu.s1nh.org/%E5%9C%A8%E5%A4%B1%E5%8E%BB%E6%84%8F%E8%AF%86%E7%9A%84%E6%9C%80%E5%90%8E%E4%B8%80%E7%9E%AC%EF%BC%8C%E6%88%91%E6%83%B3%E8%B5%B7%E4%BA%86%E5%BD%93%E5%B9%B4%E9%82%A3%E4%B8%AA%E7%A9%BF%E7%9D%80%E7%99%BD%E8%89%B2%E8%BF%9E%E8%A1%A3%E8%A3%99%E7%9A%84%E5%A5%B3%E5%AD%A9.mp3" type="audio/mpeg">
 </audio>
 
 <p>旅行者</p>
 <audio controls>
-<source "//qiniu.s1nh.org/%E6%97%85%E8%A1%8C%E8%80%85_punk1.mp3" type="audio/mpeg">
+<source src="//qiniu.s1nh.org/%E6%97%85%E8%A1%8C%E8%80%85_punk1.mp3" type="audio/mpeg">
 </audio>
 
 
 <p>你能听到吗</p>
 <audio controls>
-<source "//qiniu.s1nh.org/%E4%BD%A0%E8%83%BD%E5%90%AC%E5%88%B0%E5%90%972.mp3" type="audio/mpeg">
+<source src="//qiniu.s1nh.org/%E4%BD%A0%E8%83%BD%E5%90%AC%E5%88%B0%E5%90%972.mp3" type="audio/mpeg">
 </audio>
 
 
@@ -4709,8 +4709,6 @@ try to remove and create again
   <source src="//qiniu.s1nh.org/kechuangroad.mp4" type="video/mp4">
 </video>
 
-
-<p>//qiniu.s1nh.org/%E5%9C%A8%E5%A4%B1%E5%8E%BB%E6%84%8F%E8%AF%86%E7%9A%84%E6%9C%80%E5%90%8E%E4%B8%80%E7%9E%AC%EF%BC%8C%E6%88%91%E6%83%B3%E8%B5%B7%E4%BA%86%E5%BD%93%E5%B9%B4%E9%82%A3%E4%B8%AA%E7%A9%BF%E7%9D%80%E7%99%BD%E8%89%B2%E8%BF%9E%E8%A1%A3%E8%A3%99%E7%9A%84%E5%A5%B3%E5%AD%A9.mp3</p>
 ]]></content>
       <categories>
         <category>音乐相关</category>
@@ -5655,23 +5653,6 @@ H1&lt;---|0.14-1.6|Mirtazapine
       </tags>
   </entry>
   <entry>
-    <title>一些小技巧</title>
-    <url>/post/network-tips/</url>
-    <content><![CDATA[<h2 id="linux-中通过非-root-账户使用-ifconfig-设置-ip-的方法"><a href="#linux-中通过非-root-账户使用-ifconfig-设置-ip-的方法" class="headerlink" title="linux 中通过非 root 账户使用 ifconfig 设置 ip 的方法"></a>linux 中通过非 root 账户使用 ifconfig 设置 ip 的方法</h2><ol>
-<li>创建一个 ifconfig 的副本；</li>
-<li>通过 setcap 向副本授予 CAP_NET_ADMIN 能力，而不必授予 root（用户 ID 0）的完整权限；</li>
-<li>为了避免非法用户使用这个副本来修改网络，需要给ifconfig副本设置新的权限，仅允许该组的成员执行。</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cp /sbin/ifconfig .</span><br><span class="line">sudo setcap cap_net_admin=eip ./ifconfig</span><br><span class="line">./ifconfig eth0 1.2.3.4    # succeeds</span><br><span class="line">chmod 750 ./ifconfig</span><br></pre></td></tr></table></figure>
-
-<h2 id="FastDDS-无法发送超过-255-string"><a href="#FastDDS-无法发送超过-255-string" class="headerlink" title="FastDDS 无法发送超过 255 string"></a>FastDDS 无法发送超过 255 string</h2><p>可能会有 log <code>[RTPS_READER_HISTORY Error] Change payload size of &#39;xxx&#39; bytes is larger than the history payload size of &#39;271&#39; bytes and cannot be resized. -&gt; Function can_change_be_added_nts</code></p>
-<p>在 subscriber 加 <code>rqos.endpoints().history_memory_policy = eprosima::fastrtps::rtps::DYNAMIC_RESERVE_MEMORY_MODE;</code></p>
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Multiecuscan (MES) 中文用户手册</title>
     <url>/post/multiecuscan-user-guide/</url>
     <content><![CDATA[<p>Multiecuscan 是意大利车辆的诊断软件。 它允许您对支持的车辆/模块执行各种诊断任务。</p>
@@ -5807,7 +5788,7 @@ H1&lt;---|0.14-1.6|Mirtazapine
 <li><p>您将收到一封包含新许可证密钥的电子邮件。</p>
 </li>
 </ol>
-<p>如果您对许可证转移功能有任何疑问，可以将新的硬件密钥通过电子邮件发送至 <a href="mailto:&#115;&#117;&#x70;&#112;&#x6f;&#114;&#x74;&#64;&#x6d;&#x75;&#x6c;&#116;&#x69;&#101;&#99;&#x75;&#115;&#x63;&#x61;&#x6e;&#46;&#x6e;&#x65;&#116;">&#115;&#117;&#x70;&#112;&#x6f;&#114;&#x74;&#64;&#x6d;&#x75;&#x6c;&#116;&#x69;&#101;&#99;&#x75;&#115;&#x63;&#x61;&#x6e;&#46;&#x6e;&#x65;&#116;</a>。</p>
+<p>如果您对许可证转移功能有任何疑问，可以将新的硬件密钥通过电子邮件发送至 <a href="mailto:&#115;&#117;&#x70;&#112;&#111;&#x72;&#116;&#x40;&#x6d;&#117;&#x6c;&#x74;&#105;&#101;&#x63;&#117;&#x73;&#x63;&#x61;&#x6e;&#x2e;&#110;&#101;&#x74;">&#115;&#117;&#x70;&#112;&#111;&#x72;&#116;&#x40;&#x6d;&#117;&#x6c;&#x74;&#105;&#101;&#x63;&#117;&#x73;&#x63;&#x61;&#x6e;&#x2e;&#110;&#101;&#x74;</a>。</p>
 <p>请注意，许可证转移功能对转移次数有限制。</p>
 <p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image10.png-QNthin"></p>
 <h2 id="2-用户界面"><a href="#2-用户界面" class="headerlink" title="2. 用户界面"></a>2. 用户界面</h2><h3 id="2-1-Multiecuscan-主屏幕"><a href="#2-1-Multiecuscan-主屏幕" class="headerlink" title="2.1. Multiecuscan 主屏幕"></a>2.1. Multiecuscan 主屏幕</h3><p>当您启动 Multiecuscan 时，它会显示以下屏幕：</p>
@@ -6311,6 +6292,23 @@ H1&lt;---|0.14-1.6|Mirtazapine
         <tag>用户手册</tag>
         <tag>user-guide</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>一些小技巧</title>
+    <url>/post/network-tips/</url>
+    <content><![CDATA[<h2 id="linux-中通过非-root-账户使用-ifconfig-设置-ip-的方法"><a href="#linux-中通过非-root-账户使用-ifconfig-设置-ip-的方法" class="headerlink" title="linux 中通过非 root 账户使用 ifconfig 设置 ip 的方法"></a>linux 中通过非 root 账户使用 ifconfig 设置 ip 的方法</h2><ol>
+<li>创建一个 ifconfig 的副本；</li>
+<li>通过 setcap 向副本授予 CAP_NET_ADMIN 能力，而不必授予 root（用户 ID 0）的完整权限；</li>
+<li>为了避免非法用户使用这个副本来修改网络，需要给ifconfig副本设置新的权限，仅允许该组的成员执行。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cp /sbin/ifconfig .</span><br><span class="line">sudo setcap cap_net_admin=eip ./ifconfig</span><br><span class="line">./ifconfig eth0 1.2.3.4    # succeeds</span><br><span class="line">chmod 750 ./ifconfig</span><br></pre></td></tr></table></figure>
+
+<h2 id="FastDDS-无法发送超过-255-string"><a href="#FastDDS-无法发送超过-255-string" class="headerlink" title="FastDDS 无法发送超过 255 string"></a>FastDDS 无法发送超过 255 string</h2><p>可能会有 log <code>[RTPS_READER_HISTORY Error] Change payload size of &#39;xxx&#39; bytes is larger than the history payload size of &#39;271&#39; bytes and cannot be resized. -&gt; Function can_change_be_added_nts</code></p>
+<p>在 subscriber 加 <code>rqos.endpoints().history_memory_policy = eprosima::fastrtps::rtps::DYNAMIC_RESERVE_MEMORY_MODE;</code></p>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
   </entry>
   <entry>
     <title>2016-06-12 OpenCV学习笔记</title>
