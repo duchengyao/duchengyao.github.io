@@ -74,64 +74,15 @@
       </categories>
   </entry>
   <entry>
-    <title>2019 - 2022 总结</title>
-    <url>/post/2022-summary/</url>
-    <content><![CDATA[<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="//qiniu.s1nh.org/drug-1.jpeg"></div><div class="group-picture-column"><img data-src="//qiniu.s1nh.org/drug-2.jpeg"></div><div class="group-picture-column"><img data-src="//qiniu.s1nh.org/drug-3.jpeg"></div></div></div>
-
-<!-- > 从2019年开始就没写过年终总结了，因为状态一直不太好
-
-<iframe src="//player.bilibili.com/player.html?aid=981284480&bvid=BV1W44y1u7CX&cid=714422609&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-
-<p class="image-caption">演唱：小熊</p>
-
-
-说到状态不好，得追溯到高三走读，当年每天吃早饭的时候都会想，一会上学的路上父亲一边开车一边骂街的时候，怎么从副驾打开车门跳下去。
-初高中当时特别想得个艾滋病或者类似不会马上死的病，这样最起码可以好好活几年。
-大学之前每周五晚可以玩电脑，电脑在父母房。我一般会关上门一边喝酒一边唱歌一边哭，连续两三个小时吧。当时最讨厌的是我父亲隔一段时间就会进来拿打火机要抽烟；还有一次要在床上躺一会，不打扰我玩电脑，我也回屋躺着他还生气了。
-宿命吧，孤立无缘，没有亲人，没有朋友，没有希望。
-每天都想死。
-
-
-国企那些人，勾心斗角，阳奉阴违，欺上瞒下。从上到下每天都忙着算计，找漏洞，钻空子，耍心眼，搞钱。
-原生家庭，以“爱”的名义没有边界的满足自己的支配欲、权力欲。
-再生家庭，重蹈覆辙，麻木的做个工具人。
-
-每一分钟都想死。日常就像在翻错题本一样，随时都在为每一件能后悔的事而感到后悔；为每一件能伤心或不至于伤心的事而感到伤心。
-其中最后悔的事应该就是没有在我高三的时候跳车摔死吧。
-
-唯一让我慰藉的是妈妈，她好像可以看懂我的眼神，跟我说无论筹备到哪一阶段，只要你决定不结了，我都支持你；还有她在我父亲找茬的时候，偷偷给我升级成套房。
-
-
-身边很多类似的朋友。小熊在吃舍曲林、啥啥西汀，睡不好的时候吃白色小药丸和蓝色小药片；房子抗抑郁剂、心境稳定剂、安眠药，基本能吃的都吃过；还有吃奥氮平的、住院的。
-心疼他们和自己。
-
-
-最开始吃药是 21 年 7 月，伏硫西汀 10-15mg/d ，情绪可以改善得不错，但自己变得像个二哈，过于嗨了。
-当然副作用也挺多，明显的STM减退；情感钝化；更失眠；吃一年多有一天15mg/d的时候恶心到呕血。
-这药靶点太多了，呕血以后慢慢就停了。后来开了几种别的药，都没吃。
-
-
-抗抑郁剂基本跟止疼药差不多，吃了就不疼，停了就疼。
-这几年基本不怎么跟家里联系了，偶尔跟妈妈打个电话；过年也不想回家，也确实没回家。
-大年三十跟家里视频了一下。我之前跟我老婆说过没事别跟我家里人视频的，果然又弄出了些幺蛾子。
-
-3月16号开始吃 5mg/d 艾斯西酞普兰，最低剂量了，比没吃强点。
-难受的时候吃 2mg 阿普唑仑，不管用再吃 2mg。
- -->
-]]></content>
-      <categories>
-        <category>其它笔记</category>
-      </categories>
-  </entry>
-  <entry>
     <title>996.ICU</title>
     <url>/post/996-ICU/</url>
     <content><![CDATA[<p><strong>一位保守党政客讲得再清楚不过，穷人全都“必须要不断地吃，不断地喝，不断地工作，不断地死去”。</strong></p>
+<span id="more"></span>
+
 <video autoplay loop controls playsinline>
   <source src="//qiniu.s1nh.org/relive.mp4" type="video/mp4">
 </video>
 
-<span id="more"></span>
 
 <ul>
 <li><a href="https://github.com/996icu/996.ICU/blob/master/README.md">English version</a></li>
@@ -2682,6 +2633,40 @@ apt-get install libusb-1.0-0-dev
       </categories>
   </entry>
   <entry>
+    <title>重新安装Cuda碰到了超级大坑</title>
+    <url>/post/cuda-reinstall/</url>
+    <content><![CDATA[<blockquote>
+<p>本文其实就是为了炫耀一下我买的新玩具，地球人X411</p>
+</blockquote>
+<p><img data-src="//qiniu.s1nh.org/Blog_cuda_01.jpg-QNthin"></p>
+<span id="more"></span>
+
+<p>为了更方便的用cuda，买了一台新笔电，配置i7-6700HQ+GTX970M。</p>
+<p><img data-src="//qiniu.s1nh.org/Blog_cuda_02.jpg-QNthin"></p>
+<h2 id="莫名其妙的原因不支持-4-0-以上内核"><a href="#莫名其妙的原因不支持-4-0-以上内核" class="headerlink" title="莫名其妙的原因不支持 4.0 以上内核"></a>莫名其妙的原因不支持 4.0 以上内核</h2><p>之前我一直用一个移动固态硬盘装了<code>Ubuntu-14.04</code>，<code>cuda7.5</code>的工作环境。很单纯的以为像以前一样插到USB3.0开机就可以用了，结果<code>kernel 3.13</code>识别不了<strong>无线网卡</strong>（Mac Mini的无线网卡也无法识别，可是之前一直用有线就没在意）。<code>apt-get</code> 升级到 <code>kernel 4.2/4.4</code>都无法开机，grub引导后识别不到硬盘的<code>UUID</code>（废寝忘食的折腾了很久，最后还是失败了）。</p>
+<p><img data-src="//qiniu.s1nh.org/Blog_cuda_04.jpg-QNthin"></p>
+<p>好吧，重装系统（大坑开始了）</p>
+<h2 id="显卡太牛逼，nouveu驱动不兼容"><a href="#显卡太牛逼，nouveu驱动不兼容" class="headerlink" title="显卡太牛逼，nouveu驱动不兼容"></a>显卡太牛逼，nouveu驱动不兼容</h2><p>像以前一样装完<strong>ubuntu 14.04</strong>，无法开机（第一次碰到装完系统无法开机的情况）。又下了个<strong>ubuntu 16.04</strong>和<strong>Debian 8.5</strong> 依、然、无、法、开机😂😂😂……点亮以后，卡在开机画面不动，风扇呼呼响😂😂</p>
+<p>查了一下debug，发现nouveu什么什么鬼载入不了（不记得具体内容了），就百度了一下，好像nouveu是个开源的驱动，可是对新设备兼容性不好。教程都说先把N卡拔下来，然后开机装好驱动再插上。可是笔记本并不能拔下来，BIOS里面也没有设置选项😂😂😂😂。我是通过以下方法禁用nouveu的：</p>
+<ol>
+<li>在Live CD中创建<code>/etc/modprobe.d/blacklist-nouveau.conf</code>，内容如下<br><code>blacklist nouveau options nouveau modeset=0</code></li>
+<li>重新生成 kernel initramfs: <code>sudo update-initramfs -u</code></li>
+</ol>
+<h2 id="Cuda-版本对内核的兼容性"><a href="#Cuda-版本对内核的兼容性" class="headerlink" title="Cuda 版本对内核的兼容性"></a>Cuda 版本对内核的兼容性</h2><p>我是用官方的deb包装的cuda，顺利的装完以后，预料之中的<strong>又无法开机了</strong>，这下直接懵逼了，都不知道昨晚是怎么过来的。（开机以后卡在Ubuntu那不动，按啥键都不管用，风扇也不狂吹了，感觉是挂了。可是系统能响应<code>Ctr+Alt+Del</code>，按后过一会能重新启动😂😂）</p>
+<p>去官网喵了一眼，发现<code>Cuda8.0</code>居然发布了，支持<code>Ubuntu16</code>。发布页面最后跟着一行小字“For further information, see the <a href="https://developer.nvidia.com/compute/cuda/8.0/rc/docs/sidebar/CUDA_Installation_Guide_Linux-pdf">Installation Guide for Linux</a>”。卧槽，我一直为官网的安装说明就下面这三行字：</p>
+<p><img data-src="//qiniu.s1nh.org/Blog_cuda_05.png-QNthin"></p>
+<p>点开<strong>Installation Guide</strong>后，一切问题原来都不需要瞎百度、瞎折腾。安装说明写得很清楚什么时候需要<code>Disable Nouveau</code>，还有Cuda对各个Kernel依赖库的兼容性，并且<code>cuda 7.5</code>只支持<code>Kernel 3.13</code>😂😂😂</p>
+<p><img data-src="//qiniu.s1nh.org/Blog_cuda_04.jpg-QNthin"></p>
+<p>这个故事告诉我们，遇到问题之前要<strong>先-去-看-官-方-文-档</strong></p>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+      <tags>
+        <tag>Cuda</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>什么是卷积神经网络</title>
     <url>/post/convolutional-neural-network-introduction/</url>
     <content><![CDATA[<p>学到卷积神经网络，搜索到的资料一般都是这样的</p>
@@ -2818,40 +2803,6 @@ apt-get install libusb-1.0-0-dev
       </tags>
   </entry>
   <entry>
-    <title>重新安装Cuda碰到了超级大坑</title>
-    <url>/post/cuda-reinstall/</url>
-    <content><![CDATA[<blockquote>
-<p>本文其实就是为了炫耀一下我买的新玩具，地球人X411</p>
-</blockquote>
-<p><img data-src="//qiniu.s1nh.org/Blog_cuda_01.jpg-QNthin"></p>
-<span id="more"></span>
-
-<p>为了更方便的用cuda，买了一台新笔电，配置i7-6700HQ+GTX970M。</p>
-<p><img data-src="//qiniu.s1nh.org/Blog_cuda_02.jpg-QNthin"></p>
-<h2 id="莫名其妙的原因不支持-4-0-以上内核"><a href="#莫名其妙的原因不支持-4-0-以上内核" class="headerlink" title="莫名其妙的原因不支持 4.0 以上内核"></a>莫名其妙的原因不支持 4.0 以上内核</h2><p>之前我一直用一个移动固态硬盘装了<code>Ubuntu-14.04</code>，<code>cuda7.5</code>的工作环境。很单纯的以为像以前一样插到USB3.0开机就可以用了，结果<code>kernel 3.13</code>识别不了<strong>无线网卡</strong>（Mac Mini的无线网卡也无法识别，可是之前一直用有线就没在意）。<code>apt-get</code> 升级到 <code>kernel 4.2/4.4</code>都无法开机，grub引导后识别不到硬盘的<code>UUID</code>（废寝忘食的折腾了很久，最后还是失败了）。</p>
-<p><img data-src="//qiniu.s1nh.org/Blog_cuda_04.jpg-QNthin"></p>
-<p>好吧，重装系统（大坑开始了）</p>
-<h2 id="显卡太牛逼，nouveu驱动不兼容"><a href="#显卡太牛逼，nouveu驱动不兼容" class="headerlink" title="显卡太牛逼，nouveu驱动不兼容"></a>显卡太牛逼，nouveu驱动不兼容</h2><p>像以前一样装完<strong>ubuntu 14.04</strong>，无法开机（第一次碰到装完系统无法开机的情况）。又下了个<strong>ubuntu 16.04</strong>和<strong>Debian 8.5</strong> 依、然、无、法、开机😂😂😂……点亮以后，卡在开机画面不动，风扇呼呼响😂😂</p>
-<p>查了一下debug，发现nouveu什么什么鬼载入不了（不记得具体内容了），就百度了一下，好像nouveu是个开源的驱动，可是对新设备兼容性不好。教程都说先把N卡拔下来，然后开机装好驱动再插上。可是笔记本并不能拔下来，BIOS里面也没有设置选项😂😂😂😂。我是通过以下方法禁用nouveu的：</p>
-<ol>
-<li>在Live CD中创建<code>/etc/modprobe.d/blacklist-nouveau.conf</code>，内容如下<br><code>blacklist nouveau options nouveau modeset=0</code></li>
-<li>重新生成 kernel initramfs: <code>sudo update-initramfs -u</code></li>
-</ol>
-<h2 id="Cuda-版本对内核的兼容性"><a href="#Cuda-版本对内核的兼容性" class="headerlink" title="Cuda 版本对内核的兼容性"></a>Cuda 版本对内核的兼容性</h2><p>我是用官方的deb包装的cuda，顺利的装完以后，预料之中的<strong>又无法开机了</strong>，这下直接懵逼了，都不知道昨晚是怎么过来的。（开机以后卡在Ubuntu那不动，按啥键都不管用，风扇也不狂吹了，感觉是挂了。可是系统能响应<code>Ctr+Alt+Del</code>，按后过一会能重新启动😂😂）</p>
-<p>去官网喵了一眼，发现<code>Cuda8.0</code>居然发布了，支持<code>Ubuntu16</code>。发布页面最后跟着一行小字“For further information, see the <a href="https://developer.nvidia.com/compute/cuda/8.0/rc/docs/sidebar/CUDA_Installation_Guide_Linux-pdf">Installation Guide for Linux</a>”。卧槽，我一直为官网的安装说明就下面这三行字：</p>
-<p><img data-src="//qiniu.s1nh.org/Blog_cuda_05.png-QNthin"></p>
-<p>点开<strong>Installation Guide</strong>后，一切问题原来都不需要瞎百度、瞎折腾。安装说明写得很清楚什么时候需要<code>Disable Nouveau</code>，还有Cuda对各个Kernel依赖库的兼容性，并且<code>cuda 7.5</code>只支持<code>Kernel 3.13</code>😂😂😂</p>
-<p><img data-src="//qiniu.s1nh.org/Blog_cuda_04.jpg-QNthin"></p>
-<p>这个故事告诉我们，遇到问题之前要<strong>先-去-看-官-方-文-档</strong></p>
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
-      </categories>
-      <tags>
-        <tag>Cuda</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>计算机视觉技术调查报告</title>
     <url>/post/cv-sjtu/</url>
     <content><![CDATA[<p><code>本资源来自网络，侵权请按ALT+F4</code></p>
@@ -2914,6 +2865,190 @@ apt-get install libusb-1.0-0-dev
 <p>• Xiong, Caiming, Stephen Merity, and Richard Socher. “Dynamic Memory Networks for Visual and Textual Question Answering.” arXiv:1603.01417 (2016).<br>• Mateusz Malinowski, Marcus Rohrbach, Mario Fritz, Ask Your Neurons: A Neural-based Approach to Answering Questions about Images, arXiv:1505.01121.<br>• Stanislaw Antol, Aishwarya Agrawal, Jiasen Lu, Margaret Mitchell, Dhruv Batra, C. Lawrence Zitnick, Devi Parikh, VQA: Visual Question Answering, CVPR, 2015 SUNw:Scene Understanding workshop.<br>• Hauyuan Gao, Junhua Mao, Jie Zhou, Zhiheng Huang, Lei Wang, Wei Xu, Are You Talking to a Machine? Dataset and Methods for Multilingual Image Question Answering, arXiv:1505.05612.<br>• Hyeonwoo Noh, Paul Hongsuck Seo, and Bohyung Han, Image Question Answering using Convolutional Neural Network with Dynamic Parameter Prediction, arXiv:1511.05765<br>• Yang, Z., He, X., Gao, J., Deng, L., &amp; Smola, A. (2015). Stacked Attention Networks for Image Question Answering. arXiv:1511.02274.<br>• Jin-Hwa Kim, Sang-Woo Lee, Dong-Hyun Kwak, Min-Oh Heo, Jeonghee Kim, Jung-Woo Ha, Byoung-Tak Zhang, Multimodal Residual Learning for Visual QA, arXiv:1606:01455<br>• Hyeonwoo Noh and Bohyung Han, Training Recurrent Answering Units with Joint Loss Minimization for VQA, arXiv:1606.03647<br>• Jin-Hwa Kim, Kyoung Woon On, Jeonghee Kim, Jung-Woo Ha, Byoung-Tak Zhang, Hadamard Product for Low-rank Bilinear Pooling, arXiv:1610.04325. </p>
 <h4 id="5-Mask-R-CNN"><a href="#5-Mask-R-CNN" class="headerlink" title="(5) Mask-R-CNN"></a>(5) Mask-R-CNN</h4><p>另外还有一篇是刚刚出来的 Mask RCNN，也是比较火。</p>
 <p>文章在这里 <a href="https://arxiv.org/abs/1703.06870">https://arxiv.org/abs/1703.06870</a><br>具体中文讨论在这里 <a href="https://www.zhihu.com/question/57403701">https://www.zhihu.com/question/57403701</a><br>但是，没有代码，我们组也在复现中 </p>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>不推荐购买创想三维 Creality Sermoon V1 的几个理由</title>
+    <url>/post/do-not-buy-sermoon-v1/</url>
+    <content><![CDATA[<blockquote>
+<p>看过 [<a href="https://www.zhihu.com/zvideo/1457409894764335104">阿文君的视频</a>] 买了 <code>Sermoon V1</code>。体验过后感觉比较玩具、拓展性也比较差，在这里提出几个不该买的理由。</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="0x01-缺少-Linear-Advance-（压力提前-线性推进）-的支持"><a href="#0x01-缺少-Linear-Advance-（压力提前-线性推进）-的支持" class="headerlink" title="0x01 缺少 Linear Advance （压力提前/线性推进） 的支持"></a>0x01 缺少 Linear Advance （压力提前/线性推进） 的支持</h2><p><code>准确的 Linear Advance 的校准是打印一个优秀模型的重要因素</code></p>
+<p>默认情况下，挤出机以线性方式工作。但挤出机不是线性系统，明显会导致在每一步打印后挤出额外材料，并且在下一步开始打印时材料不够。（下图表示了打印机在加速减速的过程，在2处材料挤出不够，且在4、5处产生堆料）</p>
+<p><img data-src="//qiniu.s1nh.org/sermoon-v1-k-factor_low.png"></p>
+<p>使用 Linear Advance 的优点：</p>
+<ul>
+<li>减少粗糙的边缘，尺寸精度更高。</li>
+<li>可以在不损失任何打印质量的情况下实现更高的打印速度。</li>
+<li>即使在较低的打印速度下，打印质量也会得到提高。</li>
+<li>获得更锋利的边缘。</li>
+</ul>
+<p>网络有很多矫正线性推进的教程，比如：</p>
+<ul>
+<li><a href="https://www.bilibili.com/video/BV1Z94y1U7UL">3D打印机klipper在Voron0.1机器上进行挤出机压力提前测试和校准：新手教程</a></li>
+<li><a href="https://www.bilibili.com/video/BV18541117Yk">【klipper】3D打印机挤出机压力提前测试和校准【3集全】拐角膨胀和起始点分离修正办法</a></li>
+</ul>
+<p>Marlin 官网也提供了详细的<a href="https://marlinfw.org/docs/features/lin_advance.html">调整教程</a></p>
+<p>然而我们的 Sermoon V1 不支持此功能，无法进行调整。我打电话到厂家，给的答复也是“不开源” “没有你想要的固件”</p>
+<h2 id="0x02-糟糕的散热"><a href="#0x02-糟糕的散热" class="headerlink" title="0x02 糟糕的散热"></a>0x02 糟糕的散热</h2><p>此机器的精灵挤出机主体跟 Ender3 S1 的相同，但附件不同。V1挤出机的附件有个致命缺陷散热风扇从底部吸入热空气再给模型降温，缺点是散热很差，在<a href="https://fl.himi3d.cn/d/439-bensermoon-v1">这篇文章</a>有讨论。有几种方式可以改造散热，我做了一版，调试好后会放出来（下图左上。另外：<code>右下黑</code>，原厂；右上黄，<a href="https://fl.himi3d.cn/d/426-bengo10-ender3-s1">S1 风道</a>；左下白，<a href="https://www.crealitycloud.cn/model-detail/626821aac54f1758304dc951">风扇侧装</a>）。</p>
+<p><img data-src="//qiniu.s1nh.org/sermoon-v1-fan.jpg"></p>
+<p>另外，个人对于挤出机的排线耐久性持怀疑态度，加热棒的大电流不知道会不会导致排线老化。</p>
+<h2 id="0x03-鸡肋的-wifi-功能"><a href="#0x03-鸡肋的-wifi-功能" class="headerlink" title="0x03 鸡肋的 wifi 功能"></a>0x03 鸡肋的 wifi 功能</h2><p>Sermoon V1 自带一个 wifi 板子（下图中间绿色的电路板），功能很弱鸡。比如录像没办法下载，官方给的答复是可以<code>打开手机的录屏功能</code>。</p>
+<p><img data-src="//qiniu.s1nh.org/sermoon-v1-whole.png"></p>
+<p>我已经把它换成树莓派了，<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2sh1t/mod_octoprint_setup_for_the_creality_sermoon_v1/">有手就能改</a>，可以安装 octoprint 以支持更强大的 <code>wifi</code> <code>远程监控</code> <code>延时摄影</code> 等功能。</p>
+<iframe src="//player.bilibili.com/player.html?aid=342230292&bvid=BV1194y1m7y7&cid=735894030&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+<h2 id="0x04-不开源的主控板"><a href="#0x04-不开源的主控板" class="headerlink" title="0x04 不开源的主控板"></a>0x04 不开源的主控板</h2><p>机器左下角的主板基于开源的 <code>Marlin 1</code> 固件魔改而成，<code>Marlin</code> 固件基于 <code>GPL v3</code> 协议，简单来说就是 <code>你可以免费使用、复制、修改、分发受保护程序，但分发时一定要提供源码</code>。然而此主板不提供源码，后果就是我们只能使用老旧的 Marlin 第一代固件，没办法自行升级到 2.0 以上版本，或者最近流行的<code>klipper</code>固件。</p>
+<ul>
+<li>国外有个哥们请求开源，被直接关闭了issue <a href="https://github.com/CrealityOfficial/Ender-3S1/issues/2">链接</a></li>
+<li>无法校准挤出机<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/ui2u5v/how_to_calibrate_extruder_esteps_z_axis_baby/">链接</a></li>
+<li><a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2stxx/sermoon_v1_and_v1_pro_general_info_thoughts/">这里</a> 有一些讨论</li>
+<li><a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2toy2/marlin_stock_firmware_notes_from_the_sermoon_v1/">这里</a>有一些关于固件的信息</li>
+</ul>
+<h2 id="0x05-无用的-pro-版本"><a href="#0x05-无用的-pro-版本" class="headerlink" title="0x05 无用的 pro 版本"></a>0x05 无用的 pro 版本</h2><p>它的 pro 版本包含开盖暂停和相机功能，然而</p>
+<ul>
+<li>开盖暂停/断料检测只在SD卡打印时有效；</li>
+<li>摄像头会经常断线（国外有人讨论过可能是这种摄像头不支持在高温环境下工作[<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2stxx/sermoon_v1_and_v1_pro_general_info_thoughts/i2r7irn/?utm_source=reddit&utm_medium=web2x&context=3">链接</a>]）。</li>
+</ul>
+<h2 id="0x06-吵"><a href="#0x06-吵" class="headerlink" title="0x06 吵"></a>0x06 吵</h2><p>这款机器主打静音，但你买了以后就知道给主板散热的小风扇有多吵了。我已经拔风扇插头了，目前没出现什么问题（后盖打开，26度空调）。</p>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>文档布局分析 &amp; 扭曲文档图像恢复 --- Document Layout Analysis &amp; Document Image Dewarping</title>
+    <url>/post/document-layout-analysis/</url>
+    <content><![CDATA[<!--
+> 不知道各位有没有碰到过这种同事，经常一遇到问题就找你帮忙。等你坑赤坑赤花了几个小时在这个问题上，甚至已经帮他解决了问题的时候，他悠悠的来一句问题已经搞定了不麻烦你了；
+> 还有另一种同事，你跟他结对编程，他只做自己擅长的部分，剩下擦屁股的工作都丢给你，出去宣扬这个部分都是他做的好累呀，出了问题背锅的总是你；
+> 偏偏最近我就跟这种人合作，真是头疼。消消气，还是有容乃大为好。
+-->
+<h2 id="0x00"><a href="#0x00" class="headerlink" title="0x00"></a>0x00</h2><p>对文本进行OCR前，必须分析和定义文档的逻辑结构。 例如文本块、段落、行的位置；是否有应该重建的表格；是否有“图像”“条形码等”。</p>
+<p>文档布局分析 (Document Layout Analysis) 是识别和分类文本文档的扫描图像中的感兴趣区域（RoI, Regions of Interest) 的过程。阅读系统需要从非文本区域分割文本区域，并按正确的阅读顺序排列。将文本正文，插图，数学符号和嵌入文档中的表格等不同区域（或块）的检测和标记称为<strong>几何布局分析</strong>。但文本区域在文档中扮演不同的逻辑角色（标题，标题，脚注等），这种语义标记是<strong>逻辑布局分析</strong>的范围。</p>
+<p>文档布局分析是几何和逻辑标签的结合。它通常在将文档图像发送到OCR引擎之前执行，但也可用于检测大型存档中同一文档的重复副本，或者通过其结构或图示内容索引文档。</p>
+<p><img data-src="//qiniu.s1nh.org/Blog_fr-editable-copy-result.png" title="Document Layout Analysis"></p>
+<span id="more"></span>
+
+<h2 id="0x01-最早的算法实现-docstrum"><a href="#0x01-最早的算法实现-docstrum" class="headerlink" title="0x01 最早的算法实现 docstrum"></a>0x01 最早的算法实现 docstrum</h2><p>1993年，<strong>O’ Gorman</strong> 在<strong>TPAMI</strong>中发表了自下而上的文档布局分析算法<code>docstrum</code>，首先将文档解析为黑白连接区域，然后将这些区域分组为单词，然后分为文本行，最后分组为文本块。</p>
+<p>简单翻译了一下它的算法（<a href="https://en.wikipedia.org/wiki/Document_layout_analysis">english version</a>）：</p>
+<blockquote>
+<p>算法开始的字母代表着原始论文中每小节的标题序号。原始论文中，每个小节的标题如下：</p>
+</blockquote>
+<ul>
+<li>B. Preprocessing</li>
+<li>C. Nearest-Neighbor Clustering and Docstrum Plot</li>
+<li>D. Spacing and Initial Orientation Estimation</li>
+<li>E. Determination of Text Lines and Accurate Orientation Measurement</li>
+<li>F. Structural Block Determination</li>
+<li>G. Filtering</li>
+<li>H. Global and Local Lay-out Analysis</li>
+</ul>
+<ol>
+<li><code>B</code> 预处理图像以去除<strong>高斯噪声</strong>和<strong>椒盐噪声</strong>。<em>（某些噪声消除滤波器可能会将逗号和句号视为噪声，因此必须小心谨慎）</em></li>
+<li><code>B</code> 将图像<strong>二值化</strong></li>
+<li><code>B</code> 将图像分割为黑色像素的<strong>连通分量（下文称 Symbol）</strong>。对于每个Symbol，计算边框和质心（bounding box, centroid）。</li>
+<li><code>C</code> 对于每个Symbol，确定其k近邻，且k&gt;=4。<em>（ O’Gorman在他的论文中建议将k = 5作为鲁棒性和速度之间的良好折衷。使用至少k = 4的原因是对于文档中的符号，两个或三个最接近的符号是在相同文本行上紧邻的那些符号。第四最近的符号通常在正上方或下方的一条线上，并且在下面的最近邻居计算中包括这些符号是很重要的。）</em></li>
+<li><code>C</code> 每个Symbol的近邻对与两者质心的向量相关。如果为每对最近邻Symbol绘制这些向量，则可以得到文档的<strong>docstrum</strong>（下图）。通过来自水平的角度θ和两个最近邻居符号之间的距离D，创建<strong>最近邻角</strong>和<strong>最近邻距离直方图</strong>。</li>
+<li><code>D</code> 使用最近邻角度直方图，可以计算文档的歪斜。如果歪斜较小，则继续下一步。如果不是，旋转图像以消除歪斜并返回<em>步骤3</em>。</li>
+<li><code>D</code> 最近邻距离直方图具有若干峰值，并且这些峰值通常表示<strong>字符间间距</strong>，<strong>字间间距</strong>和<strong>行间间隔</strong>（between-character, between-word, between-line）。</li>
+<li><code>D</code> 标记每个Symbol较远的邻居，该距离在<strong>between-character</strong>或<strong>between-word</strong>的某个容差内。对于标记的每个最近邻居符号，绘制连接其质心的线段。</li>
+<li><code>E</code> 通过线段连接到其邻居的符号形成<strong>文本行</strong>。对于文本行中的所有质心，可以使用线性回归计算表示文本行的<strong>实际线段</strong>。（使用<strong>线性回归</strong>，是因为文本行中Symbol的所有质心都不太可能是共线的。）</li>
+<li><code>F</code> 对于每对文本行，可以计算它们对应的线段之间的最小距离。如果该距离在步骤7中计算的行间间隔的某个容差内，则将两个文本行分组到相同的<strong>文本块</strong>中。</li>
+<li>最后，可以为每个文本块计算<strong>边界框</strong>，并完成文档布局分析。<br><img data-src="//qiniu.s1nh.org/Blog_docstrum_00.png" alt="docstrum"></li>
+</ol>
+<h2 id="0x02-实验"><a href="#0x02-实验" class="headerlink" title="0x02 实验"></a>0x02 实验</h2><h3 id="1-两个开源代码"><a href="#1-两个开源代码" class="headerlink" title="1. 两个开源代码"></a>1. 两个开源代码</h3><p><a href="https://github.com/chadoliver/cosc428-structor">https://github.com/chadoliver/cosc428-structor</a> 复现了docstrum<br><a href="https://github.com/chulwoopack/docstrum">https://github.com/chulwoopack/docstrum</a> 对前一个开源代码进行了优化</p>
+<h3 id="2-复现"><a href="#2-复现" class="headerlink" title="2. 复现"></a>2. 复现</h3><blockquote>
+<p>上面两段开源代码比较古老且有点乱，基于最新的opencv应该可以很快的复现docstrum</p>
+</blockquote>
+<p><img data-src="//qiniu.s1nh.org/Blog_docstrum_1.png" alt="image.png"></p>
+<h2 id="0x03-进展"><a href="#0x03-进展" class="headerlink" title="0x03 进展"></a>0x03 进展</h2><blockquote>
+<p>没来得及看的一些文章</p>
+</blockquote>
+<ul>
+<li><p><code>60多页</code> Cattoni, Roldano, et al. “Geometric layout analysis techniques for document image understanding: a review.” ITC-irst Technical Report 9703.09 (1998).</p>
+</li>
+<li><p><a href="https://www.researchgate.net/profile/Faisal_Shafait/publication/226110361_Coupled_snakelets_for_curled_text-line_segmentation_from_warped_document_images/links/542358fe0cf26120b7a6c334.pdf">[IJDAR 2013]</a> Bukhari, S. S., Shafait, F., &amp; Breuel, T. M.  Coupled snakelets for curled text-line segmentation from warped document images</p>
+<img data-src="//qiniu.s1nh.org/Blog_docstrum_2.png" width="600"></li>
+<li><p><a href="https://www.researchgate.net/profile/Thomas_Breuel/publication/5431819_Performance_Evaluation_and_Benchmarking_of_Six-Page_Segmentation_Algorithms/links/551dd6dd0cf213ef063eb1ee.pdf">[TPAMI 2008]</a> Shafait, F., Keysers, D., &amp; Breuel, T. Performance evaluation and benchmarking of six-page segmentation algorithms </p>
+<img data-src="//qiniu.s1nh.org/Blog_docstrum_3.png" width="600"></li>
+<li><p><a href="https://pdfs.semanticscholar.org/aa39/21e3a2eda4dd91c89f601ca9ae502f1e65e3.pdf">ICIAR 2014</a> Kassis, M., Kurar, B., Cohen, R., El-Sana, J., &amp; Kedem, K. Using Scale-Space Anisotropic Smoothing for Text Line Extraction in Historical Documents.</p>
+<img data-src="//qiniu.s1nh.org/Blog_docstrum_6.png" width="700"></li>
+<li><p><a href="http://www.iapr-tc11.org/archive/das2012/attachments/FullPaperProceedings/4661a394.pdf">DAS 2012</a> Afzal, M. Z., Kramer, M., Bukhari, S. S., Shafait, F., &amp; Breuel, T. M.  Improvements to uncalibrated feature-based stereo matching for document images by using text-line segmentation</p>
+<img data-src="//qiniu.s1nh.org/Blog_docstrum_4.png" width="500"></li>
+<li><p><a href="http://www.dfki.de/~bukhari/data/papers/29-Bukhari-Generic-Textline-Extraction-ICDAR13.pdf">ICDAR 2013</a>Bukhari, S. S., Shafait, F., &amp; Breuel, T. M. (2013, August). Towards generic text-line extraction.</p>
+<img data-src="//qiniu.s1nh.org/Blog_docstrum_5.png" width="400"></li>
+</ul>
+<h2 id="0x04-Document-Dewarping"><a href="#0x04-Document-Dewarping" class="headerlink" title="0x04 Document Dewarping"></a>0x04 Document Dewarping</h2><ul>
+<li>数据集[<a href="http://staffhome.ecm.uwa.edu.au/~00082689/downloads.html">CBDAR 2007 dataset</a>]</li>
+<li>[<a href="http://www.imlab.jp/cbdar2007/proceedings/papers/P1.pdf">CBDAR 2007</a>] Fu, Bin, et al. “A model-based book dewarping method using text line detection.”<br>CTM 方法，有一个非官方实现[github] [blog]</li>
+<li>[<a href="http://159.226.21.68/bitstream/173211/3713/1/TPAMI2012.pdf">TPAMI 2012</a>] Meng et al. 2011, Metric rectification of curved document images</li>
+<li>[PR 2015] Kim et al. 2015, Document dewarping via text-line based optimization<br>有个同学了复现上面两个算法[<a href="https://github.com/phulin/rebook">github</a>，我暂时跑不通</li>
+<li>[<a href="https://ieeexplore.ieee.org/document/8270077/authors#authors">ICDAR 2017</a>] Robust Document Image Dewarping Method Using Text-Lines and Line Segments<br>应该是最新的，作者提供了[二进制文件]，没有源码，据说比2015年Kim的算法好很多</li>
+<li>[<a href="https://www3.cs.stonybrook.edu/~cvl/content/papers/2018/Ma_CVPR18.pdf">CVPR 2018</a>] DocUNet. A state-of-the-art work from face++ probably, but no source code.</li>
+<li>Leptonica，很好的库，注释比代码都多。它的dewarping代码貌似是基于textlines的</li>
+</ul>
+<p>Python 中使用 tesseract-ocr leptonica [<a href="https://github.com/ybur-yug/python_ocr_tutorial">github</a>] [<a href="https://realpython.com/setting-up-a-simple-ocr-server/">blog</a>]</p>
+<h2 id="0xFF-开源框架"><a href="#0xFF-开源框架" class="headerlink" title="0xFF 开源框架"></a>0xFF 开源框架</h2><ul>
+<li><a href="https://github.com/scantailor/scantailor">scantailor</a> <code>比较古老</code> 可以将拍照的书页自动转换为无卷曲的扫描书页</li>
+</ul>
+<img data-src="//qiniu.s1nh.org/Blog_docstrum_7.png" width="600">
+
+<img data-src="//qiniu.s1nh.org/Blog_docstrum_8.png" width="500">
+
+<ul>
+<li><a href="http://www.leptonica.com/line-removal.html">leptonica</a>  一个古老又顽强的库<code>被Tesseract、OpenCV、jbig2enc依赖</code>，官方有很多例子演示它好玩的算法</li>
+</ul>
+<img data-src="//qiniu.s1nh.org/Blog_docstrum_9.png" width="700">
+
+<img data-src="//qiniu.s1nh.org/Blog_docstrum_10.png" width="600">
+
+<img data-src="//qiniu.s1nh.org/Blog_docstrum_11.png" width="600">
+
+<ul>
+<li><p>OCRopus – A free document layout analysis and OCR system, implemented in C++ and Python and for FreeBSD, Linux, and Mac OS X. This software supports a plug-in architecture which allows the user to select from a variety of different document layout analysis and OCR algorithms.</p>
+</li>
+<li><p>OCRFeeder – An OCR suite for Linux, written in python, which also supports document layout analysis. This software is actively being developed, and is free and open-source.</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+      <tags>
+        <tag>OCR</tag>
+        <tag>docstrum</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Kali linux 主题 与 eclipse 黑色主题冲突</title>
+    <url>/post/eclipse-dark-theme-conflicts-with-gnome-theme-kali/</url>
+    <content><![CDATA[<p><code>2016-09-27 07:49 Fixed in Version 2016.3</code></p>
+<blockquote>
+<p>秉承着以解决问题为乐趣，没有问题创造问题也要解决问题为基本准则。今天发现了一个gnome-theme-kal主题在xfce4下的Bug</p>
+</blockquote>
+<p>最近用Nvidia提供的Nsight来写OpenCV/CUDA，白色主题实在是太丑了，就采用通用的方法换成了黑色主题。结果不管怎么折腾，旁边的Navigator都还是白色的，使得整个界面不白不黑的，简直比VIM还丑。</p>
+<p><img data-src="//qiniu.s1nh.org/Blog_kali-theme_1.png-QNthin"></p>
+<span id="more"></span>
+
+<h2 id="0x00"><a href="#0x00" class="headerlink" title="0x00"></a>0x00</h2><p>本以为是Eclipse配置的问题，昨晚折腾了一宿都没搞定，今天一大早起来换了个主题，问题就解决了。看来是Kali的主题跟Eclipse有冲突。</p>
+<p>主题目录为<code>/usr/share/themes/Kali-X/gtk-2.0/</code>。一顿瞎折腾，定位到冲突的代码为<code>gtkrc</code>文件的如下几行：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">GtkTreeView::odd_row_color	= shade (0.97, @base_color)</span><br><span class="line">GtkTreeView::even_row_color	= @base_color</span><br></pre></td></tr></table></figure>
+
+<p>Bug的原因为Kali已经设置好了GtkTreeView的颜色，Eclipse会使用系统默认的颜色，导致黑色主题无效。注释掉以上代码，问题解决。</p>
+<h2 id="0x01"><a href="#0x01" class="headerlink" title="0x01"></a>0x01</h2><p>同样，按钮的颜色也很丑，是<code>default_button_color = shade (1.12, @bg_color)</code>和<code>bg[PRELIGHT] = shade (1.13, @bg_color)</code>代码导致的。</p>
+<p><img data-src="//qiniu.s1nh.org/Blog_kali-theme_2.png-QNthin"></p>
+<p>我的解决方案为注释前一行，修改后一行，如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># default_button_color = shade (1.12, @bg_color)   ##注释掉这行</span><br><span class="line"></span><br><span class="line">bg[PRELIGHT] = shade (1.13, @selected_bg_color)    ##修改颜色</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>修改后问题解决：</p>
+<p><img data-src="//qiniu.s1nh.org/Blog_kali-theme_3.png-QNthin"></p>
+<p>已经提交<a href="https://bugs.kali.org/view.php?id=3630">Bug Tracker</a>（估计又有人要嫌弃我的英文水平了）</p>
 ]]></content>
       <categories>
         <category>算法与硬件</category>
@@ -3677,221 +3812,6 @@ apt-get install libusb-1.0-0-dev
       </categories>
   </entry>
   <entry>
-    <title>不推荐购买创想三维 Creality Sermoon V1 的几个理由</title>
-    <url>/post/do-not-buy-sermoon-v1/</url>
-    <content><![CDATA[<blockquote>
-<p>看过 [<a href="https://www.zhihu.com/zvideo/1457409894764335104">阿文君的视频</a>] 买了 <code>Sermoon V1</code>。体验过后感觉比较玩具、拓展性也比较差，在这里提出几个不该买的理由。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="0x01-缺少-Linear-Advance-（压力提前-线性推进）-的支持"><a href="#0x01-缺少-Linear-Advance-（压力提前-线性推进）-的支持" class="headerlink" title="0x01 缺少 Linear Advance （压力提前/线性推进） 的支持"></a>0x01 缺少 Linear Advance （压力提前/线性推进） 的支持</h2><p><code>准确的 Linear Advance 的校准是打印一个优秀模型的重要因素</code></p>
-<p>默认情况下，挤出机以线性方式工作。但挤出机不是线性系统，明显会导致在每一步打印后挤出额外材料，并且在下一步开始打印时材料不够。（下图表示了打印机在加速减速的过程，在2处材料挤出不够，且在4、5处产生堆料）</p>
-<p><img data-src="//qiniu.s1nh.org/sermoon-v1-k-factor_low.png"></p>
-<p>使用 Linear Advance 的优点：</p>
-<ul>
-<li>减少粗糙的边缘，尺寸精度更高。</li>
-<li>可以在不损失任何打印质量的情况下实现更高的打印速度。</li>
-<li>即使在较低的打印速度下，打印质量也会得到提高。</li>
-<li>获得更锋利的边缘。</li>
-</ul>
-<p>网络有很多矫正线性推进的教程，比如：</p>
-<ul>
-<li><a href="https://www.bilibili.com/video/BV1Z94y1U7UL">3D打印机klipper在Voron0.1机器上进行挤出机压力提前测试和校准：新手教程</a></li>
-<li><a href="https://www.bilibili.com/video/BV18541117Yk">【klipper】3D打印机挤出机压力提前测试和校准【3集全】拐角膨胀和起始点分离修正办法</a></li>
-</ul>
-<p>Marlin 官网也提供了详细的<a href="https://marlinfw.org/docs/features/lin_advance.html">调整教程</a></p>
-<p>然而我们的 Sermoon V1 不支持此功能，无法进行调整。我打电话到厂家，给的答复也是“不开源” “没有你想要的固件”</p>
-<h2 id="0x02-糟糕的散热"><a href="#0x02-糟糕的散热" class="headerlink" title="0x02 糟糕的散热"></a>0x02 糟糕的散热</h2><p>此机器的精灵挤出机主体跟 Ender3 S1 的相同，但附件不同。V1挤出机的附件有个致命缺陷散热风扇从底部吸入热空气再给模型降温，缺点是散热很差，在<a href="https://fl.himi3d.cn/d/439-bensermoon-v1">这篇文章</a>有讨论。有几种方式可以改造散热，我做了一版，调试好后会放出来（下图左上。另外：<code>右下黑</code>，原厂；右上黄，<a href="https://fl.himi3d.cn/d/426-bengo10-ender3-s1">S1 风道</a>；左下白，<a href="https://www.crealitycloud.cn/model-detail/626821aac54f1758304dc951">风扇侧装</a>）。</p>
-<p><img data-src="//qiniu.s1nh.org/sermoon-v1-fan.jpg"></p>
-<p>另外，个人对于挤出机的排线耐久性持怀疑态度，加热棒的大电流不知道会不会导致排线老化。</p>
-<h2 id="0x03-鸡肋的-wifi-功能"><a href="#0x03-鸡肋的-wifi-功能" class="headerlink" title="0x03 鸡肋的 wifi 功能"></a>0x03 鸡肋的 wifi 功能</h2><p>Sermoon V1 自带一个 wifi 板子（下图中间绿色的电路板），功能很弱鸡。比如录像没办法下载，官方给的答复是可以<code>打开手机的录屏功能</code>。</p>
-<p><img data-src="//qiniu.s1nh.org/sermoon-v1-whole.png"></p>
-<p>我已经把它换成树莓派了，<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2sh1t/mod_octoprint_setup_for_the_creality_sermoon_v1/">有手就能改</a>，可以安装 octoprint 以支持更强大的 <code>wifi</code> <code>远程监控</code> <code>延时摄影</code> 等功能。</p>
-<iframe src="//player.bilibili.com/player.html?aid=342230292&bvid=BV1194y1m7y7&cid=735894030&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-
-<h2 id="0x04-不开源的主控板"><a href="#0x04-不开源的主控板" class="headerlink" title="0x04 不开源的主控板"></a>0x04 不开源的主控板</h2><p>机器左下角的主板基于开源的 <code>Marlin 1</code> 固件魔改而成，<code>Marlin</code> 固件基于 <code>GPL v3</code> 协议，简单来说就是 <code>你可以免费使用、复制、修改、分发受保护程序，但分发时一定要提供源码</code>。然而此主板不提供源码，后果就是我们只能使用老旧的 Marlin 第一代固件，没办法自行升级到 2.0 以上版本，或者最近流行的<code>klipper</code>固件。</p>
-<ul>
-<li>国外有个哥们请求开源，被直接关闭了issue <a href="https://github.com/CrealityOfficial/Ender-3S1/issues/2">链接</a></li>
-<li>无法校准挤出机<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/ui2u5v/how_to_calibrate_extruder_esteps_z_axis_baby/">链接</a></li>
-<li><a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2stxx/sermoon_v1_and_v1_pro_general_info_thoughts/">这里</a> 有一些讨论</li>
-<li><a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2toy2/marlin_stock_firmware_notes_from_the_sermoon_v1/">这里</a>有一些关于固件的信息</li>
-</ul>
-<h2 id="0x05-无用的-pro-版本"><a href="#0x05-无用的-pro-版本" class="headerlink" title="0x05 无用的 pro 版本"></a>0x05 无用的 pro 版本</h2><p>它的 pro 版本包含开盖暂停和相机功能，然而</p>
-<ul>
-<li>开盖暂停/断料检测只在SD卡打印时有效；</li>
-<li>摄像头会经常断线（国外有人讨论过可能是这种摄像头不支持在高温环境下工作[<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2stxx/sermoon_v1_and_v1_pro_general_info_thoughts/i2r7irn/?utm_source=reddit&utm_medium=web2x&context=3">链接</a>]）。</li>
-</ul>
-<h2 id="0x06-吵"><a href="#0x06-吵" class="headerlink" title="0x06 吵"></a>0x06 吵</h2><p>这款机器主打静音，但你买了以后就知道给主板散热的小风扇有多吵了。我已经拔风扇插头了，目前没出现什么问题（后盖打开，26度空调）。</p>
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>文档布局分析 &amp; 扭曲文档图像恢复 --- Document Layout Analysis &amp; Document Image Dewarping</title>
-    <url>/post/document-layout-analysis/</url>
-    <content><![CDATA[<!--
-> 不知道各位有没有碰到过这种同事，经常一遇到问题就找你帮忙。等你坑赤坑赤花了几个小时在这个问题上，甚至已经帮他解决了问题的时候，他悠悠的来一句问题已经搞定了不麻烦你了；
-> 还有另一种同事，你跟他结对编程，他只做自己擅长的部分，剩下擦屁股的工作都丢给你，出去宣扬这个部分都是他做的好累呀，出了问题背锅的总是你；
-> 偏偏最近我就跟这种人合作，真是头疼。消消气，还是有容乃大为好。
--->
-<h2 id="0x00"><a href="#0x00" class="headerlink" title="0x00"></a>0x00</h2><p>对文本进行OCR前，必须分析和定义文档的逻辑结构。 例如文本块、段落、行的位置；是否有应该重建的表格；是否有“图像”“条形码等”。</p>
-<p>文档布局分析 (Document Layout Analysis) 是识别和分类文本文档的扫描图像中的感兴趣区域（RoI, Regions of Interest) 的过程。阅读系统需要从非文本区域分割文本区域，并按正确的阅读顺序排列。将文本正文，插图，数学符号和嵌入文档中的表格等不同区域（或块）的检测和标记称为<strong>几何布局分析</strong>。但文本区域在文档中扮演不同的逻辑角色（标题，标题，脚注等），这种语义标记是<strong>逻辑布局分析</strong>的范围。</p>
-<p>文档布局分析是几何和逻辑标签的结合。它通常在将文档图像发送到OCR引擎之前执行，但也可用于检测大型存档中同一文档的重复副本，或者通过其结构或图示内容索引文档。</p>
-<p><img data-src="//qiniu.s1nh.org/Blog_fr-editable-copy-result.png" title="Document Layout Analysis"></p>
-<span id="more"></span>
-
-<h2 id="0x01-最早的算法实现-docstrum"><a href="#0x01-最早的算法实现-docstrum" class="headerlink" title="0x01 最早的算法实现 docstrum"></a>0x01 最早的算法实现 docstrum</h2><p>1993年，<strong>O’ Gorman</strong> 在<strong>TPAMI</strong>中发表了自下而上的文档布局分析算法<code>docstrum</code>，首先将文档解析为黑白连接区域，然后将这些区域分组为单词，然后分为文本行，最后分组为文本块。</p>
-<p>简单翻译了一下它的算法（<a href="https://en.wikipedia.org/wiki/Document_layout_analysis">english version</a>）：</p>
-<blockquote>
-<p>算法开始的字母代表着原始论文中每小节的标题序号。原始论文中，每个小节的标题如下：</p>
-</blockquote>
-<ul>
-<li>B. Preprocessing</li>
-<li>C. Nearest-Neighbor Clustering and Docstrum Plot</li>
-<li>D. Spacing and Initial Orientation Estimation</li>
-<li>E. Determination of Text Lines and Accurate Orientation Measurement</li>
-<li>F. Structural Block Determination</li>
-<li>G. Filtering</li>
-<li>H. Global and Local Lay-out Analysis</li>
-</ul>
-<ol>
-<li><code>B</code> 预处理图像以去除<strong>高斯噪声</strong>和<strong>椒盐噪声</strong>。<em>（某些噪声消除滤波器可能会将逗号和句号视为噪声，因此必须小心谨慎）</em></li>
-<li><code>B</code> 将图像<strong>二值化</strong></li>
-<li><code>B</code> 将图像分割为黑色像素的<strong>连通分量（下文称 Symbol）</strong>。对于每个Symbol，计算边框和质心（bounding box, centroid）。</li>
-<li><code>C</code> 对于每个Symbol，确定其k近邻，且k&gt;=4。<em>（ O’Gorman在他的论文中建议将k = 5作为鲁棒性和速度之间的良好折衷。使用至少k = 4的原因是对于文档中的符号，两个或三个最接近的符号是在相同文本行上紧邻的那些符号。第四最近的符号通常在正上方或下方的一条线上，并且在下面的最近邻居计算中包括这些符号是很重要的。）</em></li>
-<li><code>C</code> 每个Symbol的近邻对与两者质心的向量相关。如果为每对最近邻Symbol绘制这些向量，则可以得到文档的<strong>docstrum</strong>（下图）。通过来自水平的角度θ和两个最近邻居符号之间的距离D，创建<strong>最近邻角</strong>和<strong>最近邻距离直方图</strong>。</li>
-<li><code>D</code> 使用最近邻角度直方图，可以计算文档的歪斜。如果歪斜较小，则继续下一步。如果不是，旋转图像以消除歪斜并返回<em>步骤3</em>。</li>
-<li><code>D</code> 最近邻距离直方图具有若干峰值，并且这些峰值通常表示<strong>字符间间距</strong>，<strong>字间间距</strong>和<strong>行间间隔</strong>（between-character, between-word, between-line）。</li>
-<li><code>D</code> 标记每个Symbol较远的邻居，该距离在<strong>between-character</strong>或<strong>between-word</strong>的某个容差内。对于标记的每个最近邻居符号，绘制连接其质心的线段。</li>
-<li><code>E</code> 通过线段连接到其邻居的符号形成<strong>文本行</strong>。对于文本行中的所有质心，可以使用线性回归计算表示文本行的<strong>实际线段</strong>。（使用<strong>线性回归</strong>，是因为文本行中Symbol的所有质心都不太可能是共线的。）</li>
-<li><code>F</code> 对于每对文本行，可以计算它们对应的线段之间的最小距离。如果该距离在步骤7中计算的行间间隔的某个容差内，则将两个文本行分组到相同的<strong>文本块</strong>中。</li>
-<li>最后，可以为每个文本块计算<strong>边界框</strong>，并完成文档布局分析。<br><img data-src="//qiniu.s1nh.org/Blog_docstrum_00.png" alt="docstrum"></li>
-</ol>
-<h2 id="0x02-实验"><a href="#0x02-实验" class="headerlink" title="0x02 实验"></a>0x02 实验</h2><h3 id="1-两个开源代码"><a href="#1-两个开源代码" class="headerlink" title="1. 两个开源代码"></a>1. 两个开源代码</h3><p><a href="https://github.com/chadoliver/cosc428-structor">https://github.com/chadoliver/cosc428-structor</a> 复现了docstrum<br><a href="https://github.com/chulwoopack/docstrum">https://github.com/chulwoopack/docstrum</a> 对前一个开源代码进行了优化</p>
-<h3 id="2-复现"><a href="#2-复现" class="headerlink" title="2. 复现"></a>2. 复现</h3><blockquote>
-<p>上面两段开源代码比较古老且有点乱，基于最新的opencv应该可以很快的复现docstrum</p>
-</blockquote>
-<p><img data-src="//qiniu.s1nh.org/Blog_docstrum_1.png" alt="image.png"></p>
-<h2 id="0x03-进展"><a href="#0x03-进展" class="headerlink" title="0x03 进展"></a>0x03 进展</h2><blockquote>
-<p>没来得及看的一些文章</p>
-</blockquote>
-<ul>
-<li><p><code>60多页</code> Cattoni, Roldano, et al. “Geometric layout analysis techniques for document image understanding: a review.” ITC-irst Technical Report 9703.09 (1998).</p>
-</li>
-<li><p><a href="https://www.researchgate.net/profile/Faisal_Shafait/publication/226110361_Coupled_snakelets_for_curled_text-line_segmentation_from_warped_document_images/links/542358fe0cf26120b7a6c334.pdf">[IJDAR 2013]</a> Bukhari, S. S., Shafait, F., &amp; Breuel, T. M.  Coupled snakelets for curled text-line segmentation from warped document images</p>
-<img data-src="//qiniu.s1nh.org/Blog_docstrum_2.png" width="600"></li>
-<li><p><a href="https://www.researchgate.net/profile/Thomas_Breuel/publication/5431819_Performance_Evaluation_and_Benchmarking_of_Six-Page_Segmentation_Algorithms/links/551dd6dd0cf213ef063eb1ee.pdf">[TPAMI 2008]</a> Shafait, F., Keysers, D., &amp; Breuel, T. Performance evaluation and benchmarking of six-page segmentation algorithms </p>
-<img data-src="//qiniu.s1nh.org/Blog_docstrum_3.png" width="600"></li>
-<li><p><a href="https://pdfs.semanticscholar.org/aa39/21e3a2eda4dd91c89f601ca9ae502f1e65e3.pdf">ICIAR 2014</a> Kassis, M., Kurar, B., Cohen, R., El-Sana, J., &amp; Kedem, K. Using Scale-Space Anisotropic Smoothing for Text Line Extraction in Historical Documents.</p>
-<img data-src="//qiniu.s1nh.org/Blog_docstrum_6.png" width="700"></li>
-<li><p><a href="http://www.iapr-tc11.org/archive/das2012/attachments/FullPaperProceedings/4661a394.pdf">DAS 2012</a> Afzal, M. Z., Kramer, M., Bukhari, S. S., Shafait, F., &amp; Breuel, T. M.  Improvements to uncalibrated feature-based stereo matching for document images by using text-line segmentation</p>
-<img data-src="//qiniu.s1nh.org/Blog_docstrum_4.png" width="500"></li>
-<li><p><a href="http://www.dfki.de/~bukhari/data/papers/29-Bukhari-Generic-Textline-Extraction-ICDAR13.pdf">ICDAR 2013</a>Bukhari, S. S., Shafait, F., &amp; Breuel, T. M. (2013, August). Towards generic text-line extraction.</p>
-<img data-src="//qiniu.s1nh.org/Blog_docstrum_5.png" width="400"></li>
-</ul>
-<h2 id="0x04-Document-Dewarping"><a href="#0x04-Document-Dewarping" class="headerlink" title="0x04 Document Dewarping"></a>0x04 Document Dewarping</h2><ul>
-<li>数据集[<a href="http://staffhome.ecm.uwa.edu.au/~00082689/downloads.html">CBDAR 2007 dataset</a>]</li>
-<li>[<a href="http://www.imlab.jp/cbdar2007/proceedings/papers/P1.pdf">CBDAR 2007</a>] Fu, Bin, et al. “A model-based book dewarping method using text line detection.”<br>CTM 方法，有一个非官方实现[github] [blog]</li>
-<li>[<a href="http://159.226.21.68/bitstream/173211/3713/1/TPAMI2012.pdf">TPAMI 2012</a>] Meng et al. 2011, Metric rectification of curved document images</li>
-<li>[PR 2015] Kim et al. 2015, Document dewarping via text-line based optimization<br>有个同学了复现上面两个算法[<a href="https://github.com/phulin/rebook">github</a>，我暂时跑不通</li>
-<li>[<a href="https://ieeexplore.ieee.org/document/8270077/authors#authors">ICDAR 2017</a>] Robust Document Image Dewarping Method Using Text-Lines and Line Segments<br>应该是最新的，作者提供了[二进制文件]，没有源码，据说比2015年Kim的算法好很多</li>
-<li>[<a href="https://www3.cs.stonybrook.edu/~cvl/content/papers/2018/Ma_CVPR18.pdf">CVPR 2018</a>] DocUNet. A state-of-the-art work from face++ probably, but no source code.</li>
-<li>Leptonica，很好的库，注释比代码都多。它的dewarping代码貌似是基于textlines的</li>
-</ul>
-<p>Python 中使用 tesseract-ocr leptonica [<a href="https://github.com/ybur-yug/python_ocr_tutorial">github</a>] [<a href="https://realpython.com/setting-up-a-simple-ocr-server/">blog</a>]</p>
-<h2 id="0xFF-开源框架"><a href="#0xFF-开源框架" class="headerlink" title="0xFF 开源框架"></a>0xFF 开源框架</h2><ul>
-<li><a href="https://github.com/scantailor/scantailor">scantailor</a> <code>比较古老</code> 可以将拍照的书页自动转换为无卷曲的扫描书页</li>
-</ul>
-<img data-src="//qiniu.s1nh.org/Blog_docstrum_7.png" width="600">
-
-<img data-src="//qiniu.s1nh.org/Blog_docstrum_8.png" width="500">
-
-<ul>
-<li><a href="http://www.leptonica.com/line-removal.html">leptonica</a>  一个古老又顽强的库<code>被Tesseract、OpenCV、jbig2enc依赖</code>，官方有很多例子演示它好玩的算法</li>
-</ul>
-<img data-src="//qiniu.s1nh.org/Blog_docstrum_9.png" width="700">
-
-<img data-src="//qiniu.s1nh.org/Blog_docstrum_10.png" width="600">
-
-<img data-src="//qiniu.s1nh.org/Blog_docstrum_11.png" width="600">
-
-<ul>
-<li><p>OCRopus – A free document layout analysis and OCR system, implemented in C++ and Python and for FreeBSD, Linux, and Mac OS X. This software supports a plug-in architecture which allows the user to select from a variety of different document layout analysis and OCR algorithms.</p>
-</li>
-<li><p>OCRFeeder – An OCR suite for Linux, written in python, which also supports document layout analysis. This software is actively being developed, and is free and open-source.</p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
-      </categories>
-      <tags>
-        <tag>OCR</tag>
-        <tag>docstrum</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Kali linux 主题 与 eclipse 黑色主题冲突</title>
-    <url>/post/eclipse-dark-theme-conflicts-with-gnome-theme-kali/</url>
-    <content><![CDATA[<p><code>2016-09-27 07:49 Fixed in Version 2016.3</code></p>
-<blockquote>
-<p>秉承着以解决问题为乐趣，没有问题创造问题也要解决问题为基本准则。今天发现了一个gnome-theme-kal主题在xfce4下的Bug</p>
-</blockquote>
-<p>最近用Nvidia提供的Nsight来写OpenCV/CUDA，白色主题实在是太丑了，就采用通用的方法换成了黑色主题。结果不管怎么折腾，旁边的Navigator都还是白色的，使得整个界面不白不黑的，简直比VIM还丑。</p>
-<p><img data-src="//qiniu.s1nh.org/Blog_kali-theme_1.png-QNthin"></p>
-<span id="more"></span>
-
-<h2 id="0x00"><a href="#0x00" class="headerlink" title="0x00"></a>0x00</h2><p>本以为是Eclipse配置的问题，昨晚折腾了一宿都没搞定，今天一大早起来换了个主题，问题就解决了。看来是Kali的主题跟Eclipse有冲突。</p>
-<p>主题目录为<code>/usr/share/themes/Kali-X/gtk-2.0/</code>。一顿瞎折腾，定位到冲突的代码为<code>gtkrc</code>文件的如下几行：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">GtkTreeView::odd_row_color	= shade (0.97, @base_color)</span><br><span class="line">GtkTreeView::even_row_color	= @base_color</span><br></pre></td></tr></table></figure>
-
-<p>Bug的原因为Kali已经设置好了GtkTreeView的颜色，Eclipse会使用系统默认的颜色，导致黑色主题无效。注释掉以上代码，问题解决。</p>
-<h2 id="0x01"><a href="#0x01" class="headerlink" title="0x01"></a>0x01</h2><p>同样，按钮的颜色也很丑，是<code>default_button_color = shade (1.12, @bg_color)</code>和<code>bg[PRELIGHT] = shade (1.13, @bg_color)</code>代码导致的。</p>
-<p><img data-src="//qiniu.s1nh.org/Blog_kali-theme_2.png-QNthin"></p>
-<p>我的解决方案为注释前一行，修改后一行，如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># default_button_color = shade (1.12, @bg_color)   ##注释掉这行</span><br><span class="line"></span><br><span class="line">bg[PRELIGHT] = shade (1.13, @selected_bg_color)    ##修改颜色</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>修改后问题解决：</p>
-<p><img data-src="//qiniu.s1nh.org/Blog_kali-theme_3.png-QNthin"></p>
-<p>已经提交<a href="https://bugs.kali.org/view.php?id=3630">Bug Tracker</a>（估计又有人要嫌弃我的英文水平了）</p>
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>FastDDS 特定情况下 subscriber 无法重连</title>
-    <url>/post/fastdds-shm/</url>
-    <content><![CDATA[<blockquote>
-<p>刚开始用 FastDDS 的时候就发现这个问题，原以为是共享内存 deadlock 了，于是就有了前面关于 boost 鲁棒锁的那篇帖子。但问题并没有这么简单 &gt;_&lt;<br>这个问题在 <a href="https://github.com/eProsima/Fast-DDS/issues/2811">Github/eProsima/Fast-DDS#2811</a> 有详细记录。 </p>
-</blockquote>
-<p>对 FastDDS 程序进行 debug 时，将 subscriber 暂停，等一会再重启，subscriber将无法再次接收数据。Publisher / Subscriber 的日志如下</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Publisher</span><br><span class="line">2022-09-06 14:10:47.049 [RTPS_TRANSPORT_SHM Warning] SHM Port 7413 failure: the port is marked as not ok! -&gt; Function try_push</span><br><span class="line">2022-09-06 14:10:47.049 [RTPS_TRANSPORT_SHM Warning] (ID:140091162883648) Existing Port 7413 (5f4eeb5613a33705) NOT Healthy. -&gt; Function open_port_internal</span><br><span class="line">2022-09-06 14:10:47.049 [RTPS_TRANSPORT_SHM Warning] (ID:140091162883648) Port 7413 (5f4eeb5613a33705) Removed. -&gt; Function open_port_internal</span><br><span class="line">Message: HelloWorld with index: 157 SENT</span><br><span class="line">2022-09-06 14:10:47.246 [RTPS_TRANSPORT_SHM Warning] SHM Port 7412 failure: the port is marked as not ok! -&gt; Function try_push</span><br><span class="line">2022-09-06 14:10:47.248 [RTPS_TRANSPORT_SHM Warning] (ID:140091402036800) Existing Port 7412 (3e1fa9f9eb2b0ade) NOT Healthy. -&gt; Function open_port_internal</span><br><span class="line">2022-09-06 14:10:47.248 [RTPS_TRANSPORT_SHM Warning] (ID:140091402036800) Port 7412 (3e1fa9f9eb2b0ade) Removed. -&gt; Function open_port_internal</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Subscriber</span><br><span class="line">2022-09-07 14:50:27.441 [RTPS_TRANSPORT_SHM Warning] (ID:140737325877056) Port 7412 Zombie. Reset the port -&gt; Function open_port_internal</span><br><span class="line">2022-09-07 14:50:27.442 [RTPS_TRANSPORT_SHM Warning] (ID:140737325877056) Port 7413 Zombie. Reset the port -&gt; Function open_port_internal</span><br></pre></td></tr></table></figure>
-
-<p>查看 log 对应的代码，最后定位到可能出现问题的 commit 在 <a href="https://github.com/eProsima/Fast-DDS/commit/e58dcb17e6732b827b18056520c1137b807d800f">eProsima/Fast-DDS@e58dcb1</a>。</p>
-<p>这个 commit 是 Pull Request 时将几十个 commit squash 在一起的[<a href="https://github.com/eProsima/Fast-DDS/pull/1187/commits">链接</a>]。squash 前的 commit 在 github 可以查看，但用 git 命令是无法 checkout 的，所以手动下载了一堆源码编译，二分查找了一下，最后定位在下面这个 commit:</p>
-<blockquote>
-<p><a href="https://github.com/eProsima/Fast-DDS/pull/1187/commits/0b8af27cbed21143ececcf34a968d2fbc8d84cff">Refs #8250. Do not reuse zombie ports structures.</a><br>@adolfomarver authored and @MiguelCompany committed on May 12, 2020</p>
-</blockquote>
-<p>问题看起来像是 Subscriber 拒绝复用 zombie ports，但又没申请新的 port.<br>注释了几行代码，可以暂时避免这个问题，参考 <a href="https://github.com/duchengyao/Fast-DDS/commit/63ad6686d25cb80556e7f2bc101eb39734146729">duchengyao@Fast-DDS/commit/63ad668</a></p>
-<!--
-**其它**
-分配的每个缓冲区意味着两个内部分配：节点和有效负载。每个内部分配消耗“per_allocation_extra_size_”字节
-
-open_or_create_and_lock_named_mutex: 
-Interprocess mutex timeout when locking. Possible deadlock: owner died without unlocking?
-try to remove and create again
-
--->
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
-      </categories>
-  </entry>
-  <entry>
     <title>FastDDS 零拷贝模式下多个 subscriber 的原理</title>
     <url>/post/fastdds-zerocopy-for-multiple-readers/</url>
     <content><![CDATA[<p>FastDDS 新推出的零拷贝 (Zero Copy) 模式有很多难以理解的地方，在这里会持续做些整理。</p>
@@ -3938,6 +3858,37 @@ try to remove and create again
       <tags>
         <tag>FastDDS</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>FastDDS 特定情况下 subscriber 无法重连</title>
+    <url>/post/fastdds-shm/</url>
+    <content><![CDATA[<blockquote>
+<p>刚开始用 FastDDS 的时候就发现这个问题，原以为是共享内存 deadlock 了，于是就有了前面关于 boost 鲁棒锁的那篇帖子。但问题并没有这么简单 &gt;_&lt;<br>这个问题在 <a href="https://github.com/eProsima/Fast-DDS/issues/2811">Github/eProsima/Fast-DDS#2811</a> 有详细记录。 </p>
+</blockquote>
+<p>对 FastDDS 程序进行 debug 时，将 subscriber 暂停，等一会再重启，subscriber将无法再次接收数据。Publisher / Subscriber 的日志如下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Publisher</span><br><span class="line">2022-09-06 14:10:47.049 [RTPS_TRANSPORT_SHM Warning] SHM Port 7413 failure: the port is marked as not ok! -&gt; Function try_push</span><br><span class="line">2022-09-06 14:10:47.049 [RTPS_TRANSPORT_SHM Warning] (ID:140091162883648) Existing Port 7413 (5f4eeb5613a33705) NOT Healthy. -&gt; Function open_port_internal</span><br><span class="line">2022-09-06 14:10:47.049 [RTPS_TRANSPORT_SHM Warning] (ID:140091162883648) Port 7413 (5f4eeb5613a33705) Removed. -&gt; Function open_port_internal</span><br><span class="line">Message: HelloWorld with index: 157 SENT</span><br><span class="line">2022-09-06 14:10:47.246 [RTPS_TRANSPORT_SHM Warning] SHM Port 7412 failure: the port is marked as not ok! -&gt; Function try_push</span><br><span class="line">2022-09-06 14:10:47.248 [RTPS_TRANSPORT_SHM Warning] (ID:140091402036800) Existing Port 7412 (3e1fa9f9eb2b0ade) NOT Healthy. -&gt; Function open_port_internal</span><br><span class="line">2022-09-06 14:10:47.248 [RTPS_TRANSPORT_SHM Warning] (ID:140091402036800) Port 7412 (3e1fa9f9eb2b0ade) Removed. -&gt; Function open_port_internal</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Subscriber</span><br><span class="line">2022-09-07 14:50:27.441 [RTPS_TRANSPORT_SHM Warning] (ID:140737325877056) Port 7412 Zombie. Reset the port -&gt; Function open_port_internal</span><br><span class="line">2022-09-07 14:50:27.442 [RTPS_TRANSPORT_SHM Warning] (ID:140737325877056) Port 7413 Zombie. Reset the port -&gt; Function open_port_internal</span><br></pre></td></tr></table></figure>
+
+<p>查看 log 对应的代码，最后定位到可能出现问题的 commit 在 <a href="https://github.com/eProsima/Fast-DDS/commit/e58dcb17e6732b827b18056520c1137b807d800f">eProsima/Fast-DDS@e58dcb1</a>。</p>
+<p>这个 commit 是 Pull Request 时将几十个 commit squash 在一起的[<a href="https://github.com/eProsima/Fast-DDS/pull/1187/commits">链接</a>]。squash 前的 commit 在 github 可以查看，但用 git 命令是无法 checkout 的，所以手动下载了一堆源码编译，二分查找了一下，最后定位在下面这个 commit:</p>
+<blockquote>
+<p><a href="https://github.com/eProsima/Fast-DDS/pull/1187/commits/0b8af27cbed21143ececcf34a968d2fbc8d84cff">Refs #8250. Do not reuse zombie ports structures.</a><br>@adolfomarver authored and @MiguelCompany committed on May 12, 2020</p>
+</blockquote>
+<p>问题看起来像是 Subscriber 拒绝复用 zombie ports，但又没申请新的 port.<br>注释了几行代码，可以暂时避免这个问题，参考 <a href="https://github.com/duchengyao/Fast-DDS/commit/63ad6686d25cb80556e7f2bc101eb39734146729">duchengyao@Fast-DDS/commit/63ad668</a></p>
+<!--
+**其它**
+分配的每个缓冲区意味着两个内部分配：节点和有效负载。每个内部分配消耗“per_allocation_extra_size_”字节
+
+open_or_create_and_lock_named_mutex: 
+Interprocess mutex timeout when locking. Possible deadlock: owner died without unlocking?
+try to remove and create again
+
+-->
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
   </entry>
   <entry>
     <title>首版复刻的Fender &#39;57 &amp; &#39;62 Strat 拾音器</title>
@@ -4475,18 +4426,6 @@ try to remove and create again
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/post/hello-world/</url>
-    <content><![CDATA[<blockquote>
-<p>博客都是孤芳自赏，分享都是自我陶醉。</p>
-</blockquote>
-<p><img data-src="/about/block-3.png"></p>
-]]></content>
-      <categories>
-        <category>其它笔记</category>
-      </categories>
-  </entry>
-  <entry>
     <title>解决廉价摄像头在图像拼接中产生的曝光不均匀问题</title>
     <url>/post/image-stitching-post-process/</url>
     <content><![CDATA[<blockquote>
@@ -4507,6 +4446,18 @@ try to remove and create again
 ]]></content>
       <categories>
         <category>算法与硬件</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/post/hello-world/</url>
+    <content><![CDATA[<blockquote>
+<p>博客都是孤芳自赏，分享都是自我陶醉。</p>
+</blockquote>
+<p><img data-src="/about/block-3.png"></p>
+]]></content>
+      <categories>
+        <category>其它笔记</category>
       </categories>
   </entry>
   <entry>
@@ -4669,50 +4620,6 @@ try to remove and create again
       <tags>
         <tag>信息安全</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>听歌</title>
-    <url>/post/ke-chuang-road/</url>
-    <content><![CDATA[<p>Intro</p>
-<audio controls>
-<source src="//qiniu.s1nh.org/Intro.mp3" type="audio/mpeg">
-</audio>
-
-
-<p>世界在旅程的尽头终结</p>
-<audio controls>
-<source src="//qiniu.s1nh.org/%E4%B8%96%E7%95%8C%E5%9C%A8%E6%97%85%E7%A8%8B%E7%9A%84%E5%B0%BD%E5%A4%B4%E7%BB%88%E7%BB%93.mp3" type="audio/mpeg">
-</audio>
-
-
-<p>在失去意识的最后一瞬，我想起了当年那个穿着白色连衣裙的女孩</p>
-<audio controls>
-<source src="//qiniu.s1nh.org/%E5%9C%A8%E5%A4%B1%E5%8E%BB%E6%84%8F%E8%AF%86%E7%9A%84%E6%9C%80%E5%90%8E%E4%B8%80%E7%9E%AC%EF%BC%8C%E6%88%91%E6%83%B3%E8%B5%B7%E4%BA%86%E5%BD%93%E5%B9%B4%E9%82%A3%E4%B8%AA%E7%A9%BF%E7%9D%80%E7%99%BD%E8%89%B2%E8%BF%9E%E8%A1%A3%E8%A3%99%E7%9A%84%E5%A5%B3%E5%AD%A9.mp3" type="audio/mpeg">
-</audio>
-
-<p>旅行者</p>
-<audio controls>
-<source src="//qiniu.s1nh.org/%E6%97%85%E8%A1%8C%E8%80%85_punk1.mp3" type="audio/mpeg">
-</audio>
-
-
-<p>你能听到吗</p>
-<audio controls>
-<source src="//qiniu.s1nh.org/%E4%BD%A0%E8%83%BD%E5%90%AC%E5%88%B0%E5%90%972.mp3" type="audio/mpeg">
-</audio>
-
-
-<span id="more"></span>
-
-<p>南湖科创大道</p>
-<video loop controls playsinline>
-  <source src="//qiniu.s1nh.org/kechuangroad.mp4" type="video/mp4">
-</video>
-
-]]></content>
-      <categories>
-        <category>音乐相关</category>
-      </categories>
   </entry>
   <entry>
     <title>Klon Centaur 电路分析</title>
@@ -5788,7 +5695,7 @@ H1&lt;---|0.14-1.6|Mirtazapine
 <li><p>您将收到一封包含新许可证密钥的电子邮件。</p>
 </li>
 </ol>
-<p>如果您对许可证转移功能有任何疑问，可以将新的硬件密钥通过电子邮件发送至 <a href="mailto:&#115;&#117;&#x70;&#112;&#111;&#x72;&#116;&#x40;&#x6d;&#117;&#x6c;&#x74;&#105;&#101;&#x63;&#117;&#x73;&#x63;&#x61;&#x6e;&#x2e;&#110;&#101;&#x74;">&#115;&#117;&#x70;&#112;&#111;&#x72;&#116;&#x40;&#x6d;&#117;&#x6c;&#x74;&#105;&#101;&#x63;&#117;&#x73;&#x63;&#x61;&#x6e;&#x2e;&#110;&#101;&#x74;</a>。</p>
+<p>如果您对许可证转移功能有任何疑问，可以将新的硬件密钥通过电子邮件发送至 <a href="mailto:&#115;&#117;&#112;&#x70;&#x6f;&#x72;&#116;&#64;&#109;&#x75;&#x6c;&#116;&#105;&#x65;&#99;&#117;&#x73;&#99;&#x61;&#110;&#46;&#110;&#101;&#116;">&#115;&#117;&#112;&#x70;&#x6f;&#x72;&#116;&#64;&#109;&#x75;&#x6c;&#116;&#105;&#x65;&#99;&#117;&#x73;&#99;&#x61;&#110;&#46;&#110;&#101;&#116;</a>。</p>
 <p>请注意，许可证转移功能对转移次数有限制。</p>
 <p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image10.png-QNthin"></p>
 <h2 id="2-用户界面"><a href="#2-用户界面" class="headerlink" title="2. 用户界面"></a>2. 用户界面</h2><h3 id="2-1-Multiecuscan-主屏幕"><a href="#2-1-Multiecuscan-主屏幕" class="headerlink" title="2.1. Multiecuscan 主屏幕"></a>2.1. Multiecuscan 主屏幕</h3><p>当您启动 Multiecuscan 时，它会显示以下屏幕：</p>
