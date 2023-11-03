@@ -1111,23 +1111,6 @@ For information about changes from previous versions of the tisean package, run&
       </tags>
   </entry>
   <entry>
-    <title>OpenIPC</title>
-    <url>/post/OpenIPC/</url>
-    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">System startup</span><br><span class="line"></span><br><span class="line">Uncompress Ok!</span><br><span class="line"></span><br><span class="line">U-Boot 2016.11 (Nov 18 2021 - 17:53:54 +0800)gk7205v200</span><br><span class="line"></span><br><span class="line">Relocation Offset is: 0375c000</span><br><span class="line">Relocating to 43f5c000, new gd at 43f1bef0, sp at 43f1bed0</span><br><span class="line">SPI Nor:  Check Flash Memory Controller v100 ... Found</span><br><span class="line">SPI Nor ID Table Version 1.0</span><br><span class="line">SPI Nor(cs 0) ID: 0xa1 0x40 0x18</span><br><span class="line">Block:64KB Chip:16MB Name:&quot;FM25Q128A-SOB-T-G&quot;</span><br><span class="line">SPI Nor total size: 16MB</span><br><span class="line">NAND:  0 MiB</span><br><span class="line">In:    serial</span><br><span class="line">Out:   serial</span><br><span class="line">Err:   serial</span><br><span class="line">Net:   eth0</span><br><span class="line">Hit any key to stop autoboot:  0 </span><br><span class="line">### Please input uboot password: ###</span><br><span class="line"></span><br><span class="line">### Please input uboot password: ###</span><br><span class="line"></span><br><span class="line">### Please input uboot password: ###</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>其它笔记</category>
-        <category>算法与硬件</category>
-        <category>赛车</category>
-        <category>音乐相关</category>
-      </categories>
-      <tags>
-        <tag>a</tag>
-        <tag>b</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>RSA，KMP，AVL树，红黑树和LLRB-tree</title>
     <url>/post/RSA-KMP-RB-TREE/</url>
     <content><![CDATA[<blockquote>
@@ -2478,21 +2461,6 @@ apt-get install libusb-1.0-0-dev
       </categories>
   </entry>
   <entry>
-    <title>Chrome Linux 不支持npapi</title>
-    <url>/post/chrome-not-support-npapi-in-linux/</url>
-    <content><![CDATA[<p>Hikvision的web摄像头界面需要npapi的支持。<code>Chrome42</code>之前的版本都不支Npapi，<code>Chrome42~45</code>可以通过<code>chrome://flags/#enable-npapi</code>开启支持，<code>Chrome45</code>之后的版本不支持Npapi。</p>
-<p>花了很久的时间找到了低版本的Chrome安装包，安装完以后依然无法执行插件。</p>
-<p>仔细查阅文档后，发现<strong>只有Mac和Windows的Chrome对NPAPI提供支持</strong>。</p>
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
-      </categories>
-      <tags>
-        <tag>HIKVISION</tag>
-        <tag>npapi</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>清理 git 仓库</title>
     <url>/post/cleanup-git-repo/</url>
     <content><![CDATA[<p>发现 git 仓库的存储空间有问题，原来是一不小心提交了二进制文件。作为强迫症患者学习了一下如何给仓库瘦身。</p>
@@ -2619,6 +2587,21 @@ apt-get install libusb-1.0-0-dev
       <categories>
         <category>算法与硬件</category>
       </categories>
+  </entry>
+  <entry>
+    <title>Chrome Linux 不支持npapi</title>
+    <url>/post/chrome-not-support-npapi-in-linux/</url>
+    <content><![CDATA[<p>Hikvision的web摄像头界面需要npapi的支持。<code>Chrome42</code>之前的版本都不支Npapi，<code>Chrome42~45</code>可以通过<code>chrome://flags/#enable-npapi</code>开启支持，<code>Chrome45</code>之后的版本不支持Npapi。</p>
+<p>花了很久的时间找到了低版本的Chrome安装包，安装完以后依然无法执行插件。</p>
+<p>仔细查阅文档后，发现<strong>只有Mac和Windows的Chrome对NPAPI提供支持</strong>。</p>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+      <tags>
+        <tag>HIKVISION</tag>
+        <tag>npapi</tag>
+      </tags>
   </entry>
   <entry>
     <title>逆向了 SermoonV1 的 CR-FDM-v2.4.S1.200 主板</title>
@@ -2937,6 +2920,110 @@ apt-get install libusb-1.0-0-dev
       <categories>
         <category>算法与硬件</category>
       </categories>
+  </entry>
+  <entry>
+    <title>文档布局分析 &amp; 扭曲文档图像恢复 --- Document Layout Analysis &amp; Document Image Dewarping</title>
+    <url>/post/document-layout-analysis/</url>
+    <content><![CDATA[<!--
+> 不知道各位有没有碰到过这种同事，经常一遇到问题就找你帮忙。等你坑赤坑赤花了几个小时在这个问题上，甚至已经帮他解决了问题的时候，他悠悠的来一句问题已经搞定了不麻烦你了；
+> 还有另一种同事，你跟他结对编程，他只做自己擅长的部分，剩下擦屁股的工作都丢给你，出去宣扬这个部分都是他做的好累呀，出了问题背锅的总是你；
+> 偏偏最近我就跟这种人合作，真是头疼。消消气，还是有容乃大为好。
+-->
+<h2 id="0x00"><a href="#0x00" class="headerlink" title="0x00"></a>0x00</h2><p>对文本进行OCR前，必须分析和定义文档的逻辑结构。 例如文本块、段落、行的位置；是否有应该重建的表格；是否有“图像”“条形码等”。</p>
+<p>文档布局分析 (Document Layout Analysis) 是识别和分类文本文档的扫描图像中的感兴趣区域（RoI, Regions of Interest) 的过程。阅读系统需要从非文本区域分割文本区域，并按正确的阅读顺序排列。将文本正文，插图，数学符号和嵌入文档中的表格等不同区域（或块）的检测和标记称为<strong>几何布局分析</strong>。但文本区域在文档中扮演不同的逻辑角色（标题，标题，脚注等），这种语义标记是<strong>逻辑布局分析</strong>的范围。</p>
+<p>文档布局分析是几何和逻辑标签的结合。它通常在将文档图像发送到OCR引擎之前执行，但也可用于检测大型存档中同一文档的重复副本，或者通过其结构或图示内容索引文档。</p>
+<p><img data-src="//qiniu.s1nh.org/Blog_fr-editable-copy-result.png" title="Document Layout Analysis"></p>
+<span id="more"></span>
+
+<h2 id="0x01-最早的算法实现-docstrum"><a href="#0x01-最早的算法实现-docstrum" class="headerlink" title="0x01 最早的算法实现 docstrum"></a>0x01 最早的算法实现 docstrum</h2><p>1993年，<strong>O’ Gorman</strong> 在<strong>TPAMI</strong>中发表了自下而上的文档布局分析算法<code>docstrum</code>，首先将文档解析为黑白连接区域，然后将这些区域分组为单词，然后分为文本行，最后分组为文本块。</p>
+<p>简单翻译了一下它的算法（<a href="https://en.wikipedia.org/wiki/Document_layout_analysis">english version</a>）：</p>
+<blockquote>
+<p>算法开始的字母代表着原始论文中每小节的标题序号。原始论文中，每个小节的标题如下：</p>
+</blockquote>
+<ul>
+<li>B. Preprocessing</li>
+<li>C. Nearest-Neighbor Clustering and Docstrum Plot</li>
+<li>D. Spacing and Initial Orientation Estimation</li>
+<li>E. Determination of Text Lines and Accurate Orientation Measurement</li>
+<li>F. Structural Block Determination</li>
+<li>G. Filtering</li>
+<li>H. Global and Local Lay-out Analysis</li>
+</ul>
+<ol>
+<li><code>B</code> 预处理图像以去除<strong>高斯噪声</strong>和<strong>椒盐噪声</strong>。<em>（某些噪声消除滤波器可能会将逗号和句号视为噪声，因此必须小心谨慎）</em></li>
+<li><code>B</code> 将图像<strong>二值化</strong></li>
+<li><code>B</code> 将图像分割为黑色像素的<strong>连通分量（下文称 Symbol）</strong>。对于每个Symbol，计算边框和质心（bounding box, centroid）。</li>
+<li><code>C</code> 对于每个Symbol，确定其k近邻，且k&gt;=4。<em>（ O’Gorman在他的论文中建议将k = 5作为鲁棒性和速度之间的良好折衷。使用至少k = 4的原因是对于文档中的符号，两个或三个最接近的符号是在相同文本行上紧邻的那些符号。第四最近的符号通常在正上方或下方的一条线上，并且在下面的最近邻居计算中包括这些符号是很重要的。）</em></li>
+<li><code>C</code> 每个Symbol的近邻对与两者质心的向量相关。如果为每对最近邻Symbol绘制这些向量，则可以得到文档的<strong>docstrum</strong>（下图）。通过来自水平的角度θ和两个最近邻居符号之间的距离D，创建<strong>最近邻角</strong>和<strong>最近邻距离直方图</strong>。</li>
+<li><code>D</code> 使用最近邻角度直方图，可以计算文档的歪斜。如果歪斜较小，则继续下一步。如果不是，旋转图像以消除歪斜并返回<em>步骤3</em>。</li>
+<li><code>D</code> 最近邻距离直方图具有若干峰值，并且这些峰值通常表示<strong>字符间间距</strong>，<strong>字间间距</strong>和<strong>行间间隔</strong>（between-character, between-word, between-line）。</li>
+<li><code>D</code> 标记每个Symbol较远的邻居，该距离在<strong>between-character</strong>或<strong>between-word</strong>的某个容差内。对于标记的每个最近邻居符号，绘制连接其质心的线段。</li>
+<li><code>E</code> 通过线段连接到其邻居的符号形成<strong>文本行</strong>。对于文本行中的所有质心，可以使用线性回归计算表示文本行的<strong>实际线段</strong>。（使用<strong>线性回归</strong>，是因为文本行中Symbol的所有质心都不太可能是共线的。）</li>
+<li><code>F</code> 对于每对文本行，可以计算它们对应的线段之间的最小距离。如果该距离在步骤7中计算的行间间隔的某个容差内，则将两个文本行分组到相同的<strong>文本块</strong>中。</li>
+<li>最后，可以为每个文本块计算<strong>边界框</strong>，并完成文档布局分析。<br><img data-src="//qiniu.s1nh.org/Blog_docstrum_00.png" alt="docstrum"></li>
+</ol>
+<h2 id="0x02-实验"><a href="#0x02-实验" class="headerlink" title="0x02 实验"></a>0x02 实验</h2><h3 id="1-两个开源代码"><a href="#1-两个开源代码" class="headerlink" title="1. 两个开源代码"></a>1. 两个开源代码</h3><p><a href="https://github.com/chadoliver/cosc428-structor">https://github.com/chadoliver/cosc428-structor</a> 复现了docstrum<br><a href="https://github.com/chulwoopack/docstrum">https://github.com/chulwoopack/docstrum</a> 对前一个开源代码进行了优化</p>
+<h3 id="2-复现"><a href="#2-复现" class="headerlink" title="2. 复现"></a>2. 复现</h3><blockquote>
+<p>上面两段开源代码比较古老且有点乱，基于最新的opencv应该可以很快的复现docstrum</p>
+</blockquote>
+<p><img data-src="//qiniu.s1nh.org/Blog_docstrum_1.png" alt="image.png"></p>
+<h2 id="0x03-进展"><a href="#0x03-进展" class="headerlink" title="0x03 进展"></a>0x03 进展</h2><blockquote>
+<p>没来得及看的一些文章</p>
+</blockquote>
+<ul>
+<li><p><code>60多页</code> Cattoni, Roldano, et al. “Geometric layout analysis techniques for document image understanding: a review.” ITC-irst Technical Report 9703.09 (1998).</p>
+</li>
+<li><p><a href="https://www.researchgate.net/profile/Faisal_Shafait/publication/226110361_Coupled_snakelets_for_curled_text-line_segmentation_from_warped_document_images/links/542358fe0cf26120b7a6c334.pdf">[IJDAR 2013]</a> Bukhari, S. S., Shafait, F., &amp; Breuel, T. M.  Coupled snakelets for curled text-line segmentation from warped document images</p>
+<img data-src="//qiniu.s1nh.org/Blog_docstrum_2.png" width="600"></li>
+<li><p><a href="https://www.researchgate.net/profile/Thomas_Breuel/publication/5431819_Performance_Evaluation_and_Benchmarking_of_Six-Page_Segmentation_Algorithms/links/551dd6dd0cf213ef063eb1ee.pdf">[TPAMI 2008]</a> Shafait, F., Keysers, D., &amp; Breuel, T. Performance evaluation and benchmarking of six-page segmentation algorithms </p>
+<img data-src="//qiniu.s1nh.org/Blog_docstrum_3.png" width="600"></li>
+<li><p><a href="https://pdfs.semanticscholar.org/aa39/21e3a2eda4dd91c89f601ca9ae502f1e65e3.pdf">ICIAR 2014</a> Kassis, M., Kurar, B., Cohen, R., El-Sana, J., &amp; Kedem, K. Using Scale-Space Anisotropic Smoothing for Text Line Extraction in Historical Documents.</p>
+<img data-src="//qiniu.s1nh.org/Blog_docstrum_6.png" width="700"></li>
+<li><p><a href="http://www.iapr-tc11.org/archive/das2012/attachments/FullPaperProceedings/4661a394.pdf">DAS 2012</a> Afzal, M. Z., Kramer, M., Bukhari, S. S., Shafait, F., &amp; Breuel, T. M.  Improvements to uncalibrated feature-based stereo matching for document images by using text-line segmentation</p>
+<img data-src="//qiniu.s1nh.org/Blog_docstrum_4.png" width="500"></li>
+<li><p><a href="http://www.dfki.de/~bukhari/data/papers/29-Bukhari-Generic-Textline-Extraction-ICDAR13.pdf">ICDAR 2013</a>Bukhari, S. S., Shafait, F., &amp; Breuel, T. M. (2013, August). Towards generic text-line extraction.</p>
+<img data-src="//qiniu.s1nh.org/Blog_docstrum_5.png" width="400"></li>
+</ul>
+<h2 id="0x04-Document-Dewarping"><a href="#0x04-Document-Dewarping" class="headerlink" title="0x04 Document Dewarping"></a>0x04 Document Dewarping</h2><ul>
+<li>数据集[<a href="http://staffhome.ecm.uwa.edu.au/~00082689/downloads.html">CBDAR 2007 dataset</a>]</li>
+<li>[<a href="http://www.imlab.jp/cbdar2007/proceedings/papers/P1.pdf">CBDAR 2007</a>] Fu, Bin, et al. “A model-based book dewarping method using text line detection.”<br>CTM 方法，有一个非官方实现[github] [blog]</li>
+<li>[<a href="http://159.226.21.68/bitstream/173211/3713/1/TPAMI2012.pdf">TPAMI 2012</a>] Meng et al. 2011, Metric rectification of curved document images</li>
+<li>[PR 2015] Kim et al. 2015, Document dewarping via text-line based optimization<br>有个同学了复现上面两个算法[<a href="https://github.com/phulin/rebook">github</a>，我暂时跑不通</li>
+<li>[<a href="https://ieeexplore.ieee.org/document/8270077/authors#authors">ICDAR 2017</a>] Robust Document Image Dewarping Method Using Text-Lines and Line Segments<br>应该是最新的，作者提供了[二进制文件]，没有源码，据说比2015年Kim的算法好很多</li>
+<li>[<a href="https://www3.cs.stonybrook.edu/~cvl/content/papers/2018/Ma_CVPR18.pdf">CVPR 2018</a>] DocUNet. A state-of-the-art work from face++ probably, but no source code.</li>
+<li>Leptonica，很好的库，注释比代码都多。它的dewarping代码貌似是基于textlines的</li>
+</ul>
+<p>Python 中使用 tesseract-ocr leptonica [<a href="https://github.com/ybur-yug/python_ocr_tutorial">github</a>] [<a href="https://realpython.com/setting-up-a-simple-ocr-server/">blog</a>]</p>
+<h2 id="0xFF-开源框架"><a href="#0xFF-开源框架" class="headerlink" title="0xFF 开源框架"></a>0xFF 开源框架</h2><ul>
+<li><a href="https://github.com/scantailor/scantailor">scantailor</a> <code>比较古老</code> 可以将拍照的书页自动转换为无卷曲的扫描书页</li>
+</ul>
+<img data-src="//qiniu.s1nh.org/Blog_docstrum_7.png" width="600">
+
+<img data-src="//qiniu.s1nh.org/Blog_docstrum_8.png" width="500">
+
+<ul>
+<li><a href="http://www.leptonica.com/line-removal.html">leptonica</a>  一个古老又顽强的库<code>被Tesseract、OpenCV、jbig2enc依赖</code>，官方有很多例子演示它好玩的算法</li>
+</ul>
+<img data-src="//qiniu.s1nh.org/Blog_docstrum_9.png" width="700">
+
+<img data-src="//qiniu.s1nh.org/Blog_docstrum_10.png" width="600">
+
+<img data-src="//qiniu.s1nh.org/Blog_docstrum_11.png" width="600">
+
+<ul>
+<li><p>OCRopus – A free document layout analysis and OCR system, implemented in C++ and Python and for FreeBSD, Linux, and Mac OS X. This software supports a plug-in architecture which allows the user to select from a variety of different document layout analysis and OCR algorithms.</p>
+</li>
+<li><p>OCRFeeder – An OCR suite for Linux, written in python, which also supports document layout analysis. This software is actively being developed, and is free and open-source.</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+      <tags>
+        <tag>OCR</tag>
+        <tag>docstrum</tag>
+      </tags>
   </entry>
   <entry>
     <title>消失的评论</title>
@@ -3694,110 +3781,6 @@ apt-get install libusb-1.0-0-dev
       <categories>
         <category>其它笔记</category>
       </categories>
-  </entry>
-  <entry>
-    <title>文档布局分析 &amp; 扭曲文档图像恢复 --- Document Layout Analysis &amp; Document Image Dewarping</title>
-    <url>/post/document-layout-analysis/</url>
-    <content><![CDATA[<!--
-> 不知道各位有没有碰到过这种同事，经常一遇到问题就找你帮忙。等你坑赤坑赤花了几个小时在这个问题上，甚至已经帮他解决了问题的时候，他悠悠的来一句问题已经搞定了不麻烦你了；
-> 还有另一种同事，你跟他结对编程，他只做自己擅长的部分，剩下擦屁股的工作都丢给你，出去宣扬这个部分都是他做的好累呀，出了问题背锅的总是你；
-> 偏偏最近我就跟这种人合作，真是头疼。消消气，还是有容乃大为好。
--->
-<h2 id="0x00"><a href="#0x00" class="headerlink" title="0x00"></a>0x00</h2><p>对文本进行OCR前，必须分析和定义文档的逻辑结构。 例如文本块、段落、行的位置；是否有应该重建的表格；是否有“图像”“条形码等”。</p>
-<p>文档布局分析 (Document Layout Analysis) 是识别和分类文本文档的扫描图像中的感兴趣区域（RoI, Regions of Interest) 的过程。阅读系统需要从非文本区域分割文本区域，并按正确的阅读顺序排列。将文本正文，插图，数学符号和嵌入文档中的表格等不同区域（或块）的检测和标记称为<strong>几何布局分析</strong>。但文本区域在文档中扮演不同的逻辑角色（标题，标题，脚注等），这种语义标记是<strong>逻辑布局分析</strong>的范围。</p>
-<p>文档布局分析是几何和逻辑标签的结合。它通常在将文档图像发送到OCR引擎之前执行，但也可用于检测大型存档中同一文档的重复副本，或者通过其结构或图示内容索引文档。</p>
-<p><img data-src="//qiniu.s1nh.org/Blog_fr-editable-copy-result.png" title="Document Layout Analysis"></p>
-<span id="more"></span>
-
-<h2 id="0x01-最早的算法实现-docstrum"><a href="#0x01-最早的算法实现-docstrum" class="headerlink" title="0x01 最早的算法实现 docstrum"></a>0x01 最早的算法实现 docstrum</h2><p>1993年，<strong>O’ Gorman</strong> 在<strong>TPAMI</strong>中发表了自下而上的文档布局分析算法<code>docstrum</code>，首先将文档解析为黑白连接区域，然后将这些区域分组为单词，然后分为文本行，最后分组为文本块。</p>
-<p>简单翻译了一下它的算法（<a href="https://en.wikipedia.org/wiki/Document_layout_analysis">english version</a>）：</p>
-<blockquote>
-<p>算法开始的字母代表着原始论文中每小节的标题序号。原始论文中，每个小节的标题如下：</p>
-</blockquote>
-<ul>
-<li>B. Preprocessing</li>
-<li>C. Nearest-Neighbor Clustering and Docstrum Plot</li>
-<li>D. Spacing and Initial Orientation Estimation</li>
-<li>E. Determination of Text Lines and Accurate Orientation Measurement</li>
-<li>F. Structural Block Determination</li>
-<li>G. Filtering</li>
-<li>H. Global and Local Lay-out Analysis</li>
-</ul>
-<ol>
-<li><code>B</code> 预处理图像以去除<strong>高斯噪声</strong>和<strong>椒盐噪声</strong>。<em>（某些噪声消除滤波器可能会将逗号和句号视为噪声，因此必须小心谨慎）</em></li>
-<li><code>B</code> 将图像<strong>二值化</strong></li>
-<li><code>B</code> 将图像分割为黑色像素的<strong>连通分量（下文称 Symbol）</strong>。对于每个Symbol，计算边框和质心（bounding box, centroid）。</li>
-<li><code>C</code> 对于每个Symbol，确定其k近邻，且k&gt;=4。<em>（ O’Gorman在他的论文中建议将k = 5作为鲁棒性和速度之间的良好折衷。使用至少k = 4的原因是对于文档中的符号，两个或三个最接近的符号是在相同文本行上紧邻的那些符号。第四最近的符号通常在正上方或下方的一条线上，并且在下面的最近邻居计算中包括这些符号是很重要的。）</em></li>
-<li><code>C</code> 每个Symbol的近邻对与两者质心的向量相关。如果为每对最近邻Symbol绘制这些向量，则可以得到文档的<strong>docstrum</strong>（下图）。通过来自水平的角度θ和两个最近邻居符号之间的距离D，创建<strong>最近邻角</strong>和<strong>最近邻距离直方图</strong>。</li>
-<li><code>D</code> 使用最近邻角度直方图，可以计算文档的歪斜。如果歪斜较小，则继续下一步。如果不是，旋转图像以消除歪斜并返回<em>步骤3</em>。</li>
-<li><code>D</code> 最近邻距离直方图具有若干峰值，并且这些峰值通常表示<strong>字符间间距</strong>，<strong>字间间距</strong>和<strong>行间间隔</strong>（between-character, between-word, between-line）。</li>
-<li><code>D</code> 标记每个Symbol较远的邻居，该距离在<strong>between-character</strong>或<strong>between-word</strong>的某个容差内。对于标记的每个最近邻居符号，绘制连接其质心的线段。</li>
-<li><code>E</code> 通过线段连接到其邻居的符号形成<strong>文本行</strong>。对于文本行中的所有质心，可以使用线性回归计算表示文本行的<strong>实际线段</strong>。（使用<strong>线性回归</strong>，是因为文本行中Symbol的所有质心都不太可能是共线的。）</li>
-<li><code>F</code> 对于每对文本行，可以计算它们对应的线段之间的最小距离。如果该距离在步骤7中计算的行间间隔的某个容差内，则将两个文本行分组到相同的<strong>文本块</strong>中。</li>
-<li>最后，可以为每个文本块计算<strong>边界框</strong>，并完成文档布局分析。<br><img data-src="//qiniu.s1nh.org/Blog_docstrum_00.png" alt="docstrum"></li>
-</ol>
-<h2 id="0x02-实验"><a href="#0x02-实验" class="headerlink" title="0x02 实验"></a>0x02 实验</h2><h3 id="1-两个开源代码"><a href="#1-两个开源代码" class="headerlink" title="1. 两个开源代码"></a>1. 两个开源代码</h3><p><a href="https://github.com/chadoliver/cosc428-structor">https://github.com/chadoliver/cosc428-structor</a> 复现了docstrum<br><a href="https://github.com/chulwoopack/docstrum">https://github.com/chulwoopack/docstrum</a> 对前一个开源代码进行了优化</p>
-<h3 id="2-复现"><a href="#2-复现" class="headerlink" title="2. 复现"></a>2. 复现</h3><blockquote>
-<p>上面两段开源代码比较古老且有点乱，基于最新的opencv应该可以很快的复现docstrum</p>
-</blockquote>
-<p><img data-src="//qiniu.s1nh.org/Blog_docstrum_1.png" alt="image.png"></p>
-<h2 id="0x03-进展"><a href="#0x03-进展" class="headerlink" title="0x03 进展"></a>0x03 进展</h2><blockquote>
-<p>没来得及看的一些文章</p>
-</blockquote>
-<ul>
-<li><p><code>60多页</code> Cattoni, Roldano, et al. “Geometric layout analysis techniques for document image understanding: a review.” ITC-irst Technical Report 9703.09 (1998).</p>
-</li>
-<li><p><a href="https://www.researchgate.net/profile/Faisal_Shafait/publication/226110361_Coupled_snakelets_for_curled_text-line_segmentation_from_warped_document_images/links/542358fe0cf26120b7a6c334.pdf">[IJDAR 2013]</a> Bukhari, S. S., Shafait, F., &amp; Breuel, T. M.  Coupled snakelets for curled text-line segmentation from warped document images</p>
-<img data-src="//qiniu.s1nh.org/Blog_docstrum_2.png" width="600"></li>
-<li><p><a href="https://www.researchgate.net/profile/Thomas_Breuel/publication/5431819_Performance_Evaluation_and_Benchmarking_of_Six-Page_Segmentation_Algorithms/links/551dd6dd0cf213ef063eb1ee.pdf">[TPAMI 2008]</a> Shafait, F., Keysers, D., &amp; Breuel, T. Performance evaluation and benchmarking of six-page segmentation algorithms </p>
-<img data-src="//qiniu.s1nh.org/Blog_docstrum_3.png" width="600"></li>
-<li><p><a href="https://pdfs.semanticscholar.org/aa39/21e3a2eda4dd91c89f601ca9ae502f1e65e3.pdf">ICIAR 2014</a> Kassis, M., Kurar, B., Cohen, R., El-Sana, J., &amp; Kedem, K. Using Scale-Space Anisotropic Smoothing for Text Line Extraction in Historical Documents.</p>
-<img data-src="//qiniu.s1nh.org/Blog_docstrum_6.png" width="700"></li>
-<li><p><a href="http://www.iapr-tc11.org/archive/das2012/attachments/FullPaperProceedings/4661a394.pdf">DAS 2012</a> Afzal, M. Z., Kramer, M., Bukhari, S. S., Shafait, F., &amp; Breuel, T. M.  Improvements to uncalibrated feature-based stereo matching for document images by using text-line segmentation</p>
-<img data-src="//qiniu.s1nh.org/Blog_docstrum_4.png" width="500"></li>
-<li><p><a href="http://www.dfki.de/~bukhari/data/papers/29-Bukhari-Generic-Textline-Extraction-ICDAR13.pdf">ICDAR 2013</a>Bukhari, S. S., Shafait, F., &amp; Breuel, T. M. (2013, August). Towards generic text-line extraction.</p>
-<img data-src="//qiniu.s1nh.org/Blog_docstrum_5.png" width="400"></li>
-</ul>
-<h2 id="0x04-Document-Dewarping"><a href="#0x04-Document-Dewarping" class="headerlink" title="0x04 Document Dewarping"></a>0x04 Document Dewarping</h2><ul>
-<li>数据集[<a href="http://staffhome.ecm.uwa.edu.au/~00082689/downloads.html">CBDAR 2007 dataset</a>]</li>
-<li>[<a href="http://www.imlab.jp/cbdar2007/proceedings/papers/P1.pdf">CBDAR 2007</a>] Fu, Bin, et al. “A model-based book dewarping method using text line detection.”<br>CTM 方法，有一个非官方实现[github] [blog]</li>
-<li>[<a href="http://159.226.21.68/bitstream/173211/3713/1/TPAMI2012.pdf">TPAMI 2012</a>] Meng et al. 2011, Metric rectification of curved document images</li>
-<li>[PR 2015] Kim et al. 2015, Document dewarping via text-line based optimization<br>有个同学了复现上面两个算法[<a href="https://github.com/phulin/rebook">github</a>，我暂时跑不通</li>
-<li>[<a href="https://ieeexplore.ieee.org/document/8270077/authors#authors">ICDAR 2017</a>] Robust Document Image Dewarping Method Using Text-Lines and Line Segments<br>应该是最新的，作者提供了[二进制文件]，没有源码，据说比2015年Kim的算法好很多</li>
-<li>[<a href="https://www3.cs.stonybrook.edu/~cvl/content/papers/2018/Ma_CVPR18.pdf">CVPR 2018</a>] DocUNet. A state-of-the-art work from face++ probably, but no source code.</li>
-<li>Leptonica，很好的库，注释比代码都多。它的dewarping代码貌似是基于textlines的</li>
-</ul>
-<p>Python 中使用 tesseract-ocr leptonica [<a href="https://github.com/ybur-yug/python_ocr_tutorial">github</a>] [<a href="https://realpython.com/setting-up-a-simple-ocr-server/">blog</a>]</p>
-<h2 id="0xFF-开源框架"><a href="#0xFF-开源框架" class="headerlink" title="0xFF 开源框架"></a>0xFF 开源框架</h2><ul>
-<li><a href="https://github.com/scantailor/scantailor">scantailor</a> <code>比较古老</code> 可以将拍照的书页自动转换为无卷曲的扫描书页</li>
-</ul>
-<img data-src="//qiniu.s1nh.org/Blog_docstrum_7.png" width="600">
-
-<img data-src="//qiniu.s1nh.org/Blog_docstrum_8.png" width="500">
-
-<ul>
-<li><a href="http://www.leptonica.com/line-removal.html">leptonica</a>  一个古老又顽强的库<code>被Tesseract、OpenCV、jbig2enc依赖</code>，官方有很多例子演示它好玩的算法</li>
-</ul>
-<img data-src="//qiniu.s1nh.org/Blog_docstrum_9.png" width="700">
-
-<img data-src="//qiniu.s1nh.org/Blog_docstrum_10.png" width="600">
-
-<img data-src="//qiniu.s1nh.org/Blog_docstrum_11.png" width="600">
-
-<ul>
-<li><p>OCRopus – A free document layout analysis and OCR system, implemented in C++ and Python and for FreeBSD, Linux, and Mac OS X. This software supports a plug-in architecture which allows the user to select from a variety of different document layout analysis and OCR algorithms.</p>
-</li>
-<li><p>OCRFeeder – An OCR suite for Linux, written in python, which also supports document layout analysis. This software is actively being developed, and is free and open-source.</p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
-      </categories>
-      <tags>
-        <tag>OCR</tag>
-        <tag>docstrum</tag>
-      </tags>
   </entry>
   <entry>
     <title>Kali linux 主题 与 eclipse 黑色主题冲突</title>
@@ -5594,6 +5577,23 @@ H1&lt;---|0.14-1.6|Mirtazapine
       </tags>
   </entry>
   <entry>
+    <title>一些小技巧</title>
+    <url>/post/network-tips/</url>
+    <content><![CDATA[<h2 id="linux-中通过非-root-账户使用-ifconfig-设置-ip-的方法"><a href="#linux-中通过非-root-账户使用-ifconfig-设置-ip-的方法" class="headerlink" title="linux 中通过非 root 账户使用 ifconfig 设置 ip 的方法"></a>linux 中通过非 root 账户使用 ifconfig 设置 ip 的方法</h2><ol>
+<li>创建一个 ifconfig 的副本；</li>
+<li>通过 setcap 向副本授予 CAP_NET_ADMIN 能力，而不必授予 root（用户 ID 0）的完整权限；</li>
+<li>为了避免非法用户使用这个副本来修改网络，需要给ifconfig副本设置新的权限，仅允许该组的成员执行。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cp /sbin/ifconfig .</span><br><span class="line">sudo setcap cap_net_admin=eip ./ifconfig</span><br><span class="line">./ifconfig eth0 1.2.3.4    # succeeds</span><br><span class="line">chmod 750 ./ifconfig</span><br></pre></td></tr></table></figure>
+
+<h2 id="FastDDS-无法发送超过-255-string"><a href="#FastDDS-无法发送超过-255-string" class="headerlink" title="FastDDS 无法发送超过 255 string"></a>FastDDS 无法发送超过 255 string</h2><p>可能会有 log <code>[RTPS_READER_HISTORY Error] Change payload size of &#39;xxx&#39; bytes is larger than the history payload size of &#39;271&#39; bytes and cannot be resized. -&gt; Function can_change_be_added_nts</code></p>
+<p>在 subscriber 加 <code>rqos.endpoints().history_memory_policy = eprosima::fastrtps::rtps::DYNAMIC_RESERVE_MEMORY_MODE;</code></p>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Multiecuscan (MES) 中文用户手册</title>
     <url>/post/multiecuscan-user-guide/</url>
     <content><![CDATA[<p>Multiecuscan 是意大利车辆的诊断软件。 它允许您对支持的车辆/模块执行各种诊断任务。</p>
@@ -5729,7 +5729,7 @@ H1&lt;---|0.14-1.6|Mirtazapine
 <li><p>您将收到一封包含新许可证密钥的电子邮件。</p>
 </li>
 </ol>
-<p>如果您对许可证转移功能有任何疑问，可以将新的硬件密钥通过电子邮件发送至 <a href="mailto:&#115;&#117;&#x70;&#112;&#x6f;&#114;&#116;&#64;&#109;&#x75;&#x6c;&#x74;&#105;&#x65;&#99;&#x75;&#115;&#99;&#97;&#x6e;&#x2e;&#x6e;&#101;&#116;">&#115;&#117;&#x70;&#112;&#x6f;&#114;&#116;&#64;&#109;&#x75;&#x6c;&#x74;&#105;&#x65;&#99;&#x75;&#115;&#99;&#97;&#x6e;&#x2e;&#x6e;&#101;&#116;</a>。</p>
+<p>如果您对许可证转移功能有任何疑问，可以将新的硬件密钥通过电子邮件发送至 <a href="mailto:&#115;&#117;&#112;&#x70;&#x6f;&#x72;&#x74;&#x40;&#109;&#117;&#108;&#x74;&#105;&#101;&#x63;&#x75;&#x73;&#x63;&#x61;&#110;&#x2e;&#x6e;&#x65;&#116;">&#115;&#117;&#112;&#x70;&#x6f;&#x72;&#x74;&#x40;&#109;&#117;&#108;&#x74;&#105;&#101;&#x63;&#x75;&#x73;&#x63;&#x61;&#110;&#x2e;&#x6e;&#x65;&#116;</a>。</p>
 <p>请注意，许可证转移功能对转移次数有限制。</p>
 <p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image10.png-QNthin"></p>
 <h2 id="2-用户界面"><a href="#2-用户界面" class="headerlink" title="2. 用户界面"></a>2. 用户界面</h2><h3 id="2-1-Multiecuscan-主屏幕"><a href="#2-1-Multiecuscan-主屏幕" class="headerlink" title="2.1. Multiecuscan 主屏幕"></a>2.1. Multiecuscan 主屏幕</h3><p>当您启动 Multiecuscan 时，它会显示以下屏幕：</p>
@@ -6233,23 +6233,6 @@ H1&lt;---|0.14-1.6|Mirtazapine
         <tag>用户手册</tag>
         <tag>user-guide</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>一些小技巧</title>
-    <url>/post/network-tips/</url>
-    <content><![CDATA[<h2 id="linux-中通过非-root-账户使用-ifconfig-设置-ip-的方法"><a href="#linux-中通过非-root-账户使用-ifconfig-设置-ip-的方法" class="headerlink" title="linux 中通过非 root 账户使用 ifconfig 设置 ip 的方法"></a>linux 中通过非 root 账户使用 ifconfig 设置 ip 的方法</h2><ol>
-<li>创建一个 ifconfig 的副本；</li>
-<li>通过 setcap 向副本授予 CAP_NET_ADMIN 能力，而不必授予 root（用户 ID 0）的完整权限；</li>
-<li>为了避免非法用户使用这个副本来修改网络，需要给ifconfig副本设置新的权限，仅允许该组的成员执行。</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cp /sbin/ifconfig .</span><br><span class="line">sudo setcap cap_net_admin=eip ./ifconfig</span><br><span class="line">./ifconfig eth0 1.2.3.4    # succeeds</span><br><span class="line">chmod 750 ./ifconfig</span><br></pre></td></tr></table></figure>
-
-<h2 id="FastDDS-无法发送超过-255-string"><a href="#FastDDS-无法发送超过-255-string" class="headerlink" title="FastDDS 无法发送超过 255 string"></a>FastDDS 无法发送超过 255 string</h2><p>可能会有 log <code>[RTPS_READER_HISTORY Error] Change payload size of &#39;xxx&#39; bytes is larger than the history payload size of &#39;271&#39; bytes and cannot be resized. -&gt; Function can_change_be_added_nts</code></p>
-<p>在 subscriber 加 <code>rqos.endpoints().history_memory_policy = eprosima::fastrtps::rtps::DYNAMIC_RESERVE_MEMORY_MODE;</code></p>
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
-      </categories>
   </entry>
   <entry>
     <title>2016-06-12 OpenCV学习笔记</title>
