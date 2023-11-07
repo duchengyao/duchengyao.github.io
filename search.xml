@@ -669,33 +669,6 @@ root@kali:~# depmod -a -v &quot;3.8.13-bone53&quot;
       </categories>
   </entry>
   <entry>
-    <title>Fender S-1 开关的接法</title>
-    <url>/post/Fender_S-1_WiringDiagram/</url>
-    <content><![CDATA[<p>最近在改造吉他的电路，搜集了一些关于拾音器电路的网站：</p>
-<span id="more"></span>
-
-<ul>
-<li><a href="http://www.seymourduncan.com/support/wiring-diagrams/">Seymour Duncan wiring-diagrams/</a>：Seymour Duncan 官方的电路参考，在这里可以找到各种配置的电路，特别强大。这个网站刚刚改版，看起来比之前人性化许多。</li>
-<li><a href="http://www.deluxeguitar.com/">Deluxe Guitar</a>：包含了美豪的电路、琴颈形状、旋钮、音色试听等各种信息。</li>
-<li><a href="http://guitarwiring.blogspot.jp/">The Guitar Wiring Blog</a>：各种各样奇奇怪怪的吉他电路图。</li>
-<li><a href="http://www.premierguitar.com/articles/Mod_Garage_The_Fender_S_1_Switching_System">Mod Garage The Fender S-1 Switching System</a>：这个帖子是介绍S-1开关的</li>
-</ul>
-<p>下面是从fender官网搜集的4个不同型号的Fender Deluxe St电路图：</p>
-<p><a href="//qiniu.s1nh.org/Blog_011-8102A_SISD.pdf">011-8102A_SISD.pdf</a></p>
-<p><a href="//qiniu.s1nh.org/Blog_011-9000B_SISD.pdf">011-9000B_SISD.pdf</a></p>
-<p><a href="//qiniu.s1nh.org/Blog_011-9100A_SISD.pdf">011-9100A_SISD.pdf</a></p>
-<p><a href="//qiniu.s1nh.org/Blog_Fender_Am_Dlx_Stratocaster_HSS_Shawbucker_011911XXXX_Service_Manual.pdf">Fender_011911XXXX_Service_Manual.pdf</a></p>
-]]></content>
-      <categories>
-        <category>音乐相关</category>
-      </categories>
-      <tags>
-        <tag>fender</tag>
-        <tag>wiring diagram</tag>
-        <tag>S1</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Github 支持除代码以外的文件格式</title>
     <url>/post/Github-non-code-files/</url>
     <content><![CDATA[<p>Github 支持图片, geoJSON, 3D模型, 表格, PDF等格式的查看和版本对比。</p>
@@ -734,6 +707,33 @@ root@kali:~# depmod -a -v &quot;3.8.13-bone53&quot;
       </categories>
       <tags>
         <tag>Github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Fender S-1 开关的接法</title>
+    <url>/post/Fender_S-1_WiringDiagram/</url>
+    <content><![CDATA[<p>最近在改造吉他的电路，搜集了一些关于拾音器电路的网站：</p>
+<span id="more"></span>
+
+<ul>
+<li><a href="http://www.seymourduncan.com/support/wiring-diagrams/">Seymour Duncan wiring-diagrams/</a>：Seymour Duncan 官方的电路参考，在这里可以找到各种配置的电路，特别强大。这个网站刚刚改版，看起来比之前人性化许多。</li>
+<li><a href="http://www.deluxeguitar.com/">Deluxe Guitar</a>：包含了美豪的电路、琴颈形状、旋钮、音色试听等各种信息。</li>
+<li><a href="http://guitarwiring.blogspot.jp/">The Guitar Wiring Blog</a>：各种各样奇奇怪怪的吉他电路图。</li>
+<li><a href="http://www.premierguitar.com/articles/Mod_Garage_The_Fender_S_1_Switching_System">Mod Garage The Fender S-1 Switching System</a>：这个帖子是介绍S-1开关的</li>
+</ul>
+<p>下面是从fender官网搜集的4个不同型号的Fender Deluxe St电路图：</p>
+<p><a href="//qiniu.s1nh.org/Blog_011-8102A_SISD.pdf">011-8102A_SISD.pdf</a></p>
+<p><a href="//qiniu.s1nh.org/Blog_011-9000B_SISD.pdf">011-9000B_SISD.pdf</a></p>
+<p><a href="//qiniu.s1nh.org/Blog_011-9100A_SISD.pdf">011-9100A_SISD.pdf</a></p>
+<p><a href="//qiniu.s1nh.org/Blog_Fender_Am_Dlx_Stratocaster_HSS_Shawbucker_011911XXXX_Service_Manual.pdf">Fender_011911XXXX_Service_Manual.pdf</a></p>
+]]></content>
+      <categories>
+        <category>音乐相关</category>
+      </categories>
+      <tags>
+        <tag>fender</tag>
+        <tag>wiring diagram</tag>
+        <tag>S1</tag>
       </tags>
   </entry>
   <entry>
@@ -2871,57 +2871,6 @@ apt-get install libusb-1.0-0-dev
       </categories>
   </entry>
   <entry>
-    <title>不推荐购买创想三维 Creality Sermoon V1 的几个理由</title>
-    <url>/post/do-not-buy-sermoon-v1/</url>
-    <content><![CDATA[<blockquote>
-<p>看过 [<a href="https://www.zhihu.com/zvideo/1457409894764335104">阿文君的视频</a>] 买了 <code>Sermoon V1</code>。体验过后感觉比较玩具、拓展性也比较差，在这里提出几个不该买的理由。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="0x01-缺少-Linear-Advance-（压力提前-线性推进）-的支持"><a href="#0x01-缺少-Linear-Advance-（压力提前-线性推进）-的支持" class="headerlink" title="0x01 缺少 Linear Advance （压力提前/线性推进） 的支持"></a>0x01 缺少 Linear Advance （压力提前/线性推进） 的支持</h2><p><code>准确的 Linear Advance 的校准是打印一个优秀模型的重要因素</code></p>
-<p>默认情况下，挤出机以线性方式工作。但挤出机不是线性系统，明显会导致在每一步打印后挤出额外材料，并且在下一步开始打印时材料不够。（下图表示了打印机在加速减速的过程，在2处材料挤出不够，且在4、5处产生堆料）</p>
-<p><img data-src="//qiniu.s1nh.org/sermoon-v1-k-factor_low.png"></p>
-<p>使用 Linear Advance 的优点：</p>
-<ul>
-<li>减少粗糙的边缘，尺寸精度更高。</li>
-<li>可以在不损失任何打印质量的情况下实现更高的打印速度。</li>
-<li>即使在较低的打印速度下，打印质量也会得到提高。</li>
-<li>获得更锋利的边缘。</li>
-</ul>
-<p>网络有很多矫正线性推进的教程，比如：</p>
-<ul>
-<li><a href="https://www.bilibili.com/video/BV1Z94y1U7UL">3D打印机klipper在Voron0.1机器上进行挤出机压力提前测试和校准：新手教程</a></li>
-<li><a href="https://www.bilibili.com/video/BV18541117Yk">【klipper】3D打印机挤出机压力提前测试和校准【3集全】拐角膨胀和起始点分离修正办法</a></li>
-</ul>
-<p>Marlin 官网也提供了详细的<a href="https://marlinfw.org/docs/features/lin_advance.html">调整教程</a></p>
-<p>然而我们的 Sermoon V1 不支持此功能，无法进行调整。我打电话到厂家，给的答复也是“不开源” “没有你想要的固件”</p>
-<h2 id="0x02-糟糕的散热"><a href="#0x02-糟糕的散热" class="headerlink" title="0x02 糟糕的散热"></a>0x02 糟糕的散热</h2><p>此机器的精灵挤出机主体跟 Ender3 S1 的相同，但附件不同。V1挤出机的附件有个致命缺陷散热风扇从底部吸入热空气再给模型降温，缺点是散热很差，在<a href="https://fl.himi3d.cn/d/439-bensermoon-v1">这篇文章</a>有讨论。有几种方式可以改造散热，我做了一版，调试好后会放出来（下图左上。另外：<code>右下黑</code>，原厂；右上黄，<a href="https://fl.himi3d.cn/d/426-bengo10-ender3-s1">S1 风道</a>；左下白，<a href="https://www.crealitycloud.cn/model-detail/626821aac54f1758304dc951">风扇侧装</a>）。</p>
-<p><img data-src="//qiniu.s1nh.org/sermoon-v1-fan.jpg"></p>
-<p>另外，个人对于挤出机的排线耐久性持怀疑态度，加热棒的大电流不知道会不会导致排线老化。</p>
-<h2 id="0x03-鸡肋的-wifi-功能"><a href="#0x03-鸡肋的-wifi-功能" class="headerlink" title="0x03 鸡肋的 wifi 功能"></a>0x03 鸡肋的 wifi 功能</h2><p>Sermoon V1 自带一个 wifi 板子（下图中间绿色的电路板），功能很弱鸡。比如录像没办法下载，官方给的答复是可以<code>打开手机的录屏功能</code>。</p>
-<p><img data-src="//qiniu.s1nh.org/sermoon-v1-whole.png"></p>
-<p>我已经把它换成树莓派了，<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2sh1t/mod_octoprint_setup_for_the_creality_sermoon_v1/">有手就能改</a>，可以安装 octoprint 以支持更强大的 <code>wifi</code> <code>远程监控</code> <code>延时摄影</code> 等功能。</p>
-<iframe src="//player.bilibili.com/player.html?aid=342230292&bvid=BV1194y1m7y7&cid=735894030&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-
-<h2 id="0x04-不开源的主控板"><a href="#0x04-不开源的主控板" class="headerlink" title="0x04 不开源的主控板"></a>0x04 不开源的主控板</h2><p>机器左下角的主板基于开源的 <code>Marlin 1</code> 固件魔改而成，<code>Marlin</code> 固件基于 <code>GPL v3</code> 协议，简单来说就是 <code>你可以免费使用、复制、修改、分发受保护程序，但分发时一定要提供源码</code>。然而此主板不提供源码，后果就是我们只能使用老旧的 Marlin 第一代固件，没办法自行升级到 2.0 以上版本，或者最近流行的<code>klipper</code>固件。</p>
-<ul>
-<li>国外有个哥们请求开源，被直接关闭了issue <a href="https://github.com/CrealityOfficial/Ender-3S1/issues/2">链接</a></li>
-<li>无法校准挤出机<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/ui2u5v/how_to_calibrate_extruder_esteps_z_axis_baby/">链接</a></li>
-<li><a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2stxx/sermoon_v1_and_v1_pro_general_info_thoughts/">这里</a> 有一些讨论</li>
-<li><a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2toy2/marlin_stock_firmware_notes_from_the_sermoon_v1/">这里</a>有一些关于固件的信息</li>
-</ul>
-<h2 id="0x05-无用的-pro-版本"><a href="#0x05-无用的-pro-版本" class="headerlink" title="0x05 无用的 pro 版本"></a>0x05 无用的 pro 版本</h2><p>它的 pro 版本包含开盖暂停和相机功能，然而</p>
-<ul>
-<li>开盖暂停/断料检测只在SD卡打印时有效；</li>
-<li>摄像头会经常断线（国外有人讨论过可能是这种摄像头不支持在高温环境下工作[<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2stxx/sermoon_v1_and_v1_pro_general_info_thoughts/i2r7irn/?utm_source=reddit&utm_medium=web2x&context=3">链接</a>]）。</li>
-</ul>
-<h2 id="0x06-吵"><a href="#0x06-吵" class="headerlink" title="0x06 吵"></a>0x06 吵</h2><p>这款机器主打静音，但你买了以后就知道给主板散热的小风扇有多吵了。我已经拔风扇插头了，目前没出现什么问题（后盖打开，26度空调）。</p>
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
-      </categories>
-  </entry>
-  <entry>
     <title>消失的评论</title>
     <url>/post/disappeared-comments/</url>
     <content><![CDATA[<p>之前使用的 valine 评论工具有一些漏洞会导致隐私泄漏和XSS攻击，比如[<a href="https://blog.maplesugar.top/valine-prank/">这个</a>]，目前更换为 utteranc ，一个基于 github 的评论工具。之前的评论放弃迁移了，直接贴在本文。</p>
@@ -3679,6 +3628,57 @@ apt-get install libusb-1.0-0-dev
       </categories>
   </entry>
   <entry>
+    <title>不推荐购买创想三维 Creality Sermoon V1 的几个理由</title>
+    <url>/post/do-not-buy-sermoon-v1/</url>
+    <content><![CDATA[<blockquote>
+<p>看过 [<a href="https://www.zhihu.com/zvideo/1457409894764335104">阿文君的视频</a>] 买了 <code>Sermoon V1</code>。体验过后感觉比较玩具、拓展性也比较差，在这里提出几个不该买的理由。</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="0x01-缺少-Linear-Advance-（压力提前-线性推进）-的支持"><a href="#0x01-缺少-Linear-Advance-（压力提前-线性推进）-的支持" class="headerlink" title="0x01 缺少 Linear Advance （压力提前/线性推进） 的支持"></a>0x01 缺少 Linear Advance （压力提前/线性推进） 的支持</h2><p><code>准确的 Linear Advance 的校准是打印一个优秀模型的重要因素</code></p>
+<p>默认情况下，挤出机以线性方式工作。但挤出机不是线性系统，明显会导致在每一步打印后挤出额外材料，并且在下一步开始打印时材料不够。（下图表示了打印机在加速减速的过程，在2处材料挤出不够，且在4、5处产生堆料）</p>
+<p><img data-src="//qiniu.s1nh.org/sermoon-v1-k-factor_low.png"></p>
+<p>使用 Linear Advance 的优点：</p>
+<ul>
+<li>减少粗糙的边缘，尺寸精度更高。</li>
+<li>可以在不损失任何打印质量的情况下实现更高的打印速度。</li>
+<li>即使在较低的打印速度下，打印质量也会得到提高。</li>
+<li>获得更锋利的边缘。</li>
+</ul>
+<p>网络有很多矫正线性推进的教程，比如：</p>
+<ul>
+<li><a href="https://www.bilibili.com/video/BV1Z94y1U7UL">3D打印机klipper在Voron0.1机器上进行挤出机压力提前测试和校准：新手教程</a></li>
+<li><a href="https://www.bilibili.com/video/BV18541117Yk">【klipper】3D打印机挤出机压力提前测试和校准【3集全】拐角膨胀和起始点分离修正办法</a></li>
+</ul>
+<p>Marlin 官网也提供了详细的<a href="https://marlinfw.org/docs/features/lin_advance.html">调整教程</a></p>
+<p>然而我们的 Sermoon V1 不支持此功能，无法进行调整。我打电话到厂家，给的答复也是“不开源” “没有你想要的固件”</p>
+<h2 id="0x02-糟糕的散热"><a href="#0x02-糟糕的散热" class="headerlink" title="0x02 糟糕的散热"></a>0x02 糟糕的散热</h2><p>此机器的精灵挤出机主体跟 Ender3 S1 的相同，但附件不同。V1挤出机的附件有个致命缺陷散热风扇从底部吸入热空气再给模型降温，缺点是散热很差，在<a href="https://fl.himi3d.cn/d/439-bensermoon-v1">这篇文章</a>有讨论。有几种方式可以改造散热，我做了一版，调试好后会放出来（下图左上。另外：<code>右下黑</code>，原厂；右上黄，<a href="https://fl.himi3d.cn/d/426-bengo10-ender3-s1">S1 风道</a>；左下白，<a href="https://www.crealitycloud.cn/model-detail/626821aac54f1758304dc951">风扇侧装</a>）。</p>
+<p><img data-src="//qiniu.s1nh.org/sermoon-v1-fan.jpg"></p>
+<p>另外，个人对于挤出机的排线耐久性持怀疑态度，加热棒的大电流不知道会不会导致排线老化。</p>
+<h2 id="0x03-鸡肋的-wifi-功能"><a href="#0x03-鸡肋的-wifi-功能" class="headerlink" title="0x03 鸡肋的 wifi 功能"></a>0x03 鸡肋的 wifi 功能</h2><p>Sermoon V1 自带一个 wifi 板子（下图中间绿色的电路板），功能很弱鸡。比如录像没办法下载，官方给的答复是可以<code>打开手机的录屏功能</code>。</p>
+<p><img data-src="//qiniu.s1nh.org/sermoon-v1-whole.png"></p>
+<p>我已经把它换成树莓派了，<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2sh1t/mod_octoprint_setup_for_the_creality_sermoon_v1/">有手就能改</a>，可以安装 octoprint 以支持更强大的 <code>wifi</code> <code>远程监控</code> <code>延时摄影</code> 等功能。</p>
+<iframe src="//player.bilibili.com/player.html?aid=342230292&bvid=BV1194y1m7y7&cid=735894030&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+<h2 id="0x04-不开源的主控板"><a href="#0x04-不开源的主控板" class="headerlink" title="0x04 不开源的主控板"></a>0x04 不开源的主控板</h2><p>机器左下角的主板基于开源的 <code>Marlin 1</code> 固件魔改而成，<code>Marlin</code> 固件基于 <code>GPL v3</code> 协议，简单来说就是 <code>你可以免费使用、复制、修改、分发受保护程序，但分发时一定要提供源码</code>。然而此主板不提供源码，后果就是我们只能使用老旧的 Marlin 第一代固件，没办法自行升级到 2.0 以上版本，或者最近流行的<code>klipper</code>固件。</p>
+<ul>
+<li>国外有个哥们请求开源，被直接关闭了issue <a href="https://github.com/CrealityOfficial/Ender-3S1/issues/2">链接</a></li>
+<li>无法校准挤出机<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/ui2u5v/how_to_calibrate_extruder_esteps_z_axis_baby/">链接</a></li>
+<li><a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2stxx/sermoon_v1_and_v1_pro_general_info_thoughts/">这里</a> 有一些讨论</li>
+<li><a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2toy2/marlin_stock_firmware_notes_from_the_sermoon_v1/">这里</a>有一些关于固件的信息</li>
+</ul>
+<h2 id="0x05-无用的-pro-版本"><a href="#0x05-无用的-pro-版本" class="headerlink" title="0x05 无用的 pro 版本"></a>0x05 无用的 pro 版本</h2><p>它的 pro 版本包含开盖暂停和相机功能，然而</p>
+<ul>
+<li>开盖暂停/断料检测只在SD卡打印时有效；</li>
+<li>摄像头会经常断线（国外有人讨论过可能是这种摄像头不支持在高温环境下工作[<a href="https://www.reddit.com/r/Creality_Sermoon_V1/comments/t2stxx/sermoon_v1_and_v1_pro_general_info_thoughts/i2r7irn/?utm_source=reddit&utm_medium=web2x&context=3">链接</a>]）。</li>
+</ul>
+<h2 id="0x06-吵"><a href="#0x06-吵" class="headerlink" title="0x06 吵"></a>0x06 吵</h2><p>这款机器主打静音，但你买了以后就知道给主板散热的小风扇有多吵了。我已经拔风扇插头了，目前没出现什么问题（后盖打开，26度空调）。</p>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+  </entry>
+  <entry>
     <title>文档布局分析 &amp; 扭曲文档图像恢复 --- Document Layout Analysis &amp; Document Image Dewarping</title>
     <url>/post/document-layout-analysis/</url>
     <content><![CDATA[<!--
@@ -4432,23 +4432,6 @@ try to remove and create again
 <p>博客都是孤芳自赏，分享都是自我陶醉。</p>
 </blockquote>
 <p><img data-src="/about/block-3.png"></p>
-]]></content>
-      <categories>
-        <category>其它笔记</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>华为美</title>
-    <url>/post/huaweimei/</url>
-    <content><![CDATA[<!--
-> 我控制一个人的自由，它就会给我带来其它的效益
--->
-
-<video autoplay loop controls playsinline>
-  <source src="//qiniu.s1nh.org/华为美.mp4" type="video/mp4">
-</video>
-
-<span id="more"></span>
 ]]></content>
       <categories>
         <category>其它笔记</category>
@@ -5712,7 +5695,7 @@ H1&lt;---|0.14-1.6|Mirtazapine
 <li><p>您将收到一封包含新许可证密钥的电子邮件。</p>
 </li>
 </ol>
-<p>如果您对许可证转移功能有任何疑问，可以将新的硬件密钥通过电子邮件发送至 <a href="mailto:&#115;&#117;&#x70;&#112;&#111;&#x72;&#116;&#64;&#x6d;&#x75;&#108;&#x74;&#105;&#x65;&#x63;&#x75;&#x73;&#99;&#x61;&#x6e;&#x2e;&#x6e;&#101;&#x74;">&#115;&#117;&#x70;&#112;&#111;&#x72;&#116;&#64;&#x6d;&#x75;&#108;&#x74;&#105;&#x65;&#x63;&#x75;&#x73;&#99;&#x61;&#x6e;&#x2e;&#x6e;&#101;&#x74;</a>。</p>
+<p>如果您对许可证转移功能有任何疑问，可以将新的硬件密钥通过电子邮件发送至 <a href="mailto:&#115;&#117;&#112;&#112;&#x6f;&#114;&#116;&#64;&#x6d;&#x75;&#108;&#x74;&#x69;&#x65;&#99;&#x75;&#x73;&#99;&#x61;&#x6e;&#46;&#x6e;&#101;&#116;">&#115;&#117;&#112;&#112;&#x6f;&#114;&#116;&#64;&#x6d;&#x75;&#108;&#x74;&#x69;&#x65;&#99;&#x75;&#x73;&#99;&#x61;&#x6e;&#46;&#x6e;&#101;&#116;</a>。</p>
 <p>请注意，许可证转移功能对转移次数有限制。</p>
 <p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image10.png-QNthin"></p>
 <h2 id="2-用户界面"><a href="#2-用户界面" class="headerlink" title="2. 用户界面"></a>2. 用户界面</h2><h3 id="2-1-Multiecuscan-主屏幕"><a href="#2-1-Multiecuscan-主屏幕" class="headerlink" title="2.1. Multiecuscan 主屏幕"></a>2.1. Multiecuscan 主屏幕</h3><p>当您启动 Multiecuscan 时，它会显示以下屏幕：</p>
