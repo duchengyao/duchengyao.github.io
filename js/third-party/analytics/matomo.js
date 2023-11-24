@@ -13,7 +13,7 @@ if (CONFIG.matomo.enable) {
   _paq.push(['trackPageView']);
   _paq.push(['enableLinkTracking']);
   (function() {
-    var u="https://home.s1nh.com:32443/";
+    var u="https://matomo.s1nh.org/";
     _paq.push(['setTrackerUrl', u+'matomo.php']);
     
     if (document.domain.indexOf('com') != -1){

@@ -669,6 +669,33 @@ root@kali:~# depmod -a -v &quot;3.8.13-bone53&quot;
       </categories>
   </entry>
   <entry>
+    <title>Fender S-1 开关的接法</title>
+    <url>/post/Fender_S-1_WiringDiagram/</url>
+    <content><![CDATA[<p>最近在改造吉他的电路，搜集了一些关于拾音器电路的网站：</p>
+<span id="more"></span>
+
+<ul>
+<li><a href="http://www.seymourduncan.com/support/wiring-diagrams/">Seymour Duncan wiring-diagrams/</a>：Seymour Duncan 官方的电路参考，在这里可以找到各种配置的电路，特别强大。这个网站刚刚改版，看起来比之前人性化许多。</li>
+<li><a href="http://www.deluxeguitar.com/">Deluxe Guitar</a>：包含了美豪的电路、琴颈形状、旋钮、音色试听等各种信息。</li>
+<li><a href="http://guitarwiring.blogspot.jp/">The Guitar Wiring Blog</a>：各种各样奇奇怪怪的吉他电路图。</li>
+<li><a href="http://www.premierguitar.com/articles/Mod_Garage_The_Fender_S_1_Switching_System">Mod Garage The Fender S-1 Switching System</a>：这个帖子是介绍S-1开关的</li>
+</ul>
+<p>下面是从fender官网搜集的4个不同型号的Fender Deluxe St电路图：</p>
+<p><a href="//qiniu.s1nh.org/Blog_011-8102A_SISD.pdf">011-8102A_SISD.pdf</a></p>
+<p><a href="//qiniu.s1nh.org/Blog_011-9000B_SISD.pdf">011-9000B_SISD.pdf</a></p>
+<p><a href="//qiniu.s1nh.org/Blog_011-9100A_SISD.pdf">011-9100A_SISD.pdf</a></p>
+<p><a href="//qiniu.s1nh.org/Blog_Fender_Am_Dlx_Stratocaster_HSS_Shawbucker_011911XXXX_Service_Manual.pdf">Fender_011911XXXX_Service_Manual.pdf</a></p>
+]]></content>
+      <categories>
+        <category>音乐相关</category>
+      </categories>
+      <tags>
+        <tag>fender</tag>
+        <tag>wiring diagram</tag>
+        <tag>S1</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Github 支持除代码以外的文件格式</title>
     <url>/post/Github-non-code-files/</url>
     <content><![CDATA[<p>Github 支持图片, geoJSON, 3D模型, 表格, PDF等格式的查看和版本对比。</p>
@@ -707,33 +734,6 @@ root@kali:~# depmod -a -v &quot;3.8.13-bone53&quot;
       </categories>
       <tags>
         <tag>Github</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Fender S-1 开关的接法</title>
-    <url>/post/Fender_S-1_WiringDiagram/</url>
-    <content><![CDATA[<p>最近在改造吉他的电路，搜集了一些关于拾音器电路的网站：</p>
-<span id="more"></span>
-
-<ul>
-<li><a href="http://www.seymourduncan.com/support/wiring-diagrams/">Seymour Duncan wiring-diagrams/</a>：Seymour Duncan 官方的电路参考，在这里可以找到各种配置的电路，特别强大。这个网站刚刚改版，看起来比之前人性化许多。</li>
-<li><a href="http://www.deluxeguitar.com/">Deluxe Guitar</a>：包含了美豪的电路、琴颈形状、旋钮、音色试听等各种信息。</li>
-<li><a href="http://guitarwiring.blogspot.jp/">The Guitar Wiring Blog</a>：各种各样奇奇怪怪的吉他电路图。</li>
-<li><a href="http://www.premierguitar.com/articles/Mod_Garage_The_Fender_S_1_Switching_System">Mod Garage The Fender S-1 Switching System</a>：这个帖子是介绍S-1开关的</li>
-</ul>
-<p>下面是从fender官网搜集的4个不同型号的Fender Deluxe St电路图：</p>
-<p><a href="//qiniu.s1nh.org/Blog_011-8102A_SISD.pdf">011-8102A_SISD.pdf</a></p>
-<p><a href="//qiniu.s1nh.org/Blog_011-9000B_SISD.pdf">011-9000B_SISD.pdf</a></p>
-<p><a href="//qiniu.s1nh.org/Blog_011-9100A_SISD.pdf">011-9100A_SISD.pdf</a></p>
-<p><a href="//qiniu.s1nh.org/Blog_Fender_Am_Dlx_Stratocaster_HSS_Shawbucker_011911XXXX_Service_Manual.pdf">Fender_011911XXXX_Service_Manual.pdf</a></p>
-]]></content>
-      <categories>
-        <category>音乐相关</category>
-      </categories>
-      <tags>
-        <tag>fender</tag>
-        <tag>wiring diagram</tag>
-        <tag>S1</tag>
       </tags>
   </entry>
   <entry>
@@ -5695,7 +5695,7 @@ H1&lt;---|0.14-1.6|Mirtazapine
 <li><p>您将收到一封包含新许可证密钥的电子邮件。</p>
 </li>
 </ol>
-<p>如果您对许可证转移功能有任何疑问，可以将新的硬件密钥通过电子邮件发送至 <a href="mailto:&#115;&#117;&#112;&#112;&#x6f;&#114;&#116;&#64;&#x6d;&#x75;&#108;&#x74;&#x69;&#x65;&#99;&#x75;&#x73;&#99;&#x61;&#x6e;&#46;&#x6e;&#101;&#116;">&#115;&#117;&#112;&#112;&#x6f;&#114;&#116;&#64;&#x6d;&#x75;&#108;&#x74;&#x69;&#x65;&#99;&#x75;&#x73;&#99;&#x61;&#x6e;&#46;&#x6e;&#101;&#116;</a>。</p>
+<p>如果您对许可证转移功能有任何疑问，可以将新的硬件密钥通过电子邮件发送至 <a href="mailto:&#115;&#x75;&#112;&#x70;&#111;&#114;&#x74;&#x40;&#x6d;&#117;&#108;&#116;&#x69;&#x65;&#99;&#x75;&#x73;&#99;&#97;&#x6e;&#x2e;&#x6e;&#101;&#x74;">&#115;&#x75;&#112;&#x70;&#111;&#114;&#x74;&#x40;&#x6d;&#117;&#108;&#116;&#x69;&#x65;&#99;&#x75;&#x73;&#99;&#97;&#x6e;&#x2e;&#x6e;&#101;&#x74;</a>。</p>
 <p>请注意，许可证转移功能对转移次数有限制。</p>
 <p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image10.png-QNthin"></p>
 <h2 id="2-用户界面"><a href="#2-用户界面" class="headerlink" title="2. 用户界面"></a>2. 用户界面</h2><h3 id="2-1-Multiecuscan-主屏幕"><a href="#2-1-Multiecuscan-主屏幕" class="headerlink" title="2.1. Multiecuscan 主屏幕"></a>2.1. Multiecuscan 主屏幕</h3><p>当您启动 Multiecuscan 时，它会显示以下屏幕：</p>
