@@ -4994,428 +4994,6 @@ try to remove and create again
       </tags>
   </entry>
   <entry>
-    <title>常见抗抑郁药的作用机制整理</title>
-    <url>/post/mechanism-of-action-of-antidepressants/</url>
-    <content><![CDATA[<!--
-外向的人如同太阳，内向的人就像月亮。
-只要太阳存在，月亮就不被看见。晚上太阳休息了，月亮还亮着，因为它还在琢磨白天的事情，根本睡不着。
--->
-
-<blockquote>
-<p>那天他看外面阳光很好，于是穿上自己最喜欢的衣服，带上自己觉得最好看的遮阳帽，独自一人悄悄走向了远方，然后再也没回来。</p>
-</blockquote>
-<p>本文总结了常见抗抑郁药的对应靶点，以及相应耙点会产生的精神效果。阅读本文需要了解抗抑郁药的基本原理，可以在b站 <code>药学生Justin</code> <code>底层原理</code> 中快速了解有关知识。</p>
-<span id="more"></span>
-
-<!--TODO 新theme 加主页，分类介绍。-->
-
-<h2 id="说在前面"><a href="#说在前面" class="headerlink" title="说在前面"></a>说在前面</h2><blockquote>
-<p>已经证实了抗抑郁药是有效的，但仍有一些问题没有得到解答。<br>我们仍然不知道现在接受抗抑郁药治疗的患者是否从抗抑郁药中获益，因为许多试验都非常古老并且是出于监管目的而进行的，并且实验仅为最长八周的短期结果。<br>我们仍然不知道抗抑郁药的长期益处（或危害），但还需要进一步研究。<br>– Glyn Lewis，伦敦大学学院精神病学系精神病学流行病学教授 [<a href="https://evidence.nihr.ac.uk/alert/the-most-effective-antidepressants-for-adults-revealed-in-major-review/">原文</a>]</p>
-</blockquote>
-<p>另外，抗抑郁药可能会重塑人格，让自己变成另一个人。所造成的过于乐观、自信增加、行动力增加，可能不利于日常生活。风险包括但不限于：</p>
-<ol>
-<li>吃药可能会让已经麻烦的问题变得更麻烦。</li>
-<li>无论什么类型的抗抑郁药，都有损伤认知的风险。</li>
-<li>吃抗抑郁药有概率变得又活泼，又抑郁，还睡不着觉。</li>
-<li>抗抑郁药在轻度或中度抑郁症患者中的疗效一直存在争议，并且可能会被副作用所抵消，尤其是在青少年人群中。</li>
-<li>“之前中度抑郁症，我吃了曲唑酮之后，女朋友把我绿了提分手，我居然还跟她讲起了段子，现在想想都后怕。”这是B站看到的一个评论，但我确信这种情况可能发生。</li>
-</ol>
-<p>如果一定要吃药：</p>
-<ol>
-<li>尽量不要尝试新药。</li>
-<li>记住你身体发生的变化，并设法找到原因，对于不利的变化及时采取措施（换药、停药）。</li>
-<li>如果药说明书上没注明空腹服用，最好与食物一起服用，有助于防止恶心。因为 5HT3 受体也存在于消化道内，当它吸收游离的血清素时，肯能会引起恶心。</li>
-</ol>
-<h2 id="抗抑郁药对应的耙点"><a href="#抗抑郁药对应的耙点" class="headerlink" title="抗抑郁药对应的耙点"></a>抗抑郁药对应的耙点</h2><p>整理自维基百科。为了让图片清晰，注释了无显著亲和力的受体，详见最后一节“总图表”</p>
-<pre class="mermaid">
-flowchart TB
-
-subgraph Antidepressant
-    Citalopram(西酞普兰)
-    Venlafaxine(文拉法辛)
-    Duloxetine(度洛西汀)
-    Paroxetine(帕罗西汀)
-    Fluoxetine(氟西汀)
-    Sertraline(舍曲林)
-    Fluvoxamine(氟伏沙明)
-    Escitalopram(艾司西酞普兰)
-end
-
-
-SERT[SERT]
-NET[NET]
-M1[M1]
-DAT[DAT]
-σ1[σ&lt;sub&gt;1&lt;&#x2F;sub&gt;]
-M1[M&lt;sub&gt;1&lt;&#x2F;sub&gt; : 胆碱]
-H1[H&lt;sub&gt;1&lt;&#x2F;sub&gt; :组胺]
-
-
-SERT--82--&gt;Venlafaxine
-Venlafaxine--2480--&gt;NET
-%% Venlafaxine---&gt;|7647|DAT
-%% Venlafaxine---&gt;|2230|5HT2A
-%% Venlafaxine---&gt;|2004|5HT2C
-%% Venlafaxine---&gt;|2792|5HT6
-%% Venlafaxine---&gt;|&gt;1000|α1A
-
-
-SERT--0.7-0.8--&gt;Duloxetine
-Duloxetine--7.5, SERT的三倍--&gt;NET
-%% Duloxetine---&gt;|240|DAT
-%% Duloxetine---&gt;|504|5HT2A
-%% Duloxetine---&gt;|916|5HT2C
-%% Duloxetine---&gt;|419|5HT6
-
-
-SERT--0.07-0.2--&gt;Paroxetine
-Paroxetine--40-85--&gt;NET
-%% Paroxetine---&gt;|490|DAT
-Paroxetine--72--&gt;M1
-
-
-SERT--1--&gt;Fluoxetine
-Fluoxetine--660--&gt;NET
-Fluoxetine--870--&gt;M1
-Fluoxetine--代谢后 420--&gt;DAT
-%% Fluoxetine---&gt;|118|5HT2C
-%% Fluoxetine---&gt;|119|5HT2A
-%% Fluoxetine---&gt;|1000|M3
-%% Fluoxetine---&gt;|2514|5HT2B
-
-
-%% DAT--22-315--&gt;Sertraline
-SERT--0.15-3.3--&gt;Sertraline
-%% Sertraline---&gt;|420-925|NET
-Sertraline--结抗&lt;br&gt;32-57--&gt;σ1
-Sertraline--22-315--&gt;DAT
-
-
-SERT--2.5--&gt;Fluvoxamine
-Fluvoxamine--激动&lt;br&gt;36--&gt;σ1
-
-SERT--1.6--&gt;Citalopram
-%% Citalopram---&gt;|6190|NET
-%% Citalopram---&gt;|617|5HT2C
-%% Citalopram---&gt;|1211|α1
-%% Citalopram---&gt;|1430|M1
-Citalopram--283--&gt;H1
-
-SERT--0.8-1.1--&gt;Escitalopram
-
-</pre>
-
-
-
-
-
-
-
-
-<pre class="mermaid">
-flowchart TD
-
-subgraph Antidepressant
-    %% Fluoxetine(氟西汀)
-    %% Paroxetine(帕罗西汀)
-    %% Citalopram(西酞普兰)
-    %% Escitalopram(艾司西酞普兰)
-    %% Venlafaxine(文拉法辛)
-    %% Duloxetine(度洛西汀)
-
-    Sertraline(舍曲林)
-    Fluvoxamine(氟伏沙明)
-
-    Bupropion(安非他酮)
-    Trazodone(曲唑酮)
-    Buspirone(丁螺环酮)
-    %% Amitriptyline(阿米替林)
-end
-
-Mirtazapine(米氮平)
-
-subgraph nicotinic
-    α3β4-nicotinic[α3β4]
-    α4β2-nicotinic[α4β2]
-    α1β1γδ-nicotinic[α1β1γδ]
-end
-
-
-SERT[SERT]
-NET[NET]
-DAT[DAT]
-%% α1[α&lt;sub&gt;1&lt;&#x2F;sub&gt;]
-%% α1A[α&lt;sub&gt;1A&lt;&#x2F;sub&gt;]
-%% M1[M&lt;sub&gt;1&lt;&#x2F;sub&gt; : 胆碱]
-H1[H&lt;sub&gt;1&lt;&#x2F;sub&gt; :组胺]
-%% 5HT2A[5-HT&lt;sub&gt;2A&lt;&#x2F;sub&gt;]
-%% 5HT2B[5-HT&lt;sub&gt;2B&lt;&#x2F;sub&gt;]
-%% 5HT2C[5-HT&lt;sub&gt;2C&lt;&#x2F;sub&gt;]
-%% 5HT3[5-HT&lt;sub&gt;3&lt;&#x2F;sub&gt;]
-%% Gq[G&lt;sub&gt;q&lt;&#x2F;sub&gt;: 困]
-
-
-%% 5HT2A---&gt;Gq
-%% 5HT2B---&gt;Gq
-%% 5HT2C---&gt;Gq
-%% α1---&gt;Gq
-%% M1---&gt;Gq
-%% H1---&gt;Gq
-
-%% SERT--1--&gt;Fluoxetine
-%% Fluoxetine---&gt;|660|NET
-%% Fluoxetine---&gt;|代谢后 420|DAT
-%% %% Fluoxetine---&gt;|118|5HT2C
-%% %% Fluoxetine---&gt;|119|5HT2A
-%% Fluoxetine---&gt;|870|M1
-%% %% Fluoxetine---&gt;|1000|M3
-%% %% Fluoxetine---&gt;|2514|5HT2B
-
-%% SERT--0.07-0.2--&gt;Paroxetine
-%% Paroxetine--40-85--&gt;NET
-%% %% Paroxetine---&gt;|490|DAT
-%% Paroxetine---&gt;|72|M1
-
-
-
-
-DAT--IC50 0.66--&gt;Bupropion
-NET--IC50 1.85--&gt;Bupropion
-%% %% Bupropion--IC50 0.66--&gt;DAT
-%% %% Bupropion--IC50 1.85--&gt;NET
-Bupropion---&gt;|IC50 1.8|α3β4-nicotinic
-Bupropion---&gt;|IC50 12|α4β2-nicotinic
-Bupropion---&gt;|IC50 7.9|α1β1γδ-nicotinic
-Bupropion---&gt;|抑制|5HT3A
-
-DAT--22-315--&gt;Sertraline
-SERT--0.15-3.3--&gt;Sertraline
-%% Sertraline---&gt;|420-925|NET
-%% Sertraline--22-315--&gt;DAT
-Sertraline---&gt;|结抗&lt;br&gt;32-57|σ1
-%% Sertraline---&gt;|1900|α1A
-%% Sertraline---&gt;|427-2100|mACh
-
-SERT--2.5--&gt;Fluvoxamine
-%% Fluvoxamine---&gt;|1,427|NET
-%% Fluvoxamine---&gt;|5,786|5-HT2C
-%% Fluvoxamine---&gt;|1,288|α1-adrenergic
-Fluvoxamine---&gt;|激动&lt;br&gt;36|σ1
-
-
-%% SERT--1.6--&gt;Citalopram
-%% %% Citalopram---&gt;|6190|NET
-%% %% Citalopram---&gt;|617|5HT2C
-%% %% Citalopram---&gt;|1211|α1
-%% %% Citalopram---&gt;|1430|M1
-%% Citalopram---&gt;|283|H1
-
-%% SERT--0.8-1.1--&gt;Escitalopram
-
-%% SERT--82--&gt;Venlafaxine
-%% Venlafaxine--2480--&gt;NET
-%% %% Venlafaxine---&gt;|7647|DAT
-%% %% Venlafaxine---&gt;|2230|5HT2A
-%% %% Venlafaxine---&gt;|2004|5HT2C
-%% %% Venlafaxine---&gt;|2792|5HT6
-%% %% Venlafaxine---&gt;|&gt;1000|α1A
-
-%% SERT--0.7-0.8--&gt;Duloxetine
-%% Duloxetine--7.5, SERT的三倍--&gt;NET
-%% %% Duloxetine---&gt;|240|DAT
-%% %% Duloxetine---&gt;|504|5HT2A
-%% %% Duloxetine---&gt;|916|5HT2C
-%% %% Duloxetine---&gt;|419|5HT6
-
-
-
-SERT--160-10,000--&gt;Trazodone
-Trazodone---&gt;|220-1,100|H1
-Trazodone---&gt;|12-42|α1
-Trazodone---&gt;|20-45|5HT2A
-
-
-Buspirone---&gt;|138|5HT2A
-Buspirone---&gt;|结抗 7.3|α2A
-Buspirone---&gt;|激动 21|5HT1A
-%% Buspirone---&gt;|214|5HT2B
-%% Buspirone---&gt;|490|5HT2C
-%% Buspirone---&gt;|398|5HT6
-%% Buspirone---&gt;|484|D2
-Buspirone---&gt;|98|D3
-Buspirone---&gt;|29|D4
-
-H1&lt;---|0.14-1.6|Mirtazapine
-5HT3&lt;---|8.1|Mirtazapine
-5HT2A&lt;---|6.3-69|Mirtazapine
-5HT2C&lt;---|8.9-39|Mirtazapine
-α2C&lt;---|18|Mirtazapine
-α2A&lt;---|20|Mirtazapine
-%% %% Mirtazapine---&gt;|88|α2B
-%% %% Mirtazapine---&gt;|200|5HT2B
-%% %% Mirtazapine---&gt;|265|5HT7
-%% %% Mirtazapine---&gt;|583|5HT1F
-%% %% Mirtazapine---&gt;|670|5HT5A
-%% %% Mirtazapine---&gt;|670|mACh
-%% %% Mirtazapine---&gt;|728|5HT1E
-%% %% Mirtazapine---&gt;|794-5010|5HT1D
-
-</pre>
-
-
-
-
-
-<h3 id="Inhibitory-Constant-K-i"><a href="#Inhibitory-Constant-K-i" class="headerlink" title="Inhibitory Constant ($K_i$)"></a>Inhibitory Constant ($K_i$)</h3><blockquote>
-<p>The inhibitory constant (Ki) is a type of equilibrium dissociation constant (Kd) that represents the equilibrium binding affinity for a ligand that reduces the activity of its binding partner. Ki represents the concentration at which the inhibitor ligand occupies 50% of the receptor sites when no competing ligand is present. The smaller the Ki the greater the binding affinity and the smaller the amount of ligand is needed to inhibit its binding partners activity. <sup><a href="https://pharmacologycanada.org/Inhibitory-constant-ki">[1]</a>, <a href="https://www.ucl.ac.uk/~ucbcdab/enzass/inhibition.htm">[2]</a>, <a href="https://zhuanlan.zhihu.com/p/29900912">[3]</a>, <a href="%22https://en.wikipedia.org/wiki/Ligand_(biochemistry)#Receptor/ligand_binding_affinity%22">[4]</a>, <a href="https://en.wikipedia.org/wiki/Dissociation_constant">[5]</a></sup></p>
-</blockquote>
-<p>$$K_i=(E*I)/E_I$$<br>其中 E: 可用受体, I: 游离抑制剂, EI: 被抑制的受体。<br>当$E=E_I$时，即50%受体被抑制时，$K_i$为游离抑制剂的浓度。<br>$E_I/(E+E_I)$ 与 $K_i+I$ 成反比，即被抑制的受体比例与 $K_i+I$ 成反比。<br>药物会对很多受体产生作用，在做图时会忽略无显著亲和力的受体（如何计算是否有显著亲和力？）</p>
-<h3 id="SERT-血清素转运体"><a href="#SERT-血清素转运体" class="headerlink" title="SERT (血清素转运体)"></a>SERT (血清素转运体)</h3><p>血清素转运体，抑制它可以提升血清素含量，目前主流的抗抑郁剂都是以此为主起效的。当血清素含量变化时，会有下面的效果。</p>
-<table>
-<thead>
-<tr>
-<th>Receptor</th>
-<th>K<sub>i</sub> (nM)</th>
-<th>Receptor function</th>
-</tr>
-</thead>
-<tbody><tr>
-<td></td>
-<td></td>
-<td><strong>5-HT<sub>1</sub> receptor family</strong> signals via G<sub>i/o</sub> inhibition of adenylyl cyclase.</td>
-</tr>
-<tr>
-<td>5-HT<sub>1A</sub></td>
-<td>3.17</td>
-<td>Memory (agonists ↓); learning (agonists ↓); anxiety (agonists ↓); depression (agonists ↓); positive, negative, and cognitive symptoms of schizophrenia (partial agonists ↓); analgesia (agonists ↑); aggression (agonists ↓); dopamine release in the prefrontal cortex (agonists ↑); serotonin release and synthesis (agonists ↓)</td>
-</tr>
-<tr>
-<td>5-HT<sub>1B</sub></td>
-<td>4.32</td>
-<td>Vasoconstriction (agonists ↑); aggression (agonists ↓); bone mass (↓). Serotonin autoreceptor.</td>
-</tr>
-<tr>
-<td>5-HT<sub>1D</sub></td>
-<td>5.03</td>
-<td>Vasoconstriction (agonists ↑)</td>
-</tr>
-<tr>
-<td>5-HT<sub>1E</sub></td>
-<td>7.53</td>
-<td></td>
-</tr>
-<tr>
-<td>5-HT<sub>1F</sub></td>
-<td>10</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td><strong>5-HT<sub>2</sub> receptor family</strong> signals via G<sub>q</sub> activation of phospholipase C.</td>
-</tr>
-<tr>
-<td>5-HT<sub>2A</sub></td>
-<td>11.55</td>
-<td>Psychedelia (agonists ↑); depression (agonists &amp; antagonists ↓); anxiety (antagonists ↓); positive and negative symptoms of schizophrenia (antagonists ↓); norepinephrine release from the locus coeruleus (antagonists ↑); glutamate release in the prefrontal cortex (agonists ↑); dopamine in the prefrontal cortex (agonists ↑);urinary bladder contractions (agonists ↑)</td>
-</tr>
-<tr>
-<td>5-HT<sub>2B</sub></td>
-<td>8.71</td>
-<td>Cardiovascular functioning (agonists increase risk of pulmonary hypertension), empathy (via von Economo neurons)</td>
-</tr>
-<tr>
-<td>5-HT<sub>2C</sub></td>
-<td>5.02</td>
-<td>Dopamine release into the mesocorticolimbic pathway (agonists ↓); acetylcholine release in the prefrontal cortex (agonists ↑); dopaminergic and noradrenergic activity in the frontal cortex (antagonists ↑); appetite (agonists ↓); antipsychotic effects (agonists ↑); antidepressant effects (agonists &amp; antagonists ↑)</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td><strong>Other 5-HT receptors</strong></td>
-</tr>
-<tr>
-<td>5-HT<sub>3</sub></td>
-<td>593</td>
-<td>Emesis (agonists ↑); anxiolysis (antagonists ↑).</td>
-</tr>
-<tr>
-<td>5-HT<sub>4</sub></td>
-<td>125.89</td>
-<td>Movement of food across the GI tract (agonists ↑); memory &amp; learning (agonists ↑); antidepressant effects (agonists ↑). Signalling via G<sub>αs</sub> activation of adenylyl cyclase.</td>
-</tr>
-<tr>
-<td>5-HT<sub>5A</sub></td>
-<td>251.2</td>
-<td>Memory consolidation. Signals via G<sub>i/o</sub> inhibition of adenylyl cyclase.</td>
-</tr>
-<tr>
-<td>5-HT<sub>6</sub></td>
-<td>98.41</td>
-<td>Cognition (antagonists ↑); antidepressant effects (agonists &amp; antagonists ↑); anxiogenic effects (antagonists ↑). G<sub>s</sub> signalling via activating adenylyl cyclase.</td>
-</tr>
-<tr>
-<td>5-HT<sub>7</sub></td>
-<td>8.11</td>
-<td>Cognition (antagonists ↑); antidepressant effects (antagonists ↑). Acts by G<sub>s</sub> signalling via activating adenylyl cyclase.</td>
-</tr>
-</tbody></table>
-<h2 id="NET-去甲肾上腺素转运体"><a href="#NET-去甲肾上腺素转运体" class="headerlink" title="NET (去甲肾上腺素转运体)"></a>NET (去甲肾上腺素转运体)</h2><p>去甲肾上腺素转运体，抑制它可以提升去甲肾上腺素含量。</p>
-<p>NE存在于交感神经和中枢神经中。当交感神经兴奋时释放NE。</p>
-<p>NE增加会导致血压升高、心率减慢。</p>
-<p>另外，抑制NET可以增加额叶多巴胺数量，详见下一节DAT。</p>
-<p>（需要补充）</p>
-<h2 id="DAT-多巴胺转运体"><a href="#DAT-多巴胺转运体" class="headerlink" title="DAT (多巴胺转运体)"></a>DAT (多巴胺转运体)</h2><p>（需要补充）</p>
-<h2 id="总图表"><a href="#总图表" class="headerlink" title="总图表"></a>总图表</h2><p>图表使用 <a href="https://mermaid.js.org/config/usage.html#api-usage">mermaid</a> 生成，符号 <code>%%</code> 为注释，取消注释可以看到更详细的信息。</p>
-<p>将下面的代码复制到 <a href="https://mermaid.live/">Mermaid Live Editor</a> 可查看或编辑。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">flowchart TD</span><br><span class="line"></span><br><span class="line">subgraph Antidepressant</span><br><span class="line">    %% Fluoxetine(氟西汀)</span><br><span class="line">    %% Paroxetine(帕罗西汀)</span><br><span class="line">    %% Citalopram(西酞普兰)</span><br><span class="line">    %% Escitalopram(艾司西酞普兰)</span><br><span class="line">    %% Venlafaxine(文拉法辛)</span><br><span class="line">    %% Duloxetine(度洛西汀)</span><br><span class="line"></span><br><span class="line">    Sertraline(舍曲林)</span><br><span class="line">    Fluvoxamine(氟伏沙明)</span><br><span class="line"></span><br><span class="line">    Bupropion(安非他酮)</span><br><span class="line">    Trazodone(曲唑酮)</span><br><span class="line">    Buspirone(丁螺环酮)</span><br><span class="line">    %% Amitriptyline(阿米替林)</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">Mirtazapine(米氮平)</span><br><span class="line"></span><br><span class="line">subgraph nicotinic</span><br><span class="line">    α3β4-nicotinic[α3β4]</span><br><span class="line">    α4β2-nicotinic[α4β2]</span><br><span class="line">    α1β1γδ-nicotinic[α1β1γδ]</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">SERT[SERT]</span><br><span class="line">NET[NET]</span><br><span class="line">DAT[DAT]</span><br><span class="line">%% α1[α&lt;sub&gt;1&lt;/sub&gt;]</span><br><span class="line">%% α1A[α&lt;sub&gt;1A&lt;/sub&gt;]</span><br><span class="line">%% M1[M&lt;sub&gt;1&lt;/sub&gt; : 胆碱]</span><br><span class="line">H1[H&lt;sub&gt;1&lt;/sub&gt; :组胺]</span><br><span class="line">%% 5HT2A[5-HT&lt;sub&gt;2A&lt;/sub&gt;]</span><br><span class="line">%% 5HT2B[5-HT&lt;sub&gt;2B&lt;/sub&gt;]</span><br><span class="line">%% 5HT2C[5-HT&lt;sub&gt;2C&lt;/sub&gt;]</span><br><span class="line">%% 5HT3[5-HT&lt;sub&gt;3&lt;/sub&gt;]</span><br><span class="line">%% Gq[G&lt;sub&gt;q&lt;/sub&gt;: 困]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">%% 5HT2A---&gt;Gq</span><br><span class="line">%% 5HT2B---&gt;Gq</span><br><span class="line">%% 5HT2C---&gt;Gq</span><br><span class="line">%% α1---&gt;Gq</span><br><span class="line">%% M1---&gt;Gq</span><br><span class="line">%% H1---&gt;Gq</span><br><span class="line"></span><br><span class="line">%% SERT--1--&gt;Fluoxetine</span><br><span class="line">%% Fluoxetine---&gt;|660|NET</span><br><span class="line">%% Fluoxetine---&gt;|代谢后 420|DAT</span><br><span class="line">%% %% Fluoxetine---&gt;|118|5HT2C</span><br><span class="line">%% %% Fluoxetine---&gt;|119|5HT2A</span><br><span class="line">%% Fluoxetine---&gt;|870|M1</span><br><span class="line">%% %% Fluoxetine---&gt;|1000|M3</span><br><span class="line">%% %% Fluoxetine---&gt;|2514|5HT2B</span><br><span class="line"></span><br><span class="line">%% SERT--0.07-0.2--&gt;Paroxetine</span><br><span class="line">%% Paroxetine--40-85--&gt;NET</span><br><span class="line">%% %% Paroxetine---&gt;|490|DAT</span><br><span class="line">%% Paroxetine---&gt;|72|M1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">DAT--IC50 0.66--&gt;Bupropion</span><br><span class="line">NET--IC50 1.85--&gt;Bupropion</span><br><span class="line">%% %% Bupropion--IC50 0.66--&gt;DAT</span><br><span class="line">%% %% Bupropion--IC50 1.85--&gt;NET</span><br><span class="line">Bupropion---&gt;|IC50 1.8|α3β4-nicotinic</span><br><span class="line">Bupropion---&gt;|IC50 12|α4β2-nicotinic</span><br><span class="line">Bupropion---&gt;|IC50 7.9|α1β1γδ-nicotinic</span><br><span class="line">Bupropion---&gt;|抑制|5HT3A</span><br><span class="line"></span><br><span class="line">DAT--22-315--&gt;Sertraline</span><br><span class="line">SERT--0.15-3.3--&gt;Sertraline</span><br><span class="line">%% Sertraline---&gt;|420-925|NET</span><br><span class="line">%% Sertraline--22-315--&gt;DAT</span><br><span class="line">Sertraline---&gt;|结抗&lt;br&gt;32-57|σ1</span><br><span class="line">%% Sertraline---&gt;|1900|α1A</span><br><span class="line">%% Sertraline---&gt;|427-2100|mACh</span><br><span class="line"></span><br><span class="line">SERT--2.5--&gt;Fluvoxamine</span><br><span class="line">%% Fluvoxamine---&gt;|1,427|NET</span><br><span class="line">%% Fluvoxamine---&gt;|5,786|5-HT2C</span><br><span class="line">%% Fluvoxamine---&gt;|1,288|α1-adrenergic</span><br><span class="line">Fluvoxamine---&gt;|激动&lt;br&gt;36|σ1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">%% SERT--1.6--&gt;Citalopram</span><br><span class="line">%% %% Citalopram---&gt;|6190|NET</span><br><span class="line">%% %% Citalopram---&gt;|617|5HT2C</span><br><span class="line">%% %% Citalopram---&gt;|1211|α1</span><br><span class="line">%% %% Citalopram---&gt;|1430|M1</span><br><span class="line">%% Citalopram---&gt;|283|H1</span><br><span class="line"></span><br><span class="line">%% SERT--0.8-1.1--&gt;Escitalopram</span><br><span class="line"></span><br><span class="line">%% SERT--82--&gt;Venlafaxine</span><br><span class="line">%% Venlafaxine--2480--&gt;NET</span><br><span class="line">%% %% Venlafaxine---&gt;|7647|DAT</span><br><span class="line">%% %% Venlafaxine---&gt;|2230|5HT2A</span><br><span class="line">%% %% Venlafaxine---&gt;|2004|5HT2C</span><br><span class="line">%% %% Venlafaxine---&gt;|2792|5HT6</span><br><span class="line">%% %% Venlafaxine---&gt;|&gt;1000|α1A</span><br><span class="line"></span><br><span class="line">%% SERT--0.7-0.8--&gt;Duloxetine</span><br><span class="line">%% Duloxetine--7.5, SERT的三倍--&gt;NET</span><br><span class="line">%% %% Duloxetine---&gt;|240|DAT</span><br><span class="line">%% %% Duloxetine---&gt;|504|5HT2A</span><br><span class="line">%% %% Duloxetine---&gt;|916|5HT2C</span><br><span class="line">%% %% Duloxetine---&gt;|419|5HT6</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">SERT--160-10,000--&gt;Trazodone</span><br><span class="line">Trazodone---&gt;|220-1,100|H1</span><br><span class="line">Trazodone---&gt;|12-42|α1</span><br><span class="line">Trazodone---&gt;|20-45|5HT2A</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Buspirone---&gt;|138|5HT2A</span><br><span class="line">Buspirone---&gt;|7.3|α2A</span><br><span class="line">Buspirone---&gt;|21|5HT1A</span><br><span class="line">%% Buspirone---&gt;|214|5HT2B</span><br><span class="line">%% Buspirone---&gt;|490|5HT2C</span><br><span class="line">%% Buspirone---&gt;|398|5HT6</span><br><span class="line">%% Buspirone---&gt;|484|D2</span><br><span class="line">Buspirone---&gt;|98|D3</span><br><span class="line">Buspirone---&gt;|29|D4</span><br><span class="line"></span><br><span class="line">H1&lt;---|0.14-1.6|Mirtazapine</span><br><span class="line">5HT3&lt;---|8.1|Mirtazapine</span><br><span class="line">5HT2A&lt;---|6.3-69|Mirtazapine</span><br><span class="line">5HT2C&lt;---|8.9-39|Mirtazapine</span><br><span class="line">α2C&lt;---|18|Mirtazapine</span><br><span class="line">α2A&lt;---|20|Mirtazapine</span><br><span class="line">%% %% Mirtazapine---&gt;|88|α2B</span><br><span class="line">%% %% Mirtazapine---&gt;|200|5HT2B</span><br><span class="line">%% %% Mirtazapine---&gt;|265|5HT7</span><br><span class="line">%% %% Mirtazapine---&gt;|583|5HT1F</span><br><span class="line">%% %% Mirtazapine---&gt;|670|5HT5A</span><br><span class="line">%% %% Mirtazapine---&gt;|670|mACh</span><br><span class="line">%% %% Mirtazapine---&gt;|728|5HT1E</span><br><span class="line">%% %% Mirtazapine---&gt;|794-5010|5HT1D</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>其它笔记</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>记念</title>
-    <url>/post/memory/</url>
-    <content><![CDATA[<blockquote>
-<p>其实我们的表面是一幅天真纯洁的样子，内心却始终悖逆潜行。<br>像冰冷的机器，心中没有远方，也不会去追问未来<br>时光很快就会把我们从<strong>微弱的闪光体</strong>变成一个无能的普通人。<br>我们要做的只有觉悟而已，去追求自由，去向往风居住的街道。<br>就像穿越稠密的交集望透世界，就像沉没在镂空的意境里寻找奇迹。</p>
-</blockquote>
-<span id="more"></span>
-
-<h3 id="第一桶金"><a href="#第一桶金" class="headerlink" title="第一桶金"></a>第一桶金</h3><p>08年的时候赚了Google一“大笔”钱，第一次见到支票长啥样。</p>
-<p><img data-src="//qiniu.s1nh.org/Blog_memory_09.jpg-QNthin"></p>
-<p><img data-src="//qiniu.s1nh.org/Blog_memory_08.jpg-QNthin"></p>
-<ul>
-<li>当时可喜欢泡图书馆了，在书店和图书馆里看的都是这种书</li>
-</ul>
-<p><img data-src="//qiniu.s1nh.org/Blog_memory_15.jpg-QNthin"></p>
-<ul>
-<li>和这种书。</li>
-</ul>
-<p><img data-src="//qiniu.s1nh.org/Blog_memory_05.jpg-QNthin"></p>
-<p><img data-src="//qiniu.s1nh.org/Blog_memory_07.jpg-QNthin"></p>
-<p><img data-src="//qiniu.s1nh.org/Blog_memory_13.jpg-QNthin"></p>
-<p><img data-src="//qiniu.s1nh.org/Blog_memory_14.jpg-QNthin" title="当他们的西方同龄人沉迷于摇滚时，中国的青少年的热情被大人们引导到了这一类演出上面。很难讲哪一种更投入，只能说被愚弄的程度有差别"></p>
-<p><img data-src="//qiniu.s1nh.org/Blog_memory_10.jpg-QNthin" title="喜欢的Yngwie"></p>
-<p><img data-src="//qiniu.s1nh.org/Blog_memory_11.jpg-QNthin" title="第一次演出"></p>
-<h3 id="虽然自己并不会拍照"><a href="#虽然自己并不会拍照" class="headerlink" title="虽然自己并不会拍照"></a>虽然自己并不会拍照</h3><p><img data-src="//qiniu.s1nh.org/Blog_memory_12.jpg-QNthin" title="抢来了姥爷的相机"></p>
-<p><img data-src="//qiniu.s1nh.org/Blog_memory_31.jpg-QNthin" title="虽然自己并不会拍照"></p>
-<p><img data-src="//qiniu.s1nh.org/Blog_memory_03.jpg-QNthin" title="3年级加入的管乐队"><br><img data-src="//qiniu.s1nh.org/Blog_memory_04.jpg-QNthin" title="第一把吉他"></p>
-<h3 id="或许从某个时间开始，我就已经死了"><a href="#或许从某个时间开始，我就已经死了" class="headerlink" title="或许从某个时间开始，我就已经死了"></a>或许从某个时间开始，我就已经死了</h3><p><code>或许有些人追寻了一辈子自由，到头来却连自由是什么都还搞不清楚。还不如就这样一天一天，得过且过</code></p>
-<p><img data-src="//qiniu.s1nh.org/Blog_memory_16.jpg-QNthin"><br><img data-src="//qiniu.s1nh.org/Blog_memory_17.jpg-QNthin"></p>
-<h3 id="本科"><a href="#本科" class="headerlink" title="本科"></a>本科</h3><p><img data-src="//qiniu.s1nh.org/Blog_memory_18.jpg-QNthin" title="第一把琴，很便宜的卖给小熊了"><br><img data-src="//qiniu.s1nh.org/Blog_memory_19.jpg-QNthin" title="第二把琴"></p>
-<h3 id="暴走大事件"><a href="#暴走大事件" class="headerlink" title="暴走大事件"></a>暴走大事件</h3><p>大二做的游戏，我做的好像还是WindowsPhone版的。记得杨峻当时就跟我们说他梦想就是开一个游戏公司，我当时也还是个微软的脑残粉。</p>
-<p><img data-src="//qiniu.s1nh.org/Blog_baozou-01.jpg-QNthin"></p>
-<p><img data-src="//qiniu.s1nh.org/Blog_baozou-02.jpg-QNthin"></p>
-<h3 id="当上了会长，最风光的时候"><a href="#当上了会长，最风光的时候" class="headerlink" title="当上了会长，最风光的时候"></a>当上了会长，最风光的时候</h3><p><img data-src="//qiniu.s1nh.org/Blog_memory_20.jpg-QNthin"><br><img data-src="//qiniu.s1nh.org/Blog_memory_21.jpg-QNthin"><br><img data-src="//qiniu.s1nh.org/Blog_memory_22.jpg-QNthin"><br><img data-src="//qiniu.s1nh.org/Blog_memory_23.jpg-QNthin"><br><img data-src="//qiniu.s1nh.org/Blog_memory_24.jpg-QNthin"><br><img data-src="//qiniu.s1nh.org/Blog_memory_29.jpg-QNthin"><br><img data-src="//qiniu.s1nh.org/Blog_memory_30.jpg-QNthin"></p>
-<h3 id="杨峻开了一家公司"><a href="#杨峻开了一家公司" class="headerlink" title="杨峻开了一家公司"></a>杨峻开了一家公司</h3><p><img data-src="//qiniu.s1nh.org/Blog_memory_25.jpg-QNthin"><br><img data-src="//qiniu.s1nh.org/Blog_memory_26.jpg-QNthin" title="第一杯咖啡"><br><img data-src="//qiniu.s1nh.org/Blog_memory_27.jpg-QNthin" title="第一张名片"><br><img data-src="//qiniu.s1nh.org/Blog_memory_28.jpg-QNthin" title="第一个工作台"></p>
-<p><em>今天清理了一下电脑，买了两台云服务器和一个虚拟主机玩，把这个博客放到了虚拟主机上。清理电脑的时候翻出了很多照片，放这留念～</em></p>
-<p><img data-src="//qiniu.s1nh.org/Blog_memory_06.png"></p>
-]]></content>
-      <categories>
-        <category>其它笔记</category>
-      </categories>
-  </entry>
-  <entry>
     <title>微观经济学--学习笔记</title>
     <url>/post/microeconomics-note/</url>
     <content><![CDATA[<blockquote>
@@ -5467,6 +5045,48 @@ H1&lt;---|0.14-1.6|Mirtazapine
       <tags>
         <tag>经济学</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>记念</title>
+    <url>/post/memory/</url>
+    <content><![CDATA[<blockquote>
+<p>其实我们的表面是一幅天真纯洁的样子，内心却始终悖逆潜行。<br>像冰冷的机器，心中没有远方，也不会去追问未来<br>时光很快就会把我们从<strong>微弱的闪光体</strong>变成一个无能的普通人。<br>我们要做的只有觉悟而已，去追求自由，去向往风居住的街道。<br>就像穿越稠密的交集望透世界，就像沉没在镂空的意境里寻找奇迹。</p>
+</blockquote>
+<span id="more"></span>
+
+<h3 id="第一桶金"><a href="#第一桶金" class="headerlink" title="第一桶金"></a>第一桶金</h3><p>08年的时候赚了Google一“大笔”钱，第一次见到支票长啥样。</p>
+<p><img data-src="//qiniu.s1nh.org/Blog_memory_09.jpg-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_memory_08.jpg-QNthin"></p>
+<ul>
+<li>当时可喜欢泡图书馆了，在书店和图书馆里看的都是这种书</li>
+</ul>
+<p><img data-src="//qiniu.s1nh.org/Blog_memory_15.jpg-QNthin"></p>
+<ul>
+<li>和这种书。</li>
+</ul>
+<p><img data-src="//qiniu.s1nh.org/Blog_memory_05.jpg-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_memory_07.jpg-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_memory_13.jpg-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_memory_14.jpg-QNthin" title="当他们的西方同龄人沉迷于摇滚时，中国的青少年的热情被大人们引导到了这一类演出上面。很难讲哪一种更投入，只能说被愚弄的程度有差别"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_memory_10.jpg-QNthin" title="喜欢的Yngwie"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_memory_11.jpg-QNthin" title="第一次演出"></p>
+<h3 id="虽然自己并不会拍照"><a href="#虽然自己并不会拍照" class="headerlink" title="虽然自己并不会拍照"></a>虽然自己并不会拍照</h3><p><img data-src="//qiniu.s1nh.org/Blog_memory_12.jpg-QNthin" title="抢来了姥爷的相机"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_memory_31.jpg-QNthin" title="虽然自己并不会拍照"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_memory_03.jpg-QNthin" title="3年级加入的管乐队"><br><img data-src="//qiniu.s1nh.org/Blog_memory_04.jpg-QNthin" title="第一把吉他"></p>
+<h3 id="或许从某个时间开始，我就已经死了"><a href="#或许从某个时间开始，我就已经死了" class="headerlink" title="或许从某个时间开始，我就已经死了"></a>或许从某个时间开始，我就已经死了</h3><p><code>或许有些人追寻了一辈子自由，到头来却连自由是什么都还搞不清楚。还不如就这样一天一天，得过且过</code></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_memory_16.jpg-QNthin"><br><img data-src="//qiniu.s1nh.org/Blog_memory_17.jpg-QNthin"></p>
+<h3 id="本科"><a href="#本科" class="headerlink" title="本科"></a>本科</h3><p><img data-src="//qiniu.s1nh.org/Blog_memory_18.jpg-QNthin" title="第一把琴，很便宜的卖给小熊了"><br><img data-src="//qiniu.s1nh.org/Blog_memory_19.jpg-QNthin" title="第二把琴"></p>
+<h3 id="暴走大事件"><a href="#暴走大事件" class="headerlink" title="暴走大事件"></a>暴走大事件</h3><p>大二做的游戏，我做的好像还是WindowsPhone版的。记得杨峻当时就跟我们说他梦想就是开一个游戏公司，我当时也还是个微软的脑残粉。</p>
+<p><img data-src="//qiniu.s1nh.org/Blog_baozou-01.jpg-QNthin"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_baozou-02.jpg-QNthin"></p>
+<h3 id="当上了会长，最风光的时候"><a href="#当上了会长，最风光的时候" class="headerlink" title="当上了会长，最风光的时候"></a>当上了会长，最风光的时候</h3><p><img data-src="//qiniu.s1nh.org/Blog_memory_20.jpg-QNthin"><br><img data-src="//qiniu.s1nh.org/Blog_memory_21.jpg-QNthin"><br><img data-src="//qiniu.s1nh.org/Blog_memory_22.jpg-QNthin"><br><img data-src="//qiniu.s1nh.org/Blog_memory_23.jpg-QNthin"><br><img data-src="//qiniu.s1nh.org/Blog_memory_24.jpg-QNthin"><br><img data-src="//qiniu.s1nh.org/Blog_memory_29.jpg-QNthin"><br><img data-src="//qiniu.s1nh.org/Blog_memory_30.jpg-QNthin"></p>
+<h3 id="杨峻开了一家公司"><a href="#杨峻开了一家公司" class="headerlink" title="杨峻开了一家公司"></a>杨峻开了一家公司</h3><p><img data-src="//qiniu.s1nh.org/Blog_memory_25.jpg-QNthin"><br><img data-src="//qiniu.s1nh.org/Blog_memory_26.jpg-QNthin" title="第一杯咖啡"><br><img data-src="//qiniu.s1nh.org/Blog_memory_27.jpg-QNthin" title="第一张名片"><br><img data-src="//qiniu.s1nh.org/Blog_memory_28.jpg-QNthin" title="第一个工作台"></p>
+<p><em>今天清理了一下电脑，买了两台云服务器和一个虚拟主机玩，把这个博客放到了虚拟主机上。清理电脑的时候翻出了很多照片，放这留念～</em></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_memory_06.png"></p>
+]]></content>
+      <categories>
+        <category>其它笔记</category>
+      </categories>
   </entry>
   <entry>
     <title>多模态人工智能与边缘计算技术</title>
@@ -5695,7 +5315,7 @@ H1&lt;---|0.14-1.6|Mirtazapine
 <li><p>您将收到一封包含新许可证密钥的电子邮件。</p>
 </li>
 </ol>
-<p>如果您对许可证转移功能有任何疑问，可以将新的硬件密钥通过电子邮件发送至 <a href="mailto:&#115;&#x75;&#112;&#x70;&#111;&#114;&#x74;&#x40;&#x6d;&#117;&#108;&#116;&#x69;&#x65;&#99;&#x75;&#x73;&#99;&#97;&#x6e;&#x2e;&#x6e;&#101;&#x74;">&#115;&#x75;&#112;&#x70;&#111;&#114;&#x74;&#x40;&#x6d;&#117;&#108;&#116;&#x69;&#x65;&#99;&#x75;&#x73;&#99;&#97;&#x6e;&#x2e;&#x6e;&#101;&#x74;</a>。</p>
+<p>如果您对许可证转移功能有任何疑问，可以将新的硬件密钥通过电子邮件发送至 <a href="mailto:&#x73;&#117;&#112;&#x70;&#x6f;&#114;&#116;&#x40;&#x6d;&#117;&#x6c;&#116;&#105;&#x65;&#x63;&#117;&#115;&#x63;&#97;&#110;&#46;&#x6e;&#x65;&#x74;">&#x73;&#117;&#112;&#x70;&#x6f;&#114;&#116;&#x40;&#x6d;&#117;&#x6c;&#116;&#105;&#x65;&#x63;&#117;&#115;&#x63;&#97;&#110;&#46;&#x6e;&#x65;&#x74;</a>。</p>
 <p>请注意，许可证转移功能对转移次数有限制。</p>
 <p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image10.png-QNthin"></p>
 <h2 id="2-用户界面"><a href="#2-用户界面" class="headerlink" title="2. 用户界面"></a>2. 用户界面</h2><h3 id="2-1-Multiecuscan-主屏幕"><a href="#2-1-Multiecuscan-主屏幕" class="headerlink" title="2.1. Multiecuscan 主屏幕"></a>2.1. Multiecuscan 主屏幕</h3><p>当您启动 Multiecuscan 时，它会显示以下屏幕：</p>
@@ -6242,42 +5862,6 @@ H1&lt;---|0.14-1.6|Mirtazapine
         <tag>OpenCV</tag>
         <tag>Python</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>其它笔记</title>
-    <url>/post/note_1/</url>
-    <content><![CDATA[<p>懂王附体，很神奇的强行全面放开了</p>
-<span id="more"></span>
-
-<p>现在办公室里有 5 个阳性的，其中一个坐我対角线，我们俩平时经常沟通。</p>
-<p>14号，公司食堂已经关了，需要排队一小时左右（左图）领盒饭（右图）。</p>
-<table>
-<thead>
-<tr>
-<th><img data-src="//qiniu.s1nh.org/blog_note_1_1.jpg"></th>
-<th><img data-src="//qiniu.s1nh.org/blog_note_1_2.jpg"></th>
-</tr>
-</thead>
-</table>
-<p>下午去小卖部买了桶泡面，顺便把盒饭吃了。</p>
-<p>隔壁领导办公室飘过来的烟味，加上满屋的新冠病毒，已经让我完全不想呆在办公室了。<br>吃完泡面三点多帮行政拿了一车快递，散了会步，改了一下年终述职PPT回家躺尸。</p>
-<p>公司发通知，尽量居家办公：</p>
-<blockquote>
-<p>鉴于当前疫情防控形势比较严峻，请各位于12月15日（今天）下午开始，无重要事项，尽量居家办公。</p>
-</blockquote>
-<hr>
-<p>算上周末连续躺了5天，期间找家政帮忙擦玻璃，家政阿姨把玻璃和窗帘刮坏了。<br>明天要去上班了，再不上班要被开除了。</p>
-<p>晚上又没怎么睡着。</p>
-<hr>
-<p>周二来上班，阳性确诊的同事还在我対角线办公。</p>
-<p>提三天隔离假被驳回了。要求提供证明，比如拍温度计照片。<br>还反问我“不拍温度计照片怎么能证明您发烧了呢？”<br>其实我想反问“如何可以通过温度计照片看出我发烧”的。<br>但感觉她的智商可能听不懂，争论还浪费时间，就让老婆拍了两张体温计的照片。<br>宋老师依然秒通过。话说相处一年，他人还不错。<br>同花顺的吴海胖，迅雷的刘汉洲，也都很好；<br>实验室上一个领导不行，欺上瞒下；阿里那个也不行，双向情感障碍。</p>
-<p><img data-src="//qiniu.s1nh.org/blog_note_1_3.jpg"></p>
-<p>中午吃了泡面和橙子，吃完躺下开始体验植物神经紊乱。</p>
-<p>白天应该也不会再有什么新鲜事了。</p>
-]]></content>
-      <categories>
-        <category>其它笔记</category>
-      </categories>
   </entry>
   <entry>
     <title>光流(Optical Flow)介绍</title>
