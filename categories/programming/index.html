@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.0.0">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
@@ -14,10 +14,10 @@
 
 
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.28/fancybox/fancybox.css" integrity="sha256-6cQIC71/iBIYXFK+0RHAvwmjwWzkWd+r7v/BX3/vZDc=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.15.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="no other developers required.">
 <meta property="og:type" content="website">
@@ -40,7 +40,7 @@
 <title>分类: 算法与硬件 | S1NH</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-44KGHGDYG3"></script>
-  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-44KGHGDYG3","only_pageview":false}</script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-44KGHGDYG3","only_pageview":false,"measure_protocol_api_secret":null}</script>
   <script src="/js/third-party/analytics/google-analytics.js"></script>
 
   <script src="/js/third-party/analytics/baidu-analytics.js"></script>
@@ -52,6 +52,37 @@
 
 
   <script defer data-domain="s1nh.org" src="http://home.s1nh.com:32801/js/script.js"></script>
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    'use strict';
+    
+    let time, hidden, visible, title = document.title;
+    let favicon = document.querySelector('link[rel="icon"]');
+    
+      hidden = '(〟-_・)ﾝ?这就走了？';
+      visible = '(๑‾᷅^‾᷅๑)哼，还知道回来！';
+    
+    let random = t => t[Math.floor(Math.random() * t.length)];
+    const change = () => {
+      if (document.hidden) {
+        favicon.setAttribute('href', '/images/favicon-32x32.png');
+        
+          document.title = hidden;
+        
+        clearTimeout(time);
+      } else {
+        favicon.setAttribute('href', '/images/favicon-32x32.png');
+        
+          document.title = visible;
+        
+        time = setTimeout(() => {
+          document.title = title;
+        }, 2019);
+      }
+    }
+    document.addEventListener('visibilitychange', change, false);
+  });
+</script>
 
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
@@ -157,7 +188,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">105</span>
+          <span class="site-state-item-count">108</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -268,6 +299,26 @@
     <header class="post-header">
       <div class="post-meta-container">
         <time itemprop="dateCreated"
+              datetime="2023-12-26T18:17:57+08:00"
+              content="2023-12-26">
+          12-26
+        </time>
+      </div>
+
+      <div class="post-title">
+        <a class="post-title-link" href="/post/theme-next-warnning/" itemprop="url">
+          <span itemprop="name">Resolve The upstream repository of theme NexT has been changed.</span>
+        </a>
+      </div>
+
+      
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <div class="post-meta-container">
+        <time itemprop="dateCreated"
               datetime="2023-09-08T22:39:30+08:00"
               content="2023-09-08">
           09-08
@@ -275,9 +326,9 @@
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/post/cleanup-git-repo/" itemprop="url">
-            <span itemprop="name">清理 git 仓库</span>
-          </a>
+        <a class="post-title-link" href="/post/cleanup-git-repo/" itemprop="url">
+          <span itemprop="name">清理 git 仓库</span>
+        </a>
       </div>
 
       
@@ -295,9 +346,9 @@
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/post/promtail-config-glog/" itemprop="url">
-            <span itemprop="name">Google Logging (glog) 格式的 Promtail 配置</span>
-          </a>
+        <a class="post-title-link" href="/post/promtail-config-glog/" itemprop="url">
+          <span itemprop="name">Google Logging (glog) 格式的 Promtail 配置</span>
+        </a>
       </div>
 
       
@@ -315,9 +366,9 @@
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/post/ar-wireless-charge/" itemprop="url">
-            <span itemprop="name">阿尔法罗密欧无线充电3D打印模型</span>
-          </a>
+        <a class="post-title-link" href="/post/ar-wireless-charge/" itemprop="url">
+          <span itemprop="name">阿尔法罗密欧无线充电3D打印模型</span>
+        </a>
       </div>
 
       
@@ -335,9 +386,9 @@
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/post/network-tips/" itemprop="url">
-            <span itemprop="name">一些小技巧</span>
-          </a>
+        <a class="post-title-link" href="/post/network-tips/" itemprop="url">
+          <span itemprop="name">一些小技巧</span>
+        </a>
       </div>
 
       
@@ -355,9 +406,9 @@
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/post/python-different-ways-to-kill-a-thread/" itemprop="url">
-            <span itemprop="name">Python 中杀死线程的几个方法</span>
-          </a>
+        <a class="post-title-link" href="/post/python-different-ways-to-kill-a-thread/" itemprop="url">
+          <span itemprop="name">Python 中杀死线程的几个方法</span>
+        </a>
       </div>
 
       
@@ -378,9 +429,9 @@
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/post/concepts-of-fast-dds/" itemprop="url">
-            <span itemprop="name">一些有关 FastDDS 的基本概念</span>
-          </a>
+        <a class="post-title-link" href="/post/concepts-of-fast-dds/" itemprop="url">
+          <span itemprop="name">一些有关 FastDDS 的基本概念</span>
+        </a>
       </div>
 
       
@@ -398,9 +449,9 @@
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/post/use-git-stash/" itemprop="url">
-            <span itemprop="name">使用 git squash 保持干净的主分支，及相应的调试方法</span>
-          </a>
+        <a class="post-title-link" href="/post/use-git-stash/" itemprop="url">
+          <span itemprop="name">使用 git squash 保持干净的主分支，及相应的调试方法</span>
+        </a>
       </div>
 
       
@@ -418,9 +469,9 @@
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/post/fastdds-shm/" itemprop="url">
-            <span itemprop="name">FastDDS 特定情况下 subscriber 无法重连</span>
-          </a>
+        <a class="post-title-link" href="/post/fastdds-shm/" itemprop="url">
+          <span itemprop="name">FastDDS 特定情况下 subscriber 无法重连</span>
+        </a>
       </div>
 
       
@@ -438,9 +489,9 @@
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/post/boost-robustness-interprocess-mutex-deadlock/" itemprop="url">
-            <span itemprop="name">boost::interprocess 新版本修复了死锁</span>
-          </a>
+        <a class="post-title-link" href="/post/boost-robustness-interprocess-mutex-deadlock/" itemprop="url">
+          <span itemprop="name">boost::interprocess 新版本修复了死锁</span>
+        </a>
       </div>
 
       
@@ -458,9 +509,9 @@
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/post/fastdds-zerocopy-for-multiple-readers/" itemprop="url">
-            <span itemprop="name">FastDDS 零拷贝模式下多个 subscriber 的原理</span>
-          </a>
+        <a class="post-title-link" href="/post/fastdds-zerocopy-for-multiple-readers/" itemprop="url">
+          <span itemprop="name">FastDDS 零拷贝模式下多个 subscriber 的原理</span>
+        </a>
       </div>
 
       
@@ -478,9 +529,9 @@
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/post/fix-apt-mirror-error/" itemprop="url">
-            <span itemprop="name">apt mirror DEP-11 64x64@2 Icons 404 Not Found</span>
-          </a>
+        <a class="post-title-link" href="/post/fix-apt-mirror-error/" itemprop="url">
+          <span itemprop="name">apt mirror DEP-11 64x64@2 Icons 404 Not Found</span>
+        </a>
       </div>
 
       
@@ -498,9 +549,9 @@
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/post/config-for-sermoonv1/" itemprop="url">
-            <span itemprop="name">逆向了 SermoonV1 的 CR-FDM-v2.4.S1.200 主板</span>
-          </a>
+        <a class="post-title-link" href="/post/config-for-sermoonv1/" itemprop="url">
+          <span itemprop="name">逆向了 SermoonV1 的 CR-FDM-v2.4.S1.200 主板</span>
+        </a>
       </div>
 
       
@@ -518,9 +569,9 @@
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/post/do-not-buy-sermoon-v1/" itemprop="url">
-            <span itemprop="name">不推荐购买创想三维 Creality Sermoon V1 的几个理由</span>
-          </a>
+        <a class="post-title-link" href="/post/do-not-buy-sermoon-v1/" itemprop="url">
+          <span itemprop="name">不推荐购买创想三维 Creality Sermoon V1 的几个理由</span>
+        </a>
       </div>
 
       
@@ -538,9 +589,9 @@
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/post/a-survey-of-middleware-interface/" itemprop="url">
-            <span itemprop="name">百度阿波罗 和 ROS 2.0 采用的消息中间件</span>
-          </a>
+        <a class="post-title-link" href="/post/a-survey-of-middleware-interface/" itemprop="url">
+          <span itemprop="name">百度阿波罗 和 ROS 2.0 采用的消息中间件</span>
+        </a>
       </div>
 
       
@@ -561,9 +612,9 @@
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/post/review-of-chatbot-framework/" itemprop="url">
-            <span itemprop="name">有关 Chatbot 基本原理、开源框架和 Rasa</span>
-          </a>
+        <a class="post-title-link" href="/post/review-of-chatbot-framework/" itemprop="url">
+          <span itemprop="name">有关 Chatbot 基本原理、开源框架和 Rasa</span>
+        </a>
       </div>
 
       
@@ -581,9 +632,9 @@
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/post/image-stitching-post-process/" itemprop="url">
-            <span itemprop="name">解决廉价摄像头在图像拼接中产生的曝光不均匀问题</span>
-          </a>
+        <a class="post-title-link" href="/post/image-stitching-post-process/" itemprop="url">
+          <span itemprop="name">解决廉价摄像头在图像拼接中产生的曝光不均匀问题</span>
+        </a>
       </div>
 
       
@@ -604,9 +655,9 @@
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/post/tensorflow-bug2/" itemprop="url">
-            <span itemprop="name">「tensorflow」 Variable was uninitialized</span>
-          </a>
+        <a class="post-title-link" href="/post/tensorflow-bug2/" itemprop="url">
+          <span itemprop="name">「tensorflow」 Variable was uninitialized</span>
+        </a>
       </div>
 
       
@@ -624,9 +675,9 @@
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/post/first-impressions/" itemprop="url">
-            <span itemprop="name">第一印象（First Impressions）人物性格特征预测</span>
-          </a>
+        <a class="post-title-link" href="/post/first-impressions/" itemprop="url">
+          <span itemprop="name">第一印象（First Impressions）人物性格特征预测</span>
+        </a>
       </div>
 
       
@@ -644,9 +695,9 @@
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/post/jetson-nano-reduce-memory-usage/" itemprop="url">
-            <span itemprop="name">「Jetson Nano」 Reduce Memory Usage</span>
-          </a>
+        <a class="post-title-link" href="/post/jetson-nano-reduce-memory-usage/" itemprop="url">
+          <span itemprop="name">「Jetson Nano」 Reduce Memory Usage</span>
+        </a>
       </div>
 
       
@@ -664,9 +715,9 @@
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/post/vqg-survey/" itemprop="url">
-            <span itemprop="name">A Survey of Visual Question Generation</span>
-          </a>
+        <a class="post-title-link" href="/post/vqg-survey/" itemprop="url">
+          <span itemprop="name">A Survey of Visual Question Generation</span>
+        </a>
       </div>
 
       
@@ -684,9 +735,9 @@
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/post/inference-using-tensorrt-backend/" itemprop="url">
-            <span itemprop="name">Inference using TensorRT Backend.</span>
-          </a>
+        <a class="post-title-link" href="/post/inference-using-tensorrt-backend/" itemprop="url">
+          <span itemprop="name">Inference using TensorRT Backend.</span>
+        </a>
       </div>
 
       
@@ -704,9 +755,9 @@
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/post/multi-modal-and-edge-compute/" itemprop="url">
-            <span itemprop="name">多模态人工智能与边缘计算技术</span>
-          </a>
+        <a class="post-title-link" href="/post/multi-modal-and-edge-compute/" itemprop="url">
+          <span itemprop="name">多模态人工智能与边缘计算技术</span>
+        </a>
       </div>
 
       
@@ -727,9 +778,9 @@
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/post/planar-reconstruction/" itemprop="url">
-            <span itemprop="name">Planar Reconstruction - 深度学习之平面重建</span>
-          </a>
+        <a class="post-title-link" href="/post/planar-reconstruction/" itemprop="url">
+          <span itemprop="name">Planar Reconstruction - 深度学习之平面重建</span>
+        </a>
       </div>
 
       
@@ -747,9 +798,9 @@
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/post/project-velodyne/" itemprop="url">
-            <span itemprop="name">多线激光 Velodyne 与相机的配准及投影</span>
-          </a>
+        <a class="post-title-link" href="/post/project-velodyne/" itemprop="url">
+          <span itemprop="name">多线激光 Velodyne 与相机的配准及投影</span>
+        </a>
       </div>
 
       
@@ -767,9 +818,9 @@
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/post/calib-velodyne-camera/" itemprop="url">
-            <span itemprop="name">多目相机、Velodyne标定那些破事</span>
-          </a>
+        <a class="post-title-link" href="/post/calib-velodyne-camera/" itemprop="url">
+          <span itemprop="name">多目相机、Velodyne标定那些破事</span>
+        </a>
       </div>
 
       
@@ -787,9 +838,9 @@
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/post/setup-ubuntu-in-macbook/" itemprop="url">
-            <span itemprop="name">在 Macbook 中美美的运行 Ubuntu</span>
-          </a>
+        <a class="post-title-link" href="/post/setup-ubuntu-in-macbook/" itemprop="url">
+          <span itemprop="name">在 Macbook 中美美的运行 Ubuntu</span>
+        </a>
       </div>
 
       
@@ -810,9 +861,9 @@
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/post/document-layout-analysis/" itemprop="url">
-            <span itemprop="name">文档布局分析 & 扭曲文档图像恢复 --- Document Layout Analysis & Document Image Dewarping</span>
-          </a>
+        <a class="post-title-link" href="/post/document-layout-analysis/" itemprop="url">
+          <span itemprop="name">文档布局分析 & 扭曲文档图像恢复 --- Document Layout Analysis & Document Image Dewarping</span>
+        </a>
       </div>
 
       
@@ -830,9 +881,9 @@
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/post/arm64-after-jetpack/" itemprop="url">
-            <span itemprop="name">安装NVIDIA Jetpack/DriveInstall后，apt-get 报错无arm64源</span>
-          </a>
+        <a class="post-title-link" href="/post/arm64-after-jetpack/" itemprop="url">
+          <span itemprop="name">安装NVIDIA Jetpack/DriveInstall后，apt-get 报错无arm64源</span>
+        </a>
       </div>
 
       
@@ -850,29 +901,9 @@
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/post/making-a-coffeebot-ORB_SLAM/" itemprop="url">
-            <span itemprop="name">制作一个送咖啡机器人 -- ORB SLAM2</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2018-03-23T19:45:52+08:00"
-              content="2018-03-23">
-          03-23
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/post/littlebug/" itemprop="url">
-            <span itemprop="name">linux kernel bug 导致无法载入 nvidia 驱动</span>
-          </a>
+        <a class="post-title-link" href="/post/making-a-coffeebot-ORB_SLAM/" itemprop="url">
+          <span itemprop="name">制作一个送咖啡机器人 -- ORB SLAM2</span>
+        </a>
       </div>
 
       
@@ -896,15 +927,14 @@
 
   <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">鲁ICP备16000054号 </a>
   </div>
-
-<div class="copyright">
-  &copy; 2015 – 
-  <span itemprop="copyrightYear">2023</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">S1NH</span>
-</div>
+  <div class="copyright">
+    &copy; 2015 – 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">S1NH</span>
+  </div>
 <div class="busuanzi-count">
     <span class="post-meta-item" id="busuanzi_container_site_uv">
       <span class="post-meta-item-icon">
@@ -945,8 +975,7 @@
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.28/fancybox/fancybox.umd.js" integrity="sha256-ytMJGN3toR+a84u7g7NuHm91VIR06Q41kMWDr2pq7Zo=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
 
@@ -954,10 +983,12 @@
 <script src="/js/third-party/search/local-search.js"></script>
 
 
-  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.4.3/mermaid.min.js","integrity":"sha256-e0o3JYsdjqKajf9eOe22FhioYSz9WofRY4dLKo3F6do="}}</script>
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.1/mermaid.min.js","integrity":"sha256-mm3Re3y7xlvh+yCD+l/Zs1d+PU0AEad93MkWvljfm/s="}}</script>
   <script src="/js/third-party/tags/mermaid.js"></script>
 
+
   <script src="/js/third-party/fancybox.js"></script>
+
 
 
   
