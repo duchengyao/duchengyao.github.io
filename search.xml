@@ -1297,174 +1297,6 @@ http://winebottler.kronenberg.org/
       </categories>
   </entry>
   <entry>
-    <title>Softmax, MLP, CNN 三种方法识别手写数字MNIST——《TensorFlow 实战》读书笔记</title>
-    <url>/post/Tensorflow-MNIST/</url>
-    <content><![CDATA[<p><code>不要代码写多了就变得那么没有人情味了</code></p>
-<h2 id="0x00-Intro"><a href="#0x00-Intro" class="headerlink" title="0x00 Intro"></a>0x00 Intro</h2><h3 id="1-读入MNIST数据库"><a href="#1-读入MNIST数据库" class="headerlink" title="1. 读入MNIST数据库"></a>1. 读入MNIST数据库</h3><p>执行<code>mnist = input_data.read_data_sets(&quot;MNIST_data/&quot;, one_hot=True)</code>后，会检查<code>MNIST_data/</code>文件夹下有没有数据库文件，如果没有会自动下载。这一步如果执行比较慢，可以用迅雷手动下载下面四个文件，保存到MNIST_data目录（不需要解压）</p>
-<ul>
-<li><a href="http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz">train-images-idx3-ubyte.gz</a>:  training set images (9912422 bytes)</li>
-<li><a href="http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz">train-labels-idx1-ubyte.gz</a>:  training set labels (28881 bytes)</li>
-<li><a href="http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz">t10k-images-idx3-ubyte.gz</a>:   test set images (1648877 bytes)</li>
-<li><a href="http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz">t10k-labels-idx1-ubyte.gz</a>:   test set labels (4542 bytes) </li>
-</ul>
-<span id="more"></span>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> tensorflow.examples.tutorials.mnist <span class="keyword">import</span> input_data</span><br><span class="line">mnist = input_data.read_data_sets(<span class="string">&quot;MNIST_data/&quot;</span>, one_hot=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-
-<pre><code>Extracting MNIST_data/train-images-idx3-ubyte.gz
-Extracting MNIST_data/train-labels-idx1-ubyte.gz
-Extracting MNIST_data/t10k-images-idx3-ubyte.gz
-Extracting MNIST_data/t10k-labels-idx1-ubyte.gz
-</code></pre>
-<h3 id="2-初始化-Tensorflow"><a href="#2-初始化-Tensorflow" class="headerlink" title="2. 初始化 Tensorflow"></a>2. 初始化 Tensorflow</h3><p>Tensorflow 运行时默认会把GPU显存一次性占满，添加<code>config.gpu_options.allow_growth = True</code> 使其可以动态分配显存</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">config = tf.ConfigProto()</span><br><span class="line">config.gpu_options.allow_growth = <span class="literal">True</span></span><br><span class="line">sess = tf.InteractiveSession(config = config)</span><br></pre></td></tr></table></figure>
-
-<h2 id="0x01-Softmax"><a href="#0x01-Softmax" class="headerlink" title="0x01 Softmax"></a>0x01 Softmax</h2><p>只用 Softmax Regression 进行分类，正确率约为92%</p>
-<h3 id="1-定义变量"><a href="#1-定义变量" class="headerlink" title="1. 定义变量"></a>1. 定义变量</h3><p>Softmax Regression 的公式可以写成：</p>
-<p>$$y=softmax(Wx+b)$$</p>
-<p>其中，<code>x</code>为输入数据（手写数字图片），不限条数的<code>784</code>维的<code>Float32</code>型数据；<br><code>W</code>为<code>784×10（特征维数×图片种类）</code>的<code>Variable</code>向量；<br><code>b</code>是bias（偏置）<br><code>y</code>为Softmax分类后得出的结果</p>
-<p>loss function为<code>cross_entropy</code>，定义如下：</p>
-<p>$$H_y’(y)=-\sum_{i}{y’_ilog(y_i)}$$</p>
-<p>而<code>reduce_mean</code>为对每个batch求均值（reduction_indices=[1]的意思请看后面的附录， 在新版的<a href="https://www.tensorflow.org/get_started/mnist/beginners">Tensorflow tutorial</a>中，这部分稍有区别<br>）</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x = tf.placeholder(tf.float32,[<span class="literal">None</span>,<span class="number">784</span>])</span><br><span class="line">W = tf.Variable(tf.zeros([<span class="number">784</span>,<span class="number">10</span>]))</span><br><span class="line">b = tf.Variable(tf.zeros([<span class="number">10</span>]))</span><br><span class="line"></span><br><span class="line">y = tf.nn.softmax(tf.matmul(x,W) + b)</span><br><span class="line">y_ = tf.placeholder(tf.float32,[<span class="literal">None</span>,<span class="number">10</span>])</span><br><span class="line"></span><br><span class="line">cross_entropy = tf.reduce_mean(-tf.reduce_sum(y_ * tf.log(y),reduction_indices=[<span class="number">1</span>]))</span><br><span class="line"></span><br><span class="line">train_step = tf.train.GradientDescentOptimizer(<span class="number">0.5</span>).minimize(cross_entropy)</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-训练"><a href="#2-训练" class="headerlink" title="2. 训练"></a>2. 训练</h3><p>每次训练抽取100个样本作为<code>mini-batch</code>，并传给<code>placeholder(x,y_)</code>进行训练，并每隔250输出一次权重。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">tf.global_variables_initializer().run()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1000</span>):</span><br><span class="line">    batch_xs, batch_ys = mnist.train.next_batch(<span class="number">100</span>)</span><br><span class="line">    sess.run(train_step, feed_dict=&#123;x: batch_xs, y_: batch_ys&#125;)</span><br><span class="line">    <span class="keyword">if</span> (i-<span class="number">1</span>)%<span class="number">250</span> == <span class="number">0</span>:</span><br><span class="line">        fig2,ax2 = plt.subplots(nrows=<span class="number">1</span>, ncols=<span class="number">10</span>, figsize=(<span class="number">20</span>,<span class="number">2</span>))</span><br><span class="line">        WW=np.transpose(sess.run(tf.reshape(W,[<span class="number">784</span>,<span class="number">10</span>])))</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,<span class="number">10</span>):</span><br><span class="line">            ax2[i].imshow(np.reshape(WW[i]+np.ones(<span class="number">784</span>), (<span class="number">28</span>, <span class="number">28</span>)))</span><br><span class="line">        plt.show()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><img data-src="//qiniu.s1nh.org/Blog_Tensorflow_MNIST_0.png" alt="png"></p>
-<p><img data-src="//qiniu.s1nh.org/Blog_Tensorflow_MNIST_1.png" alt="png"></p>
-<p><img data-src="//qiniu.s1nh.org/Blog_Tensorflow_MNIST_2.png" alt="png"></p>
-<p><img data-src="//qiniu.s1nh.org/Blog_Tensorflow_MNIST_3.png" alt="png"></p>
-<h3 id="3-计算正确率"><a href="#3-计算正确率" class="headerlink" title="3. 计算正确率"></a>3. 计算正确率</h3><p>accuracy 与 train_step 的区别官方给出了如下解释: “<em>Note: the Tensor class will be replaced by Output in the future. Currently these two are aliases for each other.</em>“</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">correct_prediction = tf.equal(tf.arg_max(y,<span class="number">1</span>),tf.arg_max(y_,<span class="number">1</span>))</span><br><span class="line">accuracy = tf.reduce_mean(tf.cast(correct_prediction,tf.float32))</span><br><span class="line"><span class="built_in">print</span>(sess.run(accuracy, feed_dict=&#123;x: mnist.test.images, y_: mnist.test.labels&#125;))</span><br><span class="line"></span><br><span class="line">summary_writer = tf.summary.FileWriter(<span class="string">&#x27;Softmax&#x27;</span>, sess.graph)</span><br></pre></td></tr></table></figure>
-
-<pre><code>0.9163
-</code></pre>
-<h2 id="0x02-MLP"><a href="#0x02-MLP" class="headerlink" title="0x02 MLP"></a>0x02 MLP</h2><p>使用多层感知机（MLP）进行分类，准确率约为98%</p>
-<h3 id="1-定义变量-1"><a href="#1-定义变量-1" class="headerlink" title="1. 定义变量"></a>1. 定义变量</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">in_units = <span class="number">784</span></span><br><span class="line">h1_units = <span class="number">300</span></span><br><span class="line">W1 = tf.Variable(tf.truncated_normal([in_units,h1_units],stddev=<span class="number">0.1</span>))</span><br><span class="line">b1 = tf.Variable(tf.zeros([h1_units]))</span><br><span class="line">W2 = tf.Variable(tf.zeros([h1_units, <span class="number">10</span>]))</span><br><span class="line">b2 = tf.Variable(tf.zeros([<span class="number">10</span>]))</span><br><span class="line"></span><br><span class="line">x = tf.placeholder(tf.float32,[<span class="literal">None</span>,in_units])</span><br><span class="line">keep_prob = tf.placeholder(tf.float32)</span><br><span class="line"></span><br><span class="line">hidden1 = tf.nn.relu(tf.matmul(x,W1)+b1)</span><br><span class="line">hidden1_drop = tf.nn.dropout(hidden1,keep_prob)</span><br><span class="line">y = tf.nn.softmax(tf.matmul(hidden1_drop,W2)+b2)</span><br><span class="line"></span><br><span class="line">y_ = tf.placeholder(tf.float32,[<span class="literal">None</span>,<span class="number">10</span>])</span><br><span class="line">cross_entropy = tf.reduce_mean(-tf.reduce_sum(y_ * tf.log(y),reduction_indices=[<span class="number">1</span>]))</span><br><span class="line">train_step = tf.train.GradientDescentOptimizer(<span class="number">0.3</span>).minimize(cross_entropy)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="2-训练-1"><a href="#2-训练-1" class="headerlink" title="2. 训练"></a>2. 训练</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">tf.global_variables_initializer().run()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5000</span>):</span><br><span class="line">    batch_xs, batch_ys = mnist.train.next_batch(<span class="number">100</span>)</span><br><span class="line">    train_step.run(&#123;x: batch_xs, y_: batch_ys, keep_prob: <span class="number">0.75</span>&#125;)</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-计算正确率-1"><a href="#3-计算正确率-1" class="headerlink" title="3. 计算正确率"></a>3. 计算正确率</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">correct_prediction = tf.equal(tf.argmax(y,<span class="number">1</span>),tf.argmax(y_,<span class="number">1</span>))</span><br><span class="line">accuracy = tf.reduce_mean(tf.cast(correct_prediction,tf.float32))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(accuracy.<span class="built_in">eval</span>(&#123;x:mnist.test.images,y_:mnist.test.labels, keep_prob: <span class="number">1.0</span>&#125;))</span><br><span class="line">summary_writer = tf.summary.FileWriter(<span class="string">&#x27;MLP&#x27;</span>, sess.graph)</span><br></pre></td></tr></table></figure>
-
-<pre><code>0.9787
-</code></pre>
-<h2 id="0x03-CNN"><a href="#0x03-CNN" class="headerlink" title="0x03 CNN"></a>0x03 CNN</h2><h3 id="1-定义变量-2"><a href="#1-定义变量-2" class="headerlink" title="1. 定义变量"></a>1. 定义变量</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">weight_variable</span>(<span class="params">shape</span>):</span><br><span class="line">    initial = tf.truncated_normal(shape, stddev=<span class="number">0.1</span>)</span><br><span class="line">    <span class="keyword">return</span> tf.Variable(initial)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">bias_variable</span>(<span class="params">shape</span>):</span><br><span class="line">    initial = tf.constant(<span class="number">0.1</span>,shape=shape)</span><br><span class="line">    <span class="keyword">return</span> tf.Variable(initial)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">conv2d</span>(<span class="params">x, W</span>):</span><br><span class="line">    <span class="keyword">return</span> tf.nn.conv2d(x, W, strides=[<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>], padding=<span class="string">&#x27;SAME&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">max_pool_2x2</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">return</span> tf.nn.max_pool(x, ksize=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">1</span>], strides=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">1</span>], padding=<span class="string">&#x27;SAME&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x = tf.placeholder(tf.float32,[<span class="literal">None</span>,in_units])</span><br><span class="line">y_ = tf.placeholder(tf.float32,[<span class="literal">None</span>,<span class="number">10</span>])</span><br><span class="line">x_image = tf.reshape(x, [-<span class="number">1</span>,<span class="number">28</span>,<span class="number">28</span>,<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line">W_conv1 = weight_variable([<span class="number">5</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">32</span>])</span><br><span class="line">b_conv1 = bias_variable([<span class="number">32</span>])</span><br><span class="line">h_conv1 = tf.nn.relu(conv2d(x_image,W_conv1) + b_conv1)</span><br><span class="line">h_pool1 = max_pool_2x2(h_conv1)</span><br><span class="line"></span><br><span class="line">W_conv2 = weight_variable([<span class="number">5</span>,<span class="number">5</span>,<span class="number">32</span>,<span class="number">64</span>])</span><br><span class="line">b_conv2 = bias_variable([<span class="number">64</span>])</span><br><span class="line">h_conv2 = tf.nn.relu(conv2d(h_pool1, W_conv2) + b_conv2)</span><br><span class="line">h_pool2 = max_pool_2x2(h_conv2)</span><br><span class="line"></span><br><span class="line">W_fc1 = weight_variable([<span class="number">7</span>*<span class="number">7</span>*<span class="number">64</span>, <span class="number">1024</span>])</span><br><span class="line">b_fc1 = bias_variable([<span class="number">1024</span>])</span><br><span class="line">h_pool2_flat = tf.reshape(h_pool2,[-<span class="number">1</span>,<span class="number">7</span>*<span class="number">7</span>*<span class="number">64</span>])</span><br><span class="line">h_fc1 = tf.nn.relu(tf.matmul(h_pool2_flat,W_fc1) + b_fc1)</span><br><span class="line"></span><br><span class="line">keep_prob = tf.placeholder(tf.float32)</span><br><span class="line">h_fc1_drop = tf.nn.dropout(h_fc1,keep_prob)</span><br><span class="line"></span><br><span class="line">W_fc2 = weight_variable([<span class="number">1024</span>, <span class="number">10</span>])</span><br><span class="line">b_fc2 = bias_variable([<span class="number">10</span>])</span><br><span class="line">y_conv = tf.nn.softmax(tf.matmul(h_fc1_drop, W_fc2) + b_fc2)</span><br><span class="line"></span><br><span class="line">cross_entropy = tf.reduce_mean(-tf.reduce_sum(y_ * tf.log(y_conv), reduction_indices=[<span class="number">1</span>]))</span><br><span class="line">train_step = tf.train.AdamOptimizer(<span class="number">1e-4</span>).minimize(cross_entropy)</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-训练-2"><a href="#2-训练-2" class="headerlink" title="2. 训练"></a>2. 训练</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">correct_prediction = tf.equal(tf.arg_max(y_conv,<span class="number">1</span>),tf.argmax(y_,<span class="number">1</span>))</span><br><span class="line">accuracy = tf.reduce_mean(tf.cast(correct_prediction,tf.float32))</span><br><span class="line"></span><br><span class="line">tf.global_variables_initializer().run()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">20000</span>):</span><br><span class="line">    batch = mnist.train.next_batch(<span class="number">100</span>)</span><br><span class="line">    <span class="keyword">if</span> i%<span class="number">100</span> == <span class="number">0</span>:</span><br><span class="line">        train_accuracy = accuracy.<span class="built_in">eval</span>(feed_dict=&#123;x:batch[<span class="number">0</span>], y_:batch[<span class="number">1</span>], keep_prob:<span class="number">1.0</span>&#125;)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;step %d, training accuracy %g&quot;</span>%(i,train_accuracy))</span><br><span class="line">    train_step.run(feed_dict=&#123;x:batch[<span class="number">0</span>],y_:batch[<span class="number">1</span>],keep_prob:<span class="number">0.5</span>&#125;)</span><br></pre></td></tr></table></figure>
-
-<pre><code>step 0, training accuracy 0.07
-step 100, training accuracy 0.84
-step 200, training accuracy 0.9
-step 300, training accuracy 0.88
-step 400, training accuracy 0.95
-step 500, training accuracy 0.98
-step 600, training accuracy 0.96
-step 700, training accuracy 0.94
-step 800, training accuracy 1
-step 900, training accuracy 0.98
-step 1000, training accuracy 0.99
-step 1100, training accuracy 0.96
-step 1200, training accuracy 0.99
-step 1300, training accuracy 0.99
-step 1400, training accuracy 0.98
-step 1500, training accuracy 1
-step 1600, training accuracy 0.98
-step 1700, training accuracy 0.97
-step 1800, training accuracy 0.99
-step 1900, training accuracy 0.98
-step 2000, training accuracy 0.98
-step 2100, training accuracy 0.98
-step 2200, training accuracy 0.99
-step 2300, training accuracy 0.98
-step 2400, training accuracy 0.99
-step 2500, training accuracy 0.97
-step 2600, training accuracy 0.97
-step 2700, training accuracy 0.97
-step 2800, training accuracy 0.99
-step 2900, training accuracy 1
-step 3000, training accuracy 1
-step 3100, training accuracy 1
-step 3200, training accuracy 0.98
-step 3300, training accuracy 0.99
-step 3400, training accuracy 0.98
-step 3500, training accuracy 1
-step 3600, training accuracy 1
-step 3700, training accuracy 0.98
-step 3800, training accuracy 1
-step 3900, training accuracy 0.98
-step 4000, training accuracy 1
-step 4100, training accuracy 0.99
-step 4200, training accuracy 0.99
-step 4300, training accuracy 0.99
-step 4400, training accuracy 1
-step 4500, training accuracy 0.99
-step 4600, training accuracy 1
-step 4700, training accuracy 1
-step 4800, training accuracy 1
-step 4900, training accuracy 0.98
-step 5000, training accuracy 0.99
-step 5100, training accuracy 1
-step 5200, training accuracy 0.98
-step 5300, training accuracy 1
-step 5400, training accuracy 1
-step 5500, training accuracy 1
-step 5600, training accuracy 1
-step 5700, training accuracy 1
-step 5800, training accuracy 1
-step 5900, training accuracy 0.99
-step 6000, training accuracy 1
-step 6100, training accuracy 1
-step 6200, training accuracy 1
-step 6300, training accuracy 0.99
-step 6400, training accuracy 1
-step 6500, training accuracy 0.99
-step 6600, training accuracy 1
-step 6700, training accuracy 1
-step 6800, training accuracy 1
-step 6900, training accuracy 0.97
-
-...
-
-step 18500, training accuracy 1
-step 18600, training accuracy 1
-step 18700, training accuracy 1
-step 18800, training accuracy 1
-step 18900, training accuracy 1
-step 19000, training accuracy 1
-step 19100, training accuracy 1
-step 19200, training accuracy 1
-step 19300, training accuracy 1
-step 19400, training accuracy 1
-step 19500, training accuracy 1
-step 19600, training accuracy 1
-step 19700, training accuracy 1
-step 19800, training accuracy 1
-step 19900, training accuracy 1
-</code></pre>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;test accuracy %g&quot;</span>%accuracy.<span class="built_in">eval</span>(feed_dict=&#123;x: mnist.test.images, y_: mnist.test.labels,keep_prob:<span class="number">1.0</span>&#125;)) <span class="comment"># 这一步会瞬间把显存占满</span></span><br><span class="line">summary_writer = tf.summary.FileWriter(<span class="string">&#x27;CNN&#x27;</span>, sess.graph)</span><br></pre></td></tr></table></figure>
-
-<pre><code>test accuracy 0.9931
-</code></pre>
-<h2 id="0x04-附录"><a href="#0x04-附录" class="headerlink" title="0x04 附录"></a>0x04 附录</h2><h3 id="1-关于reduction-indices"><a href="#1-关于reduction-indices" class="headerlink" title="1. 关于reduction_indices"></a>1. 关于reduction_indices</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x=[[<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>],[<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>]]</span><br><span class="line">y0=tf.reduce_sum(x,reduction_indices=[<span class="number">0</span>])</span><br><span class="line">y1=tf.reduce_sum(x,reduction_indices=[<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;x  = &quot;</span>, x)</span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;y0 = &quot;</span>, sess.run(y0), <span class="string">&quot;\t(x在第0维度相加)&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;y1 = &quot;</span>, sess.run(y1), <span class="string">&quot;\t(x在第1维度相加)&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<pre><code>x  =  [[2, 2, 2], [2, 2, 2]]
-y0 =  [4 4 4]     (x在第0维度相加)
-y1 =  [6 6]     (x在第1维度相加)
-</code></pre>
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
-      </categories>
-      <tags>
-        <tag>MNIST</tag>
-        <tag>Tensorflow</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>模拟退火算法</title>
     <url>/post/SimulatedAnnealing/</url>
     <content><![CDATA[<blockquote>
@@ -1714,6 +1546,174 @@ class SA&#123;
       <tags>
         <tag>爬山算法</tag>
         <tag>模拟退火算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Softmax, MLP, CNN 三种方法识别手写数字MNIST——《TensorFlow 实战》读书笔记</title>
+    <url>/post/Tensorflow-MNIST/</url>
+    <content><![CDATA[<p><code>不要代码写多了就变得那么没有人情味了</code></p>
+<h2 id="0x00-Intro"><a href="#0x00-Intro" class="headerlink" title="0x00 Intro"></a>0x00 Intro</h2><h3 id="1-读入MNIST数据库"><a href="#1-读入MNIST数据库" class="headerlink" title="1. 读入MNIST数据库"></a>1. 读入MNIST数据库</h3><p>执行<code>mnist = input_data.read_data_sets(&quot;MNIST_data/&quot;, one_hot=True)</code>后，会检查<code>MNIST_data/</code>文件夹下有没有数据库文件，如果没有会自动下载。这一步如果执行比较慢，可以用迅雷手动下载下面四个文件，保存到MNIST_data目录（不需要解压）</p>
+<ul>
+<li><a href="http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz">train-images-idx3-ubyte.gz</a>:  training set images (9912422 bytes)</li>
+<li><a href="http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz">train-labels-idx1-ubyte.gz</a>:  training set labels (28881 bytes)</li>
+<li><a href="http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz">t10k-images-idx3-ubyte.gz</a>:   test set images (1648877 bytes)</li>
+<li><a href="http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz">t10k-labels-idx1-ubyte.gz</a>:   test set labels (4542 bytes) </li>
+</ul>
+<span id="more"></span>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> tensorflow.examples.tutorials.mnist <span class="keyword">import</span> input_data</span><br><span class="line">mnist = input_data.read_data_sets(<span class="string">&quot;MNIST_data/&quot;</span>, one_hot=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Extracting MNIST_data/train-images-idx3-ubyte.gz
+Extracting MNIST_data/train-labels-idx1-ubyte.gz
+Extracting MNIST_data/t10k-images-idx3-ubyte.gz
+Extracting MNIST_data/t10k-labels-idx1-ubyte.gz
+</code></pre>
+<h3 id="2-初始化-Tensorflow"><a href="#2-初始化-Tensorflow" class="headerlink" title="2. 初始化 Tensorflow"></a>2. 初始化 Tensorflow</h3><p>Tensorflow 运行时默认会把GPU显存一次性占满，添加<code>config.gpu_options.allow_growth = True</code> 使其可以动态分配显存</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">config = tf.ConfigProto()</span><br><span class="line">config.gpu_options.allow_growth = <span class="literal">True</span></span><br><span class="line">sess = tf.InteractiveSession(config = config)</span><br></pre></td></tr></table></figure>
+
+<h2 id="0x01-Softmax"><a href="#0x01-Softmax" class="headerlink" title="0x01 Softmax"></a>0x01 Softmax</h2><p>只用 Softmax Regression 进行分类，正确率约为92%</p>
+<h3 id="1-定义变量"><a href="#1-定义变量" class="headerlink" title="1. 定义变量"></a>1. 定义变量</h3><p>Softmax Regression 的公式可以写成：</p>
+<p>$$y=softmax(Wx+b)$$</p>
+<p>其中，<code>x</code>为输入数据（手写数字图片），不限条数的<code>784</code>维的<code>Float32</code>型数据；<br><code>W</code>为<code>784×10（特征维数×图片种类）</code>的<code>Variable</code>向量；<br><code>b</code>是bias（偏置）<br><code>y</code>为Softmax分类后得出的结果</p>
+<p>loss function为<code>cross_entropy</code>，定义如下：</p>
+<p>$$H_y’(y)=-\sum_{i}{y’_ilog(y_i)}$$</p>
+<p>而<code>reduce_mean</code>为对每个batch求均值（reduction_indices=[1]的意思请看后面的附录， 在新版的<a href="https://www.tensorflow.org/get_started/mnist/beginners">Tensorflow tutorial</a>中，这部分稍有区别<br>）</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x = tf.placeholder(tf.float32,[<span class="literal">None</span>,<span class="number">784</span>])</span><br><span class="line">W = tf.Variable(tf.zeros([<span class="number">784</span>,<span class="number">10</span>]))</span><br><span class="line">b = tf.Variable(tf.zeros([<span class="number">10</span>]))</span><br><span class="line"></span><br><span class="line">y = tf.nn.softmax(tf.matmul(x,W) + b)</span><br><span class="line">y_ = tf.placeholder(tf.float32,[<span class="literal">None</span>,<span class="number">10</span>])</span><br><span class="line"></span><br><span class="line">cross_entropy = tf.reduce_mean(-tf.reduce_sum(y_ * tf.log(y),reduction_indices=[<span class="number">1</span>]))</span><br><span class="line"></span><br><span class="line">train_step = tf.train.GradientDescentOptimizer(<span class="number">0.5</span>).minimize(cross_entropy)</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-训练"><a href="#2-训练" class="headerlink" title="2. 训练"></a>2. 训练</h3><p>每次训练抽取100个样本作为<code>mini-batch</code>，并传给<code>placeholder(x,y_)</code>进行训练，并每隔250输出一次权重。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">tf.global_variables_initializer().run()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1000</span>):</span><br><span class="line">    batch_xs, batch_ys = mnist.train.next_batch(<span class="number">100</span>)</span><br><span class="line">    sess.run(train_step, feed_dict=&#123;x: batch_xs, y_: batch_ys&#125;)</span><br><span class="line">    <span class="keyword">if</span> (i-<span class="number">1</span>)%<span class="number">250</span> == <span class="number">0</span>:</span><br><span class="line">        fig2,ax2 = plt.subplots(nrows=<span class="number">1</span>, ncols=<span class="number">10</span>, figsize=(<span class="number">20</span>,<span class="number">2</span>))</span><br><span class="line">        WW=np.transpose(sess.run(tf.reshape(W,[<span class="number">784</span>,<span class="number">10</span>])))</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,<span class="number">10</span>):</span><br><span class="line">            ax2[i].imshow(np.reshape(WW[i]+np.ones(<span class="number">784</span>), (<span class="number">28</span>, <span class="number">28</span>)))</span><br><span class="line">        plt.show()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img data-src="//qiniu.s1nh.org/Blog_Tensorflow_MNIST_0.png" alt="png"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_Tensorflow_MNIST_1.png" alt="png"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_Tensorflow_MNIST_2.png" alt="png"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_Tensorflow_MNIST_3.png" alt="png"></p>
+<h3 id="3-计算正确率"><a href="#3-计算正确率" class="headerlink" title="3. 计算正确率"></a>3. 计算正确率</h3><p>accuracy 与 train_step 的区别官方给出了如下解释: “<em>Note: the Tensor class will be replaced by Output in the future. Currently these two are aliases for each other.</em>“</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">correct_prediction = tf.equal(tf.arg_max(y,<span class="number">1</span>),tf.arg_max(y_,<span class="number">1</span>))</span><br><span class="line">accuracy = tf.reduce_mean(tf.cast(correct_prediction,tf.float32))</span><br><span class="line"><span class="built_in">print</span>(sess.run(accuracy, feed_dict=&#123;x: mnist.test.images, y_: mnist.test.labels&#125;))</span><br><span class="line"></span><br><span class="line">summary_writer = tf.summary.FileWriter(<span class="string">&#x27;Softmax&#x27;</span>, sess.graph)</span><br></pre></td></tr></table></figure>
+
+<pre><code>0.9163
+</code></pre>
+<h2 id="0x02-MLP"><a href="#0x02-MLP" class="headerlink" title="0x02 MLP"></a>0x02 MLP</h2><p>使用多层感知机（MLP）进行分类，准确率约为98%</p>
+<h3 id="1-定义变量-1"><a href="#1-定义变量-1" class="headerlink" title="1. 定义变量"></a>1. 定义变量</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">in_units = <span class="number">784</span></span><br><span class="line">h1_units = <span class="number">300</span></span><br><span class="line">W1 = tf.Variable(tf.truncated_normal([in_units,h1_units],stddev=<span class="number">0.1</span>))</span><br><span class="line">b1 = tf.Variable(tf.zeros([h1_units]))</span><br><span class="line">W2 = tf.Variable(tf.zeros([h1_units, <span class="number">10</span>]))</span><br><span class="line">b2 = tf.Variable(tf.zeros([<span class="number">10</span>]))</span><br><span class="line"></span><br><span class="line">x = tf.placeholder(tf.float32,[<span class="literal">None</span>,in_units])</span><br><span class="line">keep_prob = tf.placeholder(tf.float32)</span><br><span class="line"></span><br><span class="line">hidden1 = tf.nn.relu(tf.matmul(x,W1)+b1)</span><br><span class="line">hidden1_drop = tf.nn.dropout(hidden1,keep_prob)</span><br><span class="line">y = tf.nn.softmax(tf.matmul(hidden1_drop,W2)+b2)</span><br><span class="line"></span><br><span class="line">y_ = tf.placeholder(tf.float32,[<span class="literal">None</span>,<span class="number">10</span>])</span><br><span class="line">cross_entropy = tf.reduce_mean(-tf.reduce_sum(y_ * tf.log(y),reduction_indices=[<span class="number">1</span>]))</span><br><span class="line">train_step = tf.train.GradientDescentOptimizer(<span class="number">0.3</span>).minimize(cross_entropy)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-训练-1"><a href="#2-训练-1" class="headerlink" title="2. 训练"></a>2. 训练</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">tf.global_variables_initializer().run()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5000</span>):</span><br><span class="line">    batch_xs, batch_ys = mnist.train.next_batch(<span class="number">100</span>)</span><br><span class="line">    train_step.run(&#123;x: batch_xs, y_: batch_ys, keep_prob: <span class="number">0.75</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-计算正确率-1"><a href="#3-计算正确率-1" class="headerlink" title="3. 计算正确率"></a>3. 计算正确率</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">correct_prediction = tf.equal(tf.argmax(y,<span class="number">1</span>),tf.argmax(y_,<span class="number">1</span>))</span><br><span class="line">accuracy = tf.reduce_mean(tf.cast(correct_prediction,tf.float32))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(accuracy.<span class="built_in">eval</span>(&#123;x:mnist.test.images,y_:mnist.test.labels, keep_prob: <span class="number">1.0</span>&#125;))</span><br><span class="line">summary_writer = tf.summary.FileWriter(<span class="string">&#x27;MLP&#x27;</span>, sess.graph)</span><br></pre></td></tr></table></figure>
+
+<pre><code>0.9787
+</code></pre>
+<h2 id="0x03-CNN"><a href="#0x03-CNN" class="headerlink" title="0x03 CNN"></a>0x03 CNN</h2><h3 id="1-定义变量-2"><a href="#1-定义变量-2" class="headerlink" title="1. 定义变量"></a>1. 定义变量</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">weight_variable</span>(<span class="params">shape</span>):</span><br><span class="line">    initial = tf.truncated_normal(shape, stddev=<span class="number">0.1</span>)</span><br><span class="line">    <span class="keyword">return</span> tf.Variable(initial)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">bias_variable</span>(<span class="params">shape</span>):</span><br><span class="line">    initial = tf.constant(<span class="number">0.1</span>,shape=shape)</span><br><span class="line">    <span class="keyword">return</span> tf.Variable(initial)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">conv2d</span>(<span class="params">x, W</span>):</span><br><span class="line">    <span class="keyword">return</span> tf.nn.conv2d(x, W, strides=[<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>], padding=<span class="string">&#x27;SAME&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">max_pool_2x2</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">return</span> tf.nn.max_pool(x, ksize=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">1</span>], strides=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">1</span>], padding=<span class="string">&#x27;SAME&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x = tf.placeholder(tf.float32,[<span class="literal">None</span>,in_units])</span><br><span class="line">y_ = tf.placeholder(tf.float32,[<span class="literal">None</span>,<span class="number">10</span>])</span><br><span class="line">x_image = tf.reshape(x, [-<span class="number">1</span>,<span class="number">28</span>,<span class="number">28</span>,<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line">W_conv1 = weight_variable([<span class="number">5</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">32</span>])</span><br><span class="line">b_conv1 = bias_variable([<span class="number">32</span>])</span><br><span class="line">h_conv1 = tf.nn.relu(conv2d(x_image,W_conv1) + b_conv1)</span><br><span class="line">h_pool1 = max_pool_2x2(h_conv1)</span><br><span class="line"></span><br><span class="line">W_conv2 = weight_variable([<span class="number">5</span>,<span class="number">5</span>,<span class="number">32</span>,<span class="number">64</span>])</span><br><span class="line">b_conv2 = bias_variable([<span class="number">64</span>])</span><br><span class="line">h_conv2 = tf.nn.relu(conv2d(h_pool1, W_conv2) + b_conv2)</span><br><span class="line">h_pool2 = max_pool_2x2(h_conv2)</span><br><span class="line"></span><br><span class="line">W_fc1 = weight_variable([<span class="number">7</span>*<span class="number">7</span>*<span class="number">64</span>, <span class="number">1024</span>])</span><br><span class="line">b_fc1 = bias_variable([<span class="number">1024</span>])</span><br><span class="line">h_pool2_flat = tf.reshape(h_pool2,[-<span class="number">1</span>,<span class="number">7</span>*<span class="number">7</span>*<span class="number">64</span>])</span><br><span class="line">h_fc1 = tf.nn.relu(tf.matmul(h_pool2_flat,W_fc1) + b_fc1)</span><br><span class="line"></span><br><span class="line">keep_prob = tf.placeholder(tf.float32)</span><br><span class="line">h_fc1_drop = tf.nn.dropout(h_fc1,keep_prob)</span><br><span class="line"></span><br><span class="line">W_fc2 = weight_variable([<span class="number">1024</span>, <span class="number">10</span>])</span><br><span class="line">b_fc2 = bias_variable([<span class="number">10</span>])</span><br><span class="line">y_conv = tf.nn.softmax(tf.matmul(h_fc1_drop, W_fc2) + b_fc2)</span><br><span class="line"></span><br><span class="line">cross_entropy = tf.reduce_mean(-tf.reduce_sum(y_ * tf.log(y_conv), reduction_indices=[<span class="number">1</span>]))</span><br><span class="line">train_step = tf.train.AdamOptimizer(<span class="number">1e-4</span>).minimize(cross_entropy)</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-训练-2"><a href="#2-训练-2" class="headerlink" title="2. 训练"></a>2. 训练</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">correct_prediction = tf.equal(tf.arg_max(y_conv,<span class="number">1</span>),tf.argmax(y_,<span class="number">1</span>))</span><br><span class="line">accuracy = tf.reduce_mean(tf.cast(correct_prediction,tf.float32))</span><br><span class="line"></span><br><span class="line">tf.global_variables_initializer().run()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">20000</span>):</span><br><span class="line">    batch = mnist.train.next_batch(<span class="number">100</span>)</span><br><span class="line">    <span class="keyword">if</span> i%<span class="number">100</span> == <span class="number">0</span>:</span><br><span class="line">        train_accuracy = accuracy.<span class="built_in">eval</span>(feed_dict=&#123;x:batch[<span class="number">0</span>], y_:batch[<span class="number">1</span>], keep_prob:<span class="number">1.0</span>&#125;)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;step %d, training accuracy %g&quot;</span>%(i,train_accuracy))</span><br><span class="line">    train_step.run(feed_dict=&#123;x:batch[<span class="number">0</span>],y_:batch[<span class="number">1</span>],keep_prob:<span class="number">0.5</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<pre><code>step 0, training accuracy 0.07
+step 100, training accuracy 0.84
+step 200, training accuracy 0.9
+step 300, training accuracy 0.88
+step 400, training accuracy 0.95
+step 500, training accuracy 0.98
+step 600, training accuracy 0.96
+step 700, training accuracy 0.94
+step 800, training accuracy 1
+step 900, training accuracy 0.98
+step 1000, training accuracy 0.99
+step 1100, training accuracy 0.96
+step 1200, training accuracy 0.99
+step 1300, training accuracy 0.99
+step 1400, training accuracy 0.98
+step 1500, training accuracy 1
+step 1600, training accuracy 0.98
+step 1700, training accuracy 0.97
+step 1800, training accuracy 0.99
+step 1900, training accuracy 0.98
+step 2000, training accuracy 0.98
+step 2100, training accuracy 0.98
+step 2200, training accuracy 0.99
+step 2300, training accuracy 0.98
+step 2400, training accuracy 0.99
+step 2500, training accuracy 0.97
+step 2600, training accuracy 0.97
+step 2700, training accuracy 0.97
+step 2800, training accuracy 0.99
+step 2900, training accuracy 1
+step 3000, training accuracy 1
+step 3100, training accuracy 1
+step 3200, training accuracy 0.98
+step 3300, training accuracy 0.99
+step 3400, training accuracy 0.98
+step 3500, training accuracy 1
+step 3600, training accuracy 1
+step 3700, training accuracy 0.98
+step 3800, training accuracy 1
+step 3900, training accuracy 0.98
+step 4000, training accuracy 1
+step 4100, training accuracy 0.99
+step 4200, training accuracy 0.99
+step 4300, training accuracy 0.99
+step 4400, training accuracy 1
+step 4500, training accuracy 0.99
+step 4600, training accuracy 1
+step 4700, training accuracy 1
+step 4800, training accuracy 1
+step 4900, training accuracy 0.98
+step 5000, training accuracy 0.99
+step 5100, training accuracy 1
+step 5200, training accuracy 0.98
+step 5300, training accuracy 1
+step 5400, training accuracy 1
+step 5500, training accuracy 1
+step 5600, training accuracy 1
+step 5700, training accuracy 1
+step 5800, training accuracy 1
+step 5900, training accuracy 0.99
+step 6000, training accuracy 1
+step 6100, training accuracy 1
+step 6200, training accuracy 1
+step 6300, training accuracy 0.99
+step 6400, training accuracy 1
+step 6500, training accuracy 0.99
+step 6600, training accuracy 1
+step 6700, training accuracy 1
+step 6800, training accuracy 1
+step 6900, training accuracy 0.97
+
+...
+
+step 18500, training accuracy 1
+step 18600, training accuracy 1
+step 18700, training accuracy 1
+step 18800, training accuracy 1
+step 18900, training accuracy 1
+step 19000, training accuracy 1
+step 19100, training accuracy 1
+step 19200, training accuracy 1
+step 19300, training accuracy 1
+step 19400, training accuracy 1
+step 19500, training accuracy 1
+step 19600, training accuracy 1
+step 19700, training accuracy 1
+step 19800, training accuracy 1
+step 19900, training accuracy 1
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;test accuracy %g&quot;</span>%accuracy.<span class="built_in">eval</span>(feed_dict=&#123;x: mnist.test.images, y_: mnist.test.labels,keep_prob:<span class="number">1.0</span>&#125;)) <span class="comment"># 这一步会瞬间把显存占满</span></span><br><span class="line">summary_writer = tf.summary.FileWriter(<span class="string">&#x27;CNN&#x27;</span>, sess.graph)</span><br></pre></td></tr></table></figure>
+
+<pre><code>test accuracy 0.9931
+</code></pre>
+<h2 id="0x04-附录"><a href="#0x04-附录" class="headerlink" title="0x04 附录"></a>0x04 附录</h2><h3 id="1-关于reduction-indices"><a href="#1-关于reduction-indices" class="headerlink" title="1. 关于reduction_indices"></a>1. 关于reduction_indices</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x=[[<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>],[<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>]]</span><br><span class="line">y0=tf.reduce_sum(x,reduction_indices=[<span class="number">0</span>])</span><br><span class="line">y1=tf.reduce_sum(x,reduction_indices=[<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;x  = &quot;</span>, x)</span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;y0 = &quot;</span>, sess.run(y0), <span class="string">&quot;\t(x在第0维度相加)&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;y1 = &quot;</span>, sess.run(y1), <span class="string">&quot;\t(x在第1维度相加)&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<pre><code>x  =  [[2, 2, 2], [2, 2, 2]]
+y0 =  [4 4 4]     (x在第0维度相加)
+y1 =  [6 6]     (x在第1维度相加)
+</code></pre>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+      <tags>
+        <tag>MNIST</tag>
+        <tag>Tensorflow</tag>
       </tags>
   </entry>
   <entry>
@@ -5317,7 +5317,7 @@ try to remove and create again
 <li><p>您将收到一封包含新许可证密钥的电子邮件。</p>
 </li>
 </ol>
-<p>如果您对许可证转移功能有任何疑问，可以将新的硬件密钥通过电子邮件发送至 <a href="mailto:&#115;&#x75;&#x70;&#112;&#x6f;&#114;&#x74;&#64;&#x6d;&#x75;&#108;&#x74;&#105;&#101;&#99;&#117;&#x73;&#99;&#x61;&#x6e;&#46;&#110;&#x65;&#116;">&#115;&#x75;&#x70;&#112;&#x6f;&#114;&#x74;&#64;&#x6d;&#x75;&#108;&#x74;&#105;&#101;&#99;&#117;&#x73;&#99;&#x61;&#x6e;&#46;&#110;&#x65;&#116;</a>。</p>
+<p>如果您对许可证转移功能有任何疑问，可以将新的硬件密钥通过电子邮件发送至 <a href="mailto:&#115;&#x75;&#x70;&#x70;&#x6f;&#114;&#x74;&#x40;&#109;&#x75;&#108;&#x74;&#x69;&#101;&#x63;&#x75;&#x73;&#x63;&#x61;&#110;&#x2e;&#x6e;&#101;&#x74;">&#115;&#x75;&#x70;&#x70;&#x6f;&#114;&#x74;&#x40;&#109;&#x75;&#108;&#x74;&#x69;&#101;&#x63;&#x75;&#x73;&#x63;&#x61;&#110;&#x2e;&#x6e;&#101;&#x74;</a>。</p>
 <p>请注意，许可证转移功能对转移次数有限制。</p>
 <p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image10.png-QNthin"></p>
 <h2 id="2-用户界面"><a href="#2-用户界面" class="headerlink" title="2. 用户界面"></a>2. 用户界面</h2><h3 id="2-1-Multiecuscan-主屏幕"><a href="#2-1-Multiecuscan-主屏幕" class="headerlink" title="2.1. Multiecuscan 主屏幕"></a>2.1. Multiecuscan 主屏幕</h3><p>当您启动 Multiecuscan 时，它会显示以下屏幕：</p>
@@ -7175,7 +7175,7 @@ Symbols: &#39;.&#39; no key found, &#39;/&#39; A key found, &#39;\&#39; B key fo
   <entry>
     <title>Resolve &quot;The upstream repository of theme NexT has been changed.&quot;</title>
     <url>/post/theme-next-warnning/</url>
-    <content><![CDATA[<p>solution: run <code>npm i theme-next/next-util</code>.</p>
+    <content><![CDATA[<p>run <code>npm i theme-next/next-util</code>.</p>
 <span id="more"></span>
 
 <p>HEXO 安装某些插件后会提示以下 warnning：</p>
@@ -7183,7 +7183,7 @@ Symbols: &#39;.&#39; no key found, &#39;/&#39; A key found, &#39;\&#39; B key fo
 
 <p>原因在 <a href="https://www.npmjs.com/package/next-util?activeTab=code">npmjs/next-util</a> 的 10-12 行。</p>
 <p>为了告诉你不要用 theme-next 而要用 next-theme。</p>
-<p>解决方案是直接安装 github 版本的 <a href="https://github.com/theme-next/next-util/blob/v1.0.1/index.js">next-util</a></p>
+<p>解决方案是使用 <code>npm i theme-next/next-util</code> 直接安装 github 版本的 <a href="https://github.com/theme-next/next-util/blob/v1.0.1/index.js">next-util</a></p>
 ]]></content>
       <categories>
         <category>算法与硬件</category>
