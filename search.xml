@@ -4439,6 +4439,29 @@ try to remove and create again
       </categories>
   </entry>
   <entry>
+    <title>解决廉价摄像头在图像拼接中产生的曝光不均匀问题</title>
+    <url>/post/image-stitching-post-process/</url>
+    <content><![CDATA[<blockquote>
+<p>去年把全景拼接算法部署到了郑州机场，实现 4×4K 视频采集、拼接、发布，在单个 1080ti 上可以达到 300FPS。</p>
+</blockquote>
+<p>因为机场光照特别强烈，使用的廉价摄像头曝光不均匀。表现为每张图片都是中间曝光强，四周曝光弱，拼接以后在接缝处会出现条纹（下图）。因为摄像头上半部分是天空，我们假设天空的亮度、颜色是统一的，可以设计一个很简单的算法解决亮度不均匀的问题。</p>
+<p><img data-src="//qiniu.s1nh.org/blog_01.origin-stitching.png-QNthin"></p>
+<span id="more"></span>
+
+<p>首先，取天空中的一行像素拉伸到整张图片作为 <code>mask</code></p>
+<p><img data-src="//qiniu.s1nh.org/blog_02.exposure-mask.png-QNthin"></p>
+<p>将像素值归一化到最大为255 <code>mask_refine = 255 - max(mask) + mask</code></p>
+<p><img data-src="//qiniu.s1nh.org/blog_03.exposure-mask-refine.png-QNthin"></p>
+<p>应用 mask <code>final_stitching = origin_stitching + (255 - mask_refine)</code>，效果就好很多了。</p>
+<p><img data-src="//qiniu.s1nh.org/blog_04.apply-mask.png-QNthin"></p>
+<p>如果要适配大屏幕，还可以最后人工调整一下直方图。</p>
+<p><img data-src="//qiniu.s1nh.org/blog_05.final-stitching.png-QNthin"></p>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Inference using TensorRT Backend.</title>
     <url>/post/inference-using-tensorrt-backend/</url>
     <content><![CDATA[<h2 id="0x01-Tensorflow-2-0"><a href="#0x01-Tensorflow-2-0" class="headerlink" title="0x01 Tensorflow 2.0"></a>0x01 Tensorflow 2.0</h2><h3 id="1-1-Convert"><a href="#1-1-Convert" class="headerlink" title="1.1. Convert"></a>1.1. Convert</h3><p><strong>keras hdf5 –&gt; .pb</strong></p>
@@ -4468,29 +4491,6 @@ try to remove and create again
       <tags>
         <tag>边缘计算</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>解决廉价摄像头在图像拼接中产生的曝光不均匀问题</title>
-    <url>/post/image-stitching-post-process/</url>
-    <content><![CDATA[<blockquote>
-<p>去年把全景拼接算法部署到了郑州机场，实现 4×4K 视频采集、拼接、发布，在单个 1080ti 上可以达到 300FPS。</p>
-</blockquote>
-<p>因为机场光照特别强烈，使用的廉价摄像头曝光不均匀。表现为每张图片都是中间曝光强，四周曝光弱，拼接以后在接缝处会出现条纹（下图）。因为摄像头上半部分是天空，我们假设天空的亮度、颜色是统一的，可以设计一个很简单的算法解决亮度不均匀的问题。</p>
-<p><img data-src="//qiniu.s1nh.org/blog_01.origin-stitching.png-QNthin"></p>
-<span id="more"></span>
-
-<p>首先，取天空中的一行像素拉伸到整张图片作为 <code>mask</code></p>
-<p><img data-src="//qiniu.s1nh.org/blog_02.exposure-mask.png-QNthin"></p>
-<p>将像素值归一化到最大为255 <code>mask_refine = 255 - max(mask) + mask</code></p>
-<p><img data-src="//qiniu.s1nh.org/blog_03.exposure-mask-refine.png-QNthin"></p>
-<p>应用 mask <code>final_stitching = origin_stitching + (255 - mask_refine)</code>，效果就好很多了。</p>
-<p><img data-src="//qiniu.s1nh.org/blog_04.apply-mask.png-QNthin"></p>
-<p>如果要适配大屏幕，还可以最后人工调整一下直方图。</p>
-<p><img data-src="//qiniu.s1nh.org/blog_05.final-stitching.png-QNthin"></p>
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
-      </categories>
   </entry>
   <entry>
     <title>「Jetson Nano」 Reduce Memory Usage</title>
@@ -5317,7 +5317,7 @@ try to remove and create again
 <li><p>您将收到一封包含新许可证密钥的电子邮件。</p>
 </li>
 </ol>
-<p>如果您对许可证转移功能有任何疑问，可以将新的硬件密钥通过电子邮件发送至 <a href="mailto:&#x73;&#x75;&#x70;&#112;&#x6f;&#x72;&#x74;&#x40;&#x6d;&#x75;&#x6c;&#x74;&#x69;&#x65;&#x63;&#117;&#115;&#99;&#97;&#x6e;&#46;&#x6e;&#x65;&#116;">&#x73;&#x75;&#x70;&#112;&#x6f;&#x72;&#x74;&#x40;&#x6d;&#x75;&#x6c;&#x74;&#x69;&#x65;&#x63;&#117;&#115;&#99;&#97;&#x6e;&#46;&#x6e;&#x65;&#116;</a>。</p>
+<p>如果您对许可证转移功能有任何疑问，可以将新的硬件密钥通过电子邮件发送至 <a href="mailto:&#115;&#117;&#112;&#x70;&#111;&#114;&#x74;&#x40;&#109;&#117;&#108;&#116;&#x69;&#101;&#x63;&#117;&#x73;&#x63;&#97;&#x6e;&#46;&#110;&#x65;&#x74;">&#115;&#117;&#112;&#x70;&#111;&#114;&#x74;&#x40;&#109;&#117;&#108;&#116;&#x69;&#101;&#x63;&#117;&#x73;&#x63;&#97;&#x6e;&#46;&#110;&#x65;&#x74;</a>。</p>
 <p>请注意，许可证转移功能对转移次数有限制。</p>
 <p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image10.png-QNthin"></p>
 <h2 id="2-用户界面"><a href="#2-用户界面" class="headerlink" title="2. 用户界面"></a>2. 用户界面</h2><h3 id="2-1-Multiecuscan-主屏幕"><a href="#2-1-Multiecuscan-主屏幕" class="headerlink" title="2.1. Multiecuscan 主屏幕"></a>2.1. Multiecuscan 主屏幕</h3><p>当您启动 Multiecuscan 时，它会显示以下屏幕：</p>
@@ -6872,21 +6872,27 @@ try to remove and create again
       </tags>
   </entry>
   <entry>
-    <title>孤独摇滚 + Yorushika 吉他谱</title>
+    <title>孤独摇滚 + Yorushika + 三月のパンタシア 吉他谱</title>
     <url>/post/scores/</url>
     <content><![CDATA[<p><code>持续更新中，欢迎在主页左边扫码给我买杯咖啡 ^_^</code></p>
 <span id="more"></span>
 
-<h2 id="ヨルシカ-yorushika-新专辑「幻燈」CD1-CD2"><a href="#ヨルシカ-yorushika-新专辑「幻燈」CD1-CD2" class="headerlink" title="ヨルシカ(yorushika) 新专辑「幻燈」CD1+CD2"></a>ヨルシカ(yorushika) 新专辑「幻燈」CD1+CD2</h2><p>b站上<a href="https://www.bilibili.com/video/BV1iX4y1k73v/">这个视频</a> 1080p 下载下来直接提取的音轨，没有进行转码，比特率180kbps左右。</p>
-<p>网盘链接:<a href="https://pan.baidu.com/s/1FrbImhJlL0bwSLuRtrj8vw?pwd=sa9h">https://pan.baidu.com/s/1FrbImhJlL0bwSLuRtrj8vw?pwd=sa9h</a> 提取码:sa9h </p>
+
+<h2 id="三月のパンタシア-三月的幻想-Sangatsu-no-Phantasia"><a href="#三月のパンタシア-三月的幻想-Sangatsu-no-Phantasia" class="headerlink" title="三月のパンタシア (三月的幻想, Sangatsu no Phantasia)"></a>三月のパンタシア (三月的幻想, Sangatsu no Phantasia)</h2><blockquote>
+<p>转载自 ultimate-guitar.com</p>
+</blockquote>
+<p><a href="https://qiniu.s1nh.org/Sangatsu%20no%20Phantasia%20-%20Pastel%20Rain.gp">パステルレイン (粉笔雨, Pastel Rain)</a><br><a href="https://qiniu.s1nh.org/Sangatsu%20no%20Phantasia%20-%20%E9%9D%92%E6%98%A5%E3%81%AA%E3%82%93%E3%81%A6%E3%81%84%E3%82%89%E3%81%AA%E3%81%84%E3%82%8F.gp">青春なんていらないわ (无需青春)</a></p>
+<h2 id="ヨルシカ-Yorushika"><a href="#ヨルシカ-Yorushika" class="headerlink" title="ヨルシカ(Yorushika)"></a>ヨルシカ(Yorushika)</h2><h3 id="新专辑「幻燈」CD1-CD2"><a href="#新专辑「幻燈」CD1-CD2" class="headerlink" title="新专辑「幻燈」CD1+CD2"></a>新专辑「幻燈」CD1+CD2</h3><p>b站上<a href="https://www.bilibili.com/video/BV1iX4y1k73v/">这个视频</a> 1080p 下载下来直接提取的音轨，没有进行转码，比特率180kbps左右。</p>
+<p>网盘链接:<a href="https://pan.baidu.com/s/1FrbImhJlL0bwSLuRtrj8vw?pwd=sa9h">https://pan.baidu.com/s/1FrbImhJlL0bwSLuRtrj8vw?pwd=sa9h</a> 提取码:sa9h</p>
+<h3 id="吉他谱"><a href="#吉他谱" class="headerlink" title="吉他谱"></a>吉他谱</h3><blockquote>
+<p>转载自 ultimate-guitar.com</p>
+</blockquote>
+<p><a href="https://qiniu.s1nh.org/scores/Yorushika%20%28%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB%29%20-%20Ai%20Nijou.gp5">藍二乗</a><br><a href="https://qiniu.s1nh.org/scores/Yorushika%20%28%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB%29%20-%20Ame%20Haruru.gp5">雨晴るる</a><br><a href="https://qiniu.s1nh.org/scores/Yorushika%20%28%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB%29%20-%20Aruku%20%E6%AD%A9%E3%81%8F.gp">歩く</a><br><a href="https://qiniu.s1nh.org/scores/Yorushika%20%28%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB%29%20-%20Bakudanma.gp">爆弾魔</a><br><a href="https://qiniu.s1nh.org/scores/Yorushika%20%28%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB%29%20-%20Bremen.gp5">ブレーメン (Bremen)</a><br><a href="https://qiniu.s1nh.org/scores/Yorushika%20%28%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB%29%20-%20Cattleya.gp5">カトレア</a><br><a href="https://qiniu.s1nh.org/scores/Yorushika%20%28%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB%29%20-%20Deep%20Indigo.gp">藍二乗</a><br><a href="https://qiniu.s1nh.org/scores/Yorushika%20%28%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB%29%20-%20Ghost%20In%20A%20Flower.gp5">花に亡霊</a><br><a href="https://qiniu.s1nh.org/scores/Yorushika%20%28%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB%29%20-%20Hirutonbi.gp5">昼鳶</a><br><a href="https://qiniu.s1nh.org/scores/Yorushika%20%28%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB%29%20-%20Hitchcock.gp5">ヒッチコック (Hitchcock).gp5</a><br><a href="https://qiniu.s1nh.org/scores/Yorushika%20%28%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB%29%20-%20Howl%20At%20The%20Moon.gp5">月に吠える</a><br><a href="https://qiniu.s1nh.org/scores/Yorushika%20%28%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB%29%20-%20Tada%20Kimi%20Ni%20Hare%20%E3%81%9F%E3%81%9F%E3%82%99%E5%90%9B%E3%81%AB%E6%99%B4%E3%82%8C%20%28ver%202%20by%20patrickgeragh1%29.gpx">ただ君に晴れ (ver 2 by patrickgeragh1).gpx</a><br><a href="https://qiniu.s1nh.org/scores/Yorushika%20%28%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB%29%20-%20Tada%20Kimi%20Ni%20Hare%20%E3%81%9F%E3%81%9F%E3%82%99%E5%90%9B%E3%81%AB%E6%99%B4%E3%82%8C.gp5">ただ君に晴れ.gp5</a><br><a href="https://qiniu.s1nh.org/scores/Yorushika%20%28%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB%29%20-%20Thats%20Why%20I%20Gave%20Up%20On%20Music%20%E3%81%9F%E3%82%99%E3%81%8B%E3%82%89%E5%83%95%E3%81%AF%E9%9F%B3%E6%A5%BD%E3%82%92%E8%BE%9E%E3%82%81%E3%81%9F.gp5">だから僕は音楽を辞めた.gp5</a></p>
+<p><a href="https://qiniu.s1nh.org/Yorushika%20(%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB)%20-%20Yuu%20Ichijou.gp5">Yuu Ichijou (憂一乗)</a><br><a href="https://qiniu.s1nh.org/Yorushika%20(%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB)%20-%20Yakou.gp5">Yakou (夜行)</a><br><a href="https://qiniu.s1nh.org/Yorushika%20(%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB)%20-%20Utagaki%20To%20Coffee.gp5">Utagaki To Coffee (詩書きとコーヒー)</a><br><a href="https://qiniu.s1nh.org/Yorushika%20(%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB)%20-%20Tsuki%20Ni%20Hoeru.gp5">Tsuki Ni Hoeru (月に吠える)</a><br><a href="https://qiniu.s1nh.org/Yorushika%20(%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB)%20-%20Toumin.gp5">Toumin (冬眠)</a><br><a href="https://qiniu.s1nh.org/Yorushika%20(%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB)%20-%20Tada%20Kimi%20Ni%20Hare%20%E3%81%9F%E3%81%A0%E5%90%9B%E3%81%AB%E6%99%B4%E3%82%8C.gp5">Tada Kimi Ni Hare (ただ君に晴れ)</a><br><a href="https://qiniu.s1nh.org/Yorushika%20(%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB)%20-%20Spring%20Thief%20%E6%98%A5%E6%B3%A5%E6%A3%92.gp">Spring Thief (春泥棒)</a><br><a href="https://qiniu.s1nh.org/Yorushika%20(%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB)%20-%20Shisouhan.gp5">Shisouhan (思想犯)</a><br><a href="https://qiniu.s1nh.org/Yorushika%20(%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB)%20-%20%E6%80%9D%E6%83%B3%E7%8A%AF.gp">Shisouhan (思想犯)</a><br><a href="https://qiniu.s1nh.org/Yorushika%20(%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB)%20-%20Say%20It%20Itte%20(ver%202%20by%20edwardwenngren).gp">Say It (Itte, 言って) (ver 2 by edwardwenngren)</a><br><a href="https://qiniu.s1nh.org/Yorushika%20(%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB)%20-%20Say%20It%20Itte.gp5">Say It (Itte, 言って)</a><br><a href="https://qiniu.s1nh.org/Yorushika%20(%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB)%20-%20Itte.gp5">Say It (Itte, 言って)</a><br><a href="https://qiniu.s1nh.org/Yorushika%20(%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB)%20-%20Roujin%20To%20Umi.gp5">Roujin To Umi (老人と海)</a><br><a href="https://qiniu.s1nh.org/Yorushika%20(%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB)%20-%20Rokugatsu%20Wa%20Ameagari%20No%20Machi%20Wo%20Kaku.gp5">Rokugatsu Wa Ameagari No Machi Wo Kaku (六月は雨上がりの街を書く)</a><br><a href="https://qiniu.s1nh.org/Yorushika%20(%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB)%20-%20Replicant.gp5">Replicant (レプリカント)</a><br><a href="https://qiniu.s1nh.org/Yorushika%20(%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB)%20-%20Night%20Journey%20%E5%A4%9C%E8%A1%8C.gp">Night Journey (夜行)</a><br><a href="https://qiniu.s1nh.org/Yorushika%20(%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB)%20-%20Rain%20With%20Cappuccino%20%E9%9B%A8%E3%81%A8%E3%82%AB%E3%83%97%E3%83%81%E3%83%BC%E3%83%8E.gp5">Rain With Cappuccino (雨とカプチーノ)</a><br><a href="https://qiniu.s1nh.org/Yorushika%20(%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB)%20-%20Parade.gp5">Parade (パレード)</a><br><a href="https://qiniu.s1nh.org/Yorushika%20(%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB)%20-%20Only%20Sorrow.gp">Only Sorrow (憂一乗)</a><br><a href="https://qiniu.s1nh.org/Yorushika%20(%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB)%20-%20Nautilus.gp5">Nautilus (ノーチラス 鸚鵡螺)</a><br><a href="https://qiniu.s1nh.org/Yorushika%20(%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB)%20-%20Moonbath%20%E6%9C%88%E5%85%89%E6%B5%B4.gp5">Moonbath (月光浴)</a><br><a href="https://qiniu.s1nh.org/Yorushika%20(%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB)%20-%20Matasaburo%20%E5%8F%88%E4%B8%89%E9%83%8E.gp5">Matasaburo (又三郎)</a><br><a href="https://qiniu.s1nh.org/Yorushika%20(%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB)%20-%20Makeinu%20Ni%20Encore%20Wa%20Iranai.gp5">Makeinu Ni Encore Wa Iranai (爆弾魔)</a><br><a href="https://qiniu.s1nh.org/Yorushika%20(%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB)%20-%20Kutsu%20No%20Hanabi.gp5">Kutsu No Hanabi (靴の花火)</a><br><a href="https://qiniu.s1nh.org/Yorushika%20(%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB)%20-%20Kumo%20To%20Yuurei.gp5">Kumo To Yuurei (雲と幽霊)</a><br><a href="https://qiniu.s1nh.org/Yorushika%20(%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB)%20-%20Kaze%20Wo%20Hamu.gp5">Kaze Wo Hamu (風を食む)</a><br><a href="https://qiniu.s1nh.org/Yorushika%20(%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB)%20-%20Juntomei%20Shonen.gp5">Juntomei Shonen (準透明少年)</a></p>
 <h2 id="孤独摇滚"><a href="#孤独摇滚" class="headerlink" title="孤独摇滚"></a>孤独摇滚</h2><blockquote>
 <p>孤独摇滚的谱子搬运自 <a href="https://linktr.ee/rikajpopmusic">https://linktr.ee/rikajpopmusic</a><br>欢迎给我和原作者打赏^_^</p>
 </blockquote>
-<p><a href="//qiniu.s1nh.org/scores/Distortion!!.gp">Distortion!!.gp</a><br><a href="//qiniu.s1nh.org/scores/%E3%81%82%E3%81%AE%E3%83%8F%E3%82%99%E3%83%B3%E3%83%88%E3%82%99%20-%E8%B7%AF%E4%B8%8A%E3%83%A9%E3%82%A4%E3%83%95%E3%82%99%20instrumental-.gp">あのバンド -路上ライブ instrumental-.gp</a><br><a href="//qiniu.s1nh.org/scores/%E3%81%82%E3%81%AE%E3%83%8F%E3%82%99%E3%83%B3%E3%83%88%E3%82%99.gp">あのバンド.gp</a><br><a href="//qiniu.s1nh.org/scores/%E3%81%95%E3%82%88%E3%81%AA%E3%82%89%E3%83%86%E3%83%B3%E3%82%BF%E3%82%99%E3%83%BC.gp">さよならテンダー.gp</a><br><a href="//qiniu.s1nh.org/scores/%E3%81%9D%E3%81%AE%E7%BE%A4%E9%9D%92%E3%81%8B%E3%82%99%E6%84%9B%E3%81%97%E3%81%8B%E3%81%A3%E3%81%9F%E3%82%88%E3%81%86%E3%81%9F%E3%82%99%E3%81%A3%E3%81%9F.gp">その群青が愛しかったようだった.gp</a><br><a href="//qiniu.s1nh.org/scores/%E3%81%AA%E3%81%AB%E3%81%8B%E3%82%99%E6%82%AA%E3%81%84.gp">なにが悪い.gp</a><br><a href="//qiniu.s1nh.org/scores/%E3%81%B2%E3%81%A8%E3%82%8A%E3%81%BB%E3%82%99%E3%81%A3%E3%81%A1%E6%9D%B1%E4%BA%AC.gp">ひとりぼっち東京.gp</a><br><a href="//qiniu.s1nh.org/scores/%E3%82%AB%E3%83%A9%E3%82%AB%E3%83%A9%20(TV%20Size).gp">カラカラ (TV Size).gp</a><br><a href="//qiniu.s1nh.org/scores/%E3%82%AB%E3%83%A9%E3%82%AB%E3%83%A9.gp">カラカラ.gp</a><br><a href="//qiniu.s1nh.org/scores/%E3%82%AD%E3%82%99%E3%82%BF%E3%83%BC%E3%81%A8%E5%AD%A4%E7%8B%AC%E3%81%A8%E8%92%BC%E3%81%84%E6%83%91%E6%98%9F.gp">ギターと孤独と蒼い惑星.gp</a><br><a href="//qiniu.s1nh.org/scores/%E3%83%95%E3%83%A9%E3%83%83%E3%82%B7%E3%83%A5%E3%83%8F%E3%82%99%E3%83%83%E3%82%AB%E3%83%BC.gp">フラッシュバッカー.gp</a><br><a href="//qiniu.s1nh.org/scores/%E3%83%AF%E3%82%BF%E3%82%B7%E3%82%BF%E3%82%99%E3%82%B1%E3%83%A6%E3%82%A6%E3%83%AC%E3%82%A4%20(TV%20Size).gp">ワタシダケユウレイ (TV Size).gp</a><br><a href="//qiniu.s1nh.org/scores/%E4%B8%89%E6%9C%88%E3%81%A8%E7%8B%BC%E5%B0%91%E5%B9%B4.gp">三月と狼少年.gp</a><br><a href="//qiniu.s1nh.org/scores/%E5%BF%98%E3%82%8C%E3%81%A6%E3%82%84%E3%82%89%E3%81%AA%E3%81%84.gp">忘れてやらない.gp</a><br><a href="//qiniu.s1nh.org/scores/%E6%98%9F%E5%BA%A7%E3%81%AB%E3%81%AA%E3%82%8C%E3%81%9F%E3%82%89.gp">星座になれたら.gp</a><br><a href="//qiniu.s1nh.org/scores/%E8%A8%80%E3%81%A3%E3%81%A6%E3%80%82.gp">言って。.gp</a><br><a href="//qiniu.s1nh.org/scores/%E8%BB%A2%E3%81%8B%E3%82%99%E3%82%8B%E5%B2%A9%E3%80%81%E5%90%9B%E3%81%AB%E6%9C%9D%E3%81%8B%E3%82%99%E9%99%8D%E3%82%8B.gp">転がる岩、君に朝が降る.gp</a><br><a href="//qiniu.s1nh.org/scores/%E9%9D%92%E6%98%A5%E3%82%B3%E3%83%B3%E3%83%95%E3%82%9A%E3%83%AC%E3%83%83%E3%82%AF%E3%82%B9%20(TV%20size).gp">青春コンプレックス (TV size).gp</a><br><a href="//qiniu.s1nh.org/scores/%E9%9D%92%E6%98%A5%E3%82%B3%E3%83%B3%E3%83%95%E3%82%9A%E3%83%AC%E3%83%83%E3%82%AF%E3%82%B9.gp">青春コンプレックス.gp</a></p>
-<h2 id="Yorushika-ヨルシカ"><a href="#Yorushika-ヨルシカ" class="headerlink" title="Yorushika (ヨルシカ)"></a>Yorushika (ヨルシカ)</h2><blockquote>
-<p>下载自 ultimate-guitar.com</p>
-</blockquote>
-<p><a href="//qiniu.s1nh.org/scores/Yorushika%20(%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB)%20-%20Ai%20Nijou.gp5">Ai Nijou.gp5</a><br><a href="//qiniu.s1nh.org/scores/Yorushika%20(%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB)%20-%20Ame%20Haruru.gp5">Ame Haruru.gp5</a><br><a href="//qiniu.s1nh.org/scores/Yorushika%20(%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB)%20-%20Aruku%20%E6%AD%A9%E3%81%8F.gp">Aruku 歩く.gp</a><br><a href="//qiniu.s1nh.org/scores/Yorushika%20(%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB)%20-%20Bakudanma.gp">Bakudanma.gp</a><br><a href="//qiniu.s1nh.org/scores/Yorushika%20(%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB)%20-%20Bremen.gp5">Bremen.gp5</a><br><a href="//qiniu.s1nh.org/scores/Yorushika%20(%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB)%20-%20Cattleya.gp5">Cattleya.gp5</a><br><a href="//qiniu.s1nh.org/scores/Yorushika%20(%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB)%20-%20Deep%20Indigo.gp">Deep Indigo.gp</a><br><a href="//qiniu.s1nh.org/scores/Yorushika%20(%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB)%20-%20Ghost%20In%20A%20Flower.gp5">Ghost In A Flower.gp5</a><br><a href="//qiniu.s1nh.org/scores/Yorushika%20(%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB)%20-%20Hirutonbi.gp5">Hirutonbi.gp5</a><br><a href="//qiniu.s1nh.org/scores/Yorushika%20(%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB)%20-%20Hitchcock.gp5">Hitchcock.gp5</a><br><a href="//qiniu.s1nh.org/scores/Yorushika%20(%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB)%20-%20Howl%20At%20The%20Moon.gp5">Howl At The Moon.gp5</a><br><a href="//qiniu.s1nh.org/scores/Yorushika%20(%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB)%20-%20Say%20It%20Itte%20(ver%202%20by%20edwardwenngren).gp">Say It Itte (ver 2 by edwardwenngren).gp</a><br><a href="//qiniu.s1nh.org/scores/Yorushika%20(%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB)%20-%20Say%20It.gp">Say It.gp</a><br><a href="//qiniu.s1nh.org/scores/Yorushika%20(%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB)%20-%20Tada%20Kimi%20Ni%20Hare%20%E3%81%9F%E3%81%9F%E3%82%99%E5%90%9B%E3%81%AB%E6%99%B4%E3%82%8C%20(ver%202%20by%20patrickgeragh1).gpx">Tada Kimi Ni Hare ただ君に晴れ (ver 2 by patrickgeragh1).gpx</a><br><a href="//qiniu.s1nh.org/scores/Yorushika%20(%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB)%20-%20Tada%20Kimi%20Ni%20Hare%20%E3%81%9F%E3%81%9F%E3%82%99%E5%90%9B%E3%81%AB%E6%99%B4%E3%82%8C.gp5">Tada Kimi Ni Hare ただ君に晴れ.gp5</a><br><a href="//qiniu.s1nh.org/scores/Yorushika%20(%E3%83%A8%E3%83%AB%E3%82%B7%E3%82%AB)%20-%20Thats%20Why%20I%20Gave%20Up%20On%20Music%20%E3%81%9F%E3%82%99%E3%81%8B%E3%82%89%E5%83%95%E3%81%AF%E9%9F%B3%E6%A5%BD%E3%82%92%E8%BE%9E%E3%82%81%E3%81%9F.gp5">Thats Why I Gave Up On Music だから僕は音楽を辞めた.gp5</a></p>
+<p><a href="https://qiniu.s1nh.org/scores/Distortion%21%21.gp">Distortion!!.gp</a><br><a href="https://qiniu.s1nh.org/scores/%E3%81%82%E3%81%AE%E3%83%8F%E3%82%99%E3%83%B3%E3%83%88%E3%82%99%20-%E8%B7%AF%E4%B8%8A%E3%83%A9%E3%82%A4%E3%83%95%E3%82%99%20instrumental-.gp">あのバンド -路上ライブ instrumental-.gp</a><br><a href="https://qiniu.s1nh.org/scores/%E3%81%82%E3%81%AE%E3%83%8F%E3%82%99%E3%83%B3%E3%83%88%E3%82%99.gp">あのバンド.gp</a><br><a href="https://qiniu.s1nh.org/scores/%E3%81%95%E3%82%88%E3%81%AA%E3%82%89%E3%83%86%E3%83%B3%E3%82%BF%E3%82%99%E3%83%BC.gp">さよならテンダー.gp</a><br><a href="https://qiniu.s1nh.org/scores/%E3%81%9D%E3%81%AE%E7%BE%A4%E9%9D%92%E3%81%8B%E3%82%99%E6%84%9B%E3%81%97%E3%81%8B%E3%81%A3%E3%81%9F%E3%82%88%E3%81%86%E3%81%9F%E3%82%99%E3%81%A3%E3%81%9F.gp">その群青が愛しかったようだった.gp</a><br><a href="https://qiniu.s1nh.org/scores/%E3%81%AA%E3%81%AB%E3%81%8B%E3%82%99%E6%82%AA%E3%81%84.gp">なにが悪い.gp</a><br><a href="https://qiniu.s1nh.org/scores/%E3%81%B2%E3%81%A8%E3%82%8A%E3%81%BB%E3%82%99%E3%81%A3%E3%81%A1%E6%9D%B1%E4%BA%AC.gp">ひとりぼっち東京.gp</a><br><a href="https://qiniu.s1nh.org/scores/%E3%82%AB%E3%83%A9%E3%82%AB%E3%83%A9%20%28TV%20Size%29.gp">カラカラ (TV Size).gp</a><br><a href="https://qiniu.s1nh.org/scores/%E3%82%AB%E3%83%A9%E3%82%AB%E3%83%A9.gp">カラカラ.gp</a><br><a href="https://qiniu.s1nh.org/scores/%E3%82%AD%E3%82%99%E3%82%BF%E3%83%BC%E3%81%A8%E5%AD%A4%E7%8B%AC%E3%81%A8%E8%92%BC%E3%81%84%E6%83%91%E6%98%9F.gp">ギターと孤独と蒼い惑星.gp</a><br><a href="https://qiniu.s1nh.org/scores/%E3%83%95%E3%83%A9%E3%83%83%E3%82%B7%E3%83%A5%E3%83%8F%E3%82%99%E3%83%83%E3%82%AB%E3%83%BC.gp">フラッシュバッカー.gp</a><br><a href="https://qiniu.s1nh.org/scores/%E3%83%AF%E3%82%BF%E3%82%B7%E3%82%BF%E3%82%99%E3%82%B1%E3%83%A6%E3%82%A6%E3%83%AC%E3%82%A4%20%28TV%20Size%29.gp">ワタシダケユウレイ (TV Size).gp</a><br><a href="https://qiniu.s1nh.org/scores/%E4%B8%89%E6%9C%88%E3%81%A8%E7%8B%BC%E5%B0%91%E5%B9%B4.gp">三月と狼少年.gp</a><br><a href="https://qiniu.s1nh.org/scores/%E5%BF%98%E3%82%8C%E3%81%A6%E3%82%84%E3%82%89%E3%81%AA%E3%81%84.gp">忘れてやらない.gp</a><br><a href="https://qiniu.s1nh.org/scores/%E6%98%9F%E5%BA%A7%E3%81%AB%E3%81%AA%E3%82%8C%E3%81%9F%E3%82%89.gp">星座になれたら.gp</a><br><a href="https://qiniu.s1nh.org/scores/%E8%A8%80%E3%81%A3%E3%81%A6%E3%80%82.gp">言って。.gp</a><br><a href="https://qiniu.s1nh.org/scores/%E8%BB%A2%E3%81%8B%E3%82%99%E3%82%8B%E5%B2%A9%E3%80%81%E5%90%9B%E3%81%AB%E6%9C%9D%E3%81%8B%E3%82%99%E9%99%8D%E3%82%8B.gp">転がる岩、君に朝が降る.gp</a><br><a href="https://qiniu.s1nh.org/scores/%E9%9D%92%E6%98%A5%E3%82%B3%E3%83%B3%E3%83%95%E3%82%9A%E3%83%AC%E3%83%83%E3%82%AF%E3%82%B9%20%28TV%20size%29.gp">青春コンプレックス (TV size).gp</a><br><a href="https://qiniu.s1nh.org/scores/%E9%9D%92%E6%98%A5%E3%82%B3%E3%83%B3%E3%83%95%E3%82%9A%E3%83%AC%E3%83%83%E3%82%AF%E3%82%B9.gp">青春コンプレックス.gp</a></p>
 ]]></content>
       <categories>
         <category>音乐相关</category>
@@ -7052,6 +7058,43 @@ try to remove and create again
       </tags>
   </entry>
   <entry>
+    <title>（草稿）虎纹枫木、絮纹枫木形成的秘密</title>
+    <url>/post/the-mystery-of-figured-maple/</url>
+    <content><![CDATA[<p>原文：<a href="http://www.lespaulforum.com/slubarticle/maple/figure.html">Go Figure! The Mystery of Figured Maple - By Mike Slubowski</a><br><a href="http://www.gobywalnut.com/figured-maple.htm">http://www.gobywalnut.com/figured-maple.htm</a></p>
+<span id="more"></span>
+
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Figured Maple</p>
+<h2 id="纹理的类别"><a href="#纹理的类别" class="headerlink" title="纹理的类别"></a>纹理的类别</h2><p>有三种宽泛的图形，包括“正常图形”（纹理变化显示生长层，结等），“颜料图”和“特定图形”，这是由于纵向纤维在木。 具体的数字可以通过切割方法隐藏或增强，如四分之一锯，平（锯）等。</p>
+<p><img data-src="http://www.lespaulforum.com/slubarticle/maple/fullimages/1_f.jpg-QNthin" alt="纹理的类别" title="A.横向 B.径向 C.切线"></p>
+<p>虎纹或絮纹在活体树中主要作为颗粒在径向或切向方向上的垂直排列中的变化或变形，其导致称为条纹，起泡，卷曲，波浪和几个其它变化的常见图形类型。 在直径小于10英寸的树中很少发现可商购的图。 一旦它开始，它在随后的生长环变得更加显着。 波浪谷物在四肢和根附近是相当普遍，在那里它被局限在小区域。</p>
+<p>我们Les Paul爱好者最喜欢的木材种类是“起伏的生长”。一些在径向平面上是波浪形的，而一些在切向平面上是波浪形的。 起伏生长的原因追溯到细胞分裂和增大的方法。 波动的生长对观察者来说似乎是由纤维结构产生的光和暗区域的可移动条纹或对比斑块的光学错觉。 由木材中起伏纹造成的图像类似于在某些宝石中形成的条纹。 图也是部分地由于光线照射包含在图案木材中的细的起伏的纤维元件而产生的干涉图案的结果。</p>
+<p>当木材的径向表面显示波状生长或颗粒时，切向面是光滑的，并且可以观察到波状或起伏的颗粒，但是触摸不明显。 当具有卷曲纹的木材部分分裂时，其沿着光线并沿着波纹状颗粒分离，并且表现为在径向表面上可以看到和感觉到的波纹状表面。 起伏的生长是在同一时间开始的单个细胞的延长的结果，其有些延迟，导致一些比其它细胞长。 </p>
+]]></content>
+      <categories>
+        <category>音乐相关</category>
+      </categories>
+      <tags>
+        <tag>Maple</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Resolve &quot;The upstream repository of theme NexT has been changed.&quot;</title>
+    <url>/post/theme-next-warnning/</url>
+    <content><![CDATA[<p>run <code>npm i theme-next/next-util</code>.</p>
+<span id="more"></span>
+
+<p>hexo 安装 <code>hexo-next-title</code> <code>hexo-next-share</code> <code>hexo-next-exif</code> <code>hexo-next-utteranc</code> 等插件后，会出现以下 warnning：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">WARN  The upstream repository of theme NexT has been changed.</span><br><span class="line">WARN  For more information: https://github.com/next-theme/hexo-theme-next</span><br><span class="line">WARN  Documentation: https://theme-next.js.org</span><br></pre></td></tr></table></figure>
+
+<p>原因在 <a href="https://www.npmjs.com/package/next-util?activeTab=code">npmjs/next-util</a> 的 10-12 行。</p>
+<p>为了告诉你不要用 theme-next 而要用 next-theme。</p>
+<p>解决方案是使用 <code>npm i theme-next/next-util</code> 直接安装 <a href="https://github.com/theme-next/next-util">github 版本</a> 的 <code>next-util</code>.</p>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
+  </entry>
+  <entry>
     <title>基于硬件的中间人攻击</title>
     <url>/post/the-Constitution-of-a-Basic-Intrusion-System/</url>
     <content><![CDATA[<p><a href="//qiniu.s1nh.org/Blog_the_Constitution_of_a_Basic_Intrusion_System.pdf"><img data-src="//qiniu.s1nh.org/Blog_the_Constitution_of_a_Basic_Intrusion_System.png-QNthin" title="点击图片下载PPT，点击“阅读全文”查看文字版草稿"></a></p>
@@ -7153,43 +7196,6 @@ Symbols: &#39;.&#39; no key found, &#39;/&#39; A key found, &#39;\&#39; B key fo
       </tags>
   </entry>
   <entry>
-    <title>（草稿）虎纹枫木、絮纹枫木形成的秘密</title>
-    <url>/post/the-mystery-of-figured-maple/</url>
-    <content><![CDATA[<p>原文：<a href="http://www.lespaulforum.com/slubarticle/maple/figure.html">Go Figure! The Mystery of Figured Maple - By Mike Slubowski</a><br><a href="http://www.gobywalnut.com/figured-maple.htm">http://www.gobywalnut.com/figured-maple.htm</a></p>
-<span id="more"></span>
-
-<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Figured Maple</p>
-<h2 id="纹理的类别"><a href="#纹理的类别" class="headerlink" title="纹理的类别"></a>纹理的类别</h2><p>有三种宽泛的图形，包括“正常图形”（纹理变化显示生长层，结等），“颜料图”和“特定图形”，这是由于纵向纤维在木。 具体的数字可以通过切割方法隐藏或增强，如四分之一锯，平（锯）等。</p>
-<p><img data-src="http://www.lespaulforum.com/slubarticle/maple/fullimages/1_f.jpg-QNthin" alt="纹理的类别" title="A.横向 B.径向 C.切线"></p>
-<p>虎纹或絮纹在活体树中主要作为颗粒在径向或切向方向上的垂直排列中的变化或变形，其导致称为条纹，起泡，卷曲，波浪和几个其它变化的常见图形类型。 在直径小于10英寸的树中很少发现可商购的图。 一旦它开始，它在随后的生长环变得更加显着。 波浪谷物在四肢和根附近是相当普遍，在那里它被局限在小区域。</p>
-<p>我们Les Paul爱好者最喜欢的木材种类是“起伏的生长”。一些在径向平面上是波浪形的，而一些在切向平面上是波浪形的。 起伏生长的原因追溯到细胞分裂和增大的方法。 波动的生长对观察者来说似乎是由纤维结构产生的光和暗区域的可移动条纹或对比斑块的光学错觉。 由木材中起伏纹造成的图像类似于在某些宝石中形成的条纹。 图也是部分地由于光线照射包含在图案木材中的细的起伏的纤维元件而产生的干涉图案的结果。</p>
-<p>当木材的径向表面显示波状生长或颗粒时，切向面是光滑的，并且可以观察到波状或起伏的颗粒，但是触摸不明显。 当具有卷曲纹的木材部分分裂时，其沿着光线并沿着波纹状颗粒分离，并且表现为在径向表面上可以看到和感觉到的波纹状表面。 起伏的生长是在同一时间开始的单个细胞的延长的结果，其有些延迟，导致一些比其它细胞长。 </p>
-]]></content>
-      <categories>
-        <category>音乐相关</category>
-      </categories>
-      <tags>
-        <tag>Maple</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Resolve &quot;The upstream repository of theme NexT has been changed.&quot;</title>
-    <url>/post/theme-next-warnning/</url>
-    <content><![CDATA[<p>run <code>npm i theme-next/next-util</code>.</p>
-<span id="more"></span>
-
-<p>hexo 安装 <code>hexo-next-title</code> <code>hexo-next-share</code> <code>hexo-next-exif</code> <code>hexo-next-utteranc</code> 等插件后，会出现以下 warnning：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">WARN  The upstream repository of theme NexT has been changed.</span><br><span class="line">WARN  For more information: https://github.com/next-theme/hexo-theme-next</span><br><span class="line">WARN  Documentation: https://theme-next.js.org</span><br></pre></td></tr></table></figure>
-
-<p>原因在 <a href="https://www.npmjs.com/package/next-util?activeTab=code">npmjs/next-util</a> 的 10-12 行。</p>
-<p>为了告诉你不要用 theme-next 而要用 next-theme。</p>
-<p>解决方案是使用 <code>npm i theme-next/next-util</code> 直接安装 <a href="https://github.com/theme-next/next-util">github 版本</a> 的 <code>next-util</code>.</p>
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
-      </categories>
-  </entry>
-  <entry>
     <title>假装自己是个产品经理</title>
     <url>/post/to-be-a-PM/</url>
     <content><![CDATA[<p>翻出了去年工程管理那边十二五结题时，帮他们画的图。百度了一下午，照猫画虎，闭门造车而成（不得不吐槽一下他们搞些课题，几个博士论文一凑，并没有什么研究，也没有什么价值，感觉纯属骗钱。）</p>
@@ -7252,6 +7258,33 @@ Symbols: &#39;.&#39; no key found, &#39;/&#39; A key found, &#39;\&#39; B key fo
       <tags>
         <tag>TX-1</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>使用 git squash 保持干净的主分支，及相应的调试方法</title>
+    <url>/post/use-git-stash/</url>
+    <content><![CDATA[<!--
+
+`今天可以带薪写博客，开心`
+
+先炫耀一下我已经给 [4 个](https://github.com/pulls?q=is%3Apr+author%3Aduchengyao+archived%3Afalse+is%3Aclosed+is%3Apublic+is%3Amerged) 大型项目贡献过代码，包括`深度学习框架`、`3D 打印机固件` 和 `FastDDS`
+![](//qiniu.s1nh.org/blog_pull-requests.png)
+
+-->
+
+<h3 id="1-通过-git-squash-合并分支"><a href="#1-通过-git-squash-合并分支" class="headerlink" title="1. 通过 git squash 合并分支"></a>1. 通过 git squash 合并分支</h3><p>有的项目要求一个 commit 必须包含完整的功能，但在开发时通常会提交很多细粒度的 commit，比如 <code>add test</code> <code>clean code</code> 等。这种情况下可以使用 <code>git squash</code> 将多个 commit 压缩，得到干净的主分支。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git merge --squash tmp</span><br><span class="line">git commit -m &quot;squash tmp&quot;</span><br><span class="line"></span><br><span class="line"># In the following graph, G is c--d--e--f--g squashed together</span><br><span class="line"></span><br><span class="line">          X-------------G stable</span><br><span class="line">         /</span><br><span class="line">a---b---c---d---e---f---g tmp</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="2-调试被-squash-后的代码"><a href="#2-调试被-squash-后的代码" class="headerlink" title="2. 调试被 squash 后的代码"></a>2. 调试被 squash 后的代码</h3><p>squash 的优点是可以得到简洁的 commit 记录，但缺失详细的 commit 记录会对后面 debug 造成一些影响。</p>
+<p>比如，使用FastDDS后，我一直在调试<a href="https://github.com/eProsima/Fast-DDS/issues/2811">一个无法重连的bug</a>，通过 log 可以定位到这个 bug 是在一次 <a href="https://github.com/eProsima/Fast-DDS/pull/1187">2000 行的 commit</a> 引入的。如果现在开始读这两千行代码肯定会浪费很多时间。</p>
+<p>现在要借助 github，在 pull request 页面可以找到详细的 23 个 commit 记录，并定位到引入 bug 的 commit：</p>
+<p><img data-src="//qiniu.s1nh.org/blog_git-squash.png"></p>
+<p>为了防止这个 commit 不完整，我们需要手动下载引入 bug 的代码，和引入 bug 之前的代码，分别做一次回归测试。（手动下载代码的原因是，这些 commit ID 不在 git repo 里，无法 checkout）</p>
+<p>在 master 里改完 bug 以后，为了防止引入新 bug，别忘了跑回归测试。</p>
+]]></content>
+      <categories>
+        <category>算法与硬件</category>
+      </categories>
   </entry>
   <entry>
     <title>A Survey of Visual Question Generation</title>
@@ -7419,33 +7452,6 @@ Symbols: &#39;.&#39; no key found, &#39;/&#39; A key found, &#39;\&#39; B key fo
         <tag>深度学习</tag>
         <tag>VQG</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>使用 git squash 保持干净的主分支，及相应的调试方法</title>
-    <url>/post/use-git-stash/</url>
-    <content><![CDATA[<!--
-
-`今天可以带薪写博客，开心`
-
-先炫耀一下我已经给 [4 个](https://github.com/pulls?q=is%3Apr+author%3Aduchengyao+archived%3Afalse+is%3Aclosed+is%3Apublic+is%3Amerged) 大型项目贡献过代码，包括`深度学习框架`、`3D 打印机固件` 和 `FastDDS`
-![](//qiniu.s1nh.org/blog_pull-requests.png)
-
--->
-
-<h3 id="1-通过-git-squash-合并分支"><a href="#1-通过-git-squash-合并分支" class="headerlink" title="1. 通过 git squash 合并分支"></a>1. 通过 git squash 合并分支</h3><p>有的项目要求一个 commit 必须包含完整的功能，但在开发时通常会提交很多细粒度的 commit，比如 <code>add test</code> <code>clean code</code> 等。这种情况下可以使用 <code>git squash</code> 将多个 commit 压缩，得到干净的主分支。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git merge --squash tmp</span><br><span class="line">git commit -m &quot;squash tmp&quot;</span><br><span class="line"></span><br><span class="line"># In the following graph, G is c--d--e--f--g squashed together</span><br><span class="line"></span><br><span class="line">          X-------------G stable</span><br><span class="line">         /</span><br><span class="line">a---b---c---d---e---f---g tmp</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="2-调试被-squash-后的代码"><a href="#2-调试被-squash-后的代码" class="headerlink" title="2. 调试被 squash 后的代码"></a>2. 调试被 squash 后的代码</h3><p>squash 的优点是可以得到简洁的 commit 记录，但缺失详细的 commit 记录会对后面 debug 造成一些影响。</p>
-<p>比如，使用FastDDS后，我一直在调试<a href="https://github.com/eProsima/Fast-DDS/issues/2811">一个无法重连的bug</a>，通过 log 可以定位到这个 bug 是在一次 <a href="https://github.com/eProsima/Fast-DDS/pull/1187">2000 行的 commit</a> 引入的。如果现在开始读这两千行代码肯定会浪费很多时间。</p>
-<p>现在要借助 github，在 pull request 页面可以找到详细的 23 个 commit 记录，并定位到引入 bug 的 commit：</p>
-<p><img data-src="//qiniu.s1nh.org/blog_git-squash.png"></p>
-<p>为了防止这个 commit 不完整，我们需要手动下载引入 bug 的代码，和引入 bug 之前的代码，分别做一次回归测试。（手动下载代码的原因是，这些 commit ID 不在 git repo 里，无法 checkout）</p>
-<p>在 master 里改完 bug 以后，为了防止引入新 bug，别忘了跑回归测试。</p>
-]]></content>
-      <categories>
-        <category>算法与硬件</category>
-      </categories>
   </entry>
   <entry>
     <title>鲸落分手演出</title>
