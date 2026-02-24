@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/6.0.5/fancybox/fancybox.css" integrity="sha256-uTcjoMD6rPt4OyV3Rs02Slxl0BJGMNVKAm/1eYPt2go=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.23.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="0x01 Tensorflow 2.01.1. Convertkeras hdf5 –&gt; .pb 123456# V2 behaviour is disabled by default in Jetpack 4.4.DP.import tensorflow.compat.v2 as tffrom tensorflow.keras.models import load_modelmodel &#x3D;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Inference using TensorRT Backend.">
+<meta property="og:url" content="http://s1nh.org/post/inference-using-tensorrt-backend/index.html">
+<meta property="og:site_name" content="S1NH">
+<meta property="og:description" content="0x01 Tensorflow 2.01.1. Convertkeras hdf5 –&gt; .pb 123456# V2 behaviour is disabled by default in Jetpack 4.4.DP.import tensorflow.compat.v2 as tffrom tensorflow.keras.models import load_modelmodel &#x3D;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-09-21T11:30:35.000Z">
+<meta property="article:modified_time" content="2025-07-10T15:58:05.474Z">
+<meta property="article:author" content="S1NH">
+<meta property="article:tag" content="边缘计算">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://s1nh.org/post/inference-using-tensorrt-backend/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://s1nh.org/post/inference-using-tensorrt-backend/","path":"post/inference-using-tensorrt-backend/","title":"Inference using TensorRT Backend."}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Inference using TensorRT Backend. | S1NH</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-44KGHGDYG3"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-44KGHGDYG3","only_pageview":false,"measure_protocol_api_secret":null}</script>
+  <script src="/js/third-party/analytics/google-analytics.js" defer></script>
+
+  <script src="/js/third-party/analytics/baidu-analytics.js" defer></script>
+  <script async src="https://hm.baidu.com/hm.js?4c66a84272e0f7943a305accf6dbdf41"></script>
+
+
+
+
+
+
+  <script defer data-domain="s1nh.org" src="http://home.s1nh.com:32801/js/script.js"></script>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/6.0.5/fancybox/fancybox.umd.js" integrity="sha256-UiSieVaV/DXce2LW7QH+o77w+AIoAvSCPBkezriZ2DQ=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.7.0/mermaid.min.js","integrity":"sha256-4+IKDqhZ/sXjc8Wtl2/MsxI4e0s1KpEVdbEP7V/Lz8U="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">S1NH</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">世界在旅程的尽头终结</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01-Tensorflow-2-0"><span class="nav-text">0x01 Tensorflow 2.0</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-Convert"><span class="nav-text">1.1. Convert</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-Inference"><span class="nav-text">1.2. Inference</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-v2-Behaviour"><span class="nav-text">1.3. v2 Behaviour</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02-Others-Pytorch-MxNet-Caffe"><span class="nav-text">0x02 Others ( Pytorch &#x2F; MxNet &#x2F; Caffe )</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-Convert-model-to-ONNX"><span class="nav-text">2.1. Convert model to ONNX</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Build-TensorRT-Engine-from-ONNX-Model"><span class="nav-text">2.2. Build TensorRT Engine from ONNX Model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-Inference-from-TRT-Engine"><span class="nav-text">2.3. Inference from TRT Engine</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-pycuda"><span class="nav-text">2.4. pycuda</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="S1NH"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">S1NH</p>
+  <div class="site-description" itemprop="description">no other developers required.</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">105</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">88</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+<div>
+  <hr>
+  <img src="/images/wechatpay-sss.jpg" alt="Buy me a SSRI.">
+  <a href="/reward-list/" rel="section">"Buy me a coffee."</a>
+</div>
+
+<!-- Matomo -->
+<script>
+  var _paq = window._paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  if (document.domain.indexOf('com') != -1){
+    _paq.push(["setCookieDomain", "*.s1nh.com"]);
+  } else if(document.domain.indexOf('org') != -1){
+    _paq.push(["setCookieDomain", "*.s1nh.org"]);
+  }
+  _paq.push(["setDomains", ["*.s1nh.org","*.s1nh.com"]]);
+  _paq.push(["enableCrossDomainLinking"]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://home.s1nh.com:32443/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    
+    if (document.domain.indexOf('com') != -1){
+      _paq.push(['setSiteId', '2']);
+    } else if(document.domain.indexOf('org') != -1){
+      _paq.push(['setSiteId', '3']);
+    }
+    
+    // Will also collect the website data into Website ID = 1
+    _paq.push(['addTracker', u+'matomo.php', 1]);
+    
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+
+<!-- Google Ads -->
+<!--script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7052751443200899"
+     crossorigin="anonymous"></script-->
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://www.92ez.com/" title="https:&#x2F;&#x2F;www.92ez.com&#x2F;" rel="noopener" target="_blank">一只猿 (关站升级中)</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="http://codewithzhangyi.com/about/" title="http:&#x2F;&#x2F;codewithzhangyi.com&#x2F;about&#x2F;" rel="noopener" target="_blank">好奇心狂热分子 (张怡，也关了)</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://findhao.net/" title="https:&#x2F;&#x2F;findhao.net&#x2F;" rel="noopener" target="_blank">FindHao 的自留地</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/inference-using-tensorrt-backend/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="S1NH">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="S1NH">
+      <meta itemprop="description" content="no other developers required.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Inference using TensorRT Backend. | S1NH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Inference using TensorRT Backend.
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-09-21 19:30:35" itemprop="dateCreated datePublished" datetime="2020-09-21T19:30:35+08:00">2020-09-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/programming/" itemprop="url" rel="index"><span itemprop="name">算法与硬件</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="0x01-Tensorflow-2-0"><a href="#0x01-Tensorflow-2-0" class="headerlink" title="0x01 Tensorflow 2.0"></a>0x01 Tensorflow 2.0</h2><h3 id="1-1-Convert"><a href="#1-1-Convert" class="headerlink" title="1.1. Convert"></a>1.1. Convert</h3><p><strong>keras hdf5 –&gt; .pb</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># V2 behaviour is disabled by default in Jetpack 4.4.DP.</span><br><span class="line">import tensorflow.compat.v2 as tf</span><br><span class="line">from tensorflow.keras.models import load_model</span><br><span class="line"></span><br><span class="line">model = load_model(&#x27;./model/fer2013_mini_XCEPTION.102-0.66.hdf5&#x27;)</span><br><span class="line">model.save(&#x27;./model/tf_savedmodel&#x27;, save_format=&#x27;tf&#x27;)</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<p><strong>.pb–&gt;trt.pb</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">params = trt.DEFAULT_TRT_CONVERSION_PARAMS</span><br><span class="line">params._replace(precision_mode=trt.TrtPrecisionMode.INT8)</span><br><span class="line">converter = trt.TrtGraphConverterV2(input_saved_model_dir=&#x27;./model/tf_savedmodel&#x27;, conversion_params=params)</span><br><span class="line">converter.convert()</span><br><span class="line">converter.save(&#x27;./model/trt_int8&#x27;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2-Inference"><a href="#1-2-Inference" class="headerlink" title="1.2. Inference"></a>1.2. Inference</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if use_trt:</span><br><span class="line">    saved_model_loaded = tf.saved_model.load(&#x27;./model/trt_int8&#x27;, tags=[trt.tag_constants.SERVING])</span><br><span class="line">    graph_func = saved_model_loaded.signatures[trt.signature_constants.DEFAULT_SERVING_SIGNATURE_DEF_KEY]</span><br><span class="line">    self.emotion_classifier = frozen_func</span><br><span class="line">else:</span><br><span class="line">    self.emotion_classifier = tf.keras.models.load_model(&#x27;xxx.hdf5&#x27;, compile=False)</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="1-3-v2-Behaviour"><a href="#1-3-v2-Behaviour" class="headerlink" title="1.3. v2 Behaviour"></a>1.3. v2 Behaviour</h3><p>It looks like the current Tensorflow for JP 4.4 was compiled with <code>--config=v1</code> flag, as V2 behaviour seems to be disabled in default.<br>The workaround is:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow.compat.v2 as tf</span><br><span class="line">import tensorflow.compat.v2.keras as keras</span><br><span class="line">tf.enable_v2_behavior()</span><br></pre></td></tr></table></figure>
+
+<h2 id="0x02-Others-Pytorch-MxNet-Caffe"><a href="#0x02-Others-Pytorch-MxNet-Caffe" class="headerlink" title="0x02 Others ( Pytorch &#x2F; MxNet &#x2F; Caffe )"></a>0x02 Others ( Pytorch &#x2F; MxNet &#x2F; Caffe )</h2><h3 id="2-1-Convert-model-to-ONNX"><a href="#2-1-Convert-model-to-ONNX" class="headerlink" title="2.1. Convert model to ONNX"></a>2.1. Convert model to ONNX</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pass</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-Build-TensorRT-Engine-from-ONNX-Model"><a href="#2-2-Build-TensorRT-Engine-from-ONNX-Model" class="headerlink" title="2.2. Build TensorRT Engine from ONNX Model"></a>2.2. Build TensorRT Engine from ONNX Model</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">def build_engine_onnx(model_file):</span><br><span class="line">    with trt.Builder(TRT_LOGGER) as builder,</span><br><span class="line">        builder.create_network(1 &lt;&lt; int(trt.NetworkDefinitionCreationFlag.EXPLICIT_BATCH)) as network,</span><br><span class="line">            trt.OnnxParser(network, TRT_LOGGER) as parser:</span><br><span class="line">                builder.max_workspace_size = common.GiB(1)</span><br><span class="line">                builder.max_batch_size = batch_size</span><br><span class="line">                # Load the Onnx model and parse it in order to populate the TensorRT network.</span><br><span class="line">                with open(model_file, &#x27;rb&#x27;) as model:</span><br><span class="line">                    parser.parse(model.read())</span><br><span class="line">                return builder.build_cuda_engine(network)</span><br><span class="line"></span><br><span class="line">engine = build_engine_onnx(&#x27;resnet100.onnx&#x27;)</span><br><span class="line">engine_file_path = &#x27;./arcface_trt.engine&#x27;</span><br><span class="line">with open(engine_file_path, &quot;wb&quot;) as f:</span><br><span class="line">    f.write(engine.serialize())</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-Inference-from-TRT-Engine"><a href="#2-3-Inference-from-TRT-Engine" class="headerlink" title="2.3. Inference from TRT Engine"></a>2.3. Inference from TRT Engine</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">def build(engine_file):</span><br><span class="line">    with open(engine_file, &#x27;rb&#x27;) as f, trt.Runtime(TRT_LOGGER) as runtime:</span><br><span class="line">        engine = runtime.deserialize_cuda_engine(f.read())</span><br><span class="line">    inputs, outputs, bindings, stream = allocate_buffers(engine)</span><br><span class="line">    context = engine.create_execution_context()</span><br><span class="line"></span><br><span class="line">def run(objects_frame):</span><br><span class="line">    allocate_place = np.prod(objects_frame.shape)</span><br><span class="line">    inputs[0].host[:allocate_place] = objects_frame.flatten(order=&#x27;C&#x27;).astype(np.float32)</span><br><span class="line">    trt_outputs = do_inference(</span><br><span class="line">        self.context, bindings=self.bindings,</span><br><span class="line">        inputs=inputs, outputs=outputs, stream=stream)</span><br><span class="line"></span><br><span class="line">    return trt_outputs</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="2-4-pycuda"><a href="#2-4-pycuda" class="headerlink" title="2.4. pycuda"></a>2.4. pycuda</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">try:</span><br><span class="line">    # Sometimes python2 does not understand FileNotFoundError</span><br><span class="line">    FileNotFoundError</span><br><span class="line">except NameError:</span><br><span class="line">    FileNotFoundError = IOError</span><br><span class="line"></span><br><span class="line">def GiB(val):</span><br><span class="line">    return val * 1 &lt;&lt; 30   # 1 &lt;&lt; 10 &lt;&lt; 10 &lt;&lt; 10, 1024*1024*1024</span><br><span class="line"></span><br><span class="line"># Simple helper data class that&#x27;s a little nicer to use than a 2-tuple.</span><br><span class="line">class HostDeviceMem(object):</span><br><span class="line">    def __init__(self, host_mem, device_mem):</span><br><span class="line">        self.host = host_mem</span><br><span class="line">        self.device = device_mem</span><br><span class="line"></span><br><span class="line">    def __str__(self):</span><br><span class="line">        return &quot;Host:\n&quot; + str(self.host) + &quot;\nDevice:\n&quot; + str(self.device)</span><br><span class="line"></span><br><span class="line">    def __repr__(self):</span><br><span class="line">        return self.__str__()</span><br><span class="line"></span><br><span class="line"># Allocates all buffers required for an engine, i.e. host/device inputs/outputs.</span><br><span class="line">def allocate_buffers(engine):</span><br><span class="line">    inputs = []</span><br><span class="line">    outputs = []</span><br><span class="line">    bindings = []</span><br><span class="line">    stream = cuda.Stream()</span><br><span class="line">    for binding in engine:</span><br><span class="line">        size = trt.volume(engine.get_binding_shape(binding)) * engine.max_batch_size</span><br><span class="line">        dtype = trt.nptype(engine.get_binding_dtype(binding))</span><br><span class="line">        # Allocate host and device buffers</span><br><span class="line">        host_mem = cuda.pagelocked_empty(size, dtype)      # pagelocked memory (Direct Memory Access，DMA)</span><br><span class="line">        device_mem = cuda.mem_alloc(host_mem.nbytes)</span><br><span class="line">        # Append the device buffer to device bindings.</span><br><span class="line">        bindings.append(int(device_mem))</span><br><span class="line">        # Append to the appropriate list.</span><br><span class="line">        if engine.binding_is_input(binding):</span><br><span class="line">            inputs.append(HostDeviceMem(host_mem, device_mem))</span><br><span class="line">        else:</span><br><span class="line">            outputs.append(HostDeviceMem(host_mem, device_mem))</span><br><span class="line">    return inputs, outputs, bindings, stream</span><br><span class="line"></span><br><span class="line"># This function is generalized for multiple inputs/outputs.</span><br><span class="line"># inputs and outputs are expected to be lists of HostDeviceMem objects.</span><br><span class="line">def do_inference(context, bindings, inputs, outputs, stream, batch_size=1):</span><br><span class="line">    # Transfer input data to the GPU.</span><br><span class="line">    [cuda.memcpy_htod_async(inp.device, inp.host, stream) for inp in inputs]</span><br><span class="line">    # Run inference.</span><br><span class="line">    context.execute_async(batch_size=batch_size, bindings=bindings, stream_handle=stream.handle)</span><br><span class="line">    # Transfer predictions back from the GPU.</span><br><span class="line">    [cuda.memcpy_dtoh_async(out.host, out.device, stream) for out in outputs]</span><br><span class="line">    # Synchronize the stream</span><br><span class="line">    stream.synchronize()</span><br><span class="line">    # Return only the host outputs.</span><br><span class="line">    return [out.host for out in outputs]</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay-ssss.jpg" alt="S1NH 微信">
+        <span>微信</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>S1NH
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://s1nh.org/post/inference-using-tensorrt-backend/" title="Inference using TensorRT Backend.">http://s1nh.org/post/inference-using-tensorrt-backend/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97/" rel="tag"># 边缘计算</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/multi-modal-and-edge-compute/" rel="prev" title="多模态人工智能与边缘计算技术">
+                  <i class="fa fa-angle-left"></i> 多模态人工智能与边缘计算技术
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/post/vqg-survey/" rel="next" title="A Survey of Visual Question Generation">
+                  A Survey of Visual Question Generation <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2015 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">S1NH</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/duchengyao" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"duchengyao/duchengyao.github.io","issue_term":"og:title","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js" defer></script>
+
+</body>
+</html>

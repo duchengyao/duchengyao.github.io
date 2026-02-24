@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/6.0.5/fancybox/fancybox.css" integrity="sha256-uTcjoMD6rPt4OyV3Rs02Slxl0BJGMNVKAm/1eYPt2go=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.23.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="ROS 和前期的 Apollo 定义了一个 API，它向用户公开如发布&#x2F;订阅等通信概念。这些通信概念的实现基于自定义协议，并使用共享内存去降低基于Socket通信的开销。这些传统方法存在一些问题，如每个节点以单独进程的形式存在，由底层操作系统调度，而Linux是个通用系统，每个节点的运行顺序并无任何逻辑。ROS是专用系统，任务应按照一定的业务逻辑执行。  ROS 2 和 Apollo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="百度阿波罗 和 ROS 2.0 采用的消息中间件">
+<meta property="og:url" content="http://s1nh.org/post/a-survey-of-middleware-interface/index.html">
+<meta property="og:site_name" content="S1NH">
+<meta property="og:description" content="ROS 和前期的 Apollo 定义了一个 API，它向用户公开如发布&#x2F;订阅等通信概念。这些通信概念的实现基于自定义协议，并使用共享内存去降低基于Socket通信的开销。这些传统方法存在一些问题，如每个节点以单独进程的形式存在，由底层操作系统调度，而Linux是个通用系统，每个节点的运行顺序并无任何逻辑。ROS是专用系统，任务应按照一定的业务逻辑执行。  ROS 2 和 Apollo">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://qiniu.s1nh.org/DDS-communication-model.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/fast-dds-architecture.svg">
+<meta property="og:image" content="http://qiniu.s1nh.org/fast-dds-data-sharing-zoro-copy.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/fast-dds-zero-copy-performance.svg">
+<meta property="og:image" content="http://qiniu.s1nh.org/fast-dds-monitor-statistics.png">
+<meta property="article:published_time" content="2022-04-24T11:49:12.000Z">
+<meta property="article:modified_time" content="2025-07-10T15:58:05.471Z">
+<meta property="article:author" content="S1NH">
+<meta property="article:tag" content="FastDDS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://qiniu.s1nh.org/DDS-communication-model.png">
+
+
+<link rel="canonical" href="http://s1nh.org/post/a-survey-of-middleware-interface/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://s1nh.org/post/a-survey-of-middleware-interface/","path":"post/a-survey-of-middleware-interface/","title":"百度阿波罗 和 ROS 2.0 采用的消息中间件"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>百度阿波罗 和 ROS 2.0 采用的消息中间件 | S1NH</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-44KGHGDYG3"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-44KGHGDYG3","only_pageview":false,"measure_protocol_api_secret":null}</script>
+  <script src="/js/third-party/analytics/google-analytics.js" defer></script>
+
+  <script src="/js/third-party/analytics/baidu-analytics.js" defer></script>
+  <script async src="https://hm.baidu.com/hm.js?4c66a84272e0f7943a305accf6dbdf41"></script>
+
+
+
+
+
+
+  <script defer data-domain="s1nh.org" src="http://home.s1nh.com:32801/js/script.js"></script>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/6.0.5/fancybox/fancybox.umd.js" integrity="sha256-UiSieVaV/DXce2LW7QH+o77w+AIoAvSCPBkezriZ2DQ=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.7.0/mermaid.min.js","integrity":"sha256-4+IKDqhZ/sXjc8Wtl2/MsxI4e0s1KpEVdbEP7V/Lz8U="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">S1NH</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">世界在旅程的尽头终结</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01-Data-Distribution-Servic-DDS"><span class="nav-text">0x01 Data Distribution Servic, DDS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02-Fast-DDS"><span class="nav-text">0x02 Fast DDS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E7%AE%80%E4%BB%8B"><span class="nav-text">2.1 简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E7%89%B9%E6%80%A7"><span class="nav-text">2.2 特性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0xFF-Reference"><span class="nav-text">0xFF Reference</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="S1NH"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">S1NH</p>
+  <div class="site-description" itemprop="description">no other developers required.</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">105</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">88</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+<div>
+  <hr>
+  <img src="/images/wechatpay-sss.jpg" alt="Buy me a SSRI.">
+  <a href="/reward-list/" rel="section">"Buy me a coffee."</a>
+</div>
+
+<!-- Matomo -->
+<script>
+  var _paq = window._paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  if (document.domain.indexOf('com') != -1){
+    _paq.push(["setCookieDomain", "*.s1nh.com"]);
+  } else if(document.domain.indexOf('org') != -1){
+    _paq.push(["setCookieDomain", "*.s1nh.org"]);
+  }
+  _paq.push(["setDomains", ["*.s1nh.org","*.s1nh.com"]]);
+  _paq.push(["enableCrossDomainLinking"]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://home.s1nh.com:32443/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    
+    if (document.domain.indexOf('com') != -1){
+      _paq.push(['setSiteId', '2']);
+    } else if(document.domain.indexOf('org') != -1){
+      _paq.push(['setSiteId', '3']);
+    }
+    
+    // Will also collect the website data into Website ID = 1
+    _paq.push(['addTracker', u+'matomo.php', 1]);
+    
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+
+<!-- Google Ads -->
+<!--script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7052751443200899"
+     crossorigin="anonymous"></script-->
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://www.92ez.com/" title="https:&#x2F;&#x2F;www.92ez.com&#x2F;" rel="noopener" target="_blank">一只猿 (关站升级中)</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="http://codewithzhangyi.com/about/" title="http:&#x2F;&#x2F;codewithzhangyi.com&#x2F;about&#x2F;" rel="noopener" target="_blank">好奇心狂热分子 (张怡，也关了)</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://findhao.net/" title="https:&#x2F;&#x2F;findhao.net&#x2F;" rel="noopener" target="_blank">FindHao 的自留地</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/a-survey-of-middleware-interface/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="S1NH">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="S1NH">
+      <meta itemprop="description" content="no other developers required.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="百度阿波罗 和 ROS 2.0 采用的消息中间件 | S1NH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          百度阿波罗 和 ROS 2.0 采用的消息中间件
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-04-24 19:49:12" itemprop="dateCreated datePublished" datetime="2022-04-24T19:49:12+08:00">2022-04-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/programming/" itemprop="url" rel="index"><span itemprop="name">算法与硬件</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p>ROS 和前期的 Apollo 定义了一个 API，它向用户公开如<code>发布</code>&#x2F;<code>订阅</code>等通信概念。<br>这些通信概念的实现基于自定义协议，并使用共享内存去降低基于Socket通信的开销。<br>这些传统方法存在一些问题，如每个节点以单独进程的形式存在，由底层操作系统调度，而Linux是个通用系统，每个节点的运行顺序并无任何逻辑。ROS是专用系统，任务应按照一定的业务逻辑执行。</p>
+</blockquote>
+<p><code>ROS 2</code> 和 <code>Apollo 3</code> 的计算框架 <code>Cyber RT</code> 构建在现有中间件解决方案 <code>DDS</code> 之上 <a name="r1" href="#1"><sup>[1]</sup></a>  <a name="r2" href="#2"><sup>[2]</sup></a> </p>
+<p><code>Cyber RT</code> 在此基础上构建了自己的调度器 <a name="r3" href="#3"><sup>[3]</sup></a>，由一个多队列的<code>任务编排策略</code>调度协程（Coroutine）在 Native Thread 上有序运行。其中，Cyber RT 会动态的根据不同调度顺序的执行时间来动态的选择一个时间最短的调度策略。</p>
+<span id="more"></span>
+<h2 id="0x01-Data-Distribution-Servic-DDS"><a href="#0x01-Data-Distribution-Servic-DDS" class="headerlink" title="0x01 Data Distribution Servic, DDS"></a>0x01 Data Distribution Servic, DDS</h2><p>DDS解决了通信层面的问题，这使操作系统的开发者、应用的开发者得以集中精力专注于业务的研究。 DDS 已经广泛用于 <strong>战列舰</strong>、<strong>大坝等大型公用设施</strong>、<strong>金融系统</strong>、<strong>空间系统</strong>、<strong>飞行系统</strong>、<strong>火车总机系统</strong> 中。</p>
+<p>DDS 通过 <code>可靠传输策略 (Quality of Service, QoS)</code>，控制与底层通信机制的方方面面，主要从时限、可靠性、连续性、历史等方面来满足不同场景的用户数据需求。</p>
+<p>DDS 是一个 DCPS (Data-Centric Publish Subscribe) 模型，其中包括Participant, Publisher, Subscriber, DataWriter, DataReader, Topic等概念。具体通信机制如下图：</p>
+<p><img data-src="//qiniu.s1nh.org/DDS-communication-model.png" alt="DDS-communication-model"></p>
+<p>使用DDS与传统通信的优势：</p>
+<ul>
+<li>实时性：DDS通过优化的内核机制，实现微秒级的数据传输；纯分布式的系统结构，保证系统内不存在影响实时性的瓶颈节点。DDS 实体被建模为类或类型化接口，<strong>允许提前分配内存</strong>而不是动态分配内存,可以更有效的对资源处理。</li>
+<li>可靠性：DDS提供点到点的信息交互服务，从而保证整个系统服务不存在单点故障的风险；同时提供可靠传输策略，<strong>通过重发机制确保数据可靠地传输</strong>。</li>
+<li>持续性：DDS可以通过相应的QoS为ROS提供<strong>数据历史</strong>的服务，新加入的节点也可以获取发布的所有历史数据。</li>
+<li>灵活性：应用系统可以根据应用场景需求，灵活选择多种DDS提供的应用级QoS策略（例如可靠性传输、数据过滤、优先级排序等等），以满足系统的灵活性需求。</li>
+<li>扩展性：DDS使用“订阅&#x2F;发布”机制进行数据交互，建立<strong>全局的虚拟数据空间</strong>，在通信层面将应用逻辑与节点的物理信息解耦合，使系统能够方便的实现节点增减或系统本身的分割&#x2F;合并，满足系统的扩展性需求；运行时由DDS自动发现并连接设备和应用程序，即插即用，无需系统管理或目录服务。</li>
+<li>异构网络支持：DDS通过适配底层多种异构架构网络，对上层提供无差别的通信服务，使通信软硬件层对应用层完全透明。</li>
+</ul>
+<h2 id="0x02-Fast-DDS"><a href="#0x02-Fast-DDS" class="headerlink" title="0x02 Fast DDS"></a>0x02 Fast DDS</h2><h3 id="2-1-简介"><a href="#2-1-简介" class="headerlink" title="2.1 简介"></a>2.1 简介</h3><p>ROS 2 的大多数版本使用 <code>Fast DDS</code> 作为中间件。ROS 团队提供了一个很完善的报告<a name="r4" href="#4"><sup>[4]</sup></a> 详细对比了各个主流 DDS 中间件在压力测试中的 <code>CPU/内存占用率</code> <code>延时</code> <code>丢包</code>，以及<code>代码质量</code> <code>社区评价</code> 等指标，以及阐述了使用 <code>FastDDS</code> 作为默认中间件的理由。</p>
+<p><strong>a. 架构</strong></p>
+<p>Fast DDS 的架构如下图 ，包括 <code>应用层</code> <code>FastDDS层</code> <code>RTPS层</code> 和 <code>传输层</code> 。其中，<code>传输层</code> 可以选择<code>UDP</code> <code>TCP</code> 或 <code>共享内存(SHM)</code>。<br>具体每个实体和接口的介绍可参考<a name="r5" href="#5">[FASTDDS: Library Overview]</a>。</p>
+<img style="background-color:white" data-src="//qiniu.s1nh.org/fast-dds-architecture.svg"  width=40% />
+
+<p><strong>b. 并发</strong></p>
+<p>Fast DDS 是多线程且线程安全的，包括由应用程序管理的<strong>主线程</strong>，Domain管理的多个<strong>事件线程</strong>，一个<strong>异步写入线程</strong>和多个<strong>接收线程</strong></p>
+<p><strong>c. 消息结构</strong></p>
+<p>接口描述语言 (Interface Description Language, IDL) </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// HelloWorld.idl</span><br><span class="line"></span><br><span class="line">struct HelloWorld</span><br><span class="line">&#123;</span><br><span class="line">    unsigned long index;</span><br><span class="line">    string message;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>使用 <code>$./fastddsgen HelloWorld.idl</code> 编译成接口文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">HelloWorld.h/cxx: HelloWorld type 定义.</span><br><span class="line">HelloWorldPubSubTypes.h/cxx: HelloWorld type 的序列化和反序列化代码。</span><br></pre></td></tr></table></figure>
+
+<p><strong>d. 编写subscriber&#x2F;publisher</strong></p>
+<p>参考 <a name="r6" href="#6">[Fast-DDS&#x2F;examples]</a> 编写代码，其中包含共享内存的使用方法。另外， <a name="r7" href="#7">[FASTDDS: Typical Use-Cases]</a> 有包括<strong>高速率通信</strong>、<strong>实时场景</strong>、<strong>零拷贝</strong>等对符合我们应用场景的配置示例。</p>
+<h3 id="2-2-特性"><a href="#2-2-特性" class="headerlink" title="2.2 特性"></a>2.2 特性</h3><p><strong>a. 历史记录</strong></p>
+<p>Fast DDS 提供数据历史的服务，可以定义过去样本的存储策略。</p>
+<ul>
+<li>Keep Last：历史记录将保存并允许访问最后“k”个收到的样本。这个“k”数字称为历史深度，也可以由用户手动设置。</li>
+<li>Keep All：历史记录将保存并允许访问所有收到的样本，直到达到历史记录的最大样本大小。</li>
+</ul>
+<p><strong>b. 零拷贝</strong></p>
+<p>传统的共享内存方式避免了传输层中涉及的开销，节省内存的占用（左图）。</p>
+<p>FastDDS不仅提供共享内存，还提供类似 NVIDIA Jetson 的零拷贝模式 <a name="r8" href="#8"><sup>[8]</sup></a>（右图，后者基于GPU&#x2F;CPU使用同一块内存）。应用程序获取接收到的数据作为引用，这可以防止将数据从共享内存复制到应用程序。</p>
+<p><img data-src="//qiniu.s1nh.org/fast-dds-data-sharing-zoro-copy.png" alt="DDS-communication-model"></p>
+<p>使用零拷贝可以显著加速进程间的通信速度 <a name="r9" href="#9"><sup>[9]</sup></a>，吞吐量测试结果如下：</p>
+<img style="background-color:white" data-src="//qiniu.s1nh.org/fast-dds-zero-copy-performance.svg" />
+
+<p><strong>z. DDS Monitor</strong></p>
+<p>Fast DDS 提供一个GUI应用，可以实时监控 DDS 实体之间的发布&#x2F;订阅状态，物理架构和统计数据。</p>
+<img data-src="//qiniu.s1nh.org/fast-dds-monitor-statistics.png"  width=70% />
+
+<h2 id="0xFF-Reference"><a href="#0xFF-Reference" class="headerlink" title="0xFF Reference"></a>0xFF Reference</h2><ul>
+<li>[1] <a name="1" href="#r1">^</a> <a target="_blank" rel="noopener" href="https://design.ros2.org/articles/ros_middleware_interface.html">ROS 2 middleware interface</a></li>
+<li>[2] <a name="2" href="#r2">^</a> <a target="_blank" rel="noopener" href="https://design.ros2.org/articles/ros_on_dds.html">ROS on DDS</a></li>
+<li>[3] <a name="3" href="#r3">^</a> <a target="_blank" rel="noopener" href="https://download.csdn.net/course/detail/16425">Apollo 3.5 计算框架（Cyber RT）设计分享</a></li>
+<li>[4] <a name="4" href="#r4">^</a> <a target="_blank" rel="noopener" href="https://osrf.github.io/TSC-RMW-Reports/humble/#121-cpu-utilization-in-a-spinning-node-by-rmw">2021 ROS Middleware Evaluation Report</a></li>
+<li>[5] <a name="5" href="#r5">^</a> <a target="_blank" rel="noopener" href="https://fast-dds.docs.eprosima.com/en/latest/fastdds/library_overview/library_overview.html">FASTDDS: Library Overview</a></li>
+<li>[6] <a name="6" href="#r6">^</a> <a target="_blank" rel="noopener" href="https://github.com/eProsima/Fast-DDS/tree/master/examples/">Fast-DDS&#x2F;examples</a></li>
+<li>[7] <a name="7" href="#r7">^</a> <a target="_blank" rel="noopener" href="https://fast-dds.docs.eprosima.com/en/latest/fastdds/use_cases/use_cases.html">FASTDDS: Typical Use-Cases</a></li>
+<li>[8] <a name="8" href="#r8">^</a> <a target="_blank" rel="noopener" href="https://fast-dds.docs.eprosima.com/en/latest/fastdds/use_cases/zero_copy/zero_copy.html">FASTDDS: ZERO COPY</a></li>
+<li>[9] <a name="9" href="#r9">^</a> <a href="eprosima.com/index.php/resources-all/performance/eprosima-fast-dds-performance">eProsima Fast DDS Performance</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay-ssss.jpg" alt="S1NH 微信">
+        <span>微信</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>S1NH
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://s1nh.org/post/a-survey-of-middleware-interface/" title="百度阿波罗 和 ROS 2.0 采用的消息中间件">http://s1nh.org/post/a-survey-of-middleware-interface/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/FastDDS/" rel="tag"># FastDDS</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/guitar-factory-setup-specs/" rel="prev" title="将吉他恢复为出厂设置 —— 各种型号吉他的出厂参数">
+                  <i class="fa fa-angle-left"></i> 将吉他恢复为出厂设置 —— 各种型号吉他的出厂参数
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/post/alfa-romeo-enable-race-mode/" rel="next" title="阿尔法罗密欧零成本自制 Race 模式开关，关闭牵引力控制和 ESP">
+                  阿尔法罗密欧零成本自制 Race 模式开关，关闭牵引力控制和 ESP <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2015 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">S1NH</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/duchengyao" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"duchengyao/duchengyao.github.io","issue_term":"og:title","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/6.0.5/fancybox/fancybox.css" integrity="sha256-uTcjoMD6rPt4OyV3Rs02Slxl0BJGMNVKAm/1eYPt2go=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.23.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="本文作者在2017年提出了L-ORB算法。速度是传统ORB算法的11倍、传统SIFT算法的639倍。将算法应用到嵌入式系统中性能提升了29倍，但其功耗低至10W。有兴趣的可以点击：杜承垚,袁景凌,陈旻骋,李涛. GPU加速与L-ORB特征提取的全景视频实时拼接[J]. 计算机研究与发展, 2017, 54(6): 1316-1325.    本文翻译自：Ghosh, Debabrata, and">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图像拼接算法的综述">
+<meta property="og:url" content="http://s1nh.org/post/A-survey-on-image-mosaicing-techniques/index.html">
+<meta property="og:site_name" content="S1NH">
+<meta property="og:description" content="本文作者在2017年提出了L-ORB算法。速度是传统ORB算法的11倍、传统SIFT算法的639倍。将算法应用到嵌入式系统中性能提升了29倍，但其功耗低至10W。有兴趣的可以点击：杜承垚,袁景凌,陈旻骋,李涛. GPU加速与L-ORB特征提取的全景视频实时拼接[J]. 计算机研究与发展, 2017, 54(6): 1316-1325.    本文翻译自：Ghosh, Debabrata, and">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://qiniu.s1nh.org/Blog_Image_keypoint_8.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/Blog_1-s2.0-S1047320315002059-gr1.jpg-QNthin">
+<meta property="og:image" content="http://qiniu.s1nh.org/Blog_1-s2.0-S1047320315002059-gr2.jpg-QNthin">
+<meta property="og:image" content="http://qiniu.s1nh.org/Blog_1-s2.0-S1047320315002059-gr3.jpg-QNthin">
+<meta property="og:image" content="http://qiniu.s1nh.org/Blog_1-s2.0-S1047320315002059-si1.gif">
+<meta property="og:image" content="http://qiniu.s1nh.org/Blog_1-s2.0-S1047320315002059-gr4.jpg-QNthin">
+<meta property="og:image" content="http://qiniu.s1nh.org/Blog_1-s2.0-S1047320315002059-gr5.jpg-QNthin">
+<meta property="og:image" content="http://qiniu.s1nh.org/Blog_1-s2.0-S1047320315002059-gr6.jpg-QNthin">
+<meta property="og:image" content="http://qiniu.s1nh.org/Blog_1-s2.0-S1047320315002059-gr7.jpg-QNthin">
+<meta property="og:image" content="http://qiniu.s1nh.org/Blog_1-s2.0-S1047320315002059-gr8.jpg-QNthin">
+<meta property="og:image" content="http://qiniu.s1nh.org/Blog_1-s2.0-S1047320315002059-gr9.jpg-QNthin">
+<meta property="article:published_time" content="2016-06-11T07:11:27.000Z">
+<meta property="article:modified_time" content="2025-07-10T15:58:05.469Z">
+<meta property="article:author" content="S1NH">
+<meta property="article:tag" content="图像拼接">
+<meta property="article:tag" content="综述">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://qiniu.s1nh.org/Blog_Image_keypoint_8.png">
+
+
+<link rel="canonical" href="http://s1nh.org/post/A-survey-on-image-mosaicing-techniques/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://s1nh.org/post/A-survey-on-image-mosaicing-techniques/","path":"post/A-survey-on-image-mosaicing-techniques/","title":"图像拼接算法的综述"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>图像拼接算法的综述 | S1NH</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-44KGHGDYG3"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-44KGHGDYG3","only_pageview":false,"measure_protocol_api_secret":null}</script>
+  <script src="/js/third-party/analytics/google-analytics.js" defer></script>
+
+  <script src="/js/third-party/analytics/baidu-analytics.js" defer></script>
+  <script async src="https://hm.baidu.com/hm.js?4c66a84272e0f7943a305accf6dbdf41"></script>
+
+
+
+
+
+
+  <script defer data-domain="s1nh.org" src="http://home.s1nh.com:32801/js/script.js"></script>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/6.0.5/fancybox/fancybox.umd.js" integrity="sha256-UiSieVaV/DXce2LW7QH+o77w+AIoAvSCPBkezriZ2DQ=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.7.0/mermaid.min.js","integrity":"sha256-4+IKDqhZ/sXjc8Wtl2/MsxI4e0s1KpEVdbEP7V/Lz8U="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">S1NH</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">世界在旅程的尽头终结</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E7%AE%80%E4%BB%8B"><span class="nav-text">一、简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%9B%BE%E5%83%8F%E6%8B%BC%E6%8E%A5%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB"><span class="nav-text">二、图像拼接算法分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%AF%B9%E5%9B%BE%E5%83%8F%E6%8B%BC%E6%8E%A5%E7%9A%84%E2%80%9C%E5%9B%BE%E5%83%8F%E5%8C%B9%E9%85%8D%E6%96%B9%E6%B3%95-registration-%E2%80%9D%E5%88%86%E7%B1%BB"><span class="nav-text">三、对图像拼接的“图像匹配方法(registration)”分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E5%9F%BA%E4%BA%8E%E7%A9%BA%E9%97%B4%E5%9F%9F-Spatial-domain-%E5%9B%BE%E5%83%8F%E6%8B%BC%E6%8E%A5%E7%AE%97%E6%B3%95"><span class="nav-text">3.1 基于空间域(Spatial domain)图像拼接算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-1-%E5%9F%BA%E4%BA%8E%E5%BD%92%E4%B8%80%E5%8C%96%E4%BA%92%E7%9B%B8%E5%85%B3%EF%BC%88Normalized-Cross-Correlation-NCC%EF%BC%89%E7%9A%84%E6%8B%BC%E6%8E%A5"><span class="nav-text">3.1.1 基于归一化互相关（Normalized Cross Correlation, NCC）的拼接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-2-%E5%9F%BA%E4%BA%8E%E4%BA%92%E4%BF%A1%E6%81%AF%EF%BC%88Mutual-Information-MI%EF%BC%89%E7%9A%84%E5%9B%BE%E5%83%8F%E6%8B%BC%E6%8E%A5"><span class="nav-text">3.1.2 基于互信息（Mutual Information, MI）的图像拼接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-3-%E5%9F%BA%E4%BA%8E%E5%BA%95%E5%B1%82%E7%89%B9%E5%BE%81%E7%9A%84%EF%BC%88Low-level-feature%EF%BC%89%E6%8B%BC%E6%8E%A5"><span class="nav-text">3.1.3 基于底层特征的（Low-level feature）拼接</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-3-1-%E5%9F%BA%E4%BA%8EHarris%E8%A7%92%E7%82%B9%E6%A3%80%E6%B5%8B%E5%99%A8%E7%9A%84%E6%8B%BC%E6%8E%A579"><span class="nav-text">3.1.3.1 基于Harris角点检测器的拼接79</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-3-2-%E5%9F%BA%E4%BA%8EFAST%E8%A7%92%E7%82%B9%E6%A3%80%E6%B5%8B%E5%99%A8%E7%9A%84%E6%8B%BC%E6%8E%A5"><span class="nav-text">3.1.3.2 基于FAST角点检测器的拼接</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-3-2-%E5%9F%BA%E4%BA%8ESIFT%E7%89%B9%E5%BE%81%E6%A3%80%E6%B5%8B%E5%99%A8%E7%9A%84%E6%8B%BC%E6%8E%A5"><span class="nav-text">3.1.3.2 基于SIFT特征检测器的拼接</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-3-2-%E5%9F%BA%E4%BA%8ESURF%E7%89%B9%E5%BE%81%E6%A3%80%E6%B5%8B%E5%99%A8%E7%9A%84%E6%8B%BC%E6%8E%A5"><span class="nav-text">3.1.3.2 基于SURF特征检测器的拼接</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-4-%E5%9F%BA%E4%BA%8E%E8%BD%AE%E5%BB%93%E7%9A%84%E6%8B%BC%E6%8E%A5"><span class="nav-text">3.1.4 基于轮廓的拼接</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E5%9F%BA%E4%BA%8E%E9%A2%91%E5%9F%9F%EF%BC%88Frequency%EF%BC%89%E5%9B%BE%E5%83%8F%E6%8B%BC%E6%8E%A5%E7%AE%97%E6%B3%95"><span class="nav-text">3.2 基于频域（Frequency）图像拼接算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%AF%B9%E5%9B%BE%E5%83%8F%E6%8B%BC%E6%8E%A5%E7%9A%84%E2%80%9C%E8%9E%8D%E5%90%88%E6%96%B9%E6%B3%95%EF%BC%88blending%EF%BC%89%E2%80%9D%E5%88%86%E7%B1%BB"><span class="nav-text">四、对图像拼接的“融合方法（blending）”分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E5%9F%BA%E4%BA%8E%E5%B9%B3%E6%BB%91%E8%BF%87%E6%B8%A1%EF%BC%88transition-smoothing%EF%BC%89%E8%9E%8D%E5%90%88%E7%9A%84%E5%9B%BE%E5%83%8F%E6%8B%BC%E6%8E%A5%E7%AE%97%E6%B3%95"><span class="nav-text">4.1 基于平滑过渡（transition smoothing）融合的图像拼接算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-1-%E5%9F%BA%E4%BA%8E%E7%BE%BD%E5%8C%96%EF%BC%88feathering%EF%BC%89%E8%9E%8D%E5%90%88%E7%9A%84%E5%9B%BE%E5%83%8F%E6%8B%BC%E6%8E%A5%E7%AE%97%E6%B3%95"><span class="nav-text">4.1.1 基于羽化（feathering）融合的图像拼接算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-2-%E5%9F%BA%E4%BA%8E%E9%87%91%E5%AD%97%E5%A1%94%EF%BC%88pyramid%EF%BC%89%E8%9E%8D%E5%90%88%E7%9A%84%E5%9B%BE%E5%83%8F%E6%8B%BC%E6%8E%A5%E7%AE%97%E6%B3%95"><span class="nav-text">4.1.2 基于金字塔（pyramid）融合的图像拼接算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-3-%E5%9F%BA%E4%BA%8E%E6%A2%AF%E5%BA%A6%EF%BC%88gradient%EF%BC%89%E8%9E%8D%E5%90%88%E7%9A%84%E5%9B%BE%E5%83%8F%E6%8B%BC%E6%8E%A5%E7%AE%97%E6%B3%95"><span class="nav-text">4.1.3 基于梯度（gradient）融合的图像拼接算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E5%9F%BA%E4%BA%8E%E6%9C%80%E4%BD%B3%E6%8E%A5%E7%BC%9D%EF%BC%88optimal-seam%EF%BC%89%E6%B7%B7%E5%90%88%E7%9A%84%E5%9B%BE%E5%83%8F%E6%8B%BC%E6%8E%A5%E7%AE%97%E6%B3%95"><span class="nav-text">4.2 基于最佳接缝（optimal seam）混合的图像拼接算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E7%BB%93%E8%AE%BA"><span class="nav-text">五、结论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="nav-text">参考文献</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="S1NH"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">S1NH</p>
+  <div class="site-description" itemprop="description">no other developers required.</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">105</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">88</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+<div>
+  <hr>
+  <img src="/images/wechatpay-sss.jpg" alt="Buy me a SSRI.">
+  <a href="/reward-list/" rel="section">"Buy me a coffee."</a>
+</div>
+
+<!-- Matomo -->
+<script>
+  var _paq = window._paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  if (document.domain.indexOf('com') != -1){
+    _paq.push(["setCookieDomain", "*.s1nh.com"]);
+  } else if(document.domain.indexOf('org') != -1){
+    _paq.push(["setCookieDomain", "*.s1nh.org"]);
+  }
+  _paq.push(["setDomains", ["*.s1nh.org","*.s1nh.com"]]);
+  _paq.push(["enableCrossDomainLinking"]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://home.s1nh.com:32443/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    
+    if (document.domain.indexOf('com') != -1){
+      _paq.push(['setSiteId', '2']);
+    } else if(document.domain.indexOf('org') != -1){
+      _paq.push(['setSiteId', '3']);
+    }
+    
+    // Will also collect the website data into Website ID = 1
+    _paq.push(['addTracker', u+'matomo.php', 1]);
+    
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+
+<!-- Google Ads -->
+<!--script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7052751443200899"
+     crossorigin="anonymous"></script-->
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://www.92ez.com/" title="https:&#x2F;&#x2F;www.92ez.com&#x2F;" rel="noopener" target="_blank">一只猿 (关站升级中)</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="http://codewithzhangyi.com/about/" title="http:&#x2F;&#x2F;codewithzhangyi.com&#x2F;about&#x2F;" rel="noopener" target="_blank">好奇心狂热分子 (张怡，也关了)</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://findhao.net/" title="https:&#x2F;&#x2F;findhao.net&#x2F;" rel="noopener" target="_blank">FindHao 的自留地</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/A-survey-on-image-mosaicing-techniques/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="S1NH">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="S1NH">
+      <meta itemprop="description" content="no other developers required.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="图像拼接算法的综述 | S1NH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          图像拼接算法的综述
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2016-06-11 15:11:27" itemprop="dateCreated datePublished" datetime="2016-06-11T15:11:27+08:00">2016-06-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/programming/" itemprop="url" rel="index"><span itemprop="name">算法与硬件</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p>本文作者在2017年提出了L-ORB算法。速度是传统ORB算法的11倍、传统SIFT算法的639倍。将算法应用到嵌入式系统中性能提升了29倍，但其功耗低至10W。有兴趣的可以点击：<strong><a target="_blank" rel="noopener" href="http://crad.ict.ac.cn/CN/Y2017/V54/I6/1316">杜承垚,袁景凌,陈旻骋,李涛. GPU加速与L-ORB特征提取的全景视频实时拼接[J]. 计算机研究与发展, 2017, 54(6): 1316-1325.</a></strong></p>
+</blockquote>
+<hr>
+<blockquote>
+<p>本文翻译自：<a target="_blank" rel="noopener" href="http://www.academia.edu/download/46115290/JVCI_1_Debabrata.pdf">Ghosh, Debabrata, and Naima Kaabouch. “A survey on image mosaicing techniques.” Journal of Visual Communication and Image Representation 34 (2016): 1-11.</a>. 如有错误请指正。</p>
+</blockquote>
+<h2 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h2><p>图像拼接在运动检测和跟踪、增强现实、分辨率增强、视频压缩和图像稳定等机器视觉领域有很大的应用。</p>
+<p><img data-src="//qiniu.s1nh.org/Blog_Image_keypoint_8.png"> </p>
+<p>如图所示，图像拼接分为四个步骤：图像匹配（registration）、重投影（reprojection）、缝合（stitching）和融合（blending）。</p>
+<span id="more"></span>
+
+<p><img data-src="//qiniu.s1nh.org/Blog_1-s2.0-S1047320315002059-gr1.jpg-QNthin" alt="图1 图像拼接的步骤" title="图1 图像拼接的步骤"></p>
+<ul>
+<li>图像匹配：是指一对描绘相同场景之间的几张图片的几何对应关系。一组照片可以是不同时间不同位置的拍摄，或者由多个传感器同时拍摄多张图像。</li>
+<li>重投影：通过图像的几何变换，把一系列图片转换成一个共同的坐标系</li>
+<li>缝合：通过合并重叠部分的像素值并保持没有重叠的像素值使之生成更大画布的图像</li>
+<li>融合：通过几何和光度偏移错误通常导致对象的不连续，并在两个图像之间的边界附近产生可见的接缝。因此，为了减小接缝的出现，需要在缝合时或缝合之后使用混合算法.</li>
+</ul>
+<p>不同的技术已被用于不同的拼接算法来处理多个颜色波段。例如，在<sup><a href="#18">18</a></sup> ，<sup><a href="#19">19</a></sup> ，<sup><a href="#20">20</a></sup>  和  <sup><a href="#21">21</a></sup>中，综合所输入的RGB图像的颜色波段，获得的变换参数。在<sup><a href="#22">22</a></sup> ，<sup><a href="#23">23</a></sup>  和  <sup><a href="#24">24</a></sup>中，该RGB图像首先被转换成灰度，然后得到变换参数。在这两种情况下，找到最佳变换参数后，对所有的颜色波段进行处理，实施重投影（reprojection）步骤。</p>
+<h2 id="二、图像拼接算法分类"><a href="#二、图像拼接算法分类" class="headerlink" title="二、图像拼接算法分类"></a>二、图像拼接算法分类</h2><p>“图像匹配”和“融合”是直接影响图像拼接性能两个显著的研究领域。作为图像拼接的第一个和最后一个步骤，如果没有正确的图像匹配和融合算法，几乎不可能进行成功的图像拼接。在本文中，我们对现存的图像拼接算法中“图像匹配”和“融合”的方法进行分类。</p>
+<p>如图二所示，对“图像匹配方法”分类，图像拼接算法可分为基于“空间域”和“频域”。基于空间域的图像拼接可以进一步划分为基于区域的图像拼接和基于特征的图像拼接。基于特征的图像拼接可以再细分为基于底层特征的图像拼接（low level feature-based image mosaicing）和基于轮廓的图像拼接（contour-based image mosaicing）。基于底层特征的拼接可以分为四类：基于Harris角点检测器的拼接、基于FAST角点检测器的拼接、基于SIFT特征检测器的拼接、以及基于SURF特征检测器的拼接。<br>如图三所示，根据“融合方法”，拼接算法可分为基于平滑过渡（transition smoothening-based）和基于最佳接缝（optimal seam-based）。基于平滑过渡拼接可以进一步被分成基于羽化（feathering-based）、基于金字塔（pyramid-based）、和基于梯度（gradient-based）的拼接。</p>
+<p><img data-src="//qiniu.s1nh.org/Blog_1-s2.0-S1047320315002059-gr2.jpg-QNthin" alt="图2" title="图2 根据图像匹配方法的分类"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_1-s2.0-S1047320315002059-gr3.jpg-QNthin" alt="图3 根据融合方法的分类" title="图3 根据融合方法的分类"></p>
+<h2 id="三、对图像拼接的“图像匹配方法-registration-”分类"><a href="#三、对图像拼接的“图像匹配方法-registration-”分类" class="headerlink" title="三、对图像拼接的“图像匹配方法(registration)”分类"></a>三、对图像拼接的“图像匹配方法(registration)”分类</h2><p>图像匹配不仅是图像拼接的重要一步，也是它的基础。对于相同的目标，但来自不同的传感器、不同的角度和不同的时间产生的多源图像进行匹配，通过观察各对图像之间的对应关系来计算最佳几何变换。这一过程通过预估的几何变换把多源图像排列在一个共同的参考系中。如果多源图像对应点排列在一起，则图像匹配成功。上述的对应关系可以通过匹配图像之间的模板，或通过匹配从图像中提取的特征，或者通过利用在频域中的相位相关属性来建立。基于所述图像配准不同类别的图像拼接算法将在以下两个小节论述。</p>
+<h3 id="3-1-基于空间域-Spatial-domain-图像拼接算法"><a href="#3-1-基于空间域-Spatial-domain-图像拼接算法" class="headerlink" title="3.1 基于空间域(Spatial domain)图像拼接算法"></a>3.1 基于空间域(Spatial domain)图像拼接算法</h3><p>这类算法使用像素的属性进行图像匹配，因此它们是最直接的图像拼接的方法。现有的图像拼接算法大部分都属于这一类。图像拼接算法大部分都属于这一类。“基于空间域图像拼接算法”可以是基于区域（area-based）或基于特征（feature-based）的。“基于区域“的图像拼接算法依赖于计算待拼接的两个图像的“窗口”像素值<sup><a href="#18">18</a></sup> 。基本方法是将图像有关联的“窗口”互相转移，看看有多少像素的匹配。随后，获得图像变换参数来弯曲和拼接图片。基于空间域的拼接算法通常被称为基于像素的拼接，因为它们使用的像素之间的匹配，而不是特征之间的匹配。的最常用的两个基于空间域的图像拼接算法 是基于“归一化互相关”（normalized cross correlation）的拼接和基于“互信息”（mutual information）的拼接。这两种方法都提供了图像相似性的量度，这些指标的较大值来自匹配区域或“窗口”大小。</p>
+<h4 id="3-1-1-基于归一化互相关（Normalized-Cross-Correlation-NCC）的拼接"><a href="#3-1-1-基于归一化互相关（Normalized-Cross-Correlation-NCC）的拼接" class="headerlink" title="3.1.1 基于归一化互相关（Normalized Cross Correlation, NCC）的拼接"></a>3.1.1 基于归一化互相关（Normalized Cross Correlation, NCC）的拼接</h4><p>此方法计算在两个图像中的每个位移（shifts）的“窗口”之间的相似性。它被定义为<sup><a href="#20">20</a></sup>：</p>
+<p><img data-src="//qiniu.s1nh.org/Blog_1-s2.0-S1047320315002059-si1.gif"></p>
+<p>且</p>
+<p>$\overline{I_1} &#x3D; {1\over N} \sum_i I_1(x_i)$</p>
+<p>$\overline{I_2}&#x3D;\frac{1}{N}\sum_i I_2(x_i+u)$</p>
+<p>$\overline{I_1}$  和 $\overline{I_2}$ 是窗口的平均值图像。$I_1(x,y)$和$I_2(x,y)$分别是两张图片。$N$是“窗口”大小，$x_i&#x3D;(x_i,y_i)$ 是窗口的像素坐标，$u&#x3D;(u,v)$ 是通过NCC系数计算出的位移或偏移。NCC系数的范围为[-1,1]。   NCC峰值相对应的位移参数表示两个图像之间的几何变换。此方法的优点是计算简单，但是速度特别慢。此外，此类算法要求源图像之间必须有显著的重叠。</p>
+<p>为了解决上述问题，<sup><a href="#27">27</a></sup> ，<sup><a href="#44">44</a></sup> ，<sup><a href="#45">45</a></sup> ，<sup><a href="#46">46</a></sup>几种技术已经被提出。Nasibov等人在图像匹配步骤之前使用的亮度校正矩阵，以便使算法对光照变化不敏感[27]。为了使计算速度更快，Berberidis等人提出的空间互相关来计算源的图像之间的位移的迭代算法<sup><a href="#44">44</a></sup>。Zhao等人提出了通过基于调整根据规模，从源图像中提取兴趣点的方向的相关窗口方法等<sup><a href="#45">45</a></sup> ，以增加计算速度。为了提高算法的非刚性变形的存在下的性能，Vercauteren等人<sup><a href="#46">46</a></sup>提出用黎曼统计（Riemannian statistics）与基于散乱数据拟合（scattered data fitting）的拼接。</p>
+<h4 id="3-1-2-基于互信息（Mutual-Information-MI）的图像拼接"><a href="#3-1-2-基于互信息（Mutual-Information-MI）的图像拼接" class="headerlink" title="3.1.2 基于互信息（Mutual Information, MI）的图像拼接"></a>3.1.2 基于互信息（Mutual Information, MI）的图像拼接</h4><p>不同于基于图像强度值其计算相似性的NCC，互信息测量基于两个图像之间共享信息数量的相似性。两个图像$I_1(X,Y)$与$I_2(X,Y)$之间的MI以熵表示：</p>
+<p>$MI(I_1,I_2)&#x3D;E(I_1)+E(I_2)-E(I_1,I_2)$</p>
+<p>$E(I_1)$和$E(I_2)$分别是$I_1(x,y)$和$I_2(x,y)$的熵。$E(I_1,I_2)$表示两个图像之间的联合熵。熵是一个随机变量的变异性指标。$I_1(x,y)$的变异性指标为：</p>
+<p>$E(I_1)&#x3D;-\sum_g p_{I_1}(g)log(p_{I_1}(g)) $</p>
+<p>g是$I_1(x,y) $可能的灰度值，因此$p_{I_1}(g)$是g的概率分布函数。同理，$I_1(x,y)$和$I_2(x,y)$的联合变异性指标为：</p>
+<p>$E(I_1,I_2)&#x3D;-\sum_{g,h} p_{I_1,I_2}(g,h)log(p_{I_1,I_2}(g,h)) $</p>
+<p>h是$I_2(x,y) $可能的灰度值，$P_{I_1,I_2}(g,h) $是g和h的联合概率分布函数。通常情况下，两个图像灰度值的联合直方图来用于衡量两个图像之间的联合概率分布。两个图像之间有更好的对齐，那么这两张图的MI值更大。因此，MI值为最大时，两张图像在变换中为几何对齐的。这种拼接方法的优点是对光线和咬合的变化不敏感。然而，这种于基于NCC的方法有计算速度慢、需要大面积输入图像的重叠等缺点。</p>
+<p>为了解决上述的缺点，几个技术<sup><a href="#29">29</a></sup>、<sup><a href="#47">47</a></sup>和<sup><a href="#48">48</a></sup>已被提出。在<sup><a href="#29">29</a></sup>，Luna等人使用随机梯度算法（stochastic gradient optimization along with MI-based similarity measure）来加快算法的速度。Dame等人<sup><a href="#47">47</a></sup>采用 B-spline function for normalized mutual probability density加快运算速度。他们进一步采用牛顿法（Newton’s method）来加快位移参数的估计。对于低重叠图片<sup><a href="#48">48</a></sup>，Césare等人提出了一种模版匹配方法。</p>
+<p>不同于基于区域（area-based）的方法，基于特征（feature-based）的拼接技术使用特征之间的匹配，来计算一对图像之间的几何变换。因此，这些方法主要依赖于能够提取显著特征的算法。显着特征是图像域的子集，通常是独立的点、连续曲线或连续区域<sup><a href="#49">49</a></sup>。一般的方法是，从源图像检测几个相应的特征，然后使用可靠的对应关系估计单应性矩阵。利用单应矩阵图像进行扭曲然后缝合在一个共同的参考系。因为特征是出发点，整体算法往往会取决于特征提取算法。基于特征的拼接技术一般优于基于区域的技术，但是需要更高的计算成本。根据提取的特征类型，基于特征的拼接方法可分为底层特征的拼接和基于轮廓拼接。</p>
+<h4 id="3-1-3-基于底层特征的（Low-level-feature）拼接"><a href="#3-1-3-基于底层特征的（Low-level-feature）拼接" class="headerlink" title="3.1.3 基于底层特征的（Low-level feature）拼接"></a>3.1.3 基于底层特征的（Low-level feature）拼接</h4><p>这些拼接方法不需要大量重叠区域的图像。</p>
+<h5 id="3-1-3-1-基于Harris角点检测器的拼接79"><a href="#3-1-3-1-基于Harris角点检测器的拼接79" class="headerlink" title="3.1.3.1 基于Harris角点检测器的拼接79"></a>3.1.3.1 基于Harris角点检测器的拼接<sup><a href="#79">79</a></sup></h5><p>Harris角点检测器在底层拼接中具有较强的鲁棒性。最初检测图像中的局部窗口。然后通过改变在不同的方向窗口的一个小的量来改变强度。<sup><a href="#41">41</a></sup> ：</p>
+<p>$E(u,v)&#x3D;\sum_i w(x_i,y_i)[I(x_i+u,y_i+v)-I(x_i,y_i)]^2$</p>
+<p>$w(x_i,y_i) $ 是 检测窗口$(x_i,y_i) $ 的窗口函数。$I(x_i,y_i) $ 是在$(x_i,y_i)$位置的图像强度值，$I(x_i+u,y_i+v) $ 是到$(u,v)$的位移强度。本地纹理周围像素(local texture around pixel,$(x_i,y_i) $可表示为如下自相关矩阵:</p>
+<p>$C&#x3D;\sum_i w(x_i,y_i)<br>\begin{bmatrix}<br> I^2_{x_i} &amp; I_{x_i}I_{y_i}  \\<br> I_{x_i}I_{y_i} &amp;  I^2_{y_i}  \\<br>\end{bmatrix}$</p>
+<p>$I_{x_i}$和$I_{x_i}$是$I(x_i,y_i)$的导数。两个矩阵C对应的极大特征值对应着一个角点。窗口的中心点为一个角点的特征。为了使算法更强壮，可以用“cornerness”的R值来消除边缘点：</p>
+<p>$R&#x3D;Det(C)-\alpha Tr^2(C)$</p>
+<p>$Tr(C) $ 是C的跟踪函数，$\alpha$的范围是$0.04 \leq \alpha \leq 0.06$。如果R的局部最大值高于阈值T，那么此点即为角点。两张图片的角点全部检测完成后，可以通过NCC或者SDD（Sum of Squared Difference）方法来确定其对应关系。随后利用算出的几何对应关系把图片统一到全局参考系中，以便进行拼接。采用Harris角点拼接算法计算简单，准确。</p>
+<p>Harris 角点检测算法的缺点是会有大量密集的角点产生。然而，可以通过排除附近角点的方式来克服次缺点<sup><a href="#23">23</a></sup>。用Harris角点方法的一个主要问题是，在旋转变化比较大时，往往会在拼接时产生重影。<sup><a href="#30">30</a></sup>中通过在Harris角点匹配时使用“slope clustering”的“luminance center-weighting”算法来解决这个问题。另一个问题是在<sup><a href="#50">50</a></sup>中提到的选择局部检测窗口的不确定性，<sup><a href="#51">51</a></sup>，其中使用的区域分割和匹配，来限制搜索窗口中潜在的同源点。</p>
+<h5 id="3-1-3-2-基于FAST角点检测器的拼接"><a href="#3-1-3-2-基于FAST角点检测器的拼接" class="headerlink" title="3.1.3.2 基于FAST角点检测器的拼接"></a>3.1.3.2 基于FAST角点检测器的拼接</h5><p>FAST算法是一个在计算上更有效率且比大多数其他低级别特征提取方法快的角点检测算法，因此基于该算法的拼接方法特别适用于实时图像处理应用程序。算法首先围绕一个候选角点选择16个像素点。如果其中有n（n一般为12）个连续的像素都比候选角点加上一个阈值要高，或者比候选角点减去一个阈值要低，那么此点即为角点（如图4所示）。为了加快FAST算法的速度，通常会使用角点响应函数（a corner response function, CRF) 。CRF给出了基于在本地附近的图像强度的角点的“cornerness”的数值<sup><a href="#41">41</a></sup>通过计算出的CRF值检测局部最大值来确定角点。检测后，对每一对帧进行角点匹配。有时，“词袋”（Bag-of-Words, BoW）算法是用来表示每个图像作为一组角点的描述，以加快匹配过程<sup><a href="#31">31</a></sup>。然后，计算出单应矩阵（homography matrices），最后，把图像投射到一个共同的坐标得到最终的拼接图像。</p>
+<p><img data-src="//qiniu.s1nh.org/Blog_1-s2.0-S1047320315002059-gr4.jpg-QNthin" alt="图4 FAST算法的候选特征检测" title="图4 FAST算法的候选特征检测"></p>
+<p>选择最佳的阈值是在FAST的角点检测的算法的一个难点。但是，可以通过结合一个健壮的阈值选择算法<sup><a href="#52">52</a></sup>来处理。为了从连续帧中匹配的角点，他们进一步提出了一个基于区域的灰度关联法的阈值学习方法。基于快速的算法的另一个主要问题是，对于增加变化的程度，算法不是特别健壮。为了解决这个问题，一个很好的方法是对16个像素点进行扩展采样区域，因为它提供给FAST角点更多的标志特征，进而使他们具有更大的不变性。</p>
+<h5 id="3-1-3-2-基于SIFT特征检测器的拼接"><a href="#3-1-3-2-基于SIFT特征检测器的拼接" class="headerlink" title="3.1.3.2 基于SIFT特征检测器的拼接"></a>3.1.3.2 基于SIFT特征检测器的拼接</h5><p>SIFT算法是一个检测关键点（distinctive features, also called “keypoints”）的底层特征检测算法。</p>
+<p><img data-src="//qiniu.s1nh.org/Blog_1-s2.0-S1047320315002059-gr5.jpg-QNthin" alt="图5 " title="图5 "></p>
+<h5 id="3-1-3-2-基于SURF特征检测器的拼接"><a href="#3-1-3-2-基于SURF特征检测器的拼接" class="headerlink" title="3.1.3.2 基于SURF特征检测器的拼接"></a>3.1.3.2 基于SURF特征检测器的拼接</h5><p><img data-src="//qiniu.s1nh.org/Blog_1-s2.0-S1047320315002059-gr6.jpg-QNthin" alt="图6 " title="图6 "></p>
+<h4 id="3-1-4-基于轮廓的拼接"><a href="#3-1-4-基于轮廓的拼接" class="headerlink" title="3.1.4 基于轮廓的拼接"></a>3.1.4 基于轮廓的拼接</h4><h3 id="3-2-基于频域（Frequency）图像拼接算法"><a href="#3-2-基于频域（Frequency）图像拼接算法" class="headerlink" title="3.2 基于频域（Frequency）图像拼接算法"></a>3.2 基于频域（Frequency）图像拼接算法</h3><p><img data-src="//qiniu.s1nh.org/Blog_1-s2.0-S1047320315002059-gr7.jpg-QNthin" alt="图7 " title="图7 "></p>
+<h2 id="四、对图像拼接的“融合方法（blending）”分类"><a href="#四、对图像拼接的“融合方法（blending）”分类" class="headerlink" title="四、对图像拼接的“融合方法（blending）”分类"></a>四、对图像拼接的“融合方法（blending）”分类</h2><h3 id="4-1-基于平滑过渡（transition-smoothing）融合的图像拼接算法"><a href="#4-1-基于平滑过渡（transition-smoothing）融合的图像拼接算法" class="headerlink" title="4.1 基于平滑过渡（transition smoothing）融合的图像拼接算法"></a>4.1 基于平滑过渡（transition smoothing）融合的图像拼接算法</h3><h4 id="4-1-1-基于羽化（feathering）融合的图像拼接算法"><a href="#4-1-1-基于羽化（feathering）融合的图像拼接算法" class="headerlink" title="4.1.1 基于羽化（feathering）融合的图像拼接算法"></a>4.1.1 基于羽化（feathering）融合的图像拼接算法</h4><p><img data-src="//qiniu.s1nh.org/Blog_1-s2.0-S1047320315002059-gr8.jpg-QNthin" alt="图8 " title="图8 "></p>
+<h4 id="4-1-2-基于金字塔（pyramid）融合的图像拼接算法"><a href="#4-1-2-基于金字塔（pyramid）融合的图像拼接算法" class="headerlink" title="4.1.2 基于金字塔（pyramid）融合的图像拼接算法"></a>4.1.2 基于金字塔（pyramid）融合的图像拼接算法</h4><p><img data-src="//qiniu.s1nh.org/Blog_1-s2.0-S1047320315002059-gr9.jpg-QNthin" alt="图9 " title="图9 "></p>
+<h4 id="4-1-3-基于梯度（gradient）融合的图像拼接算法"><a href="#4-1-3-基于梯度（gradient）融合的图像拼接算法" class="headerlink" title="4.1.3 基于梯度（gradient）融合的图像拼接算法"></a>4.1.3 基于梯度（gradient）融合的图像拼接算法</h4><h3 id="4-2-基于最佳接缝（optimal-seam）混合的图像拼接算法"><a href="#4-2-基于最佳接缝（optimal-seam）混合的图像拼接算法" class="headerlink" title="4.2 基于最佳接缝（optimal seam）混合的图像拼接算法"></a>4.2 基于最佳接缝（optimal seam）混合的图像拼接算法</h3><p>This type of mosaicing algorithms attempt to minimize the visibility of seams by looking for optimal seams in the joining boundaries between the images. The objective of optimal seam technique is to allocate the optimal location of a seam line by looking into the overlapping region between a pair of images. The seam line placement should be such that it minimizes the photometric differences between the two sides of the line. At the same time the seam line should be able to determine the contribution of each of the images in the final mosaic. Once the placement and the contribution information are obtained, each image is copied to the corresponding side of the seam. When the difference between the two images on the seam line is zero, no seam gradients are produced in the mosaic. Unlike the mosaicing methods using transition smoothing-based blending, optimal seam-based mosaicing algorithms consider the information content of the scene in the overlapping region, allowing to deal with problems like moving objects or parallax. However, no information is fused in the overlapping region, thus the transition between the images can be easily noticeable when there are global intensity or exposure difference between the frames.</p>
+<p>Different optimal seam finding methods have been used in mosaicing literature. For example, in [36] a modified region-of-difference method is used. In [77], authors proposed the use of an algorithm based on watershed segmentation and graph cut optimization. Another method based on dynamic programming and grey relational analysis is used in [78].</p>
+<p>A general comparison of different categories of mosaicing algorithms based on image blending is presented in Table 3. Table 4 highlights the processing times of different mosaicing papers surveyed based on image blending.</p>
+<p>Table 3.<br>Comparative overview of different categories of mosaicing methods based on image blending.</p>
+<p>Category	 | Advantages| Disadvantages|<br>Feathering-based |	Fast and good performer under exposure differences | Output often suffer from blur and ghosting effect<br>Pyramid-based |	Good in preventing blur and edge duplication | Suffers from double contouring and ghosting when registration error significant<br>Gradient-based	Output visually more appealing than other methods	High computation required and registration error must be small for good performance<br>Optimal seam-based	Good in dealing with moving objects and parallax	Transition obvious when there are exposure differences</p>
+<h2 id="五、结论"><a href="#五、结论" class="headerlink" title="五、结论"></a>五、结论</h2><p>Image mosaicing is an important task in the field of computer vision. Success of a mosaicing algorithm depends primarily on registration and blending methods. This paper provides a classification of image mosaicing methods based on image registration and blending algorithms. In addition to providing the description of the different categories, this paper discusses the advantages and disadvantages of each category. From the discussion, it is obvious that there is no single best image mosaicing category. At the same time, the continuous advent of new mosaicing methods in recent years makes it really difficult to choose an appropriate mosaicing algorithm for a specific purpose. Hence, this paper aims at providing a guide for selecting a suitable mosaicing method for a specific application. Although an extensive research has been done in the area of mosaicing, there are still problems to be addressed. For example, mosaicing in the presence of images with significant parallax is still a challenge. Another problem is the processing time. All mosaicing techniques are time consuming and cannot run on low power and low frequency devices. Addressing these issues would be where the future research might be directed at.</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><A NAME="18">[18]: Sa. Ghannam, A.L. Abbott <strong>Cross correlation versus mutual information for image mosaicing</strong> Int. J. Adv. Comput. Sci. Appl. (IJACSA), 4 (2013)</a></p>
+<p><A NAME="19">[19]: A. Levin, A. Zomet, S. Peleg, Y. Weiss <strong>Seamless image stitching in the gradient domain</strong> Comput. Vis.-ECCV (2004), pp. 377–389</a></p>
+<p><A NAME="20">[20]: R. Szeliski <strong>Image alignment and stitching: a tutorial</strong> Found. Trends Comput. Graph. Vis., 2 (2006), pp. 1–104</a></p>
+<p><A NAME="21">[21]: A. Behrens, M. Guski, T. Stehle, S. Gross, T. Aach, Intensity based multi-scale blending for panoramic images in fluorescence endoscopy, in: IEEE International Symposium on Biomedical Imaging: From Nano to Macro, 2010, pp. 1305–1308.</a></p>
+<p><A NAME="22">[22]: G. Guandong, J. Kebin, A new image mosaics algorithm based on feature points matching, in: International Conference on Innovative Computing, Information and Control, 2007, pp. 471–471.</a></p>
+<p><A NAME="23">[23]: K.-I. Okumura, S. Raut, Q. Gu, T. Aoyama, T. Takaki, I. Ishii, Real-time feature-based video mosaicing at 500 fps, in: International Conference on Intelligent Robots and Systems (IROS), 2013, pp. 2665–2670.</a></p>
+<p><A NAME="24">[24]: S. Park, D. Ghosh, N. Kaabouch, R.A. Fevig, W. Semke, Hierarchical multi-level image mosaicing for autonomous navigation of UAV, in: IS&amp;T&#x2F;SPIE Electronic Imaging, 2012, pp. 830116–830116-9.</a></p>
+<p><A NAME="25">[25]L. Miao, Y. Yue, Automatic document image mosaicing algorithm with hand-held camera, in: International Conference on Intelligent Control and Information Processing (ICICIP), 2011, pp. 1094–1097.</a></p>
+<p><A NAME="26">[26]<br>H. Shejiao, H. Yaling, C. Zonghai, J. Ping, Feature-based image automatic mosaicing algorithm, in: in: World Congress on Intelligent Control and Automation, 2006, pp. 10361–10364.</a></p>
+<p><A NAME="27">[27]<br>A. Nasibov, H. Nasibov, F. Hacizade, Seamless image stitching algorithm using radiometric lens calibration for high resolution optical microscopy, in: International Conference on Soft Computing, Computing with Words and Perceptions in System Analysis, Decision and Control, 2009, pp. 1–4.</a></p>
+<p><A NAME="28">[28]<br>T. Vercauteren, A. Perchant, X. Pennec, N. Ayache, Mosaicing of confocal microscopic in vivo soft tissue video sequences, in: Medical Image Computing and Computer-Assisted Intervention–MICCAI, 2005, pp. 753–760.</a></p>
+<p><A NAME="29">[29]<br>R. Miranda-Luna, C. Daul, W.C. Blondel, Y. Hernandez-Mier, D. Wolf, F. Guillemin<br><strong>Mosaicing of bladder endoscopic image sequences: distortion calibration and registration algorithm</strong><br>IEEE Trans. Biomed. Eng., 55 (2008), pp. 541–553</a></p>
+<p><A NAME="30">[30]<br>G. Gao, K. Jia, A new image mosaics algorithm based on feature points matching, in: International Conference on Innovative Computing, Information and Control, 2007, pp. 471–471.</a></p>
+<p><A NAME="31">[31]<br>T. Botterill, S. Mills, R. Green, Real-time aerial image mosaicing, in: International Conference of Image and Vision Computing New Zealand (IVCNZ), 2010, pp. 1–8.</a></p>
+<p><A NAME="32">[32]<br>L. Yao, Image mosaic based on SIFT and deformation propagation, in: IEEE International Symposium on Knowledge Acquisition and Modeling Workshop, 2008, pp. 848–851.</a></p>
+<p><A NAME="33">[33]<br>G. Jun-Hui, Z. Jun-Hua, A. Zhen-Zhou, Z. Wei-Wei, L. Hui-Min, An approach for X-ray image mosaicing based on Speeded-up robust features, in: International Conference on Wavelet Active Media Technology and Information Processing (ICWAMTIP), 2012, pp. 432–435.</a></p>
+<p><A NAME="34">[34]<br>F. Yang, L. Wei, Z. Zhang, H. Tang<br><strong>Image mosaic based on phase correlation and Harris operator</strong><br>J. Comput. Inform. Syst., 8 (2012), pp. 2647–2655</a></p>
+<p><A NAME="35">[35]<br>M. Vivet, S. Peleg, X. Binefa, Real-time stereo mosaicing using feature tracking, in: IEEE International Symposium on Multimedia (ISM), 2011, pp. 577–582.</a></p>
+<p><A NAME="36">[36]<br>M. El-Saban, M. Izz, A. Kaheel, M. Refaat, Improved optimal seam selection blending for fast video stitching of videos captured from freely moving devices, in: IEEE International Conference on Image Processing (ICIP), 2011, pp. 1481–1484.</a></p>
+<p><A NAME="37">[37]<br>S.Z. Kovalsky, G. Cohen, J.M. Francos, Registration of joint geometric and radiometric image deformations in the presence of noise, in: IEEE&#x2F;SP Workshop on Statistical Signal Processing, 2007, pp. 561–565.</a></p>
+<p><A NAME="38">[38]<br>D. Vaghela, K. Naina<br><strong>A review of image mosaicing techniques</strong><br>Int. J. Adv. Res. Comput. Sci. Manage. Stud., 2 (3) (2014)</a></p>
+<p><A NAME="39">[39]<br>P. Jain, V.K. Shandliya<br><strong>A review paper on various approaches for image mosaicing</strong><br>Int. J. Comput. Eng. Res., 3 (4) (2013)</a></p>
+<p><A NAME="40">[40]<br>R. Abraham, P. Simon, Review on mosaicing techniques in image processing, in: International Conference on Advanced Computing and Communication Technologies (ACCT), 2013, pp. 63–68.</a></p>
+<p><A NAME="41">[41]<br>H. Joshi, M.K. Sinha, A survey on image mosaicing techniques, in: International Journal of Advanced Research in Computer Engineering &amp; Technology (IJARCET), vol. 2(2), 2013.</a></p>
+<p><A NAME="42">[42]<br>M.H.M. Patel, A.P.P.J. Patel, A.P.M.S.G. Patel<br><strong>Comprehensive study and review of image mosaicing methods</strong><br>Int. J. Eng. Res. Technol. (2012)</a></p>
+<p><A NAME="43">[43]<br>J.M. Fitzpatrick, D.L. Hill, C.R. Maurer Jr.<br>Image registration<br>Handbook Med. Imag., 2 (2000), pp. 447–513</a></p>
+<p><A NAME="44">[44]<br>K. Berberidis, I. Karybali, A new efficient cross-correlation based image registration technique with improved performance, in: Proceedings of the European Signal Processing Conference, 2002, pp. 3–6.</a></p>
+<p><A NAME="45">[45]<br>F. Zhao, Q. Huang, W. Gao, Image matching by normalized cross-correlation, in: IEEE International Conference on Acoustics, Speech and Signal Processing, 2006, pp. II–II.</a></p>
+<p><A NAME="46">[46]<br>T. Vercauteren, A. Meining, F. Lacombe, A. Perchant, Real time autonomous video image registration for endomicroscopy: fighting the compromises, in: Biomedical Optics (BiOS), 2008, pp. 68610C–68610C-8.</a></p>
+<p><A NAME="47">[47]<br>A. Dame, E. Marchand, Video mosaicing using a mutual information-based motion estimation process, in: IEEE International Conference on Image Processing (ICIP), 2011, pp. 1493–1496.</a></p>
+<p><A NAME="48">[48]<br>C. de Cesare, M.-J. Rendas, A.-G. Allais, M. Perrier, Low overlap image registration based on both entropy and mutual information measures, in: OCEANS, 2008, pp. 1–9.</a></p>
+<p><A NAME="49">[49]<br>M.B. Islam, M.M.J. Kabir<br><strong>A new feature-based image registration algorithm</strong><br>Comput. Technol. Appl., 4 (2013), pp. 79–84</a></p>
+<p><A NAME="50">[50]<br>V.S. Bind<br><strong>Robust Techniques for Feature-Based Image Mosaicing</strong><br>National Institute of Technology Rourkela (2013)</a></p>
+<p><A NAME="51">[51]<br>E. Zagrouba, W. Barhoumi, S. Amri<br><strong>An efficient image-mosaicing method based on multifeature matching</strong><br>Mach. Vis. Appl., 20 (2009), pp. 139–162</a></p>
+<p><A NAME="52">[52]<br>J. Jiao, B. Zhao, S. Wu, A speed-up and robust image registration algorithm based on fast, in: IEEE International Conference on Computer Science and Automation Engineering (CSAE), 2011, pp. 160–164.</a></p>
+<p><A NAME="53">[53]<br>X. Wang, J. Sun, H.-Y. Peng, Efficient panorama mosaicing based on enhanced-FAST and graph cuts, in: Recent Advances in Computer Science and Information Engineering, vol. 128, 2012, pp. 757–762.</a></p>
+<p><A NAME="54">[54]<br>D.G. Lowe<br>Distinctive image features from scale-invariant keypoints<br>Int. J. Comput. Vis., 60 (2004), pp. 91–110</a></p>
+<p><A NAME="55">[55]<br>D. Liqian, J. Yuehui, Moon landform images fusion and Mosaic based on SIFT method, in: International Conference on Computer and Information Application (ICCIA), 2010, pp. 29–32.</a></p>
+<p><A NAME="56">[56]<br>Y. Li, Y. Wang, W. Huang, Z. Zhang, Automatic image stitching using sift, in: International Conference on Audio, Language and Image Processing, 2008, pp. 568–571.</a></p>
+<p><A NAME="57">[57]<br>Y. Lei, W. Xiaoyu, Z. Jun, L. Hui, A research of feature-based image mosaic algorithm, in: International Congress on Image and Signal Processing (CISP), 2011, pp. 846–849.</a></p>
+<p><A NAME="58">[58]<br>H. Bay, T. Tuytelaars, L. Van Gool, Surf: speeded up robust features, in: Computer vision–ECCV, 2006, pp. 404–417.</a><br><A NAME="59">[59]<br>N. Geng, D. He, Y. Song<br><strong>Camera image mosaicing based on an optimized SURF algorithm</strong><br>Indones. J. Electr. Eng., 10 (2012), pp. 2183–2193</a></p>
+<p><A NAME="60">[60]<br>R. Wen, C. Hui, L. Jiaju, X. Yanyan, R. Haeusler, Mosaicing of microscope images based on SURF, in: International Conference on Image and Vision Computing New Zealand, 2009, pp. 271–275.</a></p>
+<p><A NAME="61">[61]<br>H. Joshi, K. Sinha, Novel techniques image mosaicing based on image fusion using harris aand SURF, in: International Conference on Computer Science and Information Technology, 2013.</a></p>
+<p><A NAME="62">[62]<br>V.S. Bind, P.R. Muduli, U.C. Pati<br><strong>A robust technique for feature-based image mosaicing using image fusion</strong><br>Int. J. Adv. Comput. Res., 3 (2013), p. 263</a></p>
+<p><A NAME="63">[63]<br>K. Peng, M. Hongbing, An automatic airborne image mosaicing method based on the SIFT feature matching, in: International Conference on Multimedia Technology (ICMT), 2011, pp. 155–159.</a></p>
+<p><A NAME="64">[64]<br>J. Zhu, M. Ren<br><strong>Image mosaic method based on SIFT features of line segment</strong><br>Comput. Math. Methods Med., 2014 (2014)</a></p>
+<p><A NAME="65">[65]<br>J. Xiao, Y. Zhang, M. Shah, Adaptive region-based video registration, in: IEEE Workshops on Application of Computer Vision, 2005, pp. 215-220.</a></p>
+<p><A NAME="66">[66]<br>J. Prescott, M. Clary, G. Wiet, T. Pan, K. Huang, Automatic registration of large set of microscopic images using high-level features, in: IEEE International Symposium on Biomedical Imaging: Nano to Macro, 2006, pp. 1284–1287.</a></p>
+<p><A NAME="67">[67]<br>M. Deshmukh, U. Bhosle<br><strong>A survey of image registration</strong><br>Int. J. Image Process. (IJIP), 5 (2011), p. 245</a></p>
+<p><A NAME="68">[68]<br>H. Xie, N. Hicks, G.R. Keller, H. Huang, V. Kreinovich<br><strong>An IDL&#x2F;ENVI implementation of the FFT-based algorithm for automatic image registration</strong><br>Comput. Geosci., 29 (8) (2003), pp. 1045–1055</a></p>
+<p><A NAME="69">[69]<br>C. Wang, Y. Cheng, C. Zhao, Robust subpixel registration for image mosaicing, in: Chinese Conference on Pattern Recognition, 2009, pp. 1–5.</a></p>
+<p><A NAME="70">[70]<br>R. Prados Gutiérrez<br><strong>Image Blending Techniques and their Application in Underwater Mosaicing</strong><br>Springer (2014)</a></p>
+<p><A NAME="71">[71]<br>D.K. Jain, G. Saxena, V.K. Singh, Image mosaicing using corner techniques, in: International Conference on Communication Systems and Network Technologies (CSNT), 2012, pp. 79–84.</a></p>
+<p><A NAME="72">[72]<br>Y. Xiong, K. Turkowski, Registration, calibration and blending in creating high quality panoramas, in: IEEE Workshop on Applications of Computer Vision Proceedings, 1998, pp. 69–74.</a></p>
+<p><A NAME="73">[73]<br>P. Liang, X. Zhiwei, D. Jiguang, Joint edge detector based on Laplacian pyramid, in: International Congress on Image and Signal Processing (CISP), 2010, pp. 978–982.</a></p>
+<p><A NAME="74">[74]<br>A. Pandey, U.C. Pati, A novel technique for non-overlapping image mosaicing based on pyramid method, in: IEEE India Conference (INDICON), 2013, pp. 1–6.</a></p>
+<p><A NAME="75">[75]<br>Y. Xiong, Eliminating ghosting artifacts for panoramic images, in: IEEE International Symposium on Multimedia, 2009, pp. 432–437.</a></p>
+<p><A NAME="76">[76]<br>R. Szeliski, M. Uyttendaele, D. Steedly, Fast Poisson blending using multi-splines, in: IEEE International Conference on Computational Photography (ICCP), 2011, pp. 1–8.</a></p>
+<p><A NAME="77">[77]<br>N. Gracias, M. Mahoor, S. Negahdaripour, A. Gleason<br>Fast image blending using watersheds and graph cuts<br>Image Vis. Comput. (2009), pp. 597–607</a></p>
+<p><A NAME="78">[78]<br>H. Wen, J. Zhou, An improved algorithm for image mosaic, in: International Symposium on Information Science and Engineering, 2008, pp. 497–500.</a></p>
+<p><A NAME="79"> [79] <a target="_blank" rel="noopener" href="http://blog.csdn.net/dandan_397/article/details/42110719">详解Harris角点检测及代码实现</a></a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay-ssss.jpg" alt="S1NH 微信">
+        <span>微信</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>S1NH
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://s1nh.org/post/A-survey-on-image-mosaicing-techniques/" title="图像拼接算法的综述">http://s1nh.org/post/A-survey-on-image-mosaicing-techniques/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E5%9B%BE%E5%83%8F%E6%8B%BC%E6%8E%A5/" rel="tag"># 图像拼接</a>
+              <a href="/tags/%E7%BB%BC%E8%BF%B0/" rel="tag"># 综述</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/the-Constitution-of-a-Basic-Intrusion-System/" rel="prev" title="基于硬件的中间人攻击">
+                  <i class="fa fa-angle-left"></i> 基于硬件的中间人攻击
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/post/Octave-Tutorial/" rel="next" title="开始使用 Octave">
+                  开始使用 Octave <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2015 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">S1NH</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/duchengyao" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"duchengyao/duchengyao.github.io","issue_term":"og:title","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js" defer></script>
+
+</body>
+</html>

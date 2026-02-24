@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/6.0.5/fancybox/fancybox.css" integrity="sha256-uTcjoMD6rPt4OyV3Rs02Slxl0BJGMNVKAm/1eYPt2go=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.23.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="0x00对文本进行OCR前，必须分析和定义文档的逻辑结构。 例如文本块、段落、行的位置；是否有应该重建的表格；是否有“图像”“条形码等”。 文档布局分析 (Document Layout Analysis) 是识别和分类文本文档的扫描图像中的感兴趣区域（RoI, Regions of Interest) 的过程。阅读系统需要从非文本区域分割文本区域，并按正确的阅读顺序排列。将文本正文，插图，数学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="文档布局分析 &amp; 扭曲文档图像恢复 --- Document Layout Analysis &amp; Document Image Dewarping">
+<meta property="og:url" content="http://s1nh.org/post/document-layout-analysis/index.html">
+<meta property="og:site_name" content="S1NH">
+<meta property="og:description" content="0x00对文本进行OCR前，必须分析和定义文档的逻辑结构。 例如文本块、段落、行的位置；是否有应该重建的表格；是否有“图像”“条形码等”。 文档布局分析 (Document Layout Analysis) 是识别和分类文本文档的扫描图像中的感兴趣区域（RoI, Regions of Interest) 的过程。阅读系统需要从非文本区域分割文本区域，并按正确的阅读顺序排列。将文本正文，插图，数学">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://qiniu.s1nh.org/Blog_fr-editable-copy-result.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/Blog_docstrum_00.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/Blog_docstrum_1.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/Blog_docstrum_2.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/Blog_docstrum_3.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/Blog_docstrum_6.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/Blog_docstrum_4.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/Blog_docstrum_5.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/Blog_docstrum_7.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/Blog_docstrum_8.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/Blog_docstrum_9.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/Blog_docstrum_10.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/Blog_docstrum_11.png">
+<meta property="article:published_time" content="2018-09-19T18:01:58.000Z">
+<meta property="article:modified_time" content="2025-07-10T15:58:05.473Z">
+<meta property="article:author" content="S1NH">
+<meta property="article:tag" content="OCR">
+<meta property="article:tag" content="docstrum">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://qiniu.s1nh.org/Blog_fr-editable-copy-result.png">
+
+
+<link rel="canonical" href="http://s1nh.org/post/document-layout-analysis/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://s1nh.org/post/document-layout-analysis/","path":"post/document-layout-analysis/","title":"文档布局分析 & 扭曲文档图像恢复 --- Document Layout Analysis & Document Image Dewarping"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>文档布局分析 & 扭曲文档图像恢复 --- Document Layout Analysis & Document Image Dewarping | S1NH</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-44KGHGDYG3"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-44KGHGDYG3","only_pageview":false,"measure_protocol_api_secret":null}</script>
+  <script src="/js/third-party/analytics/google-analytics.js" defer></script>
+
+  <script src="/js/third-party/analytics/baidu-analytics.js" defer></script>
+  <script async src="https://hm.baidu.com/hm.js?4c66a84272e0f7943a305accf6dbdf41"></script>
+
+
+
+
+
+
+  <script defer data-domain="s1nh.org" src="http://home.s1nh.com:32801/js/script.js"></script>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/6.0.5/fancybox/fancybox.umd.js" integrity="sha256-UiSieVaV/DXce2LW7QH+o77w+AIoAvSCPBkezriZ2DQ=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.7.0/mermaid.min.js","integrity":"sha256-4+IKDqhZ/sXjc8Wtl2/MsxI4e0s1KpEVdbEP7V/Lz8U="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">S1NH</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">世界在旅程的尽头终结</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x00"><span class="nav-text">0x00</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01-%E6%9C%80%E6%97%A9%E7%9A%84%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0-docstrum"><span class="nav-text">0x01 最早的算法实现 docstrum</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02-%E5%AE%9E%E9%AA%8C"><span class="nav-text">0x02 实验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%B8%A4%E4%B8%AA%E5%BC%80%E6%BA%90%E4%BB%A3%E7%A0%81"><span class="nav-text">1. 两个开源代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%A4%8D%E7%8E%B0"><span class="nav-text">2. 复现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x03-%E8%BF%9B%E5%B1%95"><span class="nav-text">0x03 进展</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x04-Document-Dewarping"><span class="nav-text">0x04 Document Dewarping</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0xFF-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6"><span class="nav-text">0xFF 开源框架</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="S1NH"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">S1NH</p>
+  <div class="site-description" itemprop="description">no other developers required.</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">105</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">88</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+<div>
+  <hr>
+  <img src="/images/wechatpay-sss.jpg" alt="Buy me a SSRI.">
+  <a href="/reward-list/" rel="section">"Buy me a coffee."</a>
+</div>
+
+<!-- Matomo -->
+<script>
+  var _paq = window._paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  if (document.domain.indexOf('com') != -1){
+    _paq.push(["setCookieDomain", "*.s1nh.com"]);
+  } else if(document.domain.indexOf('org') != -1){
+    _paq.push(["setCookieDomain", "*.s1nh.org"]);
+  }
+  _paq.push(["setDomains", ["*.s1nh.org","*.s1nh.com"]]);
+  _paq.push(["enableCrossDomainLinking"]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://home.s1nh.com:32443/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    
+    if (document.domain.indexOf('com') != -1){
+      _paq.push(['setSiteId', '2']);
+    } else if(document.domain.indexOf('org') != -1){
+      _paq.push(['setSiteId', '3']);
+    }
+    
+    // Will also collect the website data into Website ID = 1
+    _paq.push(['addTracker', u+'matomo.php', 1]);
+    
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+
+<!-- Google Ads -->
+<!--script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7052751443200899"
+     crossorigin="anonymous"></script-->
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://www.92ez.com/" title="https:&#x2F;&#x2F;www.92ez.com&#x2F;" rel="noopener" target="_blank">一只猿 (关站升级中)</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="http://codewithzhangyi.com/about/" title="http:&#x2F;&#x2F;codewithzhangyi.com&#x2F;about&#x2F;" rel="noopener" target="_blank">好奇心狂热分子 (张怡，也关了)</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://findhao.net/" title="https:&#x2F;&#x2F;findhao.net&#x2F;" rel="noopener" target="_blank">FindHao 的自留地</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/document-layout-analysis/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="S1NH">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="S1NH">
+      <meta itemprop="description" content="no other developers required.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="文档布局分析 &amp; 扭曲文档图像恢复 --- Document Layout Analysis &amp; Document Image Dewarping | S1NH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          文档布局分析 & 扭曲文档图像恢复 --- Document Layout Analysis & Document Image Dewarping
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-09-20 02:01:58" itemprop="dateCreated datePublished" datetime="2018-09-20T02:01:58+08:00">2018-09-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/programming/" itemprop="url" rel="index"><span itemprop="name">算法与硬件</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><!--
+> 不知道各位有没有碰到过这种同事，经常一遇到问题就找你帮忙。等你坑赤坑赤花了几个小时在这个问题上，甚至已经帮他解决了问题的时候，他悠悠的来一句问题已经搞定了不麻烦你了；
+> 还有另一种同事，你跟他结对编程，他只做自己擅长的部分，剩下擦屁股的工作都丢给你，出去宣扬这个部分都是他做的好累呀，出了问题背锅的总是你；
+> 偏偏最近我就跟这种人合作，真是头疼。消消气，还是有容乃大为好。
+-->
+<h2 id="0x00"><a href="#0x00" class="headerlink" title="0x00"></a>0x00</h2><p>对文本进行OCR前，必须分析和定义文档的逻辑结构。 例如文本块、段落、行的位置；是否有应该重建的表格；是否有“图像”“条形码等”。</p>
+<p>文档布局分析 (Document Layout Analysis) 是识别和分类文本文档的扫描图像中的感兴趣区域（RoI, Regions of Interest) 的过程。阅读系统需要从非文本区域分割文本区域，并按正确的阅读顺序排列。将文本正文，插图，数学符号和嵌入文档中的表格等不同区域（或块）的检测和标记称为<strong>几何布局分析</strong>。但文本区域在文档中扮演不同的逻辑角色（标题，标题，脚注等），这种语义标记是<strong>逻辑布局分析</strong>的范围。</p>
+<p>文档布局分析是几何和逻辑标签的结合。它通常在将文档图像发送到OCR引擎之前执行，但也可用于检测大型存档中同一文档的重复副本，或者通过其结构或图示内容索引文档。</p>
+<p><img data-src="//qiniu.s1nh.org/Blog_fr-editable-copy-result.png" title="Document Layout Analysis"></p>
+<span id="more"></span>
+
+<h2 id="0x01-最早的算法实现-docstrum"><a href="#0x01-最早的算法实现-docstrum" class="headerlink" title="0x01 最早的算法实现 docstrum"></a>0x01 最早的算法实现 docstrum</h2><p>1993年，<strong>O’ Gorman</strong> 在<strong>TPAMI</strong>中发表了自下而上的文档布局分析算法<code>docstrum</code>，首先将文档解析为黑白连接区域，然后将这些区域分组为单词，然后分为文本行，最后分组为文本块。</p>
+<p>简单翻译了一下它的算法（<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Document_layout_analysis">english version</a>）：</p>
+<blockquote>
+<p>算法开始的字母代表着原始论文中每小节的标题序号。原始论文中，每个小节的标题如下：</p>
+</blockquote>
+<ul>
+<li>B. Preprocessing</li>
+<li>C. Nearest-Neighbor Clustering and Docstrum Plot</li>
+<li>D. Spacing and Initial Orientation Estimation</li>
+<li>E. Determination of Text Lines and Accurate Orientation Measurement</li>
+<li>F. Structural Block Determination</li>
+<li>G. Filtering</li>
+<li>H. Global and Local Lay-out Analysis</li>
+</ul>
+<ol>
+<li><code>B</code> 预处理图像以去除<strong>高斯噪声</strong>和<strong>椒盐噪声</strong>。<em>（某些噪声消除滤波器可能会将逗号和句号视为噪声，因此必须小心谨慎）</em></li>
+<li><code>B</code> 将图像<strong>二值化</strong></li>
+<li><code>B</code> 将图像分割为黑色像素的<strong>连通分量（下文称 Symbol）</strong>。对于每个Symbol，计算边框和质心（bounding box, centroid）。</li>
+<li><code>C</code> 对于每个Symbol，确定其k近邻，且k&gt;&#x3D;4。<em>（ O’Gorman在他的论文中建议将k &#x3D; 5作为鲁棒性和速度之间的良好折衷。使用至少k &#x3D; 4的原因是对于文档中的符号，两个或三个最接近的符号是在相同文本行上紧邻的那些符号。第四最近的符号通常在正上方或下方的一条线上，并且在下面的最近邻居计算中包括这些符号是很重要的。）</em></li>
+<li><code>C</code> 每个Symbol的近邻对与两者质心的向量相关。如果为每对最近邻Symbol绘制这些向量，则可以得到文档的<strong>docstrum</strong>（下图）。通过来自水平的角度θ和两个最近邻居符号之间的距离D，创建<strong>最近邻角</strong>和<strong>最近邻距离直方图</strong>。</li>
+<li><code>D</code> 使用最近邻角度直方图，可以计算文档的歪斜。如果歪斜较小，则继续下一步。如果不是，旋转图像以消除歪斜并返回<em>步骤3</em>。</li>
+<li><code>D</code> 最近邻距离直方图具有若干峰值，并且这些峰值通常表示<strong>字符间间距</strong>，<strong>字间间距</strong>和<strong>行间间隔</strong>（between-character, between-word, between-line）。</li>
+<li><code>D</code> 标记每个Symbol较远的邻居，该距离在<strong>between-character</strong>或<strong>between-word</strong>的某个容差内。对于标记的每个最近邻居符号，绘制连接其质心的线段。</li>
+<li><code>E</code> 通过线段连接到其邻居的符号形成<strong>文本行</strong>。对于文本行中的所有质心，可以使用线性回归计算表示文本行的<strong>实际线段</strong>。（使用<strong>线性回归</strong>，是因为文本行中Symbol的所有质心都不太可能是共线的。）</li>
+<li><code>F</code> 对于每对文本行，可以计算它们对应的线段之间的最小距离。如果该距离在步骤7中计算的行间间隔的某个容差内，则将两个文本行分组到相同的<strong>文本块</strong>中。</li>
+<li>最后，可以为每个文本块计算<strong>边界框</strong>，并完成文档布局分析。<br><img data-src="//qiniu.s1nh.org/Blog_docstrum_00.png" alt="docstrum"></li>
+</ol>
+<h2 id="0x02-实验"><a href="#0x02-实验" class="headerlink" title="0x02 实验"></a>0x02 实验</h2><h3 id="1-两个开源代码"><a href="#1-两个开源代码" class="headerlink" title="1. 两个开源代码"></a>1. 两个开源代码</h3><p><a target="_blank" rel="noopener" href="https://github.com/chadoliver/cosc428-structor">https://github.com/chadoliver/cosc428-structor</a> 复现了docstrum<br><a target="_blank" rel="noopener" href="https://github.com/chulwoopack/docstrum">https://github.com/chulwoopack/docstrum</a> 对前一个开源代码进行了优化</p>
+<h3 id="2-复现"><a href="#2-复现" class="headerlink" title="2. 复现"></a>2. 复现</h3><blockquote>
+<p>上面两段开源代码比较古老且有点乱，基于最新的opencv应该可以很快的复现docstrum</p>
+</blockquote>
+<p><img data-src="//qiniu.s1nh.org/Blog_docstrum_1.png" alt="image.png"></p>
+<h2 id="0x03-进展"><a href="#0x03-进展" class="headerlink" title="0x03 进展"></a>0x03 进展</h2><blockquote>
+<p>没来得及看的一些文章</p>
+</blockquote>
+<ul>
+<li><p><code>60多页</code> Cattoni, Roldano, et al. “Geometric layout analysis techniques for document image understanding: a review.” ITC-irst Technical Report 9703.09 (1998).</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.researchgate.net/profile/Faisal_Shafait/publication/226110361_Coupled_snakelets_for_curled_text-line_segmentation_from_warped_document_images/links/542358fe0cf26120b7a6c334.pdf">[IJDAR 2013]</a> Bukhari, S. S., Shafait, F., &amp; Breuel, T. M.  Coupled snakelets for curled text-line segmentation from warped document images</p>
+</li>
+</ul>
+<img data-src="//qiniu.s1nh.org/Blog_docstrum_2.png" width="600">
+
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.researchgate.net/profile/Thomas_Breuel/publication/5431819_Performance_Evaluation_and_Benchmarking_of_Six-Page_Segmentation_Algorithms/links/551dd6dd0cf213ef063eb1ee.pdf">[TPAMI 2008]</a> Shafait, F., Keysers, D., &amp; Breuel, T. Performance evaluation and benchmarking of six-page segmentation algorithms</li>
+</ul>
+<img data-src="//qiniu.s1nh.org/Blog_docstrum_3.png" width="600">
+
+<ul>
+<li><a target="_blank" rel="noopener" href="https://pdfs.semanticscholar.org/aa39/21e3a2eda4dd91c89f601ca9ae502f1e65e3.pdf">ICIAR 2014</a> Kassis, M., Kurar, B., Cohen, R., El-Sana, J., &amp; Kedem, K. Using Scale-Space Anisotropic Smoothing for Text Line Extraction in Historical Documents.</li>
+</ul>
+<img data-src="//qiniu.s1nh.org/Blog_docstrum_6.png" width="700">
+
+<ul>
+<li><a target="_blank" rel="noopener" href="http://www.iapr-tc11.org/archive/das2012/attachments/FullPaperProceedings/4661a394.pdf">DAS 2012</a> Afzal, M. Z., Kramer, M., Bukhari, S. S., Shafait, F., &amp; Breuel, T. M.  Improvements to uncalibrated feature-based stereo matching for document images by using text-line segmentation</li>
+</ul>
+<img data-src="//qiniu.s1nh.org/Blog_docstrum_4.png" width="500">
+
+<ul>
+<li><a target="_blank" rel="noopener" href="http://www.dfki.de/~bukhari/data/papers/29-Bukhari-Generic-Textline-Extraction-ICDAR13.pdf">ICDAR 2013</a>Bukhari, S. S., Shafait, F., &amp; Breuel, T. M. (2013, August). Towards generic text-line extraction.</li>
+</ul>
+<img data-src="//qiniu.s1nh.org/Blog_docstrum_5.png" width="400">
+
+<h2 id="0x04-Document-Dewarping"><a href="#0x04-Document-Dewarping" class="headerlink" title="0x04 Document Dewarping"></a>0x04 Document Dewarping</h2><ul>
+<li>数据集[<a target="_blank" rel="noopener" href="http://staffhome.ecm.uwa.edu.au/~00082689/downloads.html">CBDAR 2007 dataset</a>]</li>
+<li>[<a target="_blank" rel="noopener" href="http://www.imlab.jp/cbdar2007/proceedings/papers/P1.pdf">CBDAR 2007</a>] Fu, Bin, et al. “A model-based book dewarping method using text line detection.”<br>CTM 方法，有一个非官方实现[github] [blog]</li>
+<li>[<a target="_blank" rel="noopener" href="http://159.226.21.68/bitstream/173211/3713/1/TPAMI2012.pdf">TPAMI 2012</a>] Meng et al. 2011, Metric rectification of curved document images</li>
+<li>[PR 2015] Kim et al. 2015, Document dewarping via text-line based optimization<br>有个同学了复现上面两个算法[<a target="_blank" rel="noopener" href="https://github.com/phulin/rebook">github</a>，我暂时跑不通</li>
+<li>[<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/8270077/authors#authors">ICDAR 2017</a>] Robust Document Image Dewarping Method Using Text-Lines and Line Segments<br>应该是最新的，作者提供了[二进制文件]，没有源码，据说比2015年Kim的算法好很多</li>
+<li>[<a target="_blank" rel="noopener" href="https://www3.cs.stonybrook.edu/~cvl/content/papers/2018/Ma_CVPR18.pdf">CVPR 2018</a>] DocUNet. A state-of-the-art work from face++ probably, but no source code.</li>
+<li>Leptonica，很好的库，注释比代码都多。它的dewarping代码貌似是基于textlines的</li>
+</ul>
+<p>Python 中使用 tesseract-ocr leptonica [<a target="_blank" rel="noopener" href="https://github.com/ybur-yug/python_ocr_tutorial">github</a>] [<a target="_blank" rel="noopener" href="https://realpython.com/setting-up-a-simple-ocr-server/">blog</a>]</p>
+<h2 id="0xFF-开源框架"><a href="#0xFF-开源框架" class="headerlink" title="0xFF 开源框架"></a>0xFF 开源框架</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/scantailor/scantailor">scantailor</a> <code>比较古老</code> 可以将拍照的书页自动转换为无卷曲的扫描书页</li>
+</ul>
+<img data-src="//qiniu.s1nh.org/Blog_docstrum_7.png" width="600">
+
+<img data-src="//qiniu.s1nh.org/Blog_docstrum_8.png" width="500">
+
+<ul>
+<li><a target="_blank" rel="noopener" href="http://www.leptonica.com/line-removal.html">leptonica</a>  一个古老又顽强的库<code>被Tesseract、OpenCV、jbig2enc依赖</code>，官方有很多例子演示它好玩的算法</li>
+</ul>
+<img data-src="//qiniu.s1nh.org/Blog_docstrum_9.png" width="700">
+
+<img data-src="//qiniu.s1nh.org/Blog_docstrum_10.png" width="600">
+
+<img data-src="//qiniu.s1nh.org/Blog_docstrum_11.png" width="600">
+
+<ul>
+<li><p>OCRopus – A free document layout analysis and OCR system, implemented in C++ and Python and for FreeBSD, Linux, and Mac OS X. This software supports a plug-in architecture which allows the user to select from a variety of different document layout analysis and OCR algorithms.</p>
+</li>
+<li><p>OCRFeeder – An OCR suite for Linux, written in python, which also supports document layout analysis. This software is actively being developed, and is free and open-source.</p>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay-ssss.jpg" alt="S1NH 微信">
+        <span>微信</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>S1NH
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://s1nh.org/post/document-layout-analysis/" title="文档布局分析 &amp; 扭曲文档图像恢复 --- Document Layout Analysis &amp; Document Image Dewarping">http://s1nh.org/post/document-layout-analysis/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/OCR/" rel="tag"># OCR</a>
+              <a href="/tags/docstrum/" rel="tag"># docstrum</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/xb/" rel="prev" title="竟然拍了照片">
+                  <i class="fa fa-angle-left"></i> 竟然拍了照片
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/post/2018-summary/" rel="next" title="2018 年终总结">
+                  2018 年终总结 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2015 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">S1NH</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/duchengyao" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"duchengyao/duchengyao.github.io","issue_term":"og:title","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js" defer></script>
+
+</body>
+</html>

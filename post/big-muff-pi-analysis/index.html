@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/6.0.5/fancybox/fancybox.css" integrity="sha256-uTcjoMD6rPt4OyV3Rs02Slxl0BJGMNVKAm/1eYPt2go=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.23.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="Big Muff Pi 是由 Bob Myer 和 Mike Matthews 在 1969 年设计的失真&#x2F;延音吉他踏板，并在1970年大规模生产。由于其独特的声音、价格和可靠性，该效果器是 Electro-Harmonix 的第一个压倒性的成功。多年来，有几个版本和重制版被发布。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Big Muff Pi 电路分析">
+<meta property="og:url" content="http://s1nh.org/post/big-muff-pi-analysis/index.html">
+<meta property="og:site_name" content="S1NH">
+<meta property="og:description" content="Big Muff Pi 是由 Bob Myer 和 Mike Matthews 在 1969 年设计的失真&#x2F;延音吉他踏板，并在1970年大规模生产。由于其独特的声音、价格和可靠性，该效果器是 Electro-Harmonix 的第一个压倒性的成功。多年来，有几个版本和重制版被发布。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://qiniu.s1nh.org/bmp-all-pedals.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/big-muff-pi-v3-circuit-stages-small.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/big-muff-pi-v3-input-buffer.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/bmp-small-signal1.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/bmp-small-signal2.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/bmp-input-booster-frequency-response.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/big-muff-pi-v3-clipping-stage.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/bmp-clipped-signals.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/bmp-clipping-stage-frequency-response.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/big-muff-pi-v3-tone-control.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/bmp-tone-control.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/big-muff-pi-v3-output-buffer.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/big-muff-pi-v3-bias.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/bmp-waveforms.png">
+<meta property="article:published_time" content="2023-02-16T12:39:08.000Z">
+<meta property="article:modified_time" content="2025-07-10T15:58:05.472Z">
+<meta property="article:author" content="S1NH">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://qiniu.s1nh.org/bmp-all-pedals.png">
+
+
+<link rel="canonical" href="http://s1nh.org/post/big-muff-pi-analysis/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://s1nh.org/post/big-muff-pi-analysis/","path":"post/big-muff-pi-analysis/","title":"Big Muff Pi 电路分析"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Big Muff Pi 电路分析 | S1NH</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-44KGHGDYG3"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-44KGHGDYG3","only_pageview":false,"measure_protocol_api_secret":null}</script>
+  <script src="/js/third-party/analytics/google-analytics.js" defer></script>
+
+  <script src="/js/third-party/analytics/baidu-analytics.js" defer></script>
+  <script async src="https://hm.baidu.com/hm.js?4c66a84272e0f7943a305accf6dbdf41"></script>
+
+
+
+
+
+
+  <script defer data-domain="s1nh.org" src="http://home.s1nh.com:32801/js/script.js"></script>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/6.0.5/fancybox/fancybox.umd.js" integrity="sha256-UiSieVaV/DXce2LW7QH+o77w+AIoAvSCPBkezriZ2DQ=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.7.0/mermaid.min.js","integrity":"sha256-4+IKDqhZ/sXjc8Wtl2/MsxI4e0s1KpEVdbEP7V/Lz8U="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">S1NH</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">世界在旅程的尽头终结</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Table-of-Contents"><span class="nav-text">Table of Contents:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-The-Big-Muff-Pi-Circuit"><span class="nav-text">1. The Big Muff Pi Circuit.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Big-Muff-Pi-Input-Booster-Stage"><span class="nav-text">2. Big Muff Pi Input Booster Stage.</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-Big-Muff-Pi-Shunt-Feedback-Common-Emitter-Stage"><span class="nav-text">2.1 Big Muff Pi Shunt Feedback Common Emitter Stage.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-Input-Booster-Voltage-Gain-Calculation"><span class="nav-text">2.2 Input Booster Voltage Gain Calculation.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-Big-Muff-Pi-Input-Impedance-Calculation"><span class="nav-text">2.3 Big Muff Pi Input Impedance Calculation.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-Input-Booster-Frequency-Response"><span class="nav-text">2.4 Input Booster Frequency Response.</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-Big-Muff-Pi-Clipping-Stage"><span class="nav-text">3. Big Muff Pi Clipping Stage.</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-Big-Muff-Pi-Sustain-Circuit"><span class="nav-text">3.1 Big Muff Pi Sustain Circuit.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-Clipping-Amplifier-Voltage-Gain-Calculation"><span class="nav-text">3.2 Clipping Amplifier Voltage Gain Calculation.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-Big-Muff-Pi-Tone-Control-Frequency-Response"><span class="nav-text">4.1 Big Muff Pi Tone Control Frequency Response.</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-Output-Stage"><span class="nav-text">5. Output Stage.</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1-Big-Muff-Pi-Output-Impedance"><span class="nav-text">5.1 Big Muff Pi Output Impedance.</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-Big-Muff-Pi-Bias-and-Tone-Response"><span class="nav-text">6. Big Muff Pi Bias and Tone Response.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-Resources"><span class="nav-text">7. Resources.</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#7-1-Datasheets"><span class="nav-text">7.1 Datasheets.</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="S1NH"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">S1NH</p>
+  <div class="site-description" itemprop="description">no other developers required.</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">105</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">88</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+<div>
+  <hr>
+  <img src="/images/wechatpay-sss.jpg" alt="Buy me a SSRI.">
+  <a href="/reward-list/" rel="section">"Buy me a coffee."</a>
+</div>
+
+<!-- Matomo -->
+<script>
+  var _paq = window._paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  if (document.domain.indexOf('com') != -1){
+    _paq.push(["setCookieDomain", "*.s1nh.com"]);
+  } else if(document.domain.indexOf('org') != -1){
+    _paq.push(["setCookieDomain", "*.s1nh.org"]);
+  }
+  _paq.push(["setDomains", ["*.s1nh.org","*.s1nh.com"]]);
+  _paq.push(["enableCrossDomainLinking"]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://home.s1nh.com:32443/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    
+    if (document.domain.indexOf('com') != -1){
+      _paq.push(['setSiteId', '2']);
+    } else if(document.domain.indexOf('org') != -1){
+      _paq.push(['setSiteId', '3']);
+    }
+    
+    // Will also collect the website data into Website ID = 1
+    _paq.push(['addTracker', u+'matomo.php', 1]);
+    
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+
+<!-- Google Ads -->
+<!--script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7052751443200899"
+     crossorigin="anonymous"></script-->
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://www.92ez.com/" title="https:&#x2F;&#x2F;www.92ez.com&#x2F;" rel="noopener" target="_blank">一只猿 (关站升级中)</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="http://codewithzhangyi.com/about/" title="http:&#x2F;&#x2F;codewithzhangyi.com&#x2F;about&#x2F;" rel="noopener" target="_blank">好奇心狂热分子 (张怡，也关了)</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://findhao.net/" title="https:&#x2F;&#x2F;findhao.net&#x2F;" rel="noopener" target="_blank">FindHao 的自留地</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/big-muff-pi-analysis/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="S1NH">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="S1NH">
+      <meta itemprop="description" content="no other developers required.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Big Muff Pi 电路分析 | S1NH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Big Muff Pi 电路分析
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-02-16 20:39:08" itemprop="dateCreated datePublished" datetime="2023-02-16T20:39:08+08:00">2023-02-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/music/" itemprop="url" rel="index"><span itemprop="name">音乐相关</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>Big Muff Pi 是由 Bob Myer 和 Mike Matthews 在 1969 年设计的失真&#x2F;延音吉他踏板，并在1970年大规模生产。由于其独特的声音、价格和可靠性，该效果器是 Electro-Harmonix 的第一个压倒性的成功。多年来，有几个版本和重制版被发布。</p>
+<p><img data-src="//qiniu.s1nh.org/bmp-all-pedals.png" alt="Big Muff Pi All Pedals"></p>
+<span id="more"></span>
+
+<p>许多鼓舞人心的吉他手都使用这个单块，使 Big Muff Pi 在硬摇（hard-driving）的音乐风格中发挥了主导作用：</p>
+<p>Tony Peluso of The Carpenters, Carlos Santana, David Gilmour of Pink Floyd, Ronnie Montrose, Mike Mills and Pete Buck of R.E.M., Robin Finck of Nine Inch Nails, Brian Molko of Placebo, Cliff Burton of Metallica, Kurt Kobain of Nirvana, Thom Yorke of Radiohead, Pete Townshend of The Who, Thurston and Lee Renaldo Moore of Sonic Youth, Billy Corgan of Smashing Pumkins, J. Mascis of Dinosaur Jr., Dan Auerbach of Black Keys, Ace Frehley of Kiss, The Edge of U2, Jamie Cook of the Arctic Monkeys, Jack White of White Stripes, John Frusciante of The Red Hot Chili Peppers, Chris Wolstenholme of Muse are some of the B.M.P well known users.</p>
+<h1 id="Table-of-Contents"><a href="#Table-of-Contents" class="headerlink" title="Table of Contents:"></a><strong>Table of Contents:</strong></h1><p><a target="_blank" rel="noopener" href="https://www.electrosmash.com/big-muff-pi-analysis#circuit1">1. The Big Muff Pi Circuit.</a><br>    <a target="_blank" rel="noopener" href="https://www.electrosmash.com/big-muff-pi-analysis#bom11">1.1 List of Materials &#x2F; Parts List.</a><br><a target="_blank" rel="noopener" href="https://www.electrosmash.com/big-muff-pi-analysis#input2">2. Input Booster Stage.</a><br>    <a target="_blank" rel="noopener" href="https://www.electrosmash.com/big-muff-pi-analysis#link21">2.1 Shunt Feedback Common Emitter Stage.</a><br>    <a target="_blank" rel="noopener" href="https://www.electrosmash.com/big-muff-pi-analysis#link22">2.2 Input Booster Voltage Gain Calculation.</a><br>    <a target="_blank" rel="noopener" href="https://www.electrosmash.com/big-muff-pi-analysis#link23">2.3 Input Impedance Calculation.</a><br>    <a target="_blank" rel="noopener" href="https://www.electrosmash.com/big-muff-pi-analysis#link24">2.4 Input Booster Frequency Response.</a><br><a target="_blank" rel="noopener" href="https://www.electrosmash.com/big-muff-pi-analysis#link3">3. Big Muff Pi Clipping Stage.</a><br>    <a target="_blank" rel="noopener" href="https://www.electrosmash.com/big-muff-pi-analysis#link31">3.1 Sustain Circuit.</a><br>    <a target="_blank" rel="noopener" href="https://www.electrosmash.com/big-muff-pi-analysis#link32">3.2 Clipping Amplifier Voltage Gain Calculation</a><br>    <a target="_blank" rel="noopener" href="https://www.electrosmash.com/big-muff-pi-analysis#link33">3.3 Clipping Method.</a><br>    <a target="_blank" rel="noopener" href="https://www.electrosmash.com/big-muff-pi-analysis#link34">3.4 Clipping Stage Frequency Response.</a><br><a target="_blank" rel="noopener" href="https://www.electrosmash.com/big-muff-pi-analysis#link4">4. Passive Tone Control Stage.</a><br>    <a target="_blank" rel="noopener" href="https://www.electrosmash.com/big-muff-pi-analysis#link41">4.1 Tone Control Frequency Response.</a><br><a target="_blank" rel="noopener" href="https://www.electrosmash.com/big-muff-pi-analysis#link5">5. Output Stage.</a><br>   <a target="_blank" rel="noopener" href="https://www.electrosmash.com/big-muff-pi-analysis#link51"> 5.1 Big Muff Pi Output Impedance.</a><br><a target="_blank" rel="noopener" href="https://www.electrosmash.com/big-muff-pi-analysis#link6">6. Big Muff Pi Bias and Tone Response.</a><br><a target="_blank" rel="noopener" href="https://www.electrosmash.com/big-muff-pi-analysis#link7">7. Resources.</a><br>    <a target="_blank" rel="noopener" href="https://www.electrosmash.com/big-muff-pi-analysis#link71">7.1 Datasheets.</a></p>
+<h1 id="1-The-Big-Muff-Pi-Circuit"><a href="#1-The-Big-Muff-Pi-Circuit" class="headerlink" title="1. The Big Muff Pi Circuit."></a><strong>1. The Big Muff Pi Circuit.</strong></h1><p>The Big Muff Pi circuit consists of 4 cascaded common emitter amplifier stages with a passive tone control. The schematic can be broken down into 4 simpler blocks: Input Booster, Clipping Stage, Passive Tone Control and Output Booster.  </p>
+<p><img data-src="//qiniu.s1nh.org/big-muff-pi-v3-circuit-stages-small.png" alt="Big Muff Pi v3 Circuit Stages"></p>
+<p>The circuit design was inspired by previous Fuzz pedals like the Dallas Arbiter Fuzz-Face, Maestro Fuzz-Tone or Electro-Harmonix Axis Fuzz. In addition, the BMP introduced a double clipping stage, a new tone control and it is able to produce a characteristic sustained distortion sound never heard before.</p>
+<p>There are also several enhancements on the design in order to make the circuit stable and reliable: All components are based in silicon, all transistor stages include an emitter resistance, which makes the gain independent from temperature or transistor intrinsic characteristics. Three out of four stages include feedback resistors and Miller capacitors, which stabilize the behavior and frequency response. It is a big advantage versus the contemporary dodgy pedals based on germanium.</p>
+<p>The components selected for the design are very generic and easy to find: just high gain NPN transistors, simple silicon diodes and standard resistors, caps and three 100K linear pots. Avoiding exotic parts and making the circuit ready for mass production and a shortage of suppliers.</p>
+<p>This study is focused on the American <em>Version 3</em>, associated with the iconic bold red and black design and released in 1976-1977, the analysis can be easily extrapolated to any other version.</p>
+<p><strong>1.1 Big Muff Pi List of Materials &#x2F; Parts List.</strong></p>
+<p>The components are labeled following the original Electro-Harmonix printed circuit board:</p>
+<p>4 NPN Transistors: BC239 or equivalents 2N5088, 2N5089, BC549C, SE4010, 2N5210, 2N5113: Q<sub>1</sub>, Q<sub>2</sub>, Q<sub>3</sub>, Q<sub>4</sub>.<br>4 Silicon Diodes: 1N914 or equivalent 1N4148: D<sub>1</sub>, D<sub>2</sub>, D<sub>3</sub>, D<sub>4</sub>.</p>
+<p>3 Potentiometers 100K Lin: Sustain, Tone, Volume.<br>5 Resistances 10K: R<sub>13</sub>, R<sub>19</sub>, R<sub>18</sub>, R<sub>11</sub> R<sub>12</sub>.<br>3 Resistances 100K: R<sub>20</sub>, R<sub>16</sub>, R<sub>3</sub>.<br>3 Resistances 470K: R<sub>9</sub>, R<sub>17</sub>, R<sub>15</sub>.<br>2 Resistances 39K: R<sub>2</sub>, R<sub>8</sub>.<br>2 Resistances 150: R<sub>21</sub>, R<sub>10</sub>.<br>2 Resistances 15K: R<sub>6</sub>.<br>1 Resistance 47K: R<sub>14</sub>.<br>1 Resistance 100: R<sub>22</sub>.<br>1 Resistance 3.3K: R<sub>4</sub>.<br>1 Resistance 1K: R<sub>23</sub>.<br>1 Resistance 22K: R<sub>5</sub>.</p>
+<p>4 Capacitors 1uF: C<sub>1</sub>, C<sub>4</sub>, C<sub>6</sub>, C<sub>7</sub>.<br>4 Capacitors 100nF: C<sub>5</sub>, C<sub>13</sub>, C<sub>3</sub>, C<sub>2</sub>.<br>3 Capacitors 470pF: C<sub>10</sub>, C<sub>11</sub>, C<sub>12</sub>.<br>1 Capacitor 4nF: C<sub>9</sub>.<br>1 Capacitor 10nF: C<sub>8</sub>.</p>
+<h1 id="2-Big-Muff-Pi-Input-Booster-Stage"><a href="#2-Big-Muff-Pi-Input-Booster-Stage" class="headerlink" title="2. Big Muff Pi Input Booster Stage."></a><strong>2. Big Muff Pi Input Booster Stage.</strong></h1><p>This clean boost stage is based on a Common Emitter amplifier with Shunt Feedback and some arrangements to enhance the performance.  </p>
+<p><img data-src="//qiniu.s1nh.org/big-muff-pi-v3-input-buffer.png" alt="Big Muff Pi V3 Input Booster"></p>
+<p>The Input Booster sets the pedal input impedance, shapes the frequency response and adds some gain.</p>
+<h2 id="2-1-Big-Muff-Pi-Shunt-Feedback-Common-Emitter-Stage"><a href="#2-1-Big-Muff-Pi-Shunt-Feedback-Common-Emitter-Stage" class="headerlink" title="2.1 Big Muff Pi Shunt Feedback Common Emitter Stage."></a><strong>2.1 Big Muff Pi Shunt Feedback Common Emitter Stage.</strong></h2><p>In common emitter amps, the approximate voltage gain is collector resistance divided by the emitter resistance (R<sub>C</sub>&#x2F;R<sub>E</sub>), but the effect of the feedback resistor has to be taken into consideration:<br>The resistor R<sub>9</sub> from collector to base also called <em>Shunt Feedback resistor</em> or R<sub>F</sub> is a method to apply negative feedback to the amplifier. While it results in a reduced overall voltage gain and input impedance, a number of improvements are obtained:</p>
+<ul>
+<li>Better stabilized voltage gain.</li>
+<li>Improved frequency response.</li>
+<li>Reduced Noise.</li>
+<li>More Linear operation.</li>
+<li>More immune against variations in temperature and transistors Beta.</li>
+</ul>
+<p>How it works?: If the emitter current were to increase, the voltage drop across Rc increases, decreasing Vc, reducing Ib feedback to the base. This, in turn, decreases the emitter current, correcting the original increase. The value of R<sub>9&nbsp;</sub> should be selected so that the collector voltage is half of the supply voltage. </p>
+<h2 id="2-2-Input-Booster-Voltage-Gain-Calculation"><a href="#2-2-Input-Booster-Voltage-Gain-Calculation" class="headerlink" title="2.2 Input Booster Voltage Gain Calculation."></a><strong>2.2 Input Booster Voltage Gain Calculation.</strong></h2><p>A <a target="_blank" rel="noopener" href="http://www.uotechnology.edu.iq/dep-eee/lectures/2nd/Electronics%201/Part%2004.pdf">simplified analysis method</a> must be used to calculate the voltage gain of the amplifier, otherwise, it turns into an arithmetic nightmare. It consists of 3 steps:</p>
+<ul>
+<li><strong>a) Identify the Amplifier Topology:</strong></li>
+</ul>
+<p>The topology is known as <em>Voltage-Shunt Feedback</em>: voltage refers to connecting the output voltage as the input to the feedback network and Shunt refers to connecting the feedback signal in parallel&#x2F;shunt with the input current source.  </p>
+<ul>
+<li><strong>b) Draw the equivalent circuit without the feedback network:</strong> The idea is to draw an equivalent amplifier without feedback but taking the loading of it into consideration. In the image below, the resistor values are substituted by generic labels, in order to make the formulas more intuitive:</li>
+</ul>
+<p><img data-src="//qiniu.s1nh.org/bmp-small-signal1.png" alt="Big Muff Pi V3 Small Signal"></p>
+<p>The equivalent circuit uses Norton’s current source since the feedback signal is current. In the image below, the feedback resistor is grounded in the input and output sections and the resistors grouped:</p>
+<p><img data-src="//qiniu.s1nh.org/bmp-small-signal2.png" alt="Big Muff Pi Small Signal "></p>
+<p>Where:</p>
+<p>$$R_{B}&#x3D;R_{S}&#x2F;&#x2F;R_{A}&#x2F;&#x2F;R_{F} &#x3D; 39K&#x2F;&#x2F;47K&#x2F;&#x2F;470K &#x3D; 20.4K$$</p>
+<p>$$R_{L}&#x3D;R_{sustain}&#x2F;&#x2F;R_{C}&#x2F;&#x2F;R_{F} &#x3D; 101K&#x2F;&#x2F;10K&#x2F;&#x2F;470K &#x3D; 9K “R_{L}&#x3D;R_{sustain}&#x2F;&#x2F;R_{C}&#x2F;&#x2F;R_{F} &#x3D; 101K&#x2F;&#x2F;10K&#x2F;&#x2F;470K &#x3D; 9K”)$$</p>
+<ul>
+<li><strong>c) T****he voltage gain</strong> can be calculated following the simplified analysis of these equations:</li>
+</ul>
+<p>A<sub style="color: #333333;">Z</sub>: Voltage-Shunt Gain without feedback formula:</p>
+<p>$$A_{z}&#x3D;\frac{V_{out}}{I_{s}}&#x3D;\frac{\beta \cdot i_{b} \cdot R_{L}}{i_{b} + (\frac{r\pi \cdot i_{b}}{R_{B}}) + (\frac{R_{E}(\beta +1)i_{b}}{R_{B}})}$$</p>
+<p>$$with (\frac{R_{E}(\beta +1)i_{b}}{R_{B}}) &gt; &gt; i_{b} + (\frac{r\pi \cdot i_{b}}{R_{B}})$$</p>
+<p>$$A_{z}&#x3D;\frac{V_{out}}{I_{s}}&#x3D;\frac{R_{B} \cdot R_{L}}{R_{E}}$$</p>
+<p>B<sub>G</sub>: Feedback Voltage-Shunt formula:</p>
+<p>$$B_{G}&#x3D;\frac{I_{F}}{V_{out}}&#x3D; \frac{1}{R_{F}}$$</p>
+<p>A<sub>ZF</sub>: Voltage-Shunt Gain with Feedback </p>
+<p>$$A_{ZF}&#x3D;\frac{A_{Z}}{1+A_{Z}B_{G}}&#x3D;\frac{\frac{R_{B} \cdot R_{L}}{R_{E}}}{1+\frac{R_{B} \cdot R_{L}}{R_{E}}\cdot\frac{1}{R_{F}}} $$</p>
+<p>GV: Voltage Gain:</p>
+<p>$$G_{V}&#x3D;\frac{V_{out}}{V_{S}}&#x3D;\frac{V_{out}}{I_{S}\cdot R_{S}}&#x3D;\frac{A_{ZF}}{R_{S}}$$</p>
+<p>Replacing the Input Booster circuit values R<sub>B</sub>=20.4K, R<sub>L</sub>=9K, R<sub>E</sub> &#x3D;100, R<sub>S</sub>=39K and R<sub>F</sub> &#x3D;470K the results obtained are B<sub>G</sub>=1&#x2F;470K, A<sub>ZF</sub>=374.2 and the voltage value is G<sub>V</sub>=9.6 (19.6dB) although doing the simulation the G<sub>V</sub> never reaches this value (it is 16.7 dB).</p>
+<h2 id="2-3-Big-Muff-Pi-Input-Impedance-Calculation"><a href="#2-3-Big-Muff-Pi-Input-Impedance-Calculation" class="headerlink" title="2.3 Big Muff Pi Input Impedance Calculation."></a><strong>2.3 Big Muff Pi Input Impedance Calculation.</strong></h2><p>The Big Muff Pi input impedance is R<sub>2</sub> aka <em>R<sub>S</sub> series resistance</em> plus the input impedance of the Input Booster stage:</p>
+<p> Z<sub>in</sub> &#x3D; R<sub>S</sub> + (R<sub>in input Booster</sub>) </p>
+<p>The input resistance of the Input Booster due to the emitter resistance and the feedback network effect is much smaller than R<sub>2</sub>. So, the value of the input resistor R<sub>2</sub>=39K accounts for almost all of the signal loading at the input. The 39K it is indeed a low input impedance, and the guitar signal might suffer tone sucking (loss of high frequencies), although tone and volume loss is compensated by the rest of the circuit design.</p>
+<p>Increasing the 39k R<sub>2</sub> input resistor, the input impedance is increased but it also forms a voltage divider at the input, reducing the available voltage gain.</p>
+<p>The Emitter Resistance: Adding an emitter resistance R<sub>22</sub> to a common emitter amp, also known as <em>Emitter Degeneration</em>, makes the voltage gain less dependant from BJT parameters, and therefore less vulnerable to temperature and bias current changes. The stability characteristics of the circuit are thus improved at the expense of a reduction in gain.</p>
+<h2 id="2-4-Input-Booster-Frequency-Response"><a href="#2-4-Input-Booster-Frequency-Response" class="headerlink" title="2.4 Input Booster Frequency Response."></a><strong>2.4 Input Booster Frequency Response.</strong></h2><p>The frequency response is tailored by two capacitors: the input decoupling cap C<sub>1</sub> which sets the low-frequency response (roll-off the bass) and the Miller Capacitor C<sub>10</sub> which shapes the high-frequency response (roll-off the highs):<br><img data-src="//qiniu.s1nh.org/bmp-input-booster-frequency-response.png" alt="Big Muff Pi Input Booster Frequency Response"></p>
+<ul>
+<li>Input Capacitor C<sub>1</sub>: creates a high-pass filter, increasing its value will result in a more bassy response and increasing the signal into the pedal. The cut-off frequency is around 3.8Hz, not disturbing guitar harmonics.</li>
+<li>Collector to Base feedback Capacitor: C<sub>10</sub> is a <em>Lag Capacitor</em> or <em>Miller Capacitor</em> compensation to avoid oscillation which sets the amplifier bandwidth and the dominant pole frequency. The effective value of the C<sub>10</sub> capacitor is increased by the internal collector-base capacitance (base to collector depletion capacitance) of the BJT.</li>
+</ul>
+<p>With a C<sub>10</sub> of 470pF and depending on the internal BJT capacitance, low pass filter cut-off frequency is around 1.2KHz. This operation occurs just before the distortion stage; clipping a low-passed signal usually sounds better, smoother and less harsh.</p>
+<p>The usual values for this cap are decs to some hundreds of pF, lowering the C<sub>10</sub> value will result in a more treble response, rolling-off fewer highs.</p>
+<h1 id="3-Big-Muff-Pi-Clipping-Stage"><a href="#3-Big-Muff-Pi-Clipping-Stage" class="headerlink" title="3. Big Muff Pi Clipping Stage."></a><strong>3. Big Muff Pi Clipping Stage.</strong></h1><p>The clipping Stage is made of a passive voltage divider (sustain potentiometer) and two consecutive common emitter stages. Each of the two consecutive Q<sub>2</sub>&#x2F;Q<sub>3</sub> clipping stages keeps the same topology as the Input Booster. In addition, the clipping amplifiers include a back to back diodes to create the symmetric clipping.<br><img data-src="//qiniu.s1nh.org/big-muff-pi-v3-clipping-stage.png" alt="Big Muff Pi Clipping Stage"></p>
+<p>The design idea for the double distortion is that the first transistor <em>softly</em> clips the waveform in the feedback loop: creating the distortion and filtering the signal. After the first clipping transistor, the second one repeats the operation again and refines the distorted signal creating the <em>hard</em> clip.</p>
+<p><img data-src="//qiniu.s1nh.org/bmp-clipped-signals.png" alt="Big Muff Pi Clipped Signal"></p>
+<h2 id="3-1-Big-Muff-Pi-Sustain-Circuit"><a href="#3-1-Big-Muff-Pi-Sustain-Circuit" class="headerlink" title="3.1 Big Muff Pi Sustain Circuit."></a><strong>3.1 Big Muff Pi Sustain Circuit.</strong></h2><p>The 100K sustain potentiometer controls the level of the signal going into the clipping blocks. If the level is high, the signal will be more clipped and the distortion effect will hold even if the guitar input signal is not strong. The resistor R<sub>23</sub> prevents the signal from coming from the Input Booster from being cut-off when the sustain pot is at the lowest setting.</p>
+<h2 id="3-2-Clipping-Amplifier-Voltage-Gain-Calculation"><a href="#3-2-Clipping-Amplifier-Voltage-Gain-Calculation" class="headerlink" title="3.2 Clipping Amplifier Voltage Gain Calculation."></a><strong>3.2 Clipping Amplifier Voltage Gain Calculation.</strong></h2><p>The voltage gain can be calculated applying the simplified analysis method as in the Input Booster:</p>
+<ul>
+<li>First Clipping Stage, using the formulas of the Input Booster:</li>
+</ul>
+<p>R<sub>B </sub> = R<sub>S</sub>&#x2F;&#x2F;R<sub>A</sub>&#x2F;&#x2F;R<sub>F </sub> = 10K&#x2F;&#x2F;100K&#x2F;&#x2F;470K &#x3D; 8.9K<br>R<sub>L </sub> = R<sub>F</sub>&#x2F;&#x2F;R<sub>C </sub> = 470K&#x2F;&#x2F;10K &#x3D; 9.8K<br>R<sub>E</sub> &#x3D; 150<br>R<sub>S </sub> = 10K<br>R<sub>F</sub> &#x3D; 470K<br>The results obtained are:<br>B<sub>G </sub> = 1&#x2F;470K<br>A<sub>ZF </sub> = 260<br>The Voltage Gain is G<sub>V </sub> = A<sub>ZF</sub>&#x2F;RS &#x3D; 260&#x2F;10 &#x3D; 26 (28dB). In the real circuit is around 23 dB.</p>
+<ul>
+<li>Second Clipping Stage, using the formulas of the Input Booster:</li>
+</ul>
+<p>R<sub>B </sub> = R<sub>S</sub>&#x2F;&#x2F;R<sub>A</sub>&#x2F;&#x2F;R<sub>F </sub> = 10K&#x2F;&#x2F;100K&#x2F;&#x2F;470K &#x3D; 8.9K<br>R<sub>L </sub> = R<sub>F</sub>&#x2F;&#x2F;R<sub>C </sub> = 470K&#x2F;&#x2F;15K &#x3D; 14.5K<br>R<sub>E</sub> &#x3D; 150<br>R<sub>S</sub> &#x3D; 10K<br>R<sub>F</sub> &#x3D; 470K<br>The results obtained are:<br>B<sub>G </sub> = 1&#x2F;470K<br>A<sub>ZF </sub> = 304<br>The Voltage Gain is G<sub>V </sub> = A<sub>ZF</sub>&#x2F;R<sub>S </sub> = 304&#x2F;10 &#x3D; 30 (29dB). In the real circuit is around 25 dB.</p>
+<p><strong>Note:</strong> In the calculation, the diodes feedback network is not taken into consideration because it contains big capacitors C<sub>6</sub> and C<sub>7</sub> which disconnect the path for DC conditions. </p>
+<p>The Gain of the second clipping stage is slightly higher (1 or 2 dBs) than the first one. However, the voltage gain of this stage will not reach such values as 28 or 29dBs. As it will be seen in the next point, the gain is limited by the clipping diodes action. The output signal of the amplifiers will never exceed ±0.6V and all the extra gain will modify the slew rate and the shape of the clipped signal. </p>
+<p><strong>3.3 Big Muff Pi Clipping Method.</strong></p>
+<p>The diodes D<sub>1</sub>-D<sub>2</sub> and D<sub>3</sub>-D<sub>4</sub> in the collector-base feedback loop of the transistors, clip the signal when the voltage difference between the <em>input</em> (transistor base) and the <em>output</em> (transistor collector) is higher than the V<sub>F</sub> of the diode, which is around 0.6V. So they will limit the signal peaks and the output signal will never exceed ± 0.6V.</p>
+<p>The big 1uF series capacitors C<sub>6</sub> and C<sub>7</sub> located next to the feedback diodes, allow the AC signal to pass through it and be clipped and block the DC bias voltage. Keeping the transistor operating point undisturbed. These caps determine the frequency band the unit clips. Enlarging this cap will make it clip more bass harmonics, make it smaller for more high-end clipping and archiving more saturated tone, more sustain, and compression</p>
+<p><strong>3.4 Clipping Stage Frequency Response.</strong></p>
+<p>In each of the clipping amplifiers, the frequency response is similar to the Input Booster, tailored by two capacitors: The input series decoupling caps C<sub>12</sub>-C<sub>19</sub> acting as a high pass filter and rolling-off the bass below some decs of Hz and the C<sub>6</sub>-C<sub>7</sub> Miller Capacitors acting as a low pass filter shaping the high frequency response and rolling-off around 1KHz:</p>
+<p><img data-src="//qiniu.s1nh.org/bmp-clipping-stage-frequency-response.png" alt="Big Muff Pi Clipping Stage Frequency Response"></p>
+<p>In the image above, the Clipping Stage frequency response is shown. The red curve illustrates the output after the first clipping, with a maximum gain of 23.4 dB and band limited with two poles at 55Hz and 1.78KHz. The blue curve shows the output after the second clipping, with a maximum gain of 25.2 dB (48.6 - 23.4 &#x3D; 25.2) and band limited with two poles at 94Hz and 1.17KHz.</p>
+<p>The BMP distortion is very narrow bandwidth limited, attenuating harmonics at 40dB&#x2F;dec outside the pass-band, and taking into consideration the Input Booster similar response which adds another two poles, all frequencies below 90Hz, and over 1.2KHz are attenuated 60dB&#x2F;dec.</p>
+<p>The basic idea inside the Big Muff Pi is to remove the high harmonics using Miller Capacitors three times: in Q<sub>4</sub>, Q<sub>3</sub> and Q<sub>2</sub> around 1.2 KHzand resulting in a narrow frequency limited response that accentuates the lows and low mids, making it perfect for bass-less bands. It seems that getting rid of its overdriven high end is the trick to increase the <em>sustain</em> of the guitar.</p>
+<p><strong>4. Big Muff Pi Passive Tone Control Stage.</strong></p>
+<p>The Passive Tone Control has a simple and effective design: essentially it is just a combination of high-low pass filters that are mixed together by a single linear 100K <em>Tone</em> potentiometer. The cut-off points are designed so that their interweaving effect introduces a middle-frequency scoop&#x2F;notch at 1KHz when the potentiometer is set to the middle position. </p>
+<p><img data-src="//qiniu.s1nh.org/big-muff-pi-v3-tone-control.png" alt="Big Muff Pi Tone Control"></p>
+<h2 id="4-1-Big-Muff-Pi-Tone-Control-Frequency-Response"><a href="#4-1-Big-Muff-Pi-Tone-Control-Frequency-Response" class="headerlink" title="4.1 Big Muff Pi Tone Control Frequency Response."></a><strong>4.1 Big Muff Pi Tone Control Frequency Response.</strong></h2><p>Find below the BMP frequency response, showing from blue to red all values of the tone potentiometer:</p>
+<p><img data-src="//qiniu.s1nh.org/bmp-tone-control.png" alt="Big Muff Pi Tone Control Frequency Response"></p>
+<ul>
+<li>The green response line has the tone pot set at the midpoint, evidencing the 1KHz scoop. It also shows that the tone control is not able to archive a flat response. There is an overall 7dB loss and at the notch, the loss is about 6.5db (-13.5db total) at 1KHz.</li>
+<li>The blue and red color curves have the tone at full treble&#x2F;bass respectively.</li>
+</ul>
+<h1 id="5-Output-Stage"><a href="#5-Output-Stage" class="headerlink" title="5. Output Stage."></a><strong>5. Output Stage.</strong></h1><p>The Output Stage is once again a common emitter amplifier amp which recovers the volume loss during the passive tone stack.  </p>
+<p><img data-src="//qiniu.s1nh.org/big-muff-pi-v3-output-buffer.png" alt="bBig Muff Pi Output Booster"></p>
+<p>The design of this last stage is simpler than the previous ones, not including resistor Shunt Feedback or Miller compensation. The frequency response is then flat across the audio band and the gain is about 13dB, compensating the loss in the passive tone filter.</p>
+<p>The Voltage Gain in this basic common emitter topology is<br>G<sub>V&nbsp;</sub> = R<sub>C</sub>&#x2F;R<sub>E&nbsp;</sub> = R<sub>6</sub>&#x2F;R<sub>4</sub> &#x3D; 15K&#x2F;3.3K &#x3D; 4.5 &#x3D; 13dB</p>
+<p>The Output impedance of the common emitter transistor stage is equal to R<sub>C</sub> &#x3D; R<sub>6</sub> &#x3D; 10K.</p>
+<p>The last part of the circuit is a simple 100k volume potentiometer that regulates the output level. </p>
+<h2 id="5-1-Big-Muff-Pi-Output-Impedance"><a href="#5-1-Big-Muff-Pi-Output-Impedance" class="headerlink" title="5.1 Big Muff Pi Output Impedance."></a><strong>5.1 Big Muff Pi Output Impedance.</strong></h2><p>The pedal output impedance also depends on the volume potentiometer position, being always less than 10K:</p>
+<ul>
+<li>Volume Potentiometer at maximum volume: Z<sub>out</sub> &#x3D; Z<sub>out|Output Stage</sub> &#x2F;&#x2F; 100K &#x3D; 9K approx.</li>
+<li>Volume Potentiometer at minimum volume: Z<sub>out</sub> &#x3D; Z<sub>out|Output Stage</sub> + 99K &#x2F;&#x2F; 1K &#x3D; 1K approx.</li>
+</ul>
+<h1 id="6-Big-Muff-Pi-Bias-and-Tone-Response"><a href="#6-Big-Muff-Pi-Bias-and-Tone-Response" class="headerlink" title="6. Big Muff Pi Bias and Tone Response."></a><strong>6. Big Muff Pi Bias and Tone Response.</strong></h1><p>In the image below, the most important DC bias points are shown. It can be useful to trace circuit failures:</p>
+<p><img data-src="//qiniu.s1nh.org/big-muff-pi-v3-bias.png" alt="Big Muff Pi Bias"></p>
+<p>In the graph below the most important signals at the output of each stage are shown:</p>
+<p><img data-src="//qiniu.s1nh.org/bmp-waveforms.png" alt="Big Muff Pi Waveforms"></p>
+<ul>
+<li><p><strong>Orange Signal:</strong> It is the input signal, for this test a 1KHz, 200mVpp guitar alike signal is used.</p>
+</li>
+<li><p><strong>Black Signal:</strong> It is the output of the Input Booster, just the input signal inverted and amplified 9.6 times (19.6dB). At this point is important to mention that due to the low-level value of R<sub>14</sub>=47K, the V<sub>C&nbsp;</sub> of the transistor is not at Vcc&#x2F;2&#x3D;4.5V but at 7V. It might cause asymmetric clipping if the input signal is bigger than 0.2Vpp. </p>
+</li>
+<li><p><strong>Red Signal:</strong> It is the output of the first Clipping Stage, the previous signal is amplified 23 dBs and the amplitude is clipped to ±0.6V. The Sustain potentiometer is set at maximum value.</p>
+</li>
+<li><p><strong>Blue Signal:</strong>  It is the output of the first Clipping Stage, the previous signal is amplified 25 dBs and the amplitude is clipped to ±0.6V. After two consecutive clipping stages, the shape is more square or hard.</p>
+</li>
+<li><p><strong>Green Signal:</strong> It is the output after the Tone Control, set at mid position. The signal is attenuated around 13dBs because at 1KHz the mid scoop is there and the shape is slightly changed.</p>
+</li>
+<li><p><strong>Pink Signal:</strong> It is the output signal of the Big Muff Pi. The previous signal is amplified 13dBs without changes in frequency. The Volume potentiometer is set at maximum value.</p>
+</li>
+</ul>
+<h1 id="7-Resources"><a href="#7-Resources" class="headerlink" title="7. Resources."></a><strong>7. Resources.</strong></h1><p><a target="_blank" rel="noopener" href="http://www.bigmuffpage.com/">The Big Muff Page</a>, the most comprehensive site about BMP by Kitrae.<br><a target="_blank" rel="noopener" href="http://www.uotechnology.edu.iq/dep-eee/lectures/2nd/Electronics%201/Part%2004.pdf">Feedback BJT Amplifier Analysis</a> by Dr. Ahmed Saadoon.<br><a target="_blank" rel="noopener" href="http://webs.uvigo.es/ario/docencia/ean/FEEDBACK1.pdf">Feedback BTJ Amplifier Analysis</a> by the University of Vigo.<br><a target="_blank" rel="noopener" href="http://www.coda-effects.com/2015/11/big-muff-mods-and-tweaks.html">BMP Mods and Tweaks.</a><br><a target="_blank" rel="noopener" href="http://www.diyaudio.com/forums/solid-state/144603-what-capacitor-base-collector.html">BMP Questions in DIYaudio</a>.<br><a target="_blank" rel="noopener" href="http://www.muzique.com/lab/tone3.htm">BMP tone Control</a> by AMZ.<br><a target="_blank" rel="noopener" href="http://www.thatraymond.com/downloads/solidstate_guitar_amplifiers_teemu_kyttala_v1.0.pdf">Teemuk Kyttala Solid State Guitar Amplifiers</a>, the Holy Scripture.</p>
+<p>Our sincere appreciation to B. Toskin for helping us with the article.</p>
+<h2 id="7-1-Datasheets"><a href="#7-1-Datasheets" class="headerlink" title="7.1 Datasheets."></a><strong>7.1 Datasheets.</strong></h2><ul>
+<li>NPN Transistors:</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="http://www.datasheetcatalog.org/datasheet/motorola/BC239.pdf">BC239 Datasheet.</a><br><a target="_blank" rel="noopener" href="http://w5jgv.com/tree_amplifier/2N5088-89.pdf">2N5088&#x2F;2N5089 Datasheet.</a><br><a target="_blank" rel="noopener" href="http://www.datasheetcatalog.org/datasheet/motorola/BC549C.pdf">BC549C Datasheet.</a><br><a target="_blank" rel="noopener" href="http://datasheet.seekic.com/PdfFile/SE4/SE4010.pdf">SE4010 Datasheet.</a><br><a target="_blank" rel="noopener" href="http://72.52.208.92/~gbpprorg/mil/cavity/2N5210.pdf">2N5210 Datasheet.</a></p>
+<ul>
+<li>Silicon Diodes:</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="http://www.oup.com/us/pdf/microcircuits/students/diode/1N914B_philip.pdf">1N914 Datasheet.</a><br><a target="_blank" rel="noopener" href="http://www.nxp.com/documents/data_sheet/1N4148_1N4448.pdf">1N4148 Datasheet.</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay-ssss.jpg" alt="S1NH 微信">
+        <span>微信</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>S1NH
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://s1nh.org/post/big-muff-pi-analysis/" title="Big Muff Pi 电路分析">http://s1nh.org/post/big-muff-pi-analysis/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/klon-centaur-analysis/" rel="prev" title="Klon Centaur 电路分析">
+                  <i class="fa fa-angle-left"></i> Klon Centaur 电路分析
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/post/python-different-ways-to-kill-a-thread/" rel="next" title="Python 中杀死线程的几个方法">
+                  Python 中杀死线程的几个方法 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2015 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">S1NH</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/duchengyao" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"duchengyao/duchengyao.github.io","issue_term":"og:title","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js" defer></script>
+
+</body>
+</html>

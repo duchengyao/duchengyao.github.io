@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/6.0.5/fancybox/fancybox.css" integrity="sha256-uTcjoMD6rPt4OyV3Rs02Slxl0BJGMNVKAm/1eYPt2go=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.23.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="不要代码写多了就变得那么没有人情味了 0x00 Intro1. 读入MNIST数据库执行mnist &#x3D; input_data.read_data_sets(&quot;MNIST_data&#x2F;&quot;, one_hot&#x3D;True)后，会检查MNIST_data&#x2F;文件夹下有没有数据库文件，如果没有会自动下载。这一步如果执行比较慢，可以用迅雷手动下载下面四个文件，保存到MNIST_data目录（不需">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Softmax, MLP, CNN 三种方法识别手写数字MNIST——《TensorFlow 实战》读书笔记">
+<meta property="og:url" content="http://s1nh.org/post/Tensorflow-MNIST/index.html">
+<meta property="og:site_name" content="S1NH">
+<meta property="og:description" content="不要代码写多了就变得那么没有人情味了 0x00 Intro1. 读入MNIST数据库执行mnist &#x3D; input_data.read_data_sets(&quot;MNIST_data&#x2F;&quot;, one_hot&#x3D;True)后，会检查MNIST_data&#x2F;文件夹下有没有数据库文件，如果没有会自动下载。这一步如果执行比较慢，可以用迅雷手动下载下面四个文件，保存到MNIST_data目录（不需">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://qiniu.s1nh.org/Blog_Tensorflow_MNIST_0.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/Blog_Tensorflow_MNIST_1.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/Blog_Tensorflow_MNIST_2.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/Blog_Tensorflow_MNIST_3.png">
+<meta property="article:published_time" content="2017-04-01T11:06:56.000Z">
+<meta property="article:modified_time" content="2025-07-10T15:58:05.470Z">
+<meta property="article:author" content="S1NH">
+<meta property="article:tag" content="MNIST">
+<meta property="article:tag" content="Tensorflow">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://qiniu.s1nh.org/Blog_Tensorflow_MNIST_0.png">
+
+
+<link rel="canonical" href="http://s1nh.org/post/Tensorflow-MNIST/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://s1nh.org/post/Tensorflow-MNIST/","path":"post/Tensorflow-MNIST/","title":"Softmax, MLP, CNN 三种方法识别手写数字MNIST——《TensorFlow 实战》读书笔记"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Softmax, MLP, CNN 三种方法识别手写数字MNIST——《TensorFlow 实战》读书笔记 | S1NH</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-44KGHGDYG3"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-44KGHGDYG3","only_pageview":false,"measure_protocol_api_secret":null}</script>
+  <script src="/js/third-party/analytics/google-analytics.js" defer></script>
+
+  <script src="/js/third-party/analytics/baidu-analytics.js" defer></script>
+  <script async src="https://hm.baidu.com/hm.js?4c66a84272e0f7943a305accf6dbdf41"></script>
+
+
+
+
+
+
+  <script defer data-domain="s1nh.org" src="http://home.s1nh.com:32801/js/script.js"></script>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/6.0.5/fancybox/fancybox.umd.js" integrity="sha256-UiSieVaV/DXce2LW7QH+o77w+AIoAvSCPBkezriZ2DQ=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.7.0/mermaid.min.js","integrity":"sha256-4+IKDqhZ/sXjc8Wtl2/MsxI4e0s1KpEVdbEP7V/Lz8U="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">S1NH</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">世界在旅程的尽头终结</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x00-Intro"><span class="nav-text">0x00 Intro</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E8%AF%BB%E5%85%A5MNIST%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-text">1. 读入MNIST数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%88%9D%E5%A7%8B%E5%8C%96-Tensorflow"><span class="nav-text">2. 初始化 Tensorflow</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01-Softmax"><span class="nav-text">0x01 Softmax</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F"><span class="nav-text">1. 定义变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E8%AE%AD%E7%BB%83"><span class="nav-text">2. 训练</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E8%AE%A1%E7%AE%97%E6%AD%A3%E7%A1%AE%E7%8E%87"><span class="nav-text">3. 计算正确率</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02-MLP"><span class="nav-text">0x02 MLP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F-1"><span class="nav-text">1. 定义变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E8%AE%AD%E7%BB%83-1"><span class="nav-text">2. 训练</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E8%AE%A1%E7%AE%97%E6%AD%A3%E7%A1%AE%E7%8E%87-1"><span class="nav-text">3. 计算正确率</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x03-CNN"><span class="nav-text">0x03 CNN</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F-2"><span class="nav-text">1. 定义变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E8%AE%AD%E7%BB%83-2"><span class="nav-text">2. 训练</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x04-%E9%99%84%E5%BD%95"><span class="nav-text">0x04 附录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%85%B3%E4%BA%8Ereduction-indices"><span class="nav-text">1. 关于reduction_indices</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="S1NH"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">S1NH</p>
+  <div class="site-description" itemprop="description">no other developers required.</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">105</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">88</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+<div>
+  <hr>
+  <img src="/images/wechatpay-sss.jpg" alt="Buy me a SSRI.">
+  <a href="/reward-list/" rel="section">"Buy me a coffee."</a>
+</div>
+
+<!-- Matomo -->
+<script>
+  var _paq = window._paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  if (document.domain.indexOf('com') != -1){
+    _paq.push(["setCookieDomain", "*.s1nh.com"]);
+  } else if(document.domain.indexOf('org') != -1){
+    _paq.push(["setCookieDomain", "*.s1nh.org"]);
+  }
+  _paq.push(["setDomains", ["*.s1nh.org","*.s1nh.com"]]);
+  _paq.push(["enableCrossDomainLinking"]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://home.s1nh.com:32443/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    
+    if (document.domain.indexOf('com') != -1){
+      _paq.push(['setSiteId', '2']);
+    } else if(document.domain.indexOf('org') != -1){
+      _paq.push(['setSiteId', '3']);
+    }
+    
+    // Will also collect the website data into Website ID = 1
+    _paq.push(['addTracker', u+'matomo.php', 1]);
+    
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+
+<!-- Google Ads -->
+<!--script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7052751443200899"
+     crossorigin="anonymous"></script-->
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://www.92ez.com/" title="https:&#x2F;&#x2F;www.92ez.com&#x2F;" rel="noopener" target="_blank">一只猿 (关站升级中)</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="http://codewithzhangyi.com/about/" title="http:&#x2F;&#x2F;codewithzhangyi.com&#x2F;about&#x2F;" rel="noopener" target="_blank">好奇心狂热分子 (张怡，也关了)</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://findhao.net/" title="https:&#x2F;&#x2F;findhao.net&#x2F;" rel="noopener" target="_blank">FindHao 的自留地</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/Tensorflow-MNIST/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="S1NH">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="S1NH">
+      <meta itemprop="description" content="no other developers required.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Softmax, MLP, CNN 三种方法识别手写数字MNIST——《TensorFlow 实战》读书笔记 | S1NH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Softmax, MLP, CNN 三种方法识别手写数字MNIST——《TensorFlow 实战》读书笔记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-04-01 19:06:56" itemprop="dateCreated datePublished" datetime="2017-04-01T19:06:56+08:00">2017-04-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/programming/" itemprop="url" rel="index"><span itemprop="name">算法与硬件</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><code>不要代码写多了就变得那么没有人情味了</code></p>
+<h2 id="0x00-Intro"><a href="#0x00-Intro" class="headerlink" title="0x00 Intro"></a>0x00 Intro</h2><h3 id="1-读入MNIST数据库"><a href="#1-读入MNIST数据库" class="headerlink" title="1. 读入MNIST数据库"></a>1. 读入MNIST数据库</h3><p>执行<code>mnist = input_data.read_data_sets(&quot;MNIST_data/&quot;, one_hot=True)</code>后，会检查<code>MNIST_data/</code>文件夹下有没有数据库文件，如果没有会自动下载。这一步如果执行比较慢，可以用迅雷手动下载下面四个文件，保存到MNIST_data目录（不需要解压）</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz">train-images-idx3-ubyte.gz</a>:  training set images (9912422 bytes)</li>
+<li><a target="_blank" rel="noopener" href="http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz">train-labels-idx1-ubyte.gz</a>:  training set labels (28881 bytes)</li>
+<li><a target="_blank" rel="noopener" href="http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz">t10k-images-idx3-ubyte.gz</a>:   test set images (1648877 bytes)</li>
+<li><a target="_blank" rel="noopener" href="http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz">t10k-labels-idx1-ubyte.gz</a>:   test set labels (4542 bytes)</li>
+</ul>
+<span id="more"></span>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tensorflow.examples.tutorials.mnist <span class="keyword">import</span> input_data</span><br><span class="line">mnist = input_data.read_data_sets(<span class="string">&quot;MNIST_data/&quot;</span>, one_hot=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Extracting MNIST_data/train-images-idx3-ubyte.gz
+Extracting MNIST_data/train-labels-idx1-ubyte.gz
+Extracting MNIST_data/t10k-images-idx3-ubyte.gz
+Extracting MNIST_data/t10k-labels-idx1-ubyte.gz
+</code></pre>
+<h3 id="2-初始化-Tensorflow"><a href="#2-初始化-Tensorflow" class="headerlink" title="2. 初始化 Tensorflow"></a>2. 初始化 Tensorflow</h3><p>Tensorflow 运行时默认会把GPU显存一次性占满，添加<code>config.gpu_options.allow_growth = True</code> 使其可以动态分配显存</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">config = tf.ConfigProto()</span><br><span class="line">config.gpu_options.allow_growth = <span class="literal">True</span></span><br><span class="line">sess = tf.InteractiveSession(config = config)</span><br></pre></td></tr></table></figure>
+
+<h2 id="0x01-Softmax"><a href="#0x01-Softmax" class="headerlink" title="0x01 Softmax"></a>0x01 Softmax</h2><p>只用 Softmax Regression 进行分类，正确率约为92%</p>
+<h3 id="1-定义变量"><a href="#1-定义变量" class="headerlink" title="1. 定义变量"></a>1. 定义变量</h3><p>Softmax Regression 的公式可以写成：</p>
+<p>$$y&#x3D;softmax(Wx+b)$$</p>
+<p>其中，<code>x</code>为输入数据（手写数字图片），不限条数的<code>784</code>维的<code>Float32</code>型数据；<br><code>W</code>为<code>784×10（特征维数×图片种类）</code>的<code>Variable</code>向量；<br><code>b</code>是bias（偏置）<br><code>y</code>为Softmax分类后得出的结果</p>
+<p>loss function为<code>cross_entropy</code>，定义如下：</p>
+<p>$$H_y’(y)&#x3D;-\sum_{i}{y’_ilog(y_i)}$$</p>
+<p>而<code>reduce_mean</code>为对每个batch求均值（reduction_indices&#x3D;[1]的意思请看后面的附录， 在新版的<a target="_blank" rel="noopener" href="https://www.tensorflow.org/get_started/mnist/beginners">Tensorflow tutorial</a>中，这部分稍有区别<br>）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">x = tf.placeholder(tf.float32,[<span class="literal">None</span>,<span class="number">784</span>])</span><br><span class="line">W = tf.Variable(tf.zeros([<span class="number">784</span>,<span class="number">10</span>]))</span><br><span class="line">b = tf.Variable(tf.zeros([<span class="number">10</span>]))</span><br><span class="line"></span><br><span class="line">y = tf.nn.softmax(tf.matmul(x,W) + b)</span><br><span class="line">y_ = tf.placeholder(tf.float32,[<span class="literal">None</span>,<span class="number">10</span>])</span><br><span class="line"></span><br><span class="line">cross_entropy = tf.reduce_mean(-tf.reduce_sum(y_ * tf.log(y),reduction_indices=[<span class="number">1</span>]))</span><br><span class="line"></span><br><span class="line">train_step = tf.train.GradientDescentOptimizer(<span class="number">0.5</span>).minimize(cross_entropy)</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-训练"><a href="#2-训练" class="headerlink" title="2. 训练"></a>2. 训练</h3><p>每次训练抽取100个样本作为<code>mini-batch</code>，并传给<code>placeholder(x,y_)</code>进行训练，并每隔250输出一次权重。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">tf.global_variables_initializer().run()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1000</span>):</span><br><span class="line">    batch_xs, batch_ys = mnist.train.next_batch(<span class="number">100</span>)</span><br><span class="line">    sess.run(train_step, feed_dict=&#123;x: batch_xs, y_: batch_ys&#125;)</span><br><span class="line">    <span class="keyword">if</span> (i-<span class="number">1</span>)%<span class="number">250</span> == <span class="number">0</span>:</span><br><span class="line">        fig2,ax2 = plt.subplots(nrows=<span class="number">1</span>, ncols=<span class="number">10</span>, figsize=(<span class="number">20</span>,<span class="number">2</span>))</span><br><span class="line">        WW=np.transpose(sess.run(tf.reshape(W,[<span class="number">784</span>,<span class="number">10</span>])))</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,<span class="number">10</span>):</span><br><span class="line">            ax2[i].imshow(np.reshape(WW[i]+np.ones(<span class="number">784</span>), (<span class="number">28</span>, <span class="number">28</span>)))</span><br><span class="line">        plt.show()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img data-src="//qiniu.s1nh.org/Blog_Tensorflow_MNIST_0.png" alt="png"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_Tensorflow_MNIST_1.png" alt="png"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_Tensorflow_MNIST_2.png" alt="png"></p>
+<p><img data-src="//qiniu.s1nh.org/Blog_Tensorflow_MNIST_3.png" alt="png"></p>
+<h3 id="3-计算正确率"><a href="#3-计算正确率" class="headerlink" title="3. 计算正确率"></a>3. 计算正确率</h3><p>accuracy 与 train_step 的区别官方给出了如下解释: “<em>Note: the Tensor class will be replaced by Output in the future. Currently these two are aliases for each other.</em>“</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">correct_prediction = tf.equal(tf.arg_max(y,<span class="number">1</span>),tf.arg_max(y_,<span class="number">1</span>))</span><br><span class="line">accuracy = tf.reduce_mean(tf.cast(correct_prediction,tf.float32))</span><br><span class="line"><span class="built_in">print</span>(sess.run(accuracy, feed_dict=&#123;x: mnist.test.images, y_: mnist.test.labels&#125;))</span><br><span class="line"></span><br><span class="line">summary_writer = tf.summary.FileWriter(<span class="string">&#x27;Softmax&#x27;</span>, sess.graph)</span><br></pre></td></tr></table></figure>
+
+<pre><code>0.9163
+</code></pre>
+<h2 id="0x02-MLP"><a href="#0x02-MLP" class="headerlink" title="0x02 MLP"></a>0x02 MLP</h2><p>使用多层感知机（MLP）进行分类，准确率约为98%</p>
+<h3 id="1-定义变量-1"><a href="#1-定义变量-1" class="headerlink" title="1. 定义变量"></a>1. 定义变量</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">in_units = <span class="number">784</span></span><br><span class="line">h1_units = <span class="number">300</span></span><br><span class="line">W1 = tf.Variable(tf.truncated_normal([in_units,h1_units],stddev=<span class="number">0.1</span>))</span><br><span class="line">b1 = tf.Variable(tf.zeros([h1_units]))</span><br><span class="line">W2 = tf.Variable(tf.zeros([h1_units, <span class="number">10</span>]))</span><br><span class="line">b2 = tf.Variable(tf.zeros([<span class="number">10</span>]))</span><br><span class="line"></span><br><span class="line">x = tf.placeholder(tf.float32,[<span class="literal">None</span>,in_units])</span><br><span class="line">keep_prob = tf.placeholder(tf.float32)</span><br><span class="line"></span><br><span class="line">hidden1 = tf.nn.relu(tf.matmul(x,W1)+b1)</span><br><span class="line">hidden1_drop = tf.nn.dropout(hidden1,keep_prob)</span><br><span class="line">y = tf.nn.softmax(tf.matmul(hidden1_drop,W2)+b2)</span><br><span class="line"></span><br><span class="line">y_ = tf.placeholder(tf.float32,[<span class="literal">None</span>,<span class="number">10</span>])</span><br><span class="line">cross_entropy = tf.reduce_mean(-tf.reduce_sum(y_ * tf.log(y),reduction_indices=[<span class="number">1</span>]))</span><br><span class="line">train_step = tf.train.GradientDescentOptimizer(<span class="number">0.3</span>).minimize(cross_entropy)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-训练-1"><a href="#2-训练-1" class="headerlink" title="2. 训练"></a>2. 训练</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tf.global_variables_initializer().run()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5000</span>):</span><br><span class="line">    batch_xs, batch_ys = mnist.train.next_batch(<span class="number">100</span>)</span><br><span class="line">    train_step.run(&#123;x: batch_xs, y_: batch_ys, keep_prob: <span class="number">0.75</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-计算正确率-1"><a href="#3-计算正确率-1" class="headerlink" title="3. 计算正确率"></a>3. 计算正确率</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">correct_prediction = tf.equal(tf.argmax(y,<span class="number">1</span>),tf.argmax(y_,<span class="number">1</span>))</span><br><span class="line">accuracy = tf.reduce_mean(tf.cast(correct_prediction,tf.float32))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(accuracy.<span class="built_in">eval</span>(&#123;x:mnist.test.images,y_:mnist.test.labels, keep_prob: <span class="number">1.0</span>&#125;))</span><br><span class="line">summary_writer = tf.summary.FileWriter(<span class="string">&#x27;MLP&#x27;</span>, sess.graph)</span><br></pre></td></tr></table></figure>
+
+<pre><code>0.9787
+</code></pre>
+<h2 id="0x03-CNN"><a href="#0x03-CNN" class="headerlink" title="0x03 CNN"></a>0x03 CNN</h2><h3 id="1-定义变量-2"><a href="#1-定义变量-2" class="headerlink" title="1. 定义变量"></a>1. 定义变量</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">weight_variable</span>(<span class="params">shape</span>):</span><br><span class="line">    initial = tf.truncated_normal(shape, stddev=<span class="number">0.1</span>)</span><br><span class="line">    <span class="keyword">return</span> tf.Variable(initial)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">bias_variable</span>(<span class="params">shape</span>):</span><br><span class="line">    initial = tf.constant(<span class="number">0.1</span>,shape=shape)</span><br><span class="line">    <span class="keyword">return</span> tf.Variable(initial)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">conv2d</span>(<span class="params">x, W</span>):</span><br><span class="line">    <span class="keyword">return</span> tf.nn.conv2d(x, W, strides=[<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>], padding=<span class="string">&#x27;SAME&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">max_pool_2x2</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">return</span> tf.nn.max_pool(x, ksize=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">1</span>], strides=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">1</span>], padding=<span class="string">&#x27;SAME&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">x = tf.placeholder(tf.float32,[<span class="literal">None</span>,in_units])</span><br><span class="line">y_ = tf.placeholder(tf.float32,[<span class="literal">None</span>,<span class="number">10</span>])</span><br><span class="line">x_image = tf.reshape(x, [-<span class="number">1</span>,<span class="number">28</span>,<span class="number">28</span>,<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line">W_conv1 = weight_variable([<span class="number">5</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">32</span>])</span><br><span class="line">b_conv1 = bias_variable([<span class="number">32</span>])</span><br><span class="line">h_conv1 = tf.nn.relu(conv2d(x_image,W_conv1) + b_conv1)</span><br><span class="line">h_pool1 = max_pool_2x2(h_conv1)</span><br><span class="line"></span><br><span class="line">W_conv2 = weight_variable([<span class="number">5</span>,<span class="number">5</span>,<span class="number">32</span>,<span class="number">64</span>])</span><br><span class="line">b_conv2 = bias_variable([<span class="number">64</span>])</span><br><span class="line">h_conv2 = tf.nn.relu(conv2d(h_pool1, W_conv2) + b_conv2)</span><br><span class="line">h_pool2 = max_pool_2x2(h_conv2)</span><br><span class="line"></span><br><span class="line">W_fc1 = weight_variable([<span class="number">7</span>*<span class="number">7</span>*<span class="number">64</span>, <span class="number">1024</span>])</span><br><span class="line">b_fc1 = bias_variable([<span class="number">1024</span>])</span><br><span class="line">h_pool2_flat = tf.reshape(h_pool2,[-<span class="number">1</span>,<span class="number">7</span>*<span class="number">7</span>*<span class="number">64</span>])</span><br><span class="line">h_fc1 = tf.nn.relu(tf.matmul(h_pool2_flat,W_fc1) + b_fc1)</span><br><span class="line"></span><br><span class="line">keep_prob = tf.placeholder(tf.float32)</span><br><span class="line">h_fc1_drop = tf.nn.dropout(h_fc1,keep_prob)</span><br><span class="line"></span><br><span class="line">W_fc2 = weight_variable([<span class="number">1024</span>, <span class="number">10</span>])</span><br><span class="line">b_fc2 = bias_variable([<span class="number">10</span>])</span><br><span class="line">y_conv = tf.nn.softmax(tf.matmul(h_fc1_drop, W_fc2) + b_fc2)</span><br><span class="line"></span><br><span class="line">cross_entropy = tf.reduce_mean(-tf.reduce_sum(y_ * tf.log(y_conv), reduction_indices=[<span class="number">1</span>]))</span><br><span class="line">train_step = tf.train.AdamOptimizer(<span class="number">1e-4</span>).minimize(cross_entropy)</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-训练-2"><a href="#2-训练-2" class="headerlink" title="2. 训练"></a>2. 训练</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">correct_prediction = tf.equal(tf.arg_max(y_conv,<span class="number">1</span>),tf.argmax(y_,<span class="number">1</span>))</span><br><span class="line">accuracy = tf.reduce_mean(tf.cast(correct_prediction,tf.float32))</span><br><span class="line"></span><br><span class="line">tf.global_variables_initializer().run()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">20000</span>):</span><br><span class="line">    batch = mnist.train.next_batch(<span class="number">100</span>)</span><br><span class="line">    <span class="keyword">if</span> i%<span class="number">100</span> == <span class="number">0</span>:</span><br><span class="line">        train_accuracy = accuracy.<span class="built_in">eval</span>(feed_dict=&#123;x:batch[<span class="number">0</span>], y_:batch[<span class="number">1</span>], keep_prob:<span class="number">1.0</span>&#125;)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;step %d, training accuracy %g&quot;</span>%(i,train_accuracy))</span><br><span class="line">    train_step.run(feed_dict=&#123;x:batch[<span class="number">0</span>],y_:batch[<span class="number">1</span>],keep_prob:<span class="number">0.5</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<pre><code>step 0, training accuracy 0.07
+step 100, training accuracy 0.84
+step 200, training accuracy 0.9
+step 300, training accuracy 0.88
+step 400, training accuracy 0.95
+step 500, training accuracy 0.98
+step 600, training accuracy 0.96
+step 700, training accuracy 0.94
+step 800, training accuracy 1
+step 900, training accuracy 0.98
+step 1000, training accuracy 0.99
+step 1100, training accuracy 0.96
+step 1200, training accuracy 0.99
+step 1300, training accuracy 0.99
+step 1400, training accuracy 0.98
+step 1500, training accuracy 1
+step 1600, training accuracy 0.98
+step 1700, training accuracy 0.97
+step 1800, training accuracy 0.99
+step 1900, training accuracy 0.98
+step 2000, training accuracy 0.98
+step 2100, training accuracy 0.98
+step 2200, training accuracy 0.99
+step 2300, training accuracy 0.98
+step 2400, training accuracy 0.99
+step 2500, training accuracy 0.97
+step 2600, training accuracy 0.97
+step 2700, training accuracy 0.97
+step 2800, training accuracy 0.99
+step 2900, training accuracy 1
+step 3000, training accuracy 1
+step 3100, training accuracy 1
+step 3200, training accuracy 0.98
+step 3300, training accuracy 0.99
+step 3400, training accuracy 0.98
+step 3500, training accuracy 1
+step 3600, training accuracy 1
+step 3700, training accuracy 0.98
+step 3800, training accuracy 1
+step 3900, training accuracy 0.98
+step 4000, training accuracy 1
+step 4100, training accuracy 0.99
+step 4200, training accuracy 0.99
+step 4300, training accuracy 0.99
+step 4400, training accuracy 1
+step 4500, training accuracy 0.99
+step 4600, training accuracy 1
+step 4700, training accuracy 1
+step 4800, training accuracy 1
+step 4900, training accuracy 0.98
+step 5000, training accuracy 0.99
+step 5100, training accuracy 1
+step 5200, training accuracy 0.98
+step 5300, training accuracy 1
+step 5400, training accuracy 1
+step 5500, training accuracy 1
+step 5600, training accuracy 1
+step 5700, training accuracy 1
+step 5800, training accuracy 1
+step 5900, training accuracy 0.99
+step 6000, training accuracy 1
+step 6100, training accuracy 1
+step 6200, training accuracy 1
+step 6300, training accuracy 0.99
+step 6400, training accuracy 1
+step 6500, training accuracy 0.99
+step 6600, training accuracy 1
+step 6700, training accuracy 1
+step 6800, training accuracy 1
+step 6900, training accuracy 0.97
+
+...
+
+step 18500, training accuracy 1
+step 18600, training accuracy 1
+step 18700, training accuracy 1
+step 18800, training accuracy 1
+step 18900, training accuracy 1
+step 19000, training accuracy 1
+step 19100, training accuracy 1
+step 19200, training accuracy 1
+step 19300, training accuracy 1
+step 19400, training accuracy 1
+step 19500, training accuracy 1
+step 19600, training accuracy 1
+step 19700, training accuracy 1
+step 19800, training accuracy 1
+step 19900, training accuracy 1
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;test accuracy %g&quot;</span>%accuracy.<span class="built_in">eval</span>(feed_dict=&#123;x: mnist.test.images, y_: mnist.test.labels,keep_prob:<span class="number">1.0</span>&#125;)) <span class="comment"># 这一步会瞬间把显存占满</span></span><br><span class="line">summary_writer = tf.summary.FileWriter(<span class="string">&#x27;CNN&#x27;</span>, sess.graph)</span><br></pre></td></tr></table></figure>
+
+<pre><code>test accuracy 0.9931
+</code></pre>
+<h2 id="0x04-附录"><a href="#0x04-附录" class="headerlink" title="0x04 附录"></a>0x04 附录</h2><h3 id="1-关于reduction-indices"><a href="#1-关于reduction-indices" class="headerlink" title="1. 关于reduction_indices"></a>1. 关于reduction_indices</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">x=[[<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>],[<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>]]</span><br><span class="line">y0=tf.reduce_sum(x,reduction_indices=[<span class="number">0</span>])</span><br><span class="line">y1=tf.reduce_sum(x,reduction_indices=[<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;x  = &quot;</span>, x)</span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;y0 = &quot;</span>, sess.run(y0), <span class="string">&quot;\t(x在第0维度相加)&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;y1 = &quot;</span>, sess.run(y1), <span class="string">&quot;\t(x在第1维度相加)&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<pre><code>x  =  [[2, 2, 2], [2, 2, 2]]
+y0 =  [4 4 4] 	(x在第0维度相加)
+y1 =  [6 6] 	(x在第1维度相加)
+</code></pre>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay-ssss.jpg" alt="S1NH 微信">
+        <span>微信</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>S1NH
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://s1nh.org/post/Tensorflow-MNIST/" title="Softmax, MLP, CNN 三种方法识别手写数字MNIST——《TensorFlow 实战》读书笔记">http://s1nh.org/post/Tensorflow-MNIST/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/MNIST/" rel="tag"># MNIST</a>
+              <a href="/tags/Tensorflow/" rel="tag"># Tensorflow</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/hackrf-quick-start/" rel="prev" title="HackRF 入门 -- GPS欺骗、GSM嗅探">
+                  <i class="fa fa-angle-left"></i> HackRF 入门 -- GPS欺骗、GSM嗅探
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/post/jetson-tx-2-all-you-know/" rel="next" title="Jetson TX-2 入门 -- 全部你应该知道的">
+                  Jetson TX-2 入门 -- 全部你应该知道的 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2015 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">S1NH</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/duchengyao" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"duchengyao/duchengyao.github.io","issue_term":"og:title","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js" defer></script>
+
+</body>
+</html>

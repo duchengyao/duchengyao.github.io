@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/6.0.5/fancybox/fancybox.css" integrity="sha256-uTcjoMD6rPt4OyV3Rs02Slxl0BJGMNVKAm/1eYPt2go=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.23.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="听说最近推出了5美元的树莓派，一度被黄牛抢光然后卖到了50美元。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Beaglebone Black 折腾笔记（二） 搭建环境">
+<meta property="og:url" content="http://s1nh.org/post/Beaglebone-Black_02/index.html">
+<meta property="og:site_name" content="S1NH">
+<meta property="og:description" content="听说最近推出了5美元的树莓派，一度被黄牛抢光然后卖到了50美元。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2015-12-07T07:54:28.000Z">
+<meta property="article:modified_time" content="2025-07-10T15:58:05.469Z">
+<meta property="article:author" content="S1NH">
+<meta property="article:tag" content="Beaglebone Black">
+<meta property="article:tag" content="Kali Linux">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://s1nh.org/post/Beaglebone-Black_02/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://s1nh.org/post/Beaglebone-Black_02/","path":"post/Beaglebone-Black_02/","title":"Beaglebone Black 折腾笔记（二） 搭建环境"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Beaglebone Black 折腾笔记（二） 搭建环境 | S1NH</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-44KGHGDYG3"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-44KGHGDYG3","only_pageview":false,"measure_protocol_api_secret":null}</script>
+  <script src="/js/third-party/analytics/google-analytics.js" defer></script>
+
+  <script src="/js/third-party/analytics/baidu-analytics.js" defer></script>
+  <script async src="https://hm.baidu.com/hm.js?4c66a84272e0f7943a305accf6dbdf41"></script>
+
+
+
+
+
+
+  <script defer data-domain="s1nh.org" src="http://home.s1nh.com:32801/js/script.js"></script>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/6.0.5/fancybox/fancybox.umd.js" integrity="sha256-UiSieVaV/DXce2LW7QH+o77w+AIoAvSCPBkezriZ2DQ=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.7.0/mermaid.min.js","integrity":"sha256-4+IKDqhZ/sXjc8Wtl2/MsxI4e0s1KpEVdbEP7V/Lz8U="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">S1NH</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">世界在旅程的尽头终结</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85BBB"><span class="nav-text">安装BBB</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%A5%BD%E5%90%84%E4%B8%AA%E7%89%88%E6%9C%AC%E7%9A%84Linux-for-BBB"><span class="nav-text">准备好各个版本的Linux for BBB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Image%E5%88%B0microSD%E5%8D%A1"><span class="nav-text">安装Image到microSD卡</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%86Image%E5%86%99%E5%85%A5eMMC"><span class="nav-text">将Image写入eMMC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85LXDE"><span class="nav-text">安装LXDE</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%B2%E5%8F%A3%E8%B0%83%E8%AF%95"><span class="nav-text">串口调试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%B2%E7%9F%A5%E9%97%AE%E9%A2%98"><span class="nav-text">已知问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A7%BB%E5%8A%A8%E9%BC%A0%E6%A0%87%E6%97%B6%E4%BC%9A%E5%8D%A1%E6%AD%BB"><span class="nav-text">移动鼠标时会卡死</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%B0%9D%E8%AF%95%E8%A7%A3%E5%86%B3"><span class="nav-text">第一次尝试解决</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E6%AC%A1%E5%B0%9D%E8%AF%95"><span class="nav-text">第二次尝试</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E6%AC%A1%EF%BC%9A%E6%9B%B4%E6%96%B0%E5%86%85%E6%A0%B8"><span class="nav-text">第三次：更新内核</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%80%E5%90%8E%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-text">最后的解决方案</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="S1NH"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">S1NH</p>
+  <div class="site-description" itemprop="description">no other developers required.</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">105</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">88</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+<div>
+  <hr>
+  <img src="/images/wechatpay-sss.jpg" alt="Buy me a SSRI.">
+  <a href="/reward-list/" rel="section">"Buy me a coffee."</a>
+</div>
+
+<!-- Matomo -->
+<script>
+  var _paq = window._paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  if (document.domain.indexOf('com') != -1){
+    _paq.push(["setCookieDomain", "*.s1nh.com"]);
+  } else if(document.domain.indexOf('org') != -1){
+    _paq.push(["setCookieDomain", "*.s1nh.org"]);
+  }
+  _paq.push(["setDomains", ["*.s1nh.org","*.s1nh.com"]]);
+  _paq.push(["enableCrossDomainLinking"]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://home.s1nh.com:32443/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    
+    if (document.domain.indexOf('com') != -1){
+      _paq.push(['setSiteId', '2']);
+    } else if(document.domain.indexOf('org') != -1){
+      _paq.push(['setSiteId', '3']);
+    }
+    
+    // Will also collect the website data into Website ID = 1
+    _paq.push(['addTracker', u+'matomo.php', 1]);
+    
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+
+<!-- Google Ads -->
+<!--script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7052751443200899"
+     crossorigin="anonymous"></script-->
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://www.92ez.com/" title="https:&#x2F;&#x2F;www.92ez.com&#x2F;" rel="noopener" target="_blank">一只猿 (关站升级中)</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="http://codewithzhangyi.com/about/" title="http:&#x2F;&#x2F;codewithzhangyi.com&#x2F;about&#x2F;" rel="noopener" target="_blank">好奇心狂热分子 (张怡，也关了)</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://findhao.net/" title="https:&#x2F;&#x2F;findhao.net&#x2F;" rel="noopener" target="_blank">FindHao 的自留地</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/Beaglebone-Black_02/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="S1NH">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="S1NH">
+      <meta itemprop="description" content="no other developers required.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Beaglebone Black 折腾笔记（二） 搭建环境 | S1NH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Beaglebone Black 折腾笔记（二） 搭建环境
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2015-12-07 15:54:28" itemprop="dateCreated datePublished" datetime="2015-12-07T15:54:28+08:00">2015-12-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/programming/" itemprop="url" rel="index"><span itemprop="name">算法与硬件</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>听说最近推出了5美元的树莓派，一度被黄牛抢光然后卖到了50美元。</p>
+<span id="more"></span>
+
+<p>之前在逛Kali社区的时候发现的Beaglebone Black (BBB)，第一次了解这种嵌入式开发板，简直像看到了新大陆，爱不释手。买了开发板可以做<a target="_blank" rel="noopener" href="http://buzzorange.com/techorange/2015/12/07/rasberry-pi-10-things/">一些很好玩的东西</a>和<a target="_blank" rel="noopener" href="http://makezine.com/2013/06/05/33-rpi-beowulf-cluster/">很牛逼的项目</a>等各种有意思的事情。</p>
+<p>5美元的树莓派估计明年在国内才能买到，对于现在来说，BBB应该是一个很不错的解决方案：<a target="_blank" rel="noopener" href="http://www.geekfan.net/5246/">嵌入式平台选择：树莓派 or BeagleBone Black（BBB）</a></p>
+<h2 id="安装BBB"><a href="#安装BBB" class="headerlink" title="安装BBB"></a>安装BBB</h2><h3 id="准备好各个版本的Linux-for-BBB"><a href="#准备好各个版本的Linux-for-BBB" class="headerlink" title="准备好各个版本的Linux for BBB"></a>准备好各个版本的Linux for BBB</h3><ul>
+<li><a target="_blank" rel="noopener" href="http://beagleboard.org/latest-images">BeagleBoard.org Latest Firmware Images</a>：BBB官方页面的下载链接，我在这下载了<em>bone-debian-8.2-tester-2gb-armhf-2015-11-12-2gb.img.xz</em>，刷到Flash以后，发现没有LXDE桌面环境。</li>
+<li><a target="_blank" rel="noopener" href="http://elinux.org/Beagleboard:BeagleBoneBlack_Debian">Beagleboard:BeagleBoneBlack Debian</a>：Embedded Linux。在Debian Releases里可以下载到各种版本的Image。</li>
+<li><a target="_blank" rel="noopener" href="https://www.offensive-security.com/kali-linux-vmware-arm-image-download/">Kali Linux Downloads – Custom Images</a>：Kali Linux，可是官网的2.0.1版好像有个USB的Bug，在下文中有提出。</li>
+<li><a target="_blank" rel="noopener" href="https://www.kali.org/kali-linux-features/">Kali Linux Features</a>|<a target="_blank" rel="noopener" href="https://www.offensive-security.com/kali-linux/generating-kali-raspberry-pi-images/">Generating Kali Raspberry Pi Images</a>|<a target="_blank" rel="noopener" href="https://github.com/offensive-security/kali-arm-build-scripts">Kali Linux ARM build scripts</a>：Kali Linux，这三个网站好像是教你怎么自己编译镜像的</li>
+</ul>
+<p>要注意的是，BBB 现在推出了有4G eMMC 的 Rev C，所以下载之前一定要看好<code>版本号(Rev)</code>；还有要注意的是要主意<code>microSD/Standalone</code>和<code>lxde/console</code>。</p>
+<p>注意，有些网站在天朝被墙了，请参照之前的文章用<a href="/tags/Lantern/">Lantern</a>翻墙。</p>
+<h3 id="安装Image到microSD卡"><a href="#安装Image到microSD卡" class="headerlink" title="安装Image到microSD卡"></a>安装Image到microSD卡</h3><p>分别在插入&#x2F;拔出SD卡的时候输入命令<code>ls /dev</code>，查看SD卡的磁盘名称，我的是<code>disk2</code>。</p>
+<pre><code>//警告！如果不知道dd命令是干嘛的，或者不知道我上面说的`disk2`是怎么来的
+//在你baidu清楚之前，不要执行下面那行代码。
+
+dd if=BBB-eMMC-flasher-debian-7.9-lxde-armhf-2015-11-03-2gb.img of=/dev/rdisk2 bs=1m
+</code></pre>
+<ul>
+<li>如果提示<code>dd: bs: illegal numeric value</code>，把<code>bs=1m</code>改为<code>bs=1M</code>。</li>
+<li>如果提示<code>Resource busy</code>，记得Unmount SD卡</li>
+</ul>
+<h3 id="将Image写入eMMC"><a href="#将Image写入eMMC" class="headerlink" title="将Image写入eMMC"></a>将Image写入eMMC</h3><p>镜像写入SD卡后，修改<code>/boot/uEnv.txt</code>，把下面第二行前面的”#”去掉。</p>
+<pre><code>##enable BBB: eMMC Flasher:
+#cmdline=init=/opt/scripts/tools/eMMC/init-eMMC-flasher-v3.sh
+</code></pre>
+<p>重新启动，就会看到BBB的四个LED灯像流水一样闪烁。刷完以后BBB会自动关机。等它刷新完eMMC以后，记得拔出microSD卡，否则下次开机后会重新刷一遍- -</p>
+<h3 id="安装LXDE"><a href="#安装LXDE" class="headerlink" title="安装LXDE"></a>安装LXDE</h3><p>在官网下载了Debian8.2的Image，安装完毕后发现没有桌面环境。输入以下命令手动安装<a target="_blank" rel="noopener" href="http://wiki.lxde.org/zh/Debian">LXDE桌面环境</a>：</p>
+<pre><code>aptitude install --without-recommends lxde  //安装简化版的LXDE
+apt-get install xorg xserver-xorg           //如果不安装这个，没有startx命令					
+</code></pre>
+<p>安装完毕后，执行<code>startx</code>运行桌面环境。启动后的桌面环境会报错<code>no session for pid ****</code>，不知道是什么原因耶。</p>
+<p>因为板载eMMC只有2G，最后我放弃了这种方式，选择了直接使用4G-SD卡的Image。</p>
+<h2 id="串口调试"><a href="#串口调试" class="headerlink" title="串口调试"></a>串口调试</h2><p>在嵌入式开发和单片机开发，串口是必不可少是外设设备。当你的BBB出问题无法启动时，你可以通过串口对它进行调试。</p>
+<p>今天研究的是如何在Linux 下使用串口调试。Windows 的之前已经尝试过，要在<a target="_blank" rel="noopener" href="http://www.ftdichip.com/Drivers/VCP.htm">ftdichip</a>下载驱动，然后安装一个串口调试软件即可。</p>
+<p>###准备串口驱动</p>
+<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/david_xtd/article/details/24541627">Linux环境下使用 USB转串口驱动</a></p>
+<p>Kali Linux 已经自带了串口驱动，执行<code>dmesg | grep tty</code>看到了满屏幕的<code>ttyUSB0</code></p>
+<pre><code>root@kali:~# dmesg | grep tty
+[    0.000000] console [tty0] enabled
+[  196.623578] usb 1-2.1: FTDI USB Serial Device converter now attached to ttyUSB0
+[  260.219668] ftdi_sio ttyUSB0: FTDI USB Serial Device converter now disconnected from ttyUSB0
+[  261.507543] usb 1-2.1: FTDI USB Serial Device converter now attached to ttyUSB0
+[  515.250387] ftdi_sio ttyUSB0: failed to get modem status: -71
+[  517.252789] ftdi_sio ttyUSB0: error from flowcontrol urb
+[  526.263896] ftdi_sio ttyUSB0: ftdi_set_termios FAILED to set databits/stopbits/parity
+[  527.264684] ftdi_sio ttyUSB0: ftdi_set_termios urb failed to set baudrate
+[  529.267373] ftdi_sio ttyUSB0: urb failed to clear flow control
+[  533.273013] ftdi_sio ttyUSB0: failed to get modem status: -71
+[  535.275199] ftdi_sio ttyUSB0: error from flowcontrol urb
+[  559.407134] ftdi_sio ttyUSB0: FTDI USB Serial Device converter now disconnected from ttyUSB0
+[  747.635485] usb 1-2.1: FTDI USB Serial Device converter now attached to ttyUSB0
+[  871.627615] ftdi_sio ttyUSB0: FTDI USB Serial Device converter now disconnected from ttyUSB0
+[  886.630016] usb 1-2.1: FTDI USB Serial Device converter now attached to ttyUSB0
+[  947.461802] ftdi_sio ttyUSB0: FTDI USB Serial Device converter now disconnected from ttyUSB0
+[  962.820144] usb 1-2.1: FTDI USB Serial Device converter now attached to ttyUSB0
+[ 3345.864141] ftdi_sio ttyUSB0: error from flowcontrol urb
+[ 3345.864523] ftdi_sio ttyUSB0: FTDI USB Serial Device converter now disconnected from ttyUSB0
+[ 3387.249864] usb 1-2.1: FTDI USB Serial Device converter now attached to ttyUSB0
+[ 6856.149365] ftdi_sio ttyUSB0: usb_serial_generic_read_bulk_callback - urb stopped: -32
+[ 8138.331832] ftdi_sio ttyUSB0: FTDI USB Serial Device converter now disconnected from ttyUSB0
+[ 8144.025392] usb 1-2.1: FTDI USB Serial Device converter now attached to ttyUSB0
+</code></pre>
+<p>###准备Minicom</p>
+<p><a target="_blank" rel="noopener" href="https://help.ubuntu.com/community/Minicom">Minicom</a></p>
+<ul>
+<li><p>Kali Linux 已经给装好了Minicom，执行一下<code>minicom -s</code>，按照下面命令配置好串口<code>A -    Serial Device      : /dev/ttyUSB0</code></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://blog.csdn.net/bird67/article/details/2127235">linux超级终端minicom的使用方法</a>，这篇文章还说要“将 Hardware Flow Control 设 为 NO”，“修改Modem and dialing, 将Init string, Reset string, Hang-up string设置为空” </p>
+</li>
+<li><p>设置完成后选择Save setup as dfl将当前设置保存为默认设置</p>
+</li>
+</ul>
+<h2 id="已知问题"><a href="#已知问题" class="headerlink" title="已知问题"></a>已知问题</h2><h3 id="移动鼠标时会卡死"><a href="#移动鼠标时会卡死" class="headerlink" title="移动鼠标时会卡死"></a>移动鼠标时会卡死</h3><p>很开心的进入GUI界面以后，移动鼠标准备点击输入密码，然后BBB居然卡死了。卡死以后，敲击鼠标、键盘没有反应，LED 灯也不闪了。又试了几次，只要不移动鼠标，通过键盘输入<code>root/toor</code>正常进入Desktop；不论在什么状态下，只要一碰鼠标，等三秒钟电脑就卡死了。</p>
+<h4 id="第一次尝试解决"><a href="#第一次尝试解决" class="headerlink" title="第一次尝试解决"></a>第一次尝试解决</h4><p>Google了一下，还真有人碰到了这个问题：<a target="_blank" rel="noopener" href="https://bugs.kali.org/view.php?id=2510#bugnotes">0002510: Beaglebone mouse crash</a>；继续Google，看到了这个：<br><a target="_blank" rel="noopener" href="http://g4fre.blogspot.com/2014/01/beaglebone-black-ubuntu-1310-with.html">BeagleBone Black Ubuntu 13.10 with desktop… another UBUNTU FAILURE!!</a>，上面balabala一大堆没怎么看懂，后面有一个人给了解决方案：<em>According to armhf we must rebuild the modules dependency list. run depmod -a -v “3.8.13-bone30” as root. <a target="_blank" rel="noopener" href="http://www.armhf.com/index.php/boards/beaglebone-black/">http://www.armhf.com/index.php/boards/beaglebone-black/</a></em> </p>
+<pre><code>root@kali:~# uname -a       //查看版本号                                                    
+Linux kali 3.8.13-bone53 #1 SMP Thu Aug 13 23:27:51 CDT 2015 armv7l GNU/Linux   
+root@kali:~# depmod -a -v &quot;3.8.13-bone53&quot;
+</code></pre>
+<p>运行以后重启电脑，发现并没有什么卵用，继续卡死。</p>
+<h4 id="第二次尝试"><a href="#第二次尝试" class="headerlink" title="第二次尝试"></a>第二次尝试</h4><p>然后又翻到了这篇：<a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/27065598/beaglebone-black-freezes">stackoverflow: BeagleBone Black freezes</a>，回复说是TI的这个芯片里面的中断控制器设计问题，会导致“babble”中断响应；<a target="_blank" rel="noopener" href="http://e2e.ti.com/support/arm/sitara_arm/f/791/t/308549">AM335X USB babble interrupt when DP and DM are both high in full-speed mode</a>当一个full-speed USB 的 DP 和 DM 信号都在高电平时就会产生这种中断响应。</p>
+<p>看到这，貌似无解了，可是我在用<strong>官方的Debian， 并运行lxde GUI的时候，并不会卡死</strong>。</p>
+<p><em>我在用串口调试的时候发现，虽然对USB进行插拔的时候会出现“babble”中断，可是这并不是导致系统锁死的原因。因为我在用官方镜像的时候也会出现“babble”中断，可是并没有任何卡死。</em></p>
+<h4 id="第三次：更新内核"><a href="#第三次：更新内核" class="headerlink" title="第三次：更新内核"></a>第三次：更新内核</h4><p>又看到了一篇文章，这个问题只出现在3.8.13版本的kernel中。可是Kali Linux 只提供这个版本的Kernel，明天我试一下安装官方4.0版本的Kernel</p>
+<p><a target="_blank" rel="noopener" href="https://bugs.kali.org/view.php?id=2610&history=1#history">0002610: Cannot change wireless MAC with Ralink 3070 and Beaglebone Black 3.8.13 kernel</a>这里好像有介绍。</p>
+<p><em>更新内核失败了:(</em></p>
+<h4 id="最后的解决方案"><a href="#最后的解决方案" class="headerlink" title="最后的解决方案"></a>最后的解决方案</h4><p>很丢脸的解决方案：我安装了1.0.9的Image，然后dist-upgrade升级到sana。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay-ssss.jpg" alt="S1NH 微信">
+        <span>微信</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>S1NH
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://s1nh.org/post/Beaglebone-Black_02/" title="Beaglebone Black 折腾笔记（二） 搭建环境">http://s1nh.org/post/Beaglebone-Black_02/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Beaglebone-Black/" rel="tag"># Beaglebone Black</a>
+              <a href="/tags/Kali-Linux/" rel="tag"># Kali Linux</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/Beaglebone-Black_01/" rel="prev" title="Beaglebone Black 折腾笔记（一） 折腾些没用的">
+                  <i class="fa fa-angle-left"></i> Beaglebone Black 折腾笔记（一） 折腾些没用的
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/post/Open-source_hardware/" rel="next" title="三土最近迷上了开源硬件">
+                  三土最近迷上了开源硬件 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2015 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">S1NH</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/duchengyao" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"duchengyao/duchengyao.github.io","issue_term":"og:title","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js" defer></script>
+
+</body>
+</html>

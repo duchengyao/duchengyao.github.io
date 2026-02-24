@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/6.0.5/fancybox/fancybox.css" integrity="sha256-uTcjoMD6rPt4OyV3Rs02Slxl0BJGMNVKAm/1eYPt2go=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.23.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="全文译自: https:&#x2F;&#x2F;www.electrosmash.com&#x2F;klon-centaur-analysis 1990 年至 1994 年间，Bill Finnegan 在两位麻省理工学院电子工程师的帮助下，设计了过载效果器 Klon Centaur。最初的想法是改善 TubeScreamer 的瞬态响应和中低音频率，以产生带有电子管效果器的过载音色。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Klon Centaur 电路分析">
+<meta property="og:url" content="http://s1nh.org/post/klon-centaur-analysis/index.html">
+<meta property="og:site_name" content="S1NH">
+<meta property="og:description" content="全文译自: https:&#x2F;&#x2F;www.electrosmash.com&#x2F;klon-centaur-analysis 1990 年至 1994 年间，Bill Finnegan 在两位麻省理工学院电子工程师的帮助下，设计了过载效果器 Klon Centaur。最初的想法是改善 TubeScreamer 的瞬态响应和中低音频率，以产生带有电子管效果器的过载音色。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://qiniu.s1nh.org/Klon-Centaur-intro-small.jpg">
+<meta property="og:image" content="http://qiniu.s1nh.org/Klon-Centaur-Schematic-Big.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/klon-centaur-analysis-small.jpg">
+<meta property="og:image" content="http://qiniu.s1nh.org/klon-centaur-silver-vs-gold-small.jpg">
+<meta property="og:image" content="http://qiniu.s1nh.org/klon-centaur-power-supply-small.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/max1044-configurations.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/op_amp_slew_rate_vs_power_supply.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/klon-centaur-input_buffer.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/klon-centaur-op-amp-gain-stage-circuit.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/klon-centaur-op-amp-gain-stage.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/1n34a.jpg">
+<meta property="og:image" content="http://qiniu.s1nh.org/klon-centaur-clipping-diodes.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/klon-centaur-networks.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/klon-centaur-summing-op-amp.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/klon-centaur-summing-amplifier.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/klon-centaur-tone-control-circuit.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/klon-centaur-tone-control.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/klon-centaur-output-stage.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/klon-centaur-output-stage-frequency-response.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/klon-centaur-bypass-mode.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/klon-centaur-bypass.png">
+<meta property="og:image" content="http://qiniu.s1nh.org/klon-centaur-sound-signature.png">
+<meta property="article:published_time" content="2023-02-16T12:38:54.000Z">
+<meta property="article:modified_time" content="2025-07-10T15:58:05.474Z">
+<meta property="article:author" content="S1NH">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://qiniu.s1nh.org/Klon-Centaur-intro-small.jpg">
+
+
+<link rel="canonical" href="http://s1nh.org/post/klon-centaur-analysis/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://s1nh.org/post/klon-centaur-analysis/","path":"post/klon-centaur-analysis/","title":"Klon Centaur 电路分析"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Klon Centaur 电路分析 | S1NH</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-44KGHGDYG3"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-44KGHGDYG3","only_pageview":false,"measure_protocol_api_secret":null}</script>
+  <script src="/js/third-party/analytics/google-analytics.js" defer></script>
+
+  <script src="/js/third-party/analytics/baidu-analytics.js" defer></script>
+  <script async src="https://hm.baidu.com/hm.js?4c66a84272e0f7943a305accf6dbdf41"></script>
+
+
+
+
+
+
+  <script defer data-domain="s1nh.org" src="http://home.s1nh.com:32801/js/script.js"></script>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/6.0.5/fancybox/fancybox.umd.js" integrity="sha256-UiSieVaV/DXce2LW7QH+o77w+AIoAvSCPBkezriZ2DQ=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.7.0/mermaid.min.js","integrity":"sha256-4+IKDqhZ/sXjc8Wtl2/MsxI4e0s1KpEVdbEP7V/Lz8U="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">S1NH</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">世界在旅程的尽头终结</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Klon-Centaur-%E7%94%B5%E8%B7%AF%E5%9B%BE"><span class="nav-text">1. Klon Centaur 电路图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-%E7%94%B5%E8%B7%AF%E5%B8%83%E5%B1%80"><span class="nav-text">1.1 电路布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E7%94%B5%E6%BA%90"><span class="nav-text">2. 电源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E8%BE%93%E5%85%A5%E7%BC%93%E5%86%B2"><span class="nav-text">3. 输入缓冲</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E8%BE%93%E5%85%A5%E9%98%BB%E6%8A%97"><span class="nav-text">3.1 输入阻抗</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E8%BF%90%E7%AE%97%E6%94%BE%E5%A4%A7%E5%99%A8%EF%BC%9ATL072"><span class="nav-text">3.2 运算放大器：TL072</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E8%BF%90%E7%AE%97%E6%94%BE%E5%A4%A7%E5%99%A8%E5%A2%9E%E7%9B%8A%E7%BA%A7"><span class="nav-text">4. 运算放大器增益级</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E5%A2%9E%E7%9B%8A%E8%AE%A1%E7%AE%97"><span class="nav-text">4.1 增益计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E9%94%97%E9%99%90%E5%B9%85%E4%BA%8C%E6%9E%81%E7%AE%A1"><span class="nav-text">4.2 锗限幅二极管</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-%E5%89%8D%E9%A6%88%E7%BD%91%E7%BB%9C"><span class="nav-text">4.3 前馈网络</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E6%B1%82%E5%92%8C%E8%BF%90%E7%AE%97%E6%94%BE%E5%A4%A7%E5%99%A8"><span class="nav-text">5. 求和运算放大器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E9%9F%B3%E8%89%B2%E6%97%8B%E9%92%AE"><span class="nav-text">6. 音色旋钮</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-%E8%BE%93%E5%87%BA%E7%BA%A7"><span class="nav-text">7. 输出级</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-Bypass-%E6%A8%A1%E5%BC%8F"><span class="nav-text">8. Bypass 模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-%E9%9F%B3%E8%89%B2%E7%89%B9%E5%BE%81"><span class="nav-text">9. 音色特征</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-text">10. 参考资料</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="S1NH"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">S1NH</p>
+  <div class="site-description" itemprop="description">no other developers required.</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">105</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">88</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+<div>
+  <hr>
+  <img src="/images/wechatpay-sss.jpg" alt="Buy me a SSRI.">
+  <a href="/reward-list/" rel="section">"Buy me a coffee."</a>
+</div>
+
+<!-- Matomo -->
+<script>
+  var _paq = window._paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  if (document.domain.indexOf('com') != -1){
+    _paq.push(["setCookieDomain", "*.s1nh.com"]);
+  } else if(document.domain.indexOf('org') != -1){
+    _paq.push(["setCookieDomain", "*.s1nh.org"]);
+  }
+  _paq.push(["setDomains", ["*.s1nh.org","*.s1nh.com"]]);
+  _paq.push(["enableCrossDomainLinking"]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://home.s1nh.com:32443/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    
+    if (document.domain.indexOf('com') != -1){
+      _paq.push(['setSiteId', '2']);
+    } else if(document.domain.indexOf('org') != -1){
+      _paq.push(['setSiteId', '3']);
+    }
+    
+    // Will also collect the website data into Website ID = 1
+    _paq.push(['addTracker', u+'matomo.php', 1]);
+    
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+
+<!-- Google Ads -->
+<!--script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7052751443200899"
+     crossorigin="anonymous"></script-->
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://www.92ez.com/" title="https:&#x2F;&#x2F;www.92ez.com&#x2F;" rel="noopener" target="_blank">一只猿 (关站升级中)</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="http://codewithzhangyi.com/about/" title="http:&#x2F;&#x2F;codewithzhangyi.com&#x2F;about&#x2F;" rel="noopener" target="_blank">好奇心狂热分子 (张怡，也关了)</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://findhao.net/" title="https:&#x2F;&#x2F;findhao.net&#x2F;" rel="noopener" target="_blank">FindHao 的自留地</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/klon-centaur-analysis/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="S1NH">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="S1NH">
+      <meta itemprop="description" content="no other developers required.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Klon Centaur 电路分析 | S1NH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Klon Centaur 电路分析
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-02-16 20:38:54" itemprop="dateCreated datePublished" datetime="2023-02-16T20:38:54+08:00">2023-02-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/music/" itemprop="url" rel="index"><span itemprop="name">音乐相关</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><code>全文译自: https://www.electrosmash.com/klon-centaur-analysis</code></p>
+<p>1990 年至 1994 年间，Bill Finnegan 在两位麻省理工学院电子工程师的帮助下，设计了过载效果器 Klon Centaur。最初的想法是改善 TubeScreamer 的瞬态响应和中低音频率，以产生带有电子管效果器的过载音色。</p>
+<p><img data-src="//qiniu.s1nh.org/Klon-Centaur-intro-small.jpg" alt="Klon Centaur intro small"></p>
+<span id="more"></span>
+
+<p>设计过程花费了 4 年多的时间，结果是一个神话般的 329 美元的手工制作踏板，生产了 15 年。 如今原始版本受到高度赞赏，目前二手价格超过一万人民币。</p>
+<h2 id="1-Klon-Centaur-电路图"><a href="#1-Klon-Centaur-电路图" class="headerlink" title="1. Klon Centaur 电路图"></a>1. Klon Centaur 电路图</h2><p>Klon Centaur 原理图可分为 5 个部分：输入级、运算放大器增益级、求和级（Summing Stage）、音色控制、输出级和电源：</p>
+<p><img data-src="//qiniu.s1nh.org/Klon-Centaur-Schematic-Big.png" alt="Klon Centaur Schematic Parts"></p>
+<p>该电路非常原创，展示了学术电子设计与纯实验&#x2F;开箱即用模块的混合。开发过程基于长时间的聆听测试，尝试不同的电阻器和电容值并聆听声音变化，这就是为什么有如此多特殊参数的电子元件。</p>
+<p>使用的运算放大器是简单的 TL072，证明了一个音质出色的吉他踏板不需要奇怪&#x2F;特殊&#x2F;昂贵的部件，只需要纯粹和智能的电子设计。</p>
+<h2 id="1-1-电路布局"><a href="#1-1-电路布局" class="headerlink" title="1.1 电路布局"></a>1.1 电路布局</h2><p>该电路使用带有标准通孔元件的单层PCB。在需要交叉的部分，使用有线桥。然而，所有的电位计、插孔和电池都是有线的并手工焊接到 PCB 上，这使得它非常劳动密集。</p>
+<p>该 PCB 以覆盖黑色环氧树脂（牛屎）而闻名，以防止人们复制它。</p>
+<p><img data-src="//qiniu.s1nh.org/klon-centaur-analysis-small.jpg" alt="klon centaur analysis small"></p>
+<p><strong>Klon Centaur 型号：金色与银色</strong> - 在其 15 年的生产过程中，Klon 外壳和电路在颜色和图形上有一些变化，但理论上，这些年之间的最小变化不会影响声音：</p>
+<p><img data-src="//qiniu.s1nh.org/klon-centaur-silver-vs-gold-small.jpg" alt="klon centaur silver vs gold small" title="klon centaur silver vs gold small"></p>
+<blockquote>
+<p>“事实上，在电路部分它们基本上都是一样的。 1995 年，我做了三个小改动：我添加了一个电阻器，为电路提供一些保护，防止静电电荷传递到其输入端——这一改动没有声音效果。我还重新设计了带有接地的电路板，同样，除了可能会减少一点嗡嗡声之外，没有任何声音效果。我添加了一个电阻器来为电路提供非常少量的额外中低频响应——我希望它在与 Strat 一起使用时具有更多的圆度，比如将 Strat 在 Fender Super Reverb 的音色。我没有做其他改变。” - Bill Finnegan，Premier Guitar 采访</p>
+</blockquote>
+<h2 id="2-电源"><a href="#2-电源" class="headerlink" title="2. 电源"></a>2. 电源</h2><p>电源使用 MAX1044，这是一种电压转换器，可以对输入电压进行反相、加倍、分压或倍增：</p>
+<p><img data-src="//qiniu.s1nh.org/klon-centaur-power-supply-small.png" alt="klon centaur power supply"></p>
+<p>电源的关键因素是以非正常的方式使用 IC 芯片；MAX1044 通常用作“简单的负转换器”或“正电压倍增器”，但在来自 9V 电池的 Klon 电路中，TC1044 同时实现所有功能：将电压加倍 (+18V)，将其反相 (-9V)，将其减半（+4.5V，使用电阻分压器）。</p>
+<p><img data-src="//qiniu.s1nh.org/max1044-configurations.png" alt="max1044 configurations" title="max1044 configurations"></p>
+<p>这种不同的电压对电路至关重要，并用于不同区域以创建踏板的声音特征：</p>
+<ul>
+<li> <strong>9V:</strong> 用于电路的第一阶段（输入缓冲器和运算放大器放大器），这种排列是大多数吉他踏板中使用的标准。这里没什么特别的。</li>
+<li><strong>18V 和 -9V:</strong> 用于踏板的最后阶段，允许双动态余量，并且正如稍后解释的那样，提供更高的转换速率添加声音特性。</li>
+<li><strong>+4.5V</strong>: 在电路的每一级用作虚拟接地。</li>
+</ul>
+<p><strong>2.1 The importance of a BIG FAT power supply.</strong></p>
+<p>第二个运算放大器在 +18V 和 -9V 之间供电，总共提供 27V 的余量 (head room）。</p>
+<p>如果运算放大器具有更高的电源轨，它也将具有更高的转换率，因此它能够以更高的保真度再现更快的吉他信号（瞬变）和更高的谐波。这个因素对于 Klon Centaur 失真声音特征非常重要。</p>
+<p><img data-src="//qiniu.s1nh.org/op_amp_slew_rate_vs_power_supply.png" alt="op amp slew rate vs power supply" title="op amp slew rate vs power supply"></p>
+<p><strong>注意</strong>：运算放大器的转换率描述了”输出电压对输入电压的响应速度“。转换速率值（以 V&#x2F;µs 为单位）越高，输出变化越快，就越容易再现高频信号。TL072 的压摆率为 13-V&#x2F;μs，高于平均水平运算放大器转换率 (10V&#x2F;us)。</p>
+<p>在失真阶段之后，运算放大器被馈入高电源（+18V，-9V），因此它将能够跟上削波吉他信号的快速率和复杂波形。</p>
+<h2 id="3-输入缓冲"><a href="#3-输入缓冲" class="headerlink" title="3. 输入缓冲"></a>3. 输入缓冲</h2><p>输入级是一个基于 TL072 运算放大器的简单缓冲器。该电路的任务是将效果器电路与外界隔离，并提供高输入阻抗（避免音染）和直流隔离。</p>
+<p><img data-src="//qiniu.s1nh.org/klon-centaur-input_buffer.png" alt="klon centaur input buffer" title="klon centaur input buffer"></p>
+<ul>
+<li>R1 输入电阻器将限制进入运算放大器的电流量，保护运算放大器免受静电放电（ESD）的影响。</li>
+<li>C1 输入电容器阻止来自吉他的任何 DC ，并与 R2 一起形成高通滤波器（fc&#x3D;1&#x2F;2*π*RC &#x3D; 1&#x2F;2x3.14x1MΩx0.1uF &#x3D; 1.5Hz）1.5Hz 完全超出音频频谱，不会影响原始信号或为信号添加任何润色。</li>
+<li>R2 是偏置电阻器，在运算放大器的非反相（+）引脚处添加虚拟接地（+4.5V）。根据经验，该电阻器的值至少是构成虚拟接地的电阻器值的10倍（R27 和 R30 为 27KΩ）。</li>
+</ul>
+<h3 id="3-1-输入阻抗"><a href="#3-1-输入阻抗" class="headerlink" title="3.1 输入阻抗"></a>3.1 输入阻抗</h3><p>输入阻抗计算如下：</p>
+<p>Zin &#x3D; R1 + ( R2 &#x2F;&#x2F; TL072<sub>Zin</sub> )</p>
+<p>TL072 是一个 JFET 运算放大器，因此它具有很大的输入阻抗（Zin &#x3D; 10<sup>12</sup>Ω），Zin 计算如下：</p>
+<p>Zin &#x3D; R1 + R2 &#x3D; 10KΩ + 1MΩ &#x3D; 1MΩ approx.</p>
+<p>1MΩ 是一个很好的高输入阻抗，可以避免吉他拾音吸音现象（随着频率的升高，越来越多的信号在源阻抗中丢失）。</p>
+<h3 id="3-2-运算放大器：TL072"><a href="#3-2-运算放大器：TL072" class="headerlink" title="3.2 运算放大器：TL072"></a>3.2 运算放大器：TL072</h3><p>Klon Centaur 是一项工程练习，旨在展示如何在不使用特殊部件或复古的集成电路的情况下制作出音质出色的效果器。</p>
+<p>TL072 运算放大器是一种 JFET 运算放大器，因此它具有低偏置电流（这将减少电池消耗）和高输入阻抗（保持信号完整性并减小音染）。它也是一种廉价且易于找到的运算放大器，广泛用于各种音频电路。</p>
+<p>关于 TL072 削波行为，当它进入削波状态并且信号达到其负端电压（negative rail）时，运算放大器会立即反转其相位，因此电路要么闩锁（latch-up）要么表现出硬削波行为（甚至进入振荡状态）。相比之下，正共模限制是无故障的。</p>
+<h2 id="4-运算放大器增益级"><a href="#4-运算放大器增益级" class="headerlink" title="4. 运算放大器增益级"></a>4. 运算放大器增益级</h2><p>运算放大器增益级将根据 <code>Gain</code> 电位计的位置提升和限幅输入信号。该阶段还将过滤原始吉他波形以调整频率响应。</p>
+<p><img data-src="//qiniu.s1nh.org/klon-centaur-op-amp-gain-stage-circuit.png" alt="klon centaur op amp gain stage circuit" title="klon centaur op amp gain stage circuit">  </p>
+<h3 id="4-1-增益计算"><a href="#4-1-增益计算" class="headerlink" title="4.1 增益计算"></a>4.1 增益计算</h3><p>由于 C7 和 C8 电容器与 R11 和 R12 电阻器并联，形成了彼此相互作用的频率响应，这使一个先验简单的非反相拓扑增益计算变得复杂：</p>
+<p><img data-src="//qiniu.s1nh.org/klon-centaur-op-amp-gain-stage.png" alt="klon centaur op amp gain stage" title="klon centaur op amp gain stage"></p>
+<p>在上图中可以看出，最大增益在 1KHz 附近为 40dB（100 倍）。此最大增益与其他类似踏板 <a target="_blank" rel="noopener" href="https://www.electrosmash.com/boss-ds1-analysis#transistor-booster">Boss DS-1 (35dB)</a> 或 <a target="_blank" rel="noopener" href="https://www.electrosmash.com/tube-screamer-analysis#clip-stage">Tube Screamer (41dB)</a> 的增益一致</p>
+<p>这个 40dB 的大增益将使 TL072 进入削波状态，当增益设置为高值时，信号将到达电源强度 (power supply rails)。</p>
+<p>1KHz 左右的“中峰”有助于吉他声音在乐队的其余部分中脱颖而出，在之前的一些踏板中也观察到(<a target="_blank" rel="noopener" href="https://www.electrosmash.com/tube-screamer-analysis#frequency">Tube Screamer humps at 723Hz</a> 和 <a target="_blank" rel="noopener" href="https://www.electrosmash.com/proco-rat#link6">ProCo Rat at 1KHz</a> )。</p>
+<h3 id="4-2-锗限幅二极管"><a href="#4-2-锗限幅二极管" class="headerlink" title="4.2 锗限幅二极管"></a>4.2 锗限幅二极管</h3><p>根据 Bill Finnegan（Klon Centaur 设计师）的说法，运算放大器级中使用的二极管类型对声音有很大影响：</p>
+<blockquote>
+<p>“这些二极管是影响电路在产生失真时如何发声的最重要因素”<br>“我一直使用零件号为 1N34A 的锗二极管，需要注意的是，这个特殊零件自 1950 年代左右以来一直由数百家不同的公司制造，并且听过很多不同的公司，我可以自信地说，它们在我的电路中听起来都有些不同，而且它们通常听起来非常不同。”</p>
+</blockquote>
+<p><img data-src="//qiniu.s1nh.org/1n34a.jpg" alt="1n34a" title="1n34a"></p>
+<p>限幅二极管定义了失真声音特征，它使用两个背靠背二极管将信号分流到地，这种限幅方法提供了一种<strong>硬削波</strong>的声音，也用于许多其他踏板（如 MXR Distortion+、RAT 和 Boss-DS1） .</p>
+<p><img data-src="//qiniu.s1nh.org/klon-centaur-clipping-diodes.png" alt="klon centaur clipping diodes" title="klon centaur clipping diodes"></p>
+<p>在上图中，显示了电阻器 R13 之后的信号，随着增益电位器变高，二极管开始压缩信号，首先是软拐点，最后是更激进的信号。</p>
+<p>1N34A 锗二极管的正向电压 VF &#x3D; 0.35，与通常具有 0.7V 压降的硅二极管相比，它非常低，从而导致信号的压缩更加困难。</p>
+<h3 id="4-3-前馈网络"><a href="#4-3-前馈网络" class="headerlink" title="4.3 前馈网络"></a>4.3 前馈网络</h3><p>与运算放大器增益级并行，有两个前馈网络，它们有不同的任务：</p>
+<p><img data-src="//qiniu.s1nh.org/klon-centaur-networks.png" alt="klon centaur networks" title="klon centaur networks"></p>
+<ul>
+<li><strong>网络 1：</strong> 由 R7、C16 和 R19 组成。它是一个低通滤波器，可衰减超过 106Hz 的谐波 (fc&#x3D;1&#x2F;(2xπxR7xC16))。这个干净且经过过滤的信号被添加到来自运算放大器增益级的失真信号中，为最终声音添加了一些低频。</li>
+<li><strong>网络 2：</strong> 这个比较复杂，它包括增益电位器的二级组。该部分与运算放大器增益级中的主要部分相反，也就是说，随着运算放大器输出信号变大，这个前馈网络信号变得更安静（反之亦然），从而使混音达到平衡。<br>根据 Finnegan 的说法，这个网络“优化了电路的整体音调响应，无论主增益级产生何种电平和失真。</li>
+</ul>
+<h2 id="5-求和运算放大器"><a href="#5-求和运算放大器" class="headerlink" title="5. 求和运算放大器"></a>5. 求和运算放大器</h2><p>该运算放大器会将运算放大器增益级的输出信号和上述两个前馈网络相加。该电路对于声音特征非常重要，它将失真削波信号（来自运算放大器增益级）和干净信号（来自前馈网络）相加。这个总和产生了一个具有动态而不仅仅是纯粹失真的信号。这种声音后来被称为透明过载（transparent overdrive）。</p>
+<p><img data-src="//qiniu.s1nh.org/klon-centaur-summing-op-amp.png" alt="klon centaur summing op amp" title="klon centaur summing op amp"></p>
+<p>这个运算放大器引入的增益量是巨大的，大约 100dB（见下图），这是因为三个路径（运算放大器增益级、前馈网络 1 和 2）中的每一个较小的增益量都会在该运算放大器的输入中相加：</p>
+<p><img data-src="//qiniu.s1nh.org/klon-centaur-summing-amplifier.png" alt="klon centaur summing amplifier" title="klon centaur summing amplifier"></p>
+<ul>
+<li>电阻器 R20 和电容 C13 形成一个低通滤波器，衰减 495Hz 以上的频率 (fc&#x3D;1&#x2F;(2xπxR20xC13))，从而更加突出中峰提升。</li>
+</ul>
+<h2 id="6-音色旋钮"><a href="#6-音色旋钮" class="headerlink" title="6. 音色旋钮"></a>6. 音色旋钮</h2><p>音调控制是一个有源高通搁置均衡器（Active High Pass Shelving Equalizer）。它通过所有高达 400Hz 的频率，高于该点的频率得到提升或削减：</p>
+<p><img data-src="//qiniu.s1nh.org/klon-centaur-tone-control-circuit.png" alt="klon centaur tone control circuit" title="klon centaur tone control circuit"></p>
+<ul>
+<li>此模块的默认增益设置为单位增益 (1)。均衡器向信号添加增益（增强）或衰减（衰减）的频率由以下等式确定：</li>
+</ul>
+<p>fc &#x3D; 1 &#x2F; (2xπxR22xC14) &#x3D; 408Hz.</p>
+<p>高于 408Hz 的频率将有提升或削减。</p>
+<ul>
+<li><p>通频带（pass band）增益定义为 R24&#x2F;R22 &#x3D; 1（单位增益）</p>
+</li>
+<li><p>提升&#x2F;削减（boost&#x2F;cut）频带的增益由以下公式定义：</p>
+</li>
+</ul>
+<p>Gvmax&#x3D; (RV2+R23)&#x2F;R21 &#x3D; (14.7&#x2F;1.8) &#x3D; 8.16 (18.24dB)</p>
+<p>Gvmin&#x3D; R23&#x2F;(RV2+R21)  &#x3D; (4.7&#x2F;11.8) &#x3D; 0.4 (-8dB)</p>
+<p><strong>Note</strong>: 搁置滤波器（shelving filters）在音频中有很多用途，在 <a target="_blank" rel="noopener" href="https://www.electrosmash.com/boss-ce-2-analysis#link6">Boss CE-2 Chorus 吉他踏板用作预加重&#x2F;去加重滤波器</a> 以降低信号处理过程中的噪声。</p>
+<p>如前所述，该电路将为最终信号添加或删除高频：</p>
+<p><img data-src="//qiniu.s1nh.org/klon-centaur-tone-control.png" alt="klon centaur tone control" title="klon centaur tone control"></p>
+<ul>
+<li>通频带或增强&#x2F;截止带上的增益可以按照前面描述的公式进行调整。</li>
+<li>Klon Centaur 中的音色控制被普遍认为设计的很优秀，它能够将几乎任何吉他的声音适配到任何放大器中。</li>
+</ul>
+<h2 id="7-输出级"><a href="#7-输出级" class="headerlink" title="7. 输出级"></a>7. 输出级</h2><p>最后一级将调整信号的输出电平，它是一个简单的 10K 电位器，会将部分信号分流到地：</p>
+<p><img data-src="//qiniu.s1nh.org/klon-centaur-output-stage.png" alt="klon centaur output stage" title="klon centaur output stage"></p>
+<ul>
+<li>C15 电容器将从输出信号中去除任何直流电。它还与 RV3 一起创建一个高通滤波器。截止频率将取决于电位器值，因此随着音量降低，截止频率会升高，从 fc&#x3D; 1&#x2F;(2xπxC15xRV3)&#x3D; 3.38Hz 开始。</li>
+</ul>
+<p>注意：此截止频移不是问题，因为即使输出音量为 10% (RV&#x3D;1K)，fc 也将为 33.8Hz，不会为输出信号添加色彩。</p>
+<ul>
+<li>这两个 68KΩ 和 100KΩ 电阻通常称为<strong>防爆电阻</strong>，它们会避免在连接输出插孔时突然发出爆音。该网络并未放置在电路的早期版本中，尽管其目的可能是消除爆裂声，但事实是这些电阻器创建了一个边际求和输出网络：</li>
+</ul>
+<p>当效果打开时，部分干净的信号会通过 R243 流到输出端。同样，当踏板关闭时，部分受脏影响的信号会渗入干净的输出。贡献约为 1dB，很可能听不见。</p>
+<p>输出级的频率响应如下所示：</p>
+<p><img data-src="//qiniu.s1nh.org/klon-centaur-output-stage-frequency-response.png" alt="klon centaur output stage frequency response" title="klon centaur output stage frequency response"></p>
+<h2 id="8-Bypass-模式"><a href="#8-Bypass-模式" class="headerlink" title="8. Bypass 模式"></a>8. Bypass 模式</h2><p>Klon Centaur 不使用 3PDT（True Bypass）开关，因此当效果器被禁用时，吉他信号仍然通过输入缓冲器和两个由 C1&amp;R2 和 C2&amp;R3 创建的高通滤波器。这些截止频率为 fc&#x3D;1&#x2F;(2xπ0.1uFx1M)&#x3D;1.5Hz 和 fc&#x3D;1&#x2F;(2xπ4.7uFx100K)&#x3D;0.3Hz 的高通滤波器不会修改吉他信号。他们只会从信号中去除直流内容。</p>
+<p><img data-src="//qiniu.s1nh.org/klon-centaur-bypass-mode.png" alt="klon centaur bypass mode" title="klon centaur bypass mode"></p>
+<p>停用时的频率响应是平坦的，在低频（fc&#x3D;1.5Hz 和 fc&#x3D;0.3Hz）上有滚降并且不影响音频频率：</p>
+<p><img data-src="//qiniu.s1nh.org/klon-centaur-bypass.png" alt="klon centaur bypass mode" title="klon centaur bypass mode"></p>
+<h2 id="9-音色特征"><a href="#9-音色特征" class="headerlink" title="9. 音色特征"></a>9. 音色特征</h2><p>原版 Klon Centaur 价格触目惊心，难道只是炒作？听起来很酷吗？显然，在查看电路后，有一些在其他设计中从未见过的功能。</p>
+<p>Klon Centaur 具有独特的电子设计，混合了您可以在许多其他吉他踏板上看到的经典部分（如输入缓冲器、运算放大器增益级后接地的背靠背二极管）和其他一些创新模块，如电源电源架构、前馈网络和双联增益电位器。</p>
+<p>吉他波形的处理方式也非常新颖：</p>
+<ol>
+<li>输入缓冲器保持信号原始并保护踏板免受外部因素的影响（图 1 - 左）。</li>
+<li>之后，信号被分成 3 条路径：一部分信号通过第二个运算放大器，两部分通过前馈网络 1 和 2。这是关键：此时的波形看起来像鲨鱼牙齿，由于信号在前馈网络上获得的不同相位。当所有信号在求和放大器（图 1 - 中心）之前连接时，信号会弯曲，形成一个有趣的形状。其他著名的踏板，如 <a target="_blank" rel="noopener" href="https://www.electrosmash.com/tube-screamer-analysis#myth">Tube Screamer</a> 也能在失真信号上创造出美丽的不平衡形状。</li>
+<li>此外，该信号随后由具有 27V 电源余量的加法放大器放大，这对于吉他踏板来说非常不寻常，它还提供良好的转换率以保持所有动态和丰富的谐波（图 3 - 右） .</li>
+</ol>
+<p><img data-src="//qiniu.s1nh.org/klon-centaur-sound-signature.png" alt="klon centaur sound signature" title="klon centaur sound signature"></p>
+<p>除了这个基本解释之外，还有许多其他因素使这种效果变得特别，并为吉他失真增添了声音特征；平衡失真的双联增益电位器，有助于与任何类型的吉他或选定的锗削波二极管交互的音调控制，仅举几例。</p>
+<h2 id="10-参考资料"><a href="#10-参考资料" class="headerlink" title="10. 参考资料"></a>10. 参考资料</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.premierguitar.com/articles/20210-builder-profile-klons-bill-finnegan">PREMIERGuitar Bill Finnegan Interview</a>.</li>
+<li><a target="_blank" rel="noopener" href="http://www.interfacebus.com/equalizer-design-opamp-schematic.html">Equalizer Circuits</a> by Electronic Engineering Dictionary.</li>
+<li><a target="_blank" rel="noopener" href="http://www.coda-effects.com/p/klon-centaur-circuit-analysis.html">Koln Centaur Study</a> by Coda Effects.</li>
+<li><a target="_blank" rel="noopener" href="https://www.eetimes.com/document.asp?doc_id=1278805&print=yes">TL072 Behaviour</a> by Douglas Self.</li>
+</ul>
+<p> </p>
+<p>我衷心感谢 D. Pereira、Charles.D、P. Babiak 和 A. Hofseth 对本分析的帮助。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay-ssss.jpg" alt="S1NH 微信">
+        <span>微信</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>S1NH
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://s1nh.org/post/klon-centaur-analysis/" title="Klon Centaur 电路分析">http://s1nh.org/post/klon-centaur-analysis/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/fuzz-face-analysis/" rel="prev" title="Fuzz Face 电路分析">
+                  <i class="fa fa-angle-left"></i> Fuzz Face 电路分析
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/post/big-muff-pi-analysis/" rel="next" title="Big Muff Pi 电路分析">
+                  Big Muff Pi 电路分析 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2015 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">S1NH</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/duchengyao" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"duchengyao/duchengyao.github.io","issue_term":"og:title","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js" defer></script>
+
+</body>
+</html>
