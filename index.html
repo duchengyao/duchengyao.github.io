@@ -337,14 +337,13 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>run <code>npm i theme-next/next-util</code>.</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/post/theme-next-warnning/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+<p>hexo 安装 <code>hexo-next-title</code> <code>hexo-next-share</code> <code>hexo-next-exif</code> <code>hexo-next-utteranc</code> 等插件后，会出现以下 warnning：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">WARN  The upstream repository of theme NexT has been changed.</span><br><span class="line">WARN  For more information: https://github.com/next-theme/hexo-theme-next</span><br><span class="line">WARN  Documentation: https://theme-next.js.org</span><br></pre></td></tr></table></figure>
+
+<p>原因在 <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/next-util?activeTab=code">npmjs&#x2F;next-util</a> 的 10-12 行。</p>
+<p>为了告诉你不要用 theme-next 而要用 next-theme。</p>
+<p>解决方案是使用 <code>npm i theme-next/next-util</code> 直接安装 <a target="_blank" rel="noopener" href="https://github.com/theme-next/next-util">github 版本</a> 的 <code>next-util</code>.</p>
+
       
     </div>
 
@@ -422,7 +421,13 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>发现 git 仓库的存储空间有问题，原来是一不小心提交了二进制文件。作为强迫症患者学习了一下如何给仓库瘦身。</p>
+<blockquote>
 <p>清理前 repository 为 93.1 MiB，清理后 repository 为 1.6 MiB.</p>
+</blockquote>
+<h2 id="0x01-备份"><a href="#0x01-备份" class="headerlink" title="0x01 备份"></a>0x01 备份</h2><p>重写存储库历史记录是一种破坏性操作。首先需要备份仓库，在 Settings &gt; General &gt; Advanced &gt; Export project 导出项目。</p>
+<!-- <img data-src="//qiniu.s1nh.org/cleanup-git-repo-2.png" width=25% /> -->
+
+<h2 id="0x02-清理"><a href="#0x02-清理" class="headerlink" title="0x02 清理"></a>0x02 清理</h2>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/cleanup-git-repo/#more" rel="contents">
@@ -509,6 +514,8 @@
     <div class="post-body" itemprop="articleBody">
           <p>使用 Grafana - loki - promtail 提取 glog 的时间戳、文件名等信息。</p>
 <img data-src="//qiniu.s1nh.org/promtail-config-glog-regex.png" width=80% />
+
+<p>配置文件分享在 <a target="_blank" rel="noopener" href="https://github.com/duchengyao/promtail-config-glog">https://github.com/duchengyao/promtail-config-glog</a></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/promtail-config-glog/#more" rel="contents">
@@ -765,7 +772,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><code>本文不提供 Multiecuscan。如需使用请官网购买；或赞赏我（赞赏码在首页左侧、文章末尾），并留下微信号获取破解版。</code></p>
+          <p><code>本文不提供 Multiecuscan。如需使用请官网购买。</code></p>
 <p>Multiecuscan 是意大利车辆的诊断软件。 它允许您对支持的车辆&#x2F;模块执行各种诊断任务。</p>
           <!--noindex-->
             <div class="post-button">
@@ -947,9 +954,12 @@
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cp /sbin/ifconfig .</span><br><span class="line">sudo setcap cap_net_admin=eip ./ifconfig</span><br><span class="line">./ifconfig eth0 1.2.3.4    # succeeds</span><br><span class="line">chmod 750 ./ifconfig</span><br></pre></td></tr></table></figure>
 
-<h2 id="FastDDS-无法发送超过-255-string"><a href="#FastDDS-无法发送超过-255-string" class="headerlink" title="FastDDS 无法发送超过 255 string"></a>FastDDS 无法发送超过 255 string</h2><p>可能会有 log <code>[RTPS_READER_HISTORY Error] Change payload size of &#39;xxx&#39; bytes is larger than the history payload size of &#39;271&#39; bytes and cannot be resized. -&gt; Function can_change_be_added_nts</code></p>
-<p>在 subscriber 加 <code>rqos.endpoints().history_memory_policy = eprosima::fastrtps::rtps::DYNAMIC_RESERVE_MEMORY_MODE;</code></p>
+<h2 id="FastDDS-无法发送超过-255-string"><a href="#FastDDS-无法发送超过-255-string" class="headerlink" title="FastDDS 无法发送超过 255 string"></a>FastDDS 无法发送超过 255 string</h2><p>可能会有 log </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[RTPS_READER_HISTORY Error] Change payload size of &#x27;xxx&#x27; bytes is larger than the history payload size of &#x27;271&#x27; bytes and cannot be resized. -&gt; Function can_change_be_added_nts</span><br></pre></td></tr></table></figure>
 
+
+<p>在 subscriber 加 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rqos.endpoints().history_memory_policy = eprosima::fastrtps::rtps::DYNAMIC_RESERVE_MEMORY_MODE;</span><br></pre></td></tr></table></figure>
       
     </div>
 
