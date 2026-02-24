@@ -1148,7 +1148,7 @@
     <div class="post-body" itemprop="articleBody">
           <h2 id="0x00-Velodyne-简介"><a href="#0x00-Velodyne-简介" class="headerlink" title="0x00 Velodyne 简介"></a>0x00 Velodyne 简介</h2><h3 id="1-数据结构及坐标系"><a href="#1-数据结构及坐标系" class="headerlink" title="1. 数据结构及坐标系"></a>1. 数据结构及坐标系</h3><p>Velodyne 通过网线发送的原始数据包为球坐标（spherical coordinates, r, ω, α）。它的 <a target="_blank" rel="noopener" href="https://github.com/ros-drivers/velodyne">ros driver</a> 提供了两种更方便的格式：<code>/velodyne_points</code>和<code>/velodyne_scan</code></p>
 <p>其中，<code>/velodyne_points</code>是转换为XYZ后的坐标，转换的方式如下图；<code>/velodyne_scan</code>为第8根线的scan值（可直接用来模拟单线雷达）。 </p>
-<p><img data-src="//qiniu.s1nh.org/project_velodyne_5.png-QNthin"></p>
+<img data-src="//qiniu.s1nh.org/project_velodyne_5.png-QNthin" width=60% />
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/project-velodyne/#more" rel="contents">
