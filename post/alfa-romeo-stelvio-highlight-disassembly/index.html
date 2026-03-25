@@ -228,14 +228,12 @@
 <!-- Matomo -->
 <script>
   var _paq = window._paq = window._paq || [];
-  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
   
   if (document.domain.indexOf('com') != -1){
     _paq.push(["setCookieDomain", "*.s1nh.com"]);
   } else if(document.domain.indexOf('org') != -1){
     _paq.push(["setCookieDomain", "*.s1nh.org"]);
   }
-  
   _paq.push(["setDomains", ["*.s1nh.org","*.s1nh.com"]]);
   _paq.push(["enableCrossDomainLinking"]);
   _paq.push(['trackPageView']);
@@ -243,29 +241,19 @@
 
   (function() {
     var u_cloud = "https://s1nh.matomo.cloud/";
-    _paq.push(['setTrackerUrl', u_cloud + 'matomo.php']);
+    var u_self  = "https://matomo.s1nh.org/";
     
-    if (document.domain.indexOf('com') != -1){
-      _paq.push(['setSiteId', '2']);
-    } else if(document.domain.indexOf('org') != -1){
-      _paq.push(['setSiteId', '3']);
-    }
-    
-    _paq.push(['addTracker', u_cloud + 'matomo.php', 1]);
+    var current_sid = (document.domain.indexOf('com') != -1) ? '2' : '3';
 
-    var u_self = "https://matomo.s1nh.org/";
-    
-    var self_sid = 1;
-    if (document.domain.indexOf('com') != -1){
-      self_sid = 2;
-    } else if(document.domain.indexOf('org') != -1){
-      self_sid = 3;
-    }
-    
-    _paq.push(['addTracker', u_self + 'matomo.php', self_sid]);
+    _paq.push(['setTrackerUrl', u_cloud + 'matomo.php']);
+    _paq.push(['setSiteId', current_sid]);
+    _paq.push(['addTracker', u_cloud + 'matomo.php', '1']);
+
+    _paq.push(['addTracker', u_self + 'matomo.php', current_sid]);
+    _paq.push(['addTracker', u_self + 'matomo.php', '1']);
 
     var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-    g.async=true; g.src=u_self+'matomo.js'; s.parentNode.insertBefore(g,s);
+    g.async=true; g.src=u_self + 'matomo.js'; s.parentNode.insertBefore(g,s);
   })();
 </script>
 
