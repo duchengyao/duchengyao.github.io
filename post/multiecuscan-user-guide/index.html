@@ -300,18 +300,21 @@
 <script>
   var _paq = window._paq = window._paq || [];
   /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  
   if (document.domain.indexOf('com') != -1){
     _paq.push(["setCookieDomain", "*.s1nh.com"]);
   } else if(document.domain.indexOf('org') != -1){
     _paq.push(["setCookieDomain", "*.s1nh.org"]);
   }
+  
   _paq.push(["setDomains", ["*.s1nh.org","*.s1nh.com"]]);
   _paq.push(["enableCrossDomainLinking"]);
   _paq.push(['trackPageView']);
   _paq.push(['enableLinkTracking']);
+
   (function() {
-    var u="https://s1nh.matomo.cloud/";
-    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    var u_cloud = "https://s1nh.matomo.cloud/";
+    _paq.push(['setTrackerUrl', u_cloud + 'matomo.php']);
     
     if (document.domain.indexOf('com') != -1){
       _paq.push(['setSiteId', '2']);
@@ -319,11 +322,21 @@
       _paq.push(['setSiteId', '3']);
     }
     
-    // Will also collect the website data into Website ID = 1
-    _paq.push(['addTracker', u+'matomo.php', 1]);
+    _paq.push(['addTracker', u_cloud + 'matomo.php', 1]);
+
+    var u_self = "https://matomo.s1nh.org/";
     
+    var self_sid = 1;
+    if (document.domain.indexOf('com') != -1){
+      self_sid = 2;
+    } else if(document.domain.indexOf('org') != -1){
+      self_sid = 3;
+    }
+    
+    _paq.push(['addTracker', u_self + 'matomo.php', self_sid]);
+
     var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+    g.async=true; g.src=u_self+'matomo.js'; s.parentNode.insertBefore(g,s);
   })();
 </script>
 
@@ -561,7 +574,7 @@
 <li><p>您将收到一封包含新许可证密钥的电子邮件。</p>
 </li>
 </ol>
-<p>如果您对许可证转移功能有任何疑问，可以将新的硬件密钥通过电子邮件发送至 <a href="mailto:&#x73;&#117;&#112;&#x70;&#111;&#x72;&#x74;&#x40;&#109;&#x75;&#108;&#116;&#x69;&#x65;&#x63;&#117;&#115;&#x63;&#x61;&#110;&#46;&#x6e;&#101;&#116;">support@multiecuscan.net</a>。</p>
+<p>如果您对许可证转移功能有任何疑问，可以将新的硬件密钥通过电子邮件发送至 <a href="mailto:&#115;&#117;&#x70;&#x70;&#111;&#x72;&#116;&#64;&#109;&#117;&#x6c;&#x74;&#105;&#101;&#x63;&#117;&#x73;&#x63;&#97;&#110;&#46;&#x6e;&#101;&#116;">support@multiecuscan.net</a>。</p>
 <p>请注意，许可证转移功能对转移次数有限制。</p>
 <p><img data-src="//qiniu.s1nh.org/multiecuscan-user-guide/image10.png-QNthin"></p>
 <h2 id="2-用户界面"><a href="#2-用户界面" class="headerlink" title="2. 用户界面"></a>2. 用户界面</h2><h3 id="2-1-Multiecuscan-主屏幕"><a href="#2-1-Multiecuscan-主屏幕" class="headerlink" title="2.1. Multiecuscan 主屏幕"></a>2.1. Multiecuscan 主屏幕</h3><p>当您启动 Multiecuscan 时，它会显示以下屏幕：</p>
