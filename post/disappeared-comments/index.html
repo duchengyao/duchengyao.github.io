@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/6.0.5/fancybox/fancybox.css" integrity="sha256-uTcjoMD6rPt4OyV3Rs02Slxl0BJGMNVKAm/1eYPt2go=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.23.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="之前使用的 valine 评论工具有一些漏洞会导致隐私泄漏和XSS攻击，比如[这个]，目前更换为 utteranc ，一个基于 github 的评论工具。之前的评论放弃迁移了，直接贴在本文。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="消失的评论">
+<meta property="og:url" content="http://s1nh.org/post/disappeared-comments/index.html">
+<meta property="og:site_name" content="S1NH">
+<meta property="og:description" content="之前使用的 valine 评论工具有一些漏洞会导致隐私泄漏和XSS攻击，比如[这个]，目前更换为 utteranc ，一个基于 github 的评论工具。之前的评论放弃迁移了，直接贴在本文。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-02-01T14:13:40.000Z">
+<meta property="article:modified_time" content="2025-07-10T15:58:05.470Z">
+<meta property="article:author" content="S1NH">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://s1nh.org/post/disappeared-comments/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://s1nh.org/post/disappeared-comments/","path":"post/disappeared-comments/","title":"消失的评论"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>消失的评论 | S1NH</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-44KGHGDYG3"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-44KGHGDYG3","only_pageview":false,"measure_protocol_api_secret":null}</script>
+  <script src="/js/third-party/analytics/google-analytics.js" defer></script>
+
+  <script src="/js/third-party/analytics/baidu-analytics.js" defer></script>
+  <script async src="https://hm.baidu.com/hm.js?4c66a84272e0f7943a305accf6dbdf41"></script>
+
+
+
+
+
+
+  <script defer data-domain="s1nh.org" src="http://home.s1nh.com:32801/js/script.js"></script>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/6.0.5/fancybox/fancybox.umd.js" integrity="sha256-UiSieVaV/DXce2LW7QH+o77w+AIoAvSCPBkezriZ2DQ=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.7.0/mermaid.min.js","integrity":"sha256-4+IKDqhZ/sXjc8Wtl2/MsxI4e0s1KpEVdbEP7V/Lz8U="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">S1NH</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">世界在旅程的尽头终结</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="S1NH"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">S1NH</p>
+  <div class="site-description" itemprop="description">no other developers required.</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">105</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">88</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+<div>
+  <hr>
+  <img src="/images/wechat-pay_s.jpeg" width=70% alt="Buy me a coffee.">
+  <a href="/reward-list/" rel="section">"Buy me a coffee."</a>
+</div>
+
+<!-- Matomo -->
+<script>
+  var _paq = window._paq = window._paq || [];
+  
+  if (document.domain.indexOf('com') != -1){
+    _paq.push(["setCookieDomain", "*.s1nh.com"]);
+  } else if(document.domain.indexOf('org') != -1){
+    _paq.push(["setCookieDomain", "*.s1nh.org"]);
+  }
+  _paq.push(["setDomains", ["*.s1nh.org","*.s1nh.com"]]);
+  _paq.push(["enableCrossDomainLinking"]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+
+  (function() {
+    var u_cloud = "https://s1nh.matomo.cloud/";
+    var u_self  = "https://matomo.s1nh.org/";
+    
+    var current_sid = (document.domain.indexOf('com') != -1) ? '2' : '3';
+
+    _paq.push(['setTrackerUrl', u_cloud + 'matomo.php']);
+    _paq.push(['setSiteId', current_sid]);
+    _paq.push(['addTracker', u_cloud + 'matomo.php', '1']);
+
+    _paq.push(['addTracker', u_self + 'matomo.php', current_sid]);
+    _paq.push(['addTracker', u_self + 'matomo.php', '1']);
+
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u_self + 'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+
+<!-- Google Ads -->
+<!--script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7052751443200899"
+     crossorigin="anonymous"></script-->
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://www.92ez.com/" title="https:&#x2F;&#x2F;www.92ez.com&#x2F;" rel="noopener" target="_blank">一只猿 (关站升级中)</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="http://codewithzhangyi.com/about/" title="http:&#x2F;&#x2F;codewithzhangyi.com&#x2F;about&#x2F;" rel="noopener" target="_blank">好奇心狂热分子 (张怡，也关了)</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://findhao.net/" title="https:&#x2F;&#x2F;findhao.net&#x2F;" rel="noopener" target="_blank">FindHao 的自留地</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/disappeared-comments/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="S1NH">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="S1NH">
+      <meta itemprop="description" content="no other developers required.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="消失的评论 | S1NH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          消失的评论
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-02-01 22:13:40" itemprop="dateCreated datePublished" datetime="2023-02-01T22:13:40+08:00">2023-02-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/other/" itemprop="url" rel="index"><span itemprop="name">其它笔记</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>之前使用的 valine 评论工具有一些漏洞会导致隐私泄漏和XSS攻击，比如[<a target="_blank" rel="noopener" href="https://blog.maplesugar.top/valine-prank/">这个</a>]，目前更换为 utteranc ，一个基于 github 的评论工具。之前的评论放弃迁移了，直接贴在本文。</p>
+<span id="more"></span>
+
+<table>
+<thead>
+<tr>
+<th>url</th>
+<th>comment</th>
+<th>nick</th>
+<th>link</th>
+<th>date</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&#x2F;about&#x2F;</td>
+<td>校友你好，真牛👍</td>
+<td>天边风</td>
+<td><a target="_blank" rel="noopener" href="https://www.tbfeng.com/">https://www.tbfeng.com/</a></td>
+<td>2019-10-15T01:04:43.446Z</td>
+</tr>
+<tr>
+<td>&#x2F;about&#x2F;</td>
+<td><a class="at" href="#5d70a1876e9ba1006922b037">@Anonymous </a> , 哈哈，我也是初学者</td>
+<td>S1NH</td>
+<td></td>
+<td>2019-09-09T14:50:36.536Z</td>
+</tr>
+<tr>
+<td>&#x2F;about&#x2F;</td>
+<td>初学SLAM，无意间搜到，膜拜一下。</td>
+<td>Anonymous</td>
+<td></td>
+<td>2019-09-05T05:47:51.926Z</td>
+</tr>
+<tr>
+<td>&#x2F;about&#x2F;</td>
+<td><a class="at" href="#5c234f42fb4ffe005f657e2c">@break </a>等青岛互联网公司多起来以后，我们回青岛上班，然后玩乐队吧</td>
+<td>S1NH</td>
+<td></td>
+<td>2019-06-17T08:37:14.574Z</td>
+</tr>
+<tr>
+<td>&#x2F;about&#x2F;</td>
+<td>老杜真是一如既往的屌，你去阿里的时候我都还不知道达摩院这个部门，没成想你居然就是在这，真心替你高兴哈哈哈</td>
+<td>break</td>
+<td></td>
+<td>2018-12-26T09:52:02.853Z</td>
+</tr>
+<tr>
+<td>&#x2F;about&#x2F;</td>
+<td>膜拜大牛</td>
+<td>gchehe</td>
+<td></td>
+<td>2018-09-30T12:29:13.906Z</td>
+</tr>
+<tr>
+<td>&#x2F;about&#x2F;</td>
+<td>太厉害了，我学习的目标。</td>
+<td>handbye</td>
+<td></td>
+<td>2018-09-30T12:28:37.562Z</td>
+</tr>
+<tr>
+<td>2017-summary&#x2F;</td>
+<td>有点小感动～</td>
+<td>Anonymous</td>
+<td></td>
+<td>2019-03-29T09:33:44.300Z</td>
+</tr>
+<tr>
+<td>996-ICU&#x2F;</td>
+<td>宅男福利 <a target="_blank" rel="noopener" href="https://6wll.com">https://6wll.com</a></td>
+<td>sds</td>
+<td></td>
+<td>2019-08-16T12:00:16.292Z</td>
+</tr>
+<tr>
+<td>A-survey-on-image-mosaicing-techniques&#x2F;</td>
+<td><a class="at" href="#5f3f7142109075000855b82e">@Anonymous </a> , 没有公开，商业合作可以加微信，在博客的“关于”页面。</td>
+<td>S1NH</td>
+<td></td>
+<td>2021-04-30T02:19:23.134Z</td>
+</tr>
+<tr>
+<td>A-survey-on-image-mosaicing-techniques&#x2F;</td>
+<td>作者您好，我最近正在做视频图像拼接的研究，请问现在L-ORB算法的代码公开了吗？</td>
+<td>Anonymous</td>
+<td></td>
+<td>2020-08-21T07:01:22.470Z</td>
+</tr>
+<tr>
+<td>A-survey-on-image-mosaicing-techniques&#x2F;</td>
+<td><a class="at" href="#5e90b9c55c385800081b9767">@S1NH </a> , 万分感谢  本人想研究一下这方面的内容 看了博主的文章大有所获 希望能够按时间线讲述一下融合部分的算法 好人一生平安</td>
+<td>Anonymous</td>
+<td></td>
+<td>2020-04-11T15:10:38.450Z</td>
+</tr>
+<tr>
+<td>A-survey-on-image-mosaicing-techniques&#x2F;</td>
+<td><a class="at" href="#5e8dea9f5c3858000816918f">@Anonymous </a> , 谢谢关注，我这几天比较闲，准备把之前没写完的博客都更新一下的。^_^</td>
+<td>S1NH</td>
+<td></td>
+<td>2020-04-10T18:24:05.842Z</td>
+</tr>
+<tr>
+<td>A-survey-on-image-mosaicing-techniques&#x2F;</td>
+<td>请问后续还会有更新吗  想了解一下那个图像融合部分的内容</td>
+<td>Anonymous</td>
+<td></td>
+<td>2020-04-08T15:15:43.936Z</td>
+</tr>
+<tr>
+<td>A-survey-on-image-mosaicing-techniques&#x2F;</td>
+<td><a class="at" href="#5e54d7c72a6bfd4d10562636">@Anonymous </a> , 刚开始可以直接参考 opencv 的 cuda 代码，给你几个链接：<br><a target="_blank" rel="noopener" href="https://github.com/opencv/opencv_contrib/tree/4.2.0/modules/cudaarithm/src/cuda">https://github.com/opencv/opencv_contrib&#x2F;tree&#x2F;4.2.0&#x2F;modules&#x2F;cudaarithm&#x2F;src&#x2F;cuda</a><br><a target="_blank" rel="noopener" href="https://github.com/opencv/opencv_contrib/tree/4.2.0/modules/cudafeatures2d/src/cuda">https://github.com/opencv/opencv_contrib&#x2F;tree&#x2F;4.2.0&#x2F;modules&#x2F;cudafeatures2d&#x2F;src&#x2F;cuda</a><br><a target="_blank" rel="noopener" href="https://github.com/opencv/opencv_contrib/tree/4.2.0/modules/cudawarping/src/cuda">https://github.com/opencv/opencv_contrib&#x2F;tree&#x2F;4.2.0&#x2F;modules&#x2F;cudawarping&#x2F;src&#x2F;cuda</a> 评论记得填email，会有回复通知^^</td>
+<td>s1nh</td>
+<td></td>
+<td>2020-03-13T09:22:44.179Z</td>
+</tr>
+<tr>
+<td>A-survey-on-image-mosaicing-techniques&#x2F;</td>
+<td>百忙之中打扰了。期待您的回复！！！</td>
+<td>Anonymous</td>
+<td></td>
+<td>2020-02-25T08:17:23.734Z</td>
+</tr>
+<tr>
+<td>A-survey-on-image-mosaicing-techniques&#x2F;</td>
+<td>您好，我最近也在做图像拼接方面研究，主要目的是想要将其应用于视频拼接上，所以需要gpu的加速，请问您有cuda这方面的论文源码可供学习吗？如果不方面公开的话，在cuda学习这方面有没有好的推荐啊。我已经安装你的论文把环境搭好了，但是之前只实现了利用opencv做cpu方面的拼接。</td>
+<td>Anonymous</td>
+<td></td>
+<td>2020-02-25T08:16:07.361Z</td>
+</tr>
+<tr>
+<td>A-survey-on-image-mosaicing-techniques&#x2F;</td>
+<td><a class="at" href="#5bc87e3a9f5454007095f94b">@Anonymous </a>算法很好复现的。<br>不过师弟们还在准备继续发文章，所以源码就暂时不公开了。</td>
+<td>s1nh</td>
+<td></td>
+<td>2018-11-09T06:24:47.413Z</td>
+</tr>
+<tr>
+<td>A-survey-on-image-mosaicing-techniques&#x2F;</td>
+<td>麻烦问一下，这个您的L-ORB这个论文方法的代码可以分享一下吗？</td>
+<td>Anonymous</td>
+<td></td>
+<td>2018-10-18T12:36:10.621Z</td>
+</tr>
+<tr>
+<td>A-survey-on-image-mosaicing-techniques&#x2F;</td>
+<td><a class="at" href="#5bb0bc3a0b6160006fe6c7af">@am </a>不好意思，名称写错了。链接是对的。论文名称是A survey on image mosaicing techniques。</br> 如果您对图像拼接感兴趣，可以看一下几篇文章 <a target="_blank" rel="noopener" href="https://docs.opencv.org/2.4/modules/stitching/doc/introduction.html">https://docs.opencv.org/2.4/modules/stitching/doc/introduction.html</a></br> 和 M. Brown and D. Lowe. Automatic Panoramic Image Stitching using Invariant Features. International Journal of Computer Vision, 74(1), pages 59-73, 2007. <a target="_blank" rel="noopener" href="http://matthewalunbrown.com/papers/ijcv2007.pdf">http://matthewalunbrown.com/papers/ijcv2007.pdf</a></td>
+<td>S1NH</td>
+<td></td>
+<td>2018-09-30T12:47:46.601Z</td>
+</tr>
+<tr>
+<td>A-survey-on-image-mosaicing-techniques&#x2F;</td>
+<td>译者，您好，文章翻译的很好，但好像《图像拼接算法的综述》此文与提供的《Automatic 3D pulmonary nodule detection in CT images: A survey》原文不一致，是不是名称和链接提供错了</td>
+<td>am</td>
+<td></td>
+<td>2018-09-30T12:07:03.615Z</td>
+</tr>
+<tr>
+<td>calib-velodyne-camera&#x2F;</td>
+<td><a class="at" href="#5dd4fb6c21b47e00699c3ade">@david </a> , 我也遇到这个问题了，这位兄台解决吗</td>
+<td>xgy</td>
+<td></td>
+<td>2021-04-09T11:03:53.524Z</td>
+</tr>
+<tr>
+<td>calib-velodyne-camera&#x2F;</td>
+<td><a class="at" href="#60470ef3c83e5e1c334e55eb">@Anonymous </a> , 可以的</td>
+<td>s1nh</td>
+<td></td>
+<td>2021-04-02T08:00:27.617Z</td>
+</tr>
+<tr>
+<td>calib-velodyne-camera&#x2F;</td>
+<td>大佬，这个激光相机融合能够实时展示吗，不是以bag的数据流</td>
+<td>Anonymous</td>
+<td></td>
+<td>2021-03-09T06:00:19.579Z</td>
+</tr>
+<tr>
+<td>calib-velodyne-camera&#x2F;</td>
+<td><a class="at" href="#5ed9e1e0ba7dda00094c95f5">@Anonymous </a> , 在git repo里面有的，你慢慢调参数就行。</td>
+<td>S1NH</td>
+<td></td>
+<td>2020-06-29T02:40:01.215Z</td>
+</tr>
+<tr>
+<td>calib-velodyne-camera&#x2F;</td>
+<td>能提供一下real_laser_pattern和real_camera_pattern的参数文件吗?谢谢!</td>
+<td>Anonymous</td>
+<td></td>
+<td>2020-06-05T06:10:40.611Z</td>
+</tr>
+<tr>
+<td>calib-velodyne-camera&#x2F;</td>
+<td>你好</td>
+<td>Anonymous</td>
+<td></td>
+<td>2020-06-05T06:09:52.307Z</td>
+</tr>
+<tr>
+<td>calib-velodyne-camera&#x2F;</td>
+<td><a class="at" href="#5e4662ad21b47e006be00841">@s1nh </a> , 你运行rviz之前source一下auroware的环境应该就行了。</td>
+<td>s1nh</td>
+<td></td>
+<td>2020-02-14T09:14:32.094Z</td>
+</tr>
+<tr>
+<td>calib-velodyne-camera&#x2F;</td>
+<td><a class="at" href="#5e17000521460d006a721d99">@neon </a> , <a target="_blank" rel="noopener" href="https://github.com/autowarefoundation/autoware/issues/1510">https://github.com/autowarefoundation/autoware/issues/1510</a></td>
+<td>s1nh</td>
+<td></td>
+<td>2020-02-14T09:12:39.830Z</td>
+</tr>
+<tr>
+<td>calib-velodyne-camera&#x2F;</td>
+<td><a class="at" href="#5dd4fb6c21b47e00699c3ade">@david </a> , 不记得了。。。那个软件很难用，一堆bug，估计是有没publish的东西。<br>有心情就看代码吧。</td>
+<td>s1nh</td>
+<td></td>
+<td>2020-02-14T09:09:01.536Z</td>
+</tr>
+<tr>
+<td>calib-velodyne-camera&#x2F;</td>
+<td><a class="at" href="#5e0758cb43c257006f498743">@Anonymous </a> , 你用官方的gazebo环境，很快就可以出结果了，然后再一步一步用真机。</td>
+<td>s1nh</td>
+<td></td>
+<td>2020-02-14T09:07:32.390Z</td>
+</tr>
+<tr>
+<td>calib-velodyne-camera&#x2F;</td>
+<td><a class="at" href="#5ddcc1022a6bfd0074d342f0">@Anonymous </a> , 好像没有官方bag，只有官方的一个模拟环境（gazebo）</td>
+<td>s1nh</td>
+<td></td>
+<td>2020-02-14T09:06:29.005Z</td>
+</tr>
+<tr>
+<td>calib-velodyne-camera&#x2F;</td>
+<td><a class="at" href="#5e155fe521b47e0070ffe025">@小羊 </a> , 是加我微信那位吗，现在搞定了不？</td>
+<td>s1nh</td>
+<td></td>
+<td>2020-02-14T09:05:19.168Z</td>
+</tr>
+<tr>
+<td>calib-velodyne-camera&#x2F;</td>
+<td><a class="at" href="#5e17000521460d006a721d99">@neon </a> , 哈哈哈，我之前也找不到</td>
+<td>s1nh</td>
+<td></td>
+<td>2020-02-14T09:04:45.457Z</td>
+</tr>
+<tr>
+<td>calib-velodyne-camera&#x2F;</td>
+<td><a class="at" href="#5e0758cb43c257006f498743">@Anonymous </a> , 有人在youtube发过，你可以去搜一下</td>
+<td>s1nh</td>
+<td></td>
+<td>2020-02-14T09:04:06.584Z</td>
+</tr>
+<tr>
+<td>calib-velodyne-camera&#x2F;</td>
+<td><a class="at" href="#5dd2852743c257006ab87ab6">@Anonymous </a> , 找官方更新了固件，问题解决。</td>
+<td>s1nh</td>
+<td></td>
+<td>2020-02-14T09:01:12.564Z</td>
+</tr>
+<tr>
+<td>calib-velodyne-camera&#x2F;</td>
+<td>问一下，rviz找不到ImageViewerPlugin这个插件怎么办，看不了points_image</td>
+<td>neon</td>
+<td></td>
+<td>2020-01-09T10:27:17.394Z</td>
+</tr>
+<tr>
+<td>calib-velodyne-camera&#x2F;</td>
+<td>您好，我现在想让vlp-16和GPS时间同步。我买了手册推荐的Garmin GPS。我发现PPS可以锁定但是没有位置信息（GPRMC语句）。请问具体您是怎么同步的呢？</td>
+<td>小羊</td>
+<td></td>
+<td>2020-01-08T04:51:49.326Z</td>
+</tr>
+<tr>
+<td>calib-velodyne-camera&#x2F;</td>
+<td>博主你好，我想问一下你跑velo2cam的结果是什么啊，我想对照下你的结果看看我是否成功了，谢谢啊</td>
+<td>Anonymous</td>
+<td></td>
+<td>2019-12-28T13:29:47.656Z</td>
+</tr>
+<tr>
+<td>calib-velodyne-camera&#x2F;</td>
+<td>请问,使用veloc2cam进行标定,官方的bag包怎么获取呢?<br>可以直接使用velo2cam进行单目+激光雷达标定吗?</td>
+<td>Anonymous</td>
+<td></td>
+<td>2019-11-26T06:06:58.619Z</td>
+</tr>
+<tr>
+<td>calib-velodyne-camera&#x2F;</td>
+<td>您好，我在用autoware_camera_lidar_calibrator标定小觅相机和velodyne外参的时候，输入了相应的内参文件，但是&#x2F;camera_info没有输出，也显示[points2image]Looks like camera_info or projection_matrix are not being published.. Please check that both are running..的报错，这是为什么</td>
+<td>david</td>
+<td></td>
+<td>2019-11-20T08:38:04.112Z</td>
+</tr>
+<tr>
+<td>calib-velodyne-camera&#x2F;</td>
+<td>请问小觅相机的那两个错误最后你最后解决了吗？</td>
+<td>Anonymous</td>
+<td></td>
+<td>2019-11-18T11:48:55.177Z</td>
+</tr>
+<tr>
+<td>calib-velodyne-camera&#x2F;</td>
+<td><a class="at" href="#5d550331ba39c80067dcc00d">@XiaoXin </a> , 跟操作系统没关系的，之前默认的ros驱动不会解析gps的时间戳，我用了另一个好像叫timestamp的分支，具体记不清了，不知道现在master分支有没有增加时间戳的功能。你可以试一下这个分支 <a target="_blank" rel="noopener" href="https://github.com/ros-drivers/velodyne/tree/gps_imu">https://github.com/ros-drivers/velodyne/tree/gps_imu</a> 我当时同步时间戳的做法是修改了驱动，让它解析数据包的时间戳部分。</td>
+<td>S1NH</td>
+<td></td>
+<td>2019-08-28T17:40:43.146Z</td>
+</tr>
+<tr>
+<td>calib-velodyne-camera&#x2F;</td>
+<td>请问一下，我这里也实现了VLP-16与GPS的时间同步，但是对激光雷达和相机之间的时间同步还没有思路，您那里是怎么利用Velodyne时间戳的呢，ROS下的&#x2F;velodyne_points能够解析出雷达原始数据中的时间戳吗，还是说要在Windows下做呢？😀😀😀非常感谢😀😀😀</td>
+<td>XiaoXin</td>
+<td></td>
+<td>2019-08-15T07:01:05.115Z</td>
+</tr>
+<tr>
+<td>calib-velodyne-camera&#x2F;</td>
+<td><a class="at" href="#5d160f10a673f50069551b4f">@Anonymous </a> , 你连文件路径都没有换，建议你先学习一下ros 和linux的基本用法，加油！</td>
+<td>S1NH</td>
+<td></td>
+<td>2019-07-11T07:20:21.046Z</td>
+</tr>
+<tr>
+<td>calib-velodyne-camera&#x2F;</td>
+<td>请问我在终端上输入这个 roslaunch &#x2F;home&#x2F;s1nh&#x2F;catkin_ws&#x2F;src&#x2F;image_undistort&#x2F;launch&#x2F;stereo_undistort.launch 没有反应是怎么回事啊，只输出lload camera parameters?</td>
+<td>Anonymous</td>
+<td></td>
+<td>2019-06-28T12:58:56.887Z</td>
+</tr>
+<tr>
+<td>confused&#x2F;</td>
+<td>😂</td>
+<td>Anonymous</td>
+<td></td>
+<td>2019-06-15T05:44:58.663Z</td>
+</tr>
+<tr>
+<td>document-layout-analysis&#x2F;</td>
+<td><a class="at" href="#5ec52526dc1b050006f26b47">@Anonymous </a> , 在这里<br><a target="_blank" rel="noopener" href="https://github.com/xellows1305/Document-Image-Dewarping#executable-program">https://github.com/xellows1305/Document-Image-Dewarping#executable-program</a><br>最后面有个链接</td>
+<td>S1NH</td>
+<td></td>
+<td>2020-06-29T02:41:00.342Z</td>
+</tr>
+<tr>
+<td>document-layout-analysis&#x2F;</td>
+<td>你好，我感觉你总结的真的很好，你提到的Robust Document Image Dewarping Method Using Text-Lines and Line Segments文章的作者提供了二进制文件，请问在哪里可以获取到这个二进制文件呢，谢谢你的解答</td>
+<td>Anonymous</td>
+<td></td>
+<td>2020-05-20T12:40:06.805Z</td>
+</tr>
+<tr>
+<td>document-layout-analysis&#x2F;</td>
+<td><a class="at" href="#5cad588ba91c93158a487dd7">@S1NH </a> , 这个是收费的软件吧？</td>
+<td>Anonymous</td>
+<td></td>
+<td>2019-10-09T01:05:56.463Z</td>
+</tr>
+<tr>
+<td>document-layout-analysis&#x2F;</td>
+<td><a class="at" href="#5d883de4ba39c8007322dd4b">@zhouyuangan </a> , 谢谢^_^</td>
+<td>S1NH</td>
+<td></td>
+<td>2019-09-25T06:02:37.226Z</td>
+</tr>
+<tr>
+<td>document-layout-analysis&#x2F;</td>
+<td>支持，希望能看到更多这样的文章</td>
+<td>zhouyuangan</td>
+<td>github.com&#x2F;zhouyuangan</td>
+<td>2019-09-23T03:37:08.104Z</td>
+</tr>
+<tr>
+<td>document-layout-analysis&#x2F;</td>
+<td><a class="at" href="#5cd52739c8959c0068527968">@Anonymous </a> , <a target="_blank" rel="noopener" href="https://abbyy.technology/en:features:ocr:document_analysis">https://abbyy.technology/en:features:ocr:document_analysis</a></td>
+<td>S1NH</td>
+<td></td>
+<td>2019-05-10T08:28:05.656Z</td>
+</tr>
+<tr>
+<td>document-layout-analysis&#x2F;</td>
+<td>你好，你第一张图里的软件是什么啊</td>
+<td>Anonymous</td>
+<td></td>
+<td>2019-05-10T07:24:41.287Z</td>
+</tr>
+<tr>
+<td>document-layout-analysis&#x2F;</td>
+<td><a class="at" href="#5ca457b3c05a8000737a569c">@Anonymous </a> ,  抱歉更新的这么晚，在这个链接里可以看到 <a target="_blank" rel="noopener" href="http://s1nh.comdocument-layout-analysis/">http://s1nh.comdocument-layout-analysis/</a></td>
+<td>S1NH</td>
+<td></td>
+<td>2019-04-10T02:44:56.042Z</td>
+</tr>
+<tr>
+<td>document-layout-analysis&#x2F;</td>
+<td><a class="at" href="#5c9de4cca91c9300682f628c">@S1NH </a> , 多谢，找到望告知</td>
+<td>Anonymous</td>
+<td></td>
+<td>2019-04-03T06:50:27.974Z</td>
+</tr>
+<tr>
+<td>document-layout-analysis&#x2F;</td>
+<td><a class="at" href="#5c9dd70ac05a80007476ea56">@Anonymous </a>链接忘记加了，回头我看看。</td>
+<td>S1NH</td>
+<td></td>
+<td>2019-04-01T06:15:36.505Z</td>
+</tr>
+<tr>
+<td>document-layout-analysis&#x2F;</td>
+<td>你好， 下面的这个句的github链接有吗<br>“有个同学了复现上面两个算法[github]，我暂时跑不通”</td>
+<td>Anonymous</td>
+<td></td>
+<td>2019-03-29T08:27:54.986Z</td>
+</tr>
+<tr>
+<td>document-layout-analysis&#x2F;</td>
+<td><a class="at" href="#5be3e0b9fb4ffe0069bf9eb9">@sagewang </a>最近比较忙，忙完了再更吧&gt;_&lt;</td>
+<td>s1nh</td>
+<td></td>
+<td>2018-11-12T06:57:11.243Z</td>
+</tr>
+<tr>
+<td>document-layout-analysis&#x2F;</td>
+<td>老哥，剩下的内容怎么不更了？</td>
+<td>sagewang</td>
+<td></td>
+<td>2018-11-08T07:07:37.218Z</td>
+</tr>
+<tr>
+<td>eclipse-~-gnome-theme-kali&#x2F;</td>
+<td>多谢 我用的manjaro，在上面装的eclipse也遇到了这个问题，gnome的优化设置修改主题就行了</td>
+<td>Anonymous</td>
+<td></td>
+<td>2018-11-26T14:17:57.824Z</td>
+</tr>
+<tr>
+<td>hackrf-quick-start&#x2F;</td>
+<td>为什么受到的gps信号不稳定呢？</td>
+<td>Anonymous</td>
+<td></td>
+<td>2020-05-06T14:39:40.668Z</td>
+</tr>
+<tr>
+<td>hackrf-quick-start&#x2F;</td>
+<td><a class="at" href="#5d24aacea673f50069f5da4b">@tin </a> , 你回复的时候留个邮箱吧</td>
+<td>S1NH</td>
+<td></td>
+<td>2020-02-14T09:17:05.098Z</td>
+</tr>
+<tr>
+<td>hackrf-quick-start&#x2F;</td>
+<td><a class="at" href="#5deea951546eaa00695b5a0b">@Anonymous </a> , 你猜</td>
+<td>s1nh</td>
+<td></td>
+<td>2020-02-14T09:16:10.506Z</td>
+</tr>
+<tr>
+<td>hackrf-quick-start&#x2F;</td>
+<td><a class="at" href="#5d26d819c8959c00689992ec">@S1NH </a> , 怎么联系你？</td>
+<td>Anonymous</td>
+<td></td>
+<td>2019-12-09T20:06:41.316Z</td>
+</tr>
+<tr>
+<td>hackrf-quick-start&#x2F;</td>
+<td>老哥你好，关于hackrf有事情想请教。。。有偿也可。。。。</td>
+<td>(* ￣3)(ε￣ *)</td>
+<td></td>
+<td>2019-08-30T10:43:55.765Z</td>
+</tr>
+<tr>
+<td>hackrf-quick-start&#x2F;</td>
+<td>老哥你好，关于hackrf有事情想请教。。。有偿也可。。。。</td>
+<td>tin</td>
+<td></td>
+<td>2019-07-09T14:55:10.242Z</td>
+</tr>
+<tr>
+<td>hello-world&#x2F;</td>
+<td><a class="at" href="#5c2208e167f356005f12e368">@s1nh </a>666</td>
+<td>s1nh</td>
+<td></td>
+<td>2018-12-25T10:42:13.053Z</td>
+</tr>
+<tr>
+<td>hello-world&#x2F;</td>
+<td>test</td>
+<td>s1nh</td>
+<td></td>
+<td>2018-12-25T10:39:29.064Z</td>
+</tr>
+<tr>
+<td>Image-mosaic-keypoint&#x2F;</td>
+<td>图像拼接速率上，有什么优化方案</td>
+<td>Anonymous</td>
+<td></td>
+<td>2019-04-14T13:00:27.548Z</td>
+</tr>
+<tr>
+<td>Image-mosaic-keypoint&#x2F;</td>
+<td><a class="at" href="#5ca421d3a3180b0068aae948">@gary </a> , 加油呀！<br>不过你的Blog竟然 comment section 是空的 &gt;_&lt;</td>
+<td>S1NH</td>
+<td></td>
+<td>2019-04-10T03:07:25.301Z</td>
+</tr>
+<tr>
+<td>Image-mosaic-keypoint&#x2F;</td>
+<td>从老哥的一篇 octave的文章。。<br>看了老哥很多文章。。。。<br>然后喜欢上了老哥的写作风格。<br>最近在上吴恩达的ml课，<br>好难。</td>
+<td>gary</td>
+<td><a target="_blank" rel="noopener" href="https://www.zhongxijia.cn/">https://www.zhongxijia.cn</a></td>
+<td>2019-04-03T03:00:35.299Z</td>
+</tr>
+<tr>
+<td>jetson-tx-2-all-you-know&#x2F;</td>
+<td><a class="at" href="#5ed20bbce2ae37000637e781">@Anonymous </a> , 之前买了一个载板，可以插6个CSI摄像头<br>跟下面链接的差不多：<br><a target="_blank" rel="noopener" href="https://item.taobao.com/item.htm?spm=a230r.1.14.178.6dce7087mga6IZ&amp;id=555255642576&amp;ns=1&amp;abbucket=17#detail">https://item.taobao.com/item.htm?spm=a230r.1.14.178.6dce7087mga6IZ&amp;id=555255642576&amp;ns=1&amp;abbucket=17#detail</a></td>
+<td>S1NH</td>
+<td></td>
+<td>2020-06-29T02:38:05.793Z</td>
+</tr>
+<tr>
+<td>jetson-tx-2-all-you-know&#x2F;</td>
+<td>你好我想问一下，你当时给TX2扩展了几个摄像头呀？是扩展的CSI还是usb的呀？我现在在做基于TX2的环视系统，也需要用摄像头进行拼接，所以想问问？麻烦啦！</td>
+<td>Anonymous</td>
+<td></td>
+<td>2020-05-30T07:31:08.296Z</td>
+</tr>
+<tr>
+<td>jetson-tx-2-all-you-know&#x2F;</td>
+<td><a class="at" href="#5c21fd651579a3005f0c02d7">@s1nh </a>多谢指点👍我这比较简单粗暴，直接把ptgui生成的.pts拼接模板输入进去做的remap，然后线性blending输出。我从remap到blender把所有opencv自带的函数都用自己写的kernel换掉了，结果也没提升多少orz….<br>而且remap这个函数实在太费时了，由于是随机访问也没法合并，实在找不到优化的方法…..<br>opencv自带的stream这么坑的嘛，我去试试😹</td>
+<td>田子</td>
+<td></td>
+<td>2018-12-27T03:20:56.507Z</td>
+</tr>
+<tr>
+<td>jetson-tx-2-all-you-know&#x2F;</td>
+<td><a class="at" href="#5c2050a64773f7173669a20c">@田子 </a>你是用的什么特征和什么blender呀，我好像只用了线性的blender。  年代太久远了记不清了&gt;_&lt; 另外，stream的使用好像有很多坑，可以看看<a target="_blank" rel="noopener" href="https://github.com/opencv/opencv/issues/8938">这个</a>，我重写了opencv的部分代码才跑起来的</td>
+<td>s1nh</td>
+<td></td>
+<td>2018-12-25T09:56:40.641Z</td>
+</tr>
+<tr>
+<td>jetson-tx-2-all-you-know&#x2F;</td>
+<td>看了你的《GPU加速与L-ORB特征提取的全景视频实时拼接》，想问一下博主怎么实现在TX1下三路拼接1500x1112达到每帧10ms的😱….我也在做拼接，三路1280x960输入1920x960输出，三通道BGR图像，用的还是TX2，只做remap+blender，连特征点检测都没有，拼接每帧都要45ms……尝试了分给不同的stream做拼接，效果也并不显著😵😵😵</td>
+<td>田子</td>
+<td></td>
+<td>2018-12-24T03:21:10.740Z</td>
+</tr>
+<tr>
+<td>Keras-MNIST&#x2F;</td>
+<td><a class="at" href="#5c31f2eb67f356006343237a">@unknown </a>The code comes from the official example: <a target="_blank" rel="noopener" href="https://github.com/keras-team/keras/blob/befbdaa076eedb2787ce340b1a5b4accf93d123d/examples/mnist_cnn.py">examples&#x2F;mnist_cnn.py</a></td>
+<td>s1nh</td>
+<td></td>
+<td>2019-01-07T03:23:20.842Z</td>
+</tr>
+<tr>
+<td>Keras-MNIST&#x2F;</td>
+<td>do not put test set to validation data, it just not correct</td>
+<td>unknown</td>
+<td></td>
+<td>2019-01-06T12:22:03.511Z</td>
+</tr>
+<tr>
+<td>littlebug&#x2F;</td>
+<td><a class="at" href="#5d8890d6ba39c8007325c758">@Anonymous </a> , 现在bug已经在新版本修复了，不需要降级了。只需要执行 sudo apt-get update 和 sudo apt-get upgrade 升级即可。如果还有问题，那么可能不是这个bug的原因导致的。</td>
+<td>S1NH</td>
+<td></td>
+<td>2019-09-25T06:01:31.368Z</td>
+</tr>
+<tr>
+<td>littlebug&#x2F;</td>
+<td><a class="at" href="#5bb0ba060b6160006fe6a68a">@S1NH </a> , 用了你给的指令依然不能降级，请教一下该怎么处理</td>
+<td>Anonymous</td>
+<td></td>
+<td>2019-09-23T09:31:02.741Z</td>
+</tr>
+<tr>
+<td>littlebug&#x2F;</td>
+<td><a class="at" href="#5d620600eaa3750068c8cb37">@Anonymous </a> , Bug早就修复了，直接升级即可。</td>
+<td>S1NH</td>
+<td></td>
+<td>2019-08-28T17:43:21.756Z</td>
+</tr>
+<tr>
+<td>littlebug&#x2F;</td>
+<td><a class="at" href="#5bb0b9fffb4ffe0069b5114c">@youbinqiao </a> , 怎么降级呀？</td>
+<td>Anonymous</td>
+<td></td>
+<td>2019-08-25T03:52:32.494Z</td>
+</tr>
+<tr>
+<td>littlebug&#x2F;</td>
+<td><a class="at" href="#5c8c6e65ac502e00668764b4">@Anonymous </a>是4.4.0-116的bug， 请自行谷歌</td>
+<td>S1NH</td>
+<td></td>
+<td>2019-04-01T06:15:31.541Z</td>
+</tr>
+<tr>
+<td>littlebug&#x2F;</td>
+<td>这并不是kernel的bug，是因为你更新了内核，新内核里没有把驱动模块打进去。</td>
+<td>Anonymous</td>
+<td></td>
+<td>2019-03-16T03:32:53.252Z</td>
+</tr>
+<tr>
+<td>littlebug&#x2F;</td>
+<td><a class="at" href="#5bb0b9fffb4ffe0069b5114c">@youbinqiao </a>通过uname -a可以查看自己的内核版本；</br> </br> 降级很简单，你试一下下面3个命令：</br> dpkg -l&#124;grep linux-image-e</br> dpkg -l&#124;grep linux-image-4</br> dpkg -l&#124;grep linux-headers-4</br> </br> 依然不会的话再问我吧</td>
+<td>S1NH</td>
+<td></td>
+<td>2018-09-30T12:47:50.166Z</td>
+</tr>
+<tr>
+<td>littlebug&#x2F;</td>
+<td><a class="at" href="#5bb08e669f54540070617d8b">@YH </a>我只是个搬运工^_^</td>
+<td>S1NH</td>
+<td></td>
+<td>2018-09-30T12:47:48.808Z</td>
+</tr>
+<tr>
+<td>littlebug&#x2F;</td>
+<td>血泪史，一上午排查不出bug~~~靠阁下解决了，3Q</td>
+<td>eclipsedu</td>
+<td></td>
+<td>2018-09-30T12:04:08.017Z</td>
+</tr>
+<tr>
+<td>littlebug&#x2F;</td>
+<td>请问如何降级呢，在网上找了降级的方法，都没成功</td>
+<td>youbinqiao</td>
+<td></td>
+<td>2018-09-30T11:59:30.669Z</td>
+</tr>
+<tr>
+<td>littlebug&#x2F;</td>
+<td>謝謝你的文，我才解決這個問題 ;</td>
+<td>YH</td>
+<td></td>
+<td>2018-09-30T09:12:03.858Z</td>
+</tr>
+<tr>
+<td>matplotlib-animation&#x2F;</td>
+<td>博客好漂亮，背景好好玩</td>
+<td>Anonymous</td>
+<td></td>
+<td>2018-12-12T11:46:15.234Z</td>
+</tr>
+<tr>
+<td>microeconomics-note&#x2F;</td>
+<td>嘿，偶然看到你的博客，还挺喜欢的啊哈。加油噢！</td>
+<td>Anonymous</td>
+<td></td>
+<td>2019-06-15T02:59:46.180Z</td>
+</tr>
+<tr>
+<td>planar-reconstruction&#x2F;</td>
+<td><a class="at" href="#5cea8d3343e78c00670dff52">@Bert </a> , 膜拜大神！</td>
+<td>S1NH</td>
+<td></td>
+<td>2019-05-31T07:33:41.881Z</td>
+</tr>
+<tr>
+<td>planar-reconstruction&#x2F;</td>
+<td>👍👍👍</td>
+<td>Bert</td>
+<td><a target="_blank" rel="noopener" href="http://bertjiazheng.github.io/">http://bertjiazheng.github.io</a></td>
+<td>2019-05-26T12:57:23.015Z</td>
+</tr>
+<tr>
+<td>project-velodyne&#x2F;</td>
+<td>师兄您好，请问您的github地址在哪里啊？想看看您的参数是如何设置的，我定制了一个同样比例大小的标定版，但是没有成功，特别急，谢谢啦</td>
+<td>Anonymous</td>
+<td></td>
+<td>2020-11-02T01:58:28.674Z</td>
+</tr>
+<tr>
+<td>project-velodyne&#x2F;</td>
+<td><a class="at" href="#5d430f7743e78c006e488b02">@DBSGWS </a> , 恩恩，这个之前试过。</td>
+<td>S1NH</td>
+<td></td>
+<td>2019-10-14T11:10:21.536Z</td>
+</tr>
+<tr>
+<td>project-velodyne&#x2F;</td>
+<td><a class="at" href="#5d89be1f17b54d0068460116">@Jane </a> , 这个没有耶，比较高端。</td>
+<td>S1NH</td>
+<td></td>
+<td>2019-09-25T06:02:09.647Z</td>
+</tr>
+<tr>
+<td>project-velodyne&#x2F;</td>
+<td>请问博主有自制过3D雷达吗？</td>
+<td>Jane</td>
+<td></td>
+<td>2019-09-24T06:56:31.677Z</td>
+</tr>
+<tr>
+<td>project-velodyne&#x2F;</td>
+<td>可以试试这个 <a target="_blank" rel="noopener" href="https://github.com/ankitdhall/lidar_camera_calibration">https://github.com/ankitdhall/lidar_camera_calibration</a></td>
+<td>DBSGWS</td>
+<td></td>
+<td>2019-08-01T16:12:39.543Z</td>
+</tr>
+<tr>
+<td>RSA-KMP-RB-TREE&#x2F;</td>
+<td><a class="at" href="#5cf077517b968a007696db1d">@Anonymous </a> , 233333</td>
+<td>S1NH</td>
+<td></td>
+<td>2019-05-31T07:32:17.970Z</td>
+</tr>
+<tr>
+<td>RSA-KMP-RB-TREE&#x2F;</td>
+<td>fuck,it’s so difficult</td>
+<td>Anonymous</td>
+<td></td>
+<td>2019-05-31T07:31:50.082Z</td>
+</tr>
+<tr>
+<td>Tensorflow-MNIST&#x2F;</td>
+<td><a class="at" href="#5bf3f293303f3900622422e5">@Anonymous </a>上面的优化器是 Adam 和 梯度下降</td>
+<td>S1NH</td>
+<td></td>
+<td>2018-11-25T17:37:59.335Z</td>
+</tr>
+<tr>
+<td>Tensorflow-MNIST&#x2F;</td>
+<td>softmax只是最后进行数值缩放的一步，不是作为优化器吧，所有的方法最后都要用softmax</td>
+<td>Anonymous</td>
+<td></td>
+<td>2018-11-20T11:40:03.174Z</td>
+</tr>
+<tr>
+<td>Tor-Browser-Setup&#x2F;</td>
+<td>通过蓝灯已经等于表明身份了吧？</td>
+<td>kenson</td>
+<td></td>
+<td>2019-07-22T03:17:02.516Z</td>
+</tr>
+<tr>
+<td>tx-1-zero-copy&#x2F;</td>
+<td>Hi, 从<a target="_blank" rel="noopener" href="http://zangcq.me/?p=330">http://zangcq.me/?p=330</a> 看到了对你文章的称赞，我<a target="_blank" rel="noopener" href="https://www.findhao.net/easycoding/1697">https://www.findhao.net/easycoding/1697</a> 原文翻译的确有问题，现已纠正。</br> 加个好友如何？如有意向，请email我你的qq or 其他联系方式</td>
+<td>FindHao</td>
+<td></td>
+<td>2018-09-30T12:36:43.774Z</td>
+</tr>
+</tbody></table>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechat-pay.jpeg" alt="S1NH 微信">
+        <span>微信</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>S1NH
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://s1nh.org/post/disappeared-comments/" title="消失的评论">http://s1nh.org/post/disappeared-comments/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/concepts-of-fast-dds/" rel="prev" title="一些有关 FastDDS 的基本概念">
+                  <i class="fa fa-angle-left"></i> 一些有关 FastDDS 的基本概念
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/post/scores/" rel="next" title="孤独摇滚 + Yorushika + 三月のパンタシア 吉他谱">
+                  孤独摇滚 + Yorushika + 三月のパンタシア 吉他谱 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2015 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">S1NH</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/duchengyao" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"duchengyao/duchengyao.github.io","issue_term":"og:title","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js" defer></script>
+
+</body>
+</html>
