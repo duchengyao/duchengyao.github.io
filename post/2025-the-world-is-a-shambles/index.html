@@ -19,15 +19,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.23.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="刚编的故事，如有雷同纯属巧合  所以CUDA 12.8 到底能不能在 545 驱动上运行？  0x01事情是这样的。 公司里刚开始学 vLLM 的老师，拉了官方镜像（官方镜像只有CUDA 12.8）在平台上跑，结果挂了。平台开发跑过来找我。我已经明确的跟平台说过无数遍了，driver 545 最高用 CUDA 12.3。">
+    <meta name="description" content="刚编的故事，如有雷同纯属巧合  所以CUDA 12.8 到底能不能在 545 驱动上运行？">
 <meta property="og:type" content="article">
 <meta property="og:title" content="世界是个巨大的草台班子">
 <meta property="og:url" content="http://s1nh.org/post/2025-the-world-is-a-shambles/index.html">
 <meta property="og:site_name" content="S1NH">
-<meta property="og:description" content="刚编的故事，如有雷同纯属巧合  所以CUDA 12.8 到底能不能在 545 驱动上运行？  0x01事情是这样的。 公司里刚开始学 vLLM 的老师，拉了官方镜像（官方镜像只有CUDA 12.8）在平台上跑，结果挂了。平台开发跑过来找我。我已经明确的跟平台说过无数遍了，driver 545 最高用 CUDA 12.3。">
+<meta property="og:description" content="刚编的故事，如有雷同纯属巧合  所以CUDA 12.8 到底能不能在 545 驱动上运行？">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-08-05T14:25:29.000Z">
-<meta property="article:modified_time" content="2026-04-23T10:28:39.398Z">
+<meta property="article:modified_time" content="2026-04-29T18:00:15.791Z">
 <meta property="article:author" content="S1NH">
 <meta property="article:tag" content="吐槽">
 <meta name="twitter:card" content="summary">
@@ -352,10 +352,10 @@
 <blockquote>
 <p>所以<strong>CUDA 12.8</strong> 到底能不能在 <strong>545</strong> 驱动上运行？</p>
 </blockquote>
-<h2 id="0x01"><a href="#0x01" class="headerlink" title="0x01"></a>0x01</h2><p>事情是这样的。</p>
-<p>公司里刚开始学 vLLM 的老师，拉了官方镜像（官方镜像只有CUDA 12.8）在平台上跑，结果挂了。平台开发跑过来找我。<br>我已经明确的跟平台说过无数遍了，<strong>driver 545 最高用 CUDA 12.3</strong>。</p>
 <span id="more"></span>
 
+<h2 id="0x01"><a href="#0x01" class="headerlink" title="0x01"></a>0x01</h2><p>事情是这样的。</p>
+<p>公司里刚开始学 vLLM 的老师，拉了官方镜像（官方镜像只有CUDA 12.8）在平台上跑，结果挂了。平台开发跑过来找我。<br>我已经明确的跟平台说过无数遍了，<strong>driver 545 最高用 CUDA 12.3</strong>。</p>
 <p>平台开发<strong>不信</strong>，说有的镜像是 12.8，也能用。<br>我又跟他们说那是运气好，恰好没用到不兼容算子，平台<strong>不信</strong>，说要找人验证一下。<br>我当时就气笑了：所以找谁验证啊，平台有人会验证吗？<br>并且，官方文档那么大个表格写的明明白白 545 最高用 12.3，为啥还要扯皮啊。真的服了。</p>
 <h2 id="0x02"><a href="#0x02" class="headerlink" title="0x02"></a>0x02</h2><p>过了几天，不同的人、同样的问题、同样的报错，又反馈给我。<br>不是，<strong>相同的问题</strong>平台看都不看就直接甩给我是吗？<br>后来种子班也碰到这个问题了，解决不了，捅到了公司<strong>上层</strong>。我心想，这回总该有个识货的出来拍板升级驱动了吧？</p>
 <p><strong>结果，炸裂的来了。</strong></p>
@@ -364,7 +364,7 @@
 <p><strong>售前</strong>跟我说：“帮平台打镜像那是<strong>打黑工</strong>，不属于咱们本职工作，别理他们。”<br><strong>平台</strong>跟我说：“那俩售前就是<strong>大傻逼</strong>，只会 PUA 别人，然后自己独享成果。”</p>
 <p>给平台是不是打黑工我不知道。那俩售前确实是大傻逼。之前他们说我去给种子班讲课就给我<strong>讲师资质</strong>，还有补助。现在讲完以后<strong>屁都没有</strong>。</p>
 <p>其实我看到那些满屏 <code>CUDA_ERROR</code> 的新手，好像看到了自己小时候到处问问题但是无人回复的样子。想尽力帮他们。<br>并且每次被说谢谢，都可以开心半天。（可能是太缺乏认可了）<br>可现在，特别是听完售前和平台那两波人说的话。我突然开始怀疑，<strong>“谢谢”是不是一种控制工具。</strong><br>一句谢谢就可以白嫖我干活一整天。</p>
-<p>真没招了。读书读傻了，想不清楚。</p>
+<p>真没招了。写代码写傻了，想不清楚。</p>
 
     </div>
 
