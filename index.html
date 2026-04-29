@@ -774,8 +774,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>最近在客串“客服”，教一批公司之前“双选”转行做 AI 的<strong>0基础新手</strong>把模型训练跑起来。</p>
-<p>有很大一批是<strong>完全不懂 Linux</strong> 的，需要学一下基本命令和 Docker 的用法，这里就不讨论了。今天主要聊的是已经迈过基本功门槛，开始尝试<strong>多机多卡分布式训练</strong>的学员。</p>
+          <p>最近在客串“客服”，教公司内部转行做 AI 的<strong>0基础新手</strong>把模型训练跑起来。</p>
+<p>有一小部分<strong>完全不懂 Linux</strong> 的，需要学一下基本命令和 Docker 的用法，这里就不讨论了。今天主要聊的是已经迈过基本功门槛，开始尝试<strong>多机多卡分布式训练</strong>的学员。</p>
 <h2 id="0x01：关于-NCCL-Timeout"><a href="#0x01：关于-NCCL-Timeout" class="headerlink" title="0x01：关于 NCCL Timeout"></a>0x01：关于 NCCL Timeout</h2><p>训练的时候大家基本都碰到过 <strong>NCCL Timeout</strong> 的问题。一般人搜一下就会觉得是<strong>节点通信出故障了</strong>，肯定是服务器坏了，然后就会上报给平台运维处理。</p>
 <p>其实 NCCL Timeout 原因有很多，大概率还是自己写的<strong>代码有问题</strong>（特别是对于新手来说）。一般我会用这几个方法来排除：</p>
 <p>首先设置环境变量：</p>
@@ -795,7 +795,7 @@
 <p>这种情况一般可以检查一下配置文件，看是不是用了 ZeRO-3，如果是，就替换成zero2试试。</p>
 <h2 id="0x03：Early-Stop-被识别成异常退出"><a href="#0x03：Early-Stop-被识别成异常退出" class="headerlink" title="0x03：Early Stop 被识别成异常退出"></a>0x03：Early Stop 被识别成异常退出</h2><p>最后分享个好玩的，还见过一个人代码里写了 <strong>Early Stop</strong>，模型收敛了直接把进程杀了。</p>
 <p>然后看到了平台提示的“失败”就反馈给了我。</p>
-<h2 id="0xFF"><a href="#0xFF" class="headerlink" title="0xFF"></a>0xFF</h2><p>建议大家在盲目训练模型之前，还是先<strong>学一下基础知识</strong>。</p>
+<h2 id="0xFF"><a href="#0xFF" class="headerlink" title="0xFF"></a>0xFF</h2><p>建议大家在训练模型之前，一定要先<strong>恶补一下基础知识</strong>。</p>
 
       
     </div>

@@ -19,15 +19,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.23.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="最近在客串“客服”，教一批公司之前“双选”转行做 AI 的0基础新手把模型训练跑起来。 有很大一批是完全不懂 Linux 的，需要学一下基本命令和 Docker 的用法，这里就不讨论了。今天主要聊的是已经迈过基本功门槛，开始尝试多机多卡分布式训练的学员。 0x01：关于 NCCL Timeout训练的时候大家基本都碰到过 NCCL Timeout 的问题。一般人搜一下就会觉得是节点通信出故障了，肯">
+    <meta name="description" content="最近在客串“客服”，教公司内部转行做 AI 的0基础新手把模型训练跑起来。 有一小部分完全不懂 Linux 的，需要学一下基本命令和 Docker 的用法，这里就不讨论了。今天主要聊的是已经迈过基本功门槛，开始尝试多机多卡分布式训练的学员。 0x01：关于 NCCL Timeout训练的时候大家基本都碰到过 NCCL Timeout 的问题。一般人搜一下就会觉得是节点通信出故障了，肯定是服务器坏了">
 <meta property="og:type" content="article">
 <meta property="og:title" content="大模型训练中的“月经”问题">
 <meta property="og:url" content="http://s1nh.org/post/2025-most-frequent-questions-in-ai-tech-support/index.html">
 <meta property="og:site_name" content="S1NH">
-<meta property="og:description" content="最近在客串“客服”，教一批公司之前“双选”转行做 AI 的0基础新手把模型训练跑起来。 有很大一批是完全不懂 Linux 的，需要学一下基本命令和 Docker 的用法，这里就不讨论了。今天主要聊的是已经迈过基本功门槛，开始尝试多机多卡分布式训练的学员。 0x01：关于 NCCL Timeout训练的时候大家基本都碰到过 NCCL Timeout 的问题。一般人搜一下就会觉得是节点通信出故障了，肯">
+<meta property="og:description" content="最近在客串“客服”，教公司内部转行做 AI 的0基础新手把模型训练跑起来。 有一小部分完全不懂 Linux 的，需要学一下基本命令和 Docker 的用法，这里就不讨论了。今天主要聊的是已经迈过基本功门槛，开始尝试多机多卡分布式训练的学员。 0x01：关于 NCCL Timeout训练的时候大家基本都碰到过 NCCL Timeout 的问题。一般人搜一下就会觉得是节点通信出故障了，肯定是服务器坏了">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-06-20T09:22:19.000Z">
-<meta property="article:modified_time" content="2026-04-25T18:53:14.286Z">
+<meta property="article:modified_time" content="2026-04-29T17:58:50.712Z">
 <meta property="article:author" content="S1NH">
 <meta property="article:tag" content="AI训练">
 <meta property="article:tag" content="NCCL">
@@ -350,8 +350,8 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>最近在客串“客服”，教一批公司之前“双选”转行做 AI 的<strong>0基础新手</strong>把模型训练跑起来。</p>
-<p>有很大一批是<strong>完全不懂 Linux</strong> 的，需要学一下基本命令和 Docker 的用法，这里就不讨论了。今天主要聊的是已经迈过基本功门槛，开始尝试<strong>多机多卡分布式训练</strong>的学员。</p>
+    <div class="post-body" itemprop="articleBody"><p>最近在客串“客服”，教公司内部转行做 AI 的<strong>0基础新手</strong>把模型训练跑起来。</p>
+<p>有一小部分<strong>完全不懂 Linux</strong> 的，需要学一下基本命令和 Docker 的用法，这里就不讨论了。今天主要聊的是已经迈过基本功门槛，开始尝试<strong>多机多卡分布式训练</strong>的学员。</p>
 <h2 id="0x01：关于-NCCL-Timeout"><a href="#0x01：关于-NCCL-Timeout" class="headerlink" title="0x01：关于 NCCL Timeout"></a>0x01：关于 NCCL Timeout</h2><p>训练的时候大家基本都碰到过 <strong>NCCL Timeout</strong> 的问题。一般人搜一下就会觉得是<strong>节点通信出故障了</strong>，肯定是服务器坏了，然后就会上报给平台运维处理。</p>
 <p>其实 NCCL Timeout 原因有很多，大概率还是自己写的<strong>代码有问题</strong>（特别是对于新手来说）。一般我会用这几个方法来排除：</p>
 <p>首先设置环境变量：</p>
@@ -371,7 +371,7 @@
 <p>这种情况一般可以检查一下配置文件，看是不是用了 ZeRO-3，如果是，就替换成zero2试试。</p>
 <h2 id="0x03：Early-Stop-被识别成异常退出"><a href="#0x03：Early-Stop-被识别成异常退出" class="headerlink" title="0x03：Early Stop 被识别成异常退出"></a>0x03：Early Stop 被识别成异常退出</h2><p>最后分享个好玩的，还见过一个人代码里写了 <strong>Early Stop</strong>，模型收敛了直接把进程杀了。</p>
 <p>然后看到了平台提示的“失败”就反馈给了我。</p>
-<h2 id="0xFF"><a href="#0xFF" class="headerlink" title="0xFF"></a>0xFF</h2><p>建议大家在盲目训练模型之前，还是先<strong>学一下基础知识</strong>。</p>
+<h2 id="0xFF"><a href="#0xFF" class="headerlink" title="0xFF"></a>0xFF</h2><p>建议大家在训练模型之前，一定要先<strong>恶补一下基础知识</strong>。</p>
 
     </div>
 
