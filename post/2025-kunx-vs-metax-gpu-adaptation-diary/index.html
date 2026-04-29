@@ -19,15 +19,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.23.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="刚编的故事，如有雷同纯属巧合 作为组里唯一一个跟厂商对接的牛马，最近这段时间，我真的快被某国产卡搞死了。 0x01事情是这样的。 有一个 OCR 组在赶 DDL 需要很多算力，公司 A100 肯定不够用了，但是闲置了一千多张xx芯和x曦。结果全公司没有 PyTorch 和 Paddle 在xx芯的运行环境。">
+    <meta name="description" content="刚编的故事，如有雷同纯属巧合 作为组里唯一一个跟厂商对接的牛马，最近这段时间，我真的快被某国产卡搞死了。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="气笑了">
 <meta property="og:url" content="http://s1nh.org/post/2025-kunx-vs-metax-gpu-adaptation-diary/index.html">
 <meta property="og:site_name" content="S1NH">
-<meta property="og:description" content="刚编的故事，如有雷同纯属巧合 作为组里唯一一个跟厂商对接的牛马，最近这段时间，我真的快被某国产卡搞死了。 0x01事情是这样的。 有一个 OCR 组在赶 DDL 需要很多算力，公司 A100 肯定不够用了，但是闲置了一千多张xx芯和x曦。结果全公司没有 PyTorch 和 Paddle 在xx芯的运行环境。">
+<meta property="og:description" content="刚编的故事，如有雷同纯属巧合 作为组里唯一一个跟厂商对接的牛马，最近这段时间，我真的快被某国产卡搞死了。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-07-25T20:06:24.000Z">
-<meta property="article:modified_time" content="2026-04-23T10:28:07.181Z">
+<meta property="article:modified_time" content="2026-04-29T18:08:40.157Z">
 <meta property="article:author" content="S1NH">
 <meta property="article:tag" content="吐槽">
 <meta name="twitter:card" content="summary">
@@ -350,10 +350,10 @@
     
     <div class="post-body" itemprop="articleBody"><p><code>刚编的故事，如有雷同纯属巧合</code></p>
 <p>作为组里唯一一个跟厂商对接的牛马，最近这段时间，我真的快被<strong>某国产卡</strong>搞死了。</p>
-<h2 id="0x01"><a href="#0x01" class="headerlink" title="0x01"></a>0x01</h2><p>事情是这样的。</p>
-<p>有一个 OCR 组在赶 DDL 需要很多算力，公司 A100 肯定不够用了，但是闲置了一千多张<strong>xx芯</strong>和<strong>x曦</strong>。<br>结果<strong>全公司</strong>没有 PyTorch 和 Paddle 在<strong>xx芯</strong>的运行环境。</p>
 <span id="more"></span>
 
+<h2 id="0x01"><a href="#0x01" class="headerlink" title="0x01"></a>0x01</h2><p>事情是这样的。</p>
+<p>有一个 OCR 组在赶 DDL 需要很多算力，公司 A100 肯定不够用了，但是闲置了一千多张<strong>xx芯</strong>和<strong>x曦</strong>。<br>结果<strong>全公司</strong>没有 PyTorch 和 Paddle 在<strong>xx芯</strong>的运行环境。</p>
 <p>我当时的需求特别简单：找他们技术支持“王老师”给我 PyTorch 和 Paddle 的镜像和安装包，我<strong>把环境跑起来</strong>，简单的测一下benchmark 给他们用就可以了。</p>
 <p>我从 16 号开始问，已读不回；17 号再问，还是已读不回。后面打电话催，好不容易回我了，直接甩过来两个镜像。其中一个是 33GB 的超大镜像，告诉我这是基础镜像，大的原因是有完整的编译环境和调试环境，但 PyTorch 之类的要自己安装；另一个是Paddle的镜像。</p>
 <p><strong>他们整个公司连个包含 Pytorch 的镜像都没有吗？<strong>感觉像在故意搞我。但暂时不用 Pytorch，并且这个镜像太大了，就</strong>先没管它</strong>。<br>Paddle的镜像在公司的环境跑不了多节点，找那个“王老师”，已读不回。打电话，在忙。过了好几天找领导催了一下，他们拉了个视频会议才解决。</p>
