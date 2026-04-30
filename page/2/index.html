@@ -187,7 +187,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">96</span>
+          <span class="site-state-item-count">89</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -198,7 +198,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">79</span>
+        <span class="site-state-item-count">78</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -277,661 +277,6 @@
     </div>
 
     <div class="main-inner index posts-expand">
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/jetson-nano-reduce-memory-usage/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar-black.jpg">
-      <meta itemprop="name" content="S1NH">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="S1NH">
-      <meta itemprop="description" content="no other developers required.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | S1NH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/post/jetson-nano-reduce-memory-usage/" class="post-title-link" itemprop="url">「Jetson Nano」 Reduce Memory Usage</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-10-12 12:17:16" itemprop="dateCreated datePublished" datetime="2020-10-12T12:17:16+08:00">2020-10-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/programming/" itemprop="url" rel="index"><span itemprop="name">算法与硬件</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <blockquote>
-<p>Nano 的4G内存太小了（最近还出来一个2G版nano &gt;_&lt;），模型跑不动的患者可以通过以下几个步骤减少内存消耗。</p>
-</blockquote>
-<p><strong>1. 关闭用户图形界面</strong><br>sudo systemctl set-default multi-user.target<br>sudo reboot</p>
-<p>开启用户图形界面<br>sudo systemctl set-default graphical.target<br>sudo reboot</p>
-<p><strong>2. 切换图形界面</strong><br>默认图形界面为Unity，Ubuntu 18 系统自带Gnome3，可切换到 lxde 以节约内存。</p>
-<ul>
-<li>GNOME3 :1047M</li>
-<li>Unity: 517M</li>
-<li>xfce: 247M</li>
-<li>lxde: 214M</li>
-</ul>
-<p><strong>3. 关闭 dockerd 节约 49M</strong></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/vqg-survey/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar-black.jpg">
-      <meta itemprop="name" content="S1NH">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="S1NH">
-      <meta itemprop="description" content="no other developers required.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | S1NH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/post/vqg-survey/" class="post-title-link" itemprop="url">A Survey of Visual Question Generation</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-09-21 19:35:09" itemprop="dateCreated datePublished" datetime="2020-09-21T19:35:09+08:00">2020-09-21</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/programming/" itemprop="url" rel="index"><span itemprop="name">算法与硬件</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <img data-src="//qiniu.s1nh.org/vqg-intro.svg" width = 70% div align=center />
-
-
-<p>Give an image, the task is to generate natural Question based on the image.</p>
-<ul>
-<li>Another list of VQA <a target="_blank" rel="noopener" href="https://github.com/jokieleung/awesome-visual-question-answering">https://github.com/jokieleung/awesome-visual-question-answering</a></li>
-<li>A survey of Image Caption in Chinese <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/27771046">https://zhuanlan.zhihu.com/p/27771046</a></li>
-<li>Survey of the State of the Art in Natural Language Generation: Core tasks, applications and evaluation [<a target="_blank" rel="noopener" href="https://www.researchgate.net/profile/Albert_Gatt/publication/315696017_Survey_of_the_State_of_the_Art_in_Natural_Language_Generation_Core_tasks_applications_and_evaluation/links/58e4909caca272d62977a6b8/Survey-of-the-State-of-the-Art-in-Natural-Language-Generation-Core-tasks-applications-and-evaluation.pdf">Link</a></li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/post/vqg-survey/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/inference-using-tensorrt-backend/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar-black.jpg">
-      <meta itemprop="name" content="S1NH">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="S1NH">
-      <meta itemprop="description" content="no other developers required.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | S1NH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/post/inference-using-tensorrt-backend/" class="post-title-link" itemprop="url">Inference using TensorRT Backend.</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-09-21 19:30:35" itemprop="dateCreated datePublished" datetime="2020-09-21T19:30:35+08:00">2020-09-21</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/programming/" itemprop="url" rel="index"><span itemprop="name">算法与硬件</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="0x01-Tensorflow-2-0"><a href="#0x01-Tensorflow-2-0" class="headerlink" title="0x01 Tensorflow 2.0"></a>0x01 Tensorflow 2.0</h2><h3 id="1-1-Convert"><a href="#1-1-Convert" class="headerlink" title="1.1. Convert"></a>1.1. Convert</h3><p><strong>keras hdf5 –&gt; .pb</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># V2 behaviour is disabled by default in Jetpack 4.4.DP.</span><br><span class="line">import tensorflow.compat.v2 as tf</span><br><span class="line">from tensorflow.keras.models import load_model</span><br><span class="line"></span><br><span class="line">model = load_model(&#x27;./model/fer2013_mini_XCEPTION.102-0.66.hdf5&#x27;)</span><br><span class="line">model.save(&#x27;./model/tf_savedmodel&#x27;, save_format=&#x27;tf&#x27;)</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/post/inference-using-tensorrt-backend/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/multi-modal-and-edge-compute/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar-black.jpg">
-      <meta itemprop="name" content="S1NH">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="S1NH">
-      <meta itemprop="description" content="no other developers required.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | S1NH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/post/multi-modal-and-edge-compute/" class="post-title-link" itemprop="url">多模态人工智能与边缘计算技术</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-09-21 19:13:28" itemprop="dateCreated datePublished" datetime="2020-09-21T19:13:28+08:00">2020-09-21</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/programming/" itemprop="url" rel="index"><span itemprop="name">算法与硬件</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <ul>
-<li><code>自然交互</code>：更接近与人之间的交互方式。 <strong>PC</strong>：键盘鼠标；<strong>移动</strong>：触控；<strong>现在</strong>：语音、手势、图像。</li>
-<li><code>云端一体</code>：</li>
-<li><code>场景智能</code>：主动感知、用户理解、个性化推荐、智能决策。</li>
-</ul>
-<h2 id="0x01-多模态自然交互"><a href="#0x01-多模态自然交互" class="headerlink" title="0x01 多模态自然交互"></a>0x01 多模态自然交互</h2><blockquote>
-<p>5G加速智联网时代的到来，多模态数据成为主流<br>电阻屏&#x3D;&gt;电容屏：流量从PC时代走向移动时代<br>多模态自然交互：移动时代走向智联网时代</p>
-</blockquote>
-<p><img data-src="//qiniu.s1nh.org/multi_modal_20200918205030958_203510884.png-QNthin"></p>
-<ul>
-<li><code>1976</code> 发现麦格克效应</li>
-<li><code>2015</code> 200 citation–&gt;3000+ citation. 有代表的论文 VQA: Visual Question Answering (ICCV 2015)</li>
-<li><code>2016</code> 多个大型多模态数据集发表 (Youtube8m, audioset)</li>
-<li><code>2017</code> VoxCeleb 发布（多模态自然人识别数据集）</li>
-<li><code>2018</code> 视觉语音降噪，虚拟人合成技术</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/post/multi-modal-and-edge-compute/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/planar-reconstruction/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar-black.jpg">
-      <meta itemprop="name" content="S1NH">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="S1NH">
-      <meta itemprop="description" content="no other developers required.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | S1NH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/post/planar-reconstruction/" class="post-title-link" itemprop="url">Planar Reconstruction - 深度学习之平面重建</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2019-11-30 01:03:52" itemprop="dateCreated datePublished" datetime="2019-11-30T01:03:52+08:00">2019-11-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/programming/" itemprop="url" rel="index"><span itemprop="name">算法与硬件</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <table>
-<thead>
-<tr>
-<th style="text-align:center"><img data-src="//qiniu.s1nh.org/PlaneNet-head-1.png-QNthin" alt=""></th>
-<th style="text-align:center"><img data-src="//qiniu.s1nh.org/PlaneNet-head-2.png-QNthin" alt=""></th>
-<th style="text-align:center"><img data-src="//qiniu.s1nh.org/PlaneNet-head-3.png-QNthin" alt=""></th>
-<th style="text-align:center"><img data-src="//qiniu.s1nh.org/PlaneNet-head-4.png-QNthin" alt=""></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">input image</td>
-<td style="text-align:center">piece-wise planar segmentation</td>
-<td style="text-align:center">reconstructed depthmap</td>
-<td style="text-align:center">texture-mapped 3D model</td>
-</tr>
-</tbody>
-</table>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/post/planar-reconstruction/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/project-velodyne/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar-black.jpg">
-      <meta itemprop="name" content="S1NH">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="S1NH">
-      <meta itemprop="description" content="no other developers required.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | S1NH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/post/project-velodyne/" class="post-title-link" itemprop="url">多线激光 Velodyne 与相机的配准及投影</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2019-06-25 00:13:16" itemprop="dateCreated datePublished" datetime="2019-06-25T00:13:16+08:00">2019-06-25</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/programming/" itemprop="url" rel="index"><span itemprop="name">算法与硬件</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="0x00-Velodyne-简介"><a href="#0x00-Velodyne-简介" class="headerlink" title="0x00 Velodyne 简介"></a>0x00 Velodyne 简介</h2><h3 id="1-数据结构及坐标系"><a href="#1-数据结构及坐标系" class="headerlink" title="1. 数据结构及坐标系"></a>1. 数据结构及坐标系</h3><p>Velodyne 通过网线发送的原始数据包为球坐标（spherical coordinates, r, ω, α）。它的 <a target="_blank" rel="noopener" href="https://github.com/ros-drivers/velodyne">ros driver</a> 提供了两种更方便的格式：<code>/velodyne_points</code>和<code>/velodyne_scan</code></p>
-<p>其中，<code>/velodyne_points</code>是转换为XYZ后的坐标，转换的方式如下图；<code>/velodyne_scan</code>为第8根线的scan值（可直接用来模拟单线雷达）。 </p>
-<img data-src="//qiniu.s1nh.org/project_velodyne_5.png-QNthin" width=60% />
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/post/project-velodyne/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/calib-velodyne-camera/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar-black.jpg">
-      <meta itemprop="name" content="S1NH">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="S1NH">
-      <meta itemprop="description" content="no other developers required.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | S1NH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/post/calib-velodyne-camera/" class="post-title-link" itemprop="url">多目相机、Velodyne标定那些破事</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2019-03-01 23:34:12" itemprop="dateCreated datePublished" datetime="2019-03-01T23:34:12+08:00">2019-03-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/programming/" itemprop="url" rel="index"><span itemprop="name">算法与硬件</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="0x01-制作标定板"><a href="#0x01-制作标定板" class="headerlink" title="0x01 制作标定板"></a>0x01 制作标定板</h2><ul>
-<li>在线生成棋盘格 <a target="_blank" rel="noopener" href="https://calib.io/pages/camera-calibration-pattern-generator">https://calib.io/pages/camera-calibration-pattern-generator</a></li>
-<li>在线生成aruco <a target="_blank" rel="noopener" href="http://chev.me/arucogen/">http://chev.me/arucogen/</a></li>
-</ul>
-<h2 id="0x02-相机标定"><a href="#0x02-相机标定" class="headerlink" title="0x02 相机标定"></a>0x02 相机标定</h2><ul>
-<li><a target="_blank" rel="noopener" href="http://wiki.ros.org/camera_calibration/Tutorials/StereoCalibration">camera_calibration</a>: 使用棋盘格进行标定；</li>
-<li><a target="_blank" rel="noopener" href="https://github.com/ethz-asl/kalibr">kalibr</a>: 这个感觉更专业一些，可以同时标多目和IMU。</li>
-</ul>
-<h2 id="0x03-雷达–-相机外参标定"><a href="#0x03-雷达–-相机外参标定" class="headerlink" title="0x03 雷达–&gt;相机外参标定"></a>0x03 雷达–&gt;相机外参标定</h2><p>目前我成功的有两种方法：</p>
-<ul>
-<li><code>autoware_camera_lidar_calibrator</code> : 不需要自制标定板，需要手动人工点击9个点</li>
-<li><code>velo2cam_calibration</code> : 全自动，需要定制一个标定板</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/post/calib-velodyne-camera/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
 
     
 
@@ -2961,8 +2306,616 @@
 
 
 
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/eclipse-dark-theme-conflicts-with-gnome-theme-kali/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-black.jpg">
+      <meta itemprop="name" content="S1NH">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="S1NH">
+      <meta itemprop="description" content="no other developers required.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | S1NH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/eclipse-dark-theme-conflicts-with-gnome-theme-kali/" class="post-title-link" itemprop="url">Kali linux 主题 与 eclipse 黑色主题冲突</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2016-09-26 13:57:50" itemprop="dateCreated datePublished" datetime="2016-09-26T13:57:50+08:00">2016-09-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/programming/" itemprop="url" rel="index"><span itemprop="name">算法与硬件</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><code>2016-09-27 07:49 Fixed in Version 2016.3</code></p>
+<blockquote>
+<p>秉承着以解决问题为乐趣，没有问题创造问题也要解决问题为基本准则。今天发现了一个gnome-theme-kal主题在xfce4下的Bug</p>
+</blockquote>
+<p>最近用Nvidia提供的Nsight来写OpenCV&#x2F;CUDA，白色主题实在是太丑了，就采用通用的方法换成了黑色主题。结果不管怎么折腾，旁边的Navigator都还是白色的，使得整个界面不白不黑的，简直比VIM还丑。</p>
+<p><img data-src="//qiniu.s1nh.org/Blog_kali-theme_1.png-QNthin"></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/post/eclipse-dark-theme-conflicts-with-gnome-theme-kali/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/kali-note/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-black.jpg">
+      <meta itemprop="name" content="S1NH">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="S1NH">
+      <meta itemprop="description" content="no other developers required.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | S1NH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/kali-note/" class="post-title-link" itemprop="url">Kali Linux 内网渗透学习笔记</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2016-09-23 00:29:59" itemprop="dateCreated datePublished" datetime="2016-09-23T00:29:59+08:00">2016-09-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/programming/" itemprop="url" rel="index"><span itemprop="name">算法与硬件</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <blockquote>
+<p>前段时间参加一了个信息安全比赛，赛前突击整理了一下 Kali Linux 的工具用法，记录如下。</p>
+</blockquote>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/post/kali-note/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/note-2016-06-12/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-black.jpg">
+      <meta itemprop="name" content="S1NH">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="S1NH">
+      <meta itemprop="description" content="no other developers required.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | S1NH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/note-2016-06-12/" class="post-title-link" itemprop="url">2016-06-12 OpenCV学习笔记</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2016-09-12 13:50:32" itemprop="dateCreated datePublished" datetime="2016-09-12T13:50:32+08:00">2016-09-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/programming/" itemprop="url" rel="index"><span itemprop="name">算法与硬件</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>本周基于OpenCV进行了一次完整的图像拼接测试，和移动物体探测实验</p>
+<h2 id="图像拼接测试"><a href="#图像拼接测试" class="headerlink" title="图像拼接测试"></a>图像拼接测试</h2><p>测试采用<code>Python2.7</code>, <code>OpenCV3</code>, 对26张<code>12Mp(4000×3000)</code>进行SIFT角点检测，每张图片缩放为之前的0.12倍，利用CPU（8线程i7-6700HQ）进行完整拼接的时间为30秒。（代码链接：<a target="_blank" rel="noopener" href="https://github.com/duchengyao/mosaic">https://github.com/duchengyao/mosaic</a> ）</p>
+<p><img data-src="//qiniu.s1nh.org/Blog_mosaic-CPU-1.gif" title="拼接过程（点击可查看大图）"></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/post/note-2016-06-12/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/build-cuda-with-opencv/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-black.jpg">
+      <meta itemprop="name" content="S1NH">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="S1NH">
+      <meta itemprop="description" content="no other developers required.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | S1NH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/build-cuda-with-opencv/" class="post-title-link" itemprop="url">OpenCV 编译安装笔记</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2016-09-11 01:58:26" itemprop="dateCreated datePublished" datetime="2016-09-11T01:58:26+08:00">2016-09-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/programming/" itemprop="url" rel="index"><span itemprop="name">算法与硬件</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="编译OpenCV-with-CUDA"><a href="#编译OpenCV-with-CUDA" class="headerlink" title="编译OpenCV with CUDA"></a>编译OpenCV with CUDA</h2><p>编译方法<a target="_blank" rel="noopener" href="http://docs.opencv.org/3.1.0/d7/d9f/tutorial_linux_install.html">官方文档</a>写的特别清楚。此外，如果要使用python接口，编译完成后需要把<code>opencv/site-packages</code>目录下的<code>cv2.so</code>链接（或复制）到<code>python/site-packages</code>中，我执行的命令为<code>sudo ln -s  /usr/local/opencv3/lib/python2.7/dist-packages/cv2.so /usr/lib/python2.7/dist-packages/cv2.so</code>（如果不清楚可以参照<a target="_blank" rel="noopener" href="http://www.jianshu.com/p/67293b547261">[翻译]Python 2.7 和 Python 3+ 的OpenCV 3.0 安装教程</a>）</p>
+<p>查看Api和Guides推荐使用Zeal&#x2F;Dash，就不用那么麻烦跑去官网搜索了：</p>
+<p><img data-src="//qiniu.s1nh.org/Blog_zeal-main.png"></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/post/build-cuda-with-opencv/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/chrome-not-support-npapi-in-linux/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-black.jpg">
+      <meta itemprop="name" content="S1NH">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="S1NH">
+      <meta itemprop="description" content="no other developers required.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | S1NH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/chrome-not-support-npapi-in-linux/" class="post-title-link" itemprop="url">Chrome Linux 不支持npapi</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2016-09-07 17:17:43" itemprop="dateCreated datePublished" datetime="2016-09-07T17:17:43+08:00">2016-09-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/programming/" itemprop="url" rel="index"><span itemprop="name">算法与硬件</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>Hikvision的web摄像头界面需要npapi的支持。<code>Chrome42</code>之前的版本都不支Npapi，<code>Chrome42~45</code>可以通过<code>chrome://flags/#enable-npapi</code>开启支持，<code>Chrome45</code>之后的版本不支持Npapi。</p>
+<p>花了很久的时间找到了低版本的Chrome安装包，安装完以后依然无法执行插件。</p>
+<p>仔细查阅文档后，发现<strong>只有Mac和Windows的Chrome对NPAPI提供支持</strong>。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/setup-matcaffe/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-black.jpg">
+      <meta itemprop="name" content="S1NH">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="S1NH">
+      <meta itemprop="description" content="no other developers required.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | S1NH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/setup-matcaffe/" class="post-title-link" itemprop="url">配置Matcaffe</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2016-08-30 11:08:19" itemprop="dateCreated datePublished" datetime="2016-08-30T11:08:19+08:00">2016-08-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/programming/" itemprop="url" rel="index"><span itemprop="name">算法与硬件</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>配置Matcaffe的时候碰到了两个小坑，记录一下：</p>
+<p>第一个坑：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Invalid MEX-file &#x27;/root/caffe/matlab/+caffe/private/caffe_.mexa64&#x27;: /matlab/r2016a/bin/glnxa64/../../sys/os/glnxa64/libstdc++.so.6: version `GLIBCXX_3.4.20&#x27; not found (required by /root/caffe/matlab/+caffe/private/caffe_.mexa64)</span><br></pre></td></tr></table></figure>
+<p>第二个坑与前一篇文章《<a href="/post/setup-caffe-without-anaconda/">在anaconda下安装caffe失败</a>》错误相同。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Invalid MEX-file</span><br><span class="line">&#x27;/home/xw/caffeBuild/caffe-master/matlab/+caffe/private/caffe_.mexa64&#x27;:</span><br><span class="line">/home/xw/caffeBuild/caffe-master/matlab/+caffe/private/caffe_.mexa64: undefined</span><br><span class="line">symbol:</span><br><span class="line">_ZN2cv8imencodeERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS_11_InputArrayERSt6vectorIhSaIhEERKSB_IiSaIiEE</span><br><span class="line"></span><br><span class="line">Error in caffe.set_mode_cpu (line 5)</span><br><span class="line">caffe_(&#x27;set_mode_cpu&#x27;);</span><br><span class="line"></span><br><span class="line">Error in caffe.run_tests (line 6)</span><br><span class="line">caffe.set_mode_cpu();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/post/setup-matcaffe/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/setup-caffe-without-anaconda/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-black.jpg">
+      <meta itemprop="name" content="S1NH">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="S1NH">
+      <meta itemprop="description" content="no other developers required.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | S1NH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/setup-caffe-without-anaconda/" class="post-title-link" itemprop="url">在anaconda下安装caffe失败</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2016-08-26 19:45:38" itemprop="dateCreated datePublished" datetime="2016-08-26T19:45:38+08:00">2016-08-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/programming/" itemprop="url" rel="index"><span itemprop="name">算法与硬件</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <blockquote>
+<p>Python 跟 Python3 完全就是两种语言</p>
+</blockquote>
+<h3 id="0x00-import-caffe-FAILED"><a href="#0x00-import-caffe-FAILED" class="headerlink" title="0x00 import caffe FAILED"></a>0x00 import caffe FAILED</h3><p>环境为 <code>Ubuntu 16</code> <code>cuda 8.0</code> <code>NVIDIA 361.77</code> <code>Anaconda2</code>。昨天莫名其妙Caffe不能用了：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import caffe</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">  File &quot;/home/duchengyao/project/caffe/python/caffe/__init__.py&quot;, line 1, in &lt;module&gt;</span><br><span class="line">    from .pycaffe import Net, SGDSolver, NesterovSolver, AdaGradSolver, RMSPropSolver, AdaDeltaSolver, AdamSolver</span><br><span class="line">  File &quot;/home/duchengyao/project/caffe/python/caffe/pycaffe.py&quot;, line 13, in &lt;module&gt;</span><br><span class="line">    from ._caffe import Net, SGDSolver, NesterovSolver, AdaGradSolver, \</span><br><span class="line">ImportError: /home/duchengyao/project/caffe/python/caffe/../../build/lib/libcaffe.so.1.0.0-rc3: undefined symbol: _ZN2cv8imencodeERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS_11_InputArrayERSt6vectorIhSaIhEERKSB_IiSaIiEE</span><br></pre></td></tr></table></figure>
+
+<p>各种折腾都无效，重装Anaconda以后错误消失，<code>import caffe</code> 成功。</p>
+<h3 id="0x01-import-FAILED-again-after-“-conda-install-opencv”"><a href="#0x01-import-FAILED-again-after-“-conda-install-opencv”" class="headerlink" title="0x01 import FAILED again after “$conda install opencv”"></a>0x01 import FAILED again after “$conda install opencv”</h3><p>用 <code>conda install opencv</code> 安装完Opencv后，又出现了同样的错误提示，卸载后错误消失。</p>
+<p>Conda 安装后的Opencv 版本为<code>2.4.10</code>，而系统apt安装的版本为<code>2.4.9.1</code>。我尝试从conda 安装2.4.9版，可是需要处理很多conflict。</p>
+<p>最后实在走投无路了准备换成Anaconda3，环境搭建完成后运行程序的时候简直尴尬了，各种库不兼容。终于知道为啥老鸟们调侃Python 跟Python3完全是两种语言了</p>
+<h3 id="0x02-解决方案"><a href="#0x02-解决方案" class="headerlink" title="0x02 解决方案"></a>0x02 解决方案</h3><p>暂时的解决方案为<strong>放弃anaconda</strong>，全部用apt安装软件包，使用系统默认的Opencv，运行成功。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
   <nav class="pagination">
-    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>
