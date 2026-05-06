@@ -342,13 +342,6 @@
 </blockquote>
 <p>五一坐高铁回家，四个小时的车程，手机信号时有时无，刷短视频刷烦了。想起前两天同事说 opencode 配合 DeepSeek 写代码还行，就打开终端试了一下。</p>
 <p>DeepSeek 的 API 挺便宜，充了十块钱，估摸着够我玩一整天。</p>
-<h2 id="“帮我把-Qwen3-5-加上”"><a href="#“帮我把-Qwen3-5-加上”" class="headerlink" title="“帮我把 Qwen3.5 加上”"></a>“帮我把 Qwen3.5 加上”</h2><p>nano-vllm 是我之前收藏的一个项目，几百行 Python 写的推理引擎，只支持 Qwen2 和 Qwen3。Qwen3.5 刚出，多了一种叫 <code>GatedDeltaNet</code> 的注意力层。</p>
-<p>我就在终端里敲了一行：”<strong>帮我把 Qwen3.5 原生支持加上。</strong>“</p>
-<p>opencode 吭哧吭哧开始写。几十秒后，<code>qwen35.py</code> 出来了，三百多行。我心想这<strong>东西要是手写得写一个下午</strong>，它三秒出活。</p>
-<p>一跑，崩了。</p>
-<p><strong>“config 里 text_config 没处理吧，Qwen3.5 的 HuggingFace config 是嵌套的。” 改。</strong></p>
-<p>再跑，又崩。</p>
-<p><strong>“RoPE 的 head_dim 广播逻辑不对。” 再改。</strong></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/2026-upgrading-nano-vllm-on-a-train/#more" rel="contents">
