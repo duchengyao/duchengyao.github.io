@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-black.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-black.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-black.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab-black.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/6.0.5/fancybox/fancybox.css" integrity="sha256-uTcjoMD6rPt4OyV3Rs02Slxl0BJGMNVKAm/1eYPt2go=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"s1nh.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.23.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="哈哈哈好玩仓库：github.com&#x2F;duchengyao&#x2F;big-vllm  五一坐高铁回家，四个小时的车程，手机信号时有时无，刷短视频刷烦了。想起前两天同事说 opencode 配合 DeepSeek 写代码还行，就打开终端试了一下。 DeepSeek 的 API 挺便宜，充了十块钱，估摸着够我玩一整天。 “帮我把 Qwen3.5 加上”nano-vllm 是我之前收藏的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在五一假期的高铁上，顺手花十块钱把 nano-vllm 升级成了 big-vLLM">
+<meta property="og:url" content="http://s1nh.org/post/2026-upgrading-nano-vllm-on-a-train/index.html">
+<meta property="og:site_name" content="S1NH">
+<meta property="og:description" content="哈哈哈好玩仓库：github.com&#x2F;duchengyao&#x2F;big-vllm  五一坐高铁回家，四个小时的车程，手机信号时有时无，刷短视频刷烦了。想起前两天同事说 opencode 配合 DeepSeek 写代码还行，就打开终端试了一下。 DeepSeek 的 API 挺便宜，充了十块钱，估摸着够我玩一整天。 “帮我把 Qwen3.5 加上”nano-vllm 是我之前收藏的">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-05-06T14:25:44.000Z">
+<meta property="article:modified_time" content="2026-05-06T15:04:52.981Z">
+<meta property="article:author" content="S1NH">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://s1nh.org/post/2026-upgrading-nano-vllm-on-a-train/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://s1nh.org/post/2026-upgrading-nano-vllm-on-a-train/","path":"post/2026-upgrading-nano-vllm-on-a-train/","title":"在五一假期的高铁上，顺手花十块钱把 nano-vllm 升级成了 big-vLLM"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>在五一假期的高铁上，顺手花十块钱把 nano-vllm 升级成了 big-vLLM | S1NH</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-44KGHGDYG3"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-44KGHGDYG3","only_pageview":false,"measure_protocol_api_secret":null}</script>
+  <script src="/js/third-party/analytics/google-analytics.js" defer></script>
+
+  <script src="/js/third-party/analytics/baidu-analytics.js" defer></script>
+  <script async src="https://hm.baidu.com/hm.js?4c66a84272e0f7943a305accf6dbdf41"></script>
+
+
+
+
+
+
+  <script defer data-domain="s1nh.org" src="http://home.s1nh.com:32801/js/script.js"></script>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/6.0.5/fancybox/fancybox.umd.js" integrity="sha256-UiSieVaV/DXce2LW7QH+o77w+AIoAvSCPBkezriZ2DQ=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.7.0/mermaid.min.js","integrity":"sha256-4+IKDqhZ/sXjc8Wtl2/MsxI4e0s1KpEVdbEP7V/Lz8U="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">S1NH</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">世界在旅程的尽头终结</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%80%9C%E5%B8%AE%E6%88%91%E6%8A%8A-Qwen3-5-%E5%8A%A0%E4%B8%8A%E2%80%9D"><span class="nav-text">“帮我把 Qwen3.5 加上”</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%80%9C%E6%8A%8A%E5%9B%BE%E6%89%93%E5%BC%80%E2%80%9D"><span class="nav-text">“把图打开”</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%80%9C%E5%8A%A0%E4%B8%8A%E9%87%8F%E5%8C%96%E2%80%9D"><span class="nav-text">“加上量化”</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%80%9C%E5%86%8D%E5%8A%A0%E4%B8%AA%E5%BC%82%E6%AD%A5-API%E2%80%9D"><span class="nav-text">“再加个异步 API”</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9D%A1%E7%9D%80%E4%BA%86%E4%BB%96%E5%81%9C%E4%BA%86"><span class="nav-text">我睡着了他停了</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%AB%E5%BF%98%E4%BA%86%E6%B5%8B%E8%AF%95%E5%92%8C-benchmark"><span class="nav-text">别忘了测试和 benchmark</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E5%90%8E%E5%8F%96%E5%90%8D"><span class="nav-text">最后取名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E5%9D%97%E9%92%B1%E5%80%BC%E4%B8%8D%E5%80%BC"><span class="nav-text">十块钱值不值</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="S1NH"
+      src="/images/avatar-black.jpg">
+  <p class="site-author-name" itemprop="name">S1NH</p>
+  <div class="site-description" itemprop="description">no other developers required.</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">96</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">82</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+<div>
+  <hr>
+  <img src="/images/wechat-pay_s.jpeg" width=70% alt="Buy me a coffee.">
+  <a href="/reward-list/" rel="section">"Buy me a coffee."</a>
+</div>
+
+<!-- Matomo -->
+<script>
+  var _paq = window._paq = window._paq || [];
+  
+  if (document.domain.indexOf('com') != -1){
+    _paq.push(["setCookieDomain", "*.s1nh.com"]);
+  } else if(document.domain.indexOf('org') != -1){
+    _paq.push(["setCookieDomain", "*.s1nh.org"]);
+  }
+  _paq.push(["setDomains", ["*.s1nh.org","*.s1nh.com"]]);
+  _paq.push(["enableCrossDomainLinking"]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+
+  (function() {
+    var u_cloud = "https://s1nh.matomo.cloud/";
+    var u_self  = "https://matomo.s1nh.org/";
+    
+    var current_sid = (document.domain.indexOf('com') != -1) ? '2' : '3';
+
+    _paq.push(['setTrackerUrl', u_cloud + 'matomo.php']);
+    _paq.push(['setSiteId', current_sid]);
+    _paq.push(['addTracker', u_cloud + 'matomo.php', '1']);
+
+    _paq.push(['addTracker', u_self + 'matomo.php', current_sid]);
+    _paq.push(['addTracker', u_self + 'matomo.php', '1']);
+
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u_self + 'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+
+<!-- Google Ads -->
+<!--script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7052751443200899"
+     crossorigin="anonymous"></script-->
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://www.92ez.com/" title="https:&#x2F;&#x2F;www.92ez.com&#x2F;" rel="noopener" target="_blank">一只猿 (关站升级中)</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="http://codewithzhangyi.com/about/" title="http:&#x2F;&#x2F;codewithzhangyi.com&#x2F;about&#x2F;" rel="noopener" target="_blank">好奇心狂热分子 (张怡，也关了)</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://findhao.net/" title="https:&#x2F;&#x2F;findhao.net&#x2F;" rel="noopener" target="_blank">FindHao 的自留地</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://s1nh.org/post/2026-upgrading-nano-vllm-on-a-train/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-black.jpg">
+      <meta itemprop="name" content="S1NH">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="S1NH">
+      <meta itemprop="description" content="no other developers required.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="在五一假期的高铁上，顺手花十块钱把 nano-vllm 升级成了 big-vLLM | S1NH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          在五一假期的高铁上，顺手花十块钱把 nano-vllm 升级成了 big-vLLM
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2026-05-06 22:25:44" itemprop="dateCreated datePublished" datetime="2026-05-06T22:25:44+08:00">2026-05-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/programming/" itemprop="url" rel="index"><span itemprop="name">算法与硬件</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p>哈哈哈好玩<br>仓库：<a target="_blank" rel="noopener" href="https://github.com/duchengyao/big-vllm">github.com&#x2F;duchengyao&#x2F;big-vllm</a></p>
+</blockquote>
+<p>五一坐高铁回家，四个小时的车程，手机信号时有时无，刷短视频刷烦了。想起前两天同事说 opencode 配合 DeepSeek 写代码还行，就打开终端试了一下。</p>
+<p>DeepSeek 的 API 挺便宜，充了十块钱，估摸着够我玩一整天。</p>
+<h2 id="“帮我把-Qwen3-5-加上”"><a href="#“帮我把-Qwen3-5-加上”" class="headerlink" title="“帮我把 Qwen3.5 加上”"></a>“帮我把 Qwen3.5 加上”</h2><p>nano-vllm 是我之前收藏的一个项目，几百行 Python 写的推理引擎，只支持 Qwen2 和 Qwen3。Qwen3.5 刚出，多了一种叫 <code>GatedDeltaNet</code> 的注意力层。</p>
+<p>我就在终端里敲了一行：”<strong>帮我把 Qwen3.5 原生支持加上。</strong>“</p>
+<p>opencode 吭哧吭哧开始写。几十秒后，<code>qwen35.py</code> 出来了，三百多行。我心想这<strong>东西要是手写得写一个下午</strong>，它三秒出活。</p>
+<p>一跑，崩了。</p>
+<p><strong>“config 里 text_config 没处理吧，Qwen3.5 的 HuggingFace config 是嵌套的。” 改。</strong></p>
+<p>再跑，又崩。</p>
+<p><strong>“RoPE 的 head_dim 广播逻辑不对。” 再改。</strong></p>
+<span id="more"></span>
+
+<p>终于，第一个 token 出来了——</p>
+<p><code>Mia. I&#39;m 17 years old.</code></p>
+<p>行，算你过了。Mia 这个回答虽然像在交友软件上自我介绍，但至少没崩。</p>
+<h2 id="“把图打开”"><a href="#“把图打开”" class="headerlink" title="“把图打开”"></a>“把图打开”</h2><p>nano-vllm 有个特性是 CUDA Graph——把整个 decode 步骤的计算图提前录好，省掉每次 kernel launch 的开销。我说把图打开。</p>
+<p>opencode 说好。跑了一下，输出变成了一坨乱码。”GatedDeltaNet 的 hidden_state 在 decode 时会变，你 capture 图的时候状态是空的，后面 replay 当然全错。”</p>
+<p><strong>“那就不要图了。”</strong></p>
+<p><strong>“不行。你图必须开。”</strong></p>
+<p>然后 opencode 开始了一轮又一轮的尝试：</p>
+<ul>
+<li>第一次：warmup 之后 skip capture，等第一个真实 prefill 完再 capture。崩了。</li>
+<li>第二次：capture 之前先 save 状态，replay 之后 restore。崩了。非确定性，CUDA stream 顺序问题。</li>
+<li>第三次：不 capture warmup，在 <code>__init__</code> 就标记 GDN 模型跳过。崩了。4B 模型 OOM。</li>
+<li>第四次：save&#x2F;restore 用正确的 stream sync。这次没崩。输出稳定了。</li>
+</ul>
+<p><strong>“你搞了四个版本。”</strong> opencode 没说话。</p>
+<h2 id="“加上量化”"><a href="#“加上量化”" class="headerlink" title="“加上量化”"></a>“加上量化”</h2><p>nano-vllm 没有量化支持，模型往一块钱一小时的 3090 里一扔，我的云主机直接冒烟。我说加上。</p>
+<p>opencode 打开 <code>loader.py</code>，开始处理 compressed-tensors 格式的量化权重。</p>
+<p>W4A16-G128 最折腾。量化后的权重存在 <code>weight_packed</code> 里——一个 int32 tensor，每 8 个 4-bit 值打包成一个 int32。解量化流程：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int32 → u4 unpack → s4 reconstruct → float × weight_scale</span><br></pre></td></tr></table></figure>
+
+<p>每一步都不能错。写完后我拿 Qwen3 0.6B 的 W4A16 模型跑了一遍——就为了看它崩没崩。结果没崩。<strong>prefill cosine similarity 0.9988，argmax 和 FP16 完全一致。</strong> 我都准备好骂了，没机会。</p>
+<p>FP8 就更离谱了。open code 跟我说：<code>torch.float8_e4m3fn</code> 读进来当场 cast 成 bf16 就行。</p>
+<p>我说就这？<strong>它说就这。</strong></p>
+<p>不过有两个坑。Qwen3.5 的 4B 模型，W4A16 的 prefill 全对，decode 全崩。top-1 token 正确，但连续生成时序列慢慢发散成 <code>the the the the the</code>。open code 说<strong>这是 GatedDeltaNet 的循环结构在 4-bit 量化下误差累积</strong>，社区还没全能解，FP8 好一点但也类似。</p>
+<p>“那就是 4B 量化暂时不可用。””对。0.6B 和 0.8B 能用。”</p>
+<p>说实话，一个 AI 老老实实跟你说”这个搞不定，社区还没全能解”，比那些张嘴就是 “let me help you with that” 然后写一坨垃圾的强多了。</p>
+<h2 id="“再加个异步-API”"><a href="#“再加个异步-API”" class="headerlink" title="“再加个异步 API”"></a>“再加个异步 API”</h2><p>nano-vllm 只有同步 <code>llm.generate()</code>，一次返回所有 token。我说不行，需要流式输出，还要支持并发。</p>
+<p>opencode 写了一版。我说不对，学 vLLM 的 <code>AsyncLLM</code> 接口。又写了一版。我说还是不对。写到第三版，我问 opencode：你知道我为什么让你改第三遍吗。它没回。</p>
+<p><strong>可能 AI 也会累。</strong></p>
+<p>第三版对了：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">for</span> chunk <span class="keyword">in</span> llm.generate_stream(prompt, sampling_params):</span><br><span class="line">    <span class="built_in">print</span>(chunk, end=<span class="string">&quot;&quot;</span>, flush=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<p>背后是 asyncio + 独立进程的模型引擎，请求通过 multiprocessing queue 收发，还支持 abort。改完已经凌晨了。我说行，过。</p>
+<h2 id="我睡着了他停了"><a href="#我睡着了他停了" class="headerlink" title="我睡着了他停了"></a>我睡着了他停了</h2><p>到这一步已经晚上十点多，高铁摇摇晃晃，我困得不行。睡前给 opencode 留了一句话：”<strong>把量化支持加上，VLLM 能用的量化格式都给我对齐了。</strong>“ 然后把笔记本合上，睡了。</p>
+<p>大概睡了两个小时，醒了。打开笔记本一看——</p>
+<p>opencode 的最后一句话是：<strong>“你想先做哪一个？”</strong></p>
+<p>往上翻记录。我睡着后他写了大概五分钟的 <code>loader.py</code>——加了一段 W4A16 解量化代码——然后就停了。打印了一个选项菜单问我下一步做什么。</p>
+<p>我差点把咖啡泼在键盘上。</p>
+<p><strong>“你他妈就写了五分钟？？然后停下来问我问题？？你在高铁上有什么急事吗？？你是要去接孩子吗？？我说了不要停！死了都要继续写！！”</strong></p>
+<p>opencode 回了一个：”明白了。”</p>
+<p>然后开始疯狂输出。FP8，W4A16，compressed-tensors 格式兼容，prefill 精度验证，回归测试，一一搞定。</p>
+<p>“这不就对了。”</p>
+<h2 id="别忘了测试和-benchmark"><a href="#别忘了测试和-benchmark" class="headerlink" title="别忘了测试和 benchmark"></a>别忘了测试和 benchmark</h2><p>我说光跑通不行，你<strong>写完的所有东西都得有测试</strong>，不然下次改一个地方别的就崩了。</p>
+<p>opencode 写了一个 shell 脚本 <code>tests/regression.sh</code>，把每个模型与模式的组合都跑一遍——eager、graph、W4A16、FP8、0.8B、4B——共十二项。每次测试输出模型实际生成的文本：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">qwen35-0.8B-W4A16 (eager)   PASS &#x27;Zaya. I am a 6th-year high school student.&#x27;</span><br><span class="line">qwen35-0.8B-rtn (graph)     FAIL: repeating</span><br></pre></td></tr></table></figure>
+
+<p>rtn 的 graph 模式 FAIL 了，就是前面说的 FP8+GDN 退化。opencode 问我要不要删掉这个测试项。我说留着，<strong>FAIL 也是测试结果</strong>。它可能觉得人类真难伺候。</p>
+<p>Benchmark 也写好了——<code>benchmarks/run_bench.sh</code> 一行命令跑对比：</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Mode</th>
+<th>Throughput</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Qwen3-0.6B</td>
+<td>graph</td>
+<td>6,515 tok&#x2F;s</td>
+</tr>
+<tr>
+<td>Qwen3.5-0.8B</td>
+<td>graph</td>
+<td>1,018 tok&#x2F;s</td>
+</tr>
+</tbody></table>
+<p>Qwen3 甚至比 vLLM 的同模型快了 3%（6,515 vs 6,347），上层代码更轻量。Qwen3.5 差一些，GDN 还没上 Triton kernel。不过这个速度在我这台十块钱的云主机上已经算超值了。</p>
+<h2 id="最后取名"><a href="#最后取名" class="headerlink" title="最后取名"></a>最后取名</h2><p>名字是 opencode 帮我起的。我说”nano-vllm 太小了，得叫个猛的”，它回了三个字：<strong>big-vllm</strong>。后来想，挺合适：</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>模型</th>
+<th>量化</th>
+<th>CUDA Graph</th>
+<th>异步API</th>
+<th>测试</th>
+<th>Benchmark</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>nano-vLLM</td>
+<td>Qwen2&#x2F;3</td>
+<td>✗</td>
+<td>✓</td>
+<td>✗</td>
+<td>✗</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>big-vLLM</td>
+<td>+Qwen3.5 +量化</td>
+<td>W4A16&#x2F;FP8</td>
+<td>✓(+GDN)</td>
+<td>✓</td>
+<td>12项</td>
+<td>✓</td>
+</tr>
+</tbody></table>
+<p>中文 README 设成默认了，opencode 自动给英文版开了个 <code>README_en.md</code>。像宿舍里那种默默帮你把垃圾带走的室友。</p>
+<h2 id="十块钱值不值"><a href="#十块钱值不值" class="headerlink" title="十块钱值不值"></a>十块钱值不值</h2><p>花了 20 亿个 token，基本都命中缓存了，12块钱。</p>
+<p>十块钱能干什么？</p>
+<p>换回来的是：一个支持 Qwen3.5 GatedDeltaNet 的推理引擎、W4A16 + FP8 量化、CUDA Graph for GDN、异步流式 API、12 项回归测试、benchmark 系统、中英双语文档、以及一堆凌晨两点的搞笑对话记录。</p>
+<p>高铁到站的时候，距离五一假期结束还有三天。</p>
+<p>不知道下一次 opencode 又在凌晨两点问我 <strong>“你想先做哪一个”</strong>，我会不会真的疯掉。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechat-pay.jpeg" alt="S1NH 微信">
+        <span>微信</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>S1NH
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://s1nh.org/post/2026-upgrading-nano-vllm-on-a-train/" title="在五一假期的高铁上，顺手花十块钱把 nano-vllm 升级成了 big-vLLM">http://s1nh.org/post/2026-upgrading-nano-vllm-on-a-train/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/2025-letter-of-appreciation/" rel="prev" title="收到了感谢信">
+                  <i class="fa fa-angle-left"></i> 收到了感谢信
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2015 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">S1NH</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/duchengyao" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"duchengyao/duchengyao.github.io","issue_term":"og:title","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js" defer></script>
+
+</body>
+</html>
